@@ -21,6 +21,7 @@ Aus einer Textaufgabe das LP-Modell aufstellen: Entscheidungsvariablen, Zielfunk
 - **Musterlösung mit Schritt-für-Schritt-Erklärung:** Variablen definieren, Zielfunktion aufstellen, Nebenbedingungen identifizieren, vollständiges LP-Modell
 - **Farbige Markierungen** zeigen, welche Stelle im Aufgabentext zu welchem Koeffizienten und welcher Schranke wird
 - **Direkt weiter zum Simplex:** Ist das Modell richtig, rechnest du dieselbe Aufgabe im Tableau weiter. Die Prüfung ist genauso exakt wie im Simplex-Trainer, dazu gibt es einen Export als HTML-Datei
+- **Tutor-Modus auch hier:** erklärt zusätzlich das Starttableau (Vorzeichen in der Z-Zeile, ≥-Bedingungen, Gleichungen) und die dualen Schritte
 
 ### Nutzung
 
@@ -50,9 +51,20 @@ Zufällig erzeugte LPs mit dem Simplex-Verfahren lösen, Tableau für Tableau.
 - **Tableau lösen** als Hilfe: füllt ein Tableau korrekt aus und nennt das nächste Pivotelement bzw. meldet das Optimum
 - Das gewählte Pivotelement wird im Tableau farbig markiert
 
+#### Tutor-Modus
+
+![Tutor-Modus: Rechteckregel mit markierten Zellen im vorherigen Tableau](docs/tutor.png)
+
+Per Checkbox zuschaltbar. Der Tutor führt Zelle für Zelle durch den Algorithmus, bis er sitzt:
+
+- **Feste Reihenfolge:** Starttableau → Pivotspalte → Pivotzeile → Beschriftungen tauschen → Pivotelement → Pivotzeile → Pivotspalte → Rechteckregel → … → Optimum. Die aktuelle Zelle ist markiert, die übrigen sind gesperrt.
+- **Sofortige Prüfung** jeder Eingabe. Typische Fehler werden erkannt und benannt, etwa ein falsches Vorzeichen, der vergessene Kehrwert beim Pivotelement, das vergessene Teilen durch das Pivotelement oder ein gerundeter Bruch.
+- **Hilfe in Stufen:** zuerst die Regel, dann die Formel mit farbig markierten Zellen im vorherigen Tableau, dann die eingesetzten Zahlen. Das Ergebnis selbst gibt es nur über „Lösung zeigen“.
+- **Hilfe wird weniger:** Je Zelltyp (z. B. Rechteckregel oder Pivotzeile wählen) zählt der Tutor die richtigen Antworten in Folge. Nach drei Treffern ohne zusätzliche Hilfe zeigt er die Regel nur noch auf Abruf. Der Fortschritt bleibt im Browser gespeichert.
+
 ### Nutzung
 
-1. Einstellungen wählen und **Problem generieren** klicken. Das erste Tableau ist in passender Größe vorbereitet.
+1. Einstellungen wählen und **Problem generieren** klicken. Das erste Tableau ist in passender Größe vorbereitet. Wer geführt rechnen will, schaltet den **Tutor-Modus** ein.
 2. Aufbau des Tableaus: oben die Z-Zeile, darunter eine Zeile je Basisvariable (zu Beginn die Schlupfvariablen `y1`, `y2`, …). Die Spalten sind die Nichtbasisvariablen, die letzte Spalte enthält die Werte. Im Starttableau stehen in der Z-Zeile die Zielfunktionskoeffizienten mit umgekehrtem Vorzeichen.
 3. Das Pivotelement über die beiden Auswahlfelder unter dem Tableau festlegen (Zeile = Basisvariable, Spalte = Nichtbasisvariable). Musterlösung und Prüfung folgen dieser Regel:
    - **Pivotspalte:** die Spalte mit dem kleinsten (negativsten) Wert in der Z-Zeile, bei Gleichstand die linke
@@ -92,6 +104,7 @@ Tests:
 cd app
 npx tsx src/test-harness.ts all
 npx tsx src/test-multivar-flow.ts
+npm run test:e2e        # Browser-Test des Tutor-Modus (braucht Google Chrome oder CHROME_PATH)
 ```
 
 Neue Vorlagen kommen als JSON nach `problems/templates/<typ>/`. Danach `python3 problems/validate_templates.py` (prüfen) und `python3 problems/merge_templates.py` (nach `app/src/data/templates.ts` übernehmen) ausführen.

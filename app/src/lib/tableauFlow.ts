@@ -103,6 +103,21 @@ export function parseConstraint(nb: string, numVars: number): { coeffs: Fraction
   return [leq, geq];
 }
 
+/** Where each start-tableau row comes from (for explanations): one entry per tableau row below Z. */
+export interface StartRowInfo { text: string; op: '≤' | '≥' | '='; part?: 'leq' | 'geq' }
+
+export function describeStartRows(nbs: string[]): StartRowInfo[] {
+  const rows: StartRowInfo[] = [];
+  for (const nb of nbs) {
+    const text = nb.replace(/\s*\([^()]*[A-Za-zÄÖÜäöüß]{2,}[^()]*\)\s*$/, '').trim();
+    const m = stripLabels(nb).match(/(≤|≥|<=|>=|=)/);
+    const op = !m ? '≤' : (m[1] === '≥' || m[1] === '>=') ? '≥' : m[1] === '=' ? '=' : '≤';
+    if (op === '=') rows.push({ text, op, part: 'leq' }, { text, op, part: 'geq' });
+    else rows.push({ text, op });
+  }
+  return rows;
+}
+
 /** Parse "Z = 12x1 + 11x2 (min)" (also "max: …", "… → max"). */
 export function parseObjective(zf: string, numVars: number): { c: Fraction[]; isMin: boolean } | null {
   const isMin = /min/i.test(zf);

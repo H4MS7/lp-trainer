@@ -2,7 +2,7 @@
 // Copyright (C) 2026 Felix Flösch
 
 // @ts-nocheck
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect, useMemo, useRef, Fragment } from 'react';
 import { AlertCircle, CheckCircle, RefreshCw, BookOpen, Brain, Table, Plus, ArrowRight, X } from 'lucide-react';
 import ALL_PROBLEMS from './data/problems';
 import ALL_TEMPLATES from './data/templates';
@@ -11,7 +11,10 @@ import type { ProblemTemplate } from './lib/templateEngine';
 import { Fraction } from './lib/fraction';
 import * as Simplex from './lib/simplex';
 import { generateProblemAsync, formatProblem } from './lib/generator';
-import { buildStartTableauFromText, parseCell, pivotStep, isOptimalEditable, choosePivotEditable, solvePathFrom, compareTableau } from './lib/tableauFlow';
+import { buildStartTableauFromText, parseCell, pivotStep, isOptimalEditable, choosePivotEditable, solvePathFrom, compareTableau, describeStartRows } from './lib/tableauFlow';
+import { buildTutorSteps, currentStepIndex, isStepDone, diagnoseCell, autoLevel, updateMastery } from './lib/tutor';
+import type { Mastery, HighlightRole } from './lib/tutor';
+import TutorPanel from './TutorPanel';
 import type { GeneratorConfig, GeneratedProblem, AppMode, EditableTableau } from './lib/types';
 
 interface SimplexFeedback {
@@ -48,6 +51,15 @@ const LPModellTrainer = () => {
   const [simplexTableaus, setSimplexTableaus] = useState<EditableTableau[]>([]);
   const [currentTableauIndex, setCurrentTableauIndex] = useState(0);
   const [simplexFeedback, setSimplexFeedback] = useState<SimplexFeedback | null>(null);
+  // Tutor-Modus (lib/tutor.ts): Ein/Aus und Lernfortschritt bleiben im Browser gespeichert
+  const [tutorOn, setTutorOn] = useState<boolean>(() => { try { return localStorage.getItem('lptrainer.tutor.on') === '1'; } catch { return false; } });
+  const [mastery, setMastery] = useState<Mastery>(() => { try { return JSON.parse(localStorage.getItem('lptrainer.tutor.mastery') || '{}'); } catch { return {}; } });
+  const [tutorAttempts, setTutorAttempts] = useState<Record<string, number>>({});
+  const [tutorExtra, setTutorExtra] = useState<Record<string, number>>({});
+  const [tutorRevealed, setTutorRevealed] = useState<Record<string, boolean>>({});
+  const [tutorFeedback, setTutorFeedback] = useState<{ id: string; msg: string } | null>(null);
+  // Entwurf der Zielzelle: zählt erst bei Enter/Tab/Verlassen (sonst würde "-13" schon beim Tippen von "-130" akzeptiert)
+  const [tutorDraft, setTutorDraft] = useState<{ key: string; value: string; checked: boolean } | null>(null);
   const [lastGeneratedTopics, setLastGeneratedTopics] = useState<string[]>([]);
 
   const [appMode, setAppMode] = useState<AppMode>('modellierung');
@@ -311,17 +323,10 @@ const LPModellTrainer = () => {
 
   const initializeSimplexTableaus = () => {
     if (!currentProblem) return;
-    const numC = currentProblem?.nebenbedingungen?.filter(nb => !isNonNegativity(nb)).length || 0;
-    const numVars = detectNumVars(currentProblem);
-    const rows = numC + 1;
-    const empty = {
-      data: Array(rows).fill(null).map(() => Array(numVars + 1).fill('')),
-      basis: ['Z', ...Array(numC).fill(null).map((_, i) => `y${i+1}`)],
-      nbVars: Array(numVars).fill(null).map((_, j) => `x${j+1}`),
-      pivotRow: -1, pivotCol: -1, isOptimal: false,
-      zLabel: currentProblem?.optimierungsziel === 'minimieren' ? '-Z' : 'Z'
-    };
-    setSimplexTableaus([empty]);
+    // Leeres Starttableau in genau der Größe des berechneten (Gleichungen = zwei Zeilen)
+    const start = buildStartTableau();
+    if (!start) return;
+    setSimplexTableaus([{ ...start, data: start.data.map(r => r.map(() => '')), pivotRow: -1, pivotCol: -1, isOptimal: false }]);
   };
 
   const startSimplex = () => {
@@ -439,16 +444,21 @@ ${tableausHTML}${feedbackHTML}
   };
 
   // ===== LOKALER SIMPLEX-SOLVER =====
-  const buildStartTableau = () => {
+  /** Welches LP ins Starttableau geht: die Nutzereingabe, sonst (oder wenn nicht lesbar) die Musterlösung. */
+  const startSource = () => {
     if (!currentProblem) return null;
     const numVars = detectNumVars(currentProblem);
     const realNBs = (nbs: string[]) => nbs.filter(nb => nb.trim() && !isNonNegativity(nb));
-    // Nutze die Nutzereingabe, Fallback auf Musterlösung (auch wenn die Eingabe nicht lesbar ist)
     const userNBs = realNBs(userSolution.nebenbedingungen);
-    const fromUser = userSolution.zielfunktion.trim() && userNBs.length > 0
-      ? buildStartTableauFromText(userSolution.zielfunktion, userNBs, numVars)
-      : null;
-    return fromUser || buildStartTableauFromText(currentProblem.zielfunktion || '', realNBs(currentProblem.nebenbedingungen || []), numVars);
+    if (userSolution.zielfunktion.trim() && userNBs.length > 0 && buildStartTableauFromText(userSolution.zielfunktion, userNBs, numVars)) {
+      return { zf: userSolution.zielfunktion, nbs: userNBs, numVars };
+    }
+    return { zf: currentProblem.zielfunktion || '', nbs: realNBs(currentProblem.nebenbedingungen || []), numVars };
+  };
+
+  const buildStartTableau = () => {
+    const src = startSource();
+    return src ? buildStartTableauFromText(src.zf, src.nbs, src.numVars) : null;
   };
 
   const solveTableau = async (tableauIndex) => {
@@ -742,6 +752,148 @@ ${tableausHTML}${feedbackHTML}
 
   // ===== SHARED TABLEAU RENDERING =====
 
+  // ===== TUTOR-MODUS =====
+  const tutorContext = useMemo(() => {
+    if (appMode === 'simplex') {
+      if (!generatedProblem) return null;
+      const f = formatProblem(generatedProblem);
+      const nbs = f.nebenbedingungen.filter(nb => !isNonNegativity(nb));
+      return { path: generatedProblem.solutionPath, start: { isMin: false, objective: f.zielfunktion, rows: describeStartRows(nbs) } };
+    }
+    if (simplexPhase !== 'solving' || !currentProblem) return null;
+    const src = startSource();
+    const st = src ? buildStartTableauFromText(src.zf, src.nbs, src.numVars) : null;
+    const solved = st ? solvePathFrom(st) : null;
+    if (!src || !st || !solved) return null;
+    return { path: solved.path, start: { isMin: st.zLabel === '-Z', objective: src.zf, rows: describeStartRows(src.nbs) } };
+  }, [appMode, generatedProblem, simplexPhase, currentProblem, userSolution]);
+
+  const tutorSteps = useMemo(() => (tutorContext ? buildTutorSteps(tutorContext.path, tutorContext.start) : []), [tutorContext]);
+  const tutorActive = tutorOn && tutorSteps.length > 0;
+  const tutorIdx = tutorActive ? currentStepIndex(tutorSteps, simplexTableaus) : -1;
+  const tutorStep = tutorActive && tutorIdx < tutorSteps.length ? tutorSteps[tutorIdx] : null;
+  const tutorLevel = tutorStep ? Math.min(tutorStep.workedSteps ? 4 : 3, autoLevel(mastery[tutorStep.skill] ?? 0) + (tutorExtra[tutorStep.id] ?? 0)) : 0;
+  const tutorPrev = useRef<{ idx: number; id: string | null }>({ idx: -1, id: null });
+
+  useEffect(() => { try { localStorage.setItem('lptrainer.tutor.on', tutorOn ? '1' : '0'); } catch { /* ignore */ } }, [tutorOn]);
+  useEffect(() => { try { localStorage.setItem('lptrainer.tutor.mastery', JSON.stringify(mastery)); } catch { /* ignore */ } }, [mastery]);
+
+  // Neue Aufgabe → Zustand pro Schritt zurücksetzen
+  useEffect(() => {
+    setTutorAttempts({}); setTutorExtra({}); setTutorRevealed({}); setTutorFeedback(null);
+    tutorPrev.current = { idx: -1, id: null };
+  }, [tutorSteps]);
+
+  // Schritt erledigt → Fortschritt für diesen Zelltyp verbuchen
+  useEffect(() => {
+    const prev = tutorPrev.current;
+    if (tutorActive && prev.id && tutorIdx > prev.idx) {
+      const done = tutorSteps[prev.idx];
+      if (done && done.id === prev.id) {
+        const outcome = (tutorAttempts[done.id] ?? 0) > 0 ? 'wrong' : (tutorExtra[done.id] || tutorRevealed[done.id]) ? 'hint' : 'clean';
+        setMastery(m => updateMastery(m, done.skill, outcome));
+      }
+      setTutorFeedback(null);
+    }
+    tutorPrev.current = { idx: tutorIdx, id: tutorStep?.id ?? null };
+  }, [tutorIdx, tutorActive]);
+
+  // Nächstes Tableau automatisch anlegen, sobald der Pivot feststeht
+  useEffect(() => {
+    if (tutorStep && tutorStep.kind === 'labels' && tutorStep.tableau === simplexTableaus.length) addNewTableau();
+  }, [tutorStep?.id, simplexTableaus.length]);
+
+  // Fokus auf das nächste Eingabefeld (kurz verzögert, damit Tippen nicht ins nächste Feld rutscht)
+  useEffect(() => {
+    if (!tutorStep) return;
+    const t = tutorStep.tableau;
+    const sel = tutorStep.kind === 'cell' ? `[data-cell="${t}:${tutorStep.row}:${tutorStep.col}"]`
+      : tutorStep.kind === 'labels' ? `[data-tutor-label="${t}"]`
+      : tutorStep.kind === 'pivotCol' ? `[data-pivotcol="${t}"]`
+      : tutorStep.kind === 'pivotRow' ? `[data-pivotrow="${t}"]` : `[data-optimal="${t}"]`;
+    const timer = setTimeout(() => {
+      const el = document.querySelector(sel) as HTMLElement | null;
+      if (el && document.activeElement !== el) { el.focus({ preventScroll: true }); el.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); }
+    }, 60);
+    return () => clearTimeout(timer);
+  }, [tutorStep?.id]);
+
+  const registerTutorMistake = (msg: string) => {
+    if (!tutorStep) return;
+    const id = tutorStep.id;
+    const n = (tutorAttempts[id] ?? 0) + 1;
+    setTutorAttempts(a => ({ ...a, [id]: n }));
+    setTutorExtra(x => ({ ...x, [id]: Math.max(x[id] ?? 0, n) })); // jeder Fehler gibt eine Hilfestufe mehr
+    setTutorFeedback({ id, msg });
+  };
+
+  /** Eingabe der Zielzelle abgeben: richtig → ins Tableau (Schritt ist erledigt), falsch → Erklärung, Entwurf bleibt stehen. */
+  const tutorCommitCell = (ti: number, ri: number, ci: number) => {
+    const key = `${ti}:${ri}:${ci}`;
+    if (!tutorStep || tutorStep.kind !== 'cell' || tutorStep.tableau !== ti || tutorStep.row !== ri || tutorStep.col !== ci) return;
+    if (!tutorDraft || tutorDraft.key !== key || tutorDraft.checked || !tutorDraft.value.trim()) return;
+    const v = parseCell(tutorDraft.value);
+    if (v !== null && v.equals(tutorStep.expected!)) {
+      updateTableauCell(ti, ri, ci, tutorDraft.value.trim());
+      setTutorDraft(null);
+    } else {
+      setTutorDraft({ ...tutorDraft, checked: true });
+      registerTutorMistake(diagnoseCell(tutorStep, tutorDraft.value));
+    }
+  };
+
+  // Neuer Schritt → alten Entwurf verwerfen
+  useEffect(() => { setTutorDraft(null); }, [tutorStep?.id]);
+
+  const tutorPivotMessages = {
+    pivotCol: 'Nicht diese Spalte: Gesucht ist der kleinste (negativste) Wert in der Z-Zeile.',
+    pivotRow: 'Nicht diese Zeile: Gesucht ist der kleinste Quotient Wert ÷ Element der Pivotspalte (nur positive Elemente).',
+    dualRow: 'Nicht diese Zeile: Gesucht ist der kleinste (negativste) Wert in der Wert-Spalte.',
+    dualCol: 'Nicht diese Spalte: Nur negative Elemente der Pivotzeile, davon der kleinste Betrag von Z-Wert ÷ Element.',
+  };
+
+  /** Hervorhebung einer Zelle im Tutor-Modus (Zielzelle immer, Rechenhilfen erst ab Hilfestufe 2). */
+  const tutorCellClass = (ti: number, ri: number, ci: number): string | null => {
+    if (!tutorStep) return null;
+    const role: HighlightRole | undefined = tutorStep.highlights[`${ti}:${ri}:${ci}`];
+    if (!role) return null;
+    if (role === 'target') return 'ring-2 ring-indigo-500 bg-indigo-50 font-semibold';
+    if (tutorLevel < 2) return null;
+    const shown = role === 'chosen' && !tutorRevealed[tutorStep.id] ? 'candidate' : role;
+    return {
+      pivot: 'bg-yellow-200 border-yellow-500 font-bold',
+      old: 'bg-orange-100 border-orange-400 font-semibold',
+      row: 'bg-sky-100 border-sky-400',
+      col: 'bg-emerald-100 border-emerald-400',
+      candidate: 'bg-indigo-50 border-indigo-300',
+      chosen: 'bg-indigo-200 border-indigo-500 font-bold',
+    }[shown] || null;
+  };
+
+  const tutorDoneText = (() => {
+    const last = tutorSteps[tutorSteps.length - 1];
+    return last?.kind === 'optimal' ? `Optimum erreicht: ${last.result}. „Simplex prüfen“ kontrolliert alle Tableaus noch einmal am Stück.` : 'Alle Schritte erledigt.';
+  })();
+
+  const renderTutorToggle = () => (
+    <label className="flex items-center gap-2 mb-2 text-sm font-medium text-indigo-800 cursor-pointer">
+      <input type="checkbox" checked={tutorOn} onChange={e => setTutorOn(e.target.checked)} className="w-4 h-4 accent-indigo-600" />
+      Tutor-Modus <span className="font-normal text-indigo-600">– führt Zelle für Zelle durch den Algorithmus, Hilfe wird mit der Übung weniger</span>
+    </label>
+  );
+
+  const renderTutorPanel = () => tutorActive ? (
+    <TutorPanel
+      step={tutorStep} stepIndex={tutorIdx} total={tutorSteps.length} level={tutorLevel}
+      revealed={!!(tutorStep && tutorRevealed[tutorStep.id])}
+      feedback={tutorStep && tutorFeedback?.id === tutorStep.id ? tutorFeedback.msg : null}
+      mastery={mastery} doneText={tutorDoneText}
+      onHint={() => tutorStep && setTutorExtra(x => ({ ...x, [tutorStep.id]: (x[tutorStep.id] ?? 0) + 1 }))}
+      onReveal={() => tutorStep && setTutorRevealed(r => ({ ...r, [tutorStep.id]: true }))}
+      onResetMastery={() => setMastery({})}
+    />
+  ) : null;
+
   const renderTableaus = () => (
     <div className="space-y-6">
       {simplexTableaus?.map((tableau, ti) => {
@@ -751,7 +903,7 @@ ${tableausHTML}${feedbackHTML}
         return (
           <div key={ti} className="border-2 border-gray-200 rounded-xl p-4 bg-gray-50 relative">
             <h4 className="text-base font-semibold text-gray-700 mb-3">Tableau {ti + 1} {ti === currentTableauIndex && <span className="text-sm text-purple-600">(Aktuell)</span>}</h4>
-            {simplexTableaus.length > 1 && (
+            {simplexTableaus.length > 1 && !tutorActive && (
               <button onClick={() => deleteTableau(ti)} className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors" title="Tableau löschen">
                 <X className="w-5 h-5" />
               </button>
@@ -764,16 +916,20 @@ ${tableausHTML}${feedbackHTML}
                     <th className="border-2 border-gray-300 p-2 bg-yellow-100 text-sm" colSpan={numVarCols + 1}>Nichtbasisvariablen</th>
                   </tr>
                   <tr>
-                    {nbVars.map((v, vi) => (
+                    {nbVars.map((v, vi) => {
+                      const labelStep = tutorStep?.kind === 'labels' && tutorStep.tableau === ti;
+                      const labelTarget = labelStep && (v || '').trim().toLowerCase() !== (tutorStep.expectedNbVars?.[vi] || '').toLowerCase();
+                      return (
                       <th key={vi} className="border-2 border-gray-300 p-1 bg-yellow-100 w-20">
-                        <input type="text" value={v} onChange={e => {
+                        <input type="text" value={v} readOnly={tutorActive && !labelStep} data-tutor-label={labelTarget ? ti : undefined} onChange={e => {
                           const nt = [...simplexTableaus];
                           if (!nt[ti].nbVars) nt[ti].nbVars = [...nbVars];
                           nt[ti].nbVars[vi] = e.target.value;
                           setSimplexTableaus(nt);
-                        }} className="w-14 px-1 py-1 text-center border rounded text-sm font-bold bg-transparent" />
+                        }} className={`w-14 px-1 py-1 text-center border rounded text-sm font-bold bg-transparent ${labelTarget ? 'ring-2 ring-indigo-500' : ''}`} />
                       </th>
-                    ))}
+                      );
+                    })}
                     <th className="border-2 border-gray-300 p-1.5 bg-gray-100 w-20 text-sm">Wert</th>
                   </tr>
                 </thead>
@@ -782,16 +938,32 @@ ${tableausHTML}${feedbackHTML}
                     <tr key={ri}>
                       <td className={`border-2 border-gray-300 p-1 font-bold ${ri === 0 ? 'bg-gray-100' : 'bg-green-100'}`}>
                         {ri === 0 ? (
-                          <input type="text" value={tableau.zLabel || 'Z'} onChange={e => { const nt = [...simplexTableaus]; nt[ti].zLabel = e.target.value; setSimplexTableaus(nt); }} className="w-14 px-1 py-1 text-center border rounded text-sm font-bold bg-transparent" />
+                          <input type="text" value={tableau.zLabel ?? 'Z'} readOnly={tutorActive} onChange={e => { const nt = [...simplexTableaus]; nt[ti].zLabel = e.target.value; setSimplexTableaus(nt); }} className="w-14 px-1 py-1 text-center border rounded text-sm font-bold bg-transparent" />
                         ) : (
-                          <input type="text" value={tableau.basis?.[ri] || `y${ri}`} onChange={e => updateTableauBasis(ti, ri, e.target.value)} className="w-14 px-1 py-1 text-center border rounded text-sm bg-transparent" placeholder={`y${ri}`} />
+                          <input type="text" value={tableau.basis?.[ri] ?? `y${ri}`} readOnly={tutorActive && !(tutorStep?.kind === 'labels' && tutorStep.tableau === ti)}
+                            data-tutor-label={tutorStep?.kind === 'labels' && tutorStep.tableau === ti && (tableau.basis?.[ri] || '').trim().toLowerCase() !== (tutorStep.expectedBasis?.[ri] || '').toLowerCase() ? ti : undefined}
+                            onChange={e => updateTableauBasis(ti, ri, e.target.value)}
+                            className={`w-14 px-1 py-1 text-center border rounded text-sm bg-transparent ${tutorStep?.kind === 'labels' && tutorStep.tableau === ti && (tableau.basis?.[ri] || '').trim().toLowerCase() !== (tutorStep.expectedBasis?.[ri] || '').toLowerCase() ? 'ring-2 ring-indigo-500' : ''}`} placeholder={`y${ri}`} />
                         )}
                       </td>
-                      {row?.map((cell, ci) => (
+                      {row?.map((cell, ci) => {
+                        const tCls = tutorActive ? tutorCellClass(ti, ri, ci) : null;
+                        const isTarget = tutorStep?.kind === 'cell' && tutorStep.tableau === ti && tutorStep.row === ri && tutorStep.col === ci;
+                        const locked = tutorActive && !isTarget;
+                        return (
                         <td key={ci} className={`border-2 border-gray-300 p-1 ${ci === row.length - 1 ? 'bg-gray-50' : ''}`}>
-                          <input type="text" value={cell} onChange={e => updateTableauCell(ti, ri, ci, e.target.value)} className={`w-16 px-1 py-1 text-center border rounded text-sm ${tableau.pivotRow === ri && tableau.pivotCol === ci ? 'bg-yellow-200 border-yellow-500 font-bold' : ci === row.length - 1 ? 'bg-gray-50' : 'bg-white'}`} placeholder="0" />
+                          <input type="text" readOnly={locked} data-cell={`${ti}:${ri}:${ci}`}
+                            value={tutorActive && isTarget && tutorDraft?.key === `${ti}:${ri}:${ci}` ? tutorDraft.value : cell}
+                            onChange={e => {
+                              if (tutorActive && isTarget) setTutorDraft({ key: `${ti}:${ri}:${ci}`, value: e.target.value, checked: false });
+                              else if (!tutorActive) updateTableauCell(ti, ri, ci, e.target.value);
+                            }}
+                            onBlur={() => { if (tutorActive && isTarget) tutorCommitCell(ti, ri, ci); }}
+                            onKeyDown={e => { if (tutorActive && isTarget && e.key === 'Enter') tutorCommitCell(ti, ri, ci); }}
+                            className={`w-16 px-1 py-1 text-center border rounded text-sm ${isTarget && tutorDraft?.checked ? 'ring-2 ring-red-500 bg-red-50' : tCls ?? (tableau.pivotRow === ri && tableau.pivotCol === ci ? 'bg-yellow-200 border-yellow-500 font-bold' : ci === row.length - 1 ? 'bg-gray-50' : 'bg-white')} ${locked && cell === '' ? 'opacity-50 cursor-not-allowed' : ''}`} placeholder={tutorActive ? (isTarget ? '?' : '') : '0'} />
                         </td>
-                      ))}
+                        );
+                      })}
                     </tr>
                   ))}
                 </tbody>
@@ -799,18 +971,35 @@ ${tableausHTML}${feedbackHTML}
             </div>
             <div className="mt-3 flex items-center gap-3 flex-wrap">
               <label className="text-xs font-medium text-gray-600">Pivot:</label>
-              <select className="px-2 py-1 border rounded text-xs" onChange={e => { const nt = [...simplexTableaus]; nt[ti].pivotRow = parseInt(e.target.value); setSimplexTableaus(nt); }} value={tableau.pivotRow}>
+              <select data-pivotrow={ti} disabled={tutorActive && !(tutorStep?.kind === 'pivotRow' && tutorStep.tableau === ti)}
+                className={`px-2 py-1 border rounded text-xs disabled:opacity-60 ${tutorStep?.kind === 'pivotRow' && tutorStep.tableau === ti ? 'ring-2 ring-indigo-500' : ''}`}
+                onChange={e => {
+                  const v = parseInt(e.target.value); const nt = [...simplexTableaus]; nt[ti].pivotRow = v; setSimplexTableaus(nt);
+                  if (tutorStep?.kind === 'pivotRow' && tutorStep.tableau === ti && v >= 0 && v !== tutorStep.expectedPivotRow) registerTutorMistake(tutorStep.skill === 'dualPivot' ? tutorPivotMessages.dualRow : tutorPivotMessages.pivotRow);
+                }} value={tableau.pivotRow}>
                 <option value={-1}>Zeile...</option>{tableau.basis?.slice(1).map((b, i) => <option key={i} value={i+1}>{b}</option>)}
               </select>
-              <select className="px-2 py-1 border rounded text-xs" onChange={e => { const nt = [...simplexTableaus]; nt[ti].pivotCol = parseInt(e.target.value); setSimplexTableaus(nt); }} value={tableau.pivotCol}>
+              <select data-pivotcol={ti} disabled={tutorActive && !(tutorStep?.kind === 'pivotCol' && tutorStep.tableau === ti)}
+                className={`px-2 py-1 border rounded text-xs disabled:opacity-60 ${tutorStep?.kind === 'pivotCol' && tutorStep.tableau === ti ? 'ring-2 ring-indigo-500' : ''}`}
+                onChange={e => {
+                  const v = parseInt(e.target.value); const nt = [...simplexTableaus]; nt[ti].pivotCol = v; setSimplexTableaus(nt);
+                  if (tutorStep?.kind === 'pivotCol' && tutorStep.tableau === ti && v >= 0 && v !== tutorStep.expectedPivotCol) registerTutorMistake(tutorStep.skill === 'dualPivot' ? tutorPivotMessages.dualCol : tutorPivotMessages.pivotCol);
+                }} value={tableau.pivotCol}>
                 <option value={-1}>Spalte...</option>
                 {nbVars.map((v, i) => <option key={i} value={i}>{v}</option>)}
               </select>
-              <label className="flex items-center gap-1 text-xs"><input type="checkbox" checked={tableau?.isOptimal || false} onChange={e => { const nt = [...simplexTableaus]; nt[ti].isOptimal = e.target.checked; setSimplexTableaus(nt); }} className="w-3 h-3" /><span>Optimal</span></label>
+              <label className={`flex items-center gap-1 text-xs ${tutorStep?.kind === 'optimal' && tutorStep.tableau === ti ? 'ring-2 ring-indigo-500 rounded px-1' : ''}`}><input type="checkbox" data-optimal={ti} checked={tableau?.isOptimal || false}
+                disabled={tutorActive && !(tutorStep && tutorStep.tableau === ti && ['pivotCol', 'pivotRow', 'optimal'].includes(tutorStep.kind))}
+                onChange={e => {
+                  if (tutorActive && tutorStep && tutorStep.kind !== 'optimal' && e.target.checked) { registerTutorMistake('Noch nicht optimal: In der Z-Zeile oder in der Wert-Spalte steht noch ein negativer Wert.'); return; }
+                  const nt = [...simplexTableaus]; nt[ti].isOptimal = e.target.checked; setSimplexTableaus(nt);
+                }} className="w-3 h-3" /><span>Optimal</span></label>
+              {!tutorActive && (
               <button onClick={() => appMode === 'simplex' ? solveGeneratedTableau(ti) : solveTableau(ti)} disabled={isLoading} className="ml-auto px-3 py-1 bg-amber-500 text-white rounded text-xs hover:bg-amber-600 disabled:opacity-50 flex items-center gap-1">
                 {isLoading ? <RefreshCw className="w-3 h-3 animate-spin" /> : <Brain className="w-3 h-3" />}
                 Tableau lösen
               </button>
+              )}
             </div>
           </div>
         );
@@ -968,15 +1157,17 @@ ${tableausHTML}${feedbackHTML}
               <Table className="w-6 h-6 text-purple-600" />Simplex-Algorithmus
             </h3>
             <div className="bg-purple-50 rounded-lg p-3 mb-4 text-sm text-purple-800">
+              {renderTutorToggle()}
               <p className="font-medium mb-1">Füllen Sie die Tableaus schrittweise aus.</p>
               <p className="text-purple-700">Z-Zeile oben • Basisvariablen y₁, y₂... • Spalten x₁, x₂{genVars > 2 ? `, ..., x${genVars}` : ''} • Letzte Spalte = Werte</p>
               <PivotRuleHint />
             </div>
 
+            {renderTutorPanel()}
             {renderTableaus()}
 
             <div className="mt-4 flex gap-2 flex-wrap">
-              <button onClick={addNewTableau} className="flex items-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg text-sm"><Plus className="w-4 h-4" />Neues Tableau</button>
+              {!tutorActive && <button onClick={addNewTableau} className="flex items-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg text-sm"><Plus className="w-4 h-4" />Neues Tableau</button>}
               <button onClick={checkGeneratedSolution} disabled={isLoading} className="flex-1 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg disabled:opacity-50 font-semibold text-sm">Simplex prüfen</button>
               <button onClick={generateSimplexProblem} disabled={isGenerating} className="px-3 py-2 bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg text-sm disabled:opacity-50">Neues Problem</button>
             </div>
@@ -1060,15 +1251,17 @@ ${tableausHTML}${feedbackHTML}
               <div className="bg-white rounded-2xl shadow-xl p-6 mb-6">
                 <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2"><Table className="w-6 h-6 text-purple-600" />Simplex-Algorithmus</h3>
                 <div className="bg-purple-50 rounded-lg p-3 mb-4 text-sm text-purple-800">
+                  {renderTutorToggle()}
                   <p className="font-medium mb-1">Füllen Sie die Tableaus schrittweise aus.</p>
                   <p className="text-purple-700">Z-Zeile oben • Basisvariablen y₁, y₂... • Spalten x₁, x₂ • Letzte Spalte = Werte • Bei Min: "-Z" verwenden</p>
                   <PivotRuleHint showDual />
                 </div>
 
+                {renderTutorPanel()}
                 {renderTableaus()}
 
                 <div className="mt-4 flex gap-2 flex-wrap">
-                  <button onClick={addNewTableau} className="flex items-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg text-sm"><Plus className="w-4 h-4" />Neues Tableau</button>
+                  {!tutorActive && <button onClick={addNewTableau} className="flex items-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg text-sm"><Plus className="w-4 h-4" />Neues Tableau</button>}
                   <button onClick={checkSimplexSolution} disabled={isLoading} className="flex-1 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg disabled:opacity-50 font-semibold text-sm">Simplex prüfen</button>
                   <button onClick={() => setShowSolution(!showSolution)} className="px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-lg text-sm">{showSolution ? 'Verbergen' : 'Musterlösung'}</button>
                   <button onClick={downloadHTML} className="px-3 py-2 bg-gray-600 text-white rounded-lg text-sm flex items-center gap-1" title="Als HTML herunterladen">

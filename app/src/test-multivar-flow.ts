@@ -10,6 +10,7 @@
  * 3. buildStartTableau + buildStartTableauFromParsed
  * 4. Full solve loop (checkSimplexSolution flow)
  * 6. Pivot rule (most negative Z value) and exact cell input/comparison
+ * 7. Tutor mode: full guided runs, formulas, mistake diagnosis, mastery
  * 5. Variable count detection
  *
  * Run with: npx tsx src/test-multivar-flow.ts
@@ -19,7 +20,9 @@ import * as path from 'path';
 import { buildStartTableauFromText, parseConstraint, parseObjective, pivotStep, isOptimalEditable, choosePivotEditable, parseCell, solvePathFrom, compareTableau } from './lib/tableauFlow';
 import * as Simplex from './lib/simplex';
 import { Fraction } from './lib/fraction';
-import { generateProblem } from './lib/generator';
+import { generateProblem, formatProblem } from './lib/generator';
+import { buildTutorSteps, currentStepIndex, diagnoseCell, updateMastery, autoLevel, MASTERY_GOAL } from './lib/tutor';
+import { describeStartRows } from './lib/tableauFlow';
 
 let passCount = 0;
 let failCount = 0;
@@ -600,6 +603,126 @@ function testParserAndIndependentOptimum() {
   console.log(`  ${checked} static problems: simplex optimum == vertex enumeration`);
 }
 
+
+// ─── Test Suite: tutor mode ─────────────────────────────
+/** Play the tutor like a perfect student (as the UI does: auto-add the next tableau). */
+function simulateTutor(path: any[], start: any): { ok: boolean; err?: string; steps: number } {
+  const steps = buildTutorSteps(path, start);
+  const p0 = path[0];
+  const tabs: any[] = [{ data: p0.data.map(r => r.map(() => '')), basis: [...p0.basis], nbVars: [...p0.nbVars], pivotRow: -1, pivotCol: -1, isOptimal: false, zLabel: p0.zLabel }];
+  let last = -1;
+  for (let guard = 0; guard < 20000; guard++) {
+    const idx = currentStepIndex(steps, tabs);
+    if (idx === steps.length) break;
+    if (idx <= last) return { ok: false, err: `no progress at step ${steps[idx].id}`, steps: steps.length };
+    last = idx;
+    const st = steps[idx];
+    if (st.tableau === tabs.length) {
+      const prev = tabs[tabs.length - 1];
+      tabs.push({ data: prev.data.map(r => r.map(() => '')), basis: [...prev.basis], nbVars: [...prev.nbVars], pivotRow: -1, pivotCol: -1, isOptimal: false, zLabel: prev.zLabel });
+    }
+    const t = tabs[st.tableau];
+    if (!t) return { ok: false, err: `step ${st.id} refers to missing tableau`, steps: steps.length };
+    if (st.kind === 'cell') t.data[st.row][st.col] = st.expected.toDisplayString();
+    if (st.kind === 'pivotCol') t.pivotCol = st.expectedPivotCol;
+    if (st.kind === 'pivotRow') t.pivotRow = st.expectedPivotRow;
+    if (st.kind === 'labels') { t.basis = [...st.expectedBasis]; t.nbVars = [...st.expectedNbVars]; }
+    if (st.kind === 'optimal') t.isOptimal = true;
+    // formulas must reproduce the expected value
+    const c = st.calc;
+    if (st.kind === 'cell' && c) {
+      const want = st.skill === 'pivotElement' ? Fraction.ONE.div(c.pivot)
+        : st.skill === 'pivotRowCell' ? c.old.div(c.pivot)
+        : st.skill === 'pivotColCell' ? c.old.div(c.pivot.neg())
+        : c.old.sub(c.rowVal.mul(c.colVal).div(c.pivot));
+      if (!want.equals(st.expected)) return { ok: false, err: `formula mismatch at ${st.id}`, steps: steps.length };
+    }
+  }
+  if (tabs.length !== path.length) return { ok: false, err: `tableaus ${tabs.length} != path ${path.length}`, steps: steps.length };
+  for (let i = 0; i < path.length; i++) {
+    const f = compareTableau(tabs[i], path[i]);
+    if (f.length) return { ok: false, err: `tableau ${i}: ${f[0]}`, steps: steps.length };
+  }
+  if (!tabs[tabs.length - 1].isOptimal && path[path.length - 1].isOptimal) return { ok: false, err: 'optimal not ticked', steps: steps.length };
+  return { ok: true, steps: steps.length };
+}
+
+function testTutor() {
+  section('TUTOR MODE (guided runs, formulas, diagnosis, mastery)');
+  const F = (n: number, d = 1) => new Fraction(BigInt(n), BigInt(d));
+
+  // Simplex trainer problems
+  const seen = new Set<string>();
+  let runs = 0, totalSteps = 0;
+  for (let k = 0; k < 60; k++) {
+    const cfg = { nVars: 2 + (k % 4), nConstraints: 2 + (k % 5), minTableaus: 1 + (k % 3), maxTableaus: 6, niceNumbers: k % 3 !== 0, maxDenom: 12 };
+    const prob = generateProblem(cfg, seen, 3000);
+    if (!prob) continue;
+    seen.add(prob.hash);
+    const f = formatProblem(prob);
+    const nbs = f.nebenbedingungen.filter(nb => !isNonNegativity(nb));
+    const r = simulateTutor(prob.solutionPath, { isMin: false, objective: f.zielfunktion, rows: describeStartRows(nbs) });
+    assert(r.ok, `trainer tutor run ${k}: ${r.err}`);
+    runs++; totalSteps += r.steps;
+  }
+  console.log(`  trainer: ${runs} guided runs, ${totalSteps} steps`);
+
+  // Modelling flow: all static problems (≥ → dual steps, = → two rows, min → -Z)
+  let mRuns = 0, mSteps = 0;
+  for (const prob of ALL_PROBLEMS) {
+    const nbs = (prob.nebenbedingungen || []).filter(nb => !isNonNegativity(nb));
+    const start = buildStartTableau(prob);
+    const solved = start ? solvePathFrom(start) : null;
+    if (!start || !solved) { assert(false, `tutor: no path for ${prob.titel}`); continue; }
+    const rows = describeStartRows(nbs);
+    assert(rows.length === start.data.length - 1, `describeStartRows matches tableau rows: ${prob.titel}`);
+    const r = simulateTutor(solved.path, { isMin: start.zLabel === '-Z', objective: prob.zielfunktion, rows });
+    assert(r.ok, `modelling tutor run "${prob.titel}": ${r.err}`);
+    mRuns++; mSteps += r.steps;
+  }
+  console.log(`  modelling flow: ${mRuns} guided runs, ${mSteps} steps`);
+
+  // Number hints never give away the result
+  const demo = Simplex.solve([F(17), F(16)], [[F(6), F(3)], [F(9), F(3)], [F(12), F(5)]], [F(31), F(117), F(250)], true)!;
+  const demoSteps = buildTutorSteps(demo, { isMin: false, objective: 'Z = 17x1 + 16x2 (max)', rows: describeStartRows(['6x1 + 3x2 ≤ 31', '9x1 + 3x2 ≤ 117', '12x1 + 5x2 ≤ 250']) });
+  const leaks = demoSteps.filter(st => st.kind === 'cell' && st.calc && st.numbers && st.numbers.trimEnd().endsWith(`= ${st.result}`));
+  assert(leaks.length === 0, `number hints do not end with the result (${leaks.map(l => l.id).join(', ')})`);
+  const pc = demoSteps.find(st => st.kind === 'pivotCol')!;
+  assert(pc.expectedPivotCol === 0 && !pc.numbers!.includes('→'), 'pivot column hint lists candidates without the answer');
+
+  // Mistake diagnosis on a rectangle cell
+  const rect = demoSteps.find(st => st.skill === 'rectangle' && st.calc && !st.expected!.isZero() && !st.calc.rowVal!.mul(st.calc.colVal!).isZero())!;
+  const { old, rowVal, colVal, pivot } = rect.calc!;
+  assert(diagnoseCell(rect, rect.expected!.neg().toDisplayString()).includes('Vorzeichen'), 'diagnose: sign error');
+  assert(diagnoseCell(rect, old!.sub(rowVal!.mul(colVal!)).toDisplayString()).includes('geteilt'), `diagnose: forgot division (${diagnoseCell(rect, old!.sub(rowVal!.mul(colVal!)).toDisplayString())})`);
+  assert(diagnoseCell(rect, old!.add(rowVal!.mul(colVal!).div(pivot!)).toDisplayString()).includes('abgezogen'), 'diagnose: added instead of subtracted');
+  assert(diagnoseCell(rect, 'abc').includes('keine gültige Zahl'), 'diagnose: invalid input');
+  assert(diagnoseCell(rect, old!.sub(rowVal!.mul(colVal!)).div(pivot!).toDisplayString()).includes('Nur das Produkt'), `diagnose: divided the old value too (${diagnoseCell(rect, old!.sub(rowVal!.mul(colVal!)).div(pivot!).toDisplayString())})`);
+  // the reported case: -2 − (4 · (−13)) ÷ 6 = 20/3, learner typed 50/6
+  const userCase = { ...rect, expected: F(20, 3), calc: { old: F(-2), rowVal: F(4), colVal: F(-13), pivot: F(6) } };
+  assert(diagnoseCell(userCase, '50/6').includes('Nur das Produkt'), `diagnose 50/6 (${diagnoseCell(userCase, '50/6')})`);
+  assert(diagnoseCell(userCase, '40/6') !== '' && F(40, 6).equals(F(20, 3)), '40/6 equals 20/3');
+  // worked steps lead up to the result but never state it
+  for (const st of demoSteps.filter(x => x.workedSteps)) {
+    assert(st.workedSteps!.every(w => !w.trimEnd().endsWith(`= ${st.result}`)), `worked steps do not give away ${st.id}`);
+  }
+  assert(demoSteps.filter(x => x.skill === 'rectangle').every(x => x.workedSteps?.length === 3), 'rectangle cells have 3 worked steps');
+  const pe = demoSteps.find(st => st.skill === 'pivotElement')!;
+  assert(diagnoseCell(pe, pe.calc!.pivot!.toDisplayString()).includes('Kehrwert'), 'diagnose: pivot element not inverted');
+  const third = demoSteps.find(st => st.kind === 'cell' && st.expected!.toDisplayString().includes('/'));
+  if (third) assert(diagnoseCell(third, third.expected!.toNumber().toFixed(3).replace('.', ',')).includes('gerundet'), 'diagnose: rounded decimal');
+
+  // Mastery: 3 clean in a row → mastered; a mistake resets; a hint keeps the streak
+  let m = {};
+  for (let i = 0; i < MASTERY_GOAL; i++) m = updateMastery(m, 'rectangle', 'clean');
+  assert(m['rectangle'] === MASTERY_GOAL && autoLevel(m['rectangle']) === 0, 'mastery reached after 3 clean answers');
+  m = updateMastery(m, 'rectangle', 'hint');
+  assert(m['rectangle'] === MASTERY_GOAL, 'hint keeps the streak');
+  m = updateMastery(m, 'rectangle', 'wrong');
+  assert(m['rectangle'] === 0 && autoLevel(0) === 3, 'mistake resets to full help');
+  assert(autoLevel(1) === 1 && autoLevel(2) === 1, 'partial mastery shows the rule only');
+}
+
 // ─── Test Suite: pivot rule + exact input ───────────────
 function testPivotRuleAndInput() {
   section('PIVOT RULE (most negative Z) + EXACT INPUT');
@@ -704,6 +827,7 @@ testHighlightValidation();
 testFallbackDefaults();
 testPivotRuleAndInput();
 testParserAndIndependentOptimum();
+testTutor();
 
 console.log(`\n${'═'.repeat(60)}`);
 console.log(`  FINAL RESULTS: ${passCount} passed, ${failCount} failed`);
