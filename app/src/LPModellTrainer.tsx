@@ -17,7 +17,6 @@ interface SimplexFeedback {
   korrekt: boolean;
   gesamtfeedback: string;
   tableauFeedback: Array<{ tableauNummer: number; korrekt: boolean; fehler?: string[]; hinweise?: string[] }>;
-  isAIReview?: boolean;
 }
 
 /** True if nb is a pure non-negativity constraint like "x1, x2 ≥ 0" (any var count) */
@@ -34,7 +33,6 @@ const LPModellTrainer = () => {
   const [showSolution, setShowSolution] = useState(false);
   const [showDetailedExplanation, setShowDetailedExplanation] = useState(true);
   const [problemType, setProblemType] = useState('all');
-  const [apiWorking, setApiWorking] = useState<boolean | null>(null);
   const [simplexPhase, setSimplexPhase] = useState('setup');
   const [simplexTableaus, setSimplexTableaus] = useState<EditableTableau[]>([]);
   const [currentTableauIndex, setCurrentTableauIndex] = useState(0);
@@ -54,57 +52,6 @@ const LPModellTrainer = () => {
   const [isGenerating, setIsGenerating] = useState(false);
   const [seenHashes] = useState(() => new Set<string>());
   const [generatedCount, setGeneratedCount] = useState(0);
-
-  const testAPI = async () => {
-    try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 50,
-          messages: [{ role: "user", content: "Sage nur: OK" }]
-        })
-      });
-      if (response.ok) {
-        const data = await response.json();
-        if (data.content?.[0]?.text?.includes('OK')) {
-          setApiWorking(true);
-          return;
-        }
-      }
-      setApiWorking(false);
-    } catch (error) {
-      console.log('API Test fehlgeschlagen:', error);
-      setApiWorking(false);
-    }
-  };
-
-  const callAPI = async (prompt, maxTokens = 1500) => {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: "claude-sonnet-4-20250514",
-        max_tokens: maxTokens,
-        messages: [{ role: "user", content: prompt }]
-      })
-    });
-    if (!response.ok) throw new Error('API request failed');
-    const data = await response.json();
-    return data.content?.[0]?.text || '';
-  };
-
-  const parseJSON = (text) => {
-    const cleaned = text.trim().replace(/^```json\s*/i, '').replace(/```\s*$/i, '').replace(/^```\s*/i, '');
-    try {
-      return JSON.parse(cleaned);
-    } catch (e) {
-      const match = cleaned.match(/\{[\s\S]*\}/);
-      if (match) return JSON.parse(match[0]);
-      throw new Error('Kein gültiges JSON');
-    }
-  };
 
   const adoptSolution = () => {
     if (currentProblem) {
@@ -326,20 +273,6 @@ const LPModellTrainer = () => {
   const checkSolution = async () => {
     if (!currentProblem) return;
     setIsLoading(true);
-    if (apiWorking) {
-      try {
-        const prompt = `Vergleiche LP-Lösungen:
-Musterlösung: Zielfunktion: ${currentProblem.zielfunktion}, NB: ${currentProblem.nebenbedingungen.join(', ')}
-Eingabe: Zielfunktion: ${userSolution.zielfunktion}, NB: ${userSolution.nebenbedingungen.filter(nb => nb.trim()).join(', ')}
-ANTWORTE NUR MIT JSON:
-{"korrekt":true/false,"zielfunktionKorrekt":true/false,"alternativerAnsatz":{"gefunden":false,"beschreibung":"","beispiel":""},"nebenbedingungen":[{"eingabe":"...","korrekt":true/false,"kommentar":"..."}],"gesamtfeedback":"...","fehlendeNebenbedingungen":[],"tipps":[]}`;
-        const response = await callAPI(prompt, 1000);
-        const fd = parseJSON(response);
-        setFeedback(fd);
-        if (fd?.korrekt) { startSimplex(); }
-        setIsLoading(false); return;
-      } catch (error) { console.log('API-Validierung fehlgeschlagen:', error); }
-    }
     const userZF = userSolution.zielfunktion.toLowerCase().replace(/\s/g, '');
     const correctZF = (currentProblem?.zielfunktion || '').toLowerCase().replace(/\s/g, '');
     const zfOk = userZF.includes('max') === correctZF.includes('max') && userZF.includes('min') === correctZF.includes('min') && userZF.match(/\d+/g)?.sort().join('') === correctZF.match(/\d+/g)?.sort().join('');
@@ -483,144 +416,6 @@ ${tableausHTML}${feedbackHTML}
   const printPDF = () => {
     setShowPrintView(true);
     setTimeout(() => { window.print(); }, 300);
-  };
-
-  const aiReview = async () => {
-    if (!currentProblem || !simplexTableaus.length) return;
-    setIsLoading(true);
-
-    // Zuerst lokal prüfen
-    const startTab = buildStartTableau();
-    if (!startTab) { setIsLoading(false); return; }
-    const correctTableaus = [startTab];
-    let current = startTab;
-    for (let iter = 0; iter < 20; iter++) {
-      if (isOptimalLocal(current)) break;
-      const pivot = choosePivotLocal(current);
-      if (pivot.row < 0 || pivot.col < 0) break;
-      current = { ...current, pivotRow: pivot.row, pivotCol: pivot.col };
-      const next = solvePivotStep(current);
-      if (!next) break;
-      current = { ...next, pivotRow: -1, pivotCol: -1, isOptimal: false };
-      correctTableaus.push(current);
-    }
-
-    // Vergleich aufbauen
-    const vergleich = simplexTableaus.map((userTab, i) => {
-      const correct = i < correctTableaus.length ? correctTableaus[i] : null;
-      const fehler = [];
-      if (!correct) { fehler.push('Zusätzliches Tableau – Lösung sollte bereits optimal sein.'); return { nr: i, fehler, korrekt: false }; }
-      const uData = userTab.data.map(r => r.map(c => parseFloat(c) || 0));
-      const cData = correct.data.map(r => r.map(c => parseFloat(c) || 0));
-      const cols = cData[0]?.length || 0;
-      for (let r = 0; r < cData.length; r++) {
-        for (let c = 0; c < cData[r].length; c++) {
-          if (Math.abs(uData[r]?.[c] - cData[r][c]) > 0.01) {
-            const bv = correct.basis[r]; const col = c < cols - 1 ? (correct.nbVars?.[c] || `Sp${c+1}`) : 'Wert';
-            fehler.push(`${bv}/${col}: Nutzer=${uData[r]?.[c]}, Korrekt=${cData[r][c]}`);
-          }
-        }
-      }
-      const basisOk = (userTab.basis || []).every((b, r) => b?.toLowerCase() === correct.basis[r]?.toLowerCase());
-      if (!basisOk) fehler.push(`Basisvariablen falsch: [${userTab.basis}] statt [${correct.basis}]`);
-      const nbOk = (userTab.nbVars || []).every((v, c) => v?.toLowerCase() === correct.nbVars[c]?.toLowerCase());
-      if (!nbOk) fehler.push(`Nichtbasisvariablen falsch: [${userTab.nbVars}] statt [${correct.nbVars}]`);
-      return { nr: i, fehler, korrekt: fehler.length === 0 };
-    });
-
-    const allCorrect = vergleich.every(v => v.korrekt);
-
-    if (apiWorking) {
-      try {
-        // Optimale Lösung aufbereiten
-        const lastCorrect = correctTableaus[correctTableaus.length - 1];
-        const cols = lastCorrect.data[0]?.length || 0;
-        const valCol = cols - 1;
-        const zVal = lastCorrect.data[0][valCol];
-        const basisInfo = lastCorrect.basis.slice(1).map((b, i) => `${b} = ${lastCorrect.data[i+1][valCol]}`).join(', ');
-        const nbInfo = (lastCorrect.nbVars || []).join(', ') + ' = 0';
-        const zZeile = lastCorrect.nbVars?.map((v, i) => `${v}-Koeffizient in Z-Zeile: ${lastCorrect.data[0][i]}`).join(', ');
-
-        // Engpässe identifizieren
-        const engpaesse = lastCorrect.basis.slice(1).filter((b, i) => {
-          const val = parseFloat(lastCorrect.data[i+1][valCol]) || 0;
-          return b.startsWith('y') && Math.abs(val) < 0.001;
-        });
-        const ueberkapazitaeten = lastCorrect.basis.slice(1).filter((b, i) => {
-          const val = parseFloat(lastCorrect.data[i+1][valCol]) || 0;
-          return b.startsWith('y') && val > 0.001;
-        }).map((b) => {
-          const ri = lastCorrect.basis.indexOf(b);
-          return `${b} = ${lastCorrect.data[ri][valCol]}`;
-        });
-
-        const prompt = `Du bist ein Operations-Research-Berater. Ein Student hat folgendes LP-Problem korrekt mit dem Simplex-Algorithmus gelöst. Erstelle eine praxisnahe Management-Analyse.
-
-AUFGABE: ${currentProblem?.titel} – ${currentProblem?.beschreibung}
-LP: ${userSolution.zielfunktion || currentProblem?.zielfunktion}
-NB: ${(userSolution.nebenbedingungen.filter(nb => nb.trim()).length > 0 ? userSolution.nebenbedingungen.filter(nb => nb.trim()) : currentProblem?.nebenbedingungen || []).join(', ')}
-Variablen: ${currentProblem?.variablen?.join(', ')}
-
-OPTIMALE LÖSUNG:
-- Zielfunktionswert: Z = ${zVal}
-- Basisvariablen: ${basisInfo}
-- Nichtbasisvariablen: ${nbInfo}
-- Z-Zeile (Schattenpreise): ${zZeile}
-- Engpässe (y=0, also Ressource voll ausgeschöpft): ${engpaesse.length > 0 ? engpaesse.join(', ') : 'keine'}
-- Überkapazitäten (y>0, Ressource nicht ausgeschöpft): ${ueberkapazitaeten.length > 0 ? ueberkapazitaeten.join(', ') : 'keine'}
-
-PRÜFERGEBNIS: ${allCorrect ? 'ALLE TABLEAUS KORREKT' : 'FEHLER: ' + vergleich.filter(v => !v.korrekt).map(v => v.fehler.join('; ')).join('. ')}
-
-${allCorrect ? `ERSTELLE EINE MANAGEMENT-ANALYSE mit diesem Format:
-
-📊 Management-Analyse: [Titel passend zur Aufgabe]
-
-1. Der optimale Plan
-- Konkrete Zahlen nennen (x1 = ?, x2 = ?)
-- Was bedeutet das praktisch? (z.B. "33 Flaschen Typ A und 70 Flaschen Typ B pro Tag produzieren")
-- Optimaler Zielfunktionswert mit Einheit
-
-2. Ressourcen & Engpässe
-- Welche Ressourcen sind vollständig ausgeschöpft? (y = 0 → Engpass, konkret benennen was das für eine Ressource ist)
-- Welche haben Überkapazität? (y > 0 → Reserve, konkrete Menge nennen)
-- Was bedeutet das für die Praxis?
-
-3. Strategische Empfehlung (Schattenpreise)
-- Interpretiere die Koeffizienten der Nichtbasisvariablen in der Z-Zeile als Schattenpreise
-- Welche Ressource sollte man zuerst aufstocken?
-- Konkrete Handlungsempfehlung
-
-Nutze die konkreten Zahlen aus der Lösung! Keine Platzhalter. Maximal 250 Wörter.`
-
-: `ERKLÄRE DIE FEHLER pädagogisch:
-1. Was wurde richtig gemacht (kurz, positiv)
-2. Wo liegen die Fehler und warum sind sie passiert (konkret mit Zahlen)
-3. Wie korrigiert man sie Schritt für Schritt
-4. Tipp zur Vermeidung
-
-Maximal 200 Wörter.`}
-
-Antworte auf Deutsch.`;
-        const response = await callAPI(prompt, 800);
-        setSimplexFeedback(prev => ({
-          ...(prev || {}),
-          korrekt: allCorrect,
-          tableauFeedback: vergleich.map(v => ({ tableauNummer: v.nr, korrekt: v.korrekt, fehler: v.fehler, hinweise: v.korrekt ? ['Korrekt!'] : [] })),
-          gesamtfeedback: response,
-          isAIReview: true
-        }));
-      } catch (error) {
-        setSimplexFeedback(prev => ({ ...(prev || {}), gesamtfeedback: prev?.gesamtfeedback + '\n\n(AI-Review nicht verfügbar)' }));
-      }
-    } else {
-      setSimplexFeedback({
-        korrekt: allCorrect,
-        tableauFeedback: vergleich.map(v => ({ tableauNummer: v.nr, korrekt: v.korrekt, fehler: v.fehler, hinweise: v.korrekt ? ['Korrekt!'] : [] })),
-        gesamtfeedback: allCorrect ? '✅ Alle Tableaus sind korrekt! Gut gemacht.' : '❌ Es gibt Fehler – siehe Details oben.',
-        isAIReview: false
-      });
-    }
-    setIsLoading(false);
   };
 
   const updateTableauCell = (ti, row, col, val) => {
@@ -1278,7 +1073,7 @@ Antworte auf Deutsch.`;
   const addNebenbedingung = () => { setUserSolution({ ...userSolution, nebenbedingungen: [...userSolution.nebenbedingungen, ''] }); };
   const updateNebenbedingung = (i, v) => { const nb = [...userSolution.nebenbedingungen]; nb[i] = v; setUserSolution({ ...userSolution, nebenbedingungen: nb }); };
 
-  useEffect(() => { testAPI(); generateNewProblem(); }, []);
+  useEffect(() => { generateNewProblem(); }, []);
 
   return (
     <div className="max-w-7xl mx-auto p-4 bg-gradient-to-br from-blue-50 to-indigo-50 min-h-screen">
@@ -1286,7 +1081,7 @@ Antworte auf Deutsch.`;
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-3">
             <Brain className="w-8 h-8 text-indigo-600" />
-            <div><h1 className="text-2xl font-bold text-gray-800">LP-Modell Trainer</h1><p className="text-xs text-gray-500">Semantische Validierung & Simplex</p></div>
+            <div><h1 className="text-2xl font-bold text-gray-800">LP-Modell Trainer</h1><p className="text-xs text-gray-500">Modellierung & Simplex</p></div>
           </div>
           {appMode === 'modellierung' && (
             <button onClick={generateNewProblem} disabled={isLoading} className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 disabled:opacity-50 text-sm">
@@ -1294,9 +1089,6 @@ Antworte auf Deutsch.`;
             </button>
           )}
         </div>
-
-        {apiWorking === true && appMode === 'modellierung' && (<div className="bg-green-100 border border-green-300 text-green-800 px-3 py-2 rounded-lg mb-3 text-sm"><strong>✨ KI-Modus aktiv:</strong> Aufgaben werden dynamisch generiert und intelligent validiert.</div>)}
-        {apiWorking === false && appMode === 'modellierung' && (<div className="bg-amber-100 border border-amber-300 text-amber-800 px-3 py-2 rounded-lg mb-3 text-sm"><strong>📚 Offline-Modus:</strong> Vordefinierte Übungsaufgaben mit Musterlösungen.</div>)}
 
         <div className="flex gap-2 bg-gray-100 p-1 rounded-lg mb-4">
           <button
@@ -1528,10 +1320,6 @@ Antworte auf Deutsch.`;
                 <div className="mt-4 flex gap-2 flex-wrap">
                   <button onClick={addNewTableau} className="flex items-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg text-sm"><Plus className="w-4 h-4" />Neues Tableau</button>
                   <button onClick={checkSimplexSolution} disabled={isLoading} className="flex-1 px-4 py-2 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg disabled:opacity-50 font-semibold text-sm">Simplex prüfen</button>
-                  <button onClick={aiReview} disabled={isLoading} className="px-3 py-2 bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-lg text-sm disabled:opacity-50 flex items-center gap-1" title="AI-gestütztes Review">
-                    {isLoading ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Brain className="w-4 h-4" />}
-                    AI Review
-                  </button>
                   <button onClick={() => setShowSolution(!showSolution)} className="px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-600 text-white rounded-lg text-sm">{showSolution ? 'Verbergen' : 'Musterlösung'}</button>
                   <button onClick={downloadHTML} className="px-3 py-2 bg-gray-600 text-white rounded-lg text-sm flex items-center gap-1" title="Als HTML herunterladen">
                     <BookOpen className="w-4 h-4" />Download
