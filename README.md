@@ -83,10 +83,4 @@ Gerne als [Issue](https://github.com/H4MS7/lp-modell-trainer/issues) melden, zum
 
 ## Lizenz
 
-Copyright (C) 2026 Felix Flösch
-
-Dieses Programm ist freie Software: Du kannst es unter den Bedingungen der [GNU General Public License](https://www.gnu.org/licenses/gpl-3.0.html), wie von der Free Software Foundation veröffentlicht, weitergeben und/oder verändern, entweder gemäß Version 3 der Lizenz oder (nach deiner Wahl) jeder späteren Version. Den vollständigen Lizenztext findest du in [`LICENSE`](LICENSE).
-
-Das Programm wird ohne jede Gewährleistung bereitgestellt.
-
-Verwendete Bibliotheken (React, Vite, Tailwind CSS, lucide-react u. a.) stehen unter ihren eigenen Lizenzen (MIT/ISC).
+[GPL-3.0-or-later](LICENSE) © 2026 Felix Flösch
