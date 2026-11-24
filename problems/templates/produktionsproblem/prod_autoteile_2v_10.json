@@ -17,11 +17,11 @@
     "b1":  {"min": 100, "max": 500, "label": "Aluminiumvorrat (kg)"},
     "a21": {"min": 1, "max": 4,    "label": "CNC-Zeit/Bremsscheibe (h)"},
     "a22": {"min": 2, "max": 6,    "label": "CNC-Zeit/Felge (h)"},
-    "b2":  {"min": 40, "max": 180, "label": "CNC-Kapazitaet (h)"}
+    "b2":  {"min": 40, "max": 180, "label": "CNC-Kapazität (h)"}
   },
   "titel": "Autoteilefertigung – Bremsscheiben und Felgen",
-  "beschreibung": "Ein Autoteilehersteller produziert Bremsscheiben und Felgen. Jede Bremsscheibe bringt {c1} Euro Gewinn, jede Felge {c2} Euro. Eine Bremsscheibe verbraucht {a11} kg Aluminium, eine Felge {a12} kg. Es stehen {b1} kg Aluminium bereit. Die CNC-Bearbeitung einer Bremsscheibe dauert {a21} Stunden, die einer Felge {a22} Stunden. Insgesamt sind {b2} CNC-Stunden verfuegbar.",
-  "hinweis": "Formuliere die Gewinnmaximierung mit den Beschraenkungen fuer Aluminium und CNC-Zeit.",
+  "beschreibung": "Ein Autoteilehersteller produziert Bremsscheiben und Felgen. Jede Bremsscheibe bringt {c1} Euro Gewinn, jede Felge {c2} Euro. Eine Bremsscheibe verbraucht {a11} kg Aluminium, eine Felge {a12} kg. Es stehen {b1} kg Aluminium bereit. Die CNC-Bearbeitung einer Bremsscheibe dauert {a21} Stunden, die einer Felge {a22} Stunden. Insgesamt sind {b2} CNC-Stunden verfügbar.",
+  "hinweis": "Formuliere die Gewinnmaximierung mit den Beschränkungen für Aluminium und CNC-Zeit.",
   "highlights": {
     "zielfunktion": [
       {"text": "Bremsscheibe bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
@@ -36,7 +36,7 @@
       [
         {"text": "Bremsscheibe dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
         {"text": "Felge {a22} Stunden", "bedeutung": "+ {a22}x₂"},
-        {"text": "{b2} CNC-Stunden verfuegbar", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} CNC-Stunden verfügbar", "bedeutung": "≤ {b2}"}
       ]
     ]
   }

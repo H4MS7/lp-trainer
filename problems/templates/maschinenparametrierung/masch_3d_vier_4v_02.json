@@ -3,12 +3,12 @@
   "optimierungsziel": "maximieren",
   "numVars": 4,
   "id": "masch_3d_vier_4v_02",
-  "titel": "3D-Drucker – Geschwindigkeit, Schichthoehe, Temperatur und Luefter",
+  "titel": "3D-Drucker – Geschwindigkeit, Schichthöhe, Temperatur und Lüfter",
   "variablen": [
     "x1 = Druckgeschwindigkeit (Stufen)",
-    "x2 = Schichthoehe (Stufen)",
-    "x3 = Duesentemperatur (Stufen)",
-    "x4 = Luefterleistung (Stufen)"
+    "x2 = Schichthöhe (Stufen)",
+    "x3 = Düsentemperatur (Stufen)",
+    "x4 = Lüfterleistung (Stufen)"
   ],
   "objective": [
     "c1",
@@ -30,7 +30,7 @@
     },
     {
       "type": "<=",
-      "label": "Waermeentwicklung",
+      "label": "Wärmeentwicklung",
       "row": [
         "a21",
         "a22",
@@ -52,7 +52,7 @@
     },
     {
       "type": "<=",
-      "label": "Laermgrenze",
+      "label": "Lärmgrenze",
       "row": [
         "a41",
         "a42",
@@ -66,7 +66,7 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Produktivitaet Geschwindigkeit"
+      "label": "Produktivität Geschwindigkeit"
     },
     "c2": {
       "min": 3,
@@ -81,7 +81,7 @@
     "c4": {
       "min": 2,
       "max": 5,
-      "label": "Oberflaechenkuehlung Luefter"
+      "label": "Oberflächenkühlung Lüfter"
     },
     "a11": {
       "min": 2,
@@ -101,7 +101,7 @@
     "a14": {
       "min": 1,
       "max": 2,
-      "label": "Filament Luefter"
+      "label": "Filament Lüfter"
     },
     "b1": {
       "min": 80,
@@ -111,27 +111,27 @@
     "a21": {
       "min": 2,
       "max": 4,
-      "label": "Waerme Geschwindigkeit"
+      "label": "Wärme Geschwindigkeit"
     },
     "a22": {
       "min": 1,
       "max": 3,
-      "label": "Waerme Schicht"
+      "label": "Wärme Schicht"
     },
     "a23": {
       "min": 4,
       "max": 10,
-      "label": "Waerme Temperatur"
+      "label": "Wärme Temperatur"
     },
     "a24": {
       "min": 1,
       "max": 2,
-      "label": "Waerme Luefter"
+      "label": "Wärme Lüfter"
     },
     "b2": {
       "min": 60,
       "max": 300,
-      "label": "Max. Waermeeinheiten"
+      "label": "Max. Wärmeeinheiten"
     },
     "a31": {
       "min": 2,
@@ -151,7 +151,7 @@
     "a34": {
       "min": 2,
       "max": 6,
-      "label": "Strom Luefter"
+      "label": "Strom Lüfter"
     },
     "b3": {
       "min": 60,
@@ -161,66 +161,66 @@
     "a41": {
       "min": 2,
       "max": 5,
-      "label": "Laerm Geschwindigkeit"
+      "label": "Lärm Geschwindigkeit"
     },
     "a42": {
       "min": 1,
       "max": 2,
-      "label": "Laerm Schicht"
+      "label": "Lärm Schicht"
     },
     "a43": {
       "min": 1,
       "max": 2,
-      "label": "Laerm Temperatur"
+      "label": "Lärm Temperatur"
     },
     "a44": {
       "min": 3,
       "max": 8,
-      "label": "Laerm Luefter"
+      "label": "Lärm Lüfter"
     },
     "b4": {
       "min": 50,
       "max": 200,
-      "label": "Max. Laermgrenze"
+      "label": "Max. Lärmgrenze"
     }
   },
-  "beschreibung": "Ein 3D-Drucker wird ueber vier Parameter optimiert. Die Geschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte, die Duesentemperatur {c3} Haftungspunkte und der Luefter {c4} Kuehlpunkte. Der Filamentverbrauch betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Schicht, {a13} fuer Temperatur und {a14} fuer Luefter bei maximal {b1} Filamenteinheiten. Die Waerme liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Schicht, {a23} fuer Temperatur und {a24} fuer Luefter bei maximal {b2} Waermeeinheiten. Der Stromverbrauch betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Schicht, {a33} fuer Temperatur und {a34} fuer Luefter bei maximal {b3} Stromeinheiten. Die Laermgrenze liegt bei {a41} Einheiten fuer Geschwindigkeit, {a42} fuer Schicht, {a43} fuer Temperatur und {a44} fuer Luefter bei maximal {b4} Laermeinheiten.",
-  "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Filament, Waerme, Strom und Laerm.",
+  "beschreibung": "Ein 3D-Drucker wird über vier Parameter optimiert. Die Geschwindigkeit liefert {c1} Produktivitätspunkte, die Schichthöhe {c2} Detailpunkte, die Düsentemperatur {c3} Haftungspunkte und der Lüfter {c4} Kühlpunkte. Der Filamentverbrauch beträgt {a11} Einheiten für Geschwindigkeit, {a12} für Schicht, {a13} für Temperatur und {a14} für Lüfter bei maximal {b1} Filamenteinheiten. Die Wärme liegt bei {a21} Einheiten für Geschwindigkeit, {a22} für Schicht, {a23} für Temperatur und {a24} für Lüfter bei maximal {b2} Wärmeeinheiten. Der Stromverbrauch beträgt {a31} Einheiten für Geschwindigkeit, {a32} für Schicht, {a33} für Temperatur und {a34} für Lüfter bei maximal {b3} Stromeinheiten. Die Lärmgrenze liegt bei {a41} Einheiten für Geschwindigkeit, {a42} für Schicht, {a43} für Temperatur und {a44} für Lüfter bei maximal {b4} Lärmeinheiten.",
+  "hinweis": "Maximiere die Druckqualität unter Beachtung von Filament, Wärme, Strom und Lärm.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Geschwindigkeit liefert {c1} Produktivitaetspunkte",
+        "text": "Geschwindigkeit liefert {c1} Produktivitätspunkte",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Schichthoehe {c2} Detailpunkte",
+        "text": "Schichthöhe {c2} Detailpunkte",
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Duesentemperatur {c3} Haftungspunkte",
+        "text": "Düsentemperatur {c3} Haftungspunkte",
         "bedeutung": "{c3} × x₃"
       },
       {
-        "text": "Luefter {c4} Kuehlpunkte",
+        "text": "Lüfter {c4} Kühlpunkte",
         "bedeutung": "{c4} × x₄"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Geschwindigkeit",
+          "text": "{a11} Einheiten für Geschwindigkeit",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Schicht",
+          "text": "{a12} für Schicht",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Temperatur",
+          "text": "{a13} für Temperatur",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Luefter",
+          "text": "{a14} für Lüfter",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -230,41 +230,41 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Geschwindigkeit",
+          "text": "{a21} Einheiten für Geschwindigkeit",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Schicht",
+          "text": "{a22} für Schicht",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Temperatur",
+          "text": "{a23} für Temperatur",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Luefter",
+          "text": "{a24} für Lüfter",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{b2} Waermeeinheiten",
+          "text": "{b2} Wärmeeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Geschwindigkeit",
+          "text": "{a31} Einheiten für Geschwindigkeit",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Schicht",
+          "text": "{a32} für Schicht",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Temperatur",
+          "text": "{a33} für Temperatur",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Luefter",
+          "text": "{a34} für Lüfter",
           "bedeutung": "+ {a34}x₄"
         },
         {
@@ -274,23 +274,23 @@
       ],
       [
         {
-          "text": "{a41} Einheiten fuer Geschwindigkeit",
+          "text": "{a41} Einheiten für Geschwindigkeit",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Schicht",
+          "text": "{a42} für Schicht",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Temperatur",
+          "text": "{a43} für Temperatur",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Luefter",
+          "text": "{a44} für Lüfter",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{b4} Laermeinheiten",
+          "text": "{b4} Lärmeinheiten",
           "bedeutung": "≤ {b4}"
         }
       ]

@@ -14,14 +14,14 @@
     "c2":  {"min": 2, "max": 6,  "label": "Rendite Anleihen (%)"},
     "a11": {"min": 1, "max": 3,  "label": "Kapitalbindung Aktien"},
     "a12": {"min": 1, "max": 3,  "label": "Kapitalbindung Anleihen"},
-    "b1":  {"min": 80, "max": 300, "label": "Verfuegbares Kapital (Tsd. EUR)"},
+    "b1":  {"min": 80, "max": 300, "label": "Verfügbares Kapital (Tsd. EUR)"},
     "a21": {"min": 3, "max": 8,  "label": "Risikofaktor Aktien"},
     "a22": {"min": 1, "max": 3,  "label": "Risikofaktor Anleihen"},
     "b2":  {"min": 50, "max": 200, "label": "Max. Risikobudget"}
   },
   "titel": "Portfolio – Aktien und Anleihen",
-  "beschreibung": "Ein Anleger moechte sein Portfolio optimieren. Aktien bringen {c1} % Rendite pro Jahr, Anleihen {c2} %. Pro Tausend Euro in Aktien werden {a11} Einheiten Kapital gebunden, bei Anleihen {a12} Einheiten. Das verfuegbare Kapital betraegt {b1} Tausend Euro. Der Risikofaktor liegt bei {a21} Punkten pro Einheit Aktien und {a22} Punkten pro Einheit Anleihen. Das maximale Risikobudget betraegt {b2} Punkte.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung der Kapital- und Risikobeschraenkungen.",
+  "beschreibung": "Ein Anleger möchte sein Portfolio optimieren. Aktien bringen {c1} % Rendite pro Jahr, Anleihen {c2} %. Pro Tausend Euro in Aktien werden {a11} Einheiten Kapital gebunden, bei Anleihen {a12} Einheiten. Das verfügbare Kapital beträgt {b1} Tausend Euro. Der Risikofaktor liegt bei {a21} Punkten pro Einheit Aktien und {a22} Punkten pro Einheit Anleihen. Das maximale Risikobudget beträgt {b2} Punkte.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung der Kapital- und Risikobeschränkungen.",
   "highlights": {
     "zielfunktion": [
       {"text": "Aktien bringen {c1} % Rendite pro Jahr", "bedeutung": "{c1} × x₁"},

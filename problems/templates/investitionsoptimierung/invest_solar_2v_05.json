@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Genehmigungskapazitaet",
+      "label": "Genehmigungskapazität",
       "row": [
         "a21",
         "a22"
@@ -70,8 +70,8 @@
       "label": "Max. Genehmigungseinheiten"
     }
   },
-  "beschreibung": "Ein Energieunternehmen plant Investitionen in erneuerbare Energien. Solarparks bringen {c1} % Rendite, Windparks {c2} %. Pro Einheit Solar werden {a11} Kapitaleinheiten gebunden, pro Einheit Wind {a12} Einheiten. Das Investitionsbudget liegt bei {b1} Tausend Euro. Der Genehmigungsaufwand betraegt {a21} Einheiten pro Solaranlage und {a22} Einheiten pro Windanlage bei maximal {b2} Genehmigungseinheiten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Budget und Genehmigungskapazitaet.",
+  "beschreibung": "Ein Energieunternehmen plant Investitionen in erneuerbare Energien. Solarparks bringen {c1} % Rendite, Windparks {c2} %. Pro Einheit Solar werden {a11} Kapitaleinheiten gebunden, pro Einheit Wind {a12} Einheiten. Das Investitionsbudget liegt bei {b1} Tausend Euro. Der Genehmigungsaufwand beträgt {a21} Einheiten pro Solaranlage und {a22} Einheiten pro Windanlage bei maximal {b2} Genehmigungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Budget und Genehmigungskapazität.",
   "highlights": {
     "zielfunktion": [
       {

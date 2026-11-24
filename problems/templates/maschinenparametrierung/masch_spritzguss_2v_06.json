@@ -36,12 +36,12 @@
     "c1": {
       "min": 5,
       "max": 12,
-      "label": "Formfuellung Druck"
+      "label": "Formfüllung Druck"
     },
     "c2": {
       "min": 3,
       "max": 8,
-      "label": "Masshaltigkeit Nachdruck"
+      "label": "Maßhaltigkeit Nachdruck"
     },
     "a11": {
       "min": 3,
@@ -74,16 +74,16 @@
       "label": "Max. Zykluszeit"
     }
   },
-  "beschreibung": "Eine Spritzgussmaschine wird ueber Einspritzdruck und Nachdruckzeit optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Nachdruckzeit {c2} Punkte Masshaltigkeit. Die Hydraulikleistung betraegt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Nachdruckstufe bei maximal {b1} Hydraulikeinheiten. Die Zykluszeit liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Nachdruckstufe bei maximal {b2} Zeiteinheiten.",
-  "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik und Zykluszeit.",
+  "beschreibung": "Eine Spritzgussmaschine wird über Einspritzdruck und Nachdruckzeit optimiert. Der Einspritzdruck liefert {c1} Punkte Formfüllung, die Nachdruckzeit {c2} Punkte Maßhaltigkeit. Die Hydraulikleistung beträgt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Nachdruckstufe bei maximal {b1} Hydraulikeinheiten. Die Zykluszeit liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Nachdruckstufe bei maximal {b2} Zeiteinheiten.",
+  "hinweis": "Maximiere die Bauteilqualität unter Beachtung von Hydraulik und Zykluszeit.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+        "text": "Einspritzdruck liefert {c1} Punkte Formfüllung",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Nachdruckzeit {c2} Punkte Masshaltigkeit",
+        "text": "Nachdruckzeit {c2} Punkte Maßhaltigkeit",
         "bedeutung": "{c2} × x₂"
       }
     ],

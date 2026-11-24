@@ -7,7 +7,7 @@
   "objective": ["c1", "c2", "c3"],
   "constraints": [
     {"type": "<=", "label": "Entwicklersprints", "row": ["a11","a12","a13"], "rhs": "b1"},
-    {"type": "<=", "label": "QA-Kapazitaet", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "QA-Kapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
     {"type": "<=", "label": "Serverressourcen", "row": ["a31","a32","a33"], "rhs": "b3"}
   ],
   "coefficients": {
@@ -21,15 +21,15 @@
     "a21": {"min": 1, "max": 3,     "label": "QA-Tage/Sprint Web"},
     "a22": {"min": 2, "max": 5,     "label": "QA-Tage/Sprint App"},
     "a23": {"min": 1, "max": 3,     "label": "QA-Tage/Sprint API"},
-    "b2":  {"min": 15, "max": 60,   "label": "QA-Kapazitaet (Tage)"},
+    "b2":  {"min": 15, "max": 60,   "label": "QA-Kapazität (Tage)"},
     "a31": {"min": 1, "max": 3,     "label": "Serverinstanzen/Sprint Web"},
     "a32": {"min": 1, "max": 2,     "label": "Serverinstanzen/Sprint App"},
     "a33": {"min": 2, "max": 5,     "label": "Serverinstanzen/Sprint API"},
     "b3":  {"min": 10, "max": 40,   "label": "Serverinstanzen gesamt"}
   },
   "titel": "IT-Projektportfolio – Web, App und API",
-  "beschreibung": "Die IT-Abteilung verteilt Sprints auf drei Projekte: Web, App und API. Jeder Sprint im Web-Projekt bringt {c1} Businesswert, im App-Projekt {c2} und im API-Projekt {c3} Businesswert. Pro Sprint Web werden {a11} Entwickler benoetigt, pro Sprint App {a12} und pro Sprint API {a13} Entwickler. Es stehen {b1} Entwicklersprints bereit. Die Qualitaetssicherung erfordert {a21} QA-Tage pro Sprint Web, {a22} Tage pro Sprint App und {a23} Tage pro Sprint API bei {b2} QA-Tagen. An Serverinstanzen werden {a31} pro Sprint Web, {a32} pro Sprint App und {a33} pro Sprint API benoetigt. Die Serverkapazitaet betraegt {b3} Instanzen.",
-  "hinweis": "Drei IT-Projekte mit Beschraenkungen bei Entwicklern, QA und Servern.",
+  "beschreibung": "Die IT-Abteilung verteilt Sprints auf drei Projekte: Web, App und API. Jeder Sprint im Web-Projekt bringt {c1} Businesswert, im App-Projekt {c2} und im API-Projekt {c3} Businesswert. Pro Sprint Web werden {a11} Entwickler benötigt, pro Sprint App {a12} und pro Sprint API {a13} Entwickler. Es stehen {b1} Entwicklersprints bereit. Die Qualitätssicherung erfordert {a21} QA-Tage pro Sprint Web, {a22} Tage pro Sprint App und {a23} Tage pro Sprint API bei {b2} QA-Tagen. An Serverinstanzen werden {a31} pro Sprint Web, {a32} pro Sprint App und {a33} pro Sprint API benötigt. Die Serverkapazität beträgt {b3} Instanzen.",
+  "hinweis": "Drei IT-Projekte mit Beschränkungen bei Entwicklern, QA und Servern.",
   "highlights": {
     "zielfunktion": [
       {"text": "Web-Projekt bringt {c1} Businesswert", "bedeutung": "{c1} × x₁"},
@@ -38,7 +38,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Sprint Web werden {a11} Entwickler benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Sprint Web werden {a11} Entwickler benötigt", "bedeutung": "{a11}x₁"},
         {"text": "Sprint App {a12}", "bedeutung": "+ {a12}x₂"},
         {"text": "Sprint API {a13} Entwickler", "bedeutung": "+ {a13}x₃"},
         {"text": "{b1} Entwicklersprints bereit", "bedeutung": "≤ {b1}"}

@@ -17,11 +17,11 @@
     "b1":  {"min": 40, "max": 180,  "label": "Tonvorrat (kg)"},
     "a21": {"min": 1, "max": 2,     "label": "Ofenplatz/Teller"},
     "a22": {"min": 1, "max": 2,     "label": "Ofenplatz/Tasse"},
-    "b2":  {"min": 30, "max": 120,  "label": "Ofenplaetze"}
+    "b2":  {"min": 30, "max": 120,  "label": "Ofenplätze"}
   },
-  "titel": "Toepferei – Teller und Tassen",
-  "beschreibung": "Eine Toepferei stellt Teller und Tassen her. Pro Teller wird ein Gewinn von {c1} Euro erzielt, pro Tasse {c2} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg. Es stehen {b1} kg Ton zur Verfuegung. Jeder Teller belegt {a21} Ofenplaetze, jede Tasse {a22} Ofenplaetze. Insgesamt gibt es {b2} Ofenplaetze.",
-  "hinweis": "Stelle die Gewinnfunktion und die beiden Ressourcenbeschraenkungen auf.",
+  "titel": "Töpferei – Teller und Tassen",
+  "beschreibung": "Eine Töpferei stellt Teller und Tassen her. Pro Teller wird ein Gewinn von {c1} Euro erzielt, pro Tasse {c2} Euro. Ein Teller benötigt {a11} kg Ton, eine Tasse {a12} kg. Es stehen {b1} kg Ton zur Verfügung. Jeder Teller belegt {a21} Ofenplätze, jede Tasse {a22} Ofenplätze. Insgesamt gibt es {b2} Ofenplätze.",
+  "hinweis": "Stelle die Gewinnfunktion und die beiden Ressourcenbeschränkungen auf.",
   "highlights": {
     "zielfunktion": [
       {"text": "Teller wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},
@@ -29,14 +29,14 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Teller benoetigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Teller benötigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
         {"text": "Tasse {a12} kg", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} kg Ton zur Verfuegung", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} kg Ton zur Verfügung", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Teller belegt {a21} Ofenplaetze", "bedeutung": "{a21}x₁"},
-        {"text": "Tasse {a22} Ofenplaetze", "bedeutung": "+ {a22}x₂"},
-        {"text": "{b2} Ofenplaetze", "bedeutung": "≤ {b2}"}
+        {"text": "Teller belegt {a21} Ofenplätze", "bedeutung": "{a21}x₁"},
+        {"text": "Tasse {a22} Ofenplätze", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Ofenplätze", "bedeutung": "≤ {b2}"}
       ]
     ]
   }

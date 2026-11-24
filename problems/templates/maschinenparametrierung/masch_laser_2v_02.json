@@ -15,7 +15,7 @@
   "constraints": [
     {
       "type": "<=",
-      "label": "Kuehlung",
+      "label": "Kühlung",
       "row": [
         "a11",
         "a12"
@@ -36,7 +36,7 @@
     "c1": {
       "min": 4,
       "max": 11,
-      "label": "Schnittqualitaet Leistung"
+      "label": "Schnittqualität Leistung"
     },
     "c2": {
       "min": 3,
@@ -46,17 +46,17 @@
     "a11": {
       "min": 3,
       "max": 10,
-      "label": "Kuehlbedarf Leistung"
+      "label": "Kühlbedarf Leistung"
     },
     "a12": {
       "min": 1,
       "max": 5,
-      "label": "Kuehlbedarf Geschwindigkeit"
+      "label": "Kühlbedarf Geschwindigkeit"
     },
     "b1": {
       "min": 80,
       "max": 350,
-      "label": "Max. Kuehlkapazitaet"
+      "label": "Max. Kühlkapazität"
     },
     "a21": {
       "min": 2,
@@ -74,12 +74,12 @@
       "label": "Max. Gasverbrauch"
     }
   },
-  "beschreibung": "Ein Laserschneider wird ueber Leistung und Geschwindigkeit eingestellt. Die Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei, die Geschwindigkeit {c2} Punkte zum Durchsatz. Der Kuehlbedarf liegt bei {a11} Einheiten pro Leistungsstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Kuehleinheiten. Der Gasverbrauch betraegt {a21} Einheiten pro Leistungsstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Gaseinheiten.",
-  "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kuehlung und Gasverbrauch.",
+  "beschreibung": "Ein Laserschneider wird über Leistung und Geschwindigkeit eingestellt. Die Laserleistung trägt {c1} Punkte zur Schnittqualität bei, die Geschwindigkeit {c2} Punkte zum Durchsatz. Der Kühlbedarf liegt bei {a11} Einheiten pro Leistungsstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Kühleinheiten. Der Gasverbrauch beträgt {a21} Einheiten pro Leistungsstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Gaseinheiten.",
+  "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kühlung und Gasverbrauch.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei",
+        "text": "Laserleistung trägt {c1} Punkte zur Schnittqualität bei",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -98,7 +98,7 @@
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{b1} Kuehleinheiten",
+          "text": "{b1} Kühleinheiten",
           "bedeutung": "≤ {b1}"
         }
       ],

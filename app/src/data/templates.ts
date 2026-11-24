@@ -23443,7 +23443,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 80,
         "max": 300,
-        "label": "Verfuegbares Kapital (Tsd. EUR)"
+        "label": "Verfügbares Kapital (Tsd. EUR)"
       },
       "a21": {
         "min": 3,
@@ -23462,8 +23462,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Portfolio – Aktien und Anleihen",
-    "beschreibung": "Ein Anleger moechte sein Portfolio optimieren. Aktien bringen {c1} % Rendite pro Jahr, Anleihen {c2} %. Pro Tausend Euro in Aktien werden {a11} Einheiten Kapital gebunden, bei Anleihen {a12} Einheiten. Das verfuegbare Kapital betraegt {b1} Tausend Euro. Der Risikofaktor liegt bei {a21} Punkten pro Einheit Aktien und {a22} Punkten pro Einheit Anleihen. Das maximale Risikobudget betraegt {b2} Punkte.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung der Kapital- und Risikobeschraenkungen.",
+    "beschreibung": "Ein Anleger möchte sein Portfolio optimieren. Aktien bringen {c1} % Rendite pro Jahr, Anleihen {c2} %. Pro Tausend Euro in Aktien werden {a11} Einheiten Kapital gebunden, bei Anleihen {a12} Einheiten. Das verfügbare Kapital beträgt {b1} Tausend Euro. Der Risikofaktor liegt bei {a21} Punkten pro Einheit Aktien und {a22} Punkten pro Einheit Anleihen. Das maximale Risikobudget beträgt {b2} Punkte.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung der Kapital- und Risikobeschränkungen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -23512,9 +23512,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "id": "invest_bildung_2v_14",
-    "titel": "Bildungsinvestment – Praesenz- und Onlinekurse",
+    "titel": "Bildungsinvestment – Präsenz- und Onlinekurse",
     "variablen": [
-      "x1 = Investment in Praesenzangebote (Tsd. EUR)",
+      "x1 = Investment in Präsenzangebote (Tsd. EUR)",
       "x2 = Investment in Onlineangebote (Tsd. EUR)"
     ],
     "constraints": [
@@ -23529,7 +23529,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Dozentenkapazitaet",
+        "label": "Dozentenkapazität",
         "row": [
           "a21",
           "a22"
@@ -23541,7 +23541,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Lerneffekt Praesenz"
+        "label": "Lerneffekt Präsenz"
       },
       "c2": {
         "min": 3,
@@ -23551,7 +23551,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 2,
         "max": 6,
-        "label": "Kosten Praesenz"
+        "label": "Kosten Präsenz"
       },
       "a12": {
         "min": 1,
@@ -23566,7 +23566,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 7,
-        "label": "Dozenten Praesenz"
+        "label": "Dozenten Präsenz"
       },
       "a22": {
         "min": 1,
@@ -23579,12 +23579,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Dozentenstunden"
       }
     },
-    "beschreibung": "Eine Hochschule investiert in Praesenz- und Onlinelehre. Praesenzangebote erzielen {c1} Punkte Lerneffekt, Onlineangebote {c2} Punkte. Die Kosten betragen {a11} Einheiten pro Praesenzeinheit und {a12} Einheiten pro Onlineeinheit. Das Bildungsbudget liegt bei {b1} Tausend Euro. Pro Praesenzeinheit werden {a21} Dozentenstunden benoetigt, pro Onlineeinheit {a22} Stunden bei maximal {b2} verfuegbaren Dozentenstunden.",
-    "hinweis": "Maximiere den Lerneffekt unter Beachtung von Budget und Dozentenkapazitaet.",
+    "beschreibung": "Eine Hochschule investiert in Präsenz- und Onlinelehre. Präsenzangebote erzielen {c1} Punkte Lerneffekt, Onlineangebote {c2} Punkte. Die Kosten betragen {a11} Einheiten pro Präsenzeinheit und {a12} Einheiten pro Onlineeinheit. Das Bildungsbudget liegt bei {b1} Tausend Euro. Pro Präsenzeinheit werden {a21} Dozentenstunden benötigt, pro Onlineeinheit {a22} Stunden bei maximal {b2} verfügbaren Dozentenstunden.",
+    "hinweis": "Maximiere den Lerneffekt unter Beachtung von Budget und Dozentenkapazität.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Praesenzangebote erzielen {c1} Punkte Lerneffekt",
+          "text": "Präsenzangebote erzielen {c1} Punkte Lerneffekt",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -23595,7 +23595,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten pro Praesenzeinheit",
+            "text": "{a11} Einheiten pro Präsenzeinheit",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -23609,7 +23609,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Dozentenstunden benoetigt",
+            "text": "{a21} Dozentenstunden benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -23617,7 +23617,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Dozentenstunden",
+            "text": "{b2} verfügbaren Dozentenstunden",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -23778,7 +23778,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Schulungsstunden"
       }
     },
-    "beschreibung": "Ein Unternehmen plant Digitalisierungsinvestitionen. ERP bringt {c1} Effizienzpunkte, Cloud {c2}, KI {c3} und Cybersicherheit {c4}. Die Kosten betragen {a11} Einheiten fuer ERP, {a12} fuer Cloud, {a13} fuer KI und {a14} fuer Cybersicherheit bei einem IT-Budget von {b1} Tausend Euro. Die Implementierungszeit liegt bei {a21} Wochen fuer ERP, {a22} fuer Cloud, {a23} fuer KI und {a24} fuer Cybersicherheit bei maximal {b2} Implementierungswochen. Der Schulungsaufwand betraegt {a31} Stunden fuer ERP, {a32} fuer Cloud, {a33} fuer KI und {a34} fuer Cybersicherheit bei maximal {b3} Schulungsstunden.",
+    "beschreibung": "Ein Unternehmen plant Digitalisierungsinvestitionen. ERP bringt {c1} Effizienzpunkte, Cloud {c2}, KI {c3} und Cybersicherheit {c4}. Die Kosten betragen {a11} Einheiten für ERP, {a12} für Cloud, {a13} für KI und {a14} für Cybersicherheit bei einem IT-Budget von {b1} Tausend Euro. Die Implementierungszeit liegt bei {a21} Wochen für ERP, {a22} für Cloud, {a23} für KI und {a24} für Cybersicherheit bei maximal {b2} Implementierungswochen. Der Schulungsaufwand beträgt {a31} Stunden für ERP, {a32} für Cloud, {a33} für KI und {a34} für Cybersicherheit bei maximal {b3} Schulungsstunden.",
     "hinweis": "Maximiere den Effizienzgewinn unter Beachtung von Budget, Implementierungszeit und Schulungsaufwand.",
     "highlights": {
       "zielfunktion": [
@@ -23802,19 +23802,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer ERP",
+            "text": "{a11} Einheiten für ERP",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Cloud",
+            "text": "{a12} für Cloud",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer KI",
+            "text": "{a13} für KI",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Cybersicherheit",
+            "text": "{a14} für Cybersicherheit",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -23824,19 +23824,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Wochen fuer ERP",
+            "text": "{a21} Wochen für ERP",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Cloud",
+            "text": "{a22} für Cloud",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer KI",
+            "text": "{a23} für KI",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Cybersicherheit",
+            "text": "{a24} für Cybersicherheit",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -23846,19 +23846,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Stunden fuer ERP",
+            "text": "{a31} Stunden für ERP",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Cloud",
+            "text": "{a32} für Cloud",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer KI",
+            "text": "{a33} für KI",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Cybersicherheit",
+            "text": "{a34} für Cybersicherheit",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -23908,7 +23908,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Liquiditaetsbedarf",
+        "label": "Liquiditätsbedarf",
         "row": [
           "a31",
           "a32",
@@ -23951,7 +23951,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 100,
         "max": 400,
-        "label": "Verfuegbares Kapital (Tsd. EUR)"
+        "label": "Verfügbares Kapital (Tsd. EUR)"
       },
       "a21": {
         "min": 4,
@@ -23976,26 +23976,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 3,
         "max": 8,
-        "label": "Illiquiditaet Aktien"
+        "label": "Illiquidität Aktien"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Illiquiditaet Anleihen"
+        "label": "Illiquidität Anleihen"
       },
       "a33": {
         "min": 5,
         "max": 10,
-        "label": "Illiquiditaet Immobilienfonds"
+        "label": "Illiquidität Immobilienfonds"
       },
       "b3": {
         "min": 60,
         "max": 250,
-        "label": "Max. Illiquiditaetsbudget"
+        "label": "Max. Illiquiditätsbudget"
       }
     },
-    "beschreibung": "Ein Anleger verteilt sein Kapital auf drei Anlageklassen. Aktien erzielen {c1} % Rendite, Anleihen {c2} % und Immobilienfonds {c3} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen und {a13} fuer Immobilienfonds. Das Gesamtkapital liegt bei {b1} Tausend Euro. Das Risiko betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen und {a23} fuer Immobilienfonds bei maximal {b2} Risikopunkten. Die Illiquiditaet liegt bei {a31} Punkten fuer Aktien, {a32} fuer Anleihen und {a33} fuer Immobilienfonds bei maximal {b3} Illiquiditaetspunkten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Liquiditaet.",
+    "beschreibung": "Ein Anleger verteilt sein Kapital auf drei Anlageklassen. Aktien erzielen {c1} % Rendite, Anleihen {c2} % und Immobilienfonds {c3} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen und {a13} für Immobilienfonds. Das Gesamtkapital liegt bei {b1} Tausend Euro. Das Risiko beträgt {a21} Punkte für Aktien, {a22} für Anleihen und {a23} für Immobilienfonds bei maximal {b2} Risikopunkten. Die Illiquidität liegt bei {a31} Punkten für Aktien, {a32} für Anleihen und {a33} für Immobilienfonds bei maximal {b3} Illiquiditätspunkten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Liquidität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24014,15 +24014,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Aktien",
+            "text": "{a11} Einheiten für Aktien",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Anleihen",
+            "text": "{a12} für Anleihen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Immobilienfonds",
+            "text": "{a13} für Immobilienfonds",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -24032,15 +24032,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkte fuer Aktien",
+            "text": "{a21} Punkte für Aktien",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Anleihen",
+            "text": "{a22} für Anleihen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Immobilienfonds",
+            "text": "{a23} für Immobilienfonds",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -24050,19 +24050,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Punkten fuer Aktien",
+            "text": "{a31} Punkten für Aktien",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Anleihen",
+            "text": "{a32} für Anleihen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Immobilienfonds",
+            "text": "{a33} für Immobilienfonds",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} Illiquiditaetspunkten",
+            "text": "{b3} Illiquiditätspunkten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -24098,7 +24098,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Flaechenbedarf",
+        "label": "Flächenbedarf",
         "row": [
           "a21",
           "a22",
@@ -24156,22 +24156,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Flaeche Solar"
+        "label": "Fläche Solar"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Flaeche Wind"
+        "label": "Fläche Wind"
       },
       "a23": {
         "min": 1,
         "max": 3,
-        "label": "Flaeche Wasserkraft"
+        "label": "Fläche Wasserkraft"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Max. Flaeche (ha)"
+        "label": "Max. Fläche (ha)"
       },
       "a31": {
         "min": 2,
@@ -24194,8 +24194,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Genehmigungseinheiten"
       }
     },
-    "beschreibung": "Ein Energiekonzern investiert in drei erneuerbare Energiequellen. Solar bringt {c1} % Rendite, Wind {c2} % und Wasserkraft {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Solar, {a12} fuer Wind und {a13} fuer Wasserkraft bei einem Budget von {b1} Tausend Euro. Der Flaechenbedarf liegt bei {a21} Einheiten fuer Solar, {a22} fuer Wind und {a23} fuer Wasserkraft bei maximal {b2} Flaecheneinheiten. Der Genehmigungsaufwand betraegt {a31} Einheiten fuer Solar, {a32} fuer Wind und {a33} fuer Wasserkraft bei maximal {b3} Genehmigungseinheiten.",
-    "hinweis": "Maximiere die Rendite unter Beachtung von Budget, Flaeche und Genehmigungen.",
+    "beschreibung": "Ein Energiekonzern investiert in drei erneuerbare Energiequellen. Solar bringt {c1} % Rendite, Wind {c2} % und Wasserkraft {c3} %. Der Kapitalbedarf beträgt {a11} Einheiten für Solar, {a12} für Wind und {a13} für Wasserkraft bei einem Budget von {b1} Tausend Euro. Der Flächenbedarf liegt bei {a21} Einheiten für Solar, {a22} für Wind und {a23} für Wasserkraft bei maximal {b2} Flächeneinheiten. Der Genehmigungsaufwand beträgt {a31} Einheiten für Solar, {a32} für Wind und {a33} für Wasserkraft bei maximal {b3} Genehmigungseinheiten.",
+    "hinweis": "Maximiere die Rendite unter Beachtung von Budget, Fläche und Genehmigungen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24214,15 +24214,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Solar",
+            "text": "{a11} Einheiten für Solar",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Wind",
+            "text": "{a12} für Wind",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Wasserkraft",
+            "text": "{a13} für Wasserkraft",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -24232,33 +24232,33 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Solar",
+            "text": "{a21} Einheiten für Solar",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Wind",
+            "text": "{a22} für Wind",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Wasserkraft",
+            "text": "{a23} für Wasserkraft",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Flaecheneinheiten",
+            "text": "{b2} Flächeneinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Solar",
+            "text": "{a31} Einheiten für Solar",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Wind",
+            "text": "{a32} für Wind",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Wasserkraft",
+            "text": "{a33} für Wasserkraft",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -24291,7 +24291,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Volatilitaetsbudget",
+        "label": "Volatilitätsbudget",
         "row": [
           "a21",
           "a22"
@@ -24323,26 +24323,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 60,
         "max": 250,
-        "label": "Verfuegbares Anlagekapital (Tsd. EUR)"
+        "label": "Verfügbares Anlagekapital (Tsd. EUR)"
       },
       "a21": {
         "min": 4,
         "max": 10,
-        "label": "Volatilitaet Tech"
+        "label": "Volatilität Tech"
       },
       "a22": {
         "min": 1,
         "max": 4,
-        "label": "Volatilitaet Gesundheit"
+        "label": "Volatilität Gesundheit"
       },
       "b2": {
         "min": 50,
         "max": 200,
-        "label": "Max. Volatilitaetsbudget"
+        "label": "Max. Volatilitätsbudget"
       }
     },
-    "beschreibung": "Eine Anlegerin moechte in zwei ETFs investieren. Der Technologie-ETF verspricht {c1} % Rendite, der Gesundheits-ETF {c2} %. Pro Einheit Tech-ETF werden {a11} Kapitaleinheiten gebunden, pro Gesundheits-ETF {a12} Einheiten. Insgesamt stehen {b1} Tausend Euro Anlagekapital zur Verfuegung. Die Volatilitaet betraegt {a21} Punkte pro Tech-Einheit und {a22} Punkte pro Gesundheitseinheit bei einem maximalen Volatilitaetsbudget von {b2} Punkten.",
-    "hinweis": "Die Volatilitaet ist ein Mass fuer das Risiko. Maximiere die Rendite unter Beachtung von Kapital und Volatilitaet.",
+    "beschreibung": "Eine Anlegerin möchte in zwei ETFs investieren. Der Technologie-ETF verspricht {c1} % Rendite, der Gesundheits-ETF {c2} %. Pro Einheit Tech-ETF werden {a11} Kapitaleinheiten gebunden, pro Gesundheits-ETF {a12} Einheiten. Insgesamt stehen {b1} Tausend Euro Anlagekapital zur Verfügung. Die Volatilität beträgt {a21} Punkte pro Tech-Einheit und {a22} Punkte pro Gesundheitseinheit bei einem maximalen Volatilitätsbudget von {b2} Punkten.",
+    "hinweis": "Die Volatilität ist ein Maß für das Risiko. Maximiere die Rendite unter Beachtung von Kapital und Volatilität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24411,7 +24411,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Familienvermoegen",
+        "label": "Familienvermögen",
         "row": [
           "a11",
           "a12",
@@ -24422,7 +24422,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Komplexitaet",
+        "label": "Komplexität",
         "row": [
           "a21",
           "a22",
@@ -24433,7 +24433,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Liquiditaetsreserve",
+        "label": "Liquiditätsreserve",
         "row": [
           "a31",
           "a32",
@@ -24487,61 +24487,61 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 100,
         "max": 500,
-        "label": "Familienvermoegen (Tsd. EUR)"
+        "label": "Familienvermögen (Tsd. EUR)"
       },
       "a21": {
         "min": 2,
         "max": 4,
-        "label": "Komplexitaet Aktien"
+        "label": "Komplexität Aktien"
       },
       "a22": {
         "min": 1,
         "max": 2,
-        "label": "Komplexitaet Anleihen"
+        "label": "Komplexität Anleihen"
       },
       "a23": {
         "min": 4,
         "max": 9,
-        "label": "Komplexitaet Private Equity"
+        "label": "Komplexität Private Equity"
       },
       "a24": {
         "min": 3,
         "max": 7,
-        "label": "Komplexitaet Kunst"
+        "label": "Komplexität Kunst"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Max. Komplexitaetsbudget"
+        "label": "Max. Komplexitätsbudget"
       },
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Illiquiditaet Aktien"
+        "label": "Illiquidität Aktien"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Illiquiditaet Anleihen"
+        "label": "Illiquidität Anleihen"
       },
       "a33": {
         "min": 5,
         "max": 12,
-        "label": "Illiquiditaet Private Equity"
+        "label": "Illiquidität Private Equity"
       },
       "a34": {
         "min": 4,
         "max": 8,
-        "label": "Illiquiditaet Kunst"
+        "label": "Illiquidität Kunst"
       },
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Illiquiditaetsbudget"
+        "label": "Max. Illiquiditätsbudget"
       }
     },
-    "beschreibung": "Ein Family Office verteilt Vermoegen auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Private Equity {c3} % und Kunst {c4} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Private Equity und {a14} fuer Kunst bei einem Familienvermoegen von {b1} Tausend Euro. Die Komplexitaet betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen, {a23} fuer Private Equity und {a24} fuer Kunst bei maximal {b2} Komplexitaetspunkten. Die Illiquiditaet liegt bei {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Private Equity und {a34} fuer Kunst bei maximal {b3} Illiquiditaetseinheiten.",
-    "hinweis": "Maximiere die Rendite unter Beachtung von Vermoegen, Komplexitaet und Liquiditaet.",
+    "beschreibung": "Ein Family Office verteilt Vermögen auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Private Equity {c3} % und Kunst {c4} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Private Equity und {a14} für Kunst bei einem Familienvermögen von {b1} Tausend Euro. Die Komplexität beträgt {a21} Punkte für Aktien, {a22} für Anleihen, {a23} für Private Equity und {a24} für Kunst bei maximal {b2} Komplexitätspunkten. Die Illiquidität liegt bei {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Private Equity und {a34} für Kunst bei maximal {b3} Illiquiditätseinheiten.",
+    "hinweis": "Maximiere die Rendite unter Beachtung von Vermögen, Komplexität und Liquidität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24564,19 +24564,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Aktien",
+            "text": "{a11} Einheiten für Aktien",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Anleihen",
+            "text": "{a12} für Anleihen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Private Equity",
+            "text": "{a13} für Private Equity",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Kunst",
+            "text": "{a14} für Kunst",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -24586,45 +24586,45 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkte fuer Aktien",
+            "text": "{a21} Punkte für Aktien",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Anleihen",
+            "text": "{a22} für Anleihen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Private Equity",
+            "text": "{a23} für Private Equity",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Kunst",
+            "text": "{a24} für Kunst",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} Komplexitaetspunkten",
+            "text": "{b2} Komplexitätspunkten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Aktien",
+            "text": "{a31} Einheiten für Aktien",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Anleihen",
+            "text": "{a32} für Anleihen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Private Equity",
+            "text": "{a33} für Private Equity",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Kunst",
+            "text": "{a34} für Kunst",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} Illiquiditaetseinheiten",
+            "text": "{b3} Illiquiditätseinheiten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -24653,7 +24653,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Managementgebuehren",
+        "label": "Managementgebühren",
         "row": [
           "a21",
           "a22"
@@ -24685,26 +24685,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 80,
         "max": 350,
-        "label": "Verfuegbare Anlagesumme (Tsd. EUR)"
+        "label": "Verfügbare Anlagesumme (Tsd. EUR)"
       },
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Gebuehren Aktienfonds"
+        "label": "Gebühren Aktienfonds"
       },
       "a22": {
         "min": 1,
         "max": 3,
-        "label": "Gebuehren Rentenfonds"
+        "label": "Gebühren Rentenfonds"
       },
       "b2": {
         "min": 50,
         "max": 180,
-        "label": "Max. Gebuehrenbudget"
+        "label": "Max. Gebührenbudget"
       }
     },
-    "beschreibung": "Ein Vermogensberater verteilt Kundengelder auf Aktien- und Rentenfonds. Der Aktienfonds erzielt {c1} % Rendite, der Rentenfonds {c2} %. Pro Einheit Aktienfonds sind {a11} Kapitaleinheiten noetig, pro Einheit Rentenfonds {a12} Einheiten. Die Anlagesumme betraegt {b1} Tausend Euro. Die Managementgebuehren betragen {a21} Einheiten pro Aktienfondsanteil und {a22} Einheiten pro Rentenfondsanteil bei einem Gebuehrenbudget von {b2} Einheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Anlagesumme und Gebuehrenbudget.",
+    "beschreibung": "Ein Vermogensberater verteilt Kundengelder auf Aktien- und Rentenfonds. Der Aktienfonds erzielt {c1} % Rendite, der Rentenfonds {c2} %. Pro Einheit Aktienfonds sind {a11} Kapitaleinheiten nötig, pro Einheit Rentenfonds {a12} Einheiten. Die Anlagesumme beträgt {b1} Tausend Euro. Die Managementgebühren betragen {a21} Einheiten pro Aktienfondsanteil und {a22} Einheiten pro Rentenfondsanteil bei einem Gebührenbudget von {b2} Einheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Anlagesumme und Gebührenbudget.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24719,7 +24719,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Kapitaleinheiten noetig",
+            "text": "{a11} Kapitaleinheiten nötig",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -24774,7 +24774,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Personalkapazitaet",
+        "label": "Personalkapazität",
         "row": [
           "a21",
           "a22"
@@ -24824,8 +24824,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Forscherpersonal"
       }
     },
-    "beschreibung": "Ein Unternehmen verteilt sein F&E-Budget auf Grundlagen- und angewandte Forschung. Grundlagenforschung bringt {c1} Innovationspunkte, angewandte Forschung {c2} Punkte. Der Mittelbedarf betraegt {a11} Einheiten pro Grundlagenprojekt und {a12} Einheiten pro Anwendungsprojekt. Das F&E-Gesamtbudget liegt bei {b1} Tausend Euro. Pro Grundlagenprojekt werden {a21} Forscher benoetigt, pro Anwendungsprojekt {a22} Forscher bei maximal {b2} verfuegbaren Forschern.",
-    "hinweis": "Maximiere die Innovationspunkte unter Beachtung von Budget und Personalkapazitaet.",
+    "beschreibung": "Ein Unternehmen verteilt sein F&E-Budget auf Grundlagen- und angewandte Forschung. Grundlagenforschung bringt {c1} Innovationspunkte, angewandte Forschung {c2} Punkte. Der Mittelbedarf beträgt {a11} Einheiten pro Grundlagenprojekt und {a12} Einheiten pro Anwendungsprojekt. Das F&E-Gesamtbudget liegt bei {b1} Tausend Euro. Pro Grundlagenprojekt werden {a21} Forscher benötigt, pro Anwendungsprojekt {a22} Forscher bei maximal {b2} verfügbaren Forschern.",
+    "hinweis": "Maximiere die Innovationspunkte unter Beachtung von Budget und Personalkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -24854,7 +24854,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Forscher benoetigt",
+            "text": "{a21} Forscher benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -24862,7 +24862,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Forschern",
+            "text": "{b2} verfügbaren Forschern",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -24905,7 +24905,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waehrungsrisiko",
+        "label": "Währungsrisiko",
         "row": [
           "a21",
           "a22",
@@ -24927,7 +24927,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Betreuungskapazitaet",
+        "label": "Betreuungskapazität",
         "row": [
           "a41",
           "a42",
@@ -24986,27 +24986,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 3,
-        "label": "Waehrung Europa"
+        "label": "Währung Europa"
       },
       "a22": {
         "min": 3,
         "max": 8,
-        "label": "Waehrung Asien"
+        "label": "Währung Asien"
       },
       "a23": {
         "min": 2,
         "max": 5,
-        "label": "Waehrung Nordamerika"
+        "label": "Währung Nordamerika"
       },
       "a24": {
         "min": 4,
         "max": 10,
-        "label": "Waehrung Emerging"
+        "label": "Währung Emerging"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waehrungsrisiko"
+        "label": "Max. Währungsrisiko"
       },
       "a31": {
         "min": 1,
@@ -25059,8 +25059,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Betreuungsstunden"
       }
     },
-    "beschreibung": "Ein globaler Fonds investiert in vier Regionen. Europa bringt {c1} % Rendite, Asien {c2} %, Nordamerika {c3} % und Emerging Markets {c4} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Europa, {a12} fuer Asien, {a13} fuer Nordamerika und {a14} fuer Emerging Markets bei einem Gesamtkapital von {b1} Tausend Euro. Das Waehrungsrisiko liegt bei {a21} Punkten fuer Europa, {a22} fuer Asien, {a23} fuer Nordamerika und {a24} fuer Emerging Markets bei maximal {b2} Risikopunkten. Das politische Risiko betraegt {a31} Punkte fuer Europa, {a32} fuer Asien, {a33} fuer Nordamerika und {a34} fuer Emerging Markets bei maximal {b3} Punkten. Die Betreuung erfordert {a41} Stunden fuer Europa, {a42} fuer Asien, {a43} fuer Nordamerika und {a44} fuer Emerging Markets bei maximal {b4} Stunden.",
-    "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Waehrungsrisiko, politischem Risiko und Betreuung.",
+    "beschreibung": "Ein globaler Fonds investiert in vier Regionen. Europa bringt {c1} % Rendite, Asien {c2} %, Nordamerika {c3} % und Emerging Markets {c4} %. Der Kapitalbedarf beträgt {a11} Einheiten für Europa, {a12} für Asien, {a13} für Nordamerika und {a14} für Emerging Markets bei einem Gesamtkapital von {b1} Tausend Euro. Das Währungsrisiko liegt bei {a21} Punkten für Europa, {a22} für Asien, {a23} für Nordamerika und {a24} für Emerging Markets bei maximal {b2} Risikopunkten. Das politische Risiko beträgt {a31} Punkte für Europa, {a32} für Asien, {a33} für Nordamerika und {a34} für Emerging Markets bei maximal {b3} Punkten. Die Betreuung erfordert {a41} Stunden für Europa, {a42} für Asien, {a43} für Nordamerika und {a44} für Emerging Markets bei maximal {b4} Stunden.",
+    "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Währungsrisiko, politischem Risiko und Betreuung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -25083,19 +25083,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Europa",
+            "text": "{a11} Einheiten für Europa",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Asien",
+            "text": "{a12} für Asien",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Nordamerika",
+            "text": "{a13} für Nordamerika",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Emerging Markets",
+            "text": "{a14} für Emerging Markets",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -25105,19 +25105,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Europa",
+            "text": "{a21} Punkten für Europa",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Asien",
+            "text": "{a22} für Asien",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Nordamerika",
+            "text": "{a23} für Nordamerika",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Emerging Markets",
+            "text": "{a24} für Emerging Markets",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -25127,19 +25127,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Punkte fuer Europa",
+            "text": "{a31} Punkte für Europa",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Asien",
+            "text": "{a32} für Asien",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Nordamerika",
+            "text": "{a33} für Nordamerika",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Emerging Markets",
+            "text": "{a34} für Emerging Markets",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -25149,19 +25149,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Stunden fuer Europa",
+            "text": "{a41} Stunden für Europa",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Asien",
+            "text": "{a42} für Asien",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Nordamerika",
+            "text": "{a43} für Nordamerika",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Emerging Markets",
+            "text": "{a44} für Emerging Markets",
             "bedeutung": "+ {a44}x₄"
           },
           {
@@ -25297,7 +25297,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Korrelationsbudget"
       }
     },
-    "beschreibung": "Ein Hedgefonds-Manager verteilt Kapital auf drei Strategien. Long Equity bringt {c1} % Rendite, Arbitrage {c2} % und Rohstoffe {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Equity, {a12} fuer Arbitrage und {a13} fuer Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Drawdown-Risiko betraegt {a21} Punkte fuer Equity, {a22} fuer Arbitrage und {a23} fuer Rohstoffe bei maximal {b2} Drawdown-Punkten. Die Korrelation liegt bei {a31} Punkten fuer Equity, {a32} fuer Arbitrage und {a33} fuer Rohstoffe bei maximal {b3} Korrelationspunkten.",
+    "beschreibung": "Ein Hedgefonds-Manager verteilt Kapital auf drei Strategien. Long Equity bringt {c1} % Rendite, Arbitrage {c2} % und Rohstoffe {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Equity, {a12} für Arbitrage und {a13} für Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Drawdown-Risiko beträgt {a21} Punkte für Equity, {a22} für Arbitrage und {a23} für Rohstoffe bei maximal {b2} Drawdown-Punkten. Die Korrelation liegt bei {a31} Punkten für Equity, {a32} für Arbitrage und {a33} für Rohstoffe bei maximal {b3} Korrelationspunkten.",
     "hinweis": "Maximiere die Rendite unter Beachtung von Fondsvolumen, Drawdown und Korrelation.",
     "highlights": {
       "zielfunktion": [
@@ -25317,15 +25317,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Equity",
+            "text": "{a11} Einheiten für Equity",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Arbitrage",
+            "text": "{a12} für Arbitrage",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Rohstoffe",
+            "text": "{a13} für Rohstoffe",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -25335,15 +25335,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkte fuer Equity",
+            "text": "{a21} Punkte für Equity",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Arbitrage",
+            "text": "{a22} für Arbitrage",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Rohstoffe",
+            "text": "{a23} für Rohstoffe",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -25353,15 +25353,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Punkten fuer Equity",
+            "text": "{a31} Punkten für Equity",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Arbitrage",
+            "text": "{a32} für Arbitrage",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Rohstoffe",
+            "text": "{a33} für Rohstoffe",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -25444,8 +25444,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Verwaltungsstunden"
       }
     },
-    "beschreibung": "Ein Investor plant Immobilieninvestitionen. Wohnimmobilien erzielen {c1} % Mietrendite, Gewerbeimmobilien {c2} %. Pro Einheit Wohnimmobilie werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Gewerbe {a12} Einheiten. Das Investitionsbudget betraegt {b1} Tausend Euro. Die Verwaltung erfordert {a21} Stunden pro Wohneinheit und {a22} Stunden pro Gewerbeeinheit bei maximal {b2} verfuegbaren Verwaltungsstunden.",
-    "hinweis": "Maximiere die Gesamtmietrendite unter Beachtung von Budget und Verwaltungskapazitaet.",
+    "beschreibung": "Ein Investor plant Immobilieninvestitionen. Wohnimmobilien erzielen {c1} % Mietrendite, Gewerbeimmobilien {c2} %. Pro Einheit Wohnimmobilie werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Gewerbe {a12} Einheiten. Das Investitionsbudget beträgt {b1} Tausend Euro. Die Verwaltung erfordert {a21} Stunden pro Wohneinheit und {a22} Stunden pro Gewerbeeinheit bei maximal {b2} verfügbaren Verwaltungsstunden.",
+    "hinweis": "Maximiere die Gesamtmietrendite unter Beachtung von Budget und Verwaltungskapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -25482,7 +25482,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Verwaltungsstunden",
+            "text": "{b2} verfügbaren Verwaltungsstunden",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -25498,9 +25498,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 4,
     "id": "invest_infrastruktur_4v_04",
-    "titel": "Infrastruktur – Strassen, Schienen, Hafen und Flughafen",
+    "titel": "Infrastruktur – Straßen, Schienen, Hafen und Flughafen",
     "variablen": [
-      "x1 = Investment Strassen (Tsd. EUR)",
+      "x1 = Investment Straßen (Tsd. EUR)",
       "x2 = Investment Schienen (Tsd. EUR)",
       "x3 = Investment Hafen (Tsd. EUR)",
       "x4 = Investment Flughafen (Tsd. EUR)"
@@ -25536,7 +25536,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Baukapazitaet",
+        "label": "Baukapazität",
         "row": [
           "a31",
           "a32",
@@ -25561,7 +25561,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 8,
-        "label": "Nutzen Strassen"
+        "label": "Nutzen Straßen"
       },
       "c2": {
         "min": 5,
@@ -25581,7 +25581,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 1,
         "max": 3,
-        "label": "Kosten Strassen"
+        "label": "Kosten Straßen"
       },
       "a12": {
         "min": 2,
@@ -25606,7 +25606,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 7,
-        "label": "Umwelt Strassen"
+        "label": "Umwelt Straßen"
       },
       "a22": {
         "min": 1,
@@ -25631,7 +25631,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Bau Strassen"
+        "label": "Bau Straßen"
       },
       "a32": {
         "min": 3,
@@ -25651,12 +25651,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 80,
         "max": 300,
-        "label": "Max. Baukapazitaet"
+        "label": "Max. Baukapazität"
       },
       "a41": {
         "min": 1,
         "max": 3,
-        "label": "Genehmigung Strassen"
+        "label": "Genehmigung Straßen"
       },
       "a42": {
         "min": 2,
@@ -25679,12 +25679,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Genehmigungen"
       }
     },
-    "beschreibung": "Eine Regierung plant Infrastrukturinvestitionen. Strassen bringen {c1} Nutzenpunkte, Schienen {c2}, Hafen {c3} und Flughafen {c4}. Die Kosten betragen {a11} Einheiten fuer Strassen, {a12} fuer Schienen, {a13} fuer Hafen und {a14} fuer Flughafen bei einem Budget von {b1} Tausend Euro. Die Umweltbelastung liegt bei {a21} Einheiten fuer Strassen, {a22} fuer Schienen, {a23} fuer Hafen und {a24} fuer Flughafen bei maximal {b2} Umwelteinheiten. Die Baukapazitaet erfordert {a31} Einheiten fuer Strassen, {a32} fuer Schienen, {a33} fuer Hafen und {a34} fuer Flughafen bei maximal {b3} Baueinheiten. Die Genehmigungen betragen {a41} Einheiten fuer Strassen, {a42} fuer Schienen, {a43} fuer Hafen und {a44} fuer Flughafen bei maximal {b4} Genehmigungseinheiten.",
-    "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Budget, Umwelt, Baukapazitaet und Genehmigungen.",
+    "beschreibung": "Eine Regierung plant Infrastrukturinvestitionen. Straßen bringen {c1} Nutzenpunkte, Schienen {c2}, Hafen {c3} und Flughafen {c4}. Die Kosten betragen {a11} Einheiten für Straßen, {a12} für Schienen, {a13} für Hafen und {a14} für Flughafen bei einem Budget von {b1} Tausend Euro. Die Umweltbelastung liegt bei {a21} Einheiten für Straßen, {a22} für Schienen, {a23} für Hafen und {a24} für Flughafen bei maximal {b2} Umwelteinheiten. Die Baukapazität erfordert {a31} Einheiten für Straßen, {a32} für Schienen, {a33} für Hafen und {a34} für Flughafen bei maximal {b3} Baueinheiten. Die Genehmigungen betragen {a41} Einheiten für Straßen, {a42} für Schienen, {a43} für Hafen und {a44} für Flughafen bei maximal {b4} Genehmigungseinheiten.",
+    "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Budget, Umwelt, Baukapazität und Genehmigungen.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Strassen bringen {c1} Nutzenpunkte",
+          "text": "Straßen bringen {c1} Nutzenpunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -25703,19 +25703,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Strassen",
+            "text": "{a11} Einheiten für Straßen",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Schienen",
+            "text": "{a12} für Schienen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Hafen",
+            "text": "{a13} für Hafen",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Flughafen",
+            "text": "{a14} für Flughafen",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -25725,19 +25725,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Strassen",
+            "text": "{a21} Einheiten für Straßen",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Schienen",
+            "text": "{a22} für Schienen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Hafen",
+            "text": "{a23} für Hafen",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Flughafen",
+            "text": "{a24} für Flughafen",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -25747,19 +25747,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Strassen",
+            "text": "{a31} Einheiten für Straßen",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Schienen",
+            "text": "{a32} für Schienen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Hafen",
+            "text": "{a33} für Hafen",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Flughafen",
+            "text": "{a34} für Flughafen",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -25769,19 +25769,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Strassen",
+            "text": "{a41} Einheiten für Straßen",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Schienen",
+            "text": "{a42} für Schienen",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Hafen",
+            "text": "{a43} für Hafen",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Flughafen",
+            "text": "{a44} für Flughafen",
             "bedeutung": "+ {a44}x₄"
           },
           {
@@ -25839,7 +25839,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Flaechenbedarf",
+        "label": "Flächenbedarf",
         "row": [
           "a31",
           "a32",
@@ -25851,7 +25851,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Politische Komplexitaet",
+        "label": "Politische Komplexität",
         "row": [
           "a41",
           "a42",
@@ -25866,27 +25866,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 11,
-        "label": "Lebensqualitaet Bildung"
+        "label": "Lebensqualität Bildung"
       },
       "c2": {
         "min": 4,
         "max": 10,
-        "label": "Lebensqualitaet Gesundheit"
+        "label": "Lebensqualität Gesundheit"
       },
       "c3": {
         "min": 3,
         "max": 8,
-        "label": "Lebensqualitaet Verkehr"
+        "label": "Lebensqualität Verkehr"
       },
       "c4": {
         "min": 2,
         "max": 6,
-        "label": "Lebensqualitaet Kultur"
+        "label": "Lebensqualität Kultur"
       },
       "c5": {
         "min": 4,
         "max": 9,
-        "label": "Lebensqualitaet Umwelt"
+        "label": "Lebensqualität Umwelt"
       },
       "a11": {
         "min": 2,
@@ -25951,70 +25951,70 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Flaeche Bildung"
+        "label": "Fläche Bildung"
       },
       "a32": {
         "min": 1,
         "max": 4,
-        "label": "Flaeche Gesundheit"
+        "label": "Fläche Gesundheit"
       },
       "a33": {
         "min": 3,
         "max": 7,
-        "label": "Flaeche Verkehr"
+        "label": "Fläche Verkehr"
       },
       "a34": {
         "min": 1,
         "max": 3,
-        "label": "Flaeche Kultur"
+        "label": "Fläche Kultur"
       },
       "a35": {
         "min": 2,
         "max": 5,
-        "label": "Flaeche Umwelt"
+        "label": "Fläche Umwelt"
       },
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Flaecheneinheiten"
+        "label": "Max. Flächeneinheiten"
       },
       "a41": {
         "min": 2,
         "max": 5,
-        "label": "Komplexitaet Bildung"
+        "label": "Komplexität Bildung"
       },
       "a42": {
         "min": 2,
         "max": 4,
-        "label": "Komplexitaet Gesundheit"
+        "label": "Komplexität Gesundheit"
       },
       "a43": {
         "min": 3,
         "max": 6,
-        "label": "Komplexitaet Verkehr"
+        "label": "Komplexität Verkehr"
       },
       "a44": {
         "min": 1,
         "max": 3,
-        "label": "Komplexitaet Kultur"
+        "label": "Komplexität Kultur"
       },
       "a45": {
         "min": 2,
         "max": 5,
-        "label": "Komplexitaet Umwelt"
+        "label": "Komplexität Umwelt"
       },
       "b4": {
         "min": 60,
         "max": 250,
-        "label": "Max. Komplexitaetspunkte"
+        "label": "Max. Komplexitätspunkte"
       }
     },
-    "beschreibung": "Eine Kommune optimiert ihre Haushaltsinvestitionen. Bildung bringt {c1} Punkte Lebensqualitaet, Gesundheit {c2}, Verkehr {c3}, Kultur {c4} und Umwelt {c5}. Die Kosten betragen {a11} Einheiten fuer Bildung, {a12} fuer Gesundheit, {a13} fuer Verkehr, {a14} fuer Kultur und {a15} fuer Umwelt bei einem Gesamthaushalt von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Stellen fuer Bildung, {a22} fuer Gesundheit, {a23} fuer Verkehr, {a24} fuer Kultur und {a25} fuer Umwelt bei maximal {b2} Personalstellen. Der Flaechenbedarf betraegt {a31} Einheiten fuer Bildung, {a32} fuer Gesundheit, {a33} fuer Verkehr, {a34} fuer Kultur und {a35} fuer Umwelt bei maximal {b3} Flaecheneinheiten. Die politische Komplexitaet liegt bei {a41} Punkten fuer Bildung, {a42} fuer Gesundheit, {a43} fuer Verkehr, {a44} fuer Kultur und {a45} fuer Umwelt bei maximal {b4} Komplexitaetspunkten.",
-    "hinweis": "Maximiere die Lebensqualitaet unter Beachtung von Haushalt, Personal, Flaeche und Komplexitaet.",
+    "beschreibung": "Eine Kommune optimiert ihre Haushaltsinvestitionen. Bildung bringt {c1} Punkte Lebensqualität, Gesundheit {c2}, Verkehr {c3}, Kultur {c4} und Umwelt {c5}. Die Kosten betragen {a11} Einheiten für Bildung, {a12} für Gesundheit, {a13} für Verkehr, {a14} für Kultur und {a15} für Umwelt bei einem Gesamthaushalt von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Stellen für Bildung, {a22} für Gesundheit, {a23} für Verkehr, {a24} für Kultur und {a25} für Umwelt bei maximal {b2} Personalstellen. Der Flächenbedarf beträgt {a31} Einheiten für Bildung, {a32} für Gesundheit, {a33} für Verkehr, {a34} für Kultur und {a35} für Umwelt bei maximal {b3} Flächeneinheiten. Die politische Komplexität liegt bei {a41} Punkten für Bildung, {a42} für Gesundheit, {a43} für Verkehr, {a44} für Kultur und {a45} für Umwelt bei maximal {b4} Komplexitätspunkten.",
+    "hinweis": "Maximiere die Lebensqualität unter Beachtung von Haushalt, Personal, Fläche und Komplexität.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Bildung bringt {c1} Punkte Lebensqualitaet",
+          "text": "Bildung bringt {c1} Punkte Lebensqualität",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -26037,23 +26037,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Bildung",
+            "text": "{a11} Einheiten für Bildung",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Gesundheit",
+            "text": "{a12} für Gesundheit",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Verkehr",
+            "text": "{a13} für Verkehr",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Kultur",
+            "text": "{a14} für Kultur",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Umwelt",
+            "text": "{a15} für Umwelt",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -26063,23 +26063,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Stellen fuer Bildung",
+            "text": "{a21} Stellen für Bildung",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Gesundheit",
+            "text": "{a22} für Gesundheit",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Verkehr",
+            "text": "{a23} für Verkehr",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Kultur",
+            "text": "{a24} für Kultur",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Umwelt",
+            "text": "{a25} für Umwelt",
             "bedeutung": "+ {a25}x₅"
           },
           {
@@ -26089,53 +26089,53 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Bildung",
+            "text": "{a31} Einheiten für Bildung",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Gesundheit",
+            "text": "{a32} für Gesundheit",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Verkehr",
+            "text": "{a33} für Verkehr",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Kultur",
+            "text": "{a34} für Kultur",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Umwelt",
+            "text": "{a35} für Umwelt",
             "bedeutung": "+ {a35}x₅"
           },
           {
-            "text": "{b3} Flaecheneinheiten",
+            "text": "{b3} Flächeneinheiten",
             "bedeutung": "≤ {b3}"
           }
         ],
         [
           {
-            "text": "{a41} Punkten fuer Bildung",
+            "text": "{a41} Punkten für Bildung",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Gesundheit",
+            "text": "{a42} für Gesundheit",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Verkehr",
+            "text": "{a43} für Verkehr",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Kultur",
+            "text": "{a44} für Kultur",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Umwelt",
+            "text": "{a45} für Umwelt",
             "bedeutung": "+ {a45}x₅"
           },
           {
-            "text": "{b4} Komplexitaetspunkten",
+            "text": "{b4} Komplexitätspunkten",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -26164,7 +26164,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Volatilitaetstoleranz",
+        "label": "Volatilitätstoleranz",
         "row": [
           "a21",
           "a22"
@@ -26201,21 +26201,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 5,
         "max": 12,
-        "label": "Volatilitaet Bitcoin"
+        "label": "Volatilität Bitcoin"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Volatilitaet Ethereum"
+        "label": "Volatilität Ethereum"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Max. Volatilitaetstoleranz"
+        "label": "Max. Volatilitätstoleranz"
       }
     },
-    "beschreibung": "Ein Krypto-Investor moechte in Bitcoin und Ethereum investieren. Bitcoin verspricht {c1} % Rendite, Ethereum {c2} %. Pro Einheit Bitcoin werden {a11} Kapitaleinheiten benoetigt, pro Einheit Ethereum {a12} Einheiten. Das Handelsbudget betraegt {b1} Tausend Euro. Die Volatilitaet liegt bei {a21} Punkten fuer Bitcoin und {a22} Punkten fuer Ethereum bei einer maximalen Volatilitaetstoleranz von {b2} Punkten.",
-    "hinweis": "Maximiere die Rendite unter Beachtung von Handelsbudget und Volatilitaetstoleranz.",
+    "beschreibung": "Ein Krypto-Investor möchte in Bitcoin und Ethereum investieren. Bitcoin verspricht {c1} % Rendite, Ethereum {c2} %. Pro Einheit Bitcoin werden {a11} Kapitaleinheiten benötigt, pro Einheit Ethereum {a12} Einheiten. Das Handelsbudget beträgt {b1} Tausend Euro. Die Volatilität liegt bei {a21} Punkten für Bitcoin und {a22} Punkten für Ethereum bei einer maximalen Volatilitätstoleranz von {b2} Punkten.",
+    "hinweis": "Maximiere die Rendite unter Beachtung von Handelsbudget und Volatilitätstoleranz.",
     "highlights": {
       "zielfunktion": [
         {
@@ -26230,7 +26230,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Kapitaleinheiten benoetigt",
+            "text": "{a11} Kapitaleinheiten benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -26244,11 +26244,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Bitcoin",
+            "text": "{a21} Punkten für Bitcoin",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} Punkten fuer Ethereum",
+            "text": "{a22} Punkten für Ethereum",
             "bedeutung": "+ {a22}x₂"
           },
           {
@@ -26285,7 +26285,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Arbeitskapazitaet",
+        "label": "Arbeitskapazität",
         "row": [
           "a21",
           "a22"
@@ -26335,8 +26335,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Arbeitsstunden"
       }
     },
-    "beschreibung": "Ein Landwirt plant seine Investitionen. Ackerbau bringt {c1} % Ertrag, Viehzucht {c2} %. Der Kapitalbedarf betraegt {a11} Einheiten pro Ackerbaueinheit und {a12} Einheiten pro Viehzuchteinheit. Das Landwirtschaftsbudget liegt bei {b1} Tausend Euro. Ackerbau erfordert {a21} Arbeitsstunden pro Einheit, Viehzucht {a22} Stunden bei maximal {b2} verfuegbaren Arbeitsstunden.",
-    "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Budget und Arbeitskapazitaet.",
+    "beschreibung": "Ein Landwirt plant seine Investitionen. Ackerbau bringt {c1} % Ertrag, Viehzucht {c2} %. Der Kapitalbedarf beträgt {a11} Einheiten pro Ackerbaueinheit und {a12} Einheiten pro Viehzuchteinheit. Das Landwirtschaftsbudget liegt bei {b1} Tausend Euro. Ackerbau erfordert {a21} Arbeitsstunden pro Einheit, Viehzucht {a22} Stunden bei maximal {b2} verfügbaren Arbeitsstunden.",
+    "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Budget und Arbeitskapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -26373,7 +26373,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Arbeitsstunden",
+            "text": "{b2} verfügbaren Arbeitsstunden",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -26509,7 +26509,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Transaktionskosten"
       }
     },
-    "beschreibung": "Ein Mischfonds-Manager verteilt Kapital auf drei Segmente. Dividendentitel erzielen {c1} % Rendite, Wachstumswerte {c2} % und Geldmarktanlagen {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Dividendentitel, {a12} fuer Wachstumswerte und {a13} fuer Geldmarkt bei einem Fondsvolumen von {b1} Tausend Euro. Die Schwankungsbreite liegt bei {a21} Punkten fuer Dividendentitel, {a22} fuer Wachstumswerte und {a23} fuer Geldmarkt bei maximal {b2} Schwankungspunkten. Die Transaktionskosten betragen {a31} Einheiten fuer Dividendentitel, {a32} fuer Wachstumswerte und {a33} fuer Geldmarkt bei maximal {b3} Kosteneinheiten.",
+    "beschreibung": "Ein Mischfonds-Manager verteilt Kapital auf drei Segmente. Dividendentitel erzielen {c1} % Rendite, Wachstumswerte {c2} % und Geldmarktanlagen {c3} %. Der Kapitalbedarf beträgt {a11} Einheiten für Dividendentitel, {a12} für Wachstumswerte und {a13} für Geldmarkt bei einem Fondsvolumen von {b1} Tausend Euro. Die Schwankungsbreite liegt bei {a21} Punkten für Dividendentitel, {a22} für Wachstumswerte und {a23} für Geldmarkt bei maximal {b2} Schwankungspunkten. Die Transaktionskosten betragen {a31} Einheiten für Dividendentitel, {a32} für Wachstumswerte und {a33} für Geldmarkt bei maximal {b3} Kosteneinheiten.",
     "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Volumen, Schwankung und Transaktionskosten.",
     "highlights": {
       "zielfunktion": [
@@ -26529,15 +26529,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Dividendentitel",
+            "text": "{a11} Einheiten für Dividendentitel",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Wachstumswerte",
+            "text": "{a12} für Wachstumswerte",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Geldmarkt",
+            "text": "{a13} für Geldmarkt",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -26547,15 +26547,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Dividendentitel",
+            "text": "{a21} Punkten für Dividendentitel",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Wachstumswerte",
+            "text": "{a22} für Wachstumswerte",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Geldmarkt",
+            "text": "{a23} für Geldmarkt",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -26565,15 +26565,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Dividendentitel",
+            "text": "{a31} Einheiten für Dividendentitel",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Wachstumswerte",
+            "text": "{a32} für Wachstumswerte",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Geldmarkt",
+            "text": "{a33} für Geldmarkt",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -26638,7 +26638,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 100,
         "max": 500,
-        "label": "Verfuegbares Fondsvolumen (Tsd. EUR)"
+        "label": "Verfügbares Fondsvolumen (Tsd. EUR)"
       },
       "a21": {
         "min": 1,
@@ -26656,7 +26656,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Ausfallrisiko"
       }
     },
-    "beschreibung": "Ein Pensionsfonds investiert in Staats- und Unternehmensanleihen. Staatsanleihen bringen {c1} % Rendite, Unternehmensanleihen {c2} %. Pro Einheit Staatsanleihen werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Unternehmensanleihen {a12} Einheiten. Das Fondsvolumen betraegt {b1} Tausend Euro. Das Ausfallrisiko liegt bei {a21} Punkten pro Staatsanleihe und {a22} Punkten pro Unternehmensanleihe bei maximal {b2} Risikopunkten.",
+    "beschreibung": "Ein Pensionsfonds investiert in Staats- und Unternehmensanleihen. Staatsanleihen bringen {c1} % Rendite, Unternehmensanleihen {c2} %. Pro Einheit Staatsanleihen werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Unternehmensanleihen {a12} Einheiten. Das Fondsvolumen beträgt {b1} Tausend Euro. Das Ausfallrisiko liegt bei {a21} Punkten pro Staatsanleihe und {a22} Punkten pro Unternehmensanleihe bei maximal {b2} Risikopunkten.",
     "hinweis": "Maximiere die Rendite unter Beachtung von Fondsvolumen und Ausfallrisiko.",
     "highlights": {
       "zielfunktion": [
@@ -26748,7 +26748,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Illiquiditaet",
+        "label": "Illiquidität",
         "row": [
           "a31",
           "a32",
@@ -26832,31 +26832,31 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Illiquiditaet Aktien"
+        "label": "Illiquidität Aktien"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Illiquiditaet Anleihen"
+        "label": "Illiquidität Anleihen"
       },
       "a33": {
         "min": 5,
         "max": 10,
-        "label": "Illiquiditaet Immobilien"
+        "label": "Illiquidität Immobilien"
       },
       "a34": {
         "min": 3,
         "max": 7,
-        "label": "Illiquiditaet Rohstoffe"
+        "label": "Illiquidität Rohstoffe"
       },
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Illiquiditaetsbudget"
+        "label": "Max. Illiquiditätsbudget"
       }
     },
-    "beschreibung": "Ein Pensionsfonds verteilt sein Kapital auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} % und Rohstoffe {c4} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Immobilien und {a14} fuer Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten fuer Aktien, {a22} fuer Anleihen, {a23} fuer Immobilien und {a24} fuer Rohstoffe bei maximal {b2} Risikopunkten. Die Illiquiditaet betraegt {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Immobilien und {a34} fuer Rohstoffe bei maximal {b3} Illiquiditaetseinheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Fondsvolumen, Risiko und Liquiditaet.",
+    "beschreibung": "Ein Pensionsfonds verteilt sein Kapital auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} % und Rohstoffe {c4} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Immobilien und {a14} für Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten für Aktien, {a22} für Anleihen, {a23} für Immobilien und {a24} für Rohstoffe bei maximal {b2} Risikopunkten. Die Illiquidität beträgt {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Immobilien und {a34} für Rohstoffe bei maximal {b3} Illiquiditätseinheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Fondsvolumen, Risiko und Liquidität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -26879,19 +26879,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Aktien",
+            "text": "{a11} Einheiten für Aktien",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Anleihen",
+            "text": "{a12} für Anleihen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Immobilien",
+            "text": "{a13} für Immobilien",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Rohstoffe",
+            "text": "{a14} für Rohstoffe",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -26901,19 +26901,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Aktien",
+            "text": "{a21} Punkten für Aktien",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Anleihen",
+            "text": "{a22} für Anleihen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Immobilien",
+            "text": "{a23} für Immobilien",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Rohstoffe",
+            "text": "{a24} für Rohstoffe",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -26923,23 +26923,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Aktien",
+            "text": "{a31} Einheiten für Aktien",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Anleihen",
+            "text": "{a32} für Anleihen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Immobilien",
+            "text": "{a33} für Immobilien",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Rohstoffe",
+            "text": "{a34} für Rohstoffe",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} Illiquiditaetseinheiten",
+            "text": "{b3} Illiquiditätseinheiten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -26951,15 +26951,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "id": "invest_projekt_2v_11",
-    "titel": "Projektfinanzierung – Brueckenbau und Strassenbau",
+    "titel": "Projektfinanzierung – Brückenbau und Straßenbau",
     "variablen": [
-      "x1 = Investment in Brueckenbau (Tsd. EUR)",
-      "x2 = Investment in Strassenbau (Tsd. EUR)"
+      "x1 = Investment in Brückenbau (Tsd. EUR)",
+      "x2 = Investment in Straßenbau (Tsd. EUR)"
     ],
     "constraints": [
       {
         "type": "<=",
-        "label": "Oeffentliches Budget",
+        "label": "Öffentliches Budget",
         "row": [
           "a11",
           "a12"
@@ -26968,7 +26968,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Ingenieurkapazitaet",
+        "label": "Ingenieurkapazität",
         "row": [
           "a21",
           "a22"
@@ -26980,65 +26980,65 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Gesellschaftlicher Nutzen Bruecke"
+        "label": "Gesellschaftlicher Nutzen Brücke"
       },
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Gesellschaftlicher Nutzen Strasse"
+        "label": "Gesellschaftlicher Nutzen Straße"
       },
       "a11": {
         "min": 2,
         "max": 6,
-        "label": "Kosten Brueckenbau"
+        "label": "Kosten Brückenbau"
       },
       "a12": {
         "min": 1,
         "max": 4,
-        "label": "Kosten Strassenbau"
+        "label": "Kosten Straßenbau"
       },
       "b1": {
         "min": 100,
         "max": 400,
-        "label": "Oeffentliches Budget (Tsd. EUR)"
+        "label": "Öffentliches Budget (Tsd. EUR)"
       },
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Ingenieure Bruecke"
+        "label": "Ingenieure Brücke"
       },
       "a22": {
         "min": 1,
         "max": 4,
-        "label": "Ingenieure Strasse"
+        "label": "Ingenieure Straße"
       },
       "b2": {
         "min": 50,
         "max": 200,
-        "label": "Max. Ingenieurkapazitaet"
+        "label": "Max. Ingenieurkapazität"
       }
     },
-    "beschreibung": "Eine Kommune plant Infrastrukturinvestitionen. Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen, Strassenbau {c2} Einheiten. Die Kosten betragen {a11} Einheiten pro Brueckenprojekt und {a12} Einheiten pro Strassenprojekt. Das oeffentliche Budget liegt bei {b1} Tausend Euro. Pro Brueckenprojekt werden {a21} Ingenieure benoetigt, pro Strassenprojekt {a22} Ingenieure bei maximal {b2} verfuegbaren Ingenieuren.",
-    "hinweis": "Maximiere den gesellschaftlichen Nutzen unter Beachtung von Budget und Ingenieurkapazitaet.",
+    "beschreibung": "Eine Kommune plant Infrastrukturinvestitionen. Brückenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen, Straßenbau {c2} Einheiten. Die Kosten betragen {a11} Einheiten pro Brückenprojekt und {a12} Einheiten pro Straßenprojekt. Das öffentliche Budget liegt bei {b1} Tausend Euro. Pro Brückenprojekt werden {a21} Ingenieure benötigt, pro Straßenprojekt {a22} Ingenieure bei maximal {b2} verfügbaren Ingenieuren.",
+    "hinweis": "Maximiere den gesellschaftlichen Nutzen unter Beachtung von Budget und Ingenieurkapazität.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen",
+          "text": "Brückenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Strassenbau {c2} Einheiten",
+          "text": "Straßenbau {c2} Einheiten",
           "bedeutung": "{c2} × x₂"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten pro Brueckenprojekt",
+            "text": "{a11} Einheiten pro Brückenprojekt",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} Einheiten pro Strassenprojekt",
+            "text": "{a12} Einheiten pro Straßenprojekt",
             "bedeutung": "+ {a12}x₂"
           },
           {
@@ -27048,15 +27048,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Ingenieure benoetigt",
+            "text": "{a21} Ingenieure benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "Strassenprojekt {a22} Ingenieure",
+            "text": "Straßenprojekt {a22} Ingenieure",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Ingenieuren",
+            "text": "{b2} verfügbaren Ingenieuren",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -27096,7 +27096,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waehrungsrisiko",
+        "label": "Währungsrisiko",
         "row": [
           "a21",
           "a22",
@@ -27154,22 +27154,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 3,
-        "label": "Waehrungsrisiko Europa"
+        "label": "Währungsrisiko Europa"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Waehrungsrisiko Asien"
+        "label": "Währungsrisiko Asien"
       },
       "a23": {
         "min": 2,
         "max": 6,
-        "label": "Waehrungsrisiko Nordamerika"
+        "label": "Währungsrisiko Nordamerika"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Max. Waehrungsrisiko"
+        "label": "Max. Währungsrisiko"
       },
       "a31": {
         "min": 1,
@@ -27192,8 +27192,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Betreuungsaufwand"
       }
     },
-    "beschreibung": "Ein Fondsmanager diversifiziert regional. Der Europa-Fonds erzielt {c1} % Rendite, der Asien-Fonds {c2} % und der Nordamerika-Fonds {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Europa, {a12} fuer Asien und {a13} fuer Nordamerika bei einem Gesamtkapital von {b1} Tausend Euro. Das Waehrungsrisiko liegt bei {a21} Punkten fuer Europa, {a22} fuer Asien und {a23} fuer Nordamerika bei maximal {b2} Risikopunkten. Der Betreuungsaufwand betraegt {a31} Einheiten fuer Europa, {a32} fuer Asien und {a33} fuer Nordamerika bei maximal {b3} Betreuungseinheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Waehrungsrisiko und Betreuungsaufwand.",
+    "beschreibung": "Ein Fondsmanager diversifiziert regional. Der Europa-Fonds erzielt {c1} % Rendite, der Asien-Fonds {c2} % und der Nordamerika-Fonds {c3} %. Der Kapitalbedarf beträgt {a11} Einheiten für Europa, {a12} für Asien und {a13} für Nordamerika bei einem Gesamtkapital von {b1} Tausend Euro. Das Währungsrisiko liegt bei {a21} Punkten für Europa, {a22} für Asien und {a23} für Nordamerika bei maximal {b2} Risikopunkten. Der Betreuungsaufwand beträgt {a31} Einheiten für Europa, {a32} für Asien und {a33} für Nordamerika bei maximal {b3} Betreuungseinheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Währungsrisiko und Betreuungsaufwand.",
     "highlights": {
       "zielfunktion": [
         {
@@ -27212,15 +27212,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Europa",
+            "text": "{a11} Einheiten für Europa",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Asien",
+            "text": "{a12} für Asien",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Nordamerika",
+            "text": "{a13} für Nordamerika",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -27230,15 +27230,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Europa",
+            "text": "{a21} Punkten für Europa",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Asien",
+            "text": "{a22} für Asien",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Nordamerika",
+            "text": "{a23} für Nordamerika",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -27248,15 +27248,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Europa",
+            "text": "{a31} Einheiten für Europa",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Asien",
+            "text": "{a32} für Asien",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Nordamerika",
+            "text": "{a33} für Nordamerika",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -27289,7 +27289,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Lagerkapazitaet",
+        "label": "Lagerkapazität",
         "row": [
           "a21",
           "a22"
@@ -27336,11 +27336,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 50,
         "max": 200,
-        "label": "Max. Lagerplaetze"
+        "label": "Max. Lagerplätze"
       }
     },
-    "beschreibung": "Ein Edelmetallhaendler moechte sein Investment optimieren. Pro Unze Gold erwartet er {c1} EUR Gewinn, pro Unze Silber {c2} EUR. Der Kaufpreis betraegt {a11} Einheiten pro Unze Gold und {a12} Einheiten pro Unze Silber. Das Kaufbudget liegt bei {b1} EUR. Jede Unze Gold belegt {a21} Lagerplaetze, jede Unze Silber {a22} Lagerplaetze bei maximal {b2} verfuegbaren Lagerplaetzen.",
-    "hinweis": "Maximiere den Gewinn unter Beachtung von Budget und Lagerkapazitaet.",
+    "beschreibung": "Ein Edelmetallhändler möchte sein Investment optimieren. Pro Unze Gold erwartet er {c1} EUR Gewinn, pro Unze Silber {c2} EUR. Der Kaufpreis beträgt {a11} Einheiten pro Unze Gold und {a12} Einheiten pro Unze Silber. Das Kaufbudget liegt bei {b1} EUR. Jede Unze Gold belegt {a21} Lagerplätze, jede Unze Silber {a22} Lagerplätze bei maximal {b2} verfügbaren Lagerplätzen.",
+    "hinweis": "Maximiere den Gewinn unter Beachtung von Budget und Lagerkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -27369,15 +27369,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Gold belegt {a21} Lagerplaetze",
+            "text": "Gold belegt {a21} Lagerplätze",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "Silber {a22} Lagerplaetze",
+            "text": "Silber {a22} Lagerplätze",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Lagerplaetzen",
+            "text": "{b2} verfügbaren Lagerplätzen",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -27410,7 +27410,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Genehmigungskapazitaet",
+        "label": "Genehmigungskapazität",
         "row": [
           "a21",
           "a22"
@@ -27460,8 +27460,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Genehmigungseinheiten"
       }
     },
-    "beschreibung": "Ein Energieunternehmen plant Investitionen in erneuerbare Energien. Solarparks bringen {c1} % Rendite, Windparks {c2} %. Pro Einheit Solar werden {a11} Kapitaleinheiten gebunden, pro Einheit Wind {a12} Einheiten. Das Investitionsbudget liegt bei {b1} Tausend Euro. Der Genehmigungsaufwand betraegt {a21} Einheiten pro Solaranlage und {a22} Einheiten pro Windanlage bei maximal {b2} Genehmigungseinheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Budget und Genehmigungskapazitaet.",
+    "beschreibung": "Ein Energieunternehmen plant Investitionen in erneuerbare Energien. Solarparks bringen {c1} % Rendite, Windparks {c2} %. Pro Einheit Solar werden {a11} Kapitaleinheiten gebunden, pro Einheit Wind {a12} Einheiten. Das Investitionsbudget liegt bei {b1} Tausend Euro. Der Genehmigungsaufwand beträgt {a21} Einheiten pro Solaranlage und {a22} Einheiten pro Windanlage bei maximal {b2} Genehmigungseinheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Budget und Genehmigungskapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -27556,7 +27556,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Illiquiditaet",
+        "label": "Illiquidität",
         "row": [
           "a31",
           "a32",
@@ -27668,32 +27668,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 4,
-        "label": "Illiquiditaet Aktien"
+        "label": "Illiquidität Aktien"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Illiquiditaet Anleihen"
+        "label": "Illiquidität Anleihen"
       },
       "a33": {
         "min": 5,
         "max": 10,
-        "label": "Illiquiditaet Immobilien"
+        "label": "Illiquidität Immobilien"
       },
       "a34": {
         "min": 2,
         "max": 5,
-        "label": "Illiquiditaet Rohstoffe"
+        "label": "Illiquidität Rohstoffe"
       },
       "a35": {
         "min": 6,
         "max": 12,
-        "label": "Illiquiditaet Infrastruktur"
+        "label": "Illiquidität Infrastruktur"
       },
       "b3": {
         "min": 80,
         "max": 350,
-        "label": "Max. Illiquiditaet"
+        "label": "Max. Illiquidität"
       },
       "a41": {
         "min": 1,
@@ -27726,8 +27726,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Verwaltungseinheiten"
       }
     },
-    "beschreibung": "Ein Staatsfonds verteilt sein Kapital auf fuenf Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} %, Rohstoffe {c4} % und Infrastruktur {c5} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Immobilien, {a14} fuer Rohstoffe und {a15} fuer Infrastruktur bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten fuer Aktien, {a22} fuer Anleihen, {a23} fuer Immobilien, {a24} fuer Rohstoffe und {a25} fuer Infrastruktur bei maximal {b2} Risikopunkten. Die Illiquiditaet betraegt {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Immobilien, {a34} fuer Rohstoffe und {a35} fuer Infrastruktur bei maximal {b3} Illiquiditaetseinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Aktien, {a42} fuer Anleihen, {a43} fuer Immobilien, {a44} fuer Rohstoffe und {a45} fuer Infrastruktur bei maximal {b4} Verwaltungseinheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko, Liquiditaet und Verwaltung.",
+    "beschreibung": "Ein Staatsfonds verteilt sein Kapital auf fünf Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} %, Rohstoffe {c4} % und Infrastruktur {c5} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Immobilien, {a14} für Rohstoffe und {a15} für Infrastruktur bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten für Aktien, {a22} für Anleihen, {a23} für Immobilien, {a24} für Rohstoffe und {a25} für Infrastruktur bei maximal {b2} Risikopunkten. Die Illiquidität beträgt {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Immobilien, {a34} für Rohstoffe und {a35} für Infrastruktur bei maximal {b3} Illiquiditätseinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten für Aktien, {a42} für Anleihen, {a43} für Immobilien, {a44} für Rohstoffe und {a45} für Infrastruktur bei maximal {b4} Verwaltungseinheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko, Liquidität und Verwaltung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -27754,23 +27754,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Aktien",
+            "text": "{a11} Einheiten für Aktien",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Anleihen",
+            "text": "{a12} für Anleihen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Immobilien",
+            "text": "{a13} für Immobilien",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Rohstoffe",
+            "text": "{a14} für Rohstoffe",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Infrastruktur",
+            "text": "{a15} für Infrastruktur",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -27780,23 +27780,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkten fuer Aktien",
+            "text": "{a21} Punkten für Aktien",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Anleihen",
+            "text": "{a22} für Anleihen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Immobilien",
+            "text": "{a23} für Immobilien",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Rohstoffe",
+            "text": "{a24} für Rohstoffe",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Infrastruktur",
+            "text": "{a25} für Infrastruktur",
             "bedeutung": "+ {a25}x₅"
           },
           {
@@ -27806,49 +27806,49 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Aktien",
+            "text": "{a31} Einheiten für Aktien",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Anleihen",
+            "text": "{a32} für Anleihen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Immobilien",
+            "text": "{a33} für Immobilien",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Rohstoffe",
+            "text": "{a34} für Rohstoffe",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Infrastruktur",
+            "text": "{a35} für Infrastruktur",
             "bedeutung": "+ {a35}x₅"
           },
           {
-            "text": "{b3} Illiquiditaetseinheiten",
+            "text": "{b3} Illiquiditätseinheiten",
             "bedeutung": "≤ {b3}"
           }
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Aktien",
+            "text": "{a41} Einheiten für Aktien",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Anleihen",
+            "text": "{a42} für Anleihen",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Immobilien",
+            "text": "{a43} für Immobilien",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Rohstoffe",
+            "text": "{a44} für Rohstoffe",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Infrastruktur",
+            "text": "{a45} für Infrastruktur",
             "bedeutung": "+ {a45}x₅"
           },
           {
@@ -27984,7 +27984,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Laufzeitbudget"
       }
     },
-    "beschreibung": "Ein Impact-Investor verteilt Mittel auf drei Bereiche. Bildungsprojekte erzielen {c1} Punkte Sozialrendite, Gesundheitsprojekte {c2} Punkte und Umweltprojekte {c3} Punkte. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Bildung, {a12} fuer Gesundheit und {a13} fuer Umwelt bei einem Budget von {b1} Tausend Euro. Der Personalaufwand betraegt {a21} Einheiten fuer Bildung, {a22} fuer Gesundheit und {a23} fuer Umwelt bei maximal {b2} Personaleinheiten. Die Laufzeit liegt bei {a31} Jahren fuer Bildung, {a32} fuer Gesundheit und {a33} fuer Umwelt bei maximal {b3} Laufzeiteinheiten.",
+    "beschreibung": "Ein Impact-Investor verteilt Mittel auf drei Bereiche. Bildungsprojekte erzielen {c1} Punkte Sozialrendite, Gesundheitsprojekte {c2} Punkte und Umweltprojekte {c3} Punkte. Der Kapitalbedarf liegt bei {a11} Einheiten für Bildung, {a12} für Gesundheit und {a13} für Umwelt bei einem Budget von {b1} Tausend Euro. Der Personalaufwand beträgt {a21} Einheiten für Bildung, {a22} für Gesundheit und {a23} für Umwelt bei maximal {b2} Personaleinheiten. Die Laufzeit liegt bei {a31} Jahren für Bildung, {a32} für Gesundheit und {a33} für Umwelt bei maximal {b3} Laufzeiteinheiten.",
     "hinweis": "Maximiere die Sozialrendite unter Beachtung von Budget, Personal und Laufzeit.",
     "highlights": {
       "zielfunktion": [
@@ -28004,15 +28004,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Bildung",
+            "text": "{a11} Einheiten für Bildung",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Gesundheit",
+            "text": "{a12} für Gesundheit",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Umwelt",
+            "text": "{a13} für Umwelt",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -28022,15 +28022,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Bildung",
+            "text": "{a21} Einheiten für Bildung",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Gesundheit",
+            "text": "{a22} für Gesundheit",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Umwelt",
+            "text": "{a23} für Umwelt",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -28040,15 +28040,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Jahren fuer Bildung",
+            "text": "{a31} Jahren für Bildung",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Gesundheit",
+            "text": "{a32} für Gesundheit",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Umwelt",
+            "text": "{a33} für Umwelt",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -28113,7 +28113,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 50,
         "max": 200,
-        "label": "Verfuegbare Ersparnisse (Tsd. EUR)"
+        "label": "Verfügbare Ersparnisse (Tsd. EUR)"
       },
       "a21": {
         "min": 3,
@@ -28131,7 +28131,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Bindungsmonate"
       }
     },
-    "beschreibung": "Ein Sparer moechte sein Geld auf Festgeld und Tagesgeld verteilen. Festgeld bringt {c1} % Zinsen, Tagesgeld {c2} %. Pro Einheit Festgeld werden {a11} Kapitaleinheiten gebunden, pro Einheit Tagesgeld {a12} Einheiten. Die Gesamtersparnisse betragen {b1} Tausend Euro. Die Bindungsdauer liegt bei {a21} Monaten pro Festgeldeinheit und {a22} Monaten pro Tagesgeldeinheit bei maximal {b2} Bindungsmonaten insgesamt.",
+    "beschreibung": "Ein Sparer möchte sein Geld auf Festgeld und Tagesgeld verteilen. Festgeld bringt {c1} % Zinsen, Tagesgeld {c2} %. Pro Einheit Festgeld werden {a11} Kapitaleinheiten gebunden, pro Einheit Tagesgeld {a12} Einheiten. Die Gesamtersparnisse betragen {b1} Tausend Euro. Die Bindungsdauer liegt bei {a21} Monaten pro Festgeldeinheit und {a22} Monaten pro Tagesgeldeinheit bei maximal {b2} Bindungsmonaten insgesamt.",
     "hinweis": "Maximiere die Zinseinnahmen unter Beachtung von Ersparnissen und Bindungsdauer.",
     "highlights": {
       "zielfunktion": [
@@ -28202,7 +28202,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Due-Diligence-Kapazitaet",
+        "label": "Due-Diligence-Kapazität",
         "row": [
           "a21",
           "a22"
@@ -28234,7 +28234,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 100,
         "max": 500,
-        "label": "Verfuegbares Fondskapital (Tsd. EUR)"
+        "label": "Verfügbares Fondskapital (Tsd. EUR)"
       },
       "a21": {
         "min": 2,
@@ -28252,8 +28252,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Due-Diligence-Tage"
       }
     },
-    "beschreibung": "Ein Risikokapitalgeber moechte in zwei Startups investieren. Das Software-Startup verspricht {c1} % Gewinn, das Biotech-Startup {c2} %. Pro Einheit Software werden {a11} Kapitaleinheiten benoetigt, pro Einheit Biotech {a12} Einheiten. Das Fondskapital betraegt {b1} Tausend Euro. Die Due-Diligence-Pruefung erfordert {a21} Tage pro Software-Einheit und {a22} Tage pro Biotech-Einheit bei maximal {b2} verfuegbaren Prueftagen.",
-    "hinweis": "Maximiere den erwarteten Gesamtgewinn unter Beachtung von Kapital und Pruefkapazitaet.",
+    "beschreibung": "Ein Risikokapitalgeber möchte in zwei Startups investieren. Das Software-Startup verspricht {c1} % Gewinn, das Biotech-Startup {c2} %. Pro Einheit Software werden {a11} Kapitaleinheiten benötigt, pro Einheit Biotech {a12} Einheiten. Das Fondskapital beträgt {b1} Tausend Euro. Die Due-Diligence-Prüfung erfordert {a21} Tage pro Software-Einheit und {a22} Tage pro Biotech-Einheit bei maximal {b2} verfügbaren Prüftagen.",
+    "hinweis": "Maximiere den erwarteten Gesamtgewinn unter Beachtung von Kapital und Prüfkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -28268,7 +28268,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Kapitaleinheiten benoetigt",
+            "text": "{a11} Kapitaleinheiten benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -28290,7 +28290,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Prueftagen",
+            "text": "{b2} verfügbaren Prüftagen",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -28340,7 +28340,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Mentoring-Kapazitaet",
+        "label": "Mentoring-Kapazität",
         "row": [
           "a31",
           "a32",
@@ -28426,7 +28426,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Mentoring-Stunden"
       }
     },
-    "beschreibung": "Ein Accelerator investiert in drei Startup-Bereiche. KI-Startups versprechen {c1} % Rendite, Cleantech {c2} % und Medtech {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer KI, {a12} fuer Cleantech und {a13} fuer Medtech bei einem Fondskapital von {b1} Tausend Euro. Das Regulierungsrisiko betraegt {a21} Punkte fuer KI, {a22} fuer Cleantech und {a23} fuer Medtech bei maximal {b2} Regulierungspunkten. Die Mentoring-Kapazitaet erfordert {a31} Stunden fuer KI, {a32} fuer Cleantech und {a33} fuer Medtech bei maximal {b3} Mentoring-Stunden.",
+    "beschreibung": "Ein Accelerator investiert in drei Startup-Bereiche. KI-Startups versprechen {c1} % Rendite, Cleantech {c2} % und Medtech {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für KI, {a12} für Cleantech und {a13} für Medtech bei einem Fondskapital von {b1} Tausend Euro. Das Regulierungsrisiko beträgt {a21} Punkte für KI, {a22} für Cleantech und {a23} für Medtech bei maximal {b2} Regulierungspunkten. Die Mentoring-Kapazität erfordert {a31} Stunden für KI, {a32} für Cleantech und {a33} für Medtech bei maximal {b3} Mentoring-Stunden.",
     "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Regulierung und Mentoring.",
     "highlights": {
       "zielfunktion": [
@@ -28446,15 +28446,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer KI",
+            "text": "{a11} Einheiten für KI",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Cleantech",
+            "text": "{a12} für Cleantech",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Medtech",
+            "text": "{a13} für Medtech",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -28464,15 +28464,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkte fuer KI",
+            "text": "{a21} Punkte für KI",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Cleantech",
+            "text": "{a22} für Cleantech",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Medtech",
+            "text": "{a23} für Medtech",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -28482,15 +28482,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Stunden fuer KI",
+            "text": "{a31} Stunden für KI",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Cleantech",
+            "text": "{a32} für Cleantech",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Medtech",
+            "text": "{a33} für Medtech",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -28626,7 +28626,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Betreuungsstunden"
       }
     },
-    "beschreibung": "Eine Stiftung legt ihr Kapital in drei Anlageklassen an. Aktien bringen {c1} % Rendite, Anleihen {c2} % und Mikrofinanzprojekte {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Aktien, {a12} fuer Anleihen und {a13} fuer Mikrofinanz bei einem Stiftungskapital von {b1} Tausend Euro. Das Risiko betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen und {a23} fuer Mikrofinanz bei maximal {b2} Risikopunkten. Die Betreuung erfordert {a31} Stunden fuer Aktien, {a32} fuer Anleihen und {a33} fuer Mikrofinanz bei maximal {b3} Betreuungsstunden.",
+    "beschreibung": "Eine Stiftung legt ihr Kapital in drei Anlageklassen an. Aktien bringen {c1} % Rendite, Anleihen {c2} % und Mikrofinanzprojekte {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Aktien, {a12} für Anleihen und {a13} für Mikrofinanz bei einem Stiftungskapital von {b1} Tausend Euro. Das Risiko beträgt {a21} Punkte für Aktien, {a22} für Anleihen und {a23} für Mikrofinanz bei maximal {b2} Risikopunkten. Die Betreuung erfordert {a31} Stunden für Aktien, {a32} für Anleihen und {a33} für Mikrofinanz bei maximal {b3} Betreuungsstunden.",
     "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Betreuungsaufwand.",
     "highlights": {
       "zielfunktion": [
@@ -28646,15 +28646,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Aktien",
+            "text": "{a11} Einheiten für Aktien",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Anleihen",
+            "text": "{a12} für Anleihen",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Mikrofinanz",
+            "text": "{a13} für Mikrofinanz",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -28664,15 +28664,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Punkte fuer Aktien",
+            "text": "{a21} Punkte für Aktien",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Anleihen",
+            "text": "{a22} für Anleihen",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Mikrofinanz",
+            "text": "{a23} für Mikrofinanz",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -28682,15 +28682,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Stunden fuer Aktien",
+            "text": "{a31} Stunden für Aktien",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Anleihen",
+            "text": "{a32} für Anleihen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Mikrofinanz",
+            "text": "{a33} für Mikrofinanz",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -28706,7 +28706,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 5,
     "id": "invest_uni_5v_02",
-    "titel": "Universitaetsstiftung – Forschung, Lehre, Bibliothek, IT und Stipendien",
+    "titel": "Universitätsstiftung – Forschung, Lehre, Bibliothek, IT und Stipendien",
     "variablen": [
       "x1 = Budget Forschung (Tsd. EUR)",
       "x2 = Budget Lehre (Tsd. EUR)",
@@ -28748,7 +28748,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Raumkapazitaet",
+        "label": "Raumkapazität",
         "row": [
           "a31",
           "a32",
@@ -28960,7 +28960,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Zeitbudget"
       }
     },
-    "beschreibung": "Eine Universitaetsstiftung verteilt Mittel auf fuenf Bereiche. Forschung erzielt {c1} Nutzenpunkte, Lehre {c2}, Bibliothek {c3}, IT {c4} und Stipendien {c5}. Die Kosten betragen {a11} Einheiten fuer Forschung, {a12} fuer Lehre, {a13} fuer Bibliothek, {a14} fuer IT und {a15} fuer Stipendien bei einem Stiftungskapital von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Einheiten fuer Forschung, {a22} fuer Lehre, {a23} fuer Bibliothek, {a24} fuer IT und {a25} fuer Stipendien bei maximal {b2} Personaleinheiten. Der Raumbedarf betraegt {a31} Einheiten fuer Forschung, {a32} fuer Lehre, {a33} fuer Bibliothek, {a34} fuer IT und {a35} fuer Stipendien bei maximal {b3} Raumeinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Forschung, {a42} fuer Lehre, {a43} fuer Bibliothek, {a44} fuer IT und {a45} fuer Stipendien bei maximal {b4} Verwaltungseinheiten. Das Zeitbudget betraegt {a51} Einheiten fuer Forschung, {a52} fuer Lehre, {a53} fuer Bibliothek, {a54} fuer IT und {a55} fuer Stipendien bei maximal {b5} Zeiteinheiten.",
+    "beschreibung": "Eine Universitätsstiftung verteilt Mittel auf fünf Bereiche. Forschung erzielt {c1} Nutzenpunkte, Lehre {c2}, Bibliothek {c3}, IT {c4} und Stipendien {c5}. Die Kosten betragen {a11} Einheiten für Forschung, {a12} für Lehre, {a13} für Bibliothek, {a14} für IT und {a15} für Stipendien bei einem Stiftungskapital von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Einheiten für Forschung, {a22} für Lehre, {a23} für Bibliothek, {a24} für IT und {a25} für Stipendien bei maximal {b2} Personaleinheiten. Der Raumbedarf beträgt {a31} Einheiten für Forschung, {a32} für Lehre, {a33} für Bibliothek, {a34} für IT und {a35} für Stipendien bei maximal {b3} Raumeinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten für Forschung, {a42} für Lehre, {a43} für Bibliothek, {a44} für IT und {a45} für Stipendien bei maximal {b4} Verwaltungseinheiten. Das Zeitbudget beträgt {a51} Einheiten für Forschung, {a52} für Lehre, {a53} für Bibliothek, {a54} für IT und {a55} für Stipendien bei maximal {b5} Zeiteinheiten.",
     "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Kapital, Personal, Raum, Verwaltung und Zeit.",
     "highlights": {
       "zielfunktion": [
@@ -28988,23 +28988,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Forschung",
+            "text": "{a11} Einheiten für Forschung",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Lehre",
+            "text": "{a12} für Lehre",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Bibliothek",
+            "text": "{a13} für Bibliothek",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer IT",
+            "text": "{a14} für IT",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Stipendien",
+            "text": "{a15} für Stipendien",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -29014,23 +29014,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Forschung",
+            "text": "{a21} Einheiten für Forschung",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Lehre",
+            "text": "{a22} für Lehre",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Bibliothek",
+            "text": "{a23} für Bibliothek",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer IT",
+            "text": "{a24} für IT",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Stipendien",
+            "text": "{a25} für Stipendien",
             "bedeutung": "+ {a25}x₅"
           },
           {
@@ -29040,23 +29040,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Forschung",
+            "text": "{a31} Einheiten für Forschung",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Lehre",
+            "text": "{a32} für Lehre",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Bibliothek",
+            "text": "{a33} für Bibliothek",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer IT",
+            "text": "{a34} für IT",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Stipendien",
+            "text": "{a35} für Stipendien",
             "bedeutung": "+ {a35}x₅"
           },
           {
@@ -29066,23 +29066,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Forschung",
+            "text": "{a41} Einheiten für Forschung",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Lehre",
+            "text": "{a42} für Lehre",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Bibliothek",
+            "text": "{a43} für Bibliothek",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer IT",
+            "text": "{a44} für IT",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Stipendien",
+            "text": "{a45} für Stipendien",
             "bedeutung": "+ {a45}x₅"
           },
           {
@@ -29092,23 +29092,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a51} Einheiten fuer Forschung",
+            "text": "{a51} Einheiten für Forschung",
             "bedeutung": "{a51}x₁"
           },
           {
-            "text": "{a52} fuer Lehre",
+            "text": "{a52} für Lehre",
             "bedeutung": "+ {a52}x₂"
           },
           {
-            "text": "{a53} fuer Bibliothek",
+            "text": "{a53} für Bibliothek",
             "bedeutung": "+ {a53}x₃"
           },
           {
-            "text": "{a54} fuer IT",
+            "text": "{a54} für IT",
             "bedeutung": "+ {a54}x₄"
           },
           {
-            "text": "{a55} fuer Stipendien",
+            "text": "{a55} für Stipendien",
             "bedeutung": "+ {a55}x₅"
           },
           {
@@ -29191,8 +29191,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Betreuungsstunden"
       }
     },
-    "beschreibung": "Ein Venture-Capital-Fonds investiert in E-Commerce und FinTech. E-Commerce verspricht {c1} % Rendite, FinTech {c2} %. Pro Einheit E-Commerce werden {a11} Kapitaleinheiten benoetigt, pro Einheit FinTech {a12} Einheiten. Das Fondskapital betraegt {b1} Tausend Euro. Der Betreuungsaufwand liegt bei {a21} Stunden pro E-Commerce-Einheit und {a22} Stunden pro FinTech-Einheit bei maximal {b2} Betreuungsstunden pro Woche.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital und Betreuungskapazitaet.",
+    "beschreibung": "Ein Venture-Capital-Fonds investiert in E-Commerce und FinTech. E-Commerce verspricht {c1} % Rendite, FinTech {c2} %. Pro Einheit E-Commerce werden {a11} Kapitaleinheiten benötigt, pro Einheit FinTech {a12} Einheiten. Das Fondskapital beträgt {b1} Tausend Euro. Der Betreuungsaufwand liegt bei {a21} Stunden pro E-Commerce-Einheit und {a22} Stunden pro FinTech-Einheit bei maximal {b2} Betreuungsstunden pro Woche.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital und Betreuungskapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -29207,7 +29207,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Kapitaleinheiten benoetigt",
+            "text": "{a11} Kapitaleinheiten benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -29253,7 +29253,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Praemienbudget",
+        "label": "Prämienbudget",
         "row": [
           "a11",
           "a12"
@@ -29284,17 +29284,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 1,
         "max": 3,
-        "label": "Praemie Leben"
+        "label": "Prämie Leben"
       },
       "a12": {
         "min": 1,
         "max": 4,
-        "label": "Praemie Sach"
+        "label": "Prämie Sach"
       },
       "b1": {
         "min": 60,
         "max": 250,
-        "label": "Praemienbudget (Tsd. EUR)"
+        "label": "Prämienbudget (Tsd. EUR)"
       },
       "a21": {
         "min": 2,
@@ -29312,8 +29312,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Verwaltungseinheiten"
       }
     },
-    "beschreibung": "Ein Versicherungsunternehmen optimiert sein Portfolio. Lebensversicherungen bringen {c1} % Rendite, Sachversicherungen {c2} %. Die Praemien betragen {a11} Einheiten pro Lebensversicherung und {a12} Einheiten pro Sachversicherung. Das Praemienbudget liegt bei {b1} Tausend Euro. Der Verwaltungsaufwand betraegt {a21} Einheiten pro Lebensversicherung und {a22} Einheiten pro Sachversicherung bei maximal {b2} Verwaltungseinheiten.",
-    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Praemienbudget und Verwaltungsaufwand.",
+    "beschreibung": "Ein Versicherungsunternehmen optimiert sein Portfolio. Lebensversicherungen bringen {c1} % Rendite, Sachversicherungen {c2} %. Die Prämien betragen {a11} Einheiten pro Lebensversicherung und {a12} Einheiten pro Sachversicherung. Das Prämienbudget liegt bei {b1} Tausend Euro. Der Verwaltungsaufwand beträgt {a21} Einheiten pro Lebensversicherung und {a22} Einheiten pro Sachversicherung bei maximal {b2} Verwaltungseinheiten.",
+    "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Prämienbudget und Verwaltungsaufwand.",
     "highlights": {
       "zielfunktion": [
         {
@@ -40584,11 +40584,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 3,
     "id": "masch_3d_drei_3v_03",
-    "titel": "3D-Drucker – Geschwindigkeit, Schichthoehe und Duesentemperatur",
+    "titel": "3D-Drucker – Geschwindigkeit, Schichthöhe und Düsentemperatur",
     "variablen": [
       "x1 = Druckgeschwindigkeit (Stufen)",
-      "x2 = Schichthoehe (Stufen)",
-      "x3 = Duesentemperatur (Stufen)"
+      "x2 = Schichthöhe (Stufen)",
+      "x3 = Düsentemperatur (Stufen)"
     ],
     "objective": [
       "c1",
@@ -40608,7 +40608,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeentwicklung",
+        "label": "Wärmeentwicklung",
         "row": [
           "a21",
           "a22",
@@ -40631,7 +40631,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Produktivitaet Geschwindigkeit"
+        "label": "Produktivität Geschwindigkeit"
       },
       "c2": {
         "min": 3,
@@ -40666,22 +40666,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 5,
-        "label": "Waerme Geschwindigkeit"
+        "label": "Wärme Geschwindigkeit"
       },
       "a22": {
         "min": 1,
         "max": 3,
-        "label": "Waerme Schicht"
+        "label": "Wärme Schicht"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Waerme Temperatur"
+        "label": "Wärme Temperatur"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waermeeinheiten"
+        "label": "Max. Wärmeeinheiten"
       },
       "a31": {
         "min": 3,
@@ -40704,35 +40704,35 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Motorbelastung"
       }
     },
-    "beschreibung": "Ein 3D-Drucker wird ueber drei Parameter optimiert. Die Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte und die Duesentemperatur {c3} Haftungspunkte. Der Filamentverbrauch betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Schicht und {a13} fuer Temperatur bei maximal {b1} Filamenteinheiten. Die Waerme liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Schicht und {a23} fuer Temperatur bei maximal {b2} Waermeeinheiten. Die Motorbelastung betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Schicht und {a33} fuer Temperatur bei maximal {b3} Motoreinheiten.",
-    "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Filament, Waerme und Motor.",
+    "beschreibung": "Ein 3D-Drucker wird über drei Parameter optimiert. Die Druckgeschwindigkeit liefert {c1} Produktivitätspunkte, die Schichthöhe {c2} Detailpunkte und die Düsentemperatur {c3} Haftungspunkte. Der Filamentverbrauch beträgt {a11} Einheiten für Geschwindigkeit, {a12} für Schicht und {a13} für Temperatur bei maximal {b1} Filamenteinheiten. Die Wärme liegt bei {a21} Einheiten für Geschwindigkeit, {a22} für Schicht und {a23} für Temperatur bei maximal {b2} Wärmeeinheiten. Die Motorbelastung beträgt {a31} Einheiten für Geschwindigkeit, {a32} für Schicht und {a33} für Temperatur bei maximal {b3} Motoreinheiten.",
+    "hinweis": "Maximiere die Druckqualität unter Beachtung von Filament, Wärme und Motor.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte",
+          "text": "Druckgeschwindigkeit liefert {c1} Produktivitätspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Schichthoehe {c2} Detailpunkte",
+          "text": "Schichthöhe {c2} Detailpunkte",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Duesentemperatur {c3} Haftungspunkte",
+          "text": "Düsentemperatur {c3} Haftungspunkte",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Geschwindigkeit",
+            "text": "{a11} Einheiten für Geschwindigkeit",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Schicht",
+            "text": "{a12} für Schicht",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Temperatur",
+            "text": "{a13} für Temperatur",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -40742,33 +40742,33 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Geschwindigkeit",
+            "text": "{a21} Einheiten für Geschwindigkeit",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Schicht",
+            "text": "{a22} für Schicht",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Temperatur",
+            "text": "{a23} für Temperatur",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Waermeeinheiten",
+            "text": "{b2} Wärmeeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Geschwindigkeit",
+            "text": "{a31} Einheiten für Geschwindigkeit",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Schicht",
+            "text": "{a32} für Schicht",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Temperatur",
+            "text": "{a33} für Temperatur",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -40788,10 +40788,10 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2"
     ],
     "id": "masch_3d_drucker_2v_03",
-    "titel": "3D-Drucker – Druckgeschwindigkeit und Schichthoehe",
+    "titel": "3D-Drucker – Druckgeschwindigkeit und Schichthöhe",
     "variablen": [
       "x1 = Druckgeschwindigkeit (Stufen)",
-      "x2 = Schichthoehe (Stufen)"
+      "x2 = Schichthöhe (Stufen)"
     ],
     "constraints": [
       {
@@ -40805,7 +40805,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeentwicklung",
+        "label": "Wärmeentwicklung",
         "row": [
           "a21",
           "a22"
@@ -40817,12 +40817,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Produktivitaet Geschwindigkeit"
+        "label": "Produktivität Geschwindigkeit"
       },
       "c2": {
         "min": 5,
         "max": 12,
-        "label": "Detailgenauigkeit Schichthoehe"
+        "label": "Detailgenauigkeit Schichthöhe"
       },
       "a11": {
         "min": 2,
@@ -40832,7 +40832,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a12": {
         "min": 3,
         "max": 9,
-        "label": "Materialverbrauch Schichthoehe"
+        "label": "Materialverbrauch Schichthöhe"
       },
       "b1": {
         "min": 80,
@@ -40842,29 +40842,29 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Waerme Geschwindigkeit"
+        "label": "Wärme Geschwindigkeit"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Waerme Schichthoehe"
+        "label": "Wärme Schichthöhe"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waermeeinheiten"
+        "label": "Max. Wärmeeinheiten"
       }
     },
-    "beschreibung": "Ein 3D-Drucker wird ueber Geschwindigkeit und Schichthoehe parametriert. Die Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte. Der Materialverbrauch betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Schichthoehenstufe bei maximal {b1} Materialeinheiten. Die Waermeentwicklung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Schichthoehenstufe bei maximal {b2} Waermeeinheiten.",
-    "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Material und Waerme.",
+    "beschreibung": "Ein 3D-Drucker wird über Geschwindigkeit und Schichthöhe parametriert. Die Druckgeschwindigkeit liefert {c1} Produktivitätspunkte, die Schichthöhe {c2} Detailpunkte. Der Materialverbrauch beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Schichthöhenstufe bei maximal {b1} Materialeinheiten. Die Wärmeentwicklung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Schichthöhenstufe bei maximal {b2} Wärmeeinheiten.",
+    "hinweis": "Maximiere die Druckqualität unter Beachtung von Material und Wärme.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte",
+          "text": "Druckgeschwindigkeit liefert {c1} Produktivitätspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Schichthoehe {c2} Detailpunkte",
+          "text": "Schichthöhe {c2} Detailpunkte",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -40875,7 +40875,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} Einheiten pro Schichthoehenstufe",
+            "text": "{a12} Einheiten pro Schichthöhenstufe",
             "bedeutung": "+ {a12}x₂"
           },
           {
@@ -40889,11 +40889,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} Einheiten pro Schichthoehenstufe",
+            "text": "{a22} Einheiten pro Schichthöhenstufe",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Waermeeinheiten",
+            "text": "{b2} Wärmeeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -40905,12 +40905,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 4,
     "id": "masch_3d_vier_4v_02",
-    "titel": "3D-Drucker – Geschwindigkeit, Schichthoehe, Temperatur und Luefter",
+    "titel": "3D-Drucker – Geschwindigkeit, Schichthöhe, Temperatur und Lüfter",
     "variablen": [
       "x1 = Druckgeschwindigkeit (Stufen)",
-      "x2 = Schichthoehe (Stufen)",
-      "x3 = Duesentemperatur (Stufen)",
-      "x4 = Luefterleistung (Stufen)"
+      "x2 = Schichthöhe (Stufen)",
+      "x3 = Düsentemperatur (Stufen)",
+      "x4 = Lüfterleistung (Stufen)"
     ],
     "objective": [
       "c1",
@@ -40932,7 +40932,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeentwicklung",
+        "label": "Wärmeentwicklung",
         "row": [
           "a21",
           "a22",
@@ -40954,7 +40954,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Laermgrenze",
+        "label": "Lärmgrenze",
         "row": [
           "a41",
           "a42",
@@ -40968,7 +40968,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Produktivitaet Geschwindigkeit"
+        "label": "Produktivität Geschwindigkeit"
       },
       "c2": {
         "min": 3,
@@ -40983,7 +40983,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c4": {
         "min": 2,
         "max": 5,
-        "label": "Oberflaechenkuehlung Luefter"
+        "label": "Oberflächenkühlung Lüfter"
       },
       "a11": {
         "min": 2,
@@ -41003,7 +41003,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a14": {
         "min": 1,
         "max": 2,
-        "label": "Filament Luefter"
+        "label": "Filament Lüfter"
       },
       "b1": {
         "min": 80,
@@ -41013,27 +41013,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 4,
-        "label": "Waerme Geschwindigkeit"
+        "label": "Wärme Geschwindigkeit"
       },
       "a22": {
         "min": 1,
         "max": 3,
-        "label": "Waerme Schicht"
+        "label": "Wärme Schicht"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Waerme Temperatur"
+        "label": "Wärme Temperatur"
       },
       "a24": {
         "min": 1,
         "max": 2,
-        "label": "Waerme Luefter"
+        "label": "Wärme Lüfter"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waermeeinheiten"
+        "label": "Max. Wärmeeinheiten"
       },
       "a31": {
         "min": 2,
@@ -41053,7 +41053,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a34": {
         "min": 2,
         "max": 6,
-        "label": "Strom Luefter"
+        "label": "Strom Lüfter"
       },
       "b3": {
         "min": 60,
@@ -41063,66 +41063,66 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a41": {
         "min": 2,
         "max": 5,
-        "label": "Laerm Geschwindigkeit"
+        "label": "Lärm Geschwindigkeit"
       },
       "a42": {
         "min": 1,
         "max": 2,
-        "label": "Laerm Schicht"
+        "label": "Lärm Schicht"
       },
       "a43": {
         "min": 1,
         "max": 2,
-        "label": "Laerm Temperatur"
+        "label": "Lärm Temperatur"
       },
       "a44": {
         "min": 3,
         "max": 8,
-        "label": "Laerm Luefter"
+        "label": "Lärm Lüfter"
       },
       "b4": {
         "min": 50,
         "max": 200,
-        "label": "Max. Laermgrenze"
+        "label": "Max. Lärmgrenze"
       }
     },
-    "beschreibung": "Ein 3D-Drucker wird ueber vier Parameter optimiert. Die Geschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte, die Duesentemperatur {c3} Haftungspunkte und der Luefter {c4} Kuehlpunkte. Der Filamentverbrauch betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Schicht, {a13} fuer Temperatur und {a14} fuer Luefter bei maximal {b1} Filamenteinheiten. Die Waerme liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Schicht, {a23} fuer Temperatur und {a24} fuer Luefter bei maximal {b2} Waermeeinheiten. Der Stromverbrauch betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Schicht, {a33} fuer Temperatur und {a34} fuer Luefter bei maximal {b3} Stromeinheiten. Die Laermgrenze liegt bei {a41} Einheiten fuer Geschwindigkeit, {a42} fuer Schicht, {a43} fuer Temperatur und {a44} fuer Luefter bei maximal {b4} Laermeinheiten.",
-    "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Filament, Waerme, Strom und Laerm.",
+    "beschreibung": "Ein 3D-Drucker wird über vier Parameter optimiert. Die Geschwindigkeit liefert {c1} Produktivitätspunkte, die Schichthöhe {c2} Detailpunkte, die Düsentemperatur {c3} Haftungspunkte und der Lüfter {c4} Kühlpunkte. Der Filamentverbrauch beträgt {a11} Einheiten für Geschwindigkeit, {a12} für Schicht, {a13} für Temperatur und {a14} für Lüfter bei maximal {b1} Filamenteinheiten. Die Wärme liegt bei {a21} Einheiten für Geschwindigkeit, {a22} für Schicht, {a23} für Temperatur und {a24} für Lüfter bei maximal {b2} Wärmeeinheiten. Der Stromverbrauch beträgt {a31} Einheiten für Geschwindigkeit, {a32} für Schicht, {a33} für Temperatur und {a34} für Lüfter bei maximal {b3} Stromeinheiten. Die Lärmgrenze liegt bei {a41} Einheiten für Geschwindigkeit, {a42} für Schicht, {a43} für Temperatur und {a44} für Lüfter bei maximal {b4} Lärmeinheiten.",
+    "hinweis": "Maximiere die Druckqualität unter Beachtung von Filament, Wärme, Strom und Lärm.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Geschwindigkeit liefert {c1} Produktivitaetspunkte",
+          "text": "Geschwindigkeit liefert {c1} Produktivitätspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Schichthoehe {c2} Detailpunkte",
+          "text": "Schichthöhe {c2} Detailpunkte",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Duesentemperatur {c3} Haftungspunkte",
+          "text": "Düsentemperatur {c3} Haftungspunkte",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "Luefter {c4} Kuehlpunkte",
+          "text": "Lüfter {c4} Kühlpunkte",
           "bedeutung": "{c4} × x₄"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Geschwindigkeit",
+            "text": "{a11} Einheiten für Geschwindigkeit",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Schicht",
+            "text": "{a12} für Schicht",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Temperatur",
+            "text": "{a13} für Temperatur",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Luefter",
+            "text": "{a14} für Lüfter",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -41132,41 +41132,41 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Geschwindigkeit",
+            "text": "{a21} Einheiten für Geschwindigkeit",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Schicht",
+            "text": "{a22} für Schicht",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Temperatur",
+            "text": "{a23} für Temperatur",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Luefter",
+            "text": "{a24} für Lüfter",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} Waermeeinheiten",
+            "text": "{b2} Wärmeeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Geschwindigkeit",
+            "text": "{a31} Einheiten für Geschwindigkeit",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Schicht",
+            "text": "{a32} für Schicht",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Temperatur",
+            "text": "{a33} für Temperatur",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Luefter",
+            "text": "{a34} für Lüfter",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -41176,23 +41176,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Geschwindigkeit",
+            "text": "{a41} Einheiten für Geschwindigkeit",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Schicht",
+            "text": "{a42} für Schicht",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Temperatur",
+            "text": "{a43} für Temperatur",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Luefter",
+            "text": "{a44} für Lüfter",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{b4} Laermeinheiten",
+            "text": "{b4} Lärmeinheiten",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -41204,9 +41204,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 4,
     "id": "masch_beschicht_vier_4v_03",
-    "titel": "Beschichtungsanlage – Spruehrate, Abstand, Temperatur und Bandgeschwindigkeit",
+    "titel": "Beschichtungsanlage – Sprührate, Abstand, Temperatur und Bandgeschwindigkeit",
     "variablen": [
-      "x1 = Spruehrate (Stufen)",
+      "x1 = Sprührate (Stufen)",
       "x2 = Spruhabstand (Stufen)",
       "x3 = Trocknungstemperatur (Stufen)",
       "x4 = Bandgeschwindigkeit (Stufen)"
@@ -41242,7 +41242,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Trocknungskapazitaet",
+        "label": "Trocknungskapazität",
         "row": [
           "a31",
           "a32",
@@ -41256,17 +41256,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Deckung Spruehrate"
+        "label": "Deckung Sprührate"
       },
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Gleichmaessigkeit Abstand"
+        "label": "Gleichmäßigkeit Abstand"
       },
       "c3": {
         "min": 2,
         "max": 6,
-        "label": "Haertung Temperatur"
+        "label": "Härtung Temperatur"
       },
       "c4": {
         "min": 3,
@@ -41276,7 +41276,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 3,
         "max": 8,
-        "label": "Lack Spruehrate"
+        "label": "Lack Sprührate"
       },
       "a12": {
         "min": 1,
@@ -41301,7 +41301,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 3,
-        "label": "Energie Spruehrate"
+        "label": "Energie Sprührate"
       },
       "a22": {
         "min": 1,
@@ -41326,7 +41326,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Trocknung Spruehrate"
+        "label": "Trocknung Sprührate"
       },
       "a32": {
         "min": 1,
@@ -41346,23 +41346,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Trocknungskapazitaet"
+        "label": "Max. Trocknungskapazität"
       }
     },
-    "beschreibung": "Eine Beschichtungsanlage wird ueber vier Parameter optimiert. Die Spruehrate liefert {c1} Deckungspunkte, der Spruhabstand {c2} Gleichmaessigkeitspunkte, die Trocknungstemperatur {c3} Haertungspunkte und die Bandgeschwindigkeit {c4} Durchsatzpunkte. Der Lackverbrauch betraegt {a11} Einheiten fuer Spruehrate, {a12} fuer Abstand, {a13} fuer Temperatur und {a14} fuer Band bei maximal {b1} Lackeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Spruehrate, {a22} fuer Abstand, {a23} fuer Temperatur und {a24} fuer Band bei maximal {b2} Energieeinheiten. Die Trocknungskapazitaet betraegt {a31} Einheiten fuer Spruehrate, {a32} fuer Abstand, {a33} fuer Temperatur und {a34} fuer Band bei maximal {b3} Trocknungseinheiten.",
-    "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack, Energie und Trocknung.",
+    "beschreibung": "Eine Beschichtungsanlage wird über vier Parameter optimiert. Die Sprührate liefert {c1} Deckungspunkte, der Spruhabstand {c2} Gleichmäßigkeitspunkte, die Trocknungstemperatur {c3} Härtungspunkte und die Bandgeschwindigkeit {c4} Durchsatzpunkte. Der Lackverbrauch beträgt {a11} Einheiten für Sprührate, {a12} für Abstand, {a13} für Temperatur und {a14} für Band bei maximal {b1} Lackeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten für Sprührate, {a22} für Abstand, {a23} für Temperatur und {a24} für Band bei maximal {b2} Energieeinheiten. Die Trocknungskapazität beträgt {a31} Einheiten für Sprührate, {a32} für Abstand, {a33} für Temperatur und {a34} für Band bei maximal {b3} Trocknungseinheiten.",
+    "hinweis": "Maximiere die Beschichtungsqualität unter Beachtung von Lack, Energie und Trocknung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Spruehrate liefert {c1} Deckungspunkte",
+          "text": "Sprührate liefert {c1} Deckungspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Spruhabstand {c2} Gleichmaessigkeitspunkte",
+          "text": "Spruhabstand {c2} Gleichmäßigkeitspunkte",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Trocknungstemperatur {c3} Haertungspunkte",
+          "text": "Trocknungstemperatur {c3} Härtungspunkte",
           "bedeutung": "{c3} × x₃"
         },
         {
@@ -41373,19 +41373,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Spruehrate",
+            "text": "{a11} Einheiten für Sprührate",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Abstand",
+            "text": "{a12} für Abstand",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Temperatur",
+            "text": "{a13} für Temperatur",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Band",
+            "text": "{a14} für Band",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -41395,19 +41395,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Spruehrate",
+            "text": "{a21} Einheiten für Sprührate",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Abstand",
+            "text": "{a22} für Abstand",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Temperatur",
+            "text": "{a23} für Temperatur",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Band",
+            "text": "{a24} für Band",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -41417,19 +41417,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Spruehrate",
+            "text": "{a31} Einheiten für Sprührate",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Abstand",
+            "text": "{a32} für Abstand",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Temperatur",
+            "text": "{a33} für Temperatur",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Band",
+            "text": "{a34} für Band",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -41449,9 +41449,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2"
     ],
     "id": "masch_beschichtung_2v_10",
-    "titel": "Beschichtungsanlage – Spruehrate und Abstand",
+    "titel": "Beschichtungsanlage – Sprührate und Abstand",
     "variablen": [
-      "x1 = Spruehrate (Stufen)",
+      "x1 = Sprührate (Stufen)",
       "x2 = Abstand (Stufen)"
     ],
     "constraints": [
@@ -41478,17 +41478,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 11,
-        "label": "Deckung Spruehrate"
+        "label": "Deckung Sprührate"
       },
       "c2": {
         "min": 3,
         "max": 9,
-        "label": "Gleichmaessigkeit Abstand"
+        "label": "Gleichmäßigkeit Abstand"
       },
       "a11": {
         "min": 3,
         "max": 8,
-        "label": "Lack pro Spruehstufe"
+        "label": "Lack pro Sprühstufe"
       },
       "a12": {
         "min": 1,
@@ -41503,7 +41503,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 7,
-        "label": "Overspray Spruehrate"
+        "label": "Overspray Sprührate"
       },
       "a22": {
         "min": 3,
@@ -41516,23 +41516,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Overspray"
       }
     },
-    "beschreibung": "Eine Beschichtungsanlage wird ueber Spruehrate und Abstand eingestellt. Die Spruehrate liefert {c1} Punkte Deckung, der Abstand {c2} Punkte Gleichmaessigkeit. Der Lackverbrauch betraegt {a11} Einheiten pro Spruehstufe und {a12} Einheiten pro Abstandsstufe bei maximal {b1} Lackeinheiten. Der Overspray liegt bei {a21} Einheiten pro Spruehstufe und {a22} Einheiten pro Abstandsstufe bei maximal {b2} Oversprayeinheiten.",
-    "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack und Overspray.",
+    "beschreibung": "Eine Beschichtungsanlage wird über Sprührate und Abstand eingestellt. Die Sprührate liefert {c1} Punkte Deckung, der Abstand {c2} Punkte Gleichmäßigkeit. Der Lackverbrauch beträgt {a11} Einheiten pro Sprühstufe und {a12} Einheiten pro Abstandsstufe bei maximal {b1} Lackeinheiten. Der Overspray liegt bei {a21} Einheiten pro Sprühstufe und {a22} Einheiten pro Abstandsstufe bei maximal {b2} Oversprayeinheiten.",
+    "hinweis": "Maximiere die Beschichtungsqualität unter Beachtung von Lack und Overspray.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Spruehrate liefert {c1} Punkte Deckung",
+          "text": "Sprührate liefert {c1} Punkte Deckung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Abstand {c2} Punkte Gleichmaessigkeit",
+          "text": "Abstand {c2} Punkte Gleichmäßigkeit",
           "bedeutung": "{c2} × x₂"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten pro Spruehstufe",
+            "text": "{a11} Einheiten pro Sprühstufe",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -41546,7 +41546,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten pro Spruehstufe",
+            "text": "{a21} Einheiten pro Sprühstufe",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -41599,12 +41599,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Haertung Temperatur"
+        "label": "Härtung Temperatur"
       },
       "c2": {
         "min": 3,
         "max": 9,
-        "label": "Gleichmaessigkeit Dauer"
+        "label": "Gleichmäßigkeit Dauer"
       },
       "a11": {
         "min": 3,
@@ -41637,16 +41637,16 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Ofenbelastung"
       }
     },
-    "beschreibung": "Ein industrieller Brennofen wird ueber Temperatur und Brenndauer gesteuert. Die Temperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit. Der Gasverbrauch betraegt {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Dauerstufe bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Dauerstufe bei maximal {b2} Belastungseinheiten.",
-    "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gasverbrauch und Ofenbelastung.",
+    "beschreibung": "Ein industrieller Brennofen wird über Temperatur und Brenndauer gesteuert. Die Temperatur liefert {c1} Punkte Härtung, die Brenndauer {c2} Punkte Gleichmäßigkeit. Der Gasverbrauch beträgt {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Dauerstufe bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Dauerstufe bei maximal {b2} Belastungseinheiten.",
+    "hinweis": "Maximiere die Brennqualität unter Beachtung von Gasverbrauch und Ofenbelastung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Temperatur liefert {c1} Punkte Haertung",
+          "text": "Temperatur liefert {c1} Punkte Härtung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+          "text": "Brenndauer {c2} Punkte Gleichmäßigkeit",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -41734,17 +41734,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Haertung Temperatur"
+        "label": "Härtung Temperatur"
       },
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Gleichmaessigkeit Dauer"
+        "label": "Gleichmäßigkeit Dauer"
       },
       "c3": {
         "min": 2,
         "max": 6,
-        "label": "Atmosphaere Luft"
+        "label": "Atmosphäre Luft"
       },
       "a11": {
         "min": 4,
@@ -41807,35 +41807,35 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Abgaslimit"
       }
     },
-    "beschreibung": "Ein Brennofen wird ueber drei Parameter optimiert. Die Brenntemperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit und die Luftzufuhr {c3} Punkte Atmosphaerenqualitaet. Der Gasverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Dauer und {a13} fuer Luft bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Dauer und {a23} fuer Luft bei maximal {b2} Belastungseinheiten. Das Abgaslimit betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Dauer und {a33} fuer Luft bei maximal {b3} Abgaseinheiten.",
-    "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gas, Ofenbelastung und Abgaslimit.",
+    "beschreibung": "Ein Brennofen wird über drei Parameter optimiert. Die Brenntemperatur liefert {c1} Punkte Härtung, die Brenndauer {c2} Punkte Gleichmäßigkeit und die Luftzufuhr {c3} Punkte Atmosphärenqualität. Der Gasverbrauch beträgt {a11} Einheiten für Temperatur, {a12} für Dauer und {a13} für Luft bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten für Temperatur, {a22} für Dauer und {a23} für Luft bei maximal {b2} Belastungseinheiten. Das Abgaslimit beträgt {a31} Einheiten für Temperatur, {a32} für Dauer und {a33} für Luft bei maximal {b3} Abgaseinheiten.",
+    "hinweis": "Maximiere die Brennqualität unter Beachtung von Gas, Ofenbelastung und Abgaslimit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Brenntemperatur liefert {c1} Punkte Haertung",
+          "text": "Brenntemperatur liefert {c1} Punkte Härtung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+          "text": "Brenndauer {c2} Punkte Gleichmäßigkeit",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Luftzufuhr {c3} Punkte Atmosphaerenqualitaet",
+          "text": "Luftzufuhr {c3} Punkte Atmosphärenqualität",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Temperatur",
+            "text": "{a11} Einheiten für Temperatur",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Dauer",
+            "text": "{a12} für Dauer",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Luft",
+            "text": "{a13} für Luft",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -41845,15 +41845,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Temperatur",
+            "text": "{a21} Einheiten für Temperatur",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Dauer",
+            "text": "{a22} für Dauer",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Luft",
+            "text": "{a23} für Luft",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -41863,15 +41863,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Temperatur",
+            "text": "{a31} Einheiten für Temperatur",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Dauer",
+            "text": "{a32} für Dauer",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Luft",
+            "text": "{a33} für Luft",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -41887,7 +41887,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 3,
     "id": "masch_cnc_drei_3v_01",
-    "titel": "CNC-Fraese – Drehzahl, Vorschub und Schnitttiefe",
+    "titel": "CNC-Fräse – Drehzahl, Vorschub und Schnitttiefe",
     "variablen": [
       "x1 = Drehzahl (Stufen)",
       "x2 = Vorschub (Stufen)",
@@ -41911,7 +41911,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Werkzeugverschleiss",
+        "label": "Werkzeugverschleiß",
         "row": [
           "a21",
           "a22",
@@ -41934,7 +41934,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Qualitaet Drehzahl"
+        "label": "Qualität Drehzahl"
       },
       "c2": {
         "min": 4,
@@ -41969,22 +41969,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 7,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a22": {
         "min": 3,
         "max": 8,
-        "label": "Verschleiss Vorschub"
+        "label": "Verschleiß Vorschub"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Tiefe"
+        "label": "Verschleiß Tiefe"
       },
       "b2": {
         "min": 60,
         "max": 350,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       },
       "a31": {
         "min": 3,
@@ -42007,12 +42007,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Vibrationseinheiten"
       }
     },
-    "beschreibung": "Eine CNC-Fraese wird ueber drei Parameter eingestellt. Die Drehzahl liefert {c1} Qualitaetspunkte, der Vorschub {c2} Durchsatzpunkte und die Schnitttiefe {c3} Abtragpunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub und {a13} fuer Tiefe bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub und {a23} fuer Tiefe bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub und {a33} fuer Tiefe bei maximal {b3} Vibrationseinheiten.",
-    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiss und Vibration.",
+    "beschreibung": "Eine CNC-Fräse wird über drei Parameter eingestellt. Die Drehzahl liefert {c1} Qualitätspunkte, der Vorschub {c2} Durchsatzpunkte und die Schnitttiefe {c3} Abtragpunkte. Die Spindelleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub und {a13} für Tiefe bei maximal {b1} Spindeleinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub und {a23} für Tiefe bei maximal {b2} Verschleißeinheiten. Die Vibration beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub und {a33} für Tiefe bei maximal {b3} Vibrationseinheiten.",
+    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiß und Vibration.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Drehzahl liefert {c1} Qualitaetspunkte",
+          "text": "Drehzahl liefert {c1} Qualitätspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -42027,15 +42027,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Drehzahl",
+            "text": "{a11} Einheiten für Drehzahl",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Vorschub",
+            "text": "{a12} für Vorschub",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Tiefe",
+            "text": "{a13} für Tiefe",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -42045,33 +42045,33 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Drehzahl",
+            "text": "{a21} Einheiten für Drehzahl",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Vorschub",
+            "text": "{a22} für Vorschub",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Tiefe",
+            "text": "{a23} für Tiefe",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Drehzahl",
+            "text": "{a31} Einheiten für Drehzahl",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Vorschub",
+            "text": "{a32} für Vorschub",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Tiefe",
+            "text": "{a33} für Tiefe",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -42091,7 +42091,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2"
     ],
     "id": "masch_cnc_fraese_2v_01",
-    "titel": "CNC-Fraese – Drehzahl und Vorschub",
+    "titel": "CNC-Fräse – Drehzahl und Vorschub",
     "variablen": [
       "x1 = Drehzahl (100 U/min)",
       "x2 = Vorschub (mm/min)"
@@ -42108,7 +42108,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Werkzeugverschleiss",
+        "label": "Werkzeugverschleiß",
         "row": [
           "a21",
           "a22"
@@ -42120,12 +42120,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Qualitaetsbeitrag Drehzahl"
+        "label": "Qualitätsbeitrag Drehzahl"
       },
       "c2": {
         "min": 4,
         "max": 12,
-        "label": "Qualitaetsbeitrag Vorschub"
+        "label": "Qualitätsbeitrag Vorschub"
       },
       "a11": {
         "min": 2,
@@ -42145,25 +42145,25 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 9,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a22": {
         "min": 2,
         "max": 7,
-        "label": "Verschleiss Vorschub"
+        "label": "Verschleiß Vorschub"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       }
     },
-    "beschreibung": "Eine CNC-Fraese wird ueber Drehzahl und Vorschub gesteuert. Die Drehzahl traegt {c1} Qualitaetspunkte bei, der Vorschub {c2} Punkte. Der Energiebedarf liegt bei {a11} kW pro Drehzahleinheit und {a12} kW pro Vorschubeinheit. Die maximale Energieaufnahme betraegt {b1} kW. Der Werkzeugverschleiss betraegt {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Vorschubstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Oberflaechenqualitaet unter Beachtung von Energie und Verschleiss.",
+    "beschreibung": "Eine CNC-Fräse wird über Drehzahl und Vorschub gesteuert. Die Drehzahl trägt {c1} Qualitätspunkte bei, der Vorschub {c2} Punkte. Der Energiebedarf liegt bei {a11} kW pro Drehzahleinheit und {a12} kW pro Vorschubeinheit. Die maximale Energieaufnahme beträgt {b1} kW. Der Werkzeugverschleiß beträgt {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Vorschubstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Oberflächenqualität unter Beachtung von Energie und Verschleiß.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Drehzahl traegt {c1} Qualitaetspunkte bei",
+          "text": "Drehzahl trägt {c1} Qualitätspunkte bei",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -42196,7 +42196,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -42208,12 +42208,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 5,
     "id": "masch_cnc_fuenf_5v_02",
-    "titel": "5-Achs-CNC – Drehzahl, Vorschub, Tiefe, Kuehlmittel und Achsvorschub",
+    "titel": "5-Achs-CNC – Drehzahl, Vorschub, Tiefe, Kühlmittel und Achsvorschub",
     "variablen": [
       "x1 = Spindeldrehzahl (Stufen)",
       "x2 = Vorschub (Stufen)",
       "x3 = Schnitttiefe (Stufen)",
-      "x4 = Kuehlmitteldruck (Stufen)",
+      "x4 = Kühlmitteldruck (Stufen)",
       "x5 = Achsvorschub (Stufen)"
     ],
     "objective": [
@@ -42238,7 +42238,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Werkzeugverschleiss",
+        "label": "Werkzeugverschleiß",
         "row": [
           "a21",
           "a22",
@@ -42262,7 +42262,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Kuehlmittelverbrauch",
+        "label": "Kühlmittelverbrauch",
         "row": [
           "a41",
           "a42",
@@ -42274,7 +42274,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeentwicklung",
+        "label": "Wärmeentwicklung",
         "row": [
           "a51",
           "a52",
@@ -42289,7 +42289,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Oberflaechenguete Drehzahl"
+        "label": "Oberflächengüte Drehzahl"
       },
       "c2": {
         "min": 3,
@@ -42304,7 +42304,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c4": {
         "min": 2,
         "max": 5,
-        "label": "Standzeit Kuehlmittel"
+        "label": "Standzeit Kühlmittel"
       },
       "c5": {
         "min": 3,
@@ -42329,7 +42329,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a14": {
         "min": 1,
         "max": 2,
-        "label": "Spindel Kuehlmittel"
+        "label": "Spindel Kühlmittel"
       },
       "a15": {
         "min": 1,
@@ -42344,32 +42344,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a22": {
         "min": 3,
         "max": 7,
-        "label": "Verschleiss Vorschub"
+        "label": "Verschleiß Vorschub"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Tiefe"
+        "label": "Verschleiß Tiefe"
       },
       "a24": {
         "min": 1,
         "max": 2,
-        "label": "Verschleiss Kuehlmittel"
+        "label": "Verschleiß Kühlmittel"
       },
       "a25": {
         "min": 1,
         "max": 3,
-        "label": "Verschleiss Achse"
+        "label": "Verschleiß Achse"
       },
       "b2": {
         "min": 80,
         "max": 400,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       },
       "a31": {
         "min": 3,
@@ -42389,7 +42389,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a34": {
         "min": 1,
         "max": 2,
-        "label": "Vibration Kuehlmittel"
+        "label": "Vibration Kühlmittel"
       },
       "a35": {
         "min": 2,
@@ -42404,70 +42404,70 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a41": {
         "min": 1,
         "max": 2,
-        "label": "Kuehlmittel Drehzahl"
+        "label": "Kühlmittel Drehzahl"
       },
       "a42": {
         "min": 1,
         "max": 2,
-        "label": "Kuehlmittel Vorschub"
+        "label": "Kühlmittel Vorschub"
       },
       "a43": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlmittel Tiefe"
+        "label": "Kühlmittel Tiefe"
       },
       "a44": {
         "min": 3,
         "max": 8,
-        "label": "Kuehlmittel Druck"
+        "label": "Kühlmittel Druck"
       },
       "a45": {
         "min": 1,
         "max": 2,
-        "label": "Kuehlmittel Achse"
+        "label": "Kühlmittel Achse"
       },
       "b4": {
         "min": 50,
         "max": 250,
-        "label": "Max. Kuehlmittelverbrauch"
+        "label": "Max. Kühlmittelverbrauch"
       },
       "a51": {
         "min": 3,
         "max": 7,
-        "label": "Waerme Drehzahl"
+        "label": "Wärme Drehzahl"
       },
       "a52": {
         "min": 1,
         "max": 3,
-        "label": "Waerme Vorschub"
+        "label": "Wärme Vorschub"
       },
       "a53": {
         "min": 2,
         "max": 5,
-        "label": "Waerme Tiefe"
+        "label": "Wärme Tiefe"
       },
       "a54": {
         "min": 1,
         "max": 2,
-        "label": "Waerme Kuehlmittel"
+        "label": "Wärme Kühlmittel"
       },
       "a55": {
         "min": 1,
         "max": 3,
-        "label": "Waerme Achse"
+        "label": "Wärme Achse"
       },
       "b5": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waermeeinheiten"
+        "label": "Max. Wärmeeinheiten"
       }
     },
-    "beschreibung": "Ein 5-Achs-CNC-Bearbeitungszentrum wird ueber fuenf Parameter optimiert. Die Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte, der Kuehlmitteldruck {c4} Standzeitpunkte und der Achsvorschub {c5} Konturgenauigkeitspunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe, {a14} fuer Kuehlmittel und {a15} fuer Achse bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe, {a24} fuer Kuehlmittel und {a25} fuer Achse bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe, {a34} fuer Kuehlmittel und {a35} fuer Achse bei maximal {b3} Vibrationseinheiten. Der Kuehlmittelverbrauch liegt bei {a41} Einheiten fuer Drehzahl, {a42} fuer Vorschub, {a43} fuer Tiefe, {a44} fuer Kuehlmitteldruck und {a45} fuer Achse bei maximal {b4} Kuehleinheiten. Die Waermeentwicklung betraegt {a51} Einheiten fuer Drehzahl, {a52} fuer Vorschub, {a53} fuer Tiefe, {a54} fuer Kuehlmittel und {a55} fuer Achse bei maximal {b5} Waermeeinheiten.",
-    "hinweis": "Maximiere die Bearbeitungsqualitaet unter Beachtung aller fuenf Restriktionen.",
+    "beschreibung": "Ein 5-Achs-CNC-Bearbeitungszentrum wird über fünf Parameter optimiert. Die Spindeldrehzahl liefert {c1} Punkte Oberflächengüte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte, der Kühlmitteldruck {c4} Standzeitpunkte und der Achsvorschub {c5} Konturgenauigkeitspunkte. Die Spindelleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub, {a13} für Tiefe, {a14} für Kühlmittel und {a15} für Achse bei maximal {b1} Spindeleinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub, {a23} für Tiefe, {a24} für Kühlmittel und {a25} für Achse bei maximal {b2} Verschleißeinheiten. Die Vibration beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub, {a33} für Tiefe, {a34} für Kühlmittel und {a35} für Achse bei maximal {b3} Vibrationseinheiten. Der Kühlmittelverbrauch liegt bei {a41} Einheiten für Drehzahl, {a42} für Vorschub, {a43} für Tiefe, {a44} für Kühlmitteldruck und {a45} für Achse bei maximal {b4} Kühleinheiten. Die Wärmeentwicklung beträgt {a51} Einheiten für Drehzahl, {a52} für Vorschub, {a53} für Tiefe, {a54} für Kühlmittel und {a55} für Achse bei maximal {b5} Wärmeeinheiten.",
+    "hinweis": "Maximiere die Bearbeitungsqualität unter Beachtung aller fünf Restriktionen.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete",
+          "text": "Spindeldrehzahl liefert {c1} Punkte Oberflächengüte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -42479,7 +42479,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "Kuehlmitteldruck {c4} Standzeitpunkte",
+          "text": "Kühlmitteldruck {c4} Standzeitpunkte",
           "bedeutung": "{c4} × x₄"
         },
         {
@@ -42490,23 +42490,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Drehzahl",
+            "text": "{a11} Einheiten für Drehzahl",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Vorschub",
+            "text": "{a12} für Vorschub",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Tiefe",
+            "text": "{a13} für Tiefe",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Kuehlmittel",
+            "text": "{a14} für Kühlmittel",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Achse",
+            "text": "{a15} für Achse",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -42516,49 +42516,49 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Drehzahl",
+            "text": "{a21} Einheiten für Drehzahl",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Vorschub",
+            "text": "{a22} für Vorschub",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Tiefe",
+            "text": "{a23} für Tiefe",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Kuehlmittel",
+            "text": "{a24} für Kühlmittel",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Achse",
+            "text": "{a25} für Achse",
             "bedeutung": "+ {a25}x₅"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Drehzahl",
+            "text": "{a31} Einheiten für Drehzahl",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Vorschub",
+            "text": "{a32} für Vorschub",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Tiefe",
+            "text": "{a33} für Tiefe",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Kuehlmittel",
+            "text": "{a34} für Kühlmittel",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Achse",
+            "text": "{a35} für Achse",
             "bedeutung": "+ {a35}x₅"
           },
           {
@@ -42568,53 +42568,53 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Drehzahl",
+            "text": "{a41} Einheiten für Drehzahl",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Vorschub",
+            "text": "{a42} für Vorschub",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Tiefe",
+            "text": "{a43} für Tiefe",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Kuehlmitteldruck",
+            "text": "{a44} für Kühlmitteldruck",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Achse",
+            "text": "{a45} für Achse",
             "bedeutung": "+ {a45}x₅"
           },
           {
-            "text": "{b4} Kuehleinheiten",
+            "text": "{b4} Kühleinheiten",
             "bedeutung": "≤ {b4}"
           }
         ],
         [
           {
-            "text": "{a51} Einheiten fuer Drehzahl",
+            "text": "{a51} Einheiten für Drehzahl",
             "bedeutung": "{a51}x₁"
           },
           {
-            "text": "{a52} fuer Vorschub",
+            "text": "{a52} für Vorschub",
             "bedeutung": "+ {a52}x₂"
           },
           {
-            "text": "{a53} fuer Tiefe",
+            "text": "{a53} für Tiefe",
             "bedeutung": "+ {a53}x₃"
           },
           {
-            "text": "{a54} fuer Kuehlmittel",
+            "text": "{a54} für Kühlmittel",
             "bedeutung": "+ {a54}x₄"
           },
           {
-            "text": "{a55} fuer Achse",
+            "text": "{a55} für Achse",
             "bedeutung": "+ {a55}x₅"
           },
           {
-            "text": "{b5} Waermeeinheiten",
+            "text": "{b5} Wärmeeinheiten",
             "bedeutung": "≤ {b5}"
           }
         ]
@@ -42626,12 +42626,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 4,
     "id": "masch_cnc_vier_4v_01",
-    "titel": "CNC-Bearbeitungszentrum – Drehzahl, Vorschub, Tiefe und Kuehlmittel",
+    "titel": "CNC-Bearbeitungszentrum – Drehzahl, Vorschub, Tiefe und Kühlmittel",
     "variablen": [
       "x1 = Drehzahl (Stufen)",
       "x2 = Vorschub (Stufen)",
       "x3 = Schnitttiefe (Stufen)",
-      "x4 = Kuehlmittelmenge (Stufen)"
+      "x4 = Kühlmittelmenge (Stufen)"
     ],
     "objective": [
       "c1",
@@ -42653,7 +42653,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Werkzeugverschleiss",
+        "label": "Werkzeugverschleiß",
         "row": [
           "a21",
           "a22",
@@ -42678,7 +42678,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Qualitaet Drehzahl"
+        "label": "Qualität Drehzahl"
       },
       "c2": {
         "min": 4,
@@ -42693,7 +42693,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c4": {
         "min": 2,
         "max": 6,
-        "label": "Standzeit Kuehlmittel"
+        "label": "Standzeit Kühlmittel"
       },
       "a11": {
         "min": 3,
@@ -42713,7 +42713,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a14": {
         "min": 1,
         "max": 2,
-        "label": "Spindel Kuehlmittel"
+        "label": "Spindel Kühlmittel"
       },
       "b1": {
         "min": 100,
@@ -42723,27 +42723,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a22": {
         "min": 3,
         "max": 8,
-        "label": "Verschleiss Vorschub"
+        "label": "Verschleiß Vorschub"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Tiefe"
+        "label": "Verschleiß Tiefe"
       },
       "a24": {
         "min": 1,
         "max": 3,
-        "label": "Verschleiss Kuehlmittel"
+        "label": "Verschleiß Kühlmittel"
       },
       "b2": {
         "min": 80,
         "max": 400,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       },
       "a31": {
         "min": 3,
@@ -42763,7 +42763,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a34": {
         "min": 1,
         "max": 2,
-        "label": "Vibration Kuehlmittel"
+        "label": "Vibration Kühlmittel"
       },
       "b3": {
         "min": 60,
@@ -42771,12 +42771,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Vibrationseinheiten"
       }
     },
-    "beschreibung": "Ein CNC-Bearbeitungszentrum wird ueber vier Parameter gesteuert. Die Drehzahl liefert {c1} Qualitaetspunkte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und das Kuehlmittel {c4} Standzeitpunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe und {a14} fuer Kuehlmittel bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe und {a24} fuer Kuehlmittel bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe und {a34} fuer Kuehlmittel bei maximal {b3} Vibrationseinheiten.",
-    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiss und Vibration.",
+    "beschreibung": "Ein CNC-Bearbeitungszentrum wird über vier Parameter gesteuert. Die Drehzahl liefert {c1} Qualitätspunkte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und das Kühlmittel {c4} Standzeitpunkte. Die Spindelleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub, {a13} für Tiefe und {a14} für Kühlmittel bei maximal {b1} Spindeleinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub, {a23} für Tiefe und {a24} für Kühlmittel bei maximal {b2} Verschleißeinheiten. Die Vibration beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub, {a33} für Tiefe und {a34} für Kühlmittel bei maximal {b3} Vibrationseinheiten.",
+    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiß und Vibration.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Drehzahl liefert {c1} Qualitaetspunkte",
+          "text": "Drehzahl liefert {c1} Qualitätspunkte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -42788,26 +42788,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "Kuehlmittel {c4} Standzeitpunkte",
+          "text": "Kühlmittel {c4} Standzeitpunkte",
           "bedeutung": "{c4} × x₄"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Drehzahl",
+            "text": "{a11} Einheiten für Drehzahl",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Vorschub",
+            "text": "{a12} für Vorschub",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Tiefe",
+            "text": "{a13} für Tiefe",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Kuehlmittel",
+            "text": "{a14} für Kühlmittel",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -42817,41 +42817,41 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Drehzahl",
+            "text": "{a21} Einheiten für Drehzahl",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Vorschub",
+            "text": "{a22} für Vorschub",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Tiefe",
+            "text": "{a23} für Tiefe",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Kuehlmittel",
+            "text": "{a24} für Kühlmittel",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Drehzahl",
+            "text": "{a31} Einheiten für Drehzahl",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Vorschub",
+            "text": "{a32} für Vorschub",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Tiefe",
+            "text": "{a33} für Tiefe",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Kuehlmittel",
+            "text": "{a34} für Kühlmittel",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -42894,7 +42894,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Werkzeugverschleiss",
+        "label": "Werkzeugverschleiß",
         "row": [
           "a21",
           "a22",
@@ -42905,7 +42905,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeentwicklung",
+        "label": "Wärmeentwicklung",
         "row": [
           "a31",
           "a32",
@@ -42919,7 +42919,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 11,
-        "label": "Oberflaechenguete Drehzahl"
+        "label": "Oberflächengüte Drehzahl"
       },
       "c2": {
         "min": 3,
@@ -42964,60 +42964,60 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a22": {
         "min": 3,
         "max": 9,
-        "label": "Verschleiss Vorschub"
+        "label": "Verschleiß Vorschub"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Tiefe"
+        "label": "Verschleiß Tiefe"
       },
       "a24": {
         "min": 1,
         "max": 2,
-        "label": "Verschleiss Spannkraft"
+        "label": "Verschleiß Spannkraft"
       },
       "b2": {
         "min": 80,
         "max": 400,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       },
       "a31": {
         "min": 3,
         "max": 7,
-        "label": "Waerme Drehzahl"
+        "label": "Wärme Drehzahl"
       },
       "a32": {
         "min": 1,
         "max": 4,
-        "label": "Waerme Vorschub"
+        "label": "Wärme Vorschub"
       },
       "a33": {
         "min": 2,
         "max": 5,
-        "label": "Waerme Tiefe"
+        "label": "Wärme Tiefe"
       },
       "a34": {
         "min": 1,
         "max": 2,
-        "label": "Waerme Spannkraft"
+        "label": "Wärme Spannkraft"
       },
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Waermeeinheiten"
+        "label": "Max. Wärmeeinheiten"
       }
     },
-    "beschreibung": "Eine Drehmaschine wird ueber vier Parameter eingestellt. Die Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und die Spannkraft {c4} Rundlaufpunkte. Die Antriebsleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe und {a14} fuer Spannkraft bei maximal {b1} Antriebseinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe und {a24} fuer Spannkraft bei maximal {b2} Verschleisseinheiten. Die Waermeentwicklung betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe und {a34} fuer Spannkraft bei maximal {b3} Waermeeinheiten.",
-    "hinweis": "Maximiere die Bearbeitungsqualitaet unter Beachtung von Antrieb, Verschleiss und Waerme.",
+    "beschreibung": "Eine Drehmaschine wird über vier Parameter eingestellt. Die Spindeldrehzahl liefert {c1} Punkte Oberflächengüte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und die Spannkraft {c4} Rundlaufpunkte. Die Antriebsleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub, {a13} für Tiefe und {a14} für Spannkraft bei maximal {b1} Antriebseinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub, {a23} für Tiefe und {a24} für Spannkraft bei maximal {b2} Verschleißeinheiten. Die Wärmeentwicklung beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub, {a33} für Tiefe und {a34} für Spannkraft bei maximal {b3} Wärmeeinheiten.",
+    "hinweis": "Maximiere die Bearbeitungsqualität unter Beachtung von Antrieb, Verschleiß und Wärme.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete",
+          "text": "Spindeldrehzahl liefert {c1} Punkte Oberflächengüte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -43036,19 +43036,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Drehzahl",
+            "text": "{a11} Einheiten für Drehzahl",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Vorschub",
+            "text": "{a12} für Vorschub",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Tiefe",
+            "text": "{a13} für Tiefe",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Spannkraft",
+            "text": "{a14} für Spannkraft",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -43058,45 +43058,45 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Drehzahl",
+            "text": "{a21} Einheiten für Drehzahl",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Vorschub",
+            "text": "{a22} für Vorschub",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Tiefe",
+            "text": "{a23} für Tiefe",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Spannkraft",
+            "text": "{a24} für Spannkraft",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Drehzahl",
+            "text": "{a31} Einheiten für Drehzahl",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Vorschub",
+            "text": "{a32} für Vorschub",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Tiefe",
+            "text": "{a33} für Tiefe",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Spannkraft",
+            "text": "{a34} für Spannkraft",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} Waermeeinheiten",
+            "text": "{b3} Wärmeeinheiten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -43146,7 +43146,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 5,
         "max": 12,
-        "label": "Druckqualitaet Farbauftrag"
+        "label": "Druckqualität Farbauftrag"
       },
       "a11": {
         "min": 1,
@@ -43179,7 +43179,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Papierspannung"
       }
     },
-    "beschreibung": "Eine Druckpresse wird ueber Geschwindigkeit und Farbauftrag eingestellt. Die Druckgeschwindigkeit liefert {c1} Durchsatzpunkte, der Farbauftrag {c2} Punkte Druckqualitaet. Der Farbverbrauch betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Farbstufe bei maximal {b1} Farbeinheiten. Die Papierspannung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Farbstufe bei maximal {b2} Spannungseinheiten.",
+    "beschreibung": "Eine Druckpresse wird über Geschwindigkeit und Farbauftrag eingestellt. Die Druckgeschwindigkeit liefert {c1} Durchsatzpunkte, der Farbauftrag {c2} Punkte Druckqualität. Der Farbverbrauch beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Farbstufe bei maximal {b1} Farbeinheiten. Die Papierspannung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Farbstufe bei maximal {b2} Spannungseinheiten.",
     "hinweis": "Maximiere den Druckoutput unter Beachtung von Farbverbrauch und Papierspannung.",
     "highlights": {
       "zielfunktion": [
@@ -43188,7 +43188,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Farbauftrag {c2} Punkte Druckqualitaet",
+          "text": "Farbauftrag {c2} Punkte Druckqualität",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -43262,7 +43262,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 9,
-        "label": "Homogenitaet Temperatur"
+        "label": "Homogenität Temperatur"
       },
       "c2": {
         "min": 5,
@@ -43300,12 +43300,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Materialbelastung"
       }
     },
-    "beschreibung": "Ein Kunststoff-Extruder wird ueber Temperatur und Schneckendrehzahl gesteuert. Die Temperatur traegt {c1} Punkte zur Homogenitaet bei, die Schneckendrehzahl {c2} Punkte zum Durchsatz. Der Energieverbrauch liegt bei {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Drehzahlstufe bei maximal {b1} Energieeinheiten. Die Materialbelastung betraegt {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Drehzahlstufe bei maximal {b2} Belastungseinheiten.",
-    "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie und Materialbelastung.",
+    "beschreibung": "Ein Kunststoff-Extruder wird über Temperatur und Schneckendrehzahl gesteuert. Die Temperatur trägt {c1} Punkte zur Homogenität bei, die Schneckendrehzahl {c2} Punkte zum Durchsatz. Der Energieverbrauch liegt bei {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Drehzahlstufe bei maximal {b1} Energieeinheiten. Die Materialbelastung beträgt {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Drehzahlstufe bei maximal {b2} Belastungseinheiten.",
+    "hinweis": "Maximiere die Produktqualität unter Beachtung von Energie und Materialbelastung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Temperatur traegt {c1} Punkte zur Homogenitaet bei",
+          "text": "Temperatur trägt {c1} Punkte zur Homogenität bei",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -43350,12 +43350,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 5,
     "id": "masch_extruder_5v_03",
-    "titel": "Extruder – Temperatur, Drehzahl, Gegendruck, Kuehlzone und Dosierung",
+    "titel": "Extruder – Temperatur, Drehzahl, Gegendruck, Kühlzone und Dosierung",
     "variablen": [
       "x1 = Zylindertemperatur (Stufen)",
       "x2 = Schneckendrehzahl (Stufen)",
       "x3 = Gegendruck (Stufen)",
-      "x4 = Kuehlzonenleistung (Stufen)",
+      "x4 = Kühlzonenleistung (Stufen)",
       "x5 = Dosiermenge (Stufen)"
     ],
     "objective": [
@@ -43380,7 +43380,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Schneckenverschleiss",
+        "label": "Schneckenverschleiß",
         "row": [
           "a21",
           "a22",
@@ -43419,7 +43419,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 8,
-        "label": "Schmelzqualitaet Temperatur"
+        "label": "Schmelzqualität Temperatur"
       },
       "c2": {
         "min": 4,
@@ -43429,12 +43429,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 2,
         "max": 6,
-        "label": "Homogenitaet Gegendruck"
+        "label": "Homogenität Gegendruck"
       },
       "c4": {
         "min": 2,
         "max": 5,
-        "label": "Kristallinitaet Kuehlung"
+        "label": "Kristallinität Kühlung"
       },
       "c5": {
         "min": 3,
@@ -43459,7 +43459,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a14": {
         "min": 2,
         "max": 5,
-        "label": "Energie Kuehlung"
+        "label": "Energie Kühlung"
       },
       "a15": {
         "min": 1,
@@ -43474,32 +43474,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 4,
-        "label": "Verschleiss Temperatur"
+        "label": "Verschleiß Temperatur"
       },
       "a22": {
         "min": 3,
         "max": 8,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a23": {
         "min": 2,
         "max": 5,
-        "label": "Verschleiss Gegendruck"
+        "label": "Verschleiß Gegendruck"
       },
       "a24": {
         "min": 1,
         "max": 2,
-        "label": "Verschleiss Kuehlung"
+        "label": "Verschleiß Kühlung"
       },
       "a25": {
         "min": 1,
         "max": 3,
-        "label": "Verschleiss Dosierung"
+        "label": "Verschleiß Dosierung"
       },
       "b2": {
         "min": 80,
         "max": 350,
-        "label": "Max. Schneckenverschleiss"
+        "label": "Max. Schneckenverschleiß"
       },
       "a31": {
         "min": 1,
@@ -43519,7 +43519,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a34": {
         "min": 1,
         "max": 2,
-        "label": "Druck Kuehlung"
+        "label": "Druck Kühlung"
       },
       "a35": {
         "min": 1,
@@ -43549,7 +43549,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a44": {
         "min": 1,
         "max": 2,
-        "label": "Durchsatz Kuehlung"
+        "label": "Durchsatz Kühlung"
       },
       "a45": {
         "min": 3,
@@ -43562,12 +43562,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Materialdurchsatz"
       }
     },
-    "beschreibung": "Ein Extruder wird ueber fuenf Parameter optimiert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet, die Schneckendrehzahl {c2} Durchsatzpunkte, der Gegendruck {c3} Homogenitaetspunkte, die Kuehlzonenleistung {c4} Kristallinitaetspunkte und die Dosiermenge {c5} Dosiergenauigkeitspunkte. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Drehzahl, {a13} fuer Gegendruck, {a14} fuer Kuehlung und {a15} fuer Dosierung bei maximal {b1} Energieeinheiten. Der Schneckenverschleiss liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Drehzahl, {a23} fuer Gegendruck, {a24} fuer Kuehlung und {a25} fuer Dosierung bei maximal {b2} Verschleisseinheiten. Die Druckgrenze betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Drehzahl, {a33} fuer Gegendruck, {a34} fuer Kuehlung und {a35} fuer Dosierung bei maximal {b3} Druckeinheiten. Der Materialdurchsatz liegt bei {a41} Einheiten fuer Temperatur, {a42} fuer Drehzahl, {a43} fuer Gegendruck, {a44} fuer Kuehlung und {a45} fuer Dosierung bei maximal {b4} Durchsatzeinheiten.",
-    "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie, Verschleiss, Druck und Durchsatz.",
+    "beschreibung": "Ein Extruder wird über fünf Parameter optimiert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualität, die Schneckendrehzahl {c2} Durchsatzpunkte, der Gegendruck {c3} Homogenitätspunkte, die Kühlzonenleistung {c4} Kristallinitätspunkte und die Dosiermenge {c5} Dosiergenauigkeitspunkte. Der Energieverbrauch beträgt {a11} Einheiten für Temperatur, {a12} für Drehzahl, {a13} für Gegendruck, {a14} für Kühlung und {a15} für Dosierung bei maximal {b1} Energieeinheiten. Der Schneckenverschleiß liegt bei {a21} Einheiten für Temperatur, {a22} für Drehzahl, {a23} für Gegendruck, {a24} für Kühlung und {a25} für Dosierung bei maximal {b2} Verschleißeinheiten. Die Druckgrenze beträgt {a31} Einheiten für Temperatur, {a32} für Drehzahl, {a33} für Gegendruck, {a34} für Kühlung und {a35} für Dosierung bei maximal {b3} Druckeinheiten. Der Materialdurchsatz liegt bei {a41} Einheiten für Temperatur, {a42} für Drehzahl, {a43} für Gegendruck, {a44} für Kühlung und {a45} für Dosierung bei maximal {b4} Durchsatzeinheiten.",
+    "hinweis": "Maximiere die Produktqualität unter Beachtung von Energie, Verschleiß, Druck und Durchsatz.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet",
+          "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualität",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -43575,11 +43575,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Gegendruck {c3} Homogenitaetspunkte",
+          "text": "Gegendruck {c3} Homogenitätspunkte",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "Kuehlzonenleistung {c4} Kristallinitaetspunkte",
+          "text": "Kühlzonenleistung {c4} Kristallinitätspunkte",
           "bedeutung": "{c4} × x₄"
         },
         {
@@ -43590,23 +43590,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Temperatur",
+            "text": "{a11} Einheiten für Temperatur",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Drehzahl",
+            "text": "{a12} für Drehzahl",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Gegendruck",
+            "text": "{a13} für Gegendruck",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Kuehlung",
+            "text": "{a14} für Kühlung",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Dosierung",
+            "text": "{a15} für Dosierung",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -43616,49 +43616,49 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Temperatur",
+            "text": "{a21} Einheiten für Temperatur",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Drehzahl",
+            "text": "{a22} für Drehzahl",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Gegendruck",
+            "text": "{a23} für Gegendruck",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Kuehlung",
+            "text": "{a24} für Kühlung",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Dosierung",
+            "text": "{a25} für Dosierung",
             "bedeutung": "+ {a25}x₅"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Temperatur",
+            "text": "{a31} Einheiten für Temperatur",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Drehzahl",
+            "text": "{a32} für Drehzahl",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Gegendruck",
+            "text": "{a33} für Gegendruck",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Kuehlung",
+            "text": "{a34} für Kühlung",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Dosierung",
+            "text": "{a35} für Dosierung",
             "bedeutung": "+ {a35}x₅"
           },
           {
@@ -43668,23 +43668,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Temperatur",
+            "text": "{a41} Einheiten für Temperatur",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Drehzahl",
+            "text": "{a42} für Drehzahl",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Gegendruck",
+            "text": "{a43} für Gegendruck",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Kuehlung",
+            "text": "{a44} für Kühlung",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Dosierung",
+            "text": "{a45} für Dosierung",
             "bedeutung": "+ {a45}x₅"
           },
           {
@@ -43724,7 +43724,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Schneckenverschleiss",
+        "label": "Schneckenverschleiß",
         "row": [
           "a21",
           "a22",
@@ -43747,7 +43747,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 9,
-        "label": "Schmelzqualitaet Temperatur"
+        "label": "Schmelzqualität Temperatur"
       },
       "c2": {
         "min": 5,
@@ -43757,7 +43757,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 2,
         "max": 7,
-        "label": "Homogenitaet Gegendruck"
+        "label": "Homogenität Gegendruck"
       },
       "a11": {
         "min": 4,
@@ -43782,22 +43782,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 5,
-        "label": "Verschleiss Temperatur"
+        "label": "Verschleiß Temperatur"
       },
       "a22": {
         "min": 3,
         "max": 8,
-        "label": "Verschleiss Drehzahl"
+        "label": "Verschleiß Drehzahl"
       },
       "a23": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Gegendruck"
+        "label": "Verschleiß Gegendruck"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Schneckenverschleiss"
+        "label": "Max. Schneckenverschleiß"
       },
       "a31": {
         "min": 1,
@@ -43820,12 +43820,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Druckgrenze"
       }
     },
-    "beschreibung": "Ein Extruder wird ueber drei Parameter gesteuert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet, die Schneckendrehzahl {c2} Punkte Durchsatz und der Gegendruck {c3} Punkte Homogenitaet. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Drehzahl und {a13} fuer Gegendruck bei maximal {b1} Energieeinheiten. Der Schneckenverschleiss liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Drehzahl und {a23} fuer Gegendruck bei maximal {b2} Verschleisseinheiten. Die Druckgrenze betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Drehzahl und {a33} fuer Gegendruck bei maximal {b3} Druckeinheiten.",
-    "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie, Verschleiss und Druckgrenze.",
+    "beschreibung": "Ein Extruder wird über drei Parameter gesteuert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualität, die Schneckendrehzahl {c2} Punkte Durchsatz und der Gegendruck {c3} Punkte Homogenität. Der Energieverbrauch beträgt {a11} Einheiten für Temperatur, {a12} für Drehzahl und {a13} für Gegendruck bei maximal {b1} Energieeinheiten. Der Schneckenverschleiß liegt bei {a21} Einheiten für Temperatur, {a22} für Drehzahl und {a23} für Gegendruck bei maximal {b2} Verschleißeinheiten. Die Druckgrenze beträgt {a31} Einheiten für Temperatur, {a32} für Drehzahl und {a33} für Gegendruck bei maximal {b3} Druckeinheiten.",
+    "hinweis": "Maximiere die Produktqualität unter Beachtung von Energie, Verschleiß und Druckgrenze.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet",
+          "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualität",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -43833,22 +43833,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Gegendruck {c3} Punkte Homogenitaet",
+          "text": "Gegendruck {c3} Punkte Homogenität",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Temperatur",
+            "text": "{a11} Einheiten für Temperatur",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Drehzahl",
+            "text": "{a12} für Drehzahl",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Gegendruck",
+            "text": "{a13} für Gegendruck",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -43858,33 +43858,33 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Temperatur",
+            "text": "{a21} Einheiten für Temperatur",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Drehzahl",
+            "text": "{a22} für Drehzahl",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Gegendruck",
+            "text": "{a23} für Gegendruck",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Temperatur",
+            "text": "{a31} Einheiten für Temperatur",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Drehzahl",
+            "text": "{a32} für Drehzahl",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Gegendruck",
+            "text": "{a33} für Gegendruck",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -43912,7 +43912,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Kuehlung",
+        "label": "Kühlung",
         "row": [
           "a11",
           "a12"
@@ -43933,7 +43933,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 11,
-        "label": "Schnittqualitaet Leistung"
+        "label": "Schnittqualität Leistung"
       },
       "c2": {
         "min": 3,
@@ -43943,17 +43943,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 3,
         "max": 10,
-        "label": "Kuehlbedarf Leistung"
+        "label": "Kühlbedarf Leistung"
       },
       "a12": {
         "min": 1,
         "max": 5,
-        "label": "Kuehlbedarf Geschwindigkeit"
+        "label": "Kühlbedarf Geschwindigkeit"
       },
       "b1": {
         "min": 80,
         "max": 350,
-        "label": "Max. Kuehlkapazitaet"
+        "label": "Max. Kühlkapazität"
       },
       "a21": {
         "min": 2,
@@ -43971,12 +43971,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Gasverbrauch"
       }
     },
-    "beschreibung": "Ein Laserschneider wird ueber Leistung und Geschwindigkeit eingestellt. Die Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei, die Geschwindigkeit {c2} Punkte zum Durchsatz. Der Kuehlbedarf liegt bei {a11} Einheiten pro Leistungsstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Kuehleinheiten. Der Gasverbrauch betraegt {a21} Einheiten pro Leistungsstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Gaseinheiten.",
-    "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kuehlung und Gasverbrauch.",
+    "beschreibung": "Ein Laserschneider wird über Leistung und Geschwindigkeit eingestellt. Die Laserleistung trägt {c1} Punkte zur Schnittqualität bei, die Geschwindigkeit {c2} Punkte zum Durchsatz. Der Kühlbedarf liegt bei {a11} Einheiten pro Leistungsstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Kühleinheiten. Der Gasverbrauch beträgt {a21} Einheiten pro Leistungsstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Gaseinheiten.",
+    "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kühlung und Gasverbrauch.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei",
+          "text": "Laserleistung trägt {c1} Punkte zur Schnittqualität bei",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -43995,7 +43995,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Kuehleinheiten",
+            "text": "{b1} Kühleinheiten",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -44035,7 +44035,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Kuehlkapazitaet",
+        "label": "Kühlkapazität",
         "row": [
           "a11",
           "a12",
@@ -44068,7 +44068,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 12,
-        "label": "Schnittqualitaet Leistung"
+        "label": "Schnittqualität Leistung"
       },
       "c2": {
         "min": 3,
@@ -44078,27 +44078,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 2,
         "max": 7,
-        "label": "Praezision Fokus"
+        "label": "Präzision Fokus"
       },
       "a11": {
         "min": 4,
         "max": 10,
-        "label": "Kuehlung Leistung"
+        "label": "Kühlung Leistung"
       },
       "a12": {
         "min": 1,
         "max": 4,
-        "label": "Kuehlung Geschwindigkeit"
+        "label": "Kühlung Geschwindigkeit"
       },
       "a13": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlung Fokus"
+        "label": "Kühlung Fokus"
       },
       "b1": {
         "min": 80,
         "max": 400,
-        "label": "Max. Kuehlkapazitaet"
+        "label": "Max. Kühlkapazität"
       },
       "a21": {
         "min": 2,
@@ -44141,12 +44141,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Optikbelastung"
       }
     },
-    "beschreibung": "Ein Laserschneider wird ueber drei Parameter optimiert. Die Laserleistung liefert {c1} Punkte Schnittqualitaet, die Geschwindigkeit {c2} Punkte Durchsatz und die Fokuslage {c3} Punkte Praezision. Die Kuehlkapazitaet erfordert {a11} Einheiten fuer Leistung, {a12} fuer Geschwindigkeit und {a13} fuer Fokus bei maximal {b1} Kuehleinheiten. Der Gasverbrauch betraegt {a21} Einheiten fuer Leistung, {a22} fuer Geschwindigkeit und {a23} fuer Fokus bei maximal {b2} Gaseinheiten. Die Optikbelastung liegt bei {a31} Einheiten fuer Leistung, {a32} fuer Geschwindigkeit und {a33} fuer Fokus bei maximal {b3} Optikeinheiten.",
-    "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kuehlung, Gas und Optik.",
+    "beschreibung": "Ein Laserschneider wird über drei Parameter optimiert. Die Laserleistung liefert {c1} Punkte Schnittqualität, die Geschwindigkeit {c2} Punkte Durchsatz und die Fokuslage {c3} Punkte Präzision. Die Kühlkapazität erfordert {a11} Einheiten für Leistung, {a12} für Geschwindigkeit und {a13} für Fokus bei maximal {b1} Kühleinheiten. Der Gasverbrauch beträgt {a21} Einheiten für Leistung, {a22} für Geschwindigkeit und {a23} für Fokus bei maximal {b2} Gaseinheiten. Die Optikbelastung liegt bei {a31} Einheiten für Leistung, {a32} für Geschwindigkeit und {a33} für Fokus bei maximal {b3} Optikeinheiten.",
+    "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kühlung, Gas und Optik.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Laserleistung liefert {c1} Punkte Schnittqualitaet",
+          "text": "Laserleistung liefert {c1} Punkte Schnittqualität",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -44154,40 +44154,40 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Fokuslage {c3} Punkte Praezision",
+          "text": "Fokuslage {c3} Punkte Präzision",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Leistung",
+            "text": "{a11} Einheiten für Leistung",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Geschwindigkeit",
+            "text": "{a12} für Geschwindigkeit",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Fokus",
+            "text": "{a13} für Fokus",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{b1} Kuehleinheiten",
+            "text": "{b1} Kühleinheiten",
             "bedeutung": "≤ {b1}"
           }
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Leistung",
+            "text": "{a21} Einheiten für Leistung",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Geschwindigkeit",
+            "text": "{a22} für Geschwindigkeit",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Fokus",
+            "text": "{a23} für Fokus",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -44197,15 +44197,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Leistung",
+            "text": "{a31} Einheiten für Leistung",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Geschwindigkeit",
+            "text": "{a32} für Geschwindigkeit",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Fokus",
+            "text": "{a33} für Fokus",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -44225,9 +44225,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2"
     ],
     "id": "masch_mischreaktor_2v_11",
-    "titel": "Mischreaktor – Ruehrer-Drehzahl und Temperatur",
+    "titel": "Mischreaktor – Rührer-Drehzahl und Temperatur",
     "variablen": [
-      "x1 = Ruehrer-Drehzahl (Stufen)",
+      "x1 = Rührer-Drehzahl (Stufen)",
       "x2 = Reaktortemperatur (Stufen)"
     ],
     "constraints": [
@@ -44242,7 +44242,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Kuehlkapazitaet",
+        "label": "Kühlkapazität",
         "row": [
           "a21",
           "a22"
@@ -44254,7 +44254,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Mischguete Drehzahl"
+        "label": "Mischgüte Drehzahl"
       },
       "c2": {
         "min": 4,
@@ -44279,25 +44279,25 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 5,
-        "label": "Kuehlung Drehzahl"
+        "label": "Kühlung Drehzahl"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Kuehlung Temperatur"
+        "label": "Kühlung Temperatur"
       },
       "b2": {
         "min": 60,
         "max": 350,
-        "label": "Max. Kuehlkapazitaet"
+        "label": "Max. Kühlkapazität"
       }
     },
-    "beschreibung": "Ein Mischreaktor wird ueber Ruehrer-Drehzahl und Temperatur parametriert. Die Drehzahl liefert {c1} Punkte Mischguete, die Temperatur {c2} Punkte Reaktionsrate. Die Antriebsleistung betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Antriebseinheiten. Die Kuehlkapazitaet erfordert {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Kuehleinheiten.",
-    "hinweis": "Maximiere die Prozessqualitaet unter Beachtung von Antrieb und Kuehlung.",
+    "beschreibung": "Ein Mischreaktor wird über Rührer-Drehzahl und Temperatur parametriert. Die Drehzahl liefert {c1} Punkte Mischgüte, die Temperatur {c2} Punkte Reaktionsrate. Die Antriebsleistung beträgt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Antriebseinheiten. Die Kühlkapazität erfordert {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Kühleinheiten.",
+    "hinweis": "Maximiere die Prozessqualität unter Beachtung von Antrieb und Kühlung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Drehzahl liefert {c1} Punkte Mischguete",
+          "text": "Drehzahl liefert {c1} Punkte Mischgüte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -44330,7 +44330,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Kuehleinheiten",
+            "text": "{b2} Kühleinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -44363,7 +44363,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Gelenkverschleiss",
+        "label": "Gelenkverschleiß",
         "row": [
           "a21",
           "a22"
@@ -44375,7 +44375,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Praezision Greifkraft"
+        "label": "Präzision Greifkraft"
       },
       "c2": {
         "min": 5,
@@ -44410,15 +44410,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Gelenkverschleiss"
+        "label": "Max. Gelenkverschleiß"
       }
     },
-    "beschreibung": "Ein Montageroboter wird ueber Greifkraft und Verfahrgeschwindigkeit eingestellt. Die Greifkraft liefert {c1} Punkte Praezision, die Verfahrgeschwindigkeit {c2} Punkte Taktzeit. Der Stromverbrauch betraegt {a11} Einheiten pro Greifkraftstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Stromeinheiten. Der Gelenkverschleiss liegt bei {a21} Einheiten pro Greifkraftstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Montageleistung unter Beachtung von Strom und Gelenkverschleiss.",
+    "beschreibung": "Ein Montageroboter wird über Greifkraft und Verfahrgeschwindigkeit eingestellt. Die Greifkraft liefert {c1} Punkte Präzision, die Verfahrgeschwindigkeit {c2} Punkte Taktzeit. Der Stromverbrauch beträgt {a11} Einheiten pro Greifkraftstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Stromeinheiten. Der Gelenkverschleiß liegt bei {a21} Einheiten pro Greifkraftstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Montageleistung unter Beachtung von Strom und Gelenkverschleiß.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Greifkraft liefert {c1} Punkte Praezision",
+          "text": "Greifkraft liefert {c1} Punkte Präzision",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -44451,7 +44451,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -44484,7 +44484,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Poliermittelverschleiss",
+        "label": "Poliermittelverschleiß",
         "row": [
           "a21",
           "a22"
@@ -44496,7 +44496,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 4,
         "max": 10,
-        "label": "Glaette Druck"
+        "label": "Glätte Druck"
       },
       "c2": {
         "min": 3,
@@ -44521,25 +44521,25 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Druck"
+        "label": "Verschleiß Druck"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Rotation"
+        "label": "Verschleiß Rotation"
       },
       "b2": {
         "min": 60,
         "max": 350,
-        "label": "Max. Poliermittelverschleiss"
+        "label": "Max. Poliermittelverschleiß"
       }
     },
-    "beschreibung": "Eine Poliermaschine wird ueber Polierdruck und Rotationsgeschwindigkeit eingestellt. Der Polierdruck liefert {c1} Punkte Glaette, die Rotation {c2} Punkte Glanz. Der Energieverbrauch betraegt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Rotationsstufe bei maximal {b1} Energieeinheiten. Der Poliermittelverschleiss liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Rotationsstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Oberflaechenqualitaet unter Beachtung von Energie und Poliermittelverschleiss.",
+    "beschreibung": "Eine Poliermaschine wird über Polierdruck und Rotationsgeschwindigkeit eingestellt. Der Polierdruck liefert {c1} Punkte Glätte, die Rotation {c2} Punkte Glanz. Der Energieverbrauch beträgt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Rotationsstufe bei maximal {b1} Energieeinheiten. Der Poliermittelverschleiß liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Rotationsstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Oberflächenqualität unter Beachtung von Energie und Poliermittelverschleiß.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Polierdruck liefert {c1} Punkte Glaette",
+          "text": "Polierdruck liefert {c1} Punkte Glätte",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -44572,7 +44572,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -44652,7 +44652,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 2,
         "max": 7,
-        "label": "Selektivitaet Druck"
+        "label": "Selektivität Druck"
       },
       "c3": {
         "min": 4,
@@ -44765,7 +44765,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Durchsatzlimit"
       }
     },
-    "beschreibung": "Ein Chemiereaktor wird ueber vier Parameter gesteuert. Die Temperatur liefert {c1} Punkte Umsatzrate, der Druck {c2} Punkte Selektivitaet, die Katalysatormenge {c3} Punkte Reaktionsrate und die Verweilzeit {c4} Punkte Ausbeute. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Druck, {a13} fuer Katalysator und {a14} fuer Verweilzeit bei maximal {b1} Energieeinheiten. Die Sicherheitsgrenze liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Druck, {a23} fuer Katalysator und {a24} fuer Verweilzeit bei maximal {b2} Sicherheitseinheiten. Die Katalysatorkosten betragen {a31} Einheiten fuer Temperatur, {a32} fuer Druck, {a33} fuer Katalysator und {a34} fuer Verweilzeit bei maximal {b3} Kosteneinheiten. Das Durchsatzlimit liegt bei {a41} Einheiten fuer Temperatur, {a42} fuer Druck, {a43} fuer Katalysator und {a44} fuer Verweilzeit bei maximal {b4} Durchsatzeinheiten.",
+    "beschreibung": "Ein Chemiereaktor wird über vier Parameter gesteuert. Die Temperatur liefert {c1} Punkte Umsatzrate, der Druck {c2} Punkte Selektivität, die Katalysatormenge {c3} Punkte Reaktionsrate und die Verweilzeit {c4} Punkte Ausbeute. Der Energieverbrauch beträgt {a11} Einheiten für Temperatur, {a12} für Druck, {a13} für Katalysator und {a14} für Verweilzeit bei maximal {b1} Energieeinheiten. Die Sicherheitsgrenze liegt bei {a21} Einheiten für Temperatur, {a22} für Druck, {a23} für Katalysator und {a24} für Verweilzeit bei maximal {b2} Sicherheitseinheiten. Die Katalysatorkosten betragen {a31} Einheiten für Temperatur, {a32} für Druck, {a33} für Katalysator und {a34} für Verweilzeit bei maximal {b3} Kosteneinheiten. Das Durchsatzlimit liegt bei {a41} Einheiten für Temperatur, {a42} für Druck, {a43} für Katalysator und {a44} für Verweilzeit bei maximal {b4} Durchsatzeinheiten.",
     "hinweis": "Maximiere die Reaktorleistung unter Beachtung von Energie, Sicherheit, Kosten und Durchsatz.",
     "highlights": {
       "zielfunktion": [
@@ -44774,7 +44774,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Druck {c2} Punkte Selektivitaet",
+          "text": "Druck {c2} Punkte Selektivität",
           "bedeutung": "{c2} × x₂"
         },
         {
@@ -44789,19 +44789,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Temperatur",
+            "text": "{a11} Einheiten für Temperatur",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Druck",
+            "text": "{a12} für Druck",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Katalysator",
+            "text": "{a13} für Katalysator",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Verweilzeit",
+            "text": "{a14} für Verweilzeit",
             "bedeutung": "+ {a14}x₄"
           },
           {
@@ -44811,19 +44811,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Temperatur",
+            "text": "{a21} Einheiten für Temperatur",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Druck",
+            "text": "{a22} für Druck",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Katalysator",
+            "text": "{a23} für Katalysator",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Verweilzeit",
+            "text": "{a24} für Verweilzeit",
             "bedeutung": "+ {a24}x₄"
           },
           {
@@ -44833,19 +44833,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Temperatur",
+            "text": "{a31} Einheiten für Temperatur",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Druck",
+            "text": "{a32} für Druck",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Katalysator",
+            "text": "{a33} für Katalysator",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Verweilzeit",
+            "text": "{a34} für Verweilzeit",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -44855,19 +44855,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Temperatur",
+            "text": "{a41} Einheiten für Temperatur",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Druck",
+            "text": "{a42} für Druck",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Katalysator",
+            "text": "{a43} für Katalysator",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Verweilzeit",
+            "text": "{a44} für Verweilzeit",
             "bedeutung": "+ {a44}x₄"
           },
           {
@@ -44904,7 +44904,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Scheibenverschleiss",
+        "label": "Scheibenverschleiß",
         "row": [
           "a21",
           "a22"
@@ -44921,7 +44921,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Oberflaechenguete Zustellung"
+        "label": "Oberflächengüte Zustellung"
       },
       "a11": {
         "min": 2,
@@ -44941,21 +44941,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 9,
-        "label": "Verschleiss pro Drehzahlstufe"
+        "label": "Verschleiß pro Drehzahlstufe"
       },
       "a22": {
         "min": 2,
         "max": 7,
-        "label": "Verschleiss pro Zustellstufe"
+        "label": "Verschleiß pro Zustellstufe"
       },
       "b2": {
         "min": 60,
         "max": 350,
-        "label": "Max. Scheibenverschleiss"
+        "label": "Max. Scheibenverschleiß"
       }
     },
-    "beschreibung": "Eine Schleifmaschine wird ueber Scheibendrehzahl und Zustellung parametriert. Die Drehzahl liefert {c1} Punkte Abtragrate, die Zustellung {c2} Punkte Oberflaechenguete. Die Leistungsaufnahme betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Zustellstufe bei maximal {b1} Leistungseinheiten. Der Scheibenverschleiss liegt bei {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Zustellstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Schleifleistung unter Beachtung von Energie und Verschleiss.",
+    "beschreibung": "Eine Schleifmaschine wird über Scheibendrehzahl und Zustellung parametriert. Die Drehzahl liefert {c1} Punkte Abtragrate, die Zustellung {c2} Punkte Oberflächengüte. Die Leistungsaufnahme beträgt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Zustellstufe bei maximal {b1} Leistungseinheiten. Der Scheibenverschleiß liegt bei {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Zustellstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Schleifleistung unter Beachtung von Energie und Verschleiß.",
     "highlights": {
       "zielfunktion": [
         {
@@ -44963,7 +44963,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Zustellung {c2} Punkte Oberflaechenguete",
+          "text": "Zustellung {c2} Punkte Oberflächengüte",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -44992,7 +44992,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -45025,7 +45025,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Messerverschleiss",
+        "label": "Messerverschleiß",
         "row": [
           "a21",
           "a22"
@@ -45042,7 +45042,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 10,
-        "label": "Schnittqualitaet Druck"
+        "label": "Schnittqualität Druck"
       },
       "a11": {
         "min": 2,
@@ -45062,21 +45062,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Geschwindigkeit"
+        "label": "Verschleiß Geschwindigkeit"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Druck"
+        "label": "Verschleiß Druck"
       },
       "b2": {
         "min": 60,
         "max": 350,
-        "label": "Max. Messerverschleiss"
+        "label": "Max. Messerverschleiß"
       }
     },
-    "beschreibung": "Eine Schneidanlage wird ueber Schnittgeschwindigkeit und Messerdruck parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, der Messerdruck {c2} Punkte Schnittqualitaet. Die Antriebsleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Druckstufe bei maximal {b1} Antriebseinheiten. Der Messerverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Druckstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Schneidleistung unter Beachtung von Antrieb und Messerverschleiss.",
+    "beschreibung": "Eine Schneidanlage wird über Schnittgeschwindigkeit und Messerdruck parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, der Messerdruck {c2} Punkte Schnittqualität. Die Antriebsleistung beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Druckstufe bei maximal {b1} Antriebseinheiten. Der Messerverschleiß liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Druckstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Schneidleistung unter Beachtung von Antrieb und Messerverschleiß.",
     "highlights": {
       "zielfunktion": [
         {
@@ -45084,7 +45084,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Messerdruck {c2} Punkte Schnittqualitaet",
+          "text": "Messerdruck {c2} Punkte Schnittqualität",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -45113,7 +45113,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -45125,9 +45125,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 3,
     "id": "masch_schweiss_drei_3v_04",
-    "titel": "Schweissroboter – Strom, Drahtvorschub und Schutzgas",
+    "titel": "Schweißroboter – Strom, Drahtvorschub und Schutzgas",
     "variablen": [
-      "x1 = Stromstaerke (Stufen)",
+      "x1 = Stromstärke (Stufen)",
       "x2 = Drahtvorschub (Stufen)",
       "x3 = Schutzgasmenge (Stufen)"
     ],
@@ -45159,7 +45159,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Waermeeinflusszone",
+        "label": "Wärmeeinflusszone",
         "row": [
           "a31",
           "a32",
@@ -45177,7 +45177,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 9,
-        "label": "Fuellgrad Draht"
+        "label": "Füllgrad Draht"
       },
       "c3": {
         "min": 2,
@@ -45227,34 +45227,34 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 4,
         "max": 10,
-        "label": "Waerme Strom"
+        "label": "Wärme Strom"
       },
       "a32": {
         "min": 1,
         "max": 4,
-        "label": "Waerme Draht"
+        "label": "Wärme Draht"
       },
       "a33": {
         "min": 1,
         "max": 3,
-        "label": "Waerme Gas"
+        "label": "Wärme Gas"
       },
       "b3": {
         "min": 50,
         "max": 300,
-        "label": "Max. Waermeeinflusszone"
+        "label": "Max. Wärmeeinflusszone"
       }
     },
-    "beschreibung": "Ein Schweissroboter wird ueber drei Parameter optimiert. Die Stromstaerke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Fuellgrad und die Schutzgasmenge {c3} Punkte Oxidationsschutz. Die Energieaufnahme betraegt {a11} Einheiten fuer Strom, {a12} fuer Draht und {a13} fuer Gas bei maximal {b1} Energieeinheiten. Die Materialkosten liegen bei {a21} Einheiten fuer Strom, {a22} fuer Draht und {a23} fuer Gas bei maximal {b2} Kosteneinheiten. Die Waermeeinflusszone betraegt {a31} Einheiten fuer Strom, {a32} fuer Draht und {a33} fuer Gas bei maximal {b3} Waermeeinheiten.",
-    "hinweis": "Maximiere die Schweissqualitaet unter Beachtung von Energie, Kosten und Waerme.",
+    "beschreibung": "Ein Schweißroboter wird über drei Parameter optimiert. Die Stromstärke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Füllgrad und die Schutzgasmenge {c3} Punkte Oxidationsschutz. Die Energieaufnahme beträgt {a11} Einheiten für Strom, {a12} für Draht und {a13} für Gas bei maximal {b1} Energieeinheiten. Die Materialkosten liegen bei {a21} Einheiten für Strom, {a22} für Draht und {a23} für Gas bei maximal {b2} Kosteneinheiten. Die Wärmeeinflusszone beträgt {a31} Einheiten für Strom, {a32} für Draht und {a33} für Gas bei maximal {b3} Wärmeeinheiten.",
+    "hinweis": "Maximiere die Schweißqualität unter Beachtung von Energie, Kosten und Wärme.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Stromstaerke liefert {c1} Punkte Nahtfestigkeit",
+          "text": "Stromstärke liefert {c1} Punkte Nahtfestigkeit",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Drahtvorschub {c2} Punkte Fuellgrad",
+          "text": "Drahtvorschub {c2} Punkte Füllgrad",
           "bedeutung": "{c2} × x₂"
         },
         {
@@ -45265,15 +45265,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Strom",
+            "text": "{a11} Einheiten für Strom",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Draht",
+            "text": "{a12} für Draht",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Gas",
+            "text": "{a13} für Gas",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -45283,15 +45283,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Strom",
+            "text": "{a21} Einheiten für Strom",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Draht",
+            "text": "{a22} für Draht",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Gas",
+            "text": "{a23} für Gas",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -45301,19 +45301,19 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Strom",
+            "text": "{a31} Einheiten für Strom",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Draht",
+            "text": "{a32} für Draht",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Gas",
+            "text": "{a33} für Gas",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} Waermeeinheiten",
+            "text": "{b3} Wärmeeinheiten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -45329,9 +45329,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2"
     ],
     "id": "masch_schweissroboter_2v_04",
-    "titel": "Schweissroboter – Stromstaerke und Drahtvorschub",
+    "titel": "Schweißroboter – Stromstärke und Drahtvorschub",
     "variablen": [
-      "x1 = Stromstaerke (Stufen)",
+      "x1 = Stromstärke (Stufen)",
       "x2 = Drahtvorschub (Stufen)"
     ],
     "constraints": [
@@ -45363,7 +45363,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 10,
-        "label": "Schweissgeschwindigkeit Draht"
+        "label": "Schweißgeschwindigkeit Draht"
       },
       "a11": {
         "min": 3,
@@ -45396,16 +45396,16 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Spritzereinheiten"
       }
     },
-    "beschreibung": "Ein Schweissroboter wird ueber Stromstaerke und Drahtvorschub eingestellt. Die Stromstaerke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Schweissgeschwindigkeit. Die Energieaufnahme betraegt {a11} Einheiten pro Stromstufe und {a12} Einheiten pro Drahtstufe bei maximal {b1} Energieeinheiten. Die Spritzerbildung liegt bei {a21} Einheiten pro Stromstufe und {a22} Einheiten pro Drahtstufe bei maximal {b2} Spritzereinheiten.",
-    "hinweis": "Maximiere die Schweissqualitaet unter Beachtung von Energie und Spritzerbildung.",
+    "beschreibung": "Ein Schweißroboter wird über Stromstärke und Drahtvorschub eingestellt. Die Stromstärke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Schweißgeschwindigkeit. Die Energieaufnahme beträgt {a11} Einheiten pro Stromstufe und {a12} Einheiten pro Drahtstufe bei maximal {b1} Energieeinheiten. Die Spritzerbildung liegt bei {a21} Einheiten pro Stromstufe und {a22} Einheiten pro Drahtstufe bei maximal {b2} Spritzereinheiten.",
+    "hinweis": "Maximiere die Schweißqualität unter Beachtung von Energie und Spritzerbildung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Stromstaerke liefert {c1} Punkte Nahtfestigkeit",
+          "text": "Stromstärke liefert {c1} Punkte Nahtfestigkeit",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Drahtvorschub {c2} Punkte Schweissgeschwindigkeit",
+          "text": "Drahtvorschub {c2} Punkte Schweißgeschwindigkeit",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -45479,12 +45479,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 12,
-        "label": "Formfuellung Druck"
+        "label": "Formfüllung Druck"
       },
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Masshaltigkeit Nachdruck"
+        "label": "Maßhaltigkeit Nachdruck"
       },
       "a11": {
         "min": 3,
@@ -45517,16 +45517,16 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Zykluszeit"
       }
     },
-    "beschreibung": "Eine Spritzgussmaschine wird ueber Einspritzdruck und Nachdruckzeit optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Nachdruckzeit {c2} Punkte Masshaltigkeit. Die Hydraulikleistung betraegt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Nachdruckstufe bei maximal {b1} Hydraulikeinheiten. Die Zykluszeit liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Nachdruckstufe bei maximal {b2} Zeiteinheiten.",
-    "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik und Zykluszeit.",
+    "beschreibung": "Eine Spritzgussmaschine wird über Einspritzdruck und Nachdruckzeit optimiert. Der Einspritzdruck liefert {c1} Punkte Formfüllung, die Nachdruckzeit {c2} Punkte Maßhaltigkeit. Die Hydraulikleistung beträgt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Nachdruckstufe bei maximal {b1} Hydraulikeinheiten. Die Zykluszeit liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Nachdruckstufe bei maximal {b2} Zeiteinheiten.",
+    "hinweis": "Maximiere die Bauteilqualität unter Beachtung von Hydraulik und Zykluszeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+          "text": "Einspritzdruck liefert {c1} Punkte Formfüllung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Nachdruckzeit {c2} Punkte Masshaltigkeit",
+          "text": "Nachdruckzeit {c2} Punkte Maßhaltigkeit",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -45567,12 +45567,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 5,
     "id": "masch_spritzguss_5v_01",
-    "titel": "Spritzgussmaschine – Druck, Temperatur, Kuehlzeit, Nachdruck und Geschwindigkeit",
+    "titel": "Spritzgussmaschine – Druck, Temperatur, Kühlzeit, Nachdruck und Geschwindigkeit",
     "variablen": [
       "x1 = Einspritzdruck (Stufen)",
       "x2 = Massetemperatur (Stufen)",
-      "x3 = Kuehlzeit (Stufen)",
-      "x4 = Nachdruckhoehe (Stufen)",
+      "x3 = Kühlzeit (Stufen)",
+      "x4 = Nachdruckhöhe (Stufen)",
       "x5 = Einspritzgeschwindigkeit (Stufen)"
     ],
     "objective": [
@@ -45636,17 +45636,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 12,
-        "label": "Formfuellung Druck"
+        "label": "Formfüllung Druck"
       },
       "c2": {
         "min": 3,
         "max": 7,
-        "label": "Fliessfaehigkeit Temperatur"
+        "label": "Fließfähigkeit Temperatur"
       },
       "c3": {
         "min": 2,
         "max": 6,
-        "label": "Masshaltigkeit Kuehlzeit"
+        "label": "Maßhaltigkeit Kühlzeit"
       },
       "c4": {
         "min": 3,
@@ -45671,7 +45671,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 1,
         "max": 2,
-        "label": "Hydraulik Kuehlzeit"
+        "label": "Hydraulik Kühlzeit"
       },
       "a14": {
         "min": 2,
@@ -45701,7 +45701,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a23": {
         "min": 1,
         "max": 3,
-        "label": "Energie Kuehlzeit"
+        "label": "Energie Kühlzeit"
       },
       "a24": {
         "min": 1,
@@ -45731,7 +45731,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a33": {
         "min": 4,
         "max": 10,
-        "label": "Zyklus Kuehlzeit"
+        "label": "Zyklus Kühlzeit"
       },
       "a34": {
         "min": 2,
@@ -45761,7 +45761,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a43": {
         "min": 1,
         "max": 2,
-        "label": "Werkzeug Kuehlzeit"
+        "label": "Werkzeug Kühlzeit"
       },
       "a44": {
         "min": 2,
@@ -45779,24 +45779,24 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Werkzeugbelastung"
       }
     },
-    "beschreibung": "Eine Spritzgussmaschine wird ueber fuenf Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Massetemperatur {c2} Punkte Fliessfaehigkeit, die Kuehlzeit {c3} Punkte Masshaltigkeit, die Nachdruckhoehe {c4} Punkte gegen Einfallstellen und die Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz. Die Hydraulikleistung betraegt {a11} Einheiten fuer Druck, {a12} fuer Temperatur, {a13} fuer Kuehlzeit, {a14} fuer Nachdruck und {a15} fuer Geschwindigkeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Druck, {a22} fuer Temperatur, {a23} fuer Kuehlzeit, {a24} fuer Nachdruck und {a25} fuer Geschwindigkeit bei maximal {b2} Energieeinheiten. Die Zykluszeit betraegt {a31} Einheiten fuer Druck, {a32} fuer Temperatur, {a33} fuer Kuehlzeit, {a34} fuer Nachdruck und {a35} fuer Geschwindigkeit bei maximal {b3} Zeiteinheiten. Die Werkzeugbelastung liegt bei {a41} Einheiten fuer Druck, {a42} fuer Temperatur, {a43} fuer Kuehlzeit, {a44} fuer Nachdruck und {a45} fuer Geschwindigkeit bei maximal {b4} Werkzeugeinheiten.",
-    "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik, Energie, Zykluszeit und Werkzeug.",
+    "beschreibung": "Eine Spritzgussmaschine wird über fünf Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfüllung, die Massetemperatur {c2} Punkte Fließfähigkeit, die Kühlzeit {c3} Punkte Maßhaltigkeit, die Nachdruckhöhe {c4} Punkte gegen Einfallstellen und die Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz. Die Hydraulikleistung beträgt {a11} Einheiten für Druck, {a12} für Temperatur, {a13} für Kühlzeit, {a14} für Nachdruck und {a15} für Geschwindigkeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten für Druck, {a22} für Temperatur, {a23} für Kühlzeit, {a24} für Nachdruck und {a25} für Geschwindigkeit bei maximal {b2} Energieeinheiten. Die Zykluszeit beträgt {a31} Einheiten für Druck, {a32} für Temperatur, {a33} für Kühlzeit, {a34} für Nachdruck und {a35} für Geschwindigkeit bei maximal {b3} Zeiteinheiten. Die Werkzeugbelastung liegt bei {a41} Einheiten für Druck, {a42} für Temperatur, {a43} für Kühlzeit, {a44} für Nachdruck und {a45} für Geschwindigkeit bei maximal {b4} Werkzeugeinheiten.",
+    "hinweis": "Maximiere die Bauteilqualität unter Beachtung von Hydraulik, Energie, Zykluszeit und Werkzeug.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+          "text": "Einspritzdruck liefert {c1} Punkte Formfüllung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Massetemperatur {c2} Punkte Fliessfaehigkeit",
+          "text": "Massetemperatur {c2} Punkte Fließfähigkeit",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Kuehlzeit {c3} Punkte Masshaltigkeit",
+          "text": "Kühlzeit {c3} Punkte Maßhaltigkeit",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "Nachdruckhoehe {c4} Punkte gegen Einfallstellen",
+          "text": "Nachdruckhöhe {c4} Punkte gegen Einfallstellen",
           "bedeutung": "{c4} × x₄"
         },
         {
@@ -45807,23 +45807,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Druck",
+            "text": "{a11} Einheiten für Druck",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Temperatur",
+            "text": "{a12} für Temperatur",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Kuehlzeit",
+            "text": "{a13} für Kühlzeit",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{a14} fuer Nachdruck",
+            "text": "{a14} für Nachdruck",
             "bedeutung": "+ {a14}x₄"
           },
           {
-            "text": "{a15} fuer Geschwindigkeit",
+            "text": "{a15} für Geschwindigkeit",
             "bedeutung": "+ {a15}x₅"
           },
           {
@@ -45833,23 +45833,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Druck",
+            "text": "{a21} Einheiten für Druck",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Temperatur",
+            "text": "{a22} für Temperatur",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Kuehlzeit",
+            "text": "{a23} für Kühlzeit",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{a24} fuer Nachdruck",
+            "text": "{a24} für Nachdruck",
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{a25} fuer Geschwindigkeit",
+            "text": "{a25} für Geschwindigkeit",
             "bedeutung": "+ {a25}x₅"
           },
           {
@@ -45859,23 +45859,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Druck",
+            "text": "{a31} Einheiten für Druck",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Temperatur",
+            "text": "{a32} für Temperatur",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Kuehlzeit",
+            "text": "{a33} für Kühlzeit",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Nachdruck",
+            "text": "{a34} für Nachdruck",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Geschwindigkeit",
+            "text": "{a35} für Geschwindigkeit",
             "bedeutung": "+ {a35}x₅"
           },
           {
@@ -45885,23 +45885,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Einheiten fuer Druck",
+            "text": "{a41} Einheiten für Druck",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} fuer Temperatur",
+            "text": "{a42} für Temperatur",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} fuer Kuehlzeit",
+            "text": "{a43} für Kühlzeit",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} fuer Nachdruck",
+            "text": "{a44} für Nachdruck",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{a45} fuer Geschwindigkeit",
+            "text": "{a45} für Geschwindigkeit",
             "bedeutung": "+ {a45}x₅"
           },
           {
@@ -45917,11 +45917,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 3,
     "id": "masch_spritzguss_drei_3v_06",
-    "titel": "Spritzgussmaschine – Druck, Temperatur und Kuehlzeit",
+    "titel": "Spritzgussmaschine – Druck, Temperatur und Kühlzeit",
     "variablen": [
       "x1 = Einspritzdruck (Stufen)",
       "x2 = Massetemperatur (Stufen)",
-      "x3 = Kuehlzeit (Stufen)"
+      "x3 = Kühlzeit (Stufen)"
     ],
     "objective": [
       "c1",
@@ -45964,17 +45964,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 12,
-        "label": "Formfuellung Druck"
+        "label": "Formfüllung Druck"
       },
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Fliessfaehigkeit Temperatur"
+        "label": "Fließfähigkeit Temperatur"
       },
       "c3": {
         "min": 2,
         "max": 7,
-        "label": "Masshaltigkeit Kuehlzeit"
+        "label": "Maßhaltigkeit Kühlzeit"
       },
       "a11": {
         "min": 3,
@@ -45989,7 +45989,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 1,
         "max": 2,
-        "label": "Hydraulik Kuehlzeit"
+        "label": "Hydraulik Kühlzeit"
       },
       "b1": {
         "min": 80,
@@ -46009,7 +46009,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a23": {
         "min": 1,
         "max": 3,
-        "label": "Energie Kuehlzeit"
+        "label": "Energie Kühlzeit"
       },
       "b2": {
         "min": 80,
@@ -46029,7 +46029,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a33": {
         "min": 4,
         "max": 10,
-        "label": "Zyklus Kuehlzeit"
+        "label": "Zyklus Kühlzeit"
       },
       "b3": {
         "min": 60,
@@ -46037,35 +46037,35 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Max. Zykluszeit"
       }
     },
-    "beschreibung": "Eine Spritzgussmaschine wird ueber drei Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Massetemperatur {c2} Punkte Fliessfaehigkeit und die Kuehlzeit {c3} Punkte Masshaltigkeit. Die Hydraulikleistung betraegt {a11} Einheiten fuer Druck, {a12} fuer Temperatur und {a13} fuer Kuehlzeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Druck, {a22} fuer Temperatur und {a23} fuer Kuehlzeit bei maximal {b2} Energieeinheiten. Die Zykluszeit betraegt {a31} Einheiten fuer Druck, {a32} fuer Temperatur und {a33} fuer Kuehlzeit bei maximal {b3} Zeiteinheiten.",
-    "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik, Energie und Zykluszeit.",
+    "beschreibung": "Eine Spritzgussmaschine wird über drei Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfüllung, die Massetemperatur {c2} Punkte Fließfähigkeit und die Kühlzeit {c3} Punkte Maßhaltigkeit. Die Hydraulikleistung beträgt {a11} Einheiten für Druck, {a12} für Temperatur und {a13} für Kühlzeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten für Druck, {a22} für Temperatur und {a23} für Kühlzeit bei maximal {b2} Energieeinheiten. Die Zykluszeit beträgt {a31} Einheiten für Druck, {a32} für Temperatur und {a33} für Kühlzeit bei maximal {b3} Zeiteinheiten.",
+    "hinweis": "Maximiere die Bauteilqualität unter Beachtung von Hydraulik, Energie und Zykluszeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+          "text": "Einspritzdruck liefert {c1} Punkte Formfüllung",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Massetemperatur {c2} Punkte Fliessfaehigkeit",
+          "text": "Massetemperatur {c2} Punkte Fließfähigkeit",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Kuehlzeit {c3} Punkte Masshaltigkeit",
+          "text": "Kühlzeit {c3} Punkte Maßhaltigkeit",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Druck",
+            "text": "{a11} Einheiten für Druck",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Temperatur",
+            "text": "{a12} für Temperatur",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Kuehlzeit",
+            "text": "{a13} für Kühlzeit",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -46075,15 +46075,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Druck",
+            "text": "{a21} Einheiten für Druck",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Temperatur",
+            "text": "{a22} für Temperatur",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Kuehlzeit",
+            "text": "{a23} für Kühlzeit",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -46093,15 +46093,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Druck",
+            "text": "{a31} Einheiten für Druck",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Temperatur",
+            "text": "{a32} für Temperatur",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Kuehlzeit",
+            "text": "{a33} für Kühlzeit",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -46138,7 +46138,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Folienverschleiss",
+        "label": "Folienverschleiß",
         "row": [
           "a21",
           "a22"
@@ -46150,12 +46150,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 9,
-        "label": "Verpackungsqualitaet Spannung"
+        "label": "Verpackungsqualität Spannung"
       },
       "c2": {
         "min": 5,
         "max": 11,
-        "label": "Siegelqualitaet Temperatur"
+        "label": "Siegelqualität Temperatur"
       },
       "a11": {
         "min": 1,
@@ -46175,29 +46175,29 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Verschleiss Spannung"
+        "label": "Verschleiß Spannung"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Temperatur"
+        "label": "Verschleiß Temperatur"
       },
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Max. Folienverschleiss"
+        "label": "Max. Folienverschleiß"
       }
     },
-    "beschreibung": "Eine Verpackungsmaschine wird ueber Folienspannung und Siegeltemperatur optimiert. Die Folienspannung liefert {c1} Punkte Verpackungsqualitaet, die Siegeltemperatur {c2} Punkte Siegelqualitaet. Der Energieverbrauch betraegt {a11} Einheiten pro Spannungsstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Energieeinheiten. Der Folienverschleiss liegt bei {a21} Einheiten pro Spannungsstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Verpackungsguete unter Beachtung von Energie und Folienverschleiss.",
+    "beschreibung": "Eine Verpackungsmaschine wird über Folienspannung und Siegeltemperatur optimiert. Die Folienspannung liefert {c1} Punkte Verpackungsqualität, die Siegeltemperatur {c2} Punkte Siegelqualität. Der Energieverbrauch beträgt {a11} Einheiten pro Spannungsstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Energieeinheiten. Der Folienverschleiß liegt bei {a21} Einheiten pro Spannungsstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Verpackungsgüte unter Beachtung von Energie und Folienverschleiß.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Folienspannung liefert {c1} Punkte Verpackungsqualitaet",
+          "text": "Folienspannung liefert {c1} Punkte Verpackungsqualität",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Siegeltemperatur {c2} Punkte Siegelqualitaet",
+          "text": "Siegeltemperatur {c2} Punkte Siegelqualität",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -46226,7 +46226,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -46262,7 +46262,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Walzenverschleiss",
+        "label": "Walzenverschleiß",
         "row": [
           "a21",
           "a22",
@@ -46272,7 +46272,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Kuehlwasserbedarf",
+        "label": "Kühlwasserbedarf",
         "row": [
           "a31",
           "a32",
@@ -46290,7 +46290,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 8,
-        "label": "Oberflaechenguete Kraft"
+        "label": "Oberflächengüte Kraft"
       },
       "c3": {
         "min": 2,
@@ -46320,46 +46320,46 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 5,
-        "label": "Verschleiss Geschwindigkeit"
+        "label": "Verschleiß Geschwindigkeit"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Kraft"
+        "label": "Verschleiß Kraft"
       },
       "a23": {
         "min": 1,
         "max": 4,
-        "label": "Verschleiss Temperatur"
+        "label": "Verschleiß Temperatur"
       },
       "b2": {
         "min": 80,
         "max": 400,
-        "label": "Max. Walzenverschleiss"
+        "label": "Max. Walzenverschleiß"
       },
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlwasser Geschwindigkeit"
+        "label": "Kühlwasser Geschwindigkeit"
       },
       "a32": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlwasser Kraft"
+        "label": "Kühlwasser Kraft"
       },
       "a33": {
         "min": 4,
         "max": 10,
-        "label": "Kuehlwasser Temperatur"
+        "label": "Kühlwasser Temperatur"
       },
       "b3": {
         "min": 60,
         "max": 300,
-        "label": "Max. Kuehlwasserbedarf"
+        "label": "Max. Kühlwasserbedarf"
       }
     },
-    "beschreibung": "Ein Walzwerk wird ueber drei Parameter parametriert. Die Walzgeschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflaechenguete und die Walzentemperatur {c3} Punkte Umformbarkeit. Die Motorleistung betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Kraft und {a13} fuer Temperatur bei maximal {b1} Motoreinheiten. Der Walzenverschleiss liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Kraft und {a23} fuer Temperatur bei maximal {b2} Verschleisseinheiten. Der Kuehlwasserbedarf betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Kraft und {a33} fuer Temperatur bei maximal {b3} Kuehleinheiten.",
-    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor, Verschleiss und Kuehlwasser.",
+    "beschreibung": "Ein Walzwerk wird über drei Parameter parametriert. Die Walzgeschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflächengüte und die Walzentemperatur {c3} Punkte Umformbarkeit. Die Motorleistung beträgt {a11} Einheiten für Geschwindigkeit, {a12} für Kraft und {a13} für Temperatur bei maximal {b1} Motoreinheiten. Der Walzenverschleiß liegt bei {a21} Einheiten für Geschwindigkeit, {a22} für Kraft und {a23} für Temperatur bei maximal {b2} Verschleißeinheiten. Der Kühlwasserbedarf beträgt {a31} Einheiten für Geschwindigkeit, {a32} für Kraft und {a33} für Temperatur bei maximal {b3} Kühleinheiten.",
+    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor, Verschleiß und Kühlwasser.",
     "highlights": {
       "zielfunktion": [
         {
@@ -46367,7 +46367,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Anstellkraft {c2} Punkte Oberflaechenguete",
+          "text": "Anstellkraft {c2} Punkte Oberflächengüte",
           "bedeutung": "{c2} × x₂"
         },
         {
@@ -46378,15 +46378,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} Einheiten fuer Geschwindigkeit",
+            "text": "{a11} Einheiten für Geschwindigkeit",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} fuer Kraft",
+            "text": "{a12} für Kraft",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} fuer Temperatur",
+            "text": "{a13} für Temperatur",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -46396,37 +46396,37 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Einheiten fuer Geschwindigkeit",
+            "text": "{a21} Einheiten für Geschwindigkeit",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} fuer Kraft",
+            "text": "{a22} für Kraft",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} fuer Temperatur",
+            "text": "{a23} für Temperatur",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Einheiten fuer Geschwindigkeit",
+            "text": "{a31} Einheiten für Geschwindigkeit",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Kraft",
+            "text": "{a32} für Kraft",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Temperatur",
+            "text": "{a33} für Temperatur",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} Kuehleinheiten",
+            "text": "{b3} Kühleinheiten",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -46459,7 +46459,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Walzenverschleiss",
+        "label": "Walzenverschleiß",
         "row": [
           "a21",
           "a22"
@@ -46476,7 +46476,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 3,
         "max": 9,
-        "label": "Oberflaechenguete Kraft"
+        "label": "Oberflächengüte Kraft"
       },
       "a11": {
         "min": 3,
@@ -46496,21 +46496,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 6,
-        "label": "Verschleiss Geschwindigkeit"
+        "label": "Verschleiß Geschwindigkeit"
       },
       "a22": {
         "min": 4,
         "max": 10,
-        "label": "Verschleiss Kraft"
+        "label": "Verschleiß Kraft"
       },
       "b2": {
         "min": 80,
         "max": 400,
-        "label": "Max. Verschleisseinheiten"
+        "label": "Max. Verschleißeinheiten"
       }
     },
-    "beschreibung": "Ein Walzwerk wird ueber Walzgeschwindigkeit und Anstellkraft parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflaechenguete. Die Motorleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Kraftstufe bei maximal {b1} Motoreinheiten. Der Walzenverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Kraftstufe bei maximal {b2} Verschleisseinheiten.",
-    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor und Verschleiss.",
+    "beschreibung": "Ein Walzwerk wird über Walzgeschwindigkeit und Anstellkraft parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflächengüte. Die Motorleistung beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Kraftstufe bei maximal {b1} Motoreinheiten. Der Walzenverschleiß liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Kraftstufe bei maximal {b2} Verschleißeinheiten.",
+    "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor und Verschleiß.",
     "highlights": {
       "zielfunktion": [
         {
@@ -46518,7 +46518,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Anstellkraft {c2} Punkte Oberflaechenguete",
+          "text": "Anstellkraft {c2} Punkte Oberflächengüte",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -46547,7 +46547,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Verschleisseinheiten",
+            "text": "{b2} Verschleißeinheiten",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -56858,12 +56858,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 40,
         "max": 180,
-        "label": "CNC-Kapazitaet (h)"
+        "label": "CNC-Kapazität (h)"
       }
     },
     "titel": "Autoteilefertigung – Bremsscheiben und Felgen",
-    "beschreibung": "Ein Autoteilehersteller produziert Bremsscheiben und Felgen. Jede Bremsscheibe bringt {c1} Euro Gewinn, jede Felge {c2} Euro. Eine Bremsscheibe verbraucht {a11} kg Aluminium, eine Felge {a12} kg. Es stehen {b1} kg Aluminium bereit. Die CNC-Bearbeitung einer Bremsscheibe dauert {a21} Stunden, die einer Felge {a22} Stunden. Insgesamt sind {b2} CNC-Stunden verfuegbar.",
-    "hinweis": "Formuliere die Gewinnmaximierung mit den Beschraenkungen fuer Aluminium und CNC-Zeit.",
+    "beschreibung": "Ein Autoteilehersteller produziert Bremsscheiben und Felgen. Jede Bremsscheibe bringt {c1} Euro Gewinn, jede Felge {c2} Euro. Eine Bremsscheibe verbraucht {a11} kg Aluminium, eine Felge {a12} kg. Es stehen {b1} kg Aluminium bereit. Die CNC-Bearbeitung einer Bremsscheibe dauert {a21} Stunden, die einer Felge {a22} Stunden. Insgesamt sind {b2} CNC-Stunden verfügbar.",
+    "hinweis": "Formuliere die Gewinnmaximierung mit den Beschränkungen für Aluminium und CNC-Zeit.",
     "highlights": {
       "zielfunktion": [
         {
@@ -56900,7 +56900,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} CNC-Stunden verfuegbar",
+            "text": "{b2} CNC-Stunden verfügbar",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -56945,7 +56945,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Ofenplaetze",
+        "label": "Ofenplätze",
         "row": [
           "a31",
           "a32",
@@ -57028,16 +57028,16 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 30,
         "max": 120,
-        "label": "Ofenplaetze"
+        "label": "Ofenplätze"
       }
     },
     "titel": "Konditorei – Croissants, Brezeln und Muffins",
-    "beschreibung": "Eine Konditorei produziert Croissants, Brezeln und Muffins. Pro Croissant betraegt der Gewinn {c1} Euro, pro Brezel {c2} Euro und pro Muffin {c3} Euro. Ein Croissant benoetigt {a11} g Butter, eine Brezel {a12} g und ein Muffin {a13} g. Der Buttervorrat umfasst {b1} g. Das Backen eines Croissants dauert {a21} Minuten, einer Brezel {a22} Minuten und eines Muffins {a23} Minuten. Die Backkapazitaet betraegt {b2} Minuten. Jedes Croissant belegt {a31} Ofenplaetze, jede Brezel {a32} und jeder Muffin {a33} Ofenplaetze. Es stehen {b3} Ofenplaetze zur Verfuegung.",
-    "hinweis": "Drei Backwaren mit Beschraenkungen bei Butter, Backzeit und Ofenplaetzen.",
+    "beschreibung": "Eine Konditorei produziert Croissants, Brezeln und Muffins. Pro Croissant beträgt der Gewinn {c1} Euro, pro Brezel {c2} Euro und pro Muffin {c3} Euro. Ein Croissant benötigt {a11} g Butter, eine Brezel {a12} g und ein Muffin {a13} g. Der Buttervorrat umfasst {b1} g. Das Backen eines Croissants dauert {a21} Minuten, einer Brezel {a22} Minuten und eines Muffins {a23} Minuten. Die Backkapazität beträgt {b2} Minuten. Jedes Croissant belegt {a31} Ofenplätze, jede Brezel {a32} und jeder Muffin {a33} Ofenplätze. Es stehen {b3} Ofenplätze zur Verfügung.",
+    "hinweis": "Drei Backwaren mit Beschränkungen bei Butter, Backzeit und Ofenplätzen.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Croissant betraegt der Gewinn {c1} Euro",
+          "text": "Croissant beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -57052,7 +57052,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Croissant benoetigt {a11} g Butter",
+            "text": "Croissant benötigt {a11} g Butter",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -57088,7 +57088,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Croissant belegt {a31} Ofenplaetze",
+            "text": "Croissant belegt {a31} Ofenplätze",
             "bedeutung": "{a31}x₁"
           },
           {
@@ -57096,11 +57096,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "Muffin {a33} Ofenplaetze",
+            "text": "Muffin {a33} Ofenplätze",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} Ofenplaetze zur Verfuegung",
+            "text": "{b3} Ofenplätze zur Verfügung",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -57114,7 +57114,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 5,
     "variablen": [
       "x1 = Anzahl Brote",
-      "x2 = Anzahl Broetchen (10er)",
+      "x2 = Anzahl Brötchen (10er)",
       "x3 = Anzahl Kuchen",
       "x4 = Anzahl Torten",
       "x5 = Anzahl Kekse (100er)"
@@ -57185,7 +57185,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 2,
         "max": 8,
-        "label": "Gewinn/10 Broetchen (€)"
+        "label": "Gewinn/10 Brötchen (€)"
       },
       "c3": {
         "min": 5,
@@ -57210,7 +57210,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a12": {
         "min": 1,
         "max": 3,
-        "label": "Mehl/10 Broetchen (kg)"
+        "label": "Mehl/10 Brötchen (kg)"
       },
       "a13": {
         "min": 1,
@@ -57240,7 +57240,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a22": {
         "min": 1,
         "max": 2,
-        "label": "Zucker/10 Broetchen (g, in 100g)"
+        "label": "Zucker/10 Brötchen (g, in 100g)"
       },
       "a23": {
         "min": 2,
@@ -57270,7 +57270,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a32": {
         "min": 1,
         "max": 3,
-        "label": "Eier/10 Broetchen"
+        "label": "Eier/10 Brötchen"
       },
       "a33": {
         "min": 2,
@@ -57300,7 +57300,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a42": {
         "min": 1,
         "max": 3,
-        "label": "Backzeit/10 Broetchen (min)"
+        "label": "Backzeit/10 Brötchen (min)"
       },
       "a43": {
         "min": 3,
@@ -57323,9 +57323,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Backminuten"
       }
     },
-    "titel": "Grossbaeckerei – Brote, Broetchen, Kuchen, Torten und Kekse",
-    "beschreibung": "Eine Grossbaeckerei stellt fuenf Produktgruppen her. Pro Brot werden {c1} Euro Gewinn erzielt, pro 10 Broetchen {c2} Euro, pro Kuchen {c3} Euro, pro Torte {c4} Euro und pro 100 Kekse {c5} Euro. Der Mehlverbrauch betraegt {a11} kg pro Brot, {a12} kg pro 10 Broetchen, {a13} kg pro Kuchen, {a14} kg pro Torte und {a15} kg pro 100 Kekse. Es sind {b1} kg Mehl vorhanden. An Zucker werden {a21} Einheiten pro Brot, {a22} Einheiten pro 10 Broetchen, {a23} Einheiten pro Kuchen, {a24} Einheiten pro Torte und {a25} Einheiten pro 100 Kekse benoetigt bei {b2} Einheiten Vorrat. Der Eierverbrauch liegt bei {a31} Eiern pro Brot, {a32} Eiern pro 10 Broetchen, {a33} Eiern pro Kuchen, {a34} Eiern pro Torte und {a35} Eiern pro 100 Kekse. Es sind {b3} Eier verfuegbar. Die Backzeit betraegt {a41} Minuten pro Brot, {a42} Minuten pro 10 Broetchen, {a43} Minuten pro Kuchen, {a44} Minuten pro Torte und {a45} Minuten pro 100 Kekse bei {b4} Backminuten.",
-    "hinweis": "Fuenf Backwaren mit vier Beschraenkungen: Mehl, Zucker, Eier und Backzeit.",
+    "titel": "Großbäckerei – Brote, Brötchen, Kuchen, Torten und Kekse",
+    "beschreibung": "Eine Großbäckerei stellt fünf Produktgruppen her. Pro Brot werden {c1} Euro Gewinn erzielt, pro 10 Brötchen {c2} Euro, pro Kuchen {c3} Euro, pro Torte {c4} Euro und pro 100 Kekse {c5} Euro. Der Mehlverbrauch beträgt {a11} kg pro Brot, {a12} kg pro 10 Brötchen, {a13} kg pro Kuchen, {a14} kg pro Torte und {a15} kg pro 100 Kekse. Es sind {b1} kg Mehl vorhanden. An Zucker werden {a21} Einheiten pro Brot, {a22} Einheiten pro 10 Brötchen, {a23} Einheiten pro Kuchen, {a24} Einheiten pro Torte und {a25} Einheiten pro 100 Kekse benötigt bei {b2} Einheiten Vorrat. Der Eierverbrauch liegt bei {a31} Eiern pro Brot, {a32} Eiern pro 10 Brötchen, {a33} Eiern pro Kuchen, {a34} Eiern pro Torte und {a35} Eiern pro 100 Kekse. Es sind {b3} Eier verfügbar. Die Backzeit beträgt {a41} Minuten pro Brot, {a42} Minuten pro 10 Brötchen, {a43} Minuten pro Kuchen, {a44} Minuten pro Torte und {a45} Minuten pro 100 Kekse bei {b4} Backminuten.",
+    "hinweis": "Fünf Backwaren mit vier Beschränkungen: Mehl, Zucker, Eier und Backzeit.",
     "highlights": {
       "zielfunktion": [
         {
@@ -57333,7 +57333,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "10 Broetchen {c2} Euro",
+          "text": "10 Brötchen {c2} Euro",
           "bedeutung": "{c2} × x₂"
         },
         {
@@ -57356,7 +57356,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "{a12} kg pro 10 Broetchen",
+            "text": "{a12} kg pro 10 Brötchen",
             "bedeutung": "+ {a12}x₂"
           },
           {
@@ -57382,7 +57382,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} Einheiten pro 10 Broetchen",
+            "text": "{a22} Einheiten pro 10 Brötchen",
             "bedeutung": "+ {a22}x₂"
           },
           {
@@ -57408,7 +57408,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} Eiern pro 10 Broetchen",
+            "text": "{a32} Eiern pro 10 Brötchen",
             "bedeutung": "+ {a32}x₂"
           },
           {
@@ -57424,7 +57424,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a35}x₅"
           },
           {
-            "text": "{b3} Eier verfuegbar",
+            "text": "{b3} Eier verfügbar",
             "bedeutung": "≤ {b3}"
           }
         ],
@@ -57434,7 +57434,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} Minuten pro 10 Broetchen",
+            "text": "{a42} Minuten pro 10 Brötchen",
             "bedeutung": "+ {a42}x₂"
           },
           {
@@ -57532,9 +57532,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Arbeitsstunden"
       }
     },
-    "titel": "Baeckerei – Brote und Kuchen",
-    "beschreibung": "Eine Baeckerei stellt Brote und Kuchen her. Jedes Brot bringt {c1} Euro Gewinn, jeder Kuchen {c2} Euro. Pro Brot werden {a11} kg Mehl benoetigt, pro Kuchen {a12} kg. Insgesamt stehen {b1} kg Mehl zur Verfuegung. Ein Brot erfordert {a21} Arbeitsstunden, ein Kuchen {a22} Arbeitsstunden bei maximal {b2} verfuegbaren Stunden.",
-    "hinweis": "Identifiziere die Zielfunktion (Gewinn) und die zwei Beschraenkungen.",
+    "titel": "Bäckerei – Brote und Kuchen",
+    "beschreibung": "Eine Bäckerei stellt Brote und Kuchen her. Jedes Brot bringt {c1} Euro Gewinn, jeder Kuchen {c2} Euro. Pro Brot werden {a11} kg Mehl benötigt, pro Kuchen {a12} kg. Insgesamt stehen {b1} kg Mehl zur Verfügung. Ein Brot erfordert {a21} Arbeitsstunden, ein Kuchen {a22} Arbeitsstunden bei maximal {b2} verfügbaren Stunden.",
+    "hinweis": "Identifiziere die Zielfunktion (Gewinn) und die zwei Beschränkungen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -57549,7 +57549,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} kg Mehl benoetigt",
+            "text": "{a11} kg Mehl benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -57557,7 +57557,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} kg Mehl zur Verfuegung",
+            "text": "{b1} kg Mehl zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -57571,7 +57571,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} verfuegbaren Stunden",
+            "text": "{b2} verfügbaren Stunden",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -57596,7 +57596,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Ackerflaeche",
+        "label": "Ackerfläche",
         "row": [
           "a11",
           "a12",
@@ -57616,7 +57616,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Duenger",
+        "label": "Dünger",
         "row": [
           "a31",
           "a32",
@@ -57644,22 +57644,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 1,
         "max": 3,
-        "label": "Flaeche Weizen (ha)"
+        "label": "Fläche Weizen (ha)"
       },
       "a12": {
         "min": 1,
         "max": 3,
-        "label": "Flaeche Mais (ha)"
+        "label": "Fläche Mais (ha)"
       },
       "a13": {
         "min": 1,
         "max": 3,
-        "label": "Flaeche Kartoffeln (ha)"
+        "label": "Fläche Kartoffeln (ha)"
       },
       "b1": {
         "min": 20,
         "max": 80,
-        "label": "Ackerflaeche (ha)"
+        "label": "Ackerfläche (ha)"
       },
       "a21": {
         "min": 2,
@@ -57679,32 +57679,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 100,
         "max": 400,
-        "label": "Wasserkapazitaet (1000 l)"
+        "label": "Wasserkapazität (1000 l)"
       },
       "a31": {
         "min": 1,
         "max": 4,
-        "label": "Duenger/ha Weizen (dt)"
+        "label": "Dünger/ha Weizen (dt)"
       },
       "a32": {
         "min": 2,
         "max": 5,
-        "label": "Duenger/ha Mais (dt)"
+        "label": "Dünger/ha Mais (dt)"
       },
       "a33": {
         "min": 2,
         "max": 6,
-        "label": "Duenger/ha Kartoffeln (dt)"
+        "label": "Dünger/ha Kartoffeln (dt)"
       },
       "b3": {
         "min": 40,
         "max": 160,
-        "label": "Duengervorrat (dt)"
+        "label": "Düngervorrat (dt)"
       }
     },
     "titel": "Bauernhof – Weizen, Mais und Kartoffeln",
-    "beschreibung": "Ein Bauernhof baut Weizen, Mais und Kartoffeln an. Pro Hektar Weizen werden {c1} Euro Gewinn erzielt, pro Hektar Mais {c2} Euro und pro Hektar Kartoffeln {c3} Euro. Weizen beansprucht {a11} Hektar, Mais {a12} Hektar und Kartoffeln {a13} Hektar an Bodenflaeche. Die Gesamtflaeche betraegt {b1} Hektar. Weizen benoetigt {a21} Tausend Liter Wasser pro Hektar, Mais {a22} Tausend Liter und Kartoffeln {a23} Tausend Liter. Die Wasserkapazitaet liegt bei {b2} Tausend Litern. An Duenger werden {a31} dt pro Hektar Weizen, {a32} dt pro Hektar Mais und {a33} dt pro Hektar Kartoffeln benoetigt. Der Duengervorrat belaeuft sich auf {b3} dt.",
-    "hinweis": "Drei Kulturen mit Beschraenkungen bei Flaeche, Wasser und Duenger.",
+    "beschreibung": "Ein Bauernhof baut Weizen, Mais und Kartoffeln an. Pro Hektar Weizen werden {c1} Euro Gewinn erzielt, pro Hektar Mais {c2} Euro und pro Hektar Kartoffeln {c3} Euro. Weizen beansprucht {a11} Hektar, Mais {a12} Hektar und Kartoffeln {a13} Hektar an Bodenfläche. Die Gesamtfläche beträgt {b1} Hektar. Weizen benötigt {a21} Tausend Liter Wasser pro Hektar, Mais {a22} Tausend Liter und Kartoffeln {a23} Tausend Liter. Die Wasserkapazität liegt bei {b2} Tausend Litern. An Dünger werden {a31} dt pro Hektar Weizen, {a32} dt pro Hektar Mais und {a33} dt pro Hektar Kartoffeln benötigt. Der Düngervorrat beläuft sich auf {b3} dt.",
+    "hinweis": "Drei Kulturen mit Beschränkungen bei Fläche, Wasser und Dünger.",
     "highlights": {
       "zielfunktion": [
         {
@@ -57741,7 +57741,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Weizen benoetigt {a21} Tausend Liter",
+            "text": "Weizen benötigt {a21} Tausend Liter",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -57816,7 +57816,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Gaerkapazitaet",
+        "label": "Gärkapazität",
         "row": [
           "a31",
           "a32",
@@ -57884,27 +57884,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Gaertankzeit/hl Pils (h)"
+        "label": "Gärtankzeit/hl Pils (h)"
       },
       "a32": {
         "min": 3,
         "max": 7,
-        "label": "Gaertankzeit/hl Weizen (h)"
+        "label": "Gärtankzeit/hl Weizen (h)"
       },
       "a33": {
         "min": 2,
         "max": 4,
-        "label": "Gaertankzeit/hl Helles (h)"
+        "label": "Gärtankzeit/hl Helles (h)"
       },
       "b3": {
         "min": 60,
         "max": 250,
-        "label": "Gaerkapazitaet (h)"
+        "label": "Gärkapazität (h)"
       }
     },
     "titel": "Brauerei – Pils, Weizen und Helles",
-    "beschreibung": "Eine Brauerei stellt drei Biersorten her: Pils, Weizen und Helles. Der Gewinn betraegt {c1} Euro pro Hektoliter Pils, {c2} Euro pro Hektoliter Weizen und {c3} Euro pro Hektoliter Helles. Ein Hektoliter Pils benoetigt {a11} kg Malz, Weizen {a12} kg und Helles {a13} kg. Der Malzvorrat umfasst {b1} kg. Beim Hopfen verbraucht Pils {a21} kg, Weizen {a22} kg und Helles {a23} kg pro Hektoliter. Es sind {b2} kg Hopfen verfuegbar. Die Gaerung dauert {a31} Stunden fuer Pils, {a32} Stunden fuer Weizen und {a33} Stunden fuer Helles. Die Gaerkapazitaet betraegt {b3} Stunden.",
-    "hinweis": "Drei Biersorten mit Beschraenkungen bei Malz, Hopfen und Gaerkapazitaet.",
+    "beschreibung": "Eine Brauerei stellt drei Biersorten her: Pils, Weizen und Helles. Der Gewinn beträgt {c1} Euro pro Hektoliter Pils, {c2} Euro pro Hektoliter Weizen und {c3} Euro pro Hektoliter Helles. Ein Hektoliter Pils benötigt {a11} kg Malz, Weizen {a12} kg und Helles {a13} kg. Der Malzvorrat umfasst {b1} kg. Beim Hopfen verbraucht Pils {a21} kg, Weizen {a22} kg und Helles {a23} kg pro Hektoliter. Es sind {b2} kg Hopfen verfügbar. Die Gärung dauert {a31} Stunden für Pils, {a32} Stunden für Weizen und {a33} Stunden für Helles. Die Gärkapazität beträgt {b3} Stunden.",
+    "hinweis": "Drei Biersorten mit Beschränkungen bei Malz, Hopfen und Gärkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -57923,7 +57923,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Pils benoetigt {a11} kg Malz",
+            "text": "Pils benötigt {a11} kg Malz",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -57953,21 +57953,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} kg Hopfen verfuegbar",
+            "text": "{b2} kg Hopfen verfügbar",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Stunden fuer Pils",
+            "text": "{a31} Stunden für Pils",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} Stunden fuer Weizen",
+            "text": "{a32} Stunden für Weizen",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} Stunden fuer Helles",
+            "text": "{a33} Stunden für Helles",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -58003,7 +58003,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Gaerkapazitaet",
+        "label": "Gärkapazität",
         "row": [
           "a21",
           "a22"
@@ -58040,22 +58040,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 4,
-        "label": "Gaertankstunden/hl Pils"
+        "label": "Gärtankstunden/hl Pils"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Gaertankstunden/hl Weizen"
+        "label": "Gärtankstunden/hl Weizen"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Gaerkapazitaet (h)"
+        "label": "Gärkapazität (h)"
       }
     },
     "titel": "Brauerei – Pils und Weizenbier",
-    "beschreibung": "Eine Brauerei braut Pils und Weizenbier. Pro Hektoliter Pils werden {c1} Euro Gewinn erzielt, pro Hektoliter Weizen {c2} Euro. Fuer einen Hektoliter Pils werden {a11} kg Malz benoetigt, fuer Weizen {a12} kg. Der Malzvorrat betraegt {b1} kg. Die Gaerung eines Hektoliters Pils dauert {a21} Stunden, die von Weizen {a22} Stunden. Die Gaerkapazitaet liegt bei {b2} Stunden.",
-    "hinweis": "Identifiziere den Gewinn pro Hektoliter und die Beschraenkungen durch Malz und Gaerkapazitaet.",
+    "beschreibung": "Eine Brauerei braut Pils und Weizenbier. Pro Hektoliter Pils werden {c1} Euro Gewinn erzielt, pro Hektoliter Weizen {c2} Euro. Für einen Hektoliter Pils werden {a11} kg Malz benötigt, für Weizen {a12} kg. Der Malzvorrat beträgt {b1} kg. Die Gärung eines Hektoliters Pils dauert {a21} Stunden, die von Weizen {a22} Stunden. Die Gärkapazität liegt bei {b2} Stunden.",
+    "hinweis": "Identifiziere den Gewinn pro Hektoliter und die Beschränkungen durch Malz und Gärkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -58070,7 +58070,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Pils werden {a11} kg Malz benoetigt",
+            "text": "Pils werden {a11} kg Malz benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -58130,7 +58130,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Loesungsmittel",
+        "label": "Lösungsmittel",
         "row": [
           "a21",
           "a22",
@@ -58152,7 +58152,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Abfuellung",
+        "label": "Abfüllung",
         "row": [
           "a41",
           "a42",
@@ -58211,27 +58211,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Loesungsmittel/t Farbe A (l)"
+        "label": "Lösungsmittel/t Farbe A (l)"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Loesungsmittel/t Farbe B (l)"
+        "label": "Lösungsmittel/t Farbe B (l)"
       },
       "a23": {
         "min": 4,
         "max": 10,
-        "label": "Loesungsmittel/t Lack C (l)"
+        "label": "Lösungsmittel/t Lack C (l)"
       },
       "a24": {
         "min": 2,
         "max": 5,
-        "label": "Loesungsmittel/t Grundierung D (l)"
+        "label": "Lösungsmittel/t Grundierung D (l)"
       },
       "b2": {
         "min": 60,
         "max": 250,
-        "label": "Loesungsmittelvorrat (l)"
+        "label": "Lösungsmittelvorrat (l)"
       },
       "a31": {
         "min": 1,
@@ -58256,53 +58256,53 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 30,
         "max": 120,
-        "label": "Mischkapazitaet (h)"
+        "label": "Mischkapazität (h)"
       },
       "a41": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/t Farbe A (h)"
+        "label": "Abfüllzeit/t Farbe A (h)"
       },
       "a42": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/t Farbe B (h)"
+        "label": "Abfüllzeit/t Farbe B (h)"
       },
       "a43": {
         "min": 1,
         "max": 2,
-        "label": "Abfuellzeit/t Lack C (h)"
+        "label": "Abfüllzeit/t Lack C (h)"
       },
       "a44": {
         "min": 1,
         "max": 2,
-        "label": "Abfuellzeit/t Grundierung D (h)"
+        "label": "Abfüllzeit/t Grundierung D (h)"
       },
       "b4": {
         "min": 20,
         "max": 80,
-        "label": "Abfuellkapazitaet (h)"
+        "label": "Abfüllkapazität (h)"
       }
     },
     "titel": "Chemiefabrik – Farben, Lack und Grundierung",
-    "beschreibung": "Eine Chemiefabrik produziert vier Produkte: Farbe A, Farbe B, Lack C und Grundierung D. Der Gewinn pro Tonne betraegt {c1} Euro fuer Farbe A, {c2} Euro fuer Farbe B, {c3} Euro fuer Lack C und {c4} Euro fuer Grundierung D. Pro Tonne Farbe A werden {a11} kg Pigment verbraucht, Farbe B {a12} kg, Lack C {a13} kg und Grundierung D {a14} kg. Der Pigmentvorrat belaeuft sich auf {b1} kg. An Loesungsmittel benoetigt Farbe A {a21} Liter pro Tonne, Farbe B {a22} Liter, Lack C {a23} Liter und Grundierung D {a24} Liter. Es stehen {b2} Liter Loesungsmittel bereit. Das Mischen dauert {a31} Stunden fuer Farbe A, {a32} Stunden fuer Farbe B, {a33} Stunden fuer Lack C und {a34} Stunden fuer Grundierung D pro Tonne. Die Mischkapazitaet betraegt {b3} Stunden. Die Abfuellung erfordert {a41} Stunden fuer Farbe A, {a42} Stunden fuer Farbe B, {a43} Stunden fuer Lack C und {a44} Stunden fuer Grundierung D pro Tonne bei {b4} verfuegbaren Abfuellstunden.",
-    "hinweis": "Vier Produkte mit vier Beschraenkungen: Pigment, Loesungsmittel, Mischzeit und Abfuellung.",
+    "beschreibung": "Eine Chemiefabrik produziert vier Produkte: Farbe A, Farbe B, Lack C und Grundierung D. Der Gewinn pro Tonne beträgt {c1} Euro für Farbe A, {c2} Euro für Farbe B, {c3} Euro für Lack C und {c4} Euro für Grundierung D. Pro Tonne Farbe A werden {a11} kg Pigment verbraucht, Farbe B {a12} kg, Lack C {a13} kg und Grundierung D {a14} kg. Der Pigmentvorrat beläuft sich auf {b1} kg. An Lösungsmittel benötigt Farbe A {a21} Liter pro Tonne, Farbe B {a22} Liter, Lack C {a23} Liter und Grundierung D {a24} Liter. Es stehen {b2} Liter Lösungsmittel bereit. Das Mischen dauert {a31} Stunden für Farbe A, {a32} Stunden für Farbe B, {a33} Stunden für Lack C und {a34} Stunden für Grundierung D pro Tonne. Die Mischkapazität beträgt {b3} Stunden. Die Abfüllung erfordert {a41} Stunden für Farbe A, {a42} Stunden für Farbe B, {a43} Stunden für Lack C und {a44} Stunden für Grundierung D pro Tonne bei {b4} verfügbaren Abfüllstunden.",
+    "hinweis": "Vier Produkte mit vier Beschränkungen: Pigment, Lösungsmittel, Mischzeit und Abfüllung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "{c1} Euro fuer Farbe A",
+          "text": "{c1} Euro für Farbe A",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "{c2} Euro fuer Farbe B",
+          "text": "{c2} Euro für Farbe B",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "{c3} Euro fuer Lack C",
+          "text": "{c3} Euro für Lack C",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "{c4} Euro fuer Grundierung D",
+          "text": "{c4} Euro für Grundierung D",
           "bedeutung": "{c4} × x₄"
         }
       ],
@@ -58347,25 +58347,25 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} Liter Loesungsmittel bereit",
+            "text": "{b2} Liter Lösungsmittel bereit",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "{a31} Stunden fuer Farbe A",
+            "text": "{a31} Stunden für Farbe A",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} Stunden fuer Farbe B",
+            "text": "{a32} Stunden für Farbe B",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} Stunden fuer Lack C",
+            "text": "{a33} Stunden für Lack C",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} Stunden fuer Grundierung D",
+            "text": "{a34} Stunden für Grundierung D",
             "bedeutung": "+ {a34}x₄"
           },
           {
@@ -58375,23 +58375,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a41} Stunden fuer Farbe A",
+            "text": "{a41} Stunden für Farbe A",
             "bedeutung": "{a41}x₁"
           },
           {
-            "text": "{a42} Stunden fuer Farbe B",
+            "text": "{a42} Stunden für Farbe B",
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} Stunden fuer Lack C",
+            "text": "{a43} Stunden für Lack C",
             "bedeutung": "+ {a43}x₃"
           },
           {
-            "text": "{a44} Stunden fuer Grundierung D",
+            "text": "{a44} Stunden für Grundierung D",
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{b4} verfuegbaren Abfuellstunden",
+            "text": "{b4} verfügbaren Abfüllstunden",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -58406,7 +58406,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "variablen": [
       "x1 = Anzahl Flyer",
       "x2 = Anzahl Plakate",
-      "x3 = Anzahl Broschueren",
+      "x3 = Anzahl Broschüren",
       "x4 = Anzahl Visitenkarten (100er)",
       "x5 = Anzahl Kalender"
     ],
@@ -58481,7 +58481,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 5,
         "max": 15,
-        "label": "Gewinn/Broschuere (€)"
+        "label": "Gewinn/Broschüre (€)"
       },
       "c4": {
         "min": 2,
@@ -58506,7 +58506,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 3,
         "max": 8,
-        "label": "Papier/Broschuere (Bogen)"
+        "label": "Papier/Broschüre (Bogen)"
       },
       "a14": {
         "min": 1,
@@ -58536,7 +58536,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a23": {
         "min": 3,
         "max": 8,
-        "label": "Druckzeit/Broschuere (min)"
+        "label": "Druckzeit/Broschüre (min)"
       },
       "a24": {
         "min": 1,
@@ -58566,7 +58566,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a33": {
         "min": 3,
         "max": 6,
-        "label": "Tinte/Broschuere (ml)"
+        "label": "Tinte/Broschüre (ml)"
       },
       "a34": {
         "min": 1,
@@ -58596,7 +58596,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a43": {
         "min": 1,
         "max": 3,
-        "label": "Schneidezeit/Broschuere (min)"
+        "label": "Schneidezeit/Broschüre (min)"
       },
       "a44": {
         "min": 1,
@@ -58614,13 +58614,13 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Schneideminuten"
       }
     },
-    "titel": "Druckerei – Flyer, Plakate, Broschueren, Visitenkarten und Kalender",
-    "beschreibung": "Eine Druckerei stellt fuenf Produkte her. Pro Flyer betraegt der Gewinn {c1} Euro, pro Plakat {c2} Euro, pro Broschuere {c3} Euro, pro 100 Visitenkarten {c4} Euro und pro Kalender {c5} Euro. Der Papierverbrauch liegt bei {a11} Bogen pro Flyer, {a12} Bogen pro Plakat, {a13} Bogen pro Broschuere, {a14} Bogen pro 100 Visitenkarten und {a15} Bogen pro Kalender. Es sind {b1} Bogen Papier vorhanden. Die Druckzeit betraegt {a21} Minuten pro Flyer, {a22} Minuten pro Plakat, {a23} Minuten pro Broschuere, {a24} Minuten pro 100 Visitenkarten und {a25} Minuten pro Kalender bei {b2} verfuegbaren Druckminuten. Der Tintenverbrauch belaeuft sich auf {a31} ml pro Flyer, {a32} ml pro Plakat, {a33} ml pro Broschuere, {a34} ml pro 100 Visitenkarten und {a35} ml pro Kalender. Der Tintenvorrat umfasst {b3} ml. Das Schneiden erfordert {a41} Minuten pro Flyer, {a42} Minuten pro Plakat, {a43} Minuten pro Broschuere, {a44} Minuten pro 100 Visitenkarten und {a45} Minuten pro Kalender bei {b4} Schneideminuten.",
-    "hinweis": "Fuenf Druckprodukte mit vier Beschraenkungen: Papier, Druckzeit, Tinte und Schneidezeit.",
+    "titel": "Druckerei – Flyer, Plakate, Broschüren, Visitenkarten und Kalender",
+    "beschreibung": "Eine Druckerei stellt fünf Produkte her. Pro Flyer beträgt der Gewinn {c1} Euro, pro Plakat {c2} Euro, pro Broschüre {c3} Euro, pro 100 Visitenkarten {c4} Euro und pro Kalender {c5} Euro. Der Papierverbrauch liegt bei {a11} Bogen pro Flyer, {a12} Bogen pro Plakat, {a13} Bogen pro Broschüre, {a14} Bogen pro 100 Visitenkarten und {a15} Bogen pro Kalender. Es sind {b1} Bogen Papier vorhanden. Die Druckzeit beträgt {a21} Minuten pro Flyer, {a22} Minuten pro Plakat, {a23} Minuten pro Broschüre, {a24} Minuten pro 100 Visitenkarten und {a25} Minuten pro Kalender bei {b2} verfügbaren Druckminuten. Der Tintenverbrauch beläuft sich auf {a31} ml pro Flyer, {a32} ml pro Plakat, {a33} ml pro Broschüre, {a34} ml pro 100 Visitenkarten und {a35} ml pro Kalender. Der Tintenvorrat umfasst {b3} ml. Das Schneiden erfordert {a41} Minuten pro Flyer, {a42} Minuten pro Plakat, {a43} Minuten pro Broschüre, {a44} Minuten pro 100 Visitenkarten und {a45} Minuten pro Kalender bei {b4} Schneideminuten.",
+    "hinweis": "Fünf Druckprodukte mit vier Beschränkungen: Papier, Druckzeit, Tinte und Schneidezeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Flyer betraegt der Gewinn {c1} Euro",
+          "text": "Flyer beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -58628,7 +58628,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Broschuere {c3} Euro",
+          "text": "Broschüre {c3} Euro",
           "bedeutung": "{c3} × x₃"
         },
         {
@@ -58651,7 +58651,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} Bogen pro Broschuere",
+            "text": "{a13} Bogen pro Broschüre",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -58677,7 +58677,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} Minuten pro Broschuere",
+            "text": "{a23} Minuten pro Broschüre",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -58689,7 +58689,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a25}x₅"
           },
           {
-            "text": "{b2} verfuegbaren Druckminuten",
+            "text": "{b2} verfügbaren Druckminuten",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -58703,7 +58703,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} ml pro Broschuere",
+            "text": "{a33} ml pro Broschüre",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -58729,7 +58729,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} Minuten pro Broschuere",
+            "text": "{a43} Minuten pro Broschüre",
             "bedeutung": "+ {a43}x₃"
           },
           {
@@ -58755,7 +58755,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 2,
     "variablen": [
       "x1 = Anzahl Plakate",
-      "x2 = Anzahl Broschueren"
+      "x2 = Anzahl Broschüren"
     ],
     "objective": [
       "c1",
@@ -58790,7 +58790,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 5,
         "max": 15,
-        "label": "Gewinn/Broschuere (€)"
+        "label": "Gewinn/Broschüre (€)"
       },
       "a11": {
         "min": 1,
@@ -58800,7 +58800,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a12": {
         "min": 3,
         "max": 8,
-        "label": "Papier/Broschuere (Bogen)"
+        "label": "Papier/Broschüre (Bogen)"
       },
       "b1": {
         "min": 100,
@@ -58815,7 +58815,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Druckzeit/Broschuere (min)"
+        "label": "Druckzeit/Broschüre (min)"
       },
       "b2": {
         "min": 80,
@@ -58823,9 +58823,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Druckminuten"
       }
     },
-    "titel": "Druckerei – Plakate und Broschueren",
-    "beschreibung": "Eine Druckerei stellt Plakate und Broschueren her. Jedes Plakat bringt {c1} Euro Gewinn, jede Broschuere {c2} Euro. Ein Plakat verbraucht {a11} Bogen Papier, eine Broschuere {a12} Bogen. Der Vorrat betraegt {b1} Bogen. Der Druck eines Plakats dauert {a21} Minuten, einer Broschuere {a22} Minuten. Die Druckkapazitaet liegt bei {b2} Minuten.",
-    "hinweis": "Finde Zielfunktion und Nebenbedingungen fuer Papier und Druckzeit.",
+    "titel": "Druckerei – Plakate und Broschüren",
+    "beschreibung": "Eine Druckerei stellt Plakate und Broschüren her. Jedes Plakat bringt {c1} Euro Gewinn, jede Broschüre {c2} Euro. Ein Plakat verbraucht {a11} Bogen Papier, eine Broschüre {a12} Bogen. Der Vorrat beträgt {b1} Bogen. Der Druck eines Plakats dauert {a21} Minuten, einer Broschüre {a22} Minuten. Die Druckkapazität liegt bei {b2} Minuten.",
+    "hinweis": "Finde Zielfunktion und Nebenbedingungen für Papier und Druckzeit.",
     "highlights": {
       "zielfunktion": [
         {
@@ -58833,7 +58833,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Broschuere {c2} Euro",
+          "text": "Broschüre {c2} Euro",
           "bedeutung": "{c2} × x₂"
         }
       ],
@@ -58844,7 +58844,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "Broschuere {a12} Bogen",
+            "text": "Broschüre {a12} Bogen",
             "bedeutung": "+ {a12}x₂"
           },
           {
@@ -58858,7 +58858,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "Broschuere {a22} Minuten",
+            "text": "Broschüre {a22} Minuten",
             "bedeutung": "+ {a22}x₂"
           },
           {
@@ -58994,8 +58994,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Elektronikwerk – Laptops, Monitore und Tastaturen",
-    "beschreibung": "Ein Elektronikwerk fertigt Laptops, Monitore und Tastaturen. Pro Laptop werden {c1} Euro Gewinn erzielt, pro Monitor {c2} Euro, pro Tastatur {c3} Euro. Die Montage eines Laptops dauert {a11} Stunden, eines Monitors {a12} Stunden, einer Tastatur {a13} Stunden. Es stehen {b1} Montagestunden bereit. Der Test eines Laptops benoetigt {a21} Stunden, eines Monitors {a22} Stunden, einer Tastatur {a23} Stunden bei insgesamt {b2} Teststunden. Die Verpackung dauert {a31} Stunden pro Laptop, {a32} Stunden pro Monitor und {a33} Stunden pro Tastatur. Die Verpackungskapazitaet betraegt {b3} Stunden.",
-    "hinweis": "Drei Produkte mit drei Zeitbeschraenkungen: Montage, Test und Verpackung.",
+    "beschreibung": "Ein Elektronikwerk fertigt Laptops, Monitore und Tastaturen. Pro Laptop werden {c1} Euro Gewinn erzielt, pro Monitor {c2} Euro, pro Tastatur {c3} Euro. Die Montage eines Laptops dauert {a11} Stunden, eines Monitors {a12} Stunden, einer Tastatur {a13} Stunden. Es stehen {b1} Montagestunden bereit. Der Test eines Laptops benötigt {a21} Stunden, eines Monitors {a22} Stunden, einer Tastatur {a23} Stunden bei insgesamt {b2} Teststunden. Die Verpackung dauert {a31} Stunden pro Laptop, {a32} Stunden pro Monitor und {a33} Stunden pro Tastatur. Die Verpackungskapazität beträgt {b3} Stunden.",
+    "hinweis": "Drei Produkte mit drei Zeitbeschränkungen: Montage, Test und Verpackung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -59032,7 +59032,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Laptops benoetigt {a21} Stunden",
+            "text": "Laptops benötigt {a21} Stunden",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -59127,7 +59127,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Pruefzeit",
+        "label": "Prüfzeit",
         "row": [
           "a41",
           "a42",
@@ -59269,32 +59269,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a41": {
         "min": 1,
         "max": 3,
-        "label": "Pruefzeit/Lampe (min)"
+        "label": "Prüfzeit/Lampe (min)"
       },
       "a42": {
         "min": 1,
         "max": 2,
-        "label": "Pruefzeit/Steckdose (min)"
+        "label": "Prüfzeit/Steckdose (min)"
       },
       "a43": {
         "min": 1,
         "max": 2,
-        "label": "Pruefzeit/Schalter (min)"
+        "label": "Prüfzeit/Schalter (min)"
       },
       "a44": {
         "min": 1,
         "max": 3,
-        "label": "Pruefzeit/Kabeltrommel (min)"
+        "label": "Prüfzeit/Kabeltrommel (min)"
       },
       "a45": {
         "min": 1,
         "max": 2,
-        "label": "Pruefzeit/Sicherung (min)"
+        "label": "Prüfzeit/Sicherung (min)"
       },
       "b4": {
         "min": 30,
         "max": 150,
-        "label": "Pruefminuten"
+        "label": "Prüfminuten"
       },
       "a51": {
         "min": 1,
@@ -59328,8 +59328,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Elektrofabrik – Lampen, Steckdosen, Schalter, Kabeltrommeln und Sicherungen",
-    "beschreibung": "Eine Elektrofabrik produziert fuenf Artikel: Lampen, Steckdosen, Schalter, Kabeltrommeln und Sicherungen. Der Gewinn betraegt {c1} Euro pro Lampe, {c2} Euro pro Steckdose, {c3} Euro pro Schalter, {c4} Euro pro Kabeltrommel und {c5} Euro pro Sicherung. An Kupfer werden {a11} g pro Lampe, {a12} g pro Steckdose, {a13} g pro Schalter, {a14} g pro Kabeltrommel und {a15} g pro Sicherung verbraucht. Der Kupfervorrat betraegt {b1} g. Kunststoff erfordert {a21} g pro Lampe, {a22} g pro Steckdose, {a23} g pro Schalter, {a24} g pro Kabeltrommel und {a25} g pro Sicherung bei {b2} g Vorrat. Die Montage dauert {a31} Minuten pro Lampe, {a32} Minuten pro Steckdose, {a33} Minuten pro Schalter, {a34} Minuten pro Kabeltrommel und {a35} Minuten pro Sicherung bei {b3} Montageminuten. Die Pruefung benoetigt {a41} Minuten pro Lampe, {a42} Minuten pro Steckdose, {a43} Minuten pro Schalter, {a44} Minuten pro Kabeltrommel und {a45} Minuten pro Sicherung bei {b4} Pruefminuten. Das Verpacken dauert {a51} Minuten pro Lampe, {a52} Minuten pro Steckdose, {a53} Minuten pro Schalter, {a54} Minuten pro Kabeltrommel und {a55} Minuten pro Sicherung bei {b5} Verpackungsminuten.",
-    "hinweis": "Fuenf Elektroprodukte mit fuenf Beschraenkungen: Kupfer, Kunststoff, Montage, Pruefung und Verpackung.",
+    "beschreibung": "Eine Elektrofabrik produziert fünf Artikel: Lampen, Steckdosen, Schalter, Kabeltrommeln und Sicherungen. Der Gewinn beträgt {c1} Euro pro Lampe, {c2} Euro pro Steckdose, {c3} Euro pro Schalter, {c4} Euro pro Kabeltrommel und {c5} Euro pro Sicherung. An Kupfer werden {a11} g pro Lampe, {a12} g pro Steckdose, {a13} g pro Schalter, {a14} g pro Kabeltrommel und {a15} g pro Sicherung verbraucht. Der Kupfervorrat beträgt {b1} g. Kunststoff erfordert {a21} g pro Lampe, {a22} g pro Steckdose, {a23} g pro Schalter, {a24} g pro Kabeltrommel und {a25} g pro Sicherung bei {b2} g Vorrat. Die Montage dauert {a31} Minuten pro Lampe, {a32} Minuten pro Steckdose, {a33} Minuten pro Schalter, {a34} Minuten pro Kabeltrommel und {a35} Minuten pro Sicherung bei {b3} Montageminuten. Die Prüfung benötigt {a41} Minuten pro Lampe, {a42} Minuten pro Steckdose, {a43} Minuten pro Schalter, {a44} Minuten pro Kabeltrommel und {a45} Minuten pro Sicherung bei {b4} Prüfminuten. Das Verpacken dauert {a51} Minuten pro Lampe, {a52} Minuten pro Steckdose, {a53} Minuten pro Schalter, {a54} Minuten pro Kabeltrommel und {a55} Minuten pro Sicherung bei {b5} Verpackungsminuten.",
+    "hinweis": "Fünf Elektroprodukte mit fünf Beschränkungen: Kupfer, Kunststoff, Montage, Prüfung und Verpackung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -59454,7 +59454,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a45}x₅"
           },
           {
-            "text": "{b4} Pruefminuten",
+            "text": "{b4} Prüfminuten",
             "bedeutung": "≤ {b4}"
           }
         ],
@@ -59544,7 +59544,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 80,
         "max": 300,
-        "label": "Montagekapazitaet (h)"
+        "label": "Montagekapazität (h)"
       },
       "a21": {
         "min": 1,
@@ -59563,8 +59563,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Elektronikfertigung – Smartphones und Tablets",
-    "beschreibung": "Ein Elektronikwerk fertigt Smartphones und Tablets. Jedes Smartphone erbringt {c1} Euro Gewinn, jedes Tablet {c2} Euro. Die Montage eines Smartphones dauert {a11} Stunden, die eines Tablets {a12} Stunden. Es stehen {b1} Montagestunden zur Verfuegung. Jedes Smartphone benoetigt {a21} Chips, jedes Tablet {a22} Chips. Insgesamt sind {b2} Chips auf Lager.",
-    "hinweis": "Ermittle die Gewinne und die zwei Kapazitaetsgrenzen.",
+    "beschreibung": "Ein Elektronikwerk fertigt Smartphones und Tablets. Jedes Smartphone erbringt {c1} Euro Gewinn, jedes Tablet {c2} Euro. Die Montage eines Smartphones dauert {a11} Stunden, die eines Tablets {a12} Stunden. Es stehen {b1} Montagestunden zur Verfügung. Jedes Smartphone benötigt {a21} Chips, jedes Tablet {a22} Chips. Insgesamt sind {b2} Chips auf Lager.",
+    "hinweis": "Ermittle die Gewinne und die zwei Kapazitätsgrenzen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -59587,7 +59587,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Montagestunden zur Verfuegung",
+            "text": "{b1} Montagestunden zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -59680,11 +59680,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 60,
         "max": 300,
-        "label": "Schleifkapazitaet (min)"
+        "label": "Schleifkapazität (min)"
       }
     },
     "titel": "Glasmanufaktur – Vasen und Schalen",
-    "beschreibung": "Eine Glasmanufaktur fertigt Vasen und Schalen. Jede Vase bringt {c1} Euro Gewinn, jede Schale {c2} Euro. Pro Vase werden {a11} kg Glas verbraucht, pro Schale {a12} kg. Der Glasvorrat betraegt {b1} kg. Das Schleifen einer Vase dauert {a21} Minuten, einer Schale {a22} Minuten. Die Schleifkapazitaet umfasst {b2} Minuten.",
+    "beschreibung": "Eine Glasmanufaktur fertigt Vasen und Schalen. Jede Vase bringt {c1} Euro Gewinn, jede Schale {c2} Euro. Pro Vase werden {a11} kg Glas verbraucht, pro Schale {a12} kg. Der Glasvorrat beträgt {b1} kg. Das Schleifen einer Vase dauert {a21} Minuten, einer Schale {a22} Minuten. Die Schleifkapazität umfasst {b2} Minuten.",
     "hinweis": "Formuliere die Zielfunktion und die zwei Nebenbedingungen.",
     "highlights": {
       "zielfunktion": [
@@ -59875,12 +59875,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 20,
         "max": 80,
-        "label": "Ofenkapazitaet (h)"
+        "label": "Ofenkapazität (h)"
       }
     },
     "titel": "Keramikwerkstatt – Teller, Tassen, Vasen und Schalen",
-    "beschreibung": "Eine Keramikwerkstatt produziert Teller, Tassen, Vasen und Schalen. Jeder Teller bringt {c1} Euro Gewinn, jede Tasse {c2} Euro, jede Vase {c3} Euro und jede Schale {c4} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg, eine Vase {a13} kg und eine Schale {a14} kg. Es stehen {b1} kg Ton bereit. Fuer die Glasur werden {a21} dl pro Teller, {a22} dl pro Tasse, {a23} dl pro Vase und {a24} dl pro Schale benoetigt. Der Glasurvorrat umfasst {b2} dl. Im Ofen benoetigt jeder Teller {a31} Stunden, jede Tasse {a32} Stunden, jede Vase {a33} Stunden und jede Schale {a34} Stunden. Die Ofenkapazitaet liegt bei {b3} Stunden.",
-    "hinweis": "Vier Keramikprodukte mit Beschraenkungen bei Ton, Glasur und Ofenzeit.",
+    "beschreibung": "Eine Keramikwerkstatt produziert Teller, Tassen, Vasen und Schalen. Jeder Teller bringt {c1} Euro Gewinn, jede Tasse {c2} Euro, jede Vase {c3} Euro und jede Schale {c4} Euro. Ein Teller benötigt {a11} kg Ton, eine Tasse {a12} kg, eine Vase {a13} kg und eine Schale {a14} kg. Es stehen {b1} kg Ton bereit. Für die Glasur werden {a21} dl pro Teller, {a22} dl pro Tasse, {a23} dl pro Vase und {a24} dl pro Schale benötigt. Der Glasurvorrat umfasst {b2} dl. Im Ofen benötigt jeder Teller {a31} Stunden, jede Tasse {a32} Stunden, jede Vase {a33} Stunden und jede Schale {a34} Stunden. Die Ofenkapazität liegt bei {b3} Stunden.",
+    "hinweis": "Vier Keramikprodukte mit Beschränkungen bei Ton, Glasur und Ofenzeit.",
     "highlights": {
       "zielfunktion": [
         {
@@ -59903,7 +59903,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Teller benoetigt {a11} kg Ton",
+            "text": "Teller benötigt {a11} kg Ton",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -60008,7 +60008,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Abfuellzeit",
+        "label": "Abfüllzeit",
         "row": [
           "a31",
           "a32",
@@ -60076,31 +60076,31 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/l Shampoo (min)"
+        "label": "Abfüllzeit/l Shampoo (min)"
       },
       "a32": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/l Duschgel (min)"
+        "label": "Abfüllzeit/l Duschgel (min)"
       },
       "a33": {
         "min": 1,
         "max": 4,
-        "label": "Abfuellzeit/l Bodylotion (min)"
+        "label": "Abfüllzeit/l Bodylotion (min)"
       },
       "b3": {
         "min": 40,
         "max": 180,
-        "label": "Abfuellminuten"
+        "label": "Abfüllminuten"
       }
     },
     "titel": "Kosmetikfabrik – Shampoo, Duschgel und Bodylotion",
-    "beschreibung": "Eine Kosmetikfabrik stellt Shampoo, Duschgel und Bodylotion her. Pro Liter Shampoo betraegt der Gewinn {c1} Euro, pro Liter Duschgel {c2} Euro und pro Liter Bodylotion {c3} Euro. Fuer einen Liter Shampoo werden {a11} dl Tensid benoetigt, fuer Duschgel {a12} dl und fuer Bodylotion {a13} dl. Der Tensidvorrat umfasst {b1} dl. An Duftstoffen verbraucht Shampoo {a21} ml pro Liter, Duschgel {a22} ml und Bodylotion {a23} ml. Es sind {b2} ml Duftstoffe vorhanden. Das Abfuellen dauert {a31} Minuten pro Liter Shampoo, {a32} Minuten pro Liter Duschgel und {a33} Minuten pro Liter Bodylotion. Die Abfuellkapazitaet betraegt {b3} Minuten.",
-    "hinweis": "Drei Produkte mit Beschraenkungen bei Tensid, Duftstoffen und Abfuellzeit.",
+    "beschreibung": "Eine Kosmetikfabrik stellt Shampoo, Duschgel und Bodylotion her. Pro Liter Shampoo beträgt der Gewinn {c1} Euro, pro Liter Duschgel {c2} Euro und pro Liter Bodylotion {c3} Euro. Für einen Liter Shampoo werden {a11} dl Tensid benötigt, für Duschgel {a12} dl und für Bodylotion {a13} dl. Der Tensidvorrat umfasst {b1} dl. An Duftstoffen verbraucht Shampoo {a21} ml pro Liter, Duschgel {a22} ml und Bodylotion {a23} ml. Es sind {b2} ml Duftstoffe vorhanden. Das Abfüllen dauert {a31} Minuten pro Liter Shampoo, {a32} Minuten pro Liter Duschgel und {a33} Minuten pro Liter Bodylotion. Die Abfüllkapazität beträgt {b3} Minuten.",
+    "hinweis": "Drei Produkte mit Beschränkungen bei Tensid, Duftstoffen und Abfüllzeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Shampoo betraegt der Gewinn {c1} Euro",
+          "text": "Shampoo beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -60115,7 +60115,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Shampoo werden {a11} dl Tensid benoetigt",
+            "text": "Shampoo werden {a11} dl Tensid benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -60212,7 +60212,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Haerteofenzeit",
+        "label": "Härteofenzeit",
         "row": [
           "a31",
           "a32",
@@ -60291,41 +60291,41 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 30,
         "max": 150,
-        "label": "Pressenkapazitaet (h)"
+        "label": "Pressenkapazität (h)"
       },
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Haertezeit/1000 Schrauben (h)"
+        "label": "Härtezeit/1000 Schrauben (h)"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Haertezeit/1000 Muttern (h)"
+        "label": "Härtezeit/1000 Muttern (h)"
       },
       "a33": {
         "min": 2,
         "max": 4,
-        "label": "Haertezeit/1000 Bolzen (h)"
+        "label": "Härtezeit/1000 Bolzen (h)"
       },
       "a34": {
         "min": 1,
         "max": 3,
-        "label": "Haertezeit/1000 Nieten (h)"
+        "label": "Härtezeit/1000 Nieten (h)"
       },
       "b3": {
         "min": 20,
         "max": 100,
-        "label": "Haerteofenkapazitaet (h)"
+        "label": "Härteofenkapazität (h)"
       }
     },
     "titel": "Metallwerkstatt – Schrauben, Muttern, Bolzen und Nieten",
-    "beschreibung": "Eine Metallwerkstatt fertigt Schrauben, Muttern, Bolzen und Nieten in Tausendereinheiten. Pro 1000 Schrauben betraegt der Gewinn {c1} Euro, pro 1000 Muttern {c2} Euro, pro 1000 Bolzen {c3} Euro und pro 1000 Nieten {c4} Euro. An Stahl werden {a11} kg pro 1000 Schrauben verbraucht, {a12} kg pro 1000 Muttern, {a13} kg pro 1000 Bolzen und {a14} kg pro 1000 Nieten. Der Stahlvorrat betraegt {b1} kg. Die Presse benoetigt {a21} Stunden pro 1000 Schrauben, {a22} Stunden pro 1000 Muttern, {a23} Stunden pro 1000 Bolzen und {a24} Stunden pro 1000 Nieten. Die Pressenkapazitaet liegt bei {b2} Stunden. Der Haerteofen beansprucht {a31} Stunden pro 1000 Schrauben, {a32} Stunden pro 1000 Muttern, {a33} Stunden pro 1000 Bolzen und {a34} Stunden pro 1000 Nieten bei {b3} Stunden Kapazitaet.",
-    "hinweis": "Vier Verbindungselemente mit Beschraenkungen bei Stahl, Presse und Haerteofen.",
+    "beschreibung": "Eine Metallwerkstatt fertigt Schrauben, Muttern, Bolzen und Nieten in Tausendereinheiten. Pro 1000 Schrauben beträgt der Gewinn {c1} Euro, pro 1000 Muttern {c2} Euro, pro 1000 Bolzen {c3} Euro und pro 1000 Nieten {c4} Euro. An Stahl werden {a11} kg pro 1000 Schrauben verbraucht, {a12} kg pro 1000 Muttern, {a13} kg pro 1000 Bolzen und {a14} kg pro 1000 Nieten. Der Stahlvorrat beträgt {b1} kg. Die Presse benötigt {a21} Stunden pro 1000 Schrauben, {a22} Stunden pro 1000 Muttern, {a23} Stunden pro 1000 Bolzen und {a24} Stunden pro 1000 Nieten. Die Pressenkapazität liegt bei {b2} Stunden. Der Härteofen beansprucht {a31} Stunden pro 1000 Schrauben, {a32} Stunden pro 1000 Muttern, {a33} Stunden pro 1000 Bolzen und {a34} Stunden pro 1000 Nieten bei {b3} Stunden Kapazität.",
+    "hinweis": "Vier Verbindungselemente mit Beschränkungen bei Stahl, Presse und Härteofen.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "1000 Schrauben betraegt der Gewinn {c1} Euro",
+          "text": "1000 Schrauben beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -60404,7 +60404,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} Stunden Kapazitaet",
+            "text": "{b3} Stunden Kapazität",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -60417,7 +60417,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Anzahl Zahnraeder",
+      "x1 = Anzahl Zahnräder",
       "x2 = Anzahl Wellen"
     ],
     "objective": [
@@ -60486,9 +60486,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Maschinenstunden"
       }
     },
-    "titel": "Metallwerkstatt – Zahnraeder und Wellen",
-    "beschreibung": "Eine Metallwerkstatt fertigt Zahnraeder und Wellen. Der Gewinn pro Zahnrad liegt bei {c1} Euro, pro Welle bei {c2} Euro. Ein Zahnrad verbraucht {a11} kg Stahl, eine Welle {a12} kg. Es sind {b1} kg Stahl vorhanden. Die Bearbeitung eines Zahnrads dauert {a21} Maschinenstunden, die einer Welle {a22} Maschinenstunden. Die Maschinenkapazitaet betraegt {b2} Stunden.",
-    "hinweis": "Stelle die Zielfunktion und die Nebenbedingungen fuer Stahl und Maschinenzeit auf.",
+    "titel": "Metallwerkstatt – Zahnräder und Wellen",
+    "beschreibung": "Eine Metallwerkstatt fertigt Zahnräder und Wellen. Der Gewinn pro Zahnrad liegt bei {c1} Euro, pro Welle bei {c2} Euro. Ein Zahnrad verbraucht {a11} kg Stahl, eine Welle {a12} kg. Es sind {b1} kg Stahl vorhanden. Die Bearbeitung eines Zahnrads dauert {a21} Maschinenstunden, die einer Welle {a22} Maschinenstunden. Die Maschinenkapazität beträgt {b2} Stunden.",
+    "hinweis": "Stelle die Zielfunktion und die Nebenbedingungen für Stahl und Maschinenzeit auf.",
     "highlights": {
       "zielfunktion": [
         {
@@ -60539,7 +60539,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 3,
     "variablen": [
       "x1 = Anzahl Tische",
-      "x2 = Anzahl Stuehle",
+      "x2 = Anzahl Stühle",
       "x3 = Anzahl Regale"
     ],
     "objective": [
@@ -60570,7 +60570,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Lagerflaeche",
+        "label": "Lagerfläche",
         "row": [
           "a31",
           "a32",
@@ -60638,27 +60638,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Lagerflaeche/Tisch (m²)"
+        "label": "Lagerfläche/Tisch (m²)"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "Lagerflaeche/Stuhl (m²)"
+        "label": "Lagerfläche/Stuhl (m²)"
       },
       "a33": {
         "min": 1,
         "max": 3,
-        "label": "Lagerflaeche/Regal (m²)"
+        "label": "Lagerfläche/Regal (m²)"
       },
       "b3": {
         "min": 30,
         "max": 120,
-        "label": "Lagerflaeche (m²)"
+        "label": "Lagerfläche (m²)"
       }
     },
-    "titel": "Moebelfabrik – Tische, Stuehle und Regale",
-    "beschreibung": "Eine Moebelfabrik produziert Tische, Stuehle und Regale. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro, pro Regal {c3} Euro. Ein Tisch verbraucht {a11} m² Holz, ein Stuhl {a12} m², ein Regal {a13} m². Es stehen {b1} m² Holz bereit. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden, eines Regals {a23} Stunden. Insgesamt sind {b2} Arbeitsstunden verfuegbar. Ein Tisch belegt {a31} m² Lagerflaeche, ein Stuhl {a32} m², ein Regal {a33} m². Die Lagerkapazitaet betraegt {b3} m².",
-    "hinweis": "Drei Produkte, drei Beschraenkungen: Holz, Arbeitszeit und Lagerflaeche.",
+    "titel": "Möbelfabrik – Tische, Stühle und Regale",
+    "beschreibung": "Eine Möbelfabrik produziert Tische, Stühle und Regale. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro, pro Regal {c3} Euro. Ein Tisch verbraucht {a11} m² Holz, ein Stuhl {a12} m², ein Regal {a13} m². Es stehen {b1} m² Holz bereit. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden, eines Regals {a23} Stunden. Insgesamt sind {b2} Arbeitsstunden verfügbar. Ein Tisch belegt {a31} m² Lagerfläche, ein Stuhl {a32} m², ein Regal {a33} m². Die Lagerkapazität beträgt {b3} m².",
+    "hinweis": "Drei Produkte, drei Beschränkungen: Holz, Arbeitszeit und Lagerfläche.",
     "highlights": {
       "zielfunktion": [
         {
@@ -60707,13 +60707,13 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Arbeitsstunden verfuegbar",
+            "text": "{b2} Arbeitsstunden verfügbar",
             "bedeutung": "≤ {b2}"
           }
         ],
         [
           {
-            "text": "Tisch belegt {a31} m² Lagerflaeche",
+            "text": "Tisch belegt {a31} m² Lagerfläche",
             "bedeutung": "{a31}x₁"
           },
           {
@@ -60739,8 +60739,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 4,
     "variablen": [
       "x1 = Anzahl Tische",
-      "x2 = Anzahl Stuehle",
-      "x3 = Anzahl Schraenke",
+      "x2 = Anzahl Stühle",
+      "x3 = Anzahl Schränke",
       "x4 = Anzahl Betten"
     ],
     "objective": [
@@ -60881,9 +60881,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Lackierstunden"
       }
     },
-    "titel": "Moebelfabrik – Tische, Stuehle, Schraenke und Betten",
-    "beschreibung": "Eine Moebelfabrik stellt vier Produkte her: Tische, Stuehle, Schraenke und Betten. Der Gewinn betraegt {c1} Euro pro Tisch, {c2} Euro pro Stuhl, {c3} Euro pro Schrank und {c4} Euro pro Bett. Fuer einen Tisch werden {a11} m² Holz benoetigt, fuer einen Stuhl {a12} m², fuer einen Schrank {a13} m² und fuer ein Bett {a14} m². Der Holzvorrat belaeuft sich auf {b1} m². Die Fertigung dauert {a21} Arbeitsstunden pro Tisch, {a22} Arbeitsstunden pro Stuhl, {a23} Arbeitsstunden pro Schrank und {a24} Arbeitsstunden pro Bett bei {b2} verfuegbaren Arbeitsstunden. Die Lackierung benoetigt {a31} Lackierstunden pro Tisch, {a32} Lackierstunden pro Stuhl, {a33} Lackierstunden pro Schrank und {a34} Lackierstunden pro Bett. Die Lackierkapazitaet umfasst {b3} Lackierstunden.",
-    "hinweis": "Vier Produkte mit drei Beschraenkungen: Holz, Arbeitszeit und Lackierung.",
+    "titel": "Möbelfabrik – Tische, Stühle, Schränke und Betten",
+    "beschreibung": "Eine Möbelfabrik stellt vier Produkte her: Tische, Stühle, Schränke und Betten. Der Gewinn beträgt {c1} Euro pro Tisch, {c2} Euro pro Stuhl, {c3} Euro pro Schrank und {c4} Euro pro Bett. Für einen Tisch werden {a11} m² Holz benötigt, für einen Stuhl {a12} m², für einen Schrank {a13} m² und für ein Bett {a14} m². Der Holzvorrat beläuft sich auf {b1} m². Die Fertigung dauert {a21} Arbeitsstunden pro Tisch, {a22} Arbeitsstunden pro Stuhl, {a23} Arbeitsstunden pro Schrank und {a24} Arbeitsstunden pro Bett bei {b2} verfügbaren Arbeitsstunden. Die Lackierung benötigt {a31} Lackierstunden pro Tisch, {a32} Lackierstunden pro Stuhl, {a33} Lackierstunden pro Schrank und {a34} Lackierstunden pro Bett. Die Lackierkapazität umfasst {b3} Lackierstunden.",
+    "hinweis": "Vier Produkte mit drei Beschränkungen: Holz, Arbeitszeit und Lackierung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -60906,7 +60906,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} m² Holz benoetigt",
+            "text": "{a11} m² Holz benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -60944,7 +60944,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} verfuegbaren Arbeitsstunden",
+            "text": "{b2} verfügbaren Arbeitsstunden",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -60980,7 +60980,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 2,
     "variablen": [
       "x1 = Anzahl Tische",
-      "x2 = Anzahl Stuehle"
+      "x2 = Anzahl Stühle"
     ],
     "objective": [
       "c1",
@@ -61048,9 +61048,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Arbeitsstunden"
       }
     },
-    "titel": "Moebelfabrik – Tische und Stuehle",
-    "beschreibung": "Eine Moebelfabrik produziert Tische und Stuehle. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro. Fuer einen Tisch werden {a11} m² Holz verbraucht, fuer einen Stuhl {a12} m². Es stehen {b1} m² Holz zur Verfuegung. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden. Insgesamt sind {b2} Arbeitsstunden verfuegbar.",
-    "hinweis": "Bestimme den Gewinn pro Produkt und die Ressourcenbeschraenkungen.",
+    "titel": "Möbelfabrik – Tische und Stühle",
+    "beschreibung": "Eine Möbelfabrik produziert Tische und Stühle. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro. Für einen Tisch werden {a11} m² Holz verbraucht, für einen Stuhl {a12} m². Es stehen {b1} m² Holz zur Verfügung. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden. Insgesamt sind {b2} Arbeitsstunden verfügbar.",
+    "hinweis": "Bestimme den Gewinn pro Produkt und die Ressourcenbeschränkungen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -61073,7 +61073,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} m² Holz zur Verfuegung",
+            "text": "{b1} m² Holz zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -61087,7 +61087,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Arbeitsstunden verfuegbar",
+            "text": "{b2} Arbeitsstunden verfügbar",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -61119,7 +61119,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Kuehlkapazitaet",
+        "label": "Kühlkapazität",
         "row": [
           "a21",
           "a22"
@@ -61156,26 +61156,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 2,
-        "label": "Kuehlplatz/l Joghurt"
+        "label": "Kühlplatz/l Joghurt"
       },
       "a22": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlplatz/l Sahne"
+        "label": "Kühlplatz/l Sahne"
       },
       "b2": {
         "min": 100,
         "max": 400,
-        "label": "Kuehlplaetze"
+        "label": "Kühlplätze"
       }
     },
     "titel": "Molkerei – Joghurt und Sahne",
-    "beschreibung": "Eine Molkerei stellt Joghurt und Sahne her. Pro Liter Joghurt betraegt der Gewinn {c1} Euro, pro Liter Sahne {c2} Euro. Fuer einen Liter Joghurt werden {a11} Liter Milch benoetigt, fuer einen Liter Sahne {a12} Liter. Der Milchvorrat belaeuft sich auf {b1} Liter. Joghurt belegt {a21} Kuehlplaetze pro Liter, Sahne {a22} Kuehlplaetze pro Liter. Es gibt {b2} Kuehlplaetze.",
-    "hinweis": "Bestimme die Gewinnfunktion und die Grenzen bei Milch und Kuehlung.",
+    "beschreibung": "Eine Molkerei stellt Joghurt und Sahne her. Pro Liter Joghurt beträgt der Gewinn {c1} Euro, pro Liter Sahne {c2} Euro. Für einen Liter Joghurt werden {a11} Liter Milch benötigt, für einen Liter Sahne {a12} Liter. Der Milchvorrat beläuft sich auf {b1} Liter. Joghurt belegt {a21} Kühlplätze pro Liter, Sahne {a22} Kühlplätze pro Liter. Es gibt {b2} Kühlplätze.",
+    "hinweis": "Bestimme die Gewinnfunktion und die Grenzen bei Milch und Kühlung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Joghurt betraegt der Gewinn {c1} Euro",
+          "text": "Joghurt beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -61186,7 +61186,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Joghurt werden {a11} Liter Milch benoetigt",
+            "text": "Joghurt werden {a11} Liter Milch benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -61200,15 +61200,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Kuehlplaetze pro Liter, Sahne",
+            "text": "{a21} Kühlplätze pro Liter, Sahne",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} Kuehlplaetze pro Liter. Es gibt",
+            "text": "{a22} Kühlplätze pro Liter. Es gibt",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Kuehlplaetze",
+            "text": "{b2} Kühlplätze",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -61246,7 +61246,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Oel",
+        "label": "Öl",
         "row": [
           "a21",
           "a22",
@@ -61257,7 +61257,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Ruehrwerk",
+        "label": "Rührwerk",
         "row": [
           "a31",
           "a32",
@@ -61268,7 +61268,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Abfuellanlage",
+        "label": "Abfüllanlage",
         "row": [
           "a41",
           "a42",
@@ -61327,82 +61327,82 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 3,
-        "label": "Oel/t Ketchup (hl)"
+        "label": "Öl/t Ketchup (hl)"
       },
       "a22": {
         "min": 1,
         "max": 2,
-        "label": "Oel/t Senf (hl)"
+        "label": "Öl/t Senf (hl)"
       },
       "a23": {
         "min": 3,
         "max": 8,
-        "label": "Oel/t Mayonnaise (hl)"
+        "label": "Öl/t Mayonnaise (hl)"
       },
       "a24": {
         "min": 2,
         "max": 6,
-        "label": "Oel/t Dressing (hl)"
+        "label": "Öl/t Dressing (hl)"
       },
       "b2": {
         "min": 20,
         "max": 80,
-        "label": "Oelvorrat (hl)"
+        "label": "Ölvorrat (hl)"
       },
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Ruehrzeit/t Ketchup (h)"
+        "label": "Rührzeit/t Ketchup (h)"
       },
       "a32": {
         "min": 1,
         "max": 4,
-        "label": "Ruehrzeit/t Senf (h)"
+        "label": "Rührzeit/t Senf (h)"
       },
       "a33": {
         "min": 2,
         "max": 5,
-        "label": "Ruehrzeit/t Mayonnaise (h)"
+        "label": "Rührzeit/t Mayonnaise (h)"
       },
       "a34": {
         "min": 1,
         "max": 4,
-        "label": "Ruehrzeit/t Dressing (h)"
+        "label": "Rührzeit/t Dressing (h)"
       },
       "b3": {
         "min": 15,
         "max": 60,
-        "label": "Ruehrwerkstunden"
+        "label": "Rührwerkstunden"
       },
       "a41": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/t Ketchup (h)"
+        "label": "Abfüllzeit/t Ketchup (h)"
       },
       "a42": {
         "min": 1,
         "max": 2,
-        "label": "Abfuellzeit/t Senf (h)"
+        "label": "Abfüllzeit/t Senf (h)"
       },
       "a43": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/t Mayonnaise (h)"
+        "label": "Abfüllzeit/t Mayonnaise (h)"
       },
       "a44": {
         "min": 1,
         "max": 3,
-        "label": "Abfuellzeit/t Dressing (h)"
+        "label": "Abfüllzeit/t Dressing (h)"
       },
       "b4": {
         "min": 10,
         "max": 50,
-        "label": "Abfuellkapazitaet (h)"
+        "label": "Abfüllkapazität (h)"
       }
     },
     "titel": "Lebensmittelfabrik – Saucen und Dressings",
-    "beschreibung": "Eine Lebensmittelfabrik stellt Ketchup, Senf, Mayonnaise und Dressing her. Pro Tonne Ketchup werden {c1} Euro Gewinn erwirtschaftet, pro Tonne Senf {c2} Euro, pro Tonne Mayonnaise {c3} Euro und pro Tonne Dressing {c4} Euro. Der Essigverbrauch betraegt {a11} hl pro Tonne Ketchup, {a12} hl pro Tonne Senf, {a13} hl pro Tonne Mayonnaise und {a14} hl pro Tonne Dressing. Der Essigvorrat umfasst {b1} hl. An Oel werden {a21} hl pro Tonne Ketchup, {a22} hl pro Tonne Senf, {a23} hl pro Tonne Mayonnaise und {a24} hl pro Tonne Dressing benoetigt bei einem Vorrat von {b2} hl. Das Ruehrwerk arbeitet {a31} Stunden pro Tonne Ketchup, {a32} Stunden pro Tonne Senf, {a33} Stunden pro Tonne Mayonnaise und {a34} Stunden pro Tonne Dressing. Die Ruehrkapazitaet betraegt {b3} Stunden. Die Abfuellung erfordert {a41} Stunden pro Tonne Ketchup, {a42} Stunden pro Tonne Senf, {a43} Stunden pro Tonne Mayonnaise und {a44} Stunden pro Tonne Dressing bei {b4} Abfuellstunden.",
-    "hinweis": "Vier Saucen mit vier Beschraenkungen: Essig, Oel, Ruehrwerk und Abfuellung.",
+    "beschreibung": "Eine Lebensmittelfabrik stellt Ketchup, Senf, Mayonnaise und Dressing her. Pro Tonne Ketchup werden {c1} Euro Gewinn erwirtschaftet, pro Tonne Senf {c2} Euro, pro Tonne Mayonnaise {c3} Euro und pro Tonne Dressing {c4} Euro. Der Essigverbrauch beträgt {a11} hl pro Tonne Ketchup, {a12} hl pro Tonne Senf, {a13} hl pro Tonne Mayonnaise und {a14} hl pro Tonne Dressing. Der Essigvorrat umfasst {b1} hl. An Öl werden {a21} hl pro Tonne Ketchup, {a22} hl pro Tonne Senf, {a23} hl pro Tonne Mayonnaise und {a24} hl pro Tonne Dressing benötigt bei einem Vorrat von {b2} hl. Das Rührwerk arbeitet {a31} Stunden pro Tonne Ketchup, {a32} Stunden pro Tonne Senf, {a33} Stunden pro Tonne Mayonnaise und {a34} Stunden pro Tonne Dressing. Die Rührkapazität beträgt {b3} Stunden. Die Abfüllung erfordert {a41} Stunden pro Tonne Ketchup, {a42} Stunden pro Tonne Senf, {a43} Stunden pro Tonne Mayonnaise und {a44} Stunden pro Tonne Dressing bei {b4} Abfüllstunden.",
+    "hinweis": "Vier Saucen mit vier Beschränkungen: Essig, Öl, Rührwerk und Abfüllung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -61507,7 +61507,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{b4} Abfuellstunden",
+            "text": "{b4} Abfüllstunden",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -61586,12 +61586,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 40,
         "max": 160,
-        "label": "Trocknungskapazitaet (h)"
+        "label": "Trocknungskapazität (h)"
       }
     },
     "titel": "Papierfabrik – Druckpapier und Karton",
-    "beschreibung": "Eine Papierfabrik produziert Druckpapier und Karton. Pro Tonne Druckpapier werden {c1} Euro Gewinn erzielt, pro Tonne Karton {c2} Euro. Die Herstellung einer Tonne Druckpapier erfordert {a11} Tonnen Zellstoff, eine Tonne Karton {a12} Tonnen. Es sind {b1} Tonnen Zellstoff vorhanden. Die Trocknung einer Tonne Druckpapier dauert {a21} Stunden, die von Karton {a22} Stunden. Die Trocknungskapazitaet betraegt {b2} Stunden.",
-    "hinweis": "Stelle das Modell mit Zellstoff- und Trocknungsbeschraenkung auf.",
+    "beschreibung": "Eine Papierfabrik produziert Druckpapier und Karton. Pro Tonne Druckpapier werden {c1} Euro Gewinn erzielt, pro Tonne Karton {c2} Euro. Die Herstellung einer Tonne Druckpapier erfordert {a11} Tonnen Zellstoff, eine Tonne Karton {a12} Tonnen. Es sind {b1} Tonnen Zellstoff vorhanden. Die Trocknung einer Tonne Druckpapier dauert {a21} Stunden, die von Karton {a22} Stunden. Die Trocknungskapazität beträgt {b2} Stunden.",
+    "hinweis": "Stelle das Modell mit Zellstoff- und Trocknungsbeschränkung auf.",
     "highlights": {
       "zielfunktion": [
         {
@@ -61692,7 +61692,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 60,
         "max": 250,
-        "label": "Holzplatten verfuegbar"
+        "label": "Holzplatten verfügbar"
       },
       "a21": {
         "min": 10,
@@ -61711,8 +61711,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Schreinerei – Regale und Kommoden",
-    "beschreibung": "Eine Schreinerei baut Regale und Kommoden. Pro Regal wird ein Gewinn von {c1} Euro erwirtschaftet, pro Kommode {c2} Euro. Ein Regal benoetigt {a11} Holzplatten, eine Kommode {a12} Holzplatten. Es sind {b1} Holzplatten verfuegbar. Fuer ein Regal werden {a21} Schrauben gebraucht, fuer eine Kommode {a22} Schrauben. Der Vorrat umfasst {b2} Schrauben.",
-    "hinweis": "Bestimme den Gewinn und die Beschraenkungen durch Holzplatten und Schrauben.",
+    "beschreibung": "Eine Schreinerei baut Regale und Kommoden. Pro Regal wird ein Gewinn von {c1} Euro erwirtschaftet, pro Kommode {c2} Euro. Ein Regal benötigt {a11} Holzplatten, eine Kommode {a12} Holzplatten. Es sind {b1} Holzplatten verfügbar. Für ein Regal werden {a21} Schrauben gebraucht, für eine Kommode {a22} Schrauben. Der Vorrat umfasst {b2} Schrauben.",
+    "hinweis": "Bestimme den Gewinn und die Beschränkungen durch Holzplatten und Schrauben.",
     "highlights": {
       "zielfunktion": [
         {
@@ -61727,7 +61727,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Regal benoetigt {a11} Holzplatten",
+            "text": "Regal benötigt {a11} Holzplatten",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -61735,7 +61735,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Holzplatten verfuegbar",
+            "text": "{b1} Holzplatten verfügbar",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -61832,12 +61832,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Schuhfabrik – Sneaker und Stiefel",
-    "beschreibung": "Eine Schuhfabrik stellt Sneaker und Stiefel her. Pro Paar Sneaker betraegt der Gewinn {c1} Euro, pro Paar Stiefel {c2} Euro. Ein Paar Sneaker benoetigt {a11} m² Leder, ein Paar Stiefel {a12} m². Es stehen {b1} m² Leder zur Verfuegung. Fuer Sneaker werden {a21} dl Klebstoff benoetigt, fuer Stiefel {a22} dl. Der Klebstoffvorrat betraegt {b2} dl.",
-    "hinweis": "Identifiziere Gewinn und die Beschraenkungen durch Leder und Klebstoff.",
+    "beschreibung": "Eine Schuhfabrik stellt Sneaker und Stiefel her. Pro Paar Sneaker beträgt der Gewinn {c1} Euro, pro Paar Stiefel {c2} Euro. Ein Paar Sneaker benötigt {a11} m² Leder, ein Paar Stiefel {a12} m². Es stehen {b1} m² Leder zur Verfügung. Für Sneaker werden {a21} dl Klebstoff benötigt, für Stiefel {a22} dl. Der Klebstoffvorrat beträgt {b2} dl.",
+    "hinweis": "Identifiziere Gewinn und die Beschränkungen durch Leder und Klebstoff.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Sneaker betraegt der Gewinn {c1} Euro",
+          "text": "Sneaker beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -61848,7 +61848,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Sneaker benoetigt {a11} m² Leder",
+            "text": "Sneaker benötigt {a11} m² Leder",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -61856,13 +61856,13 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} m² Leder zur Verfuegung",
+            "text": "{b1} m² Leder zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
         [
           {
-            "text": "Sneaker werden {a21} dl Klebstoff benoetigt",
+            "text": "Sneaker werden {a21} dl Klebstoff benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -61884,7 +61884,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 3,
     "variablen": [
       "x1 = Anzahl Puppen",
-      "x2 = Anzahl Baukaesten",
+      "x2 = Anzahl Baukästen",
       "x3 = Anzahl Brettspiele"
     ],
     "objective": [
@@ -62001,9 +62001,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Verpackungsminuten"
       }
     },
-    "titel": "Spielzeughersteller – Puppen, Baukaesten und Brettspiele",
-    "beschreibung": "Ein Spielzeughersteller produziert Puppen, Baukaesten und Brettspiele. Jede Puppe bringt {c1} Euro Gewinn, jeder Baukasten {c2} Euro und jedes Brettspiel {c3} Euro. Eine Puppe benoetigt {a11} kg Kunststoff, ein Baukasten {a12} kg und ein Brettspiel {a13} kg. Der Kunststoffvorrat betraegt {b1} kg. Die Bemalung einer Puppe dauert {a21} Minuten, eines Baukastens {a22} Minuten und eines Brettspiels {a23} Minuten. Insgesamt stehen {b2} Bemalungsminuten bereit. Die Verpackung benoetigt {a31} Minuten pro Puppe, {a32} Minuten pro Baukasten und {a33} Minuten pro Brettspiel bei einer Kapazitaet von {b3} Minuten.",
-    "hinweis": "Drei Produkte mit Beschraenkungen bei Kunststoff, Bemalung und Verpackung.",
+    "titel": "Spielzeughersteller – Puppen, Baukästen und Brettspiele",
+    "beschreibung": "Ein Spielzeughersteller produziert Puppen, Baukästen und Brettspiele. Jede Puppe bringt {c1} Euro Gewinn, jeder Baukasten {c2} Euro und jedes Brettspiel {c3} Euro. Eine Puppe benötigt {a11} kg Kunststoff, ein Baukasten {a12} kg und ein Brettspiel {a13} kg. Der Kunststoffvorrat beträgt {b1} kg. Die Bemalung einer Puppe dauert {a21} Minuten, eines Baukastens {a22} Minuten und eines Brettspiels {a23} Minuten. Insgesamt stehen {b2} Bemalungsminuten bereit. Die Verpackung benötigt {a31} Minuten pro Puppe, {a32} Minuten pro Baukasten und {a33} Minuten pro Brettspiel bei einer Kapazität von {b3} Minuten.",
+    "hinweis": "Drei Produkte mit Beschränkungen bei Kunststoff, Bemalung und Verpackung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -62022,7 +62022,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Puppe benoetigt {a11} kg Kunststoff",
+            "text": "Puppe benötigt {a11} kg Kunststoff",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -62153,8 +62153,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Spielzeughersteller – Holzautos und Puzzles",
-    "beschreibung": "Ein Spielzeughersteller produziert Holzautos und Puzzles. Pro Holzauto wird ein Gewinn von {c1} Euro erzielt, pro Puzzle {c2} Euro. Jedes Holzauto benoetigt {a11} dm³ Holz, jedes Puzzle {a12} dm³. Es stehen {b1} dm³ Holz bereit. Das Lackieren eines Autos dauert {a21} Minuten, das eines Puzzles {a22} Minuten. Die Lackierkapazitaet betraegt {b2} Minuten.",
-    "hinweis": "Formuliere die Gewinnmaximierung unter Beachtung der Holz- und Lackierbeschraenkungen.",
+    "beschreibung": "Ein Spielzeughersteller produziert Holzautos und Puzzles. Pro Holzauto wird ein Gewinn von {c1} Euro erzielt, pro Puzzle {c2} Euro. Jedes Holzauto benötigt {a11} dm³ Holz, jedes Puzzle {a12} dm³. Es stehen {b1} dm³ Holz bereit. Das Lackieren eines Autos dauert {a21} Minuten, das eines Puzzles {a22} Minuten. Die Lackierkapazität beträgt {b2} Minuten.",
+    "hinweis": "Formuliere die Gewinnmaximierung unter Beachtung der Holz- und Lackierbeschränkungen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -62206,7 +62206,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "variablen": [
       "x1 = Anzahl T-Shirts",
       "x2 = Anzahl Jacken",
-      "x3 = Anzahl Muetzen"
+      "x3 = Anzahl Mützen"
     ],
     "objective": [
       "c1",
@@ -62226,7 +62226,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Naehzeit",
+        "label": "Nähzeit",
         "row": [
           "a21",
           "a22",
@@ -62236,7 +62236,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Faerbekapazitaet",
+        "label": "Färbekapazität",
         "row": [
           "a31",
           "a32",
@@ -62259,7 +62259,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 3,
         "max": 10,
-        "label": "Gewinn/Muetze (€)"
+        "label": "Gewinn/Mütze (€)"
       },
       "a11": {
         "min": 1,
@@ -62274,7 +62274,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 1,
         "max": 2,
-        "label": "Stoff/Muetze (m)"
+        "label": "Stoff/Mütze (m)"
       },
       "b1": {
         "min": 60,
@@ -62284,51 +62284,51 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 3,
-        "label": "Naehzeit/T-Shirt (h)"
+        "label": "Nähzeit/T-Shirt (h)"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Naehzeit/Jacke (h)"
+        "label": "Nähzeit/Jacke (h)"
       },
       "a23": {
         "min": 1,
         "max": 2,
-        "label": "Naehzeit/Muetze (h)"
+        "label": "Nähzeit/Mütze (h)"
       },
       "b2": {
         "min": 40,
         "max": 180,
-        "label": "Naehstunden"
+        "label": "Nähstunden"
       },
       "a31": {
         "min": 1,
         "max": 3,
-        "label": "Faerbezeit/T-Shirt (h)"
+        "label": "Färbezeit/T-Shirt (h)"
       },
       "a32": {
         "min": 1,
         "max": 4,
-        "label": "Faerbezeit/Jacke (h)"
+        "label": "Färbezeit/Jacke (h)"
       },
       "a33": {
         "min": 1,
         "max": 2,
-        "label": "Faerbezeit/Muetze (h)"
+        "label": "Färbezeit/Mütze (h)"
       },
       "b3": {
         "min": 30,
         "max": 120,
-        "label": "Faerbestunden"
+        "label": "Färbestunden"
       }
     },
-    "titel": "Textilfabrik – T-Shirts, Jacken und Muetzen",
-    "beschreibung": "Eine Textilfabrik produziert T-Shirts, Jacken und Muetzen. Der Gewinn pro T-Shirt betraegt {c1} Euro, pro Jacke {c2} Euro, pro Muetze {c3} Euro. Ein T-Shirt benoetigt {a11} m Stoff, eine Jacke {a12} m, eine Muetze {a13} m. Es stehen {b1} m Stoff bereit. Das Naehen eines T-Shirts dauert {a21} Stunden, einer Jacke {a22} Stunden, einer Muetze {a23} Stunden bei insgesamt {b2} Naehstunden. Das Faerben benoetigt {a31} Stunden pro T-Shirt, {a32} Stunden pro Jacke und {a33} Stunden pro Muetze. Die Faerbekapazitaet umfasst {b3} Stunden.",
-    "hinweis": "Formuliere die Gewinnmaximierung mit drei Nebenbedingungen: Stoff, Naehzeit, Faerbekapazitaet.",
+    "titel": "Textilfabrik – T-Shirts, Jacken und Mützen",
+    "beschreibung": "Eine Textilfabrik produziert T-Shirts, Jacken und Mützen. Der Gewinn pro T-Shirt beträgt {c1} Euro, pro Jacke {c2} Euro, pro Mütze {c3} Euro. Ein T-Shirt benötigt {a11} m Stoff, eine Jacke {a12} m, eine Mütze {a13} m. Es stehen {b1} m Stoff bereit. Das Nähen eines T-Shirts dauert {a21} Stunden, einer Jacke {a22} Stunden, einer Mütze {a23} Stunden bei insgesamt {b2} Nähstunden. Das Färben benötigt {a31} Stunden pro T-Shirt, {a32} Stunden pro Jacke und {a33} Stunden pro Mütze. Die Färbekapazität umfasst {b3} Stunden.",
+    "hinweis": "Formuliere die Gewinnmaximierung mit drei Nebenbedingungen: Stoff, Nähzeit, Färbekapazität.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "T-Shirt betraegt {c1} Euro",
+          "text": "T-Shirt beträgt {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -62336,14 +62336,14 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "Muetze {c3} Euro",
+          "text": "Mütze {c3} Euro",
           "bedeutung": "{c3} × x₃"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "T-Shirt benoetigt {a11} m Stoff",
+            "text": "T-Shirt benötigt {a11} m Stoff",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -62351,7 +62351,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "Muetze {a13} m",
+            "text": "Mütze {a13} m",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -62369,11 +62369,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "Muetze {a23} Stunden",
+            "text": "Mütze {a23} Stunden",
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Naehstunden",
+            "text": "{b2} Nähstunden",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -62387,7 +62387,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} Stunden pro Muetze",
+            "text": "{a33} Stunden pro Mütze",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -62423,7 +62423,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Naehzeit",
+        "label": "Nähzeit",
         "row": [
           "a21",
           "a22"
@@ -62460,26 +62460,26 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 4,
-        "label": "Naehzeit/Hemd (h)"
+        "label": "Nähzeit/Hemd (h)"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Naehzeit/Hose (h)"
+        "label": "Nähzeit/Hose (h)"
       },
       "b2": {
         "min": 50,
         "max": 180,
-        "label": "Naehstunden"
+        "label": "Nähstunden"
       }
     },
     "titel": "Textilfabrik – Hemden und Hosen",
-    "beschreibung": "Eine Textilfabrik produziert Hemden und Hosen. Pro Hemd betraegt der Gewinn {c1} Euro, pro Hose {c2} Euro. Fuer ein Hemd werden {a11} m Stoff benoetigt, fuer eine Hose {a12} m. Der Stoffvorrat belaeuft sich auf {b1} m. Das Naehen eines Hemdes dauert {a21} Stunden, das einer Hose {a22} Stunden. Die Naehkapazitaet betraegt {b2} Stunden.",
-    "hinweis": "Finde die Gewinnfunktion und die Beschraenkungen bei Stoff und Naehzeit.",
+    "beschreibung": "Eine Textilfabrik produziert Hemden und Hosen. Pro Hemd beträgt der Gewinn {c1} Euro, pro Hose {c2} Euro. Für ein Hemd werden {a11} m Stoff benötigt, für eine Hose {a12} m. Der Stoffvorrat beläuft sich auf {b1} m. Das Nähen eines Hemdes dauert {a21} Stunden, das einer Hose {a22} Stunden. Die Nähkapazität beträgt {b2} Stunden.",
+    "hinweis": "Finde die Gewinnfunktion und die Beschränkungen bei Stoff und Nähzeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Hemd betraegt der Gewinn {c1} Euro",
+          "text": "Hemd beträgt der Gewinn {c1} Euro",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -62490,7 +62490,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "{a11} m Stoff benoetigt",
+            "text": "{a11} m Stoff benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -62591,12 +62591,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 30,
         "max": 120,
-        "label": "Ofenplaetze"
+        "label": "Ofenplätze"
       }
     },
-    "titel": "Toepferei – Teller und Tassen",
-    "beschreibung": "Eine Toepferei stellt Teller und Tassen her. Pro Teller wird ein Gewinn von {c1} Euro erzielt, pro Tasse {c2} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg. Es stehen {b1} kg Ton zur Verfuegung. Jeder Teller belegt {a21} Ofenplaetze, jede Tasse {a22} Ofenplaetze. Insgesamt gibt es {b2} Ofenplaetze.",
-    "hinweis": "Stelle die Gewinnfunktion und die beiden Ressourcenbeschraenkungen auf.",
+    "titel": "Töpferei – Teller und Tassen",
+    "beschreibung": "Eine Töpferei stellt Teller und Tassen her. Pro Teller wird ein Gewinn von {c1} Euro erzielt, pro Tasse {c2} Euro. Ein Teller benötigt {a11} kg Ton, eine Tasse {a12} kg. Es stehen {b1} kg Ton zur Verfügung. Jeder Teller belegt {a21} Ofenplätze, jede Tasse {a22} Ofenplätze. Insgesamt gibt es {b2} Ofenplätze.",
+    "hinweis": "Stelle die Gewinnfunktion und die beiden Ressourcenbeschränkungen auf.",
     "highlights": {
       "zielfunktion": [
         {
@@ -62611,7 +62611,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Teller benoetigt {a11} kg Ton",
+            "text": "Teller benötigt {a11} kg Ton",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -62619,21 +62619,21 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} kg Ton zur Verfuegung",
+            "text": "{b1} kg Ton zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
         [
           {
-            "text": "Teller belegt {a21} Ofenplaetze",
+            "text": "Teller belegt {a21} Ofenplätze",
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "Tasse {a22} Ofenplaetze",
+            "text": "Tasse {a22} Ofenplätze",
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Ofenplaetze",
+            "text": "{b2} Ofenplätze",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -62712,12 +62712,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 30,
         "max": 140,
-        "label": "Brennofenkapazitaet (h)"
+        "label": "Brennofenkapazität (h)"
       }
     },
     "titel": "Ziegelei – Mauer- und Dachziegel",
-    "beschreibung": "Eine Ziegelei produziert Mauer- und Dachziegel. Pro Palette Mauerziegel wird ein Gewinn von {c1} Euro erzielt, pro Palette Dachziegel {c2} Euro. Eine Palette Mauerziegel benoetigt {a11} Tonnen Ton, Dachziegel {a12} Tonnen. Der Tonvorrat betraegt {b1} Tonnen. Das Brennen einer Palette Mauerziegel dauert {a21} Stunden, Dachziegel {a22} Stunden. Die Brennofenkapazitaet liegt bei {b2} Stunden.",
-    "hinweis": "Modelliere den Gewinn und die Beschraenkungen durch Ton und Brennofen.",
+    "beschreibung": "Eine Ziegelei produziert Mauer- und Dachziegel. Pro Palette Mauerziegel wird ein Gewinn von {c1} Euro erzielt, pro Palette Dachziegel {c2} Euro. Eine Palette Mauerziegel benötigt {a11} Tonnen Ton, Dachziegel {a12} Tonnen. Der Tonvorrat beträgt {b1} Tonnen. Das Brennen einer Palette Mauerziegel dauert {a21} Stunden, Dachziegel {a22} Stunden. Die Brennofenkapazität liegt bei {b2} Stunden.",
+    "hinweis": "Modelliere den Gewinn und die Beschränkungen durch Ton und Brennofen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -62732,7 +62732,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Mauerziegel benoetigt {a11} Tonnen Ton",
+            "text": "Mauerziegel benötigt {a11} Tonnen Ton",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -68811,7 +68811,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 3,
     "variablen": [
       "x1 = Solaranlagen",
-      "x2 = Windraeder",
+      "x2 = Windräder",
       "x3 = Biogasanlagen"
     ],
     "objective": [
@@ -68905,7 +68905,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 8,
         "max": 30,
-        "label": "Verfuegbare Techniker"
+        "label": "Verfügbare Techniker"
       },
       "a31": {
         "min": 1,
@@ -68925,12 +68925,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 5,
         "max": 20,
-        "label": "Genehmigungskapazitaet"
+        "label": "Genehmigungskapazität"
       }
     },
     "titel": "Energiemix – Solar, Wind und Biogas",
-    "beschreibung": "Ein Energieversorger plant drei Anlagentypen: Solar, Wind und Biogas. Jede Solaranlage liefert {c1} MWh, jedes Windrad {c2} MWh und jede Biogasanlage {c3} MWh Ertrag. Die Investition betraegt {a11} Zehntausend Euro pro Solaranlage, {a12} Zehntausend Euro pro Windrad und {a13} Zehntausend Euro pro Biogasanlage. Das Investitionsbudget umfasst {b1} Zehntausend Euro. Pro Solaranlage werden {a21} Techniker benoetigt, pro Windrad {a22} und pro Biogasanlage {a23} Techniker. Es stehen {b2} Techniker bereit. An Genehmigungen erfordert eine Solaranlage {a31}, ein Windrad {a32} und eine Biogasanlage {a33} Verfahren. Die Genehmigungskapazitaet liegt bei {b3} Verfahren.",
-    "hinweis": "Drei Energiequellen mit Budget-, Techniker- und Genehmigungsbeschraenkung.",
+    "beschreibung": "Ein Energieversorger plant drei Anlagentypen: Solar, Wind und Biogas. Jede Solaranlage liefert {c1} MWh, jedes Windrad {c2} MWh und jede Biogasanlage {c3} MWh Ertrag. Die Investition beträgt {a11} Zehntausend Euro pro Solaranlage, {a12} Zehntausend Euro pro Windrad und {a13} Zehntausend Euro pro Biogasanlage. Das Investitionsbudget umfasst {b1} Zehntausend Euro. Pro Solaranlage werden {a21} Techniker benötigt, pro Windrad {a22} und pro Biogasanlage {a23} Techniker. Es stehen {b2} Techniker bereit. An Genehmigungen erfordert eine Solaranlage {a31}, ein Windrad {a32} und eine Biogasanlage {a33} Verfahren. Die Genehmigungskapazität liegt bei {b3} Verfahren.",
+    "hinweis": "Drei Energiequellen mit Budget-, Techniker- und Genehmigungsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -68967,7 +68967,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a21} Techniker benoetigt",
+            "text": "{a21} Techniker benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -69029,7 +69029,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Standortflaeche",
+        "label": "Standortfläche",
         "row": [
           "a21",
           "a22"
@@ -69066,22 +69066,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 1,
         "max": 4,
-        "label": "Flaeche/Solaranlage (ha)"
+        "label": "Fläche/Solaranlage (ha)"
       },
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Flaeche/Windturbine (ha)"
+        "label": "Fläche/Windturbine (ha)"
       },
       "b2": {
         "min": 10,
         "max": 50,
-        "label": "Standortflaeche (ha)"
+        "label": "Standortfläche (ha)"
       }
     },
     "titel": "Energieplanung – Solar und Wind",
-    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windturbinen. Jede Solaranlage liefert {c1} MWh Energieertrag, jede Windturbine {c2} MWh. Die Installation einer Solaranlage kostet {a11} Zehntausend Euro, einer Windturbine {a12} Zehntausend Euro. Das Installationsbudget betraegt {b1} Zehntausend Euro. Eine Solaranlage benoetigt {a21} Hektar Flaeche, eine Windturbine {a22} Hektar. Die Standortflaeche umfasst {b2} Hektar.",
-    "hinweis": "Maximiere den Energieertrag mit Budget- und Flaechenbeschraenkung.",
+    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windturbinen. Jede Solaranlage liefert {c1} MWh Energieertrag, jede Windturbine {c2} MWh. Die Installation einer Solaranlage kostet {a11} Zehntausend Euro, einer Windturbine {a12} Zehntausend Euro. Das Installationsbudget beträgt {b1} Zehntausend Euro. Eine Solaranlage benötigt {a21} Hektar Fläche, eine Windturbine {a22} Hektar. Die Standortfläche umfasst {b2} Hektar.",
+    "hinweis": "Maximiere den Energieertrag mit Budget- und Flächenbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69110,7 +69110,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Solaranlage benoetigt {a21} Hektar",
+            "text": "Solaranlage benötigt {a21} Hektar",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -69276,7 +69276,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     },
     "titel": "Konferenzplanung – Workshops, Keynotes, Diskussionen und Networking",
     "beschreibung": "Ein Konferenzorganisator plant vier Formattypen: Workshops, Keynotes, Podiumsdiskussionen und Networking-Sessions. Jeder Workshop erzielt {c1} Zufriedenheitspunkte, jede Keynote {c2}, jede Podiumsdiskussion {c3} und jede Networking-Session {c4} Punkte. Ein Workshop belegt {a11} Zeitslots, eine Keynote {a12}, eine Podiumsdiskussion {a13} und eine Networking-Session {a14} Zeitslots. Es stehen {b1} Zeitslots bereit. Die Referentenkosten betragen {a21} Tausend Euro pro Workshop, {a22} Tausend Euro pro Keynote, {a23} Tausend Euro pro Podiumsdiskussion und {a24} Tausend Euro pro Networking-Session bei {b2} Tausend Euro Referentenbudget. Die Technik erfordert {a31} Stunden pro Workshop, {a32} Stunden pro Keynote, {a33} Stunden pro Podiumsdiskussion und {a34} Stunden pro Networking-Session bei {b3} Technikstunden.",
-    "hinweis": "Vier Konferenzformate mit Zeitslot-, Referenten- und Technikbeschraenkung.",
+    "hinweis": "Vier Konferenzformate mit Zeitslot-, Referenten- und Technikbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69373,7 +69373,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 2,
     "variablen": [
       "x1 = Workshops",
-      "x2 = Vortraege"
+      "x2 = Vorträge"
     ],
     "objective": [
       "c1",
@@ -69441,9 +69441,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Moderatorenstunden gesamt"
       }
     },
-    "titel": "Eventplanung – Workshops und Vortraege",
-    "beschreibung": "Ein Eventmanager plant eine Konferenz mit Workshops und Vortraegen. Jeder Workshop erbringt {c1} Zufriedenheitspunkte, jeder Vortrag {c2} Punkte. Ein Workshop belegt {a11} Raumstunden, ein Vortrag {a12} Raumstunden. Es stehen {b1} Raumstunden bereit. Jeder Workshop benoetigt {a21} Moderatorenstunden, jeder Vortrag {a22} Moderatorenstunden. Die Moderatorenkapazitaet betraegt {b2} Stunden.",
-    "hinweis": "Maximiere die Zufriedenheit unter Raum- und Moderatorenbeschraenkung.",
+    "titel": "Eventplanung – Workshops und Vorträge",
+    "beschreibung": "Ein Eventmanager plant eine Konferenz mit Workshops und Vorträgen. Jeder Workshop erbringt {c1} Zufriedenheitspunkte, jeder Vortrag {c2} Punkte. Ein Workshop belegt {a11} Raumstunden, ein Vortrag {a12} Raumstunden. Es stehen {b1} Raumstunden bereit. Jeder Workshop benötigt {a21} Moderatorenstunden, jeder Vortrag {a22} Moderatorenstunden. Die Moderatorenkapazität beträgt {b2} Stunden.",
+    "hinweis": "Maximiere die Zufriedenheit unter Raum- und Moderatorenbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69472,7 +69472,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Workshop benoetigt {a21} Moderatorenstunden",
+            "text": "Workshop benötigt {a21} Moderatorenstunden",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -69493,8 +69493,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Flaeche Filiale Zentrum (m²)",
-      "x2 = Flaeche Filiale Vorstadt (m²)"
+      "x1 = Fläche Filiale Zentrum (m²)",
+      "x2 = Fläche Filiale Vorstadt (m²)"
     ],
     "objective": [
       "c1",
@@ -69503,7 +69503,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Gesamtflaeche",
+        "label": "Gesamtfläche",
         "row": [
           "a11",
           "a12"
@@ -69534,17 +69534,17 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 1,
         "max": 1,
-        "label": "Flaeche/m² Zentrum"
+        "label": "Fläche/m² Zentrum"
       },
       "a12": {
         "min": 1,
         "max": 1,
-        "label": "Flaeche/m² Vorstadt"
+        "label": "Fläche/m² Vorstadt"
       },
       "b1": {
         "min": 100,
         "max": 500,
-        "label": "Verfuegbare Gesamtflaeche (m²)"
+        "label": "Verfügbare Gesamtfläche (m²)"
       },
       "a21": {
         "min": 2,
@@ -69563,8 +69563,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Filialnetz – Zentrum und Vorstadt",
-    "beschreibung": "Ein Einzelhaendler verteilt Verkaufsflaeche auf eine Filiale im Zentrum und eine in der Vorstadt. Pro Quadratmeter im Zentrum wird ein Umsatz von {c1} Hundert Euro erzielt, in der Vorstadt {c2} Hundert Euro. Jeder Quadratmeter Zentrum benoetigt {a11} Quadratmeter Flaeche, Vorstadt {a12} Quadratmeter. Die Gesamtflaeche betraegt {b1} Quadratmeter. Die Ausstattung kostet {a21} Hundert Euro pro Quadratmeter Zentrum und {a22} Hundert Euro pro Quadratmeter Vorstadt. Das Ausstattungsbudget belaeuft sich auf {b2} Hundert Euro.",
-    "hinweis": "Maximiere den Umsatz mit Flaechen- und Budgetbeschraenkung.",
+    "beschreibung": "Ein Einzelhändler verteilt Verkaufsfläche auf eine Filiale im Zentrum und eine in der Vorstadt. Pro Quadratmeter im Zentrum wird ein Umsatz von {c1} Hundert Euro erzielt, in der Vorstadt {c2} Hundert Euro. Jeder Quadratmeter Zentrum benötigt {a11} Quadratmeter Fläche, Vorstadt {a12} Quadratmeter. Die Gesamtfläche beträgt {b1} Quadratmeter. Die Ausstattung kostet {a21} Hundert Euro pro Quadratmeter Zentrum und {a22} Hundert Euro pro Quadratmeter Vorstadt. Das Ausstattungsbudget beläuft sich auf {b2} Hundert Euro.",
+    "hinweis": "Maximiere den Umsatz mit Flächen- und Budgetbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69579,7 +69579,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Zentrum benoetigt {a11} Quadratmeter",
+            "text": "Zentrum benötigt {a11} Quadratmeter",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -69636,7 +69636,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Laborgeraete",
+        "label": "Laborgeräte",
         "row": [
           "a21",
           "a22",
@@ -69694,22 +69694,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 5,
-        "label": "Geraete/Monat Grundlagen"
+        "label": "Geräte/Monat Grundlagen"
       },
       "a22": {
         "min": 3,
         "max": 7,
-        "label": "Geraete/Monat Anwendung"
+        "label": "Geräte/Monat Anwendung"
       },
       "a23": {
         "min": 1,
         "max": 4,
-        "label": "Geraete/Monat Produktentw."
+        "label": "Geräte/Monat Produktentw."
       },
       "b2": {
         "min": 10,
         "max": 40,
-        "label": "Laborgeraete gesamt"
+        "label": "Laborgeräte gesamt"
       },
       "a31": {
         "min": 3,
@@ -69733,8 +69733,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Forschungsallokation – Grundlagen, Anwendung und Produktentwicklung",
-    "beschreibung": "Ein Forschungsinstitut verteilt Kapazitaeten auf Grundlagenforschung, Anwendungsforschung und Produktentwicklung. Jeder Monat Grundlagenforschung erzeugt ein Patentpotenzial von {c1}, Anwendungsforschung {c2} und Produktentwicklung {c3}. Grundlagen benoetigt {a11} Forschungsmonat, Anwendung {a12} und Produktentwicklung {a13} Forschungsmonat pro Monat. Es stehen {b1} Forschungsmonate bereit. An Laborgeraeten werden {a21} Einheiten pro Monat Grundlagen, {a22} pro Monat Anwendung und {a23} pro Monat Produktentwicklung benoetigt. Es gibt {b2} Laborgeraete. Das Budget betraegt {a31} Zehntausend Euro pro Monat Grundlagen, {a32} pro Monat Anwendung und {a33} pro Monat Produktentwicklung bei {b3} Zehntausend Euro Gesamtbudget.",
-    "hinweis": "Drei Forschungsarten mit Zeit-, Geraete- und Budgetbeschraenkung.",
+    "beschreibung": "Ein Forschungsinstitut verteilt Kapazitäten auf Grundlagenforschung, Anwendungsforschung und Produktentwicklung. Jeder Monat Grundlagenforschung erzeugt ein Patentpotenzial von {c1}, Anwendungsforschung {c2} und Produktentwicklung {c3}. Grundlagen benötigt {a11} Forschungsmonat, Anwendung {a12} und Produktentwicklung {a13} Forschungsmonat pro Monat. Es stehen {b1} Forschungsmonate bereit. An Laborgeräten werden {a21} Einheiten pro Monat Grundlagen, {a22} pro Monat Anwendung und {a23} pro Monat Produktentwicklung benötigt. Es gibt {b2} Laborgeräte. Das Budget beträgt {a31} Zehntausend Euro pro Monat Grundlagen, {a32} pro Monat Anwendung und {a33} pro Monat Produktentwicklung bei {b3} Zehntausend Euro Gesamtbudget.",
+    "hinweis": "Drei Forschungsarten mit Zeit-, Geräte- und Budgetbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69753,7 +69753,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Grundlagen benoetigt {a11} Forschungsmonat",
+            "text": "Grundlagen benötigt {a11} Forschungsmonat",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -69783,7 +69783,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Laborgeraete",
+            "text": "{b2} Laborgeräte",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -69814,8 +69814,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Stunden fuer Projekt Alpha",
-      "x2 = Stunden fuer Projekt Beta"
+      "x1 = Stunden für Projekt Alpha",
+      "x2 = Stunden für Projekt Beta"
     ],
     "objective": [
       "c1",
@@ -69833,7 +69833,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Laborkapazitaet",
+        "label": "Laborkapazität",
         "row": [
           "a21",
           "a22"
@@ -69880,12 +69880,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 30,
         "max": 120,
-        "label": "Laborkapazitaet (h)"
+        "label": "Laborkapazität (h)"
       }
     },
     "titel": "Forschungsabteilung – Projekt Alpha und Beta",
-    "beschreibung": "Eine Forschungsabteilung verteilt Ressourcen auf Projekt Alpha und Projekt Beta. Pro Stunde in Projekt Alpha wird ein Innovationswert von {c1} erzielt, pro Stunde in Projekt Beta {c2}. Projekt Alpha benoetigt {a11} Forschungsstunde pro Stunde Einsatz, Projekt Beta {a12} Forschungsstunde. Insgesamt stehen {b1} Forschungsstunden bereit. Im Labor beansprucht Alpha {a21} Stunden pro eingesetzter Stunde, Beta {a22} Stunden. Die Laborkapazitaet umfasst {b2} Stunden.",
-    "hinweis": "Maximiere den Innovationswert mit Beschraenkungen bei Forschungsstunden und Labor.",
+    "beschreibung": "Eine Forschungsabteilung verteilt Ressourcen auf Projekt Alpha und Projekt Beta. Pro Stunde in Projekt Alpha wird ein Innovationswert von {c1} erzielt, pro Stunde in Projekt Beta {c2}. Projekt Alpha benötigt {a11} Forschungsstunde pro Stunde Einsatz, Projekt Beta {a12} Forschungsstunde. Insgesamt stehen {b1} Forschungsstunden bereit. Im Labor beansprucht Alpha {a21} Stunden pro eingesetzter Stunde, Beta {a22} Stunden. Die Laborkapazität umfasst {b2} Stunden.",
+    "hinweis": "Maximiere den Innovationswert mit Beschränkungen bei Forschungsstunden und Labor.",
     "highlights": {
       "zielfunktion": [
         {
@@ -69900,7 +69900,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Alpha benoetigt {a11} Forschungsstunde",
+            "text": "Alpha benötigt {a11} Forschungsstunde",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -70054,8 +70054,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Anlagestrategie – Anleihen, Aktien und Rohstoffe",
-    "beschreibung": "Ein Fondsmanager verteilt Kapital auf Anleihen, Aktien und Rohstoffe. Pro Anteil Anleihen wird eine Rendite von {c1} Prozent erwartet, bei Aktien {c2} Prozent und bei Rohstoffen {c3} Prozent. Jeder Anteil kostet {a11} Zehntausend Euro bei Anleihen, {a12} Zehntausend Euro bei Aktien und {a13} Zehntausend Euro bei Rohstoffen. Das Anlagekapital betraegt {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden pro Anteil Anleihen, {a22} Stunden pro Anteil Aktien und {a23} Stunden pro Anteil Rohstoffe. Es stehen {b2} Analysestunden bereit. Das Risiko betraegt {a31} Punkte pro Anteil Anleihen, {a32} Punkte pro Anteil Aktien und {a33} Punkte pro Anteil Rohstoffe. Das Risikobudget liegt bei {b3} Punkten.",
-    "hinweis": "Drei Anlageklassen mit Kapital-, Analyse- und Risikobeschraenkung.",
+    "beschreibung": "Ein Fondsmanager verteilt Kapital auf Anleihen, Aktien und Rohstoffe. Pro Anteil Anleihen wird eine Rendite von {c1} Prozent erwartet, bei Aktien {c2} Prozent und bei Rohstoffen {c3} Prozent. Jeder Anteil kostet {a11} Zehntausend Euro bei Anleihen, {a12} Zehntausend Euro bei Aktien und {a13} Zehntausend Euro bei Rohstoffen. Das Anlagekapital beträgt {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden pro Anteil Anleihen, {a22} Stunden pro Anteil Aktien und {a23} Stunden pro Anteil Rohstoffe. Es stehen {b2} Analysestunden bereit. Das Risiko beträgt {a31} Punkte pro Anteil Anleihen, {a32} Punkte pro Anteil Aktien und {a33} Punkte pro Anteil Rohstoffe. Das Risikobudget liegt bei {b3} Punkten.",
+    "hinweis": "Drei Anlageklassen mit Kapital-, Analyse- und Risikobeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -70205,8 +70205,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Investmentplanung – Aktien und Immobilien",
-    "beschreibung": "Ein Investor verteilt Kapital auf einen Aktienfonds und einen Immobilienfonds. Pro 1000 Euro im Aktienfonds wird eine Rendite von {c1} Prozent erwartet, im Immobilienfonds {c2} Prozent. Jede Einheit Aktienfonds erfordert {a11} Tausend Euro Kapital, Immobilienfonds {a12} Tausend Euro. Das Gesamtkapital betraegt {b1} Tausend Euro. Die Verwaltung benoetigt {a21} Stunden pro Aktieneinheit und {a22} Stunden pro Immobilieneinheit. Es stehen {b2} Verwaltungsstunden bereit.",
-    "hinweis": "Maximiere die Rendite unter Kapital- und Verwaltungsbeschraenkung.",
+    "beschreibung": "Ein Investor verteilt Kapital auf einen Aktienfonds und einen Immobilienfonds. Pro 1000 Euro im Aktienfonds wird eine Rendite von {c1} Prozent erwartet, im Immobilienfonds {c2} Prozent. Jede Einheit Aktienfonds erfordert {a11} Tausend Euro Kapital, Immobilienfonds {a12} Tausend Euro. Das Gesamtkapital beträgt {b1} Tausend Euro. Die Verwaltung benötigt {a21} Stunden pro Aktieneinheit und {a22} Stunden pro Immobilieneinheit. Es stehen {b2} Verwaltungsstunden bereit.",
+    "hinweis": "Maximiere die Rendite unter Kapital- und Verwaltungsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -70256,8 +70256,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Serverkapazitaet fuer Webshop (Einheiten)",
-      "x2 = Serverkapazitaet fuer Datenanalyse (Einheiten)"
+      "x1 = Serverkapazität für Webshop (Einheiten)",
+      "x2 = Serverkapazität für Datenanalyse (Einheiten)"
     ],
     "objective": [
       "c1",
@@ -70266,7 +70266,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Serverkapazitaet",
+        "label": "Serverkapazität",
         "row": [
           "a11",
           "a12"
@@ -70307,7 +70307,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 20,
         "max": 80,
-        "label": "Serverkapazitaet gesamt"
+        "label": "Serverkapazität gesamt"
       },
       "a21": {
         "min": 1,
@@ -70326,12 +70326,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "IT-Abteilung – Webshop und Datenanalyse",
-    "beschreibung": "Eine IT-Abteilung verteilt Serverkapazitaet auf den Webshop und die Datenanalyse. Jede Einheit Webshop-Kapazitaet erbringt einen Nutzen von {c1}, jede Einheit Datenanalyse {c2}. Der Webshop benoetigt {a11} Server pro Einheit, die Datenanalyse {a12} Server. Es stehen {b1} Servereinheiten bereit. Die Administration erfordert {a21} Stunden pro Webshop-Einheit und {a22} Stunden pro Datenanalyse-Einheit. Insgesamt sind {b2} Administrationsstunden verfuegbar.",
-    "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Serverkapazitaet und Administrationszeit.",
+    "beschreibung": "Eine IT-Abteilung verteilt Serverkapazität auf den Webshop und die Datenanalyse. Jede Einheit Webshop-Kapazität erbringt einen Nutzen von {c1}, jede Einheit Datenanalyse {c2}. Der Webshop benötigt {a11} Server pro Einheit, die Datenanalyse {a12} Server. Es stehen {b1} Servereinheiten bereit. Die Administration erfordert {a21} Stunden pro Webshop-Einheit und {a22} Stunden pro Datenanalyse-Einheit. Insgesamt sind {b2} Administrationsstunden verfügbar.",
+    "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Serverkapazität und Administrationszeit.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Webshop-Kapazitaet erbringt einen Nutzen von {c1}",
+          "text": "Webshop-Kapazität erbringt einen Nutzen von {c1}",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -70342,7 +70342,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Webshop benoetigt {a11} Server",
+            "text": "Webshop benötigt {a11} Server",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -70364,7 +70364,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Administrationsstunden verfuegbar",
+            "text": "{b2} Administrationsstunden verfügbar",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -70402,7 +70402,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Stromkapazitaet",
+        "label": "Stromkapazität",
         "row": [
           "a21",
           "a22",
@@ -70413,7 +70413,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Kuehlkapazitaet",
+        "label": "Kühlkapazität",
         "row": [
           "a31",
           "a32",
@@ -70438,22 +70438,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 15,
-        "label": "Servicequalitaet/Server Datenbank"
+        "label": "Servicequalität/Server Datenbank"
       },
       "c2": {
         "min": 3,
         "max": 10,
-        "label": "Servicequalitaet/Server Webhosting"
+        "label": "Servicequalität/Server Webhosting"
       },
       "c3": {
         "min": 4,
         "max": 12,
-        "label": "Servicequalitaet/Server Backup"
+        "label": "Servicequalität/Server Backup"
       },
       "c4": {
         "min": 6,
         "max": 18,
-        "label": "Servicequalitaet/Server Entwicklung"
+        "label": "Servicequalität/Server Entwicklung"
       },
       "a11": {
         "min": 1,
@@ -70503,32 +70503,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 20,
         "max": 80,
-        "label": "Stromkapazitaet (kW)"
+        "label": "Stromkapazität (kW)"
       },
       "a31": {
         "min": 2,
         "max": 5,
-        "label": "Kuehlung/Server Datenbank (kW)"
+        "label": "Kühlung/Server Datenbank (kW)"
       },
       "a32": {
         "min": 1,
         "max": 3,
-        "label": "Kuehlung/Server Webhosting (kW)"
+        "label": "Kühlung/Server Webhosting (kW)"
       },
       "a33": {
         "min": 1,
         "max": 2,
-        "label": "Kuehlung/Server Backup (kW)"
+        "label": "Kühlung/Server Backup (kW)"
       },
       "a34": {
         "min": 1,
         "max": 4,
-        "label": "Kuehlung/Server Entwicklung (kW)"
+        "label": "Kühlung/Server Entwicklung (kW)"
       },
       "b3": {
         "min": 15,
         "max": 60,
-        "label": "Kuehlkapazitaet (kW)"
+        "label": "Kühlkapazität (kW)"
       },
       "a41": {
         "min": 1,
@@ -70557,8 +70557,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Rechenzentrum – Datenbank, Web, Backup und Entwicklung",
-    "beschreibung": "Ein Rechenzentrum verteilt Server auf vier Dienste: Datenbank, Webhosting, Backup und Entwicklung. Jeder Datenbankserver liefert {c1} Servicepunkte, Webhosting {c2}, Backup {c3} und Entwicklung {c4} Punkte. Datenbankserver benoetigen {a11} Slots, Webhosting {a12} Slot, Backup {a13} Slots und Entwicklung {a14} Slot. Es gibt {b1} Serverslots. Der Stromverbrauch betraegt {a21} kW pro Datenbankserver, {a22} kW Webhosting, {a23} kW Backup und {a24} kW Entwicklung bei {b2} kW Kapazitaet. Die Kuehlung erfordert {a31} kW pro Datenbankserver, {a32} kW Webhosting, {a33} kW Backup und {a34} kW Entwicklung bei {b3} kW Kuehlleistung. Die Administration benoetigt {a41} Stunden pro Datenbankserver, {a42} Stunden Webhosting, {a43} Stunden Backup und {a44} Stunden Entwicklung bei {b4} Adminstunden.",
-    "hinweis": "Vier Serverdienste mit Slot-, Strom-, Kuehl- und Administrationsbeschraenkung.",
+    "beschreibung": "Ein Rechenzentrum verteilt Server auf vier Dienste: Datenbank, Webhosting, Backup und Entwicklung. Jeder Datenbankserver liefert {c1} Servicepunkte, Webhosting {c2}, Backup {c3} und Entwicklung {c4} Punkte. Datenbankserver benötigen {a11} Slots, Webhosting {a12} Slot, Backup {a13} Slots und Entwicklung {a14} Slot. Es gibt {b1} Serverslots. Der Stromverbrauch beträgt {a21} kW pro Datenbankserver, {a22} kW Webhosting, {a23} kW Backup und {a24} kW Entwicklung bei {b2} kW Kapazität. Die Kühlung erfordert {a31} kW pro Datenbankserver, {a32} kW Webhosting, {a33} kW Backup und {a34} kW Entwicklung bei {b3} kW Kühlleistung. Die Administration benötigt {a41} Stunden pro Datenbankserver, {a42} Stunden Webhosting, {a43} Stunden Backup und {a44} Stunden Entwicklung bei {b4} Adminstunden.",
+    "hinweis": "Vier Serverdienste mit Slot-, Strom-, Kühl- und Administrationsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -70581,7 +70581,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Datenbankserver benoetigen {a11} Slots",
+            "text": "Datenbankserver benötigen {a11} Slots",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -70619,7 +70619,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} kW Kapazitaet",
+            "text": "{b2} kW Kapazität",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -70641,7 +70641,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} kW Kuehlleistung",
+            "text": "{b3} kW Kühlleistung",
             "bedeutung": "≤ {b3}"
           }
         ],
@@ -70692,7 +70692,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Entwicklerkapazitaet",
+        "label": "Entwicklerkapazität",
         "row": [
           "a11",
           "a12",
@@ -70704,7 +70704,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "QA-Kapazitaet",
+        "label": "QA-Kapazität",
         "row": [
           "a21",
           "a22",
@@ -70740,7 +70740,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Managementkapazitaet",
+        "label": "Managementkapazität",
         "row": [
           "a51",
           "a52",
@@ -70865,7 +70865,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 10,
         "max": 40,
-        "label": "Serverkapazitaet gesamt"
+        "label": "Serverkapazität gesamt"
       },
       "a41": {
         "min": 3,
@@ -70929,28 +70929,28 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "IT-Portfolio – ERP, CRM, Data Warehouse, Mobile App und Security",
-    "beschreibung": "Der CTO verteilt Sprints auf fuenf IT-Projekte: ERP, CRM, Data Warehouse, Mobile App und Security. Der Businesswert pro Sprint betraegt {c1} fuer ERP, {c2} fuer CRM, {c3} fuer Data Warehouse, {c4} fuer Mobile App und {c5} fuer Security. An Entwicklern werden {a11} pro Sprint ERP, {a12} pro Sprint CRM, {a13} pro Sprint Data Warehouse, {a14} pro Sprint Mobile App und {a15} pro Sprint Security benoetigt bei {b1} Entwicklermonate gesamt. QA erfordert {a21} Tage ERP, {a22} Tage CRM, {a23} Tage Data Warehouse, {a24} Tage Mobile App und {a25} Tage Security pro Sprint bei {b2} QA-Tagen. Die Infrastruktur benoetigt {a31} Server ERP, {a32} Server CRM, {a33} Server Data Warehouse, {a34} Server Mobile App und {a35} Server Security pro Sprint bei {b3} Serverkapazitaet. Das Budget betraegt {a41} Tausend Euro ERP, {a42} Tausend Euro CRM, {a43} Tausend Euro Data Warehouse, {a44} Tausend Euro Mobile App und {a45} Tausend Euro Security pro Sprint bei {b4} Tausend Euro gesamt. Das Management benoetigt {a51} Stunden ERP, {a52} Stunden CRM, {a53} Stunden Data Warehouse, {a54} Stunden Mobile App und {a55} Stunden Security pro Sprint bei {b5} Managementstunden.",
-    "hinweis": "Fuenf IT-Projekte mit fuenf Beschraenkungen: Entwickler, QA, Infrastruktur, Budget und Management.",
+    "beschreibung": "Der CTO verteilt Sprints auf fünf IT-Projekte: ERP, CRM, Data Warehouse, Mobile App und Security. Der Businesswert pro Sprint beträgt {c1} für ERP, {c2} für CRM, {c3} für Data Warehouse, {c4} für Mobile App und {c5} für Security. An Entwicklern werden {a11} pro Sprint ERP, {a12} pro Sprint CRM, {a13} pro Sprint Data Warehouse, {a14} pro Sprint Mobile App und {a15} pro Sprint Security benötigt bei {b1} Entwicklermonate gesamt. QA erfordert {a21} Tage ERP, {a22} Tage CRM, {a23} Tage Data Warehouse, {a24} Tage Mobile App und {a25} Tage Security pro Sprint bei {b2} QA-Tagen. Die Infrastruktur benötigt {a31} Server ERP, {a32} Server CRM, {a33} Server Data Warehouse, {a34} Server Mobile App und {a35} Server Security pro Sprint bei {b3} Serverkapazität. Das Budget beträgt {a41} Tausend Euro ERP, {a42} Tausend Euro CRM, {a43} Tausend Euro Data Warehouse, {a44} Tausend Euro Mobile App und {a45} Tausend Euro Security pro Sprint bei {b4} Tausend Euro gesamt. Das Management benötigt {a51} Stunden ERP, {a52} Stunden CRM, {a53} Stunden Data Warehouse, {a54} Stunden Mobile App und {a55} Stunden Security pro Sprint bei {b5} Managementstunden.",
+    "hinweis": "Fünf IT-Projekte mit fünf Beschränkungen: Entwickler, QA, Infrastruktur, Budget und Management.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "{c1} fuer ERP",
+          "text": "{c1} für ERP",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "{c2} fuer CRM",
+          "text": "{c2} für CRM",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "{c3} fuer Data Warehouse",
+          "text": "{c3} für Data Warehouse",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "{c4} fuer Mobile App",
+          "text": "{c4} für Mobile App",
           "bedeutung": "{c4} × x₄"
         },
         {
-          "text": "{c5} fuer Security",
+          "text": "{c5} für Security",
           "bedeutung": "{c5} × x₅"
         }
       ],
@@ -71029,7 +71029,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a35}x₅"
           },
           {
-            "text": "{b3} Serverkapazitaet",
+            "text": "{b3} Serverkapazität",
             "bedeutung": "≤ {b3}"
           }
         ],
@@ -71116,7 +71116,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "QA-Kapazitaet",
+        "label": "QA-Kapazität",
         "row": [
           "a21",
           "a22",
@@ -71189,7 +71189,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 15,
         "max": 60,
-        "label": "QA-Kapazitaet (Tage)"
+        "label": "QA-Kapazität (Tage)"
       },
       "a31": {
         "min": 1,
@@ -71213,8 +71213,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "IT-Projektportfolio – Web, App und API",
-    "beschreibung": "Die IT-Abteilung verteilt Sprints auf drei Projekte: Web, App und API. Jeder Sprint im Web-Projekt bringt {c1} Businesswert, im App-Projekt {c2} und im API-Projekt {c3} Businesswert. Pro Sprint Web werden {a11} Entwickler benoetigt, pro Sprint App {a12} und pro Sprint API {a13} Entwickler. Es stehen {b1} Entwicklersprints bereit. Die Qualitaetssicherung erfordert {a21} QA-Tage pro Sprint Web, {a22} Tage pro Sprint App und {a23} Tage pro Sprint API bei {b2} QA-Tagen. An Serverinstanzen werden {a31} pro Sprint Web, {a32} pro Sprint App und {a33} pro Sprint API benoetigt. Die Serverkapazitaet betraegt {b3} Instanzen.",
-    "hinweis": "Drei IT-Projekte mit Beschraenkungen bei Entwicklern, QA und Servern.",
+    "beschreibung": "Die IT-Abteilung verteilt Sprints auf drei Projekte: Web, App und API. Jeder Sprint im Web-Projekt bringt {c1} Businesswert, im App-Projekt {c2} und im API-Projekt {c3} Businesswert. Pro Sprint Web werden {a11} Entwickler benötigt, pro Sprint App {a12} und pro Sprint API {a13} Entwickler. Es stehen {b1} Entwicklersprints bereit. Die Qualitätssicherung erfordert {a21} QA-Tage pro Sprint Web, {a22} Tage pro Sprint App und {a23} Tage pro Sprint API bei {b2} QA-Tagen. An Serverinstanzen werden {a31} pro Sprint Web, {a32} pro Sprint App und {a33} pro Sprint API benötigt. Die Serverkapazität beträgt {b3} Instanzen.",
+    "hinweis": "Drei IT-Projekte mit Beschränkungen bei Entwicklern, QA und Servern.",
     "highlights": {
       "zielfunktion": [
         {
@@ -71233,7 +71233,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Sprint Web werden {a11} Entwickler benoetigt",
+            "text": "Sprint Web werden {a11} Entwickler benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -71364,8 +71364,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Kundenservice – Telefon und Chat",
-    "beschreibung": "Die Kundenservice-Abteilung verteilt Kapazitaeten auf Telefonsupport und Chat-Support. Jede Stunde Telefonsupport erzeugt {c1} Zufriedenheitspunkte, jede Stunde Chat-Support {c2} Punkte. Telefonsupport benoetigt {a11} Mitarbeiterstunden pro Stunde, Chat-Support {a12} Mitarbeiterstunde. Es stehen {b1} Mitarbeiterstunden bereit. An Softwarelizenzen werden {a21} pro Stunde Telefon und {a22} pro Stunde Chat benoetigt. Es gibt {b2} Lizenzen.",
-    "hinweis": "Maximiere die Kundenzufriedenheit mit Mitarbeiter- und Lizenzbeschraenkung.",
+    "beschreibung": "Die Kundenservice-Abteilung verteilt Kapazitäten auf Telefonsupport und Chat-Support. Jede Stunde Telefonsupport erzeugt {c1} Zufriedenheitspunkte, jede Stunde Chat-Support {c2} Punkte. Telefonsupport benötigt {a11} Mitarbeiterstunden pro Stunde, Chat-Support {a12} Mitarbeiterstunde. Es stehen {b1} Mitarbeiterstunden bereit. An Softwarelizenzen werden {a21} pro Stunde Telefon und {a22} pro Stunde Chat benötigt. Es gibt {b2} Lizenzen.",
+    "hinweis": "Maximiere die Kundenzufriedenheit mit Mitarbeiter- und Lizenzbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -71380,7 +71380,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Telefonsupport benoetigt {a11} Mitarbeiterstunden",
+            "text": "Telefonsupport benötigt {a11} Mitarbeiterstunden",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -71427,7 +71427,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Lagerflaeche",
+        "label": "Lagerfläche",
         "row": [
           "a11",
           "a12",
@@ -71447,7 +71447,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Transportkapazitaet",
+        "label": "Transportkapazität",
         "row": [
           "a31",
           "a32",
@@ -71490,7 +71490,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 30,
         "max": 120,
-        "label": "Lagerplaetze gesamt"
+        "label": "Lagerplätze gesamt"
       },
       "a21": {
         "min": 1,
@@ -71515,27 +71515,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 1,
         "max": 2,
-        "label": "LKW-Plaetze/Palette Standard"
+        "label": "LKW-Plätze/Palette Standard"
       },
       "a32": {
         "min": 1,
         "max": 2,
-        "label": "LKW-Plaetze/Palette Express"
+        "label": "LKW-Plätze/Palette Express"
       },
       "a33": {
         "min": 1,
         "max": 3,
-        "label": "LKW-Plaetze/Palette Sonder"
+        "label": "LKW-Plätze/Palette Sonder"
       },
       "b3": {
         "min": 20,
         "max": 80,
-        "label": "LKW-Plaetze gesamt"
+        "label": "LKW-Plätze gesamt"
       }
     },
     "titel": "Lagerlogistik – Standard, Express und Sonder",
-    "beschreibung": "Ein Logistikzentrum verwaltet drei Palettenkategorien: Standard, Express und Sonder. Jede Palette Standard bringt {c1} Euro Deckungsbeitrag, Express {c2} Euro und Sonder {c3} Euro. An Lagerflaeche benoetigt Standard {a11} Platz, Express {a12} Platz und Sonder {a13} Plaetze. Es gibt {b1} Lagerplaetze. Die Kommissionierung dauert {a21} Minuten pro Palette Standard, {a22} Minuten pro Palette Express und {a23} Minuten pro Palette Sonder. Es stehen {b2} Kommissionierminuten bereit. Fuer den Transport benoetigt Standard {a31} LKW-Platz, Express {a32} LKW-Platz und Sonder {a33} LKW-Plaetze bei {b3} verfuegbaren LKW-Plaetzen.",
-    "hinweis": "Drei Palettenkategorien mit Lager-, Kommissionier- und Transportbeschraenkung.",
+    "beschreibung": "Ein Logistikzentrum verwaltet drei Palettenkategorien: Standard, Express und Sonder. Jede Palette Standard bringt {c1} Euro Deckungsbeitrag, Express {c2} Euro und Sonder {c3} Euro. An Lagerfläche benötigt Standard {a11} Platz, Express {a12} Platz und Sonder {a13} Plätze. Es gibt {b1} Lagerplätze. Die Kommissionierung dauert {a21} Minuten pro Palette Standard, {a22} Minuten pro Palette Express und {a23} Minuten pro Palette Sonder. Es stehen {b2} Kommissionierminuten bereit. Für den Transport benötigt Standard {a31} LKW-Platz, Express {a32} LKW-Platz und Sonder {a33} LKW-Plätze bei {b3} verfügbaren LKW-Plätzen.",
+    "hinweis": "Drei Palettenkategorien mit Lager-, Kommissionier- und Transportbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -71562,11 +71562,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "Sonder {a13} Plaetze",
+            "text": "Sonder {a13} Plätze",
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{b1} Lagerplaetze",
+            "text": "{b1} Lagerplätze",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -71598,11 +71598,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "Sonder {a33} LKW-Plaetze",
+            "text": "Sonder {a33} LKW-Plätze",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} verfuegbaren LKW-Plaetzen",
+            "text": "{b3} verfügbaren LKW-Plätzen",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -71625,7 +71625,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Lagerkapazitaet",
+        "label": "Lagerkapazität",
         "row": [
           "a11",
           "a12"
@@ -71646,12 +71646,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 15,
-        "label": "Qualitaetswert/t Lieferant X"
+        "label": "Qualitätswert/t Lieferant X"
       },
       "c2": {
         "min": 3,
         "max": 12,
-        "label": "Qualitaetswert/t Lieferant Y"
+        "label": "Qualitätswert/t Lieferant Y"
       },
       "a11": {
         "min": 1,
@@ -71666,7 +71666,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 20,
         "max": 100,
-        "label": "Lagerplaetze"
+        "label": "Lagerplätze"
       },
       "a21": {
         "min": 3,
@@ -71685,12 +71685,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Lieferantenauswahl – Lieferant X und Y",
-    "beschreibung": "Ein Einkaufsleiter verteilt Bestellmengen auf Lieferant X und Lieferant Y. Jede Tonne von Lieferant X hat einen Qualitaetswert von {c1}, jede Tonne von Lieferant Y einen Wert von {c2}. Lieferant X benoetigt {a11} Lagerplaetze pro Tonne, Lieferant Y {a12} Lagerplaetze. Die Lagerkapazitaet umfasst {b1} Plaetze. Der Preis betraegt {a21} Tausend Euro pro Tonne bei Lieferant X und {a22} Tausend Euro bei Lieferant Y. Das Einkaufsbudget liegt bei {b2} Tausend Euro.",
-    "hinweis": "Maximiere den Qualitaetswert mit Lager- und Budgetbeschraenkung.",
+    "beschreibung": "Ein Einkaufsleiter verteilt Bestellmengen auf Lieferant X und Lieferant Y. Jede Tonne von Lieferant X hat einen Qualitätswert von {c1}, jede Tonne von Lieferant Y einen Wert von {c2}. Lieferant X benötigt {a11} Lagerplätze pro Tonne, Lieferant Y {a12} Lagerplätze. Die Lagerkapazität umfasst {b1} Plätze. Der Preis beträgt {a21} Tausend Euro pro Tonne bei Lieferant X und {a22} Tausend Euro bei Lieferant Y. Das Einkaufsbudget liegt bei {b2} Tausend Euro.",
+    "hinweis": "Maximiere den Qualitätswert mit Lager- und Budgetbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Lieferant X hat einen Qualitaetswert von {c1}",
+          "text": "Lieferant X hat einen Qualitätswert von {c1}",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -71701,15 +71701,15 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Lieferant X benoetigt {a11} Lagerplaetze",
+            "text": "Lieferant X benötigt {a11} Lagerplätze",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "Lieferant Y {a12} Lagerplaetze",
+            "text": "Lieferant Y {a12} Lagerplätze",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Plaetze",
+            "text": "{b1} Plätze",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -71851,12 +71851,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 10,
         "max": 50,
-        "label": "Freigabekapazitaet"
+        "label": "Freigabekapazität"
       }
     },
     "titel": "Marketingmix – Social Media, TV und Plakat",
-    "beschreibung": "Die Marketingabteilung verteilt Budget auf drei Kanaele: Social Media, TV-Werbung und Plakatwerbung. Pro 1000 Euro Social Media werden {c1} Tausend Kontakte erreicht, pro 1000 Euro TV {c2} Tausend und pro 1000 Euro Plakat {c3} Tausend Kontakte. Jeder Kanal kostet {a11} Tausend Euro pro Einheit Social Media, {a12} Tausend Euro pro Einheit TV und {a13} Tausend Euro pro Einheit Plakat. Das Gesamtbudget betraegt {b1} Tausend Euro. An Agenturstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit TV und {a23} pro Einheit Plakat benoetigt. Es stehen {b2} Agenturstunden bereit. Die Freigabe erfordert {a31} Prozesse pro Einheit Social Media, {a32} pro Einheit TV und {a33} pro Einheit Plakat bei {b3} Freigabekapazitaet.",
-    "hinweis": "Drei Kanaele mit Beschraenkungen bei Budget, Agenturstunden und Freigaben.",
+    "beschreibung": "Die Marketingabteilung verteilt Budget auf drei Kanäle: Social Media, TV-Werbung und Plakatwerbung. Pro 1000 Euro Social Media werden {c1} Tausend Kontakte erreicht, pro 1000 Euro TV {c2} Tausend und pro 1000 Euro Plakat {c3} Tausend Kontakte. Jeder Kanal kostet {a11} Tausend Euro pro Einheit Social Media, {a12} Tausend Euro pro Einheit TV und {a13} Tausend Euro pro Einheit Plakat. Das Gesamtbudget beträgt {b1} Tausend Euro. An Agenturstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit TV und {a23} pro Einheit Plakat benötigt. Es stehen {b2} Agenturstunden bereit. Die Freigabe erfordert {a31} Prozesse pro Einheit Social Media, {a32} pro Einheit TV und {a33} pro Einheit Plakat bei {b3} Freigabekapazität.",
+    "hinweis": "Drei Kanäle mit Beschränkungen bei Budget, Agenturstunden und Freigaben.",
     "highlights": {
       "zielfunktion": [
         {
@@ -71923,7 +71923,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} Freigabekapazitaet",
+            "text": "{b3} Freigabekapazität",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -72076,12 +72076,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 20,
         "max": 80,
-        "label": "Contentkapazitaet (Teile)"
+        "label": "Contentkapazität (Teile)"
       }
     },
-    "titel": "Marketingkanaele – Social Media, Suche, Newsletter und Messen",
-    "beschreibung": "Die Marketingleitung verteilt Budget auf vier Kanaele: Social Media, Suchmaschinen, Newsletter und Messen. Social Media generiert {c1} Leads pro 1000 Euro, Suchmaschinen {c2} Leads, Newsletter {c3} Leads und Messen {c4} Leads. Jeder Kanal kostet {a11} Tausend Euro Social Media, {a12} Tausend Euro Suchmaschinen, {a13} Tausend Euro Newsletter und {a14} Tausend Euro Messen pro Einheit. Das Gesamtbudget betraegt {b1} Tausend Euro. An Personalstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit Suchmaschinen, {a23} pro Einheit Newsletter und {a24} pro Einheit Messen benoetigt bei {b2} verfuegbaren Stunden. Die Contentproduktion erfordert {a31} Teile pro Einheit Social Media, {a32} pro Einheit Suchmaschinen, {a33} pro Einheit Newsletter und {a34} pro Einheit Messen bei {b3} Contentkapazitaet.",
-    "hinweis": "Vier Marketingkanaele mit Budget-, Personal- und Contentbeschraenkung.",
+    "titel": "Marketingkanäle – Social Media, Suche, Newsletter und Messen",
+    "beschreibung": "Die Marketingleitung verteilt Budget auf vier Kanäle: Social Media, Suchmaschinen, Newsletter und Messen. Social Media generiert {c1} Leads pro 1000 Euro, Suchmaschinen {c2} Leads, Newsletter {c3} Leads und Messen {c4} Leads. Jeder Kanal kostet {a11} Tausend Euro Social Media, {a12} Tausend Euro Suchmaschinen, {a13} Tausend Euro Newsletter und {a14} Tausend Euro Messen pro Einheit. Das Gesamtbudget beträgt {b1} Tausend Euro. An Personalstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit Suchmaschinen, {a23} pro Einheit Newsletter und {a24} pro Einheit Messen benötigt bei {b2} verfügbaren Stunden. Die Contentproduktion erfordert {a31} Teile pro Einheit Social Media, {a32} pro Einheit Suchmaschinen, {a33} pro Einheit Newsletter und {a34} pro Einheit Messen bei {b3} Contentkapazität.",
+    "hinweis": "Vier Marketingkanäle mit Budget-, Personal- und Contentbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -72142,7 +72142,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a24}x₄"
           },
           {
-            "text": "{b2} verfuegbaren Stunden",
+            "text": "{b2} verfügbaren Stunden",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -72164,7 +72164,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} Contentkapazitaet",
+            "text": "{b3} Contentkapazität",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -72177,8 +72177,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Budget fuer Online-Werbung (1000 €)",
-      "x2 = Budget fuer Printwerbung (1000 €)"
+      "x1 = Budget für Online-Werbung (1000 €)",
+      "x2 = Budget für Printwerbung (1000 €)"
     ],
     "objective": [
       "c1",
@@ -72247,8 +72247,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Marketingplanung – Online und Print",
-    "beschreibung": "Eine Marketingabteilung verteilt ihr Budget auf Online-Werbung und Printwerbung. Pro 1000 Euro Online-Werbung werden {c1} Tausend Kontakte erreicht, pro 1000 Euro Printwerbung {c2} Tausend Kontakte. Jeder Online-Block kostet {a11} Tausend Euro, jeder Print-Block {a12} Tausend Euro. Das Gesamtbudget betraegt {b1} Tausend Euro. Online-Werbung erfordert {a21} Personalstunden pro Block, Printwerbung {a22} Personalstunden. Es stehen {b2} Personalstunden zur Verfuegung.",
-    "hinweis": "Maximiere die Reichweite unter Beachtung von Budget und Personalkapazitaet.",
+    "beschreibung": "Eine Marketingabteilung verteilt ihr Budget auf Online-Werbung und Printwerbung. Pro 1000 Euro Online-Werbung werden {c1} Tausend Kontakte erreicht, pro 1000 Euro Printwerbung {c2} Tausend Kontakte. Jeder Online-Block kostet {a11} Tausend Euro, jeder Print-Block {a12} Tausend Euro. Das Gesamtbudget beträgt {b1} Tausend Euro. Online-Werbung erfordert {a21} Personalstunden pro Block, Printwerbung {a22} Personalstunden. Es stehen {b2} Personalstunden zur Verfügung.",
+    "hinweis": "Maximiere die Reichweite unter Beachtung von Budget und Personalkapazität.",
     "highlights": {
       "zielfunktion": [
         {
@@ -72285,7 +72285,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Personalstunden zur Verfuegung",
+            "text": "{b2} Personalstunden zur Verfügung",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -72334,7 +72334,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Bueroplaetze",
+        "label": "Büroplätze",
         "row": [
           "a31",
           "a32",
@@ -72348,22 +72348,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 8,
         "max": 20,
-        "label": "Wertschoepfung/Stelle Entwicklung"
+        "label": "Wertschöpfung/Stelle Entwicklung"
       },
       "c2": {
         "min": 10,
         "max": 25,
-        "label": "Wertschoepfung/Stelle Vertrieb"
+        "label": "Wertschöpfung/Stelle Vertrieb"
       },
       "c3": {
         "min": 5,
         "max": 15,
-        "label": "Wertschoepfung/Stelle Support"
+        "label": "Wertschöpfung/Stelle Support"
       },
       "c4": {
         "min": 6,
         "max": 18,
-        "label": "Wertschoepfung/Stelle Marketing"
+        "label": "Wertschöpfung/Stelle Marketing"
       },
       "a11": {
         "min": 1,
@@ -72418,36 +72418,36 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a31": {
         "min": 1,
         "max": 2,
-        "label": "Bueroplaetze/Stelle Entwicklung"
+        "label": "Büroplätze/Stelle Entwicklung"
       },
       "a32": {
         "min": 1,
         "max": 1,
-        "label": "Bueroplaetze/Stelle Vertrieb"
+        "label": "Büroplätze/Stelle Vertrieb"
       },
       "a33": {
         "min": 1,
         "max": 1,
-        "label": "Bueroplaetze/Stelle Support"
+        "label": "Büroplätze/Stelle Support"
       },
       "a34": {
         "min": 1,
         "max": 2,
-        "label": "Bueroplaetze/Stelle Marketing"
+        "label": "Büroplätze/Stelle Marketing"
       },
       "b3": {
         "min": 10,
         "max": 50,
-        "label": "Bueroplaetze gesamt"
+        "label": "Büroplätze gesamt"
       }
     },
     "titel": "Personalallokation – Entwicklung, Vertrieb, Support und Marketing",
-    "beschreibung": "Die Geschaeftsfuehrung verteilt Stellen auf vier Abteilungen: Entwicklung, Vertrieb, Support und Marketing. Jede Stelle in der Entwicklung generiert {c1} Einheiten Wertschoepfung, im Vertrieb {c2}, im Support {c3} und im Marketing {c4} Einheiten. Pro Abteilung benoetigt Entwicklung {a11} Stellenslot, Vertrieb {a12}, Support {a13} und Marketing {a14}. Es stehen {b1} Stellen bereit. Das monatliche Gehalt betraegt {a21} Tausend Euro pro Stelle Entwicklung, {a22} Tausend Euro Vertrieb, {a23} Tausend Euro Support und {a24} Tausend Euro Marketing. Das Gehaltsbudget umfasst {b2} Tausend Euro. An Bueroplaetzen werden {a31} pro Entwicklerstelle, {a32} pro Vertriebsstelle, {a33} pro Supportstelle und {a34} pro Marketingstelle benoetigt bei {b3} verfuegbaren Bueroplaetzen.",
-    "hinweis": "Vier Abteilungen mit Stellen-, Gehalts- und Bueroflaechenbeschraenkung.",
+    "beschreibung": "Die Geschäftsführung verteilt Stellen auf vier Abteilungen: Entwicklung, Vertrieb, Support und Marketing. Jede Stelle in der Entwicklung generiert {c1} Einheiten Wertschöpfung, im Vertrieb {c2}, im Support {c3} und im Marketing {c4} Einheiten. Pro Abteilung benötigt Entwicklung {a11} Stellenslot, Vertrieb {a12}, Support {a13} und Marketing {a14}. Es stehen {b1} Stellen bereit. Das monatliche Gehalt beträgt {a21} Tausend Euro pro Stelle Entwicklung, {a22} Tausend Euro Vertrieb, {a23} Tausend Euro Support und {a24} Tausend Euro Marketing. Das Gehaltsbudget umfasst {b2} Tausend Euro. An Büroplätzen werden {a31} pro Entwicklerstelle, {a32} pro Vertriebsstelle, {a33} pro Supportstelle und {a34} pro Marketingstelle benötigt bei {b3} verfügbaren Büroplätzen.",
+    "hinweis": "Vier Abteilungen mit Stellen-, Gehalts- und Büroflächenbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Entwicklung generiert {c1} Einheiten Wertschoepfung",
+          "text": "Entwicklung generiert {c1} Einheiten Wertschöpfung",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -72526,7 +72526,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{b3} verfuegbaren Bueroplaetzen",
+            "text": "{b3} verfügbaren Büroplätzen",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -72541,7 +72541,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "variablen": [
       "x1 = Stellen Produktion",
       "x2 = Stellen Logistik",
-      "x3 = Stellen Qualitaet",
+      "x3 = Stellen Qualität",
       "x4 = Stellen Einkauf",
       "x5 = Stellen Verwaltung"
     ],
@@ -72579,7 +72579,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Arbeitsplaetze",
+        "label": "Arbeitsplätze",
         "row": [
           "a31",
           "a32",
@@ -72591,7 +72591,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Einarbeitungskapazitaet",
+        "label": "Einarbeitungskapazität",
         "row": [
           "a41",
           "a42",
@@ -72618,27 +72618,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 15,
-        "label": "Wertschoepfung/Stelle Produktion"
+        "label": "Wertschöpfung/Stelle Produktion"
       },
       "c2": {
         "min": 4,
         "max": 12,
-        "label": "Wertschoepfung/Stelle Logistik"
+        "label": "Wertschöpfung/Stelle Logistik"
       },
       "c3": {
         "min": 6,
         "max": 18,
-        "label": "Wertschoepfung/Stelle Qualitaet"
+        "label": "Wertschöpfung/Stelle Qualität"
       },
       "c4": {
         "min": 5,
         "max": 14,
-        "label": "Wertschoepfung/Stelle Einkauf"
+        "label": "Wertschöpfung/Stelle Einkauf"
       },
       "c5": {
         "min": 3,
         "max": 10,
-        "label": "Wertschoepfung/Stelle Verwaltung"
+        "label": "Wertschöpfung/Stelle Verwaltung"
       },
       "a11": {
         "min": 1,
@@ -72653,7 +72653,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 1,
         "max": 1,
-        "label": "Stellenslot Qualitaet"
+        "label": "Stellenslot Qualität"
       },
       "a14": {
         "min": 1,
@@ -72668,7 +72668,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 10,
         "max": 50,
-        "label": "Verfuegbare Stellen"
+        "label": "Verfügbare Stellen"
       },
       "a21": {
         "min": 3,
@@ -72683,7 +72683,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a23": {
         "min": 4,
         "max": 7,
-        "label": "Gehalt/Stelle Qualitaet (1000 €)"
+        "label": "Gehalt/Stelle Qualität (1000 €)"
       },
       "a24": {
         "min": 3,
@@ -72713,7 +72713,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a33": {
         "min": 1,
         "max": 1,
-        "label": "Arbeitsplatz/Stelle Qualitaet"
+        "label": "Arbeitsplatz/Stelle Qualität"
       },
       "a34": {
         "min": 1,
@@ -72728,7 +72728,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b3": {
         "min": 10,
         "max": 50,
-        "label": "Arbeitsplaetze gesamt"
+        "label": "Arbeitsplätze gesamt"
       },
       "a41": {
         "min": 2,
@@ -72743,7 +72743,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a43": {
         "min": 2,
         "max": 5,
-        "label": "Einarbeitung/Stelle Qualitaet (Wochen)"
+        "label": "Einarbeitung/Stelle Qualität (Wochen)"
       },
       "a44": {
         "min": 1,
@@ -72773,7 +72773,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a53": {
         "min": 1,
         "max": 3,
-        "label": "Lizenzen/Stelle Qualitaet"
+        "label": "Lizenzen/Stelle Qualität"
       },
       "a54": {
         "min": 1,
@@ -72791,9 +72791,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "IT-Lizenzen gesamt"
       }
     },
-    "titel": "Personalplanung – Produktion, Logistik, Qualitaet, Einkauf und Verwaltung",
-    "beschreibung": "Ein Unternehmen verteilt neue Stellen auf fuenf Bereiche: Produktion, Logistik, Qualitaet, Einkauf und Verwaltung. Die Wertschoepfung pro Stelle betraegt {c1} in der Produktion, {c2} in der Logistik, {c3} in der Qualitaet, {c4} im Einkauf und {c5} in der Verwaltung. Jede Stelle benoetigt {a11} Stellenslot Produktion, {a12} Logistik, {a13} Qualitaet, {a14} Einkauf und {a15} Verwaltung. Es gibt {b1} Stellen. Das Monatsgehalt betraegt {a21} Tausend Euro Produktion, {a22} Tausend Euro Logistik, {a23} Tausend Euro Qualitaet, {a24} Tausend Euro Einkauf und {a25} Tausend Euro Verwaltung pro Stelle bei {b2} Tausend Euro Gehaltsbudget. An Arbeitsplaetzen werden {a31} fuer Produktion, {a32} fuer Logistik, {a33} fuer Qualitaet, {a34} fuer Einkauf und {a35} fuer Verwaltung benoetigt bei {b3} Arbeitsplaetzen. Die Einarbeitung dauert {a41} Wochen Produktion, {a42} Wochen Logistik, {a43} Wochen Qualitaet, {a44} Wochen Einkauf und {a45} Wochen Verwaltung pro Stelle bei {b4} Einarbeitungswochen. An IT-Lizenzen werden {a51} fuer Produktion, {a52} fuer Logistik, {a53} fuer Qualitaet, {a54} fuer Einkauf und {a55} fuer Verwaltung benoetigt bei {b5} Lizenzen.",
-    "hinweis": "Fuenf Abteilungen mit fuenf Beschraenkungen: Stellen, Gehalt, Arbeitsplaetze, Einarbeitung und Lizenzen.",
+    "titel": "Personalplanung – Produktion, Logistik, Qualität, Einkauf und Verwaltung",
+    "beschreibung": "Ein Unternehmen verteilt neue Stellen auf fünf Bereiche: Produktion, Logistik, Qualität, Einkauf und Verwaltung. Die Wertschöpfung pro Stelle beträgt {c1} in der Produktion, {c2} in der Logistik, {c3} in der Qualität, {c4} im Einkauf und {c5} in der Verwaltung. Jede Stelle benötigt {a11} Stellenslot Produktion, {a12} Logistik, {a13} Qualität, {a14} Einkauf und {a15} Verwaltung. Es gibt {b1} Stellen. Das Monatsgehalt beträgt {a21} Tausend Euro Produktion, {a22} Tausend Euro Logistik, {a23} Tausend Euro Qualität, {a24} Tausend Euro Einkauf und {a25} Tausend Euro Verwaltung pro Stelle bei {b2} Tausend Euro Gehaltsbudget. An Arbeitsplätzen werden {a31} für Produktion, {a32} für Logistik, {a33} für Qualität, {a34} für Einkauf und {a35} für Verwaltung benötigt bei {b3} Arbeitsplätzen. Die Einarbeitung dauert {a41} Wochen Produktion, {a42} Wochen Logistik, {a43} Wochen Qualität, {a44} Wochen Einkauf und {a45} Wochen Verwaltung pro Stelle bei {b4} Einarbeitungswochen. An IT-Lizenzen werden {a51} für Produktion, {a52} für Logistik, {a53} für Qualität, {a54} für Einkauf und {a55} für Verwaltung benötigt bei {b5} Lizenzen.",
+    "hinweis": "Fünf Abteilungen mit fünf Beschränkungen: Stellen, Gehalt, Arbeitsplätze, Einarbeitung und Lizenzen.",
     "highlights": {
       "zielfunktion": [
         {
@@ -72805,7 +72805,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "{c3} in der Qualitaet",
+          "text": "{c3} in der Qualität",
           "bedeutung": "{c3} × x₃"
         },
         {
@@ -72828,7 +72828,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} Qualitaet",
+            "text": "{a13} Qualität",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -72854,7 +72854,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} Tausend Euro Qualitaet",
+            "text": "{a23} Tausend Euro Qualität",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -72872,27 +72872,27 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a31} fuer Produktion",
+            "text": "{a31} für Produktion",
             "bedeutung": "{a31}x₁"
           },
           {
-            "text": "{a32} fuer Logistik",
+            "text": "{a32} für Logistik",
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} fuer Qualitaet",
+            "text": "{a33} für Qualität",
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{a34} fuer Einkauf",
+            "text": "{a34} für Einkauf",
             "bedeutung": "+ {a34}x₄"
           },
           {
-            "text": "{a35} fuer Verwaltung benoetigt",
+            "text": "{a35} für Verwaltung benötigt",
             "bedeutung": "+ {a35}x₅"
           },
           {
-            "text": "{b3} Arbeitsplaetzen",
+            "text": "{b3} Arbeitsplätzen",
             "bedeutung": "≤ {b3}"
           }
         ],
@@ -72906,7 +72906,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "{a43} Wochen Qualitaet",
+            "text": "{a43} Wochen Qualität",
             "bedeutung": "+ {a43}x₃"
           },
           {
@@ -72924,23 +72924,23 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "{a51} fuer Produktion",
+            "text": "{a51} für Produktion",
             "bedeutung": "{a51}x₁"
           },
           {
-            "text": "{a52} fuer Logistik",
+            "text": "{a52} für Logistik",
             "bedeutung": "+ {a52}x₂"
           },
           {
-            "text": "{a53} fuer Qualitaet",
+            "text": "{a53} für Qualität",
             "bedeutung": "+ {a53}x₃"
           },
           {
-            "text": "{a54} fuer Einkauf",
+            "text": "{a54} für Einkauf",
             "bedeutung": "+ {a54}x₄"
           },
           {
-            "text": "{a55} fuer Verwaltung benoetigt",
+            "text": "{a55} für Verwaltung benötigt",
             "bedeutung": "+ {a55}x₅"
           },
           {
@@ -72958,7 +72958,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "numVars": 2,
     "variablen": [
       "x1 = Mitarbeiter im Innendienst",
-      "x2 = Mitarbeiter im Aussendienst"
+      "x2 = Mitarbeiter im Außendienst"
     ],
     "objective": [
       "c1",
@@ -72976,7 +72976,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Bueroflaeche",
+        "label": "Bürofläche",
         "row": [
           "a21",
           "a22"
@@ -72988,12 +72988,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Produktivitaet/Mitarbeiter Innen"
+        "label": "Produktivität/Mitarbeiter Innen"
       },
       "c2": {
         "min": 5,
         "max": 15,
-        "label": "Produktivitaet/Mitarbeiter Aussen"
+        "label": "Produktivität/Mitarbeiter Außen"
       },
       "a11": {
         "min": 1,
@@ -73003,7 +73003,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a12": {
         "min": 1,
         "max": 1,
-        "label": "Personalslot Aussen"
+        "label": "Personalslot Außen"
       },
       "b1": {
         "min": 10,
@@ -73013,45 +73013,45 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 3,
         "max": 8,
-        "label": "Bueroflaeche/Mitarbeiter Innen (m²)"
+        "label": "Bürofläche/Mitarbeiter Innen (m²)"
       },
       "a22": {
         "min": 1,
         "max": 3,
-        "label": "Bueroflaeche/Mitarbeiter Aussen (m²)"
+        "label": "Bürofläche/Mitarbeiter Außen (m²)"
       },
       "b2": {
         "min": 30,
         "max": 150,
-        "label": "Bueroflaeche (m²)"
+        "label": "Bürofläche (m²)"
       }
     },
-    "titel": "Personalplanung – Innendienst und Aussendienst",
-    "beschreibung": "Die Geschaeftsleitung verteilt Stellen auf Innendienst und Aussendienst. Jeder Innendienstmitarbeiter erbringt eine Produktivitaet von {c1} Einheiten, jeder Aussendienstmitarbeiter {c2} Einheiten. Jede Innenstelle benoetigt {a11} Personalslot, jede Aussenstelle {a12} Personalslot. Es stehen {b1} Stellen zur Verfuegung. Im Buero benoetigt ein Innendienstler {a21} m² Flaeche, ein Aussendienstler {a22} m². Die Bueroflaeche betraegt {b2} m².",
-    "hinweis": "Maximiere die Produktivitaet mit Personal- und Bueroflaeche als Beschraenkungen.",
+    "titel": "Personalplanung – Innendienst und Außendienst",
+    "beschreibung": "Die Geschäftsleitung verteilt Stellen auf Innendienst und Außendienst. Jeder Innendienstmitarbeiter erbringt eine Produktivität von {c1} Einheiten, jeder Außendienstmitarbeiter {c2} Einheiten. Jede Innenstelle benötigt {a11} Personalslot, jede Außenstelle {a12} Personalslot. Es stehen {b1} Stellen zur Verfügung. Im Büro benötigt ein Innendienstler {a21} m² Fläche, ein Außendienstler {a22} m². Die Bürofläche beträgt {b2} m².",
+    "hinweis": "Maximiere die Produktivität mit Personal- und Bürofläche als Beschränkungen.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Innendienstmitarbeiter erbringt eine Produktivitaet von {c1} Einheiten",
+          "text": "Innendienstmitarbeiter erbringt eine Produktivität von {c1} Einheiten",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Aussendienstmitarbeiter {c2} Einheiten",
+          "text": "Außendienstmitarbeiter {c2} Einheiten",
           "bedeutung": "{c2} × x₂"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "Innenstelle benoetigt {a11} Personalslot",
+            "text": "Innenstelle benötigt {a11} Personalslot",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "Aussenstelle {a12} Personalslot",
+            "text": "Außenstelle {a12} Personalslot",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Stellen zur Verfuegung",
+            "text": "{b1} Stellen zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -73061,7 +73061,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "Aussendienstler {a22} m²",
+            "text": "Außendienstler {a22} m²",
             "bedeutung": "+ {a22}x₂"
           },
           {
@@ -73130,7 +73130,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Liquiditaetsreserve",
+        "label": "Liquiditätsreserve",
         "row": [
           "a41",
           "a42",
@@ -73285,32 +73285,32 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b4": {
         "min": 15,
         "max": 60,
-        "label": "Bindungskapazitaet"
+        "label": "Bindungskapazität"
       }
     },
     "titel": "Fondsmanagement – Anleihen, Aktien, Immobilien, Rohstoffe und Krypto",
-    "beschreibung": "Ein Fondsmanager verteilt Kapital auf fuenf Anlageklassen: Anleihen, Aktien, Immobilien, Rohstoffe und Krypto. Die Renditeerwartung betraegt {c1} Prozent fuer Anleihen, {c2} Prozent fuer Aktien, {c3} Prozent fuer Immobilien, {c4} Prozent fuer Rohstoffe und {c5} Prozent fuer Krypto pro Anteil. Jeder Anteil kostet {a11} Zehntausend Euro Anleihen, {a12} Aktien, {a13} Immobilien, {a14} Rohstoffe und {a15} Krypto. Das Anlagekapital umfasst {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden Anleihen, {a22} Stunden Aktien, {a23} Stunden Immobilien, {a24} Stunden Rohstoffe und {a25} Stunden Krypto pro Anteil bei {b2} Analysestunden. Das Risiko betraegt {a31} Punkte Anleihen, {a32} Punkte Aktien, {a33} Punkte Immobilien, {a34} Punkte Rohstoffe und {a35} Punkte Krypto pro Anteil bei {b3} Risikobudget. Die Kapitalbindung belaeuft sich auf {a41} Einheit Anleihen, {a42} Einheiten Aktien, {a43} Einheiten Immobilien, {a44} Einheiten Rohstoffe und {a45} Einheiten Krypto pro Anteil bei {b4} Bindungskapazitaet.",
-    "hinweis": "Fuenf Anlageklassen mit Kapital-, Analyse-, Risiko- und Bindungsbeschraenkung.",
+    "beschreibung": "Ein Fondsmanager verteilt Kapital auf fünf Anlageklassen: Anleihen, Aktien, Immobilien, Rohstoffe und Krypto. Die Renditeerwartung beträgt {c1} Prozent für Anleihen, {c2} Prozent für Aktien, {c3} Prozent für Immobilien, {c4} Prozent für Rohstoffe und {c5} Prozent für Krypto pro Anteil. Jeder Anteil kostet {a11} Zehntausend Euro Anleihen, {a12} Aktien, {a13} Immobilien, {a14} Rohstoffe und {a15} Krypto. Das Anlagekapital umfasst {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden Anleihen, {a22} Stunden Aktien, {a23} Stunden Immobilien, {a24} Stunden Rohstoffe und {a25} Stunden Krypto pro Anteil bei {b2} Analysestunden. Das Risiko beträgt {a31} Punkte Anleihen, {a32} Punkte Aktien, {a33} Punkte Immobilien, {a34} Punkte Rohstoffe und {a35} Punkte Krypto pro Anteil bei {b3} Risikobudget. Die Kapitalbindung beläuft sich auf {a41} Einheit Anleihen, {a42} Einheiten Aktien, {a43} Einheiten Immobilien, {a44} Einheiten Rohstoffe und {a45} Einheiten Krypto pro Anteil bei {b4} Bindungskapazität.",
+    "hinweis": "Fünf Anlageklassen mit Kapital-, Analyse-, Risiko- und Bindungsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "{c1} Prozent fuer Anleihen",
+          "text": "{c1} Prozent für Anleihen",
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "{c2} Prozent fuer Aktien",
+          "text": "{c2} Prozent für Aktien",
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "{c3} Prozent fuer Immobilien",
+          "text": "{c3} Prozent für Immobilien",
           "bedeutung": "{c3} × x₃"
         },
         {
-          "text": "{c4} Prozent fuer Rohstoffe",
+          "text": "{c4} Prozent für Rohstoffe",
           "bedeutung": "{c4} × x₄"
         },
         {
-          "text": "{c5} Prozent fuer Krypto",
+          "text": "{c5} Prozent für Krypto",
           "bedeutung": "{c5} × x₅"
         }
       ],
@@ -73415,7 +73415,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a45}x₅"
           },
           {
-            "text": "{b4} Bindungskapazitaet",
+            "text": "{b4} Bindungskapazität",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -73438,7 +73438,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Entwicklerkapazitaet",
+        "label": "Entwicklerkapazität",
         "row": [
           "a11",
           "a12"
@@ -73498,8 +73498,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Produktentwicklung – Produkt P und Q",
-    "beschreibung": "Eine Entwicklungsabteilung verteilt Ressourcen auf Produkt P und Produkt Q. Jeder Entwicklungsmonat fuer Produkt P generiert einen Marktwert von {c1}, fuer Produkt Q {c2}. Produkt P benoetigt {a11} Entwickler pro Monat, Produkt Q {a12} Entwickler. Es stehen {b1} Entwicklermonate zur Verfuegung. Die Testkosten betragen {a21} Tausend Euro pro Monat Produkt P und {a22} Tausend Euro pro Monat Produkt Q. Das Testbudget umfasst {b2} Tausend Euro.",
-    "hinweis": "Maximiere den Marktwert unter Entwickler- und Testbudgetbeschraenkung.",
+    "beschreibung": "Eine Entwicklungsabteilung verteilt Ressourcen auf Produkt P und Produkt Q. Jeder Entwicklungsmonat für Produkt P generiert einen Marktwert von {c1}, für Produkt Q {c2}. Produkt P benötigt {a11} Entwickler pro Monat, Produkt Q {a12} Entwickler. Es stehen {b1} Entwicklermonate zur Verfügung. Die Testkosten betragen {a21} Tausend Euro pro Monat Produkt P und {a22} Tausend Euro pro Monat Produkt Q. Das Testbudget umfasst {b2} Tausend Euro.",
+    "hinweis": "Maximiere den Marktwert unter Entwickler- und Testbudgetbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -73514,7 +73514,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Produkt P benoetigt {a11} Entwickler",
+            "text": "Produkt P benötigt {a11} Entwickler",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -73522,7 +73522,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Entwicklermonate zur Verfuegung",
+            "text": "{b1} Entwicklermonate zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -73559,7 +73559,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "constraints": [
       {
         "type": "<=",
-        "label": "Schichtkapazitaet",
+        "label": "Schichtkapazität",
         "row": [
           "a11",
           "a12"
@@ -73619,7 +73619,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Produktionslinien – Alpha und Beta",
-    "beschreibung": "Ein Werk verteilt Produktionsschichten auf Linie Alpha und Linie Beta. Jede Schicht auf Linie Alpha erzeugt {c1} Einheiten Output, auf Linie Beta {c2} Einheiten. Pro Schicht Alpha wird {a11} Schichtslot benoetigt, pro Schicht Beta {a12} Schichtslot. Es stehen {b1} Schichtslots bereit. Linie Alpha verbraucht {a21} kWh Energie pro Schicht, Linie Beta {a22} kWh. Das Energiebudget umfasst {b2} kWh.",
+    "beschreibung": "Ein Werk verteilt Produktionsschichten auf Linie Alpha und Linie Beta. Jede Schicht auf Linie Alpha erzeugt {c1} Einheiten Output, auf Linie Beta {c2} Einheiten. Pro Schicht Alpha wird {a11} Schichtslot benötigt, pro Schicht Beta {a12} Schichtslot. Es stehen {b1} Schichtslots bereit. Linie Alpha verbraucht {a21} kWh Energie pro Schicht, Linie Beta {a22} kWh. Das Energiebudget umfasst {b2} kWh.",
     "hinweis": "Maximiere den Output unter Beachtung der Schicht- und Energiegrenzen.",
     "highlights": {
       "zielfunktion": [
@@ -73635,7 +73635,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Alpha wird {a11} Schichtslot benoetigt",
+            "text": "Alpha wird {a11} Schichtslot benötigt",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -73692,7 +73692,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Raumkapazitaet",
+        "label": "Raumkapazität",
         "row": [
           "a21",
           "a22",
@@ -73765,7 +73765,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 10,
         "max": 40,
-        "label": "Raumplaetze gesamt"
+        "label": "Raumplätze gesamt"
       },
       "a31": {
         "min": 1,
@@ -73789,8 +73789,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Schulungsprogramm – Excel, Kommunikation und Projektmanagement",
-    "beschreibung": "Die Personalabteilung plant drei Schulungsarten: Excel-Kurs, Kommunikationstraining und Projektmanagement. Pro Teilnehmer im Excel-Kurs werden {c1} Kompetenzpunkte erzielt, im Kommunikationstraining {c2} und im Projektmanagement {c3} Punkte. Die Kosten betragen {a11} Hundert Euro pro Teilnehmer Excel, {a12} Hundert Euro Kommunikation und {a13} Hundert Euro Projektmanagement. Das Budget belaeuft sich auf {b1} Hundert Euro. Jeder Teilnehmer benoetigt {a21} Sitzplatz bei Excel, {a22} bei Kommunikation und {a23} bei Projektmanagement. Es gibt {b2} Raumplaetze. An Dozentenstunden werden {a31} pro Teilnehmer Excel, {a32} pro Teilnehmer Kommunikation und {a33} pro Teilnehmer Projektmanagement benoetigt bei {b3} verfuegbaren Dozentenstunden.",
-    "hinweis": "Drei Schulungen mit Budget-, Raum- und Dozentenbeschraenkung.",
+    "beschreibung": "Die Personalabteilung plant drei Schulungsarten: Excel-Kurs, Kommunikationstraining und Projektmanagement. Pro Teilnehmer im Excel-Kurs werden {c1} Kompetenzpunkte erzielt, im Kommunikationstraining {c2} und im Projektmanagement {c3} Punkte. Die Kosten betragen {a11} Hundert Euro pro Teilnehmer Excel, {a12} Hundert Euro Kommunikation und {a13} Hundert Euro Projektmanagement. Das Budget beläuft sich auf {b1} Hundert Euro. Jeder Teilnehmer benötigt {a21} Sitzplatz bei Excel, {a22} bei Kommunikation und {a23} bei Projektmanagement. Es gibt {b2} Raumplätze. An Dozentenstunden werden {a31} pro Teilnehmer Excel, {a32} pro Teilnehmer Kommunikation und {a33} pro Teilnehmer Projektmanagement benötigt bei {b3} verfügbaren Dozentenstunden.",
+    "hinweis": "Drei Schulungen mit Budget-, Raum- und Dozentenbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -73839,7 +73839,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a23}x₃"
           },
           {
-            "text": "{b2} Raumplaetze",
+            "text": "{b2} Raumplätze",
             "bedeutung": "≤ {b2}"
           }
         ],
@@ -73857,7 +73857,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} verfuegbaren Dozentenstunden",
+            "text": "{b3} verfügbaren Dozentenstunden",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -73870,7 +73870,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Teilnehmer Fuehrungskraeftetraining",
+      "x1 = Teilnehmer Führungskräftetraining",
       "x2 = Teilnehmer Fachschulung"
     ],
     "objective": [
@@ -73889,7 +73889,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Trainerkapazitaet",
+        "label": "Trainerkapazität",
         "row": [
           "a21",
           "a22"
@@ -73901,7 +73901,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 5,
         "max": 15,
-        "label": "Kompetenzgewinn/Teilnehmer Fuehrung"
+        "label": "Kompetenzgewinn/Teilnehmer Führung"
       },
       "c2": {
         "min": 3,
@@ -73911,7 +73911,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a11": {
         "min": 2,
         "max": 6,
-        "label": "Kosten/Teilnehmer Fuehrung (100 €)"
+        "label": "Kosten/Teilnehmer Führung (100 €)"
       },
       "a12": {
         "min": 1,
@@ -73926,7 +73926,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a21": {
         "min": 2,
         "max": 5,
-        "label": "Trainerstunden/Teilnehmer Fuehrung"
+        "label": "Trainerstunden/Teilnehmer Führung"
       },
       "a22": {
         "min": 1,
@@ -73939,13 +73939,13 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Trainerstunden gesamt"
       }
     },
-    "titel": "Personalentwicklung – Fuehrung und Fachschulung",
-    "beschreibung": "Die Personalabteilung plant Schulungen fuer Fuehrungskraefte und Fachkraefte. Pro Teilnehmer im Fuehrungskraeftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt, pro Teilnehmer in der Fachschulung {c2} Punkte. Das Fuehrungstraining kostet {a11} Hundert Euro pro Teilnehmer, die Fachschulung {a12} Hundert Euro. Das Schulungsbudget umfasst {b1} Hundert Euro. Pro Teilnehmer Fuehrung werden {a21} Trainerstunden benoetigt, pro Teilnehmer Fachschulung {a22} Trainerstunden. Es stehen {b2} Trainerstunden bereit.",
-    "hinweis": "Maximiere den Kompetenzgewinn unter Budget- und Trainerbeschraenkung.",
+    "titel": "Personalentwicklung – Führung und Fachschulung",
+    "beschreibung": "Die Personalabteilung plant Schulungen für Führungskräfte und Fachkräfte. Pro Teilnehmer im Führungskräftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt, pro Teilnehmer in der Fachschulung {c2} Punkte. Das Führungstraining kostet {a11} Hundert Euro pro Teilnehmer, die Fachschulung {a12} Hundert Euro. Das Schulungsbudget umfasst {b1} Hundert Euro. Pro Teilnehmer Führung werden {a21} Trainerstunden benötigt, pro Teilnehmer Fachschulung {a22} Trainerstunden. Es stehen {b2} Trainerstunden bereit.",
+    "hinweis": "Maximiere den Kompetenzgewinn unter Budget- und Trainerbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Fuehrungskraeftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt",
+          "text": "Führungskräftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt",
           "bedeutung": "{c1} × x₁"
         },
         {
@@ -73956,7 +73956,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Fuehrungstraining kostet {a11} Hundert Euro",
+            "text": "Führungstraining kostet {a11} Hundert Euro",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -73970,7 +73970,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Fuehrung werden {a21} Trainerstunden benoetigt",
+            "text": "Führung werden {a21} Trainerstunden benötigt",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -73993,7 +73993,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "variablen": [
       "x1 = Investition Standort Hamburg (10.000 €)",
       "x2 = Investition Standort Berlin (10.000 €)",
-      "x3 = Investition Standort Muenchen (10.000 €)",
+      "x3 = Investition Standort München (10.000 €)",
       "x4 = Investition Standort Frankfurt (10.000 €)"
     ],
     "objective": [
@@ -74027,7 +74027,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Baukapazitaet",
+        "label": "Baukapazität",
         "row": [
           "a31",
           "a32",
@@ -74062,7 +74062,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c3": {
         "min": 5,
         "max": 15,
-        "label": "Ertrag/10.000€ Muenchen"
+        "label": "Ertrag/10.000€ München"
       },
       "c4": {
         "min": 3,
@@ -74082,7 +74082,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a13": {
         "min": 1,
         "max": 1,
-        "label": "Kapital/Einheit Muenchen"
+        "label": "Kapital/Einheit München"
       },
       "a14": {
         "min": 1,
@@ -74107,7 +74107,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a23": {
         "min": 1,
         "max": 2,
-        "label": "Projektleiter/Einheit Muenchen"
+        "label": "Projektleiter/Einheit München"
       },
       "a24": {
         "min": 1,
@@ -74132,7 +74132,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a33": {
         "min": 1,
         "max": 3,
-        "label": "Baumonate/Einheit Muenchen"
+        "label": "Baumonate/Einheit München"
       },
       "a34": {
         "min": 1,
@@ -74157,7 +74157,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a43": {
         "min": 1,
         "max": 2,
-        "label": "Genehmigungen/Einheit Muenchen"
+        "label": "Genehmigungen/Einheit München"
       },
       "a44": {
         "min": 1,
@@ -74167,12 +74167,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b4": {
         "min": 5,
         "max": 20,
-        "label": "Genehmigungskapazitaet"
+        "label": "Genehmigungskapazität"
       }
     },
-    "titel": "Standortausbau – Hamburg, Berlin, Muenchen und Frankfurt",
-    "beschreibung": "Ein Konzern investiert in vier Standorte: Hamburg, Berlin, Muenchen und Frankfurt. Pro Einheit Investment ergibt sich ein Ertrag von {c1} in Hamburg, {c2} in Berlin, {c3} in Muenchen und {c4} in Frankfurt. Jede Einheit kostet {a11} Zehntausend Euro in Hamburg, {a12} in Berlin, {a13} in Muenchen und {a14} in Frankfurt. Das Budget betraegt {b1} Zehntausend Euro. An Projektleitern werden {a21} pro Einheit Hamburg, {a22} pro Einheit Berlin, {a23} pro Einheit Muenchen und {a24} pro Einheit Frankfurt benoetigt. Es stehen {b2} Projektleiter bereit. Die Bauzeit betraegt {a31} Monate pro Einheit Hamburg, {a32} Monate pro Einheit Berlin, {a33} Monate pro Einheit Muenchen und {a34} Monate pro Einheit Frankfurt bei {b3} Baumonaten gesamt. An Genehmigungen erfordert Hamburg {a41}, Berlin {a42}, Muenchen {a43} und Frankfurt {a44} pro Einheit bei {b4} Genehmigungskapazitaet.",
-    "hinweis": "Vier Standorte mit Budget-, Projektleiter-, Bau- und Genehmigungsbeschraenkung.",
+    "titel": "Standortausbau – Hamburg, Berlin, München und Frankfurt",
+    "beschreibung": "Ein Konzern investiert in vier Standorte: Hamburg, Berlin, München und Frankfurt. Pro Einheit Investment ergibt sich ein Ertrag von {c1} in Hamburg, {c2} in Berlin, {c3} in München und {c4} in Frankfurt. Jede Einheit kostet {a11} Zehntausend Euro in Hamburg, {a12} in Berlin, {a13} in München und {a14} in Frankfurt. Das Budget beträgt {b1} Zehntausend Euro. An Projektleitern werden {a21} pro Einheit Hamburg, {a22} pro Einheit Berlin, {a23} pro Einheit München und {a24} pro Einheit Frankfurt benötigt. Es stehen {b2} Projektleiter bereit. Die Bauzeit beträgt {a31} Monate pro Einheit Hamburg, {a32} Monate pro Einheit Berlin, {a33} Monate pro Einheit München und {a34} Monate pro Einheit Frankfurt bei {b3} Baumonaten gesamt. An Genehmigungen erfordert Hamburg {a41}, Berlin {a42}, München {a43} und Frankfurt {a44} pro Einheit bei {b4} Genehmigungskapazität.",
+    "hinweis": "Vier Standorte mit Budget-, Projektleiter-, Bau- und Genehmigungsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -74184,7 +74184,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c2} × x₂"
         },
         {
-          "text": "{c3} in Muenchen",
+          "text": "{c3} in München",
           "bedeutung": "{c3} × x₃"
         },
         {
@@ -74203,7 +74203,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{a13} in Muenchen",
+            "text": "{a13} in München",
             "bedeutung": "+ {a13}x₃"
           },
           {
@@ -74225,7 +74225,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{a23} pro Einheit Muenchen",
+            "text": "{a23} pro Einheit München",
             "bedeutung": "+ {a23}x₃"
           },
           {
@@ -74247,7 +74247,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a32}x₂"
           },
           {
-            "text": "{a33} Monate pro Einheit Muenchen",
+            "text": "{a33} Monate pro Einheit München",
             "bedeutung": "+ {a33}x₃"
           },
           {
@@ -74269,7 +74269,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a42}x₂"
           },
           {
-            "text": "Muenchen {a43}",
+            "text": "München {a43}",
             "bedeutung": "+ {a43}x₃"
           },
           {
@@ -74277,7 +74277,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a44}x₄"
           },
           {
-            "text": "{b4} Genehmigungskapazitaet",
+            "text": "{b4} Genehmigungskapazität",
             "bedeutung": "≤ {b4}"
           }
         ]
@@ -74309,7 +74309,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       },
       {
         "type": "<=",
-        "label": "Personalverfuegbarkeit",
+        "label": "Personalverfügbarkeit",
         "row": [
           "a21",
           "a22"
@@ -74356,11 +74356,11 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b2": {
         "min": 20,
         "max": 100,
-        "label": "Verfuegbare Mitarbeiter"
+        "label": "Verfügbare Mitarbeiter"
       }
     },
     "titel": "Standortentwicklung – Standort A und B",
-    "beschreibung": "Ein Unternehmen investiert in die Entwicklung von Standort A und Standort B. Pro 10.000 Euro in Standort A wird ein Ertrag von {c1} Einheiten erzielt, in Standort B {c2} Einheiten. Jede Investitionseinheit in Standort A kostet {a11} Zehntausend Euro, in Standort B {a12} Zehntausend Euro. Das Investitionsbudget betraegt {b1} Zehntausend Euro. Standort A benoetigt {a21} Mitarbeiter pro Investitionseinheit, Standort B {a22} Mitarbeiter. Es stehen {b2} Mitarbeiter zur Verfuegung.",
+    "beschreibung": "Ein Unternehmen investiert in die Entwicklung von Standort A und Standort B. Pro 10.000 Euro in Standort A wird ein Ertrag von {c1} Einheiten erzielt, in Standort B {c2} Einheiten. Jede Investitionseinheit in Standort A kostet {a11} Zehntausend Euro, in Standort B {a12} Zehntausend Euro. Das Investitionsbudget beträgt {b1} Zehntausend Euro. Standort A benötigt {a21} Mitarbeiter pro Investitionseinheit, Standort B {a22} Mitarbeiter. Es stehen {b2} Mitarbeiter zur Verfügung.",
     "hinweis": "Maximiere den Gesamtertrag unter Budget- und Personalrestriktionen.",
     "highlights": {
       "zielfunktion": [
@@ -74390,7 +74390,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         ],
         [
           {
-            "text": "Standort A benoetigt {a21} Mitarbeiter",
+            "text": "Standort A benötigt {a21} Mitarbeiter",
             "bedeutung": "{a21}x₁"
           },
           {
@@ -74398,7 +74398,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a22}x₂"
           },
           {
-            "text": "{b2} Mitarbeiter zur Verfuegung",
+            "text": "{b2} Mitarbeiter zur Verfügung",
             "bedeutung": "≤ {b2}"
           }
         ]
@@ -74486,7 +74486,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "b1": {
         "min": 5,
         "max": 25,
-        "label": "Verfuegbare Stellen"
+        "label": "Verfügbare Stellen"
       },
       "a21": {
         "min": 2,
@@ -74530,8 +74530,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Vertriebsgebiete – West, Mitte und Ost",
-    "beschreibung": "Der Vertriebsleiter verteilt Aussendienstmitarbeiter auf drei Regionen: West, Mitte und Ost. Jeder Vertreter in Region West bringt {c1} Tausend Euro Umsatz, in Mitte {c2} Tausend Euro und in Ost {c3} Tausend Euro. Jeder Vertreter West benoetigt {a11} Stelle, Mitte {a12} Stelle und Ost {a13} Stelle. Es stehen {b1} Stellen zur Verfuegung. Die Dienstwagenkosten betragen {a21} Tausend Euro pro Vertreter West, {a22} Tausend Euro Mitte und {a23} Tausend Euro Ost. Das Dienstwagenbudget umfasst {b2} Tausend Euro. Die Einarbeitung dauert {a31} Schulungstage pro Vertreter West, {a32} Tage Mitte und {a33} Tage Ost bei {b3} verfuegbaren Schulungstagen.",
-    "hinweis": "Drei Regionen mit Stellen-, Dienstwagen- und Schulungsbeschraenkung.",
+    "beschreibung": "Der Vertriebsleiter verteilt Außendienstmitarbeiter auf drei Regionen: West, Mitte und Ost. Jeder Vertreter in Region West bringt {c1} Tausend Euro Umsatz, in Mitte {c2} Tausend Euro und in Ost {c3} Tausend Euro. Jeder Vertreter West benötigt {a11} Stelle, Mitte {a12} Stelle und Ost {a13} Stelle. Es stehen {b1} Stellen zur Verfügung. Die Dienstwagenkosten betragen {a21} Tausend Euro pro Vertreter West, {a22} Tausend Euro Mitte und {a23} Tausend Euro Ost. Das Dienstwagenbudget umfasst {b2} Tausend Euro. Die Einarbeitung dauert {a31} Schulungstage pro Vertreter West, {a32} Tage Mitte und {a33} Tage Ost bei {b3} verfügbaren Schulungstagen.",
+    "hinweis": "Drei Regionen mit Stellen-, Dienstwagen- und Schulungsbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
@@ -74550,7 +74550,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "nebenbedingungen": [
         [
           {
-            "text": "Vertreter West benoetigt {a11} Stelle",
+            "text": "Vertreter West benötigt {a11} Stelle",
             "bedeutung": "{a11}x₁"
           },
           {
@@ -74562,7 +74562,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a13}x₃"
           },
           {
-            "text": "{b1} Stellen zur Verfuegung",
+            "text": "{b1} Stellen zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -74598,7 +74598,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "+ {a33}x₃"
           },
           {
-            "text": "{b3} verfuegbaren Schulungstagen",
+            "text": "{b3} verfügbaren Schulungstagen",
             "bedeutung": "≤ {b3}"
           }
         ]
@@ -74611,8 +74611,8 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
     "optimierungsziel": "maximieren",
     "numVars": 2,
     "variablen": [
-      "x1 = Aussendienst-Tage Region Nord",
-      "x2 = Aussendienst-Tage Region Sued"
+      "x1 = Außendienst-Tage Region Nord",
+      "x2 = Außendienst-Tage Region Süd"
     ],
     "objective": [
       "c1",
@@ -74647,7 +74647,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c2": {
         "min": 4,
         "max": 12,
-        "label": "Umsatz/Tag Region Sued (1000 €)"
+        "label": "Umsatz/Tag Region Süd (1000 €)"
       },
       "a11": {
         "min": 1,
@@ -74657,12 +74657,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a12": {
         "min": 1,
         "max": 1,
-        "label": "Arbeitstage/Tag Sued"
+        "label": "Arbeitstage/Tag Süd"
       },
       "b1": {
         "min": 20,
         "max": 60,
-        "label": "Verfuegbare Arbeitstage"
+        "label": "Verfügbare Arbeitstage"
       },
       "a21": {
         "min": 1,
@@ -74672,7 +74672,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "a22": {
         "min": 2,
         "max": 6,
-        "label": "Reisekosten/Tag Sued (100 €)"
+        "label": "Reisekosten/Tag Süd (100 €)"
       },
       "b2": {
         "min": 30,
@@ -74680,9 +74680,9 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
         "label": "Reisebudget (100 €)"
       }
     },
-    "titel": "Vertrieb – Region Nord und Sued",
-    "beschreibung": "Ein Vertriebsteam plant seine Aussendienst-Tage fuer Region Nord und Region Sued. Pro Tag in Region Nord werden {c1} Tausend Euro Umsatz erwartet, pro Tag in Region Sued {c2} Tausend Euro. Jeder Einsatztag Nord benoetigt {a11} Arbeitstag, jeder Einsatztag Sued {a12} Arbeitstag. Es stehen {b1} Arbeitstage zur Verfuegung. Die Reisekosten betragen {a21} Hundert Euro pro Tag Nord und {a22} Hundert Euro pro Tag Sued. Das Reisebudget belaeuft sich auf {b2} Hundert Euro.",
-    "hinweis": "Maximiere den Umsatz unter Beachtung der verfuegbaren Arbeitstage und des Reisebudgets.",
+    "titel": "Vertrieb – Region Nord und Süd",
+    "beschreibung": "Ein Vertriebsteam plant seine Außendienst-Tage für Region Nord und Region Süd. Pro Tag in Region Nord werden {c1} Tausend Euro Umsatz erwartet, pro Tag in Region Süd {c2} Tausend Euro. Jeder Einsatztag Nord benötigt {a11} Arbeitstag, jeder Einsatztag Süd {a12} Arbeitstag. Es stehen {b1} Arbeitstage zur Verfügung. Die Reisekosten betragen {a21} Hundert Euro pro Tag Nord und {a22} Hundert Euro pro Tag Süd. Das Reisebudget beläuft sich auf {b2} Hundert Euro.",
+    "hinweis": "Maximiere den Umsatz unter Beachtung der verfügbaren Arbeitstage und des Reisebudgets.",
     "highlights": {
       "zielfunktion": [
         {
@@ -74690,22 +74690,22 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
           "bedeutung": "{c1} × x₁"
         },
         {
-          "text": "Region Sued {c2} Tausend Euro",
+          "text": "Region Süd {c2} Tausend Euro",
           "bedeutung": "{c2} × x₂"
         }
       ],
       "nebenbedingungen": [
         [
           {
-            "text": "Einsatztag Nord benoetigt {a11} Arbeitstag",
+            "text": "Einsatztag Nord benötigt {a11} Arbeitstag",
             "bedeutung": "{a11}x₁"
           },
           {
-            "text": "Einsatztag Sued {a12} Arbeitstag",
+            "text": "Einsatztag Süd {a12} Arbeitstag",
             "bedeutung": "+ {a12}x₂"
           },
           {
-            "text": "{b1} Arbeitstage zur Verfuegung",
+            "text": "{b1} Arbeitstage zur Verfügung",
             "bedeutung": "≤ {b1}"
           }
         ],
@@ -74715,7 +74715,7 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
             "bedeutung": "{a21}x₁"
           },
           {
-            "text": "{a22} Hundert Euro pro Tag Sued",
+            "text": "{a22} Hundert Euro pro Tag Süd",
             "bedeutung": "+ {a22}x₂"
           },
           {
@@ -74763,12 +74763,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       "c1": {
         "min": 3,
         "max": 10,
-        "label": "Zuverlaessigkeit/h Maschine A"
+        "label": "Zuverlässigkeit/h Maschine A"
       },
       "c2": {
         "min": 4,
         "max": 12,
-        "label": "Zuverlaessigkeit/h Maschine B"
+        "label": "Zuverlässigkeit/h Maschine B"
       },
       "a11": {
         "min": 1,
@@ -74802,12 +74802,12 @@ const ALL_TEMPLATES: ProblemTemplate[] = [
       }
     },
     "titel": "Wartungsplanung – Maschine A und B",
-    "beschreibung": "Die Wartungsabteilung verteilt Stunden auf Maschine A und Maschine B. Jede Wartungsstunde an Maschine A steigert die Zuverlaessigkeit um {c1} Punkte, an Maschine B um {c2} Punkte. Fuer Maschine A werden {a11} Technikerstunden pro Wartungsstunde benoetigt, fuer Maschine B {a12} Technikerstunden. Insgesamt stehen {b1} Technikerstunden bereit. Die Ersatzteilkosten betragen {a21} Hundert Euro pro Wartungsstunde Maschine A und {a22} Hundert Euro pro Wartungsstunde Maschine B. Das Ersatzteilbudget umfasst {b2} Hundert Euro.",
-    "hinweis": "Maximiere die Gesamtzuverlaessigkeit mit Techniker- und Ersatzteilbeschraenkung.",
+    "beschreibung": "Die Wartungsabteilung verteilt Stunden auf Maschine A und Maschine B. Jede Wartungsstunde an Maschine A steigert die Zuverlässigkeit um {c1} Punkte, an Maschine B um {c2} Punkte. Für Maschine A werden {a11} Technikerstunden pro Wartungsstunde benötigt, für Maschine B {a12} Technikerstunden. Insgesamt stehen {b1} Technikerstunden bereit. Die Ersatzteilkosten betragen {a21} Hundert Euro pro Wartungsstunde Maschine A und {a22} Hundert Euro pro Wartungsstunde Maschine B. Das Ersatzteilbudget umfasst {b2} Hundert Euro.",
+    "hinweis": "Maximiere die Gesamtzuverlässigkeit mit Techniker- und Ersatzteilbeschränkung.",
     "highlights": {
       "zielfunktion": [
         {
-          "text": "Maschine A steigert die Zuverlaessigkeit um {c1} Punkte",
+          "text": "Maschine A steigert die Zuverlässigkeit um {c1} Punkte",
           "bedeutung": "{c1} × x₁"
         },
         {

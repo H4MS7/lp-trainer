@@ -3,7 +3,7 @@
   "typ": "Ressourcenallokation",
   "optimierungsziel": "maximieren",
   "numVars": 2,
-  "variablen": ["x1 = Workshops", "x2 = Vortraege"],
+  "variablen": ["x1 = Workshops", "x2 = Vorträge"],
   "objective": ["c1", "c2"],
   "constraints": [
     {"type": "<=", "label": "Raumstunden", "row": ["a11","a12"], "rhs": "b1"},
@@ -19,9 +19,9 @@
     "a22": {"min": 1, "max": 3,     "label": "Moderatorenstunden/Vortrag"},
     "b2":  {"min": 15, "max": 60,   "label": "Moderatorenstunden gesamt"}
   },
-  "titel": "Eventplanung – Workshops und Vortraege",
-  "beschreibung": "Ein Eventmanager plant eine Konferenz mit Workshops und Vortraegen. Jeder Workshop erbringt {c1} Zufriedenheitspunkte, jeder Vortrag {c2} Punkte. Ein Workshop belegt {a11} Raumstunden, ein Vortrag {a12} Raumstunden. Es stehen {b1} Raumstunden bereit. Jeder Workshop benoetigt {a21} Moderatorenstunden, jeder Vortrag {a22} Moderatorenstunden. Die Moderatorenkapazitaet betraegt {b2} Stunden.",
-  "hinweis": "Maximiere die Zufriedenheit unter Raum- und Moderatorenbeschraenkung.",
+  "titel": "Eventplanung – Workshops und Vorträge",
+  "beschreibung": "Ein Eventmanager plant eine Konferenz mit Workshops und Vorträgen. Jeder Workshop erbringt {c1} Zufriedenheitspunkte, jeder Vortrag {c2} Punkte. Ein Workshop belegt {a11} Raumstunden, ein Vortrag {a12} Raumstunden. Es stehen {b1} Raumstunden bereit. Jeder Workshop benötigt {a21} Moderatorenstunden, jeder Vortrag {a22} Moderatorenstunden. Die Moderatorenkapazität beträgt {b2} Stunden.",
+  "hinweis": "Maximiere die Zufriedenheit unter Raum- und Moderatorenbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Workshop erbringt {c1} Zufriedenheitspunkte", "bedeutung": "{c1} × x₁"},
@@ -34,7 +34,7 @@
         {"text": "{b1} Raumstunden bereit", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Workshop benoetigt {a21} Moderatorenstunden", "bedeutung": "{a21}x₁"},
+        {"text": "Workshop benötigt {a21} Moderatorenstunden", "bedeutung": "{a21}x₁"},
         {"text": "Vortrag {a22} Moderatorenstunden", "bedeutung": "+ {a22}x₂"},
         {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
       ]

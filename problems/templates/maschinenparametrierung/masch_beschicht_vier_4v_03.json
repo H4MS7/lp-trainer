@@ -3,9 +3,9 @@
   "optimierungsziel": "maximieren",
   "numVars": 4,
   "id": "masch_beschicht_vier_4v_03",
-  "titel": "Beschichtungsanlage – Spruehrate, Abstand, Temperatur und Bandgeschwindigkeit",
+  "titel": "Beschichtungsanlage – Sprührate, Abstand, Temperatur und Bandgeschwindigkeit",
   "variablen": [
-    "x1 = Spruehrate (Stufen)",
+    "x1 = Sprührate (Stufen)",
     "x2 = Spruhabstand (Stufen)",
     "x3 = Trocknungstemperatur (Stufen)",
     "x4 = Bandgeschwindigkeit (Stufen)"
@@ -41,7 +41,7 @@
     },
     {
       "type": "<=",
-      "label": "Trocknungskapazitaet",
+      "label": "Trocknungskapazität",
       "row": [
         "a31",
         "a32",
@@ -55,17 +55,17 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Deckung Spruehrate"
+      "label": "Deckung Sprührate"
     },
     "c2": {
       "min": 3,
       "max": 8,
-      "label": "Gleichmaessigkeit Abstand"
+      "label": "Gleichmäßigkeit Abstand"
     },
     "c3": {
       "min": 2,
       "max": 6,
-      "label": "Haertung Temperatur"
+      "label": "Härtung Temperatur"
     },
     "c4": {
       "min": 3,
@@ -75,7 +75,7 @@
     "a11": {
       "min": 3,
       "max": 8,
-      "label": "Lack Spruehrate"
+      "label": "Lack Sprührate"
     },
     "a12": {
       "min": 1,
@@ -100,7 +100,7 @@
     "a21": {
       "min": 1,
       "max": 3,
-      "label": "Energie Spruehrate"
+      "label": "Energie Sprührate"
     },
     "a22": {
       "min": 1,
@@ -125,7 +125,7 @@
     "a31": {
       "min": 1,
       "max": 3,
-      "label": "Trocknung Spruehrate"
+      "label": "Trocknung Sprührate"
     },
     "a32": {
       "min": 1,
@@ -145,23 +145,23 @@
     "b3": {
       "min": 60,
       "max": 300,
-      "label": "Max. Trocknungskapazitaet"
+      "label": "Max. Trocknungskapazität"
     }
   },
-  "beschreibung": "Eine Beschichtungsanlage wird ueber vier Parameter optimiert. Die Spruehrate liefert {c1} Deckungspunkte, der Spruhabstand {c2} Gleichmaessigkeitspunkte, die Trocknungstemperatur {c3} Haertungspunkte und die Bandgeschwindigkeit {c4} Durchsatzpunkte. Der Lackverbrauch betraegt {a11} Einheiten fuer Spruehrate, {a12} fuer Abstand, {a13} fuer Temperatur und {a14} fuer Band bei maximal {b1} Lackeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Spruehrate, {a22} fuer Abstand, {a23} fuer Temperatur und {a24} fuer Band bei maximal {b2} Energieeinheiten. Die Trocknungskapazitaet betraegt {a31} Einheiten fuer Spruehrate, {a32} fuer Abstand, {a33} fuer Temperatur und {a34} fuer Band bei maximal {b3} Trocknungseinheiten.",
-  "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack, Energie und Trocknung.",
+  "beschreibung": "Eine Beschichtungsanlage wird über vier Parameter optimiert. Die Sprührate liefert {c1} Deckungspunkte, der Spruhabstand {c2} Gleichmäßigkeitspunkte, die Trocknungstemperatur {c3} Härtungspunkte und die Bandgeschwindigkeit {c4} Durchsatzpunkte. Der Lackverbrauch beträgt {a11} Einheiten für Sprührate, {a12} für Abstand, {a13} für Temperatur und {a14} für Band bei maximal {b1} Lackeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten für Sprührate, {a22} für Abstand, {a23} für Temperatur und {a24} für Band bei maximal {b2} Energieeinheiten. Die Trocknungskapazität beträgt {a31} Einheiten für Sprührate, {a32} für Abstand, {a33} für Temperatur und {a34} für Band bei maximal {b3} Trocknungseinheiten.",
+  "hinweis": "Maximiere die Beschichtungsqualität unter Beachtung von Lack, Energie und Trocknung.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Spruehrate liefert {c1} Deckungspunkte",
+        "text": "Sprührate liefert {c1} Deckungspunkte",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Spruhabstand {c2} Gleichmaessigkeitspunkte",
+        "text": "Spruhabstand {c2} Gleichmäßigkeitspunkte",
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Trocknungstemperatur {c3} Haertungspunkte",
+        "text": "Trocknungstemperatur {c3} Härtungspunkte",
         "bedeutung": "{c3} × x₃"
       },
       {
@@ -172,19 +172,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Spruehrate",
+          "text": "{a11} Einheiten für Sprührate",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Abstand",
+          "text": "{a12} für Abstand",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Temperatur",
+          "text": "{a13} für Temperatur",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Band",
+          "text": "{a14} für Band",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -194,19 +194,19 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Spruehrate",
+          "text": "{a21} Einheiten für Sprührate",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Abstand",
+          "text": "{a22} für Abstand",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Temperatur",
+          "text": "{a23} für Temperatur",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Band",
+          "text": "{a24} für Band",
           "bedeutung": "+ {a24}x₄"
         },
         {
@@ -216,19 +216,19 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Spruehrate",
+          "text": "{a31} Einheiten für Sprührate",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Abstand",
+          "text": "{a32} für Abstand",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Temperatur",
+          "text": "{a33} für Temperatur",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Band",
+          "text": "{a34} für Band",
           "bedeutung": "+ {a34}x₄"
         },
         {

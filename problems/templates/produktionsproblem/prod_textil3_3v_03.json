@@ -3,56 +3,56 @@
   "typ": "Produktionsproblem",
   "optimierungsziel": "maximieren",
   "numVars": 3,
-  "variablen": ["x1 = Anzahl T-Shirts", "x2 = Anzahl Jacken", "x3 = Anzahl Muetzen"],
+  "variablen": ["x1 = Anzahl T-Shirts", "x2 = Anzahl Jacken", "x3 = Anzahl Mützen"],
   "objective": ["c1", "c2", "c3"],
   "constraints": [
     {"type": "<=", "label": "Stoff", "row": ["a11","a12","a13"], "rhs": "b1"},
-    {"type": "<=", "label": "Naehzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
-    {"type": "<=", "label": "Faerbekapazitaet", "row": ["a31","a32","a33"], "rhs": "b3"}
+    {"type": "<=", "label": "Nähzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Färbekapazität", "row": ["a31","a32","a33"], "rhs": "b3"}
   ],
   "coefficients": {
     "c1":  {"min": 5, "max": 18,    "label": "Gewinn/T-Shirt (€)"},
     "c2":  {"min": 15, "max": 50,   "label": "Gewinn/Jacke (€)"},
-    "c3":  {"min": 3, "max": 10,    "label": "Gewinn/Muetze (€)"},
+    "c3":  {"min": 3, "max": 10,    "label": "Gewinn/Mütze (€)"},
     "a11": {"min": 1, "max": 3,     "label": "Stoff/T-Shirt (m)"},
     "a12": {"min": 2, "max": 6,     "label": "Stoff/Jacke (m)"},
-    "a13": {"min": 1, "max": 2,     "label": "Stoff/Muetze (m)"},
+    "a13": {"min": 1, "max": 2,     "label": "Stoff/Mütze (m)"},
     "b1":  {"min": 60, "max": 250,  "label": "Stoffvorrat (m)"},
-    "a21": {"min": 1, "max": 3,     "label": "Naehzeit/T-Shirt (h)"},
-    "a22": {"min": 2, "max": 6,     "label": "Naehzeit/Jacke (h)"},
-    "a23": {"min": 1, "max": 2,     "label": "Naehzeit/Muetze (h)"},
-    "b2":  {"min": 40, "max": 180,  "label": "Naehstunden"},
-    "a31": {"min": 1, "max": 3,     "label": "Faerbezeit/T-Shirt (h)"},
-    "a32": {"min": 1, "max": 4,     "label": "Faerbezeit/Jacke (h)"},
-    "a33": {"min": 1, "max": 2,     "label": "Faerbezeit/Muetze (h)"},
-    "b3":  {"min": 30, "max": 120,  "label": "Faerbestunden"}
+    "a21": {"min": 1, "max": 3,     "label": "Nähzeit/T-Shirt (h)"},
+    "a22": {"min": 2, "max": 6,     "label": "Nähzeit/Jacke (h)"},
+    "a23": {"min": 1, "max": 2,     "label": "Nähzeit/Mütze (h)"},
+    "b2":  {"min": 40, "max": 180,  "label": "Nähstunden"},
+    "a31": {"min": 1, "max": 3,     "label": "Färbezeit/T-Shirt (h)"},
+    "a32": {"min": 1, "max": 4,     "label": "Färbezeit/Jacke (h)"},
+    "a33": {"min": 1, "max": 2,     "label": "Färbezeit/Mütze (h)"},
+    "b3":  {"min": 30, "max": 120,  "label": "Färbestunden"}
   },
-  "titel": "Textilfabrik – T-Shirts, Jacken und Muetzen",
-  "beschreibung": "Eine Textilfabrik produziert T-Shirts, Jacken und Muetzen. Der Gewinn pro T-Shirt betraegt {c1} Euro, pro Jacke {c2} Euro, pro Muetze {c3} Euro. Ein T-Shirt benoetigt {a11} m Stoff, eine Jacke {a12} m, eine Muetze {a13} m. Es stehen {b1} m Stoff bereit. Das Naehen eines T-Shirts dauert {a21} Stunden, einer Jacke {a22} Stunden, einer Muetze {a23} Stunden bei insgesamt {b2} Naehstunden. Das Faerben benoetigt {a31} Stunden pro T-Shirt, {a32} Stunden pro Jacke und {a33} Stunden pro Muetze. Die Faerbekapazitaet umfasst {b3} Stunden.",
-  "hinweis": "Formuliere die Gewinnmaximierung mit drei Nebenbedingungen: Stoff, Naehzeit, Faerbekapazitaet.",
+  "titel": "Textilfabrik – T-Shirts, Jacken und Mützen",
+  "beschreibung": "Eine Textilfabrik produziert T-Shirts, Jacken und Mützen. Der Gewinn pro T-Shirt beträgt {c1} Euro, pro Jacke {c2} Euro, pro Mütze {c3} Euro. Ein T-Shirt benötigt {a11} m Stoff, eine Jacke {a12} m, eine Mütze {a13} m. Es stehen {b1} m Stoff bereit. Das Nähen eines T-Shirts dauert {a21} Stunden, einer Jacke {a22} Stunden, einer Mütze {a23} Stunden bei insgesamt {b2} Nähstunden. Das Färben benötigt {a31} Stunden pro T-Shirt, {a32} Stunden pro Jacke und {a33} Stunden pro Mütze. Die Färbekapazität umfasst {b3} Stunden.",
+  "hinweis": "Formuliere die Gewinnmaximierung mit drei Nebenbedingungen: Stoff, Nähzeit, Färbekapazität.",
   "highlights": {
     "zielfunktion": [
-      {"text": "T-Shirt betraegt {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "T-Shirt beträgt {c1} Euro", "bedeutung": "{c1} × x₁"},
       {"text": "Jacke {c2} Euro", "bedeutung": "{c2} × x₂"},
-      {"text": "Muetze {c3} Euro", "bedeutung": "{c3} × x₃"}
+      {"text": "Mütze {c3} Euro", "bedeutung": "{c3} × x₃"}
     ],
     "nebenbedingungen": [
       [
-        {"text": "T-Shirt benoetigt {a11} m Stoff", "bedeutung": "{a11}x₁"},
+        {"text": "T-Shirt benötigt {a11} m Stoff", "bedeutung": "{a11}x₁"},
         {"text": "Jacke {a12} m", "bedeutung": "+ {a12}x₂"},
-        {"text": "Muetze {a13} m", "bedeutung": "+ {a13}x₃"},
+        {"text": "Mütze {a13} m", "bedeutung": "+ {a13}x₃"},
         {"text": "{b1} m Stoff bereit", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "T-Shirts dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
         {"text": "Jacke {a22} Stunden", "bedeutung": "+ {a22}x₂"},
-        {"text": "Muetze {a23} Stunden", "bedeutung": "+ {a23}x₃"},
-        {"text": "{b2} Naehstunden", "bedeutung": "≤ {b2}"}
+        {"text": "Mütze {a23} Stunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Nähstunden", "bedeutung": "≤ {b2}"}
       ],
       [
         {"text": "{a31} Stunden pro T-Shirt", "bedeutung": "{a31}x₁"},
         {"text": "{a32} Stunden pro Jacke", "bedeutung": "+ {a32}x₂"},
-        {"text": "{a33} Stunden pro Muetze", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a33} Stunden pro Mütze", "bedeutung": "+ {a33}x₃"},
         {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
       ]
     ]

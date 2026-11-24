@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Scheibenverschleiss",
+      "label": "Scheibenverschleiß",
       "row": [
         "a21",
         "a22"
@@ -41,7 +41,7 @@
     "c2": {
       "min": 3,
       "max": 8,
-      "label": "Oberflaechenguete Zustellung"
+      "label": "Oberflächengüte Zustellung"
     },
     "a11": {
       "min": 2,
@@ -61,21 +61,21 @@
     "a21": {
       "min": 3,
       "max": 9,
-      "label": "Verschleiss pro Drehzahlstufe"
+      "label": "Verschleiß pro Drehzahlstufe"
     },
     "a22": {
       "min": 2,
       "max": 7,
-      "label": "Verschleiss pro Zustellstufe"
+      "label": "Verschleiß pro Zustellstufe"
     },
     "b2": {
       "min": 60,
       "max": 350,
-      "label": "Max. Scheibenverschleiss"
+      "label": "Max. Scheibenverschleiß"
     }
   },
-  "beschreibung": "Eine Schleifmaschine wird ueber Scheibendrehzahl und Zustellung parametriert. Die Drehzahl liefert {c1} Punkte Abtragrate, die Zustellung {c2} Punkte Oberflaechenguete. Die Leistungsaufnahme betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Zustellstufe bei maximal {b1} Leistungseinheiten. Der Scheibenverschleiss liegt bei {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Zustellstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Schleifleistung unter Beachtung von Energie und Verschleiss.",
+  "beschreibung": "Eine Schleifmaschine wird über Scheibendrehzahl und Zustellung parametriert. Die Drehzahl liefert {c1} Punkte Abtragrate, die Zustellung {c2} Punkte Oberflächengüte. Die Leistungsaufnahme beträgt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Zustellstufe bei maximal {b1} Leistungseinheiten. Der Scheibenverschleiß liegt bei {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Zustellstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Schleifleistung unter Beachtung von Energie und Verschleiß.",
   "highlights": {
     "zielfunktion": [
       {
@@ -83,7 +83,7 @@
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Zustellung {c2} Punkte Oberflaechenguete",
+        "text": "Zustellung {c2} Punkte Oberflächengüte",
         "bedeutung": "{c2} × x₂"
       }
     ],
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

@@ -9,7 +9,7 @@
     {"type": "<=", "label": "Anlagekapital", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
     {"type": "<=", "label": "Analyseaufwand", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
     {"type": "<=", "label": "Risikobudget", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
-    {"type": "<=", "label": "Liquiditaetsreserve", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+    {"type": "<=", "label": "Liquiditätsreserve", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
   ],
   "coefficients": {
     "c1":  {"min": 2, "max": 5,     "label": "Rendite/Anteil Anleihen (%)"},
@@ -40,18 +40,18 @@
     "a43": {"min": 2, "max": 4,     "label": "Bindung/Anteil Immobilien"},
     "a44": {"min": 1, "max": 2,     "label": "Bindung/Anteil Rohstoffe"},
     "a45": {"min": 1, "max": 2,     "label": "Bindung/Anteil Krypto"},
-    "b4":  {"min": 15, "max": 60,   "label": "Bindungskapazitaet"}
+    "b4":  {"min": 15, "max": 60,   "label": "Bindungskapazität"}
   },
   "titel": "Fondsmanagement – Anleihen, Aktien, Immobilien, Rohstoffe und Krypto",
-  "beschreibung": "Ein Fondsmanager verteilt Kapital auf fuenf Anlageklassen: Anleihen, Aktien, Immobilien, Rohstoffe und Krypto. Die Renditeerwartung betraegt {c1} Prozent fuer Anleihen, {c2} Prozent fuer Aktien, {c3} Prozent fuer Immobilien, {c4} Prozent fuer Rohstoffe und {c5} Prozent fuer Krypto pro Anteil. Jeder Anteil kostet {a11} Zehntausend Euro Anleihen, {a12} Aktien, {a13} Immobilien, {a14} Rohstoffe und {a15} Krypto. Das Anlagekapital umfasst {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden Anleihen, {a22} Stunden Aktien, {a23} Stunden Immobilien, {a24} Stunden Rohstoffe und {a25} Stunden Krypto pro Anteil bei {b2} Analysestunden. Das Risiko betraegt {a31} Punkte Anleihen, {a32} Punkte Aktien, {a33} Punkte Immobilien, {a34} Punkte Rohstoffe und {a35} Punkte Krypto pro Anteil bei {b3} Risikobudget. Die Kapitalbindung belaeuft sich auf {a41} Einheit Anleihen, {a42} Einheiten Aktien, {a43} Einheiten Immobilien, {a44} Einheiten Rohstoffe und {a45} Einheiten Krypto pro Anteil bei {b4} Bindungskapazitaet.",
-  "hinweis": "Fuenf Anlageklassen mit Kapital-, Analyse-, Risiko- und Bindungsbeschraenkung.",
+  "beschreibung": "Ein Fondsmanager verteilt Kapital auf fünf Anlageklassen: Anleihen, Aktien, Immobilien, Rohstoffe und Krypto. Die Renditeerwartung beträgt {c1} Prozent für Anleihen, {c2} Prozent für Aktien, {c3} Prozent für Immobilien, {c4} Prozent für Rohstoffe und {c5} Prozent für Krypto pro Anteil. Jeder Anteil kostet {a11} Zehntausend Euro Anleihen, {a12} Aktien, {a13} Immobilien, {a14} Rohstoffe und {a15} Krypto. Das Anlagekapital umfasst {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden Anleihen, {a22} Stunden Aktien, {a23} Stunden Immobilien, {a24} Stunden Rohstoffe und {a25} Stunden Krypto pro Anteil bei {b2} Analysestunden. Das Risiko beträgt {a31} Punkte Anleihen, {a32} Punkte Aktien, {a33} Punkte Immobilien, {a34} Punkte Rohstoffe und {a35} Punkte Krypto pro Anteil bei {b3} Risikobudget. Die Kapitalbindung beläuft sich auf {a41} Einheit Anleihen, {a42} Einheiten Aktien, {a43} Einheiten Immobilien, {a44} Einheiten Rohstoffe und {a45} Einheiten Krypto pro Anteil bei {b4} Bindungskapazität.",
+  "hinweis": "Fünf Anlageklassen mit Kapital-, Analyse-, Risiko- und Bindungsbeschränkung.",
   "highlights": {
     "zielfunktion": [
-      {"text": "{c1} Prozent fuer Anleihen", "bedeutung": "{c1} × x₁"},
-      {"text": "{c2} Prozent fuer Aktien", "bedeutung": "{c2} × x₂"},
-      {"text": "{c3} Prozent fuer Immobilien", "bedeutung": "{c3} × x₃"},
-      {"text": "{c4} Prozent fuer Rohstoffe", "bedeutung": "{c4} × x₄"},
-      {"text": "{c5} Prozent fuer Krypto", "bedeutung": "{c5} × x₅"}
+      {"text": "{c1} Prozent für Anleihen", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} Prozent für Aktien", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} Prozent für Immobilien", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} Prozent für Rohstoffe", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} Prozent für Krypto", "bedeutung": "{c5} × x₅"}
     ],
     "nebenbedingungen": [
       [
@@ -84,7 +84,7 @@
         {"text": "{a43} Einheiten Immobilien", "bedeutung": "+ {a43}x₃"},
         {"text": "{a44} Einheiten Rohstoffe", "bedeutung": "+ {a44}x₄"},
         {"text": "{a45} Einheiten Krypto", "bedeutung": "+ {a45}x₅"},
-        {"text": "{b4} Bindungskapazitaet", "bedeutung": "≤ {b4}"}
+        {"text": "{b4} Bindungskapazität", "bedeutung": "≤ {b4}"}
       ]
     ]
   }

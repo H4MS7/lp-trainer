@@ -7,7 +7,7 @@
     "c2"
   ],
   "id": "masch_cnc_fraese_2v_01",
-  "titel": "CNC-Fraese – Drehzahl und Vorschub",
+  "titel": "CNC-Fräse – Drehzahl und Vorschub",
   "variablen": [
     "x1 = Drehzahl (100 U/min)",
     "x2 = Vorschub (mm/min)"
@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Werkzeugverschleiss",
+      "label": "Werkzeugverschleiß",
       "row": [
         "a21",
         "a22"
@@ -36,12 +36,12 @@
     "c1": {
       "min": 3,
       "max": 10,
-      "label": "Qualitaetsbeitrag Drehzahl"
+      "label": "Qualitätsbeitrag Drehzahl"
     },
     "c2": {
       "min": 4,
       "max": 12,
-      "label": "Qualitaetsbeitrag Vorschub"
+      "label": "Qualitätsbeitrag Vorschub"
     },
     "a11": {
       "min": 2,
@@ -61,25 +61,25 @@
     "a21": {
       "min": 3,
       "max": 9,
-      "label": "Verschleiss Drehzahl"
+      "label": "Verschleiß Drehzahl"
     },
     "a22": {
       "min": 2,
       "max": 7,
-      "label": "Verschleiss Vorschub"
+      "label": "Verschleiß Vorschub"
     },
     "b2": {
       "min": 60,
       "max": 300,
-      "label": "Max. Verschleisseinheiten"
+      "label": "Max. Verschleißeinheiten"
     }
   },
-  "beschreibung": "Eine CNC-Fraese wird ueber Drehzahl und Vorschub gesteuert. Die Drehzahl traegt {c1} Qualitaetspunkte bei, der Vorschub {c2} Punkte. Der Energiebedarf liegt bei {a11} kW pro Drehzahleinheit und {a12} kW pro Vorschubeinheit. Die maximale Energieaufnahme betraegt {b1} kW. Der Werkzeugverschleiss betraegt {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Vorschubstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Oberflaechenqualitaet unter Beachtung von Energie und Verschleiss.",
+  "beschreibung": "Eine CNC-Fräse wird über Drehzahl und Vorschub gesteuert. Die Drehzahl trägt {c1} Qualitätspunkte bei, der Vorschub {c2} Punkte. Der Energiebedarf liegt bei {a11} kW pro Drehzahleinheit und {a12} kW pro Vorschubeinheit. Die maximale Energieaufnahme beträgt {b1} kW. Der Werkzeugverschleiß beträgt {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Vorschubstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Oberflächenqualität unter Beachtung von Energie und Verschleiß.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Drehzahl traegt {c1} Qualitaetspunkte bei",
+        "text": "Drehzahl trägt {c1} Qualitätspunkte bei",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

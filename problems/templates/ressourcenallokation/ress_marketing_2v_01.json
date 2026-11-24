@@ -3,7 +3,7 @@
   "typ": "Ressourcenallokation",
   "optimierungsziel": "maximieren",
   "numVars": 2,
-  "variablen": ["x1 = Budget fuer Online-Werbung (1000 €)", "x2 = Budget fuer Printwerbung (1000 €)"],
+  "variablen": ["x1 = Budget für Online-Werbung (1000 €)", "x2 = Budget für Printwerbung (1000 €)"],
   "objective": ["c1", "c2"],
   "constraints": [
     {"type": "<=", "label": "Werbebudget", "row": ["a11","a12"], "rhs": "b1"},
@@ -20,8 +20,8 @@
     "b2":  {"min": 40, "max": 200,  "label": "Personalstunden gesamt"}
   },
   "titel": "Marketingplanung – Online und Print",
-  "beschreibung": "Eine Marketingabteilung verteilt ihr Budget auf Online-Werbung und Printwerbung. Pro 1000 Euro Online-Werbung werden {c1} Tausend Kontakte erreicht, pro 1000 Euro Printwerbung {c2} Tausend Kontakte. Jeder Online-Block kostet {a11} Tausend Euro, jeder Print-Block {a12} Tausend Euro. Das Gesamtbudget betraegt {b1} Tausend Euro. Online-Werbung erfordert {a21} Personalstunden pro Block, Printwerbung {a22} Personalstunden. Es stehen {b2} Personalstunden zur Verfuegung.",
-  "hinweis": "Maximiere die Reichweite unter Beachtung von Budget und Personalkapazitaet.",
+  "beschreibung": "Eine Marketingabteilung verteilt ihr Budget auf Online-Werbung und Printwerbung. Pro 1000 Euro Online-Werbung werden {c1} Tausend Kontakte erreicht, pro 1000 Euro Printwerbung {c2} Tausend Kontakte. Jeder Online-Block kostet {a11} Tausend Euro, jeder Print-Block {a12} Tausend Euro. Das Gesamtbudget beträgt {b1} Tausend Euro. Online-Werbung erfordert {a21} Personalstunden pro Block, Printwerbung {a22} Personalstunden. Es stehen {b2} Personalstunden zur Verfügung.",
+  "hinweis": "Maximiere die Reichweite unter Beachtung von Budget und Personalkapazität.",
   "highlights": {
     "zielfunktion": [
       {"text": "Online-Werbung werden {c1} Tausend Kontakte erreicht", "bedeutung": "{c1} × x₁"},
@@ -36,7 +36,7 @@
       [
         {"text": "Online-Werbung erfordert {a21} Personalstunden", "bedeutung": "{a21}x₁"},
         {"text": "Printwerbung {a22} Personalstunden", "bedeutung": "+ {a22}x₂"},
-        {"text": "{b2} Personalstunden zur Verfuegung", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
       ]
     ]
   }

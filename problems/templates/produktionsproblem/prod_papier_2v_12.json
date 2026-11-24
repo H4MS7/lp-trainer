@@ -17,11 +17,11 @@
     "b1":  {"min": 30, "max": 120,   "label": "Zellstoffvorrat (t)"},
     "a21": {"min": 2, "max": 6,      "label": "Trocknungszeit/t Druckpapier (h)"},
     "a22": {"min": 3, "max": 8,      "label": "Trocknungszeit/t Karton (h)"},
-    "b2":  {"min": 40, "max": 160,   "label": "Trocknungskapazitaet (h)"}
+    "b2":  {"min": 40, "max": 160,   "label": "Trocknungskapazität (h)"}
   },
   "titel": "Papierfabrik – Druckpapier und Karton",
-  "beschreibung": "Eine Papierfabrik produziert Druckpapier und Karton. Pro Tonne Druckpapier werden {c1} Euro Gewinn erzielt, pro Tonne Karton {c2} Euro. Die Herstellung einer Tonne Druckpapier erfordert {a11} Tonnen Zellstoff, eine Tonne Karton {a12} Tonnen. Es sind {b1} Tonnen Zellstoff vorhanden. Die Trocknung einer Tonne Druckpapier dauert {a21} Stunden, die von Karton {a22} Stunden. Die Trocknungskapazitaet betraegt {b2} Stunden.",
-  "hinweis": "Stelle das Modell mit Zellstoff- und Trocknungsbeschraenkung auf.",
+  "beschreibung": "Eine Papierfabrik produziert Druckpapier und Karton. Pro Tonne Druckpapier werden {c1} Euro Gewinn erzielt, pro Tonne Karton {c2} Euro. Die Herstellung einer Tonne Druckpapier erfordert {a11} Tonnen Zellstoff, eine Tonne Karton {a12} Tonnen. Es sind {b1} Tonnen Zellstoff vorhanden. Die Trocknung einer Tonne Druckpapier dauert {a21} Stunden, die von Karton {a22} Stunden. Die Trocknungskapazität beträgt {b2} Stunden.",
+  "hinweis": "Stelle das Modell mit Zellstoff- und Trocknungsbeschränkung auf.",
   "highlights": {
     "zielfunktion": [
       {"text": "Druckpapier werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},

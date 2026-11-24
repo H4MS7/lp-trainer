@@ -3,78 +3,78 @@
   "typ": "Ressourcenallokation",
   "optimierungsziel": "maximieren",
   "numVars": 4,
-  "variablen": ["x1 = Investition Standort Hamburg (10.000 €)", "x2 = Investition Standort Berlin (10.000 €)", "x3 = Investition Standort Muenchen (10.000 €)", "x4 = Investition Standort Frankfurt (10.000 €)"],
+  "variablen": ["x1 = Investition Standort Hamburg (10.000 €)", "x2 = Investition Standort Berlin (10.000 €)", "x3 = Investition Standort München (10.000 €)", "x4 = Investition Standort Frankfurt (10.000 €)"],
   "objective": ["c1", "c2", "c3", "c4"],
   "constraints": [
     {"type": "<=", "label": "Investitionsbudget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
     {"type": "<=", "label": "Projektleiter", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
-    {"type": "<=", "label": "Baukapazitaet", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Baukapazität", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
     {"type": "<=", "label": "Genehmigungen", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
   ],
   "coefficients": {
     "c1":  {"min": 3, "max": 10,    "label": "Ertrag/10.000€ Hamburg"},
     "c2":  {"min": 4, "max": 12,    "label": "Ertrag/10.000€ Berlin"},
-    "c3":  {"min": 5, "max": 15,    "label": "Ertrag/10.000€ Muenchen"},
+    "c3":  {"min": 5, "max": 15,    "label": "Ertrag/10.000€ München"},
     "c4":  {"min": 3, "max": 11,    "label": "Ertrag/10.000€ Frankfurt"},
     "a11": {"min": 1, "max": 1,     "label": "Kapital/Einheit Hamburg"},
     "a12": {"min": 1, "max": 1,     "label": "Kapital/Einheit Berlin"},
-    "a13": {"min": 1, "max": 1,     "label": "Kapital/Einheit Muenchen"},
+    "a13": {"min": 1, "max": 1,     "label": "Kapital/Einheit München"},
     "a14": {"min": 1, "max": 1,     "label": "Kapital/Einheit Frankfurt"},
     "b1":  {"min": 20, "max": 100,  "label": "Investitionsbudget (10.000 €)"},
     "a21": {"min": 1, "max": 2,     "label": "Projektleiter/Einheit Hamburg"},
     "a22": {"min": 1, "max": 3,     "label": "Projektleiter/Einheit Berlin"},
-    "a23": {"min": 1, "max": 2,     "label": "Projektleiter/Einheit Muenchen"},
+    "a23": {"min": 1, "max": 2,     "label": "Projektleiter/Einheit München"},
     "a24": {"min": 1, "max": 2,     "label": "Projektleiter/Einheit Frankfurt"},
     "b2":  {"min": 5, "max": 20,    "label": "Projektleiter gesamt"},
     "a31": {"min": 1, "max": 3,     "label": "Baumonate/Einheit Hamburg"},
     "a32": {"min": 2, "max": 4,     "label": "Baumonate/Einheit Berlin"},
-    "a33": {"min": 1, "max": 3,     "label": "Baumonate/Einheit Muenchen"},
+    "a33": {"min": 1, "max": 3,     "label": "Baumonate/Einheit München"},
     "a34": {"min": 1, "max": 3,     "label": "Baumonate/Einheit Frankfurt"},
     "b3":  {"min": 10, "max": 40,   "label": "Baumonate gesamt"},
     "a41": {"min": 1, "max": 2,     "label": "Genehmigungen/Einheit Hamburg"},
     "a42": {"min": 1, "max": 3,     "label": "Genehmigungen/Einheit Berlin"},
-    "a43": {"min": 1, "max": 2,     "label": "Genehmigungen/Einheit Muenchen"},
+    "a43": {"min": 1, "max": 2,     "label": "Genehmigungen/Einheit München"},
     "a44": {"min": 1, "max": 2,     "label": "Genehmigungen/Einheit Frankfurt"},
-    "b4":  {"min": 5, "max": 20,    "label": "Genehmigungskapazitaet"}
+    "b4":  {"min": 5, "max": 20,    "label": "Genehmigungskapazität"}
   },
-  "titel": "Standortausbau – Hamburg, Berlin, Muenchen und Frankfurt",
-  "beschreibung": "Ein Konzern investiert in vier Standorte: Hamburg, Berlin, Muenchen und Frankfurt. Pro Einheit Investment ergibt sich ein Ertrag von {c1} in Hamburg, {c2} in Berlin, {c3} in Muenchen und {c4} in Frankfurt. Jede Einheit kostet {a11} Zehntausend Euro in Hamburg, {a12} in Berlin, {a13} in Muenchen und {a14} in Frankfurt. Das Budget betraegt {b1} Zehntausend Euro. An Projektleitern werden {a21} pro Einheit Hamburg, {a22} pro Einheit Berlin, {a23} pro Einheit Muenchen und {a24} pro Einheit Frankfurt benoetigt. Es stehen {b2} Projektleiter bereit. Die Bauzeit betraegt {a31} Monate pro Einheit Hamburg, {a32} Monate pro Einheit Berlin, {a33} Monate pro Einheit Muenchen und {a34} Monate pro Einheit Frankfurt bei {b3} Baumonaten gesamt. An Genehmigungen erfordert Hamburg {a41}, Berlin {a42}, Muenchen {a43} und Frankfurt {a44} pro Einheit bei {b4} Genehmigungskapazitaet.",
-  "hinweis": "Vier Standorte mit Budget-, Projektleiter-, Bau- und Genehmigungsbeschraenkung.",
+  "titel": "Standortausbau – Hamburg, Berlin, München und Frankfurt",
+  "beschreibung": "Ein Konzern investiert in vier Standorte: Hamburg, Berlin, München und Frankfurt. Pro Einheit Investment ergibt sich ein Ertrag von {c1} in Hamburg, {c2} in Berlin, {c3} in München und {c4} in Frankfurt. Jede Einheit kostet {a11} Zehntausend Euro in Hamburg, {a12} in Berlin, {a13} in München und {a14} in Frankfurt. Das Budget beträgt {b1} Zehntausend Euro. An Projektleitern werden {a21} pro Einheit Hamburg, {a22} pro Einheit Berlin, {a23} pro Einheit München und {a24} pro Einheit Frankfurt benötigt. Es stehen {b2} Projektleiter bereit. Die Bauzeit beträgt {a31} Monate pro Einheit Hamburg, {a32} Monate pro Einheit Berlin, {a33} Monate pro Einheit München und {a34} Monate pro Einheit Frankfurt bei {b3} Baumonaten gesamt. An Genehmigungen erfordert Hamburg {a41}, Berlin {a42}, München {a43} und Frankfurt {a44} pro Einheit bei {b4} Genehmigungskapazität.",
+  "hinweis": "Vier Standorte mit Budget-, Projektleiter-, Bau- und Genehmigungsbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "{c1} in Hamburg", "bedeutung": "{c1} × x₁"},
       {"text": "{c2} in Berlin", "bedeutung": "{c2} × x₂"},
-      {"text": "{c3} in Muenchen", "bedeutung": "{c3} × x₃"},
+      {"text": "{c3} in München", "bedeutung": "{c3} × x₃"},
       {"text": "{c4} in Frankfurt", "bedeutung": "{c4} × x₄"}
     ],
     "nebenbedingungen": [
       [
         {"text": "{a11} Zehntausend Euro in Hamburg", "bedeutung": "{a11}x₁"},
         {"text": "{a12} in Berlin", "bedeutung": "+ {a12}x₂"},
-        {"text": "{a13} in Muenchen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a13} in München", "bedeutung": "+ {a13}x₃"},
         {"text": "{a14} in Frankfurt", "bedeutung": "+ {a14}x₄"},
         {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "{a21} pro Einheit Hamburg", "bedeutung": "{a21}x₁"},
         {"text": "{a22} pro Einheit Berlin", "bedeutung": "+ {a22}x₂"},
-        {"text": "{a23} pro Einheit Muenchen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a23} pro Einheit München", "bedeutung": "+ {a23}x₃"},
         {"text": "{a24} pro Einheit Frankfurt", "bedeutung": "+ {a24}x₄"},
         {"text": "{b2} Projektleiter bereit", "bedeutung": "≤ {b2}"}
       ],
       [
         {"text": "{a31} Monate pro Einheit Hamburg", "bedeutung": "{a31}x₁"},
         {"text": "{a32} Monate pro Einheit Berlin", "bedeutung": "+ {a32}x₂"},
-        {"text": "{a33} Monate pro Einheit Muenchen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a33} Monate pro Einheit München", "bedeutung": "+ {a33}x₃"},
         {"text": "{a34} Monate pro Einheit Frankfurt", "bedeutung": "+ {a34}x₄"},
         {"text": "{b3} Baumonaten gesamt", "bedeutung": "≤ {b3}"}
       ],
       [
         {"text": "Hamburg {a41}", "bedeutung": "{a41}x₁"},
         {"text": "Berlin {a42}", "bedeutung": "+ {a42}x₂"},
-        {"text": "Muenchen {a43}", "bedeutung": "+ {a43}x₃"},
+        {"text": "München {a43}", "bedeutung": "+ {a43}x₃"},
         {"text": "Frankfurt {a44}", "bedeutung": "+ {a44}x₄"},
-        {"text": "{b4} Genehmigungskapazitaet", "bedeutung": "≤ {b4}"}
+        {"text": "{b4} Genehmigungskapazität", "bedeutung": "≤ {b4}"}
       ]
     ]
   }

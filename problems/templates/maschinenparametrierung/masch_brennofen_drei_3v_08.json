@@ -50,17 +50,17 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Haertung Temperatur"
+      "label": "Härtung Temperatur"
     },
     "c2": {
       "min": 3,
       "max": 8,
-      "label": "Gleichmaessigkeit Dauer"
+      "label": "Gleichmäßigkeit Dauer"
     },
     "c3": {
       "min": 2,
       "max": 6,
-      "label": "Atmosphaere Luft"
+      "label": "Atmosphäre Luft"
     },
     "a11": {
       "min": 4,
@@ -123,35 +123,35 @@
       "label": "Max. Abgaslimit"
     }
   },
-  "beschreibung": "Ein Brennofen wird ueber drei Parameter optimiert. Die Brenntemperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit und die Luftzufuhr {c3} Punkte Atmosphaerenqualitaet. Der Gasverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Dauer und {a13} fuer Luft bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Dauer und {a23} fuer Luft bei maximal {b2} Belastungseinheiten. Das Abgaslimit betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Dauer und {a33} fuer Luft bei maximal {b3} Abgaseinheiten.",
-  "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gas, Ofenbelastung und Abgaslimit.",
+  "beschreibung": "Ein Brennofen wird über drei Parameter optimiert. Die Brenntemperatur liefert {c1} Punkte Härtung, die Brenndauer {c2} Punkte Gleichmäßigkeit und die Luftzufuhr {c3} Punkte Atmosphärenqualität. Der Gasverbrauch beträgt {a11} Einheiten für Temperatur, {a12} für Dauer und {a13} für Luft bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten für Temperatur, {a22} für Dauer und {a23} für Luft bei maximal {b2} Belastungseinheiten. Das Abgaslimit beträgt {a31} Einheiten für Temperatur, {a32} für Dauer und {a33} für Luft bei maximal {b3} Abgaseinheiten.",
+  "hinweis": "Maximiere die Brennqualität unter Beachtung von Gas, Ofenbelastung und Abgaslimit.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Brenntemperatur liefert {c1} Punkte Haertung",
+        "text": "Brenntemperatur liefert {c1} Punkte Härtung",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+        "text": "Brenndauer {c2} Punkte Gleichmäßigkeit",
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Luftzufuhr {c3} Punkte Atmosphaerenqualitaet",
+        "text": "Luftzufuhr {c3} Punkte Atmosphärenqualität",
         "bedeutung": "{c3} × x₃"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Temperatur",
+          "text": "{a11} Einheiten für Temperatur",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Dauer",
+          "text": "{a12} für Dauer",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Luft",
+          "text": "{a13} für Luft",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Temperatur",
+          "text": "{a21} Einheiten für Temperatur",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Dauer",
+          "text": "{a22} für Dauer",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Luft",
+          "text": "{a23} für Luft",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Temperatur",
+          "text": "{a31} Einheiten für Temperatur",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Dauer",
+          "text": "{a32} für Dauer",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Luft",
+          "text": "{a33} für Luft",
           "bedeutung": "+ {a33}x₃"
         },
         {

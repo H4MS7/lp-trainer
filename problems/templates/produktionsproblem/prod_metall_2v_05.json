@@ -3,7 +3,7 @@
   "typ": "Produktionsproblem",
   "optimierungsziel": "maximieren",
   "numVars": 2,
-  "variablen": ["x1 = Anzahl Zahnraeder", "x2 = Anzahl Wellen"],
+  "variablen": ["x1 = Anzahl Zahnräder", "x2 = Anzahl Wellen"],
   "objective": ["c1", "c2"],
   "constraints": [
     {"type": "<=", "label": "Stahl", "row": ["a11","a12"], "rhs": "b1"},
@@ -19,9 +19,9 @@
     "a22": {"min": 2, "max": 7,    "label": "Maschinenzeit/Welle (h)"},
     "b2":  {"min": 50, "max": 200, "label": "Maschinenstunden"}
   },
-  "titel": "Metallwerkstatt – Zahnraeder und Wellen",
-  "beschreibung": "Eine Metallwerkstatt fertigt Zahnraeder und Wellen. Der Gewinn pro Zahnrad liegt bei {c1} Euro, pro Welle bei {c2} Euro. Ein Zahnrad verbraucht {a11} kg Stahl, eine Welle {a12} kg. Es sind {b1} kg Stahl vorhanden. Die Bearbeitung eines Zahnrads dauert {a21} Maschinenstunden, die einer Welle {a22} Maschinenstunden. Die Maschinenkapazitaet betraegt {b2} Stunden.",
-  "hinweis": "Stelle die Zielfunktion und die Nebenbedingungen fuer Stahl und Maschinenzeit auf.",
+  "titel": "Metallwerkstatt – Zahnräder und Wellen",
+  "beschreibung": "Eine Metallwerkstatt fertigt Zahnräder und Wellen. Der Gewinn pro Zahnrad liegt bei {c1} Euro, pro Welle bei {c2} Euro. Ein Zahnrad verbraucht {a11} kg Stahl, eine Welle {a12} kg. Es sind {b1} kg Stahl vorhanden. Die Bearbeitung eines Zahnrads dauert {a21} Maschinenstunden, die einer Welle {a22} Maschinenstunden. Die Maschinenkapazität beträgt {b2} Stunden.",
+  "hinweis": "Stelle die Zielfunktion und die Nebenbedingungen für Stahl und Maschinenzeit auf.",
   "highlights": {
     "zielfunktion": [
       {"text": "Zahnrad liegt bei {c1} Euro", "bedeutung": "{c1} × x₁"},

@@ -20,21 +20,21 @@
     "b2":  {"min": 30, "max": 150,  "label": "Klebstoffvorrat (dl)"}
   },
   "titel": "Schuhfabrik – Sneaker und Stiefel",
-  "beschreibung": "Eine Schuhfabrik stellt Sneaker und Stiefel her. Pro Paar Sneaker betraegt der Gewinn {c1} Euro, pro Paar Stiefel {c2} Euro. Ein Paar Sneaker benoetigt {a11} m² Leder, ein Paar Stiefel {a12} m². Es stehen {b1} m² Leder zur Verfuegung. Fuer Sneaker werden {a21} dl Klebstoff benoetigt, fuer Stiefel {a22} dl. Der Klebstoffvorrat betraegt {b2} dl.",
-  "hinweis": "Identifiziere Gewinn und die Beschraenkungen durch Leder und Klebstoff.",
+  "beschreibung": "Eine Schuhfabrik stellt Sneaker und Stiefel her. Pro Paar Sneaker beträgt der Gewinn {c1} Euro, pro Paar Stiefel {c2} Euro. Ein Paar Sneaker benötigt {a11} m² Leder, ein Paar Stiefel {a12} m². Es stehen {b1} m² Leder zur Verfügung. Für Sneaker werden {a21} dl Klebstoff benötigt, für Stiefel {a22} dl. Der Klebstoffvorrat beträgt {b2} dl.",
+  "hinweis": "Identifiziere Gewinn und die Beschränkungen durch Leder und Klebstoff.",
   "highlights": {
     "zielfunktion": [
-      {"text": "Sneaker betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Sneaker beträgt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
       {"text": "Stiefel {c2} Euro", "bedeutung": "{c2} × x₂"}
     ],
     "nebenbedingungen": [
       [
-        {"text": "Sneaker benoetigt {a11} m² Leder", "bedeutung": "{a11}x₁"},
+        {"text": "Sneaker benötigt {a11} m² Leder", "bedeutung": "{a11}x₁"},
         {"text": "Stiefel {a12} m²", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} m² Leder zur Verfuegung", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} m² Leder zur Verfügung", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Sneaker werden {a21} dl Klebstoff benoetigt", "bedeutung": "{a21}x₁"},
+        {"text": "Sneaker werden {a21} dl Klebstoff benötigt", "bedeutung": "{a21}x₁"},
         {"text": "Stiefel {a22} dl", "bedeutung": "+ {a22}x₂"},
         {"text": "{b2} dl", "bedeutung": "≤ {b2}"}
       ]

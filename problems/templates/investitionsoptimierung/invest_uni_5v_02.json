@@ -3,7 +3,7 @@
   "optimierungsziel": "maximieren",
   "numVars": 5,
   "id": "invest_uni_5v_02",
-  "titel": "Universitaetsstiftung – Forschung, Lehre, Bibliothek, IT und Stipendien",
+  "titel": "Universitätsstiftung – Forschung, Lehre, Bibliothek, IT und Stipendien",
   "variablen": [
     "x1 = Budget Forschung (Tsd. EUR)",
     "x2 = Budget Lehre (Tsd. EUR)",
@@ -45,7 +45,7 @@
     },
     {
       "type": "<=",
-      "label": "Raumkapazitaet",
+      "label": "Raumkapazität",
       "row": [
         "a31",
         "a32",
@@ -257,7 +257,7 @@
       "label": "Max. Zeitbudget"
     }
   },
-  "beschreibung": "Eine Universitaetsstiftung verteilt Mittel auf fuenf Bereiche. Forschung erzielt {c1} Nutzenpunkte, Lehre {c2}, Bibliothek {c3}, IT {c4} und Stipendien {c5}. Die Kosten betragen {a11} Einheiten fuer Forschung, {a12} fuer Lehre, {a13} fuer Bibliothek, {a14} fuer IT und {a15} fuer Stipendien bei einem Stiftungskapital von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Einheiten fuer Forschung, {a22} fuer Lehre, {a23} fuer Bibliothek, {a24} fuer IT und {a25} fuer Stipendien bei maximal {b2} Personaleinheiten. Der Raumbedarf betraegt {a31} Einheiten fuer Forschung, {a32} fuer Lehre, {a33} fuer Bibliothek, {a34} fuer IT und {a35} fuer Stipendien bei maximal {b3} Raumeinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Forschung, {a42} fuer Lehre, {a43} fuer Bibliothek, {a44} fuer IT und {a45} fuer Stipendien bei maximal {b4} Verwaltungseinheiten. Das Zeitbudget betraegt {a51} Einheiten fuer Forschung, {a52} fuer Lehre, {a53} fuer Bibliothek, {a54} fuer IT und {a55} fuer Stipendien bei maximal {b5} Zeiteinheiten.",
+  "beschreibung": "Eine Universitätsstiftung verteilt Mittel auf fünf Bereiche. Forschung erzielt {c1} Nutzenpunkte, Lehre {c2}, Bibliothek {c3}, IT {c4} und Stipendien {c5}. Die Kosten betragen {a11} Einheiten für Forschung, {a12} für Lehre, {a13} für Bibliothek, {a14} für IT und {a15} für Stipendien bei einem Stiftungskapital von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Einheiten für Forschung, {a22} für Lehre, {a23} für Bibliothek, {a24} für IT und {a25} für Stipendien bei maximal {b2} Personaleinheiten. Der Raumbedarf beträgt {a31} Einheiten für Forschung, {a32} für Lehre, {a33} für Bibliothek, {a34} für IT und {a35} für Stipendien bei maximal {b3} Raumeinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten für Forschung, {a42} für Lehre, {a43} für Bibliothek, {a44} für IT und {a45} für Stipendien bei maximal {b4} Verwaltungseinheiten. Das Zeitbudget beträgt {a51} Einheiten für Forschung, {a52} für Lehre, {a53} für Bibliothek, {a54} für IT und {a55} für Stipendien bei maximal {b5} Zeiteinheiten.",
   "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Kapital, Personal, Raum, Verwaltung und Zeit.",
   "highlights": {
     "zielfunktion": [
@@ -285,23 +285,23 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Forschung",
+          "text": "{a11} Einheiten für Forschung",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Lehre",
+          "text": "{a12} für Lehre",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Bibliothek",
+          "text": "{a13} für Bibliothek",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer IT",
+          "text": "{a14} für IT",
           "bedeutung": "+ {a14}x₄"
         },
         {
-          "text": "{a15} fuer Stipendien",
+          "text": "{a15} für Stipendien",
           "bedeutung": "+ {a15}x₅"
         },
         {
@@ -311,23 +311,23 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Forschung",
+          "text": "{a21} Einheiten für Forschung",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Lehre",
+          "text": "{a22} für Lehre",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Bibliothek",
+          "text": "{a23} für Bibliothek",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer IT",
+          "text": "{a24} für IT",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{a25} fuer Stipendien",
+          "text": "{a25} für Stipendien",
           "bedeutung": "+ {a25}x₅"
         },
         {
@@ -337,23 +337,23 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Forschung",
+          "text": "{a31} Einheiten für Forschung",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Lehre",
+          "text": "{a32} für Lehre",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Bibliothek",
+          "text": "{a33} für Bibliothek",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer IT",
+          "text": "{a34} für IT",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{a35} fuer Stipendien",
+          "text": "{a35} für Stipendien",
           "bedeutung": "+ {a35}x₅"
         },
         {
@@ -363,23 +363,23 @@
       ],
       [
         {
-          "text": "{a41} Einheiten fuer Forschung",
+          "text": "{a41} Einheiten für Forschung",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Lehre",
+          "text": "{a42} für Lehre",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Bibliothek",
+          "text": "{a43} für Bibliothek",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer IT",
+          "text": "{a44} für IT",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{a45} fuer Stipendien",
+          "text": "{a45} für Stipendien",
           "bedeutung": "+ {a45}x₅"
         },
         {
@@ -389,23 +389,23 @@
       ],
       [
         {
-          "text": "{a51} Einheiten fuer Forschung",
+          "text": "{a51} Einheiten für Forschung",
           "bedeutung": "{a51}x₁"
         },
         {
-          "text": "{a52} fuer Lehre",
+          "text": "{a52} für Lehre",
           "bedeutung": "+ {a52}x₂"
         },
         {
-          "text": "{a53} fuer Bibliothek",
+          "text": "{a53} für Bibliothek",
           "bedeutung": "+ {a53}x₃"
         },
         {
-          "text": "{a54} fuer IT",
+          "text": "{a54} für IT",
           "bedeutung": "+ {a54}x₄"
         },
         {
-          "text": "{a55} fuer Stipendien",
+          "text": "{a55} für Stipendien",
           "bedeutung": "+ {a55}x₅"
         },
         {

@@ -20,8 +20,8 @@
     "b2":  {"min": 100, "max": 400, "label": "Lackierminuten"}
   },
   "titel": "Spielzeughersteller – Holzautos und Puzzles",
-  "beschreibung": "Ein Spielzeughersteller produziert Holzautos und Puzzles. Pro Holzauto wird ein Gewinn von {c1} Euro erzielt, pro Puzzle {c2} Euro. Jedes Holzauto benoetigt {a11} dm³ Holz, jedes Puzzle {a12} dm³. Es stehen {b1} dm³ Holz bereit. Das Lackieren eines Autos dauert {a21} Minuten, das eines Puzzles {a22} Minuten. Die Lackierkapazitaet betraegt {b2} Minuten.",
-  "hinweis": "Formuliere die Gewinnmaximierung unter Beachtung der Holz- und Lackierbeschraenkungen.",
+  "beschreibung": "Ein Spielzeughersteller produziert Holzautos und Puzzles. Pro Holzauto wird ein Gewinn von {c1} Euro erzielt, pro Puzzle {c2} Euro. Jedes Holzauto benötigt {a11} dm³ Holz, jedes Puzzle {a12} dm³. Es stehen {b1} dm³ Holz bereit. Das Lackieren eines Autos dauert {a21} Minuten, das eines Puzzles {a22} Minuten. Die Lackierkapazität beträgt {b2} Minuten.",
+  "hinweis": "Formuliere die Gewinnmaximierung unter Beachtung der Holz- und Lackierbeschränkungen.",
   "highlights": {
     "zielfunktion": [
       {"text": "Holzauto wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},

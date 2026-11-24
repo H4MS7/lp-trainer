@@ -29,11 +29,11 @@
     "a32": {"min": 1, "max": 2,     "label": "Ofenzeit/Tasse (h)"},
     "a33": {"min": 1, "max": 3,     "label": "Ofenzeit/Vase (h)"},
     "a34": {"min": 1, "max": 2,     "label": "Ofenzeit/Schale (h)"},
-    "b3":  {"min": 20, "max": 80,   "label": "Ofenkapazitaet (h)"}
+    "b3":  {"min": 20, "max": 80,   "label": "Ofenkapazität (h)"}
   },
   "titel": "Keramikwerkstatt – Teller, Tassen, Vasen und Schalen",
-  "beschreibung": "Eine Keramikwerkstatt produziert Teller, Tassen, Vasen und Schalen. Jeder Teller bringt {c1} Euro Gewinn, jede Tasse {c2} Euro, jede Vase {c3} Euro und jede Schale {c4} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg, eine Vase {a13} kg und eine Schale {a14} kg. Es stehen {b1} kg Ton bereit. Fuer die Glasur werden {a21} dl pro Teller, {a22} dl pro Tasse, {a23} dl pro Vase und {a24} dl pro Schale benoetigt. Der Glasurvorrat umfasst {b2} dl. Im Ofen benoetigt jeder Teller {a31} Stunden, jede Tasse {a32} Stunden, jede Vase {a33} Stunden und jede Schale {a34} Stunden. Die Ofenkapazitaet liegt bei {b3} Stunden.",
-  "hinweis": "Vier Keramikprodukte mit Beschraenkungen bei Ton, Glasur und Ofenzeit.",
+  "beschreibung": "Eine Keramikwerkstatt produziert Teller, Tassen, Vasen und Schalen. Jeder Teller bringt {c1} Euro Gewinn, jede Tasse {c2} Euro, jede Vase {c3} Euro und jede Schale {c4} Euro. Ein Teller benötigt {a11} kg Ton, eine Tasse {a12} kg, eine Vase {a13} kg und eine Schale {a14} kg. Es stehen {b1} kg Ton bereit. Für die Glasur werden {a21} dl pro Teller, {a22} dl pro Tasse, {a23} dl pro Vase und {a24} dl pro Schale benötigt. Der Glasurvorrat umfasst {b2} dl. Im Ofen benötigt jeder Teller {a31} Stunden, jede Tasse {a32} Stunden, jede Vase {a33} Stunden und jede Schale {a34} Stunden. Die Ofenkapazität liegt bei {b3} Stunden.",
+  "hinweis": "Vier Keramikprodukte mit Beschränkungen bei Ton, Glasur und Ofenzeit.",
   "highlights": {
     "zielfunktion": [
       {"text": "Teller bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
@@ -43,7 +43,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Teller benoetigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Teller benötigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
         {"text": "Tasse {a12} kg", "bedeutung": "+ {a12}x₂"},
         {"text": "Vase {a13} kg", "bedeutung": "+ {a13}x₃"},
         {"text": "Schale {a14} kg", "bedeutung": "+ {a14}x₄"},

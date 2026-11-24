@@ -6,11 +6,11 @@
   "variablen": ["x1 = Sprints ERP-System", "x2 = Sprints CRM-System", "x3 = Sprints Data Warehouse", "x4 = Sprints Mobile App", "x5 = Sprints Security"],
   "objective": ["c1", "c2", "c3", "c4", "c5"],
   "constraints": [
-    {"type": "<=", "label": "Entwicklerkapazitaet", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
-    {"type": "<=", "label": "QA-Kapazitaet", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Entwicklerkapazität", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "QA-Kapazität", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
     {"type": "<=", "label": "Infrastruktur", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
     {"type": "<=", "label": "Projektbudget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
-    {"type": "<=", "label": "Managementkapazitaet", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+    {"type": "<=", "label": "Managementkapazität", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
   ],
   "coefficients": {
     "c1":  {"min": 8, "max": 20,    "label": "Businesswert/Sprint ERP"},
@@ -35,7 +35,7 @@
     "a33": {"min": 3, "max": 6,     "label": "Server/Sprint Data Warehouse"},
     "a34": {"min": 1, "max": 2,     "label": "Server/Sprint Mobile App"},
     "a35": {"min": 1, "max": 3,     "label": "Server/Sprint Security"},
-    "b3":  {"min": 10, "max": 40,   "label": "Serverkapazitaet gesamt"},
+    "b3":  {"min": 10, "max": 40,   "label": "Serverkapazität gesamt"},
     "a41": {"min": 3, "max": 8,     "label": "Budget/Sprint ERP (1000 €)"},
     "a42": {"min": 2, "max": 6,     "label": "Budget/Sprint CRM (1000 €)"},
     "a43": {"min": 2, "max": 5,     "label": "Budget/Sprint Data Warehouse (1000 €)"},
@@ -50,15 +50,15 @@
     "b5":  {"min": 8, "max": 30,    "label": "Managementstunden gesamt"}
   },
   "titel": "IT-Portfolio – ERP, CRM, Data Warehouse, Mobile App und Security",
-  "beschreibung": "Der CTO verteilt Sprints auf fuenf IT-Projekte: ERP, CRM, Data Warehouse, Mobile App und Security. Der Businesswert pro Sprint betraegt {c1} fuer ERP, {c2} fuer CRM, {c3} fuer Data Warehouse, {c4} fuer Mobile App und {c5} fuer Security. An Entwicklern werden {a11} pro Sprint ERP, {a12} pro Sprint CRM, {a13} pro Sprint Data Warehouse, {a14} pro Sprint Mobile App und {a15} pro Sprint Security benoetigt bei {b1} Entwicklermonate gesamt. QA erfordert {a21} Tage ERP, {a22} Tage CRM, {a23} Tage Data Warehouse, {a24} Tage Mobile App und {a25} Tage Security pro Sprint bei {b2} QA-Tagen. Die Infrastruktur benoetigt {a31} Server ERP, {a32} Server CRM, {a33} Server Data Warehouse, {a34} Server Mobile App und {a35} Server Security pro Sprint bei {b3} Serverkapazitaet. Das Budget betraegt {a41} Tausend Euro ERP, {a42} Tausend Euro CRM, {a43} Tausend Euro Data Warehouse, {a44} Tausend Euro Mobile App und {a45} Tausend Euro Security pro Sprint bei {b4} Tausend Euro gesamt. Das Management benoetigt {a51} Stunden ERP, {a52} Stunden CRM, {a53} Stunden Data Warehouse, {a54} Stunden Mobile App und {a55} Stunden Security pro Sprint bei {b5} Managementstunden.",
-  "hinweis": "Fuenf IT-Projekte mit fuenf Beschraenkungen: Entwickler, QA, Infrastruktur, Budget und Management.",
+  "beschreibung": "Der CTO verteilt Sprints auf fünf IT-Projekte: ERP, CRM, Data Warehouse, Mobile App und Security. Der Businesswert pro Sprint beträgt {c1} für ERP, {c2} für CRM, {c3} für Data Warehouse, {c4} für Mobile App und {c5} für Security. An Entwicklern werden {a11} pro Sprint ERP, {a12} pro Sprint CRM, {a13} pro Sprint Data Warehouse, {a14} pro Sprint Mobile App und {a15} pro Sprint Security benötigt bei {b1} Entwicklermonate gesamt. QA erfordert {a21} Tage ERP, {a22} Tage CRM, {a23} Tage Data Warehouse, {a24} Tage Mobile App und {a25} Tage Security pro Sprint bei {b2} QA-Tagen. Die Infrastruktur benötigt {a31} Server ERP, {a32} Server CRM, {a33} Server Data Warehouse, {a34} Server Mobile App und {a35} Server Security pro Sprint bei {b3} Serverkapazität. Das Budget beträgt {a41} Tausend Euro ERP, {a42} Tausend Euro CRM, {a43} Tausend Euro Data Warehouse, {a44} Tausend Euro Mobile App und {a45} Tausend Euro Security pro Sprint bei {b4} Tausend Euro gesamt. Das Management benötigt {a51} Stunden ERP, {a52} Stunden CRM, {a53} Stunden Data Warehouse, {a54} Stunden Mobile App und {a55} Stunden Security pro Sprint bei {b5} Managementstunden.",
+  "hinweis": "Fünf IT-Projekte mit fünf Beschränkungen: Entwickler, QA, Infrastruktur, Budget und Management.",
   "highlights": {
     "zielfunktion": [
-      {"text": "{c1} fuer ERP", "bedeutung": "{c1} × x₁"},
-      {"text": "{c2} fuer CRM", "bedeutung": "{c2} × x₂"},
-      {"text": "{c3} fuer Data Warehouse", "bedeutung": "{c3} × x₃"},
-      {"text": "{c4} fuer Mobile App", "bedeutung": "{c4} × x₄"},
-      {"text": "{c5} fuer Security", "bedeutung": "{c5} × x₅"}
+      {"text": "{c1} für ERP", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} für CRM", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} für Data Warehouse", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} für Mobile App", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} für Security", "bedeutung": "{c5} × x₅"}
     ],
     "nebenbedingungen": [
       [
@@ -83,7 +83,7 @@
         {"text": "{a33} Server Data Warehouse", "bedeutung": "+ {a33}x₃"},
         {"text": "{a34} Server Mobile App", "bedeutung": "+ {a34}x₄"},
         {"text": "{a35} Server Security", "bedeutung": "+ {a35}x₅"},
-        {"text": "{b3} Serverkapazitaet", "bedeutung": "≤ {b3}"}
+        {"text": "{b3} Serverkapazität", "bedeutung": "≤ {b3}"}
       ],
       [
         {"text": "{a41} Tausend Euro ERP", "bedeutung": "{a41}x₁"},

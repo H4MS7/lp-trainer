@@ -14,14 +14,14 @@
     "c2":  {"min": 50, "max": 150, "label": "Gewinn/Tablet (€)"},
     "a11": {"min": 1, "max": 4,    "label": "Montagezeit/Smartphone (h)"},
     "a12": {"min": 2, "max": 6,    "label": "Montagezeit/Tablet (h)"},
-    "b1":  {"min": 80, "max": 300, "label": "Montagekapazitaet (h)"},
+    "b1":  {"min": 80, "max": 300, "label": "Montagekapazität (h)"},
     "a21": {"min": 1, "max": 3,    "label": "Chips/Smartphone"},
     "a22": {"min": 2, "max": 5,    "label": "Chips/Tablet"},
     "b2":  {"min": 50, "max": 200, "label": "Chipvorrat"}
   },
   "titel": "Elektronikfertigung – Smartphones und Tablets",
-  "beschreibung": "Ein Elektronikwerk fertigt Smartphones und Tablets. Jedes Smartphone erbringt {c1} Euro Gewinn, jedes Tablet {c2} Euro. Die Montage eines Smartphones dauert {a11} Stunden, die eines Tablets {a12} Stunden. Es stehen {b1} Montagestunden zur Verfuegung. Jedes Smartphone benoetigt {a21} Chips, jedes Tablet {a22} Chips. Insgesamt sind {b2} Chips auf Lager.",
-  "hinweis": "Ermittle die Gewinne und die zwei Kapazitaetsgrenzen.",
+  "beschreibung": "Ein Elektronikwerk fertigt Smartphones und Tablets. Jedes Smartphone erbringt {c1} Euro Gewinn, jedes Tablet {c2} Euro. Die Montage eines Smartphones dauert {a11} Stunden, die eines Tablets {a12} Stunden. Es stehen {b1} Montagestunden zur Verfügung. Jedes Smartphone benötigt {a21} Chips, jedes Tablet {a22} Chips. Insgesamt sind {b2} Chips auf Lager.",
+  "hinweis": "Ermittle die Gewinne und die zwei Kapazitätsgrenzen.",
   "highlights": {
     "zielfunktion": [
       {"text": "Smartphone erbringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
@@ -31,7 +31,7 @@
       [
         {"text": "Smartphones dauert {a11} Stunden", "bedeutung": "{a11}x₁"},
         {"text": "Tablets {a12} Stunden", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} Montagestunden zur Verfuegung", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} Montagestunden zur Verfügung", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "{a21} Chips, jedes Tablet", "bedeutung": "{a21}x₁"},

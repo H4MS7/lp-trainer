@@ -28,8 +28,8 @@
     "b3":  {"min": 20, "max": 80,   "label": "Risikobudget (Punkte)"}
   },
   "titel": "Anlagestrategie – Anleihen, Aktien und Rohstoffe",
-  "beschreibung": "Ein Fondsmanager verteilt Kapital auf Anleihen, Aktien und Rohstoffe. Pro Anteil Anleihen wird eine Rendite von {c1} Prozent erwartet, bei Aktien {c2} Prozent und bei Rohstoffen {c3} Prozent. Jeder Anteil kostet {a11} Zehntausend Euro bei Anleihen, {a12} Zehntausend Euro bei Aktien und {a13} Zehntausend Euro bei Rohstoffen. Das Anlagekapital betraegt {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden pro Anteil Anleihen, {a22} Stunden pro Anteil Aktien und {a23} Stunden pro Anteil Rohstoffe. Es stehen {b2} Analysestunden bereit. Das Risiko betraegt {a31} Punkte pro Anteil Anleihen, {a32} Punkte pro Anteil Aktien und {a33} Punkte pro Anteil Rohstoffe. Das Risikobudget liegt bei {b3} Punkten.",
-  "hinweis": "Drei Anlageklassen mit Kapital-, Analyse- und Risikobeschraenkung.",
+  "beschreibung": "Ein Fondsmanager verteilt Kapital auf Anleihen, Aktien und Rohstoffe. Pro Anteil Anleihen wird eine Rendite von {c1} Prozent erwartet, bei Aktien {c2} Prozent und bei Rohstoffen {c3} Prozent. Jeder Anteil kostet {a11} Zehntausend Euro bei Anleihen, {a12} Zehntausend Euro bei Aktien und {a13} Zehntausend Euro bei Rohstoffen. Das Anlagekapital beträgt {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden pro Anteil Anleihen, {a22} Stunden pro Anteil Aktien und {a23} Stunden pro Anteil Rohstoffe. Es stehen {b2} Analysestunden bereit. Das Risiko beträgt {a31} Punkte pro Anteil Anleihen, {a32} Punkte pro Anteil Aktien und {a33} Punkte pro Anteil Rohstoffe. Das Risikobudget liegt bei {b3} Punkten.",
+  "hinweis": "Drei Anlageklassen mit Kapital-, Analyse- und Risikobeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Anleihen wird eine Rendite von {c1} Prozent erwartet", "bedeutung": "{c1} × x₁"},

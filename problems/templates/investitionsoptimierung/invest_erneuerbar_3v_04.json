@@ -27,7 +27,7 @@
     },
     {
       "type": "<=",
-      "label": "Flaechenbedarf",
+      "label": "Flächenbedarf",
       "row": [
         "a21",
         "a22",
@@ -85,22 +85,22 @@
     "a21": {
       "min": 3,
       "max": 8,
-      "label": "Flaeche Solar"
+      "label": "Fläche Solar"
     },
     "a22": {
       "min": 2,
       "max": 6,
-      "label": "Flaeche Wind"
+      "label": "Fläche Wind"
     },
     "a23": {
       "min": 1,
       "max": 3,
-      "label": "Flaeche Wasserkraft"
+      "label": "Fläche Wasserkraft"
     },
     "b2": {
       "min": 60,
       "max": 250,
-      "label": "Max. Flaeche (ha)"
+      "label": "Max. Fläche (ha)"
     },
     "a31": {
       "min": 2,
@@ -123,8 +123,8 @@
       "label": "Max. Genehmigungseinheiten"
     }
   },
-  "beschreibung": "Ein Energiekonzern investiert in drei erneuerbare Energiequellen. Solar bringt {c1} % Rendite, Wind {c2} % und Wasserkraft {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Solar, {a12} fuer Wind und {a13} fuer Wasserkraft bei einem Budget von {b1} Tausend Euro. Der Flaechenbedarf liegt bei {a21} Einheiten fuer Solar, {a22} fuer Wind und {a23} fuer Wasserkraft bei maximal {b2} Flaecheneinheiten. Der Genehmigungsaufwand betraegt {a31} Einheiten fuer Solar, {a32} fuer Wind und {a33} fuer Wasserkraft bei maximal {b3} Genehmigungseinheiten.",
-  "hinweis": "Maximiere die Rendite unter Beachtung von Budget, Flaeche und Genehmigungen.",
+  "beschreibung": "Ein Energiekonzern investiert in drei erneuerbare Energiequellen. Solar bringt {c1} % Rendite, Wind {c2} % und Wasserkraft {c3} %. Der Kapitalbedarf beträgt {a11} Einheiten für Solar, {a12} für Wind und {a13} für Wasserkraft bei einem Budget von {b1} Tausend Euro. Der Flächenbedarf liegt bei {a21} Einheiten für Solar, {a22} für Wind und {a23} für Wasserkraft bei maximal {b2} Flächeneinheiten. Der Genehmigungsaufwand beträgt {a31} Einheiten für Solar, {a32} für Wind und {a33} für Wasserkraft bei maximal {b3} Genehmigungseinheiten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Budget, Fläche und Genehmigungen.",
   "highlights": {
     "zielfunktion": [
       {
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Solar",
+          "text": "{a11} Einheiten für Solar",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Wind",
+          "text": "{a12} für Wind",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Wasserkraft",
+          "text": "{a13} für Wasserkraft",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,33 +161,33 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Solar",
+          "text": "{a21} Einheiten für Solar",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Wind",
+          "text": "{a22} für Wind",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Wasserkraft",
+          "text": "{a23} für Wasserkraft",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{b2} Flaecheneinheiten",
+          "text": "{b2} Flächeneinheiten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Solar",
+          "text": "{a31} Einheiten für Solar",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Wind",
+          "text": "{a32} für Wind",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Wasserkraft",
+          "text": "{a33} für Wasserkraft",
           "bedeutung": "+ {a33}x₃"
         },
         {

@@ -7,9 +7,9 @@
   "objective": ["c1", "c2", "c3", "c4"],
   "constraints": [
     {"type": "<=", "label": "Pigment", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
-    {"type": "<=", "label": "Loesungsmittel", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Lösungsmittel", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
     {"type": "<=", "label": "Mischzeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
-    {"type": "<=", "label": "Abfuellung", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+    {"type": "<=", "label": "Abfüllung", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
   ],
   "coefficients": {
     "c1":  {"min": 100, "max": 300, "label": "Gewinn/t Farbe A (€)"},
@@ -21,31 +21,31 @@
     "a13": {"min": 3, "max": 8,     "label": "Pigment/t Lack C (kg)"},
     "a14": {"min": 1, "max": 3,     "label": "Pigment/t Grundierung D (kg)"},
     "b1":  {"min": 50, "max": 200,  "label": "Pigmentvorrat (kg)"},
-    "a21": {"min": 3, "max": 8,     "label": "Loesungsmittel/t Farbe A (l)"},
-    "a22": {"min": 2, "max": 6,     "label": "Loesungsmittel/t Farbe B (l)"},
-    "a23": {"min": 4, "max": 10,    "label": "Loesungsmittel/t Lack C (l)"},
-    "a24": {"min": 2, "max": 5,     "label": "Loesungsmittel/t Grundierung D (l)"},
-    "b2":  {"min": 60, "max": 250,  "label": "Loesungsmittelvorrat (l)"},
+    "a21": {"min": 3, "max": 8,     "label": "Lösungsmittel/t Farbe A (l)"},
+    "a22": {"min": 2, "max": 6,     "label": "Lösungsmittel/t Farbe B (l)"},
+    "a23": {"min": 4, "max": 10,    "label": "Lösungsmittel/t Lack C (l)"},
+    "a24": {"min": 2, "max": 5,     "label": "Lösungsmittel/t Grundierung D (l)"},
+    "b2":  {"min": 60, "max": 250,  "label": "Lösungsmittelvorrat (l)"},
     "a31": {"min": 1, "max": 4,     "label": "Mischzeit/t Farbe A (h)"},
     "a32": {"min": 1, "max": 3,     "label": "Mischzeit/t Farbe B (h)"},
     "a33": {"min": 2, "max": 5,     "label": "Mischzeit/t Lack C (h)"},
     "a34": {"min": 1, "max": 3,     "label": "Mischzeit/t Grundierung D (h)"},
-    "b3":  {"min": 30, "max": 120,  "label": "Mischkapazitaet (h)"},
-    "a41": {"min": 1, "max": 3,     "label": "Abfuellzeit/t Farbe A (h)"},
-    "a42": {"min": 1, "max": 3,     "label": "Abfuellzeit/t Farbe B (h)"},
-    "a43": {"min": 1, "max": 2,     "label": "Abfuellzeit/t Lack C (h)"},
-    "a44": {"min": 1, "max": 2,     "label": "Abfuellzeit/t Grundierung D (h)"},
-    "b4":  {"min": 20, "max": 80,   "label": "Abfuellkapazitaet (h)"}
+    "b3":  {"min": 30, "max": 120,  "label": "Mischkapazität (h)"},
+    "a41": {"min": 1, "max": 3,     "label": "Abfüllzeit/t Farbe A (h)"},
+    "a42": {"min": 1, "max": 3,     "label": "Abfüllzeit/t Farbe B (h)"},
+    "a43": {"min": 1, "max": 2,     "label": "Abfüllzeit/t Lack C (h)"},
+    "a44": {"min": 1, "max": 2,     "label": "Abfüllzeit/t Grundierung D (h)"},
+    "b4":  {"min": 20, "max": 80,   "label": "Abfüllkapazität (h)"}
   },
   "titel": "Chemiefabrik – Farben, Lack und Grundierung",
-  "beschreibung": "Eine Chemiefabrik produziert vier Produkte: Farbe A, Farbe B, Lack C und Grundierung D. Der Gewinn pro Tonne betraegt {c1} Euro fuer Farbe A, {c2} Euro fuer Farbe B, {c3} Euro fuer Lack C und {c4} Euro fuer Grundierung D. Pro Tonne Farbe A werden {a11} kg Pigment verbraucht, Farbe B {a12} kg, Lack C {a13} kg und Grundierung D {a14} kg. Der Pigmentvorrat belaeuft sich auf {b1} kg. An Loesungsmittel benoetigt Farbe A {a21} Liter pro Tonne, Farbe B {a22} Liter, Lack C {a23} Liter und Grundierung D {a24} Liter. Es stehen {b2} Liter Loesungsmittel bereit. Das Mischen dauert {a31} Stunden fuer Farbe A, {a32} Stunden fuer Farbe B, {a33} Stunden fuer Lack C und {a34} Stunden fuer Grundierung D pro Tonne. Die Mischkapazitaet betraegt {b3} Stunden. Die Abfuellung erfordert {a41} Stunden fuer Farbe A, {a42} Stunden fuer Farbe B, {a43} Stunden fuer Lack C und {a44} Stunden fuer Grundierung D pro Tonne bei {b4} verfuegbaren Abfuellstunden.",
-  "hinweis": "Vier Produkte mit vier Beschraenkungen: Pigment, Loesungsmittel, Mischzeit und Abfuellung.",
+  "beschreibung": "Eine Chemiefabrik produziert vier Produkte: Farbe A, Farbe B, Lack C und Grundierung D. Der Gewinn pro Tonne beträgt {c1} Euro für Farbe A, {c2} Euro für Farbe B, {c3} Euro für Lack C und {c4} Euro für Grundierung D. Pro Tonne Farbe A werden {a11} kg Pigment verbraucht, Farbe B {a12} kg, Lack C {a13} kg und Grundierung D {a14} kg. Der Pigmentvorrat beläuft sich auf {b1} kg. An Lösungsmittel benötigt Farbe A {a21} Liter pro Tonne, Farbe B {a22} Liter, Lack C {a23} Liter und Grundierung D {a24} Liter. Es stehen {b2} Liter Lösungsmittel bereit. Das Mischen dauert {a31} Stunden für Farbe A, {a32} Stunden für Farbe B, {a33} Stunden für Lack C und {a34} Stunden für Grundierung D pro Tonne. Die Mischkapazität beträgt {b3} Stunden. Die Abfüllung erfordert {a41} Stunden für Farbe A, {a42} Stunden für Farbe B, {a43} Stunden für Lack C und {a44} Stunden für Grundierung D pro Tonne bei {b4} verfügbaren Abfüllstunden.",
+  "hinweis": "Vier Produkte mit vier Beschränkungen: Pigment, Lösungsmittel, Mischzeit und Abfüllung.",
   "highlights": {
     "zielfunktion": [
-      {"text": "{c1} Euro fuer Farbe A", "bedeutung": "{c1} × x₁"},
-      {"text": "{c2} Euro fuer Farbe B", "bedeutung": "{c2} × x₂"},
-      {"text": "{c3} Euro fuer Lack C", "bedeutung": "{c3} × x₃"},
-      {"text": "{c4} Euro fuer Grundierung D", "bedeutung": "{c4} × x₄"}
+      {"text": "{c1} Euro für Farbe A", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} Euro für Farbe B", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} Euro für Lack C", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} Euro für Grundierung D", "bedeutung": "{c4} × x₄"}
     ],
     "nebenbedingungen": [
       [
@@ -60,21 +60,21 @@
         {"text": "Farbe B {a22} Liter", "bedeutung": "+ {a22}x₂"},
         {"text": "Lack C {a23} Liter", "bedeutung": "+ {a23}x₃"},
         {"text": "Grundierung D {a24} Liter", "bedeutung": "+ {a24}x₄"},
-        {"text": "{b2} Liter Loesungsmittel bereit", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} Liter Lösungsmittel bereit", "bedeutung": "≤ {b2}"}
       ],
       [
-        {"text": "{a31} Stunden fuer Farbe A", "bedeutung": "{a31}x₁"},
-        {"text": "{a32} Stunden fuer Farbe B", "bedeutung": "+ {a32}x₂"},
-        {"text": "{a33} Stunden fuer Lack C", "bedeutung": "+ {a33}x₃"},
-        {"text": "{a34} Stunden fuer Grundierung D", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a31} Stunden für Farbe A", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden für Farbe B", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden für Lack C", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Stunden für Grundierung D", "bedeutung": "+ {a34}x₄"},
         {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
       ],
       [
-        {"text": "{a41} Stunden fuer Farbe A", "bedeutung": "{a41}x₁"},
-        {"text": "{a42} Stunden fuer Farbe B", "bedeutung": "+ {a42}x₂"},
-        {"text": "{a43} Stunden fuer Lack C", "bedeutung": "+ {a43}x₃"},
-        {"text": "{a44} Stunden fuer Grundierung D", "bedeutung": "+ {a44}x₄"},
-        {"text": "{b4} verfuegbaren Abfuellstunden", "bedeutung": "≤ {b4}"}
+        {"text": "{a41} Stunden für Farbe A", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Stunden für Farbe B", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Stunden für Lack C", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Stunden für Grundierung D", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} verfügbaren Abfüllstunden", "bedeutung": "≤ {b4}"}
       ]
     ]
   }

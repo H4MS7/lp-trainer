@@ -7,7 +7,7 @@
   "objective": ["c1", "c2"],
   "constraints": [
     {"type": "<=", "label": "Investitionsbudget", "row": ["a11","a12"], "rhs": "b1"},
-    {"type": "<=", "label": "Personalverfuegbarkeit", "row": ["a21","a22"], "rhs": "b2"}
+    {"type": "<=", "label": "Personalverfügbarkeit", "row": ["a21","a22"], "rhs": "b2"}
   ],
   "coefficients": {
     "c1":  {"min": 3, "max": 10,    "label": "Ertrag/10.000€ Standort A"},
@@ -17,10 +17,10 @@
     "b1":  {"min": 10, "max": 50,   "label": "Investitionsbudget (10.000 €)"},
     "a21": {"min": 2, "max": 6,     "label": "Personalbedarf/10.000€ Standort A"},
     "a22": {"min": 1, "max": 5,     "label": "Personalbedarf/10.000€ Standort B"},
-    "b2":  {"min": 20, "max": 100,  "label": "Verfuegbare Mitarbeiter"}
+    "b2":  {"min": 20, "max": 100,  "label": "Verfügbare Mitarbeiter"}
   },
   "titel": "Standortentwicklung – Standort A und B",
-  "beschreibung": "Ein Unternehmen investiert in die Entwicklung von Standort A und Standort B. Pro 10.000 Euro in Standort A wird ein Ertrag von {c1} Einheiten erzielt, in Standort B {c2} Einheiten. Jede Investitionseinheit in Standort A kostet {a11} Zehntausend Euro, in Standort B {a12} Zehntausend Euro. Das Investitionsbudget betraegt {b1} Zehntausend Euro. Standort A benoetigt {a21} Mitarbeiter pro Investitionseinheit, Standort B {a22} Mitarbeiter. Es stehen {b2} Mitarbeiter zur Verfuegung.",
+  "beschreibung": "Ein Unternehmen investiert in die Entwicklung von Standort A und Standort B. Pro 10.000 Euro in Standort A wird ein Ertrag von {c1} Einheiten erzielt, in Standort B {c2} Einheiten. Jede Investitionseinheit in Standort A kostet {a11} Zehntausend Euro, in Standort B {a12} Zehntausend Euro. Das Investitionsbudget beträgt {b1} Zehntausend Euro. Standort A benötigt {a21} Mitarbeiter pro Investitionseinheit, Standort B {a22} Mitarbeiter. Es stehen {b2} Mitarbeiter zur Verfügung.",
   "hinweis": "Maximiere den Gesamtertrag unter Budget- und Personalrestriktionen.",
   "highlights": {
     "zielfunktion": [
@@ -34,9 +34,9 @@
         {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Standort A benoetigt {a21} Mitarbeiter", "bedeutung": "{a21}x₁"},
+        {"text": "Standort A benötigt {a21} Mitarbeiter", "bedeutung": "{a21}x₁"},
         {"text": "Standort B {a22} Mitarbeiter", "bedeutung": "+ {a22}x₂"},
-        {"text": "{b2} Mitarbeiter zur Verfuegung", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} Mitarbeiter zur Verfügung", "bedeutung": "≤ {b2}"}
       ]
     ]
   }

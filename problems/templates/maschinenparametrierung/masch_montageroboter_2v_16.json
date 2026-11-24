@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Gelenkverschleiss",
+      "label": "Gelenkverschleiß",
       "row": [
         "a21",
         "a22"
@@ -36,7 +36,7 @@
     "c1": {
       "min": 3,
       "max": 10,
-      "label": "Praezision Greifkraft"
+      "label": "Präzision Greifkraft"
     },
     "c2": {
       "min": 5,
@@ -71,15 +71,15 @@
     "b2": {
       "min": 60,
       "max": 300,
-      "label": "Max. Gelenkverschleiss"
+      "label": "Max. Gelenkverschleiß"
     }
   },
-  "beschreibung": "Ein Montageroboter wird ueber Greifkraft und Verfahrgeschwindigkeit eingestellt. Die Greifkraft liefert {c1} Punkte Praezision, die Verfahrgeschwindigkeit {c2} Punkte Taktzeit. Der Stromverbrauch betraegt {a11} Einheiten pro Greifkraftstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Stromeinheiten. Der Gelenkverschleiss liegt bei {a21} Einheiten pro Greifkraftstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Montageleistung unter Beachtung von Strom und Gelenkverschleiss.",
+  "beschreibung": "Ein Montageroboter wird über Greifkraft und Verfahrgeschwindigkeit eingestellt. Die Greifkraft liefert {c1} Punkte Präzision, die Verfahrgeschwindigkeit {c2} Punkte Taktzeit. Der Stromverbrauch beträgt {a11} Einheiten pro Greifkraftstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Stromeinheiten. Der Gelenkverschleiß liegt bei {a21} Einheiten pro Greifkraftstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Montageleistung unter Beachtung von Strom und Gelenkverschleiß.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Greifkraft liefert {c1} Punkte Praezision",
+        "text": "Greifkraft liefert {c1} Punkte Präzision",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

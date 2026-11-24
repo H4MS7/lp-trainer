@@ -19,9 +19,9 @@
     "a22": {"min": 1, "max": 5,   "label": "Arbeit/Kuchen (h)"},
     "b2":  {"min": 40, "max": 150, "label": "Arbeitsstunden"}
   },
-  "titel": "Baeckerei – Brote und Kuchen",
-  "beschreibung": "Eine Baeckerei stellt Brote und Kuchen her. Jedes Brot bringt {c1} Euro Gewinn, jeder Kuchen {c2} Euro. Pro Brot werden {a11} kg Mehl benoetigt, pro Kuchen {a12} kg. Insgesamt stehen {b1} kg Mehl zur Verfuegung. Ein Brot erfordert {a21} Arbeitsstunden, ein Kuchen {a22} Arbeitsstunden bei maximal {b2} verfuegbaren Stunden.",
-  "hinweis": "Identifiziere die Zielfunktion (Gewinn) und die zwei Beschraenkungen.",
+  "titel": "Bäckerei – Brote und Kuchen",
+  "beschreibung": "Eine Bäckerei stellt Brote und Kuchen her. Jedes Brot bringt {c1} Euro Gewinn, jeder Kuchen {c2} Euro. Pro Brot werden {a11} kg Mehl benötigt, pro Kuchen {a12} kg. Insgesamt stehen {b1} kg Mehl zur Verfügung. Ein Brot erfordert {a21} Arbeitsstunden, ein Kuchen {a22} Arbeitsstunden bei maximal {b2} verfügbaren Stunden.",
+  "hinweis": "Identifiziere die Zielfunktion (Gewinn) und die zwei Beschränkungen.",
   "highlights": {
     "zielfunktion": [
       {"text": "Brot bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
@@ -29,14 +29,14 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "{a11} kg Mehl benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "{a11} kg Mehl benötigt", "bedeutung": "{a11}x₁"},
         {"text": "pro Kuchen {a12} kg", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} kg Mehl zur Verfuegung", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} kg Mehl zur Verfügung", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "{a21} Arbeitsstunden", "bedeutung": "{a21}x₁"},
         {"text": "{a22} Arbeitsstunden", "bedeutung": "+ {a22}x₂"},
-        {"text": "{b2} verfuegbaren Stunden", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} verfügbaren Stunden", "bedeutung": "≤ {b2}"}
       ]
     ]
   }

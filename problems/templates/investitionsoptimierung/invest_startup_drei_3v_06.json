@@ -37,7 +37,7 @@
     },
     {
       "type": "<=",
-      "label": "Mentoring-Kapazitaet",
+      "label": "Mentoring-Kapazität",
       "row": [
         "a31",
         "a32",
@@ -123,7 +123,7 @@
       "label": "Max. Mentoring-Stunden"
     }
   },
-  "beschreibung": "Ein Accelerator investiert in drei Startup-Bereiche. KI-Startups versprechen {c1} % Rendite, Cleantech {c2} % und Medtech {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer KI, {a12} fuer Cleantech und {a13} fuer Medtech bei einem Fondskapital von {b1} Tausend Euro. Das Regulierungsrisiko betraegt {a21} Punkte fuer KI, {a22} fuer Cleantech und {a23} fuer Medtech bei maximal {b2} Regulierungspunkten. Die Mentoring-Kapazitaet erfordert {a31} Stunden fuer KI, {a32} fuer Cleantech und {a33} fuer Medtech bei maximal {b3} Mentoring-Stunden.",
+  "beschreibung": "Ein Accelerator investiert in drei Startup-Bereiche. KI-Startups versprechen {c1} % Rendite, Cleantech {c2} % und Medtech {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für KI, {a12} für Cleantech und {a13} für Medtech bei einem Fondskapital von {b1} Tausend Euro. Das Regulierungsrisiko beträgt {a21} Punkte für KI, {a22} für Cleantech und {a23} für Medtech bei maximal {b2} Regulierungspunkten. Die Mentoring-Kapazität erfordert {a31} Stunden für KI, {a32} für Cleantech und {a33} für Medtech bei maximal {b3} Mentoring-Stunden.",
   "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Regulierung und Mentoring.",
   "highlights": {
     "zielfunktion": [
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer KI",
+          "text": "{a11} Einheiten für KI",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Cleantech",
+          "text": "{a12} für Cleantech",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Medtech",
+          "text": "{a13} für Medtech",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Punkte fuer KI",
+          "text": "{a21} Punkte für KI",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Cleantech",
+          "text": "{a22} für Cleantech",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Medtech",
+          "text": "{a23} für Medtech",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Stunden fuer KI",
+          "text": "{a31} Stunden für KI",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Cleantech",
+          "text": "{a32} für Cleantech",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Medtech",
+          "text": "{a33} für Medtech",
           "bedeutung": "+ {a33}x₃"
         },
         {

@@ -41,7 +41,7 @@
     "c2": {
       "min": 5,
       "max": 12,
-      "label": "Druckqualitaet Farbauftrag"
+      "label": "Druckqualität Farbauftrag"
     },
     "a11": {
       "min": 1,
@@ -74,7 +74,7 @@
       "label": "Max. Papierspannung"
     }
   },
-  "beschreibung": "Eine Druckpresse wird ueber Geschwindigkeit und Farbauftrag eingestellt. Die Druckgeschwindigkeit liefert {c1} Durchsatzpunkte, der Farbauftrag {c2} Punkte Druckqualitaet. Der Farbverbrauch betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Farbstufe bei maximal {b1} Farbeinheiten. Die Papierspannung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Farbstufe bei maximal {b2} Spannungseinheiten.",
+  "beschreibung": "Eine Druckpresse wird über Geschwindigkeit und Farbauftrag eingestellt. Die Druckgeschwindigkeit liefert {c1} Durchsatzpunkte, der Farbauftrag {c2} Punkte Druckqualität. Der Farbverbrauch beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Farbstufe bei maximal {b1} Farbeinheiten. Die Papierspannung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Farbstufe bei maximal {b2} Spannungseinheiten.",
   "hinweis": "Maximiere den Druckoutput unter Beachtung von Farbverbrauch und Papierspannung.",
   "highlights": {
     "zielfunktion": [
@@ -83,7 +83,7 @@
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Farbauftrag {c2} Punkte Druckqualitaet",
+        "text": "Farbauftrag {c2} Punkte Druckqualität",
         "bedeutung": "{c2} × x₂"
       }
     ],

@@ -4,8 +4,6 @@ Web-App zum Üben der linearen Optimierung: Textaufgaben in ein LP-Modell übers
 
 **▶ Live-Demo: <https://h4ms7.github.io/lp-trainer/>**
 
-Autor: Felix Flösch ([@H4MS7](https://github.com/H4MS7))
-
 Zwei Modi: [Modellierung](#modellierung) · [Simplex-Trainer](#simplex-trainer)
 
 ## Modellierung

@@ -25,11 +25,11 @@
     "a31": {"min": 1, "max": 2,     "label": "Freigaben/1000€ Social Media"},
     "a32": {"min": 2, "max": 4,     "label": "Freigaben/1000€ TV"},
     "a33": {"min": 1, "max": 2,     "label": "Freigaben/1000€ Plakat"},
-    "b3":  {"min": 10, "max": 50,   "label": "Freigabekapazitaet"}
+    "b3":  {"min": 10, "max": 50,   "label": "Freigabekapazität"}
   },
   "titel": "Marketingmix – Social Media, TV und Plakat",
-  "beschreibung": "Die Marketingabteilung verteilt Budget auf drei Kanaele: Social Media, TV-Werbung und Plakatwerbung. Pro 1000 Euro Social Media werden {c1} Tausend Kontakte erreicht, pro 1000 Euro TV {c2} Tausend und pro 1000 Euro Plakat {c3} Tausend Kontakte. Jeder Kanal kostet {a11} Tausend Euro pro Einheit Social Media, {a12} Tausend Euro pro Einheit TV und {a13} Tausend Euro pro Einheit Plakat. Das Gesamtbudget betraegt {b1} Tausend Euro. An Agenturstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit TV und {a23} pro Einheit Plakat benoetigt. Es stehen {b2} Agenturstunden bereit. Die Freigabe erfordert {a31} Prozesse pro Einheit Social Media, {a32} pro Einheit TV und {a33} pro Einheit Plakat bei {b3} Freigabekapazitaet.",
-  "hinweis": "Drei Kanaele mit Beschraenkungen bei Budget, Agenturstunden und Freigaben.",
+  "beschreibung": "Die Marketingabteilung verteilt Budget auf drei Kanäle: Social Media, TV-Werbung und Plakatwerbung. Pro 1000 Euro Social Media werden {c1} Tausend Kontakte erreicht, pro 1000 Euro TV {c2} Tausend und pro 1000 Euro Plakat {c3} Tausend Kontakte. Jeder Kanal kostet {a11} Tausend Euro pro Einheit Social Media, {a12} Tausend Euro pro Einheit TV und {a13} Tausend Euro pro Einheit Plakat. Das Gesamtbudget beträgt {b1} Tausend Euro. An Agenturstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit TV und {a23} pro Einheit Plakat benötigt. Es stehen {b2} Agenturstunden bereit. Die Freigabe erfordert {a31} Prozesse pro Einheit Social Media, {a32} pro Einheit TV und {a33} pro Einheit Plakat bei {b3} Freigabekapazität.",
+  "hinweis": "Drei Kanäle mit Beschränkungen bei Budget, Agenturstunden und Freigaben.",
   "highlights": {
     "zielfunktion": [
       {"text": "Social Media werden {c1} Tausend Kontakte erreicht", "bedeutung": "{c1} × x₁"},
@@ -53,7 +53,7 @@
         {"text": "{a31} Prozesse pro Einheit Social Media", "bedeutung": "{a31}x₁"},
         {"text": "{a32} pro Einheit TV", "bedeutung": "+ {a32}x₂"},
         {"text": "{a33} pro Einheit Plakat", "bedeutung": "+ {a33}x₃"},
-        {"text": "{b3} Freigabekapazitaet", "bedeutung": "≤ {b3}"}
+        {"text": "{b3} Freigabekapazität", "bedeutung": "≤ {b3}"}
       ]
     ]
   }

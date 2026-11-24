@@ -52,7 +52,7 @@
     "b1": {
       "min": 100,
       "max": 500,
-      "label": "Verfuegbares Fondsvolumen (Tsd. EUR)"
+      "label": "Verfügbares Fondsvolumen (Tsd. EUR)"
     },
     "a21": {
       "min": 1,
@@ -70,7 +70,7 @@
       "label": "Max. Ausfallrisiko"
     }
   },
-  "beschreibung": "Ein Pensionsfonds investiert in Staats- und Unternehmensanleihen. Staatsanleihen bringen {c1} % Rendite, Unternehmensanleihen {c2} %. Pro Einheit Staatsanleihen werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Unternehmensanleihen {a12} Einheiten. Das Fondsvolumen betraegt {b1} Tausend Euro. Das Ausfallrisiko liegt bei {a21} Punkten pro Staatsanleihe und {a22} Punkten pro Unternehmensanleihe bei maximal {b2} Risikopunkten.",
+  "beschreibung": "Ein Pensionsfonds investiert in Staats- und Unternehmensanleihen. Staatsanleihen bringen {c1} % Rendite, Unternehmensanleihen {c2} %. Pro Einheit Staatsanleihen werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Unternehmensanleihen {a12} Einheiten. Das Fondsvolumen beträgt {b1} Tausend Euro. Das Ausfallrisiko liegt bei {a21} Punkten pro Staatsanleihe und {a22} Punkten pro Unternehmensanleihe bei maximal {b2} Risikopunkten.",
   "hinweis": "Maximiere die Rendite unter Beachtung von Fondsvolumen und Ausfallrisiko.",
   "highlights": {
     "zielfunktion": [

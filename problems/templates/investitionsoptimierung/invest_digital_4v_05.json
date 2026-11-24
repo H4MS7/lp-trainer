@@ -148,7 +148,7 @@
       "label": "Max. Schulungsstunden"
     }
   },
-  "beschreibung": "Ein Unternehmen plant Digitalisierungsinvestitionen. ERP bringt {c1} Effizienzpunkte, Cloud {c2}, KI {c3} und Cybersicherheit {c4}. Die Kosten betragen {a11} Einheiten fuer ERP, {a12} fuer Cloud, {a13} fuer KI und {a14} fuer Cybersicherheit bei einem IT-Budget von {b1} Tausend Euro. Die Implementierungszeit liegt bei {a21} Wochen fuer ERP, {a22} fuer Cloud, {a23} fuer KI und {a24} fuer Cybersicherheit bei maximal {b2} Implementierungswochen. Der Schulungsaufwand betraegt {a31} Stunden fuer ERP, {a32} fuer Cloud, {a33} fuer KI und {a34} fuer Cybersicherheit bei maximal {b3} Schulungsstunden.",
+  "beschreibung": "Ein Unternehmen plant Digitalisierungsinvestitionen. ERP bringt {c1} Effizienzpunkte, Cloud {c2}, KI {c3} und Cybersicherheit {c4}. Die Kosten betragen {a11} Einheiten für ERP, {a12} für Cloud, {a13} für KI und {a14} für Cybersicherheit bei einem IT-Budget von {b1} Tausend Euro. Die Implementierungszeit liegt bei {a21} Wochen für ERP, {a22} für Cloud, {a23} für KI und {a24} für Cybersicherheit bei maximal {b2} Implementierungswochen. Der Schulungsaufwand beträgt {a31} Stunden für ERP, {a32} für Cloud, {a33} für KI und {a34} für Cybersicherheit bei maximal {b3} Schulungsstunden.",
   "hinweis": "Maximiere den Effizienzgewinn unter Beachtung von Budget, Implementierungszeit und Schulungsaufwand.",
   "highlights": {
     "zielfunktion": [
@@ -172,19 +172,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer ERP",
+          "text": "{a11} Einheiten für ERP",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Cloud",
+          "text": "{a12} für Cloud",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer KI",
+          "text": "{a13} für KI",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Cybersicherheit",
+          "text": "{a14} für Cybersicherheit",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -194,19 +194,19 @@
       ],
       [
         {
-          "text": "{a21} Wochen fuer ERP",
+          "text": "{a21} Wochen für ERP",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Cloud",
+          "text": "{a22} für Cloud",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer KI",
+          "text": "{a23} für KI",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Cybersicherheit",
+          "text": "{a24} für Cybersicherheit",
           "bedeutung": "+ {a24}x₄"
         },
         {
@@ -216,19 +216,19 @@
       ],
       [
         {
-          "text": "{a31} Stunden fuer ERP",
+          "text": "{a31} Stunden für ERP",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Cloud",
+          "text": "{a32} für Cloud",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer KI",
+          "text": "{a33} für KI",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Cybersicherheit",
+          "text": "{a34} für Cybersicherheit",
           "bedeutung": "+ {a34}x₄"
         },
         {

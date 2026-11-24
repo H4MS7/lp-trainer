@@ -7,9 +7,9 @@
     "c2"
   ],
   "id": "masch_mischreaktor_2v_11",
-  "titel": "Mischreaktor – Ruehrer-Drehzahl und Temperatur",
+  "titel": "Mischreaktor – Rührer-Drehzahl und Temperatur",
   "variablen": [
-    "x1 = Ruehrer-Drehzahl (Stufen)",
+    "x1 = Rührer-Drehzahl (Stufen)",
     "x2 = Reaktortemperatur (Stufen)"
   ],
   "constraints": [
@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Kuehlkapazitaet",
+      "label": "Kühlkapazität",
       "row": [
         "a21",
         "a22"
@@ -36,7 +36,7 @@
     "c1": {
       "min": 3,
       "max": 10,
-      "label": "Mischguete Drehzahl"
+      "label": "Mischgüte Drehzahl"
     },
     "c2": {
       "min": 4,
@@ -61,25 +61,25 @@
     "a21": {
       "min": 1,
       "max": 5,
-      "label": "Kuehlung Drehzahl"
+      "label": "Kühlung Drehzahl"
     },
     "a22": {
       "min": 4,
       "max": 10,
-      "label": "Kuehlung Temperatur"
+      "label": "Kühlung Temperatur"
     },
     "b2": {
       "min": 60,
       "max": 350,
-      "label": "Max. Kuehlkapazitaet"
+      "label": "Max. Kühlkapazität"
     }
   },
-  "beschreibung": "Ein Mischreaktor wird ueber Ruehrer-Drehzahl und Temperatur parametriert. Die Drehzahl liefert {c1} Punkte Mischguete, die Temperatur {c2} Punkte Reaktionsrate. Die Antriebsleistung betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Antriebseinheiten. Die Kuehlkapazitaet erfordert {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Kuehleinheiten.",
-  "hinweis": "Maximiere die Prozessqualitaet unter Beachtung von Antrieb und Kuehlung.",
+  "beschreibung": "Ein Mischreaktor wird über Rührer-Drehzahl und Temperatur parametriert. Die Drehzahl liefert {c1} Punkte Mischgüte, die Temperatur {c2} Punkte Reaktionsrate. Die Antriebsleistung beträgt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Antriebseinheiten. Die Kühlkapazität erfordert {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Kühleinheiten.",
+  "hinweis": "Maximiere die Prozessqualität unter Beachtung von Antrieb und Kühlung.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Drehzahl liefert {c1} Punkte Mischguete",
+        "text": "Drehzahl liefert {c1} Punkte Mischgüte",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Kuehleinheiten",
+          "text": "{b2} Kühleinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

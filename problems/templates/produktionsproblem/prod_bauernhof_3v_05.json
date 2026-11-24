@@ -6,30 +6,30 @@
   "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Mais", "x3 = Hektar Kartoffeln"],
   "objective": ["c1", "c2", "c3"],
   "constraints": [
-    {"type": "<=", "label": "Ackerflaeche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Ackerfläche", "row": ["a11","a12","a13"], "rhs": "b1"},
     {"type": "<=", "label": "Wasser", "row": ["a21","a22","a23"], "rhs": "b2"},
-    {"type": "<=", "label": "Duenger", "row": ["a31","a32","a33"], "rhs": "b3"}
+    {"type": "<=", "label": "Dünger", "row": ["a31","a32","a33"], "rhs": "b3"}
   ],
   "coefficients": {
     "c1":  {"min": 200, "max": 600, "label": "Gewinn/ha Weizen (€)"},
     "c2":  {"min": 250, "max": 700, "label": "Gewinn/ha Mais (€)"},
     "c3":  {"min": 300, "max": 800, "label": "Gewinn/ha Kartoffeln (€)"},
-    "a11": {"min": 1, "max": 3,     "label": "Flaeche Weizen (ha)"},
-    "a12": {"min": 1, "max": 3,     "label": "Flaeche Mais (ha)"},
-    "a13": {"min": 1, "max": 3,     "label": "Flaeche Kartoffeln (ha)"},
-    "b1":  {"min": 20, "max": 80,   "label": "Ackerflaeche (ha)"},
+    "a11": {"min": 1, "max": 3,     "label": "Fläche Weizen (ha)"},
+    "a12": {"min": 1, "max": 3,     "label": "Fläche Mais (ha)"},
+    "a13": {"min": 1, "max": 3,     "label": "Fläche Kartoffeln (ha)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Ackerfläche (ha)"},
     "a21": {"min": 2, "max": 6,     "label": "Wasser/ha Weizen (1000 l)"},
     "a22": {"min": 3, "max": 8,     "label": "Wasser/ha Mais (1000 l)"},
     "a23": {"min": 4, "max": 10,    "label": "Wasser/ha Kartoffeln (1000 l)"},
-    "b2":  {"min": 100, "max": 400, "label": "Wasserkapazitaet (1000 l)"},
-    "a31": {"min": 1, "max": 4,     "label": "Duenger/ha Weizen (dt)"},
-    "a32": {"min": 2, "max": 5,     "label": "Duenger/ha Mais (dt)"},
-    "a33": {"min": 2, "max": 6,     "label": "Duenger/ha Kartoffeln (dt)"},
-    "b3":  {"min": 40, "max": 160,  "label": "Duengervorrat (dt)"}
+    "b2":  {"min": 100, "max": 400, "label": "Wasserkapazität (1000 l)"},
+    "a31": {"min": 1, "max": 4,     "label": "Dünger/ha Weizen (dt)"},
+    "a32": {"min": 2, "max": 5,     "label": "Dünger/ha Mais (dt)"},
+    "a33": {"min": 2, "max": 6,     "label": "Dünger/ha Kartoffeln (dt)"},
+    "b3":  {"min": 40, "max": 160,  "label": "Düngervorrat (dt)"}
   },
   "titel": "Bauernhof – Weizen, Mais und Kartoffeln",
-  "beschreibung": "Ein Bauernhof baut Weizen, Mais und Kartoffeln an. Pro Hektar Weizen werden {c1} Euro Gewinn erzielt, pro Hektar Mais {c2} Euro und pro Hektar Kartoffeln {c3} Euro. Weizen beansprucht {a11} Hektar, Mais {a12} Hektar und Kartoffeln {a13} Hektar an Bodenflaeche. Die Gesamtflaeche betraegt {b1} Hektar. Weizen benoetigt {a21} Tausend Liter Wasser pro Hektar, Mais {a22} Tausend Liter und Kartoffeln {a23} Tausend Liter. Die Wasserkapazitaet liegt bei {b2} Tausend Litern. An Duenger werden {a31} dt pro Hektar Weizen, {a32} dt pro Hektar Mais und {a33} dt pro Hektar Kartoffeln benoetigt. Der Duengervorrat belaeuft sich auf {b3} dt.",
-  "hinweis": "Drei Kulturen mit Beschraenkungen bei Flaeche, Wasser und Duenger.",
+  "beschreibung": "Ein Bauernhof baut Weizen, Mais und Kartoffeln an. Pro Hektar Weizen werden {c1} Euro Gewinn erzielt, pro Hektar Mais {c2} Euro und pro Hektar Kartoffeln {c3} Euro. Weizen beansprucht {a11} Hektar, Mais {a12} Hektar und Kartoffeln {a13} Hektar an Bodenfläche. Die Gesamtfläche beträgt {b1} Hektar. Weizen benötigt {a21} Tausend Liter Wasser pro Hektar, Mais {a22} Tausend Liter und Kartoffeln {a23} Tausend Liter. Die Wasserkapazität liegt bei {b2} Tausend Litern. An Dünger werden {a31} dt pro Hektar Weizen, {a32} dt pro Hektar Mais und {a33} dt pro Hektar Kartoffeln benötigt. Der Düngervorrat beläuft sich auf {b3} dt.",
+  "hinweis": "Drei Kulturen mit Beschränkungen bei Fläche, Wasser und Dünger.",
   "highlights": {
     "zielfunktion": [
       {"text": "Weizen werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
@@ -44,7 +44,7 @@
         {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Weizen benoetigt {a21} Tausend Liter", "bedeutung": "{a21}x₁"},
+        {"text": "Weizen benötigt {a21} Tausend Liter", "bedeutung": "{a21}x₁"},
         {"text": "Mais {a22} Tausend Liter", "bedeutung": "+ {a22}x₂"},
         {"text": "Kartoffeln {a23} Tausend Liter", "bedeutung": "+ {a23}x₃"},
         {"text": "{b2} Tausend Litern", "bedeutung": "≤ {b2}"}

@@ -431,11 +431,11 @@ Total: 421 problems across 16 types
 
 ## Transportproblem (26)
 
-1. Bahnlogistik: Drei Gueterzugrouten koordinieren
+1. Bahnlogistik: Drei Güterzugrouten koordinieren
 2. Bahntransport: Güter und Passagiere
 3. Baustellenlogistik: Beton und Schotter
 4. Busunternehmen: Fahrgäste und Gepäck
-5. Containerschifffahrt Hanseatica: Fuenf globale Handelsrouten
+5. Containerschifffahrt Hanseatica: Fünf globale Handelsrouten
 6. Containerschifffahrt: Drei Seerouten planen
 7. Containerterminal: Container und Stunden
 8. Erntehelfer: Hektar und Tonnen
@@ -451,7 +451,7 @@ Total: 421 problems across 16 types
 18. Rettungsdienst: Einsätze und Personal
 19. Schulbusverkehr: Schüler und Routen
 20. Spedition Nordtrans: Drei Lieferrouten optimieren
-21. Spedition Suedkargo: Vier internationale Frachtrouten
+21. Spedition Südkargo: Vier internationale Frachtrouten
 22. Spedition: Pakete und Gewicht
 23. Taxiunternehmen: Fahrten und Personen
 24. Umzugsunternehmen: Möbel und Kartons

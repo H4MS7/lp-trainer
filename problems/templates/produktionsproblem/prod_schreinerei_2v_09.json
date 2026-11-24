@@ -14,14 +14,14 @@
     "c2":  {"min": 40, "max": 120, "label": "Gewinn/Kommode (€)"},
     "a11": {"min": 3, "max": 8,    "label": "Platten/Regal"},
     "a12": {"min": 5, "max": 12,   "label": "Platten/Kommode"},
-    "b1":  {"min": 60, "max": 250, "label": "Holzplatten verfuegbar"},
+    "b1":  {"min": 60, "max": 250, "label": "Holzplatten verfügbar"},
     "a21": {"min": 10, "max": 30,  "label": "Schrauben/Regal"},
     "a22": {"min": 15, "max": 40,  "label": "Schrauben/Kommode"},
     "b2":  {"min": 200, "max": 800, "label": "Schraubenvorrat"}
   },
   "titel": "Schreinerei – Regale und Kommoden",
-  "beschreibung": "Eine Schreinerei baut Regale und Kommoden. Pro Regal wird ein Gewinn von {c1} Euro erwirtschaftet, pro Kommode {c2} Euro. Ein Regal benoetigt {a11} Holzplatten, eine Kommode {a12} Holzplatten. Es sind {b1} Holzplatten verfuegbar. Fuer ein Regal werden {a21} Schrauben gebraucht, fuer eine Kommode {a22} Schrauben. Der Vorrat umfasst {b2} Schrauben.",
-  "hinweis": "Bestimme den Gewinn und die Beschraenkungen durch Holzplatten und Schrauben.",
+  "beschreibung": "Eine Schreinerei baut Regale und Kommoden. Pro Regal wird ein Gewinn von {c1} Euro erwirtschaftet, pro Kommode {c2} Euro. Ein Regal benötigt {a11} Holzplatten, eine Kommode {a12} Holzplatten. Es sind {b1} Holzplatten verfügbar. Für ein Regal werden {a21} Schrauben gebraucht, für eine Kommode {a22} Schrauben. Der Vorrat umfasst {b2} Schrauben.",
+  "hinweis": "Bestimme den Gewinn und die Beschränkungen durch Holzplatten und Schrauben.",
   "highlights": {
     "zielfunktion": [
       {"text": "Regal wird ein Gewinn von {c1} Euro erwirtschaftet", "bedeutung": "{c1} × x₁"},
@@ -29,9 +29,9 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Regal benoetigt {a11} Holzplatten", "bedeutung": "{a11}x₁"},
+        {"text": "Regal benötigt {a11} Holzplatten", "bedeutung": "{a11}x₁"},
         {"text": "Kommode {a12} Holzplatten", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} Holzplatten verfuegbar", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} Holzplatten verfügbar", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "{a21} Schrauben gebraucht", "bedeutung": "{a21}x₁"},

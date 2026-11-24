@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Arbeitskapazitaet",
+      "label": "Arbeitskapazität",
       "row": [
         "a21",
         "a22"
@@ -70,8 +70,8 @@
       "label": "Max. Arbeitsstunden"
     }
   },
-  "beschreibung": "Ein Landwirt plant seine Investitionen. Ackerbau bringt {c1} % Ertrag, Viehzucht {c2} %. Der Kapitalbedarf betraegt {a11} Einheiten pro Ackerbaueinheit und {a12} Einheiten pro Viehzuchteinheit. Das Landwirtschaftsbudget liegt bei {b1} Tausend Euro. Ackerbau erfordert {a21} Arbeitsstunden pro Einheit, Viehzucht {a22} Stunden bei maximal {b2} verfuegbaren Arbeitsstunden.",
-  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Budget und Arbeitskapazitaet.",
+  "beschreibung": "Ein Landwirt plant seine Investitionen. Ackerbau bringt {c1} % Ertrag, Viehzucht {c2} %. Der Kapitalbedarf beträgt {a11} Einheiten pro Ackerbaueinheit und {a12} Einheiten pro Viehzuchteinheit. Das Landwirtschaftsbudget liegt bei {b1} Tausend Euro. Ackerbau erfordert {a21} Arbeitsstunden pro Einheit, Viehzucht {a22} Stunden bei maximal {b2} verfügbaren Arbeitsstunden.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Budget und Arbeitskapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -108,7 +108,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Arbeitsstunden",
+          "text": "{b2} verfügbaren Arbeitsstunden",
           "bedeutung": "≤ {b2}"
         }
       ]

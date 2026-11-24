@@ -45,7 +45,7 @@
     },
     {
       "type": "<=",
-      "label": "Flaechenbedarf",
+      "label": "Flächenbedarf",
       "row": [
         "a31",
         "a32",
@@ -57,7 +57,7 @@
     },
     {
       "type": "<=",
-      "label": "Politische Komplexitaet",
+      "label": "Politische Komplexität",
       "row": [
         "a41",
         "a42",
@@ -72,27 +72,27 @@
     "c1": {
       "min": 5,
       "max": 11,
-      "label": "Lebensqualitaet Bildung"
+      "label": "Lebensqualität Bildung"
     },
     "c2": {
       "min": 4,
       "max": 10,
-      "label": "Lebensqualitaet Gesundheit"
+      "label": "Lebensqualität Gesundheit"
     },
     "c3": {
       "min": 3,
       "max": 8,
-      "label": "Lebensqualitaet Verkehr"
+      "label": "Lebensqualität Verkehr"
     },
     "c4": {
       "min": 2,
       "max": 6,
-      "label": "Lebensqualitaet Kultur"
+      "label": "Lebensqualität Kultur"
     },
     "c5": {
       "min": 4,
       "max": 9,
-      "label": "Lebensqualitaet Umwelt"
+      "label": "Lebensqualität Umwelt"
     },
     "a11": {
       "min": 2,
@@ -157,70 +157,70 @@
     "a31": {
       "min": 2,
       "max": 5,
-      "label": "Flaeche Bildung"
+      "label": "Fläche Bildung"
     },
     "a32": {
       "min": 1,
       "max": 4,
-      "label": "Flaeche Gesundheit"
+      "label": "Fläche Gesundheit"
     },
     "a33": {
       "min": 3,
       "max": 7,
-      "label": "Flaeche Verkehr"
+      "label": "Fläche Verkehr"
     },
     "a34": {
       "min": 1,
       "max": 3,
-      "label": "Flaeche Kultur"
+      "label": "Fläche Kultur"
     },
     "a35": {
       "min": 2,
       "max": 5,
-      "label": "Flaeche Umwelt"
+      "label": "Fläche Umwelt"
     },
     "b3": {
       "min": 60,
       "max": 300,
-      "label": "Max. Flaecheneinheiten"
+      "label": "Max. Flächeneinheiten"
     },
     "a41": {
       "min": 2,
       "max": 5,
-      "label": "Komplexitaet Bildung"
+      "label": "Komplexität Bildung"
     },
     "a42": {
       "min": 2,
       "max": 4,
-      "label": "Komplexitaet Gesundheit"
+      "label": "Komplexität Gesundheit"
     },
     "a43": {
       "min": 3,
       "max": 6,
-      "label": "Komplexitaet Verkehr"
+      "label": "Komplexität Verkehr"
     },
     "a44": {
       "min": 1,
       "max": 3,
-      "label": "Komplexitaet Kultur"
+      "label": "Komplexität Kultur"
     },
     "a45": {
       "min": 2,
       "max": 5,
-      "label": "Komplexitaet Umwelt"
+      "label": "Komplexität Umwelt"
     },
     "b4": {
       "min": 60,
       "max": 250,
-      "label": "Max. Komplexitaetspunkte"
+      "label": "Max. Komplexitätspunkte"
     }
   },
-  "beschreibung": "Eine Kommune optimiert ihre Haushaltsinvestitionen. Bildung bringt {c1} Punkte Lebensqualitaet, Gesundheit {c2}, Verkehr {c3}, Kultur {c4} und Umwelt {c5}. Die Kosten betragen {a11} Einheiten fuer Bildung, {a12} fuer Gesundheit, {a13} fuer Verkehr, {a14} fuer Kultur und {a15} fuer Umwelt bei einem Gesamthaushalt von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Stellen fuer Bildung, {a22} fuer Gesundheit, {a23} fuer Verkehr, {a24} fuer Kultur und {a25} fuer Umwelt bei maximal {b2} Personalstellen. Der Flaechenbedarf betraegt {a31} Einheiten fuer Bildung, {a32} fuer Gesundheit, {a33} fuer Verkehr, {a34} fuer Kultur und {a35} fuer Umwelt bei maximal {b3} Flaecheneinheiten. Die politische Komplexitaet liegt bei {a41} Punkten fuer Bildung, {a42} fuer Gesundheit, {a43} fuer Verkehr, {a44} fuer Kultur und {a45} fuer Umwelt bei maximal {b4} Komplexitaetspunkten.",
-  "hinweis": "Maximiere die Lebensqualitaet unter Beachtung von Haushalt, Personal, Flaeche und Komplexitaet.",
+  "beschreibung": "Eine Kommune optimiert ihre Haushaltsinvestitionen. Bildung bringt {c1} Punkte Lebensqualität, Gesundheit {c2}, Verkehr {c3}, Kultur {c4} und Umwelt {c5}. Die Kosten betragen {a11} Einheiten für Bildung, {a12} für Gesundheit, {a13} für Verkehr, {a14} für Kultur und {a15} für Umwelt bei einem Gesamthaushalt von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Stellen für Bildung, {a22} für Gesundheit, {a23} für Verkehr, {a24} für Kultur und {a25} für Umwelt bei maximal {b2} Personalstellen. Der Flächenbedarf beträgt {a31} Einheiten für Bildung, {a32} für Gesundheit, {a33} für Verkehr, {a34} für Kultur und {a35} für Umwelt bei maximal {b3} Flächeneinheiten. Die politische Komplexität liegt bei {a41} Punkten für Bildung, {a42} für Gesundheit, {a43} für Verkehr, {a44} für Kultur und {a45} für Umwelt bei maximal {b4} Komplexitätspunkten.",
+  "hinweis": "Maximiere die Lebensqualität unter Beachtung von Haushalt, Personal, Fläche und Komplexität.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Bildung bringt {c1} Punkte Lebensqualitaet",
+        "text": "Bildung bringt {c1} Punkte Lebensqualität",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -243,23 +243,23 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Bildung",
+          "text": "{a11} Einheiten für Bildung",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Gesundheit",
+          "text": "{a12} für Gesundheit",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Verkehr",
+          "text": "{a13} für Verkehr",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Kultur",
+          "text": "{a14} für Kultur",
           "bedeutung": "+ {a14}x₄"
         },
         {
-          "text": "{a15} fuer Umwelt",
+          "text": "{a15} für Umwelt",
           "bedeutung": "+ {a15}x₅"
         },
         {
@@ -269,23 +269,23 @@
       ],
       [
         {
-          "text": "{a21} Stellen fuer Bildung",
+          "text": "{a21} Stellen für Bildung",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Gesundheit",
+          "text": "{a22} für Gesundheit",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Verkehr",
+          "text": "{a23} für Verkehr",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Kultur",
+          "text": "{a24} für Kultur",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{a25} fuer Umwelt",
+          "text": "{a25} für Umwelt",
           "bedeutung": "+ {a25}x₅"
         },
         {
@@ -295,53 +295,53 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Bildung",
+          "text": "{a31} Einheiten für Bildung",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Gesundheit",
+          "text": "{a32} für Gesundheit",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Verkehr",
+          "text": "{a33} für Verkehr",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Kultur",
+          "text": "{a34} für Kultur",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{a35} fuer Umwelt",
+          "text": "{a35} für Umwelt",
           "bedeutung": "+ {a35}x₅"
         },
         {
-          "text": "{b3} Flaecheneinheiten",
+          "text": "{b3} Flächeneinheiten",
           "bedeutung": "≤ {b3}"
         }
       ],
       [
         {
-          "text": "{a41} Punkten fuer Bildung",
+          "text": "{a41} Punkten für Bildung",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Gesundheit",
+          "text": "{a42} für Gesundheit",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Verkehr",
+          "text": "{a43} für Verkehr",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Kultur",
+          "text": "{a44} für Kultur",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{a45} fuer Umwelt",
+          "text": "{a45} für Umwelt",
           "bedeutung": "+ {a45}x₅"
         },
         {
-          "text": "{b4} Komplexitaetspunkten",
+          "text": "{b4} Komplexitätspunkten",
           "bedeutung": "≤ {b4}"
         }
       ]

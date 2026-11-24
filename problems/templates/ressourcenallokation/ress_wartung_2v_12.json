@@ -10,8 +10,8 @@
     {"type": "<=", "label": "Ersatzteilbudget", "row": ["a21","a22"], "rhs": "b2"}
   ],
   "coefficients": {
-    "c1":  {"min": 3, "max": 10,    "label": "Zuverlaessigkeit/h Maschine A"},
-    "c2":  {"min": 4, "max": 12,    "label": "Zuverlaessigkeit/h Maschine B"},
+    "c1":  {"min": 3, "max": 10,    "label": "Zuverlässigkeit/h Maschine A"},
+    "c2":  {"min": 4, "max": 12,    "label": "Zuverlässigkeit/h Maschine B"},
     "a11": {"min": 1, "max": 2,     "label": "Techniker/h Maschine A"},
     "a12": {"min": 1, "max": 3,     "label": "Techniker/h Maschine B"},
     "b1":  {"min": 20, "max": 80,   "label": "Technikerstunden gesamt"},
@@ -20,11 +20,11 @@
     "b2":  {"min": 30, "max": 150,  "label": "Ersatzteilbudget (100 €)"}
   },
   "titel": "Wartungsplanung – Maschine A und B",
-  "beschreibung": "Die Wartungsabteilung verteilt Stunden auf Maschine A und Maschine B. Jede Wartungsstunde an Maschine A steigert die Zuverlaessigkeit um {c1} Punkte, an Maschine B um {c2} Punkte. Fuer Maschine A werden {a11} Technikerstunden pro Wartungsstunde benoetigt, fuer Maschine B {a12} Technikerstunden. Insgesamt stehen {b1} Technikerstunden bereit. Die Ersatzteilkosten betragen {a21} Hundert Euro pro Wartungsstunde Maschine A und {a22} Hundert Euro pro Wartungsstunde Maschine B. Das Ersatzteilbudget umfasst {b2} Hundert Euro.",
-  "hinweis": "Maximiere die Gesamtzuverlaessigkeit mit Techniker- und Ersatzteilbeschraenkung.",
+  "beschreibung": "Die Wartungsabteilung verteilt Stunden auf Maschine A und Maschine B. Jede Wartungsstunde an Maschine A steigert die Zuverlässigkeit um {c1} Punkte, an Maschine B um {c2} Punkte. Für Maschine A werden {a11} Technikerstunden pro Wartungsstunde benötigt, für Maschine B {a12} Technikerstunden. Insgesamt stehen {b1} Technikerstunden bereit. Die Ersatzteilkosten betragen {a21} Hundert Euro pro Wartungsstunde Maschine A und {a22} Hundert Euro pro Wartungsstunde Maschine B. Das Ersatzteilbudget umfasst {b2} Hundert Euro.",
+  "hinweis": "Maximiere die Gesamtzuverlässigkeit mit Techniker- und Ersatzteilbeschränkung.",
   "highlights": {
     "zielfunktion": [
-      {"text": "Maschine A steigert die Zuverlaessigkeit um {c1} Punkte", "bedeutung": "{c1} × x₁"},
+      {"text": "Maschine A steigert die Zuverlässigkeit um {c1} Punkte", "bedeutung": "{c1} × x₁"},
       {"text": "Maschine B um {c2} Punkte", "bedeutung": "{c2} × x₂"}
     ],
     "nebenbedingungen": [

@@ -28,8 +28,8 @@
     "b3":  {"min": 30, "max": 120, "label": "Verpackungsstunden"}
   },
   "titel": "Elektronikwerk – Laptops, Monitore und Tastaturen",
-  "beschreibung": "Ein Elektronikwerk fertigt Laptops, Monitore und Tastaturen. Pro Laptop werden {c1} Euro Gewinn erzielt, pro Monitor {c2} Euro, pro Tastatur {c3} Euro. Die Montage eines Laptops dauert {a11} Stunden, eines Monitors {a12} Stunden, einer Tastatur {a13} Stunden. Es stehen {b1} Montagestunden bereit. Der Test eines Laptops benoetigt {a21} Stunden, eines Monitors {a22} Stunden, einer Tastatur {a23} Stunden bei insgesamt {b2} Teststunden. Die Verpackung dauert {a31} Stunden pro Laptop, {a32} Stunden pro Monitor und {a33} Stunden pro Tastatur. Die Verpackungskapazitaet betraegt {b3} Stunden.",
-  "hinweis": "Drei Produkte mit drei Zeitbeschraenkungen: Montage, Test und Verpackung.",
+  "beschreibung": "Ein Elektronikwerk fertigt Laptops, Monitore und Tastaturen. Pro Laptop werden {c1} Euro Gewinn erzielt, pro Monitor {c2} Euro, pro Tastatur {c3} Euro. Die Montage eines Laptops dauert {a11} Stunden, eines Monitors {a12} Stunden, einer Tastatur {a13} Stunden. Es stehen {b1} Montagestunden bereit. Der Test eines Laptops benötigt {a21} Stunden, eines Monitors {a22} Stunden, einer Tastatur {a23} Stunden bei insgesamt {b2} Teststunden. Die Verpackung dauert {a31} Stunden pro Laptop, {a32} Stunden pro Monitor und {a33} Stunden pro Tastatur. Die Verpackungskapazität beträgt {b3} Stunden.",
+  "hinweis": "Drei Produkte mit drei Zeitbeschränkungen: Montage, Test und Verpackung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Laptop werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
@@ -44,7 +44,7 @@
         {"text": "{b1} Montagestunden bereit", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Laptops benoetigt {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Laptops benötigt {a21} Stunden", "bedeutung": "{a21}x₁"},
         {"text": "Monitors {a22} Stunden", "bedeutung": "+ {a22}x₂"},
         {"text": "Tastatur {a23} Stunden", "bedeutung": "+ {a23}x₃"},
         {"text": "{b2} Teststunden", "bedeutung": "≤ {b2}"}

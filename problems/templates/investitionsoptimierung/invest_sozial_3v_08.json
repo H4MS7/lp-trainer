@@ -123,7 +123,7 @@
       "label": "Max. Laufzeitbudget"
     }
   },
-  "beschreibung": "Ein Impact-Investor verteilt Mittel auf drei Bereiche. Bildungsprojekte erzielen {c1} Punkte Sozialrendite, Gesundheitsprojekte {c2} Punkte und Umweltprojekte {c3} Punkte. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Bildung, {a12} fuer Gesundheit und {a13} fuer Umwelt bei einem Budget von {b1} Tausend Euro. Der Personalaufwand betraegt {a21} Einheiten fuer Bildung, {a22} fuer Gesundheit und {a23} fuer Umwelt bei maximal {b2} Personaleinheiten. Die Laufzeit liegt bei {a31} Jahren fuer Bildung, {a32} fuer Gesundheit und {a33} fuer Umwelt bei maximal {b3} Laufzeiteinheiten.",
+  "beschreibung": "Ein Impact-Investor verteilt Mittel auf drei Bereiche. Bildungsprojekte erzielen {c1} Punkte Sozialrendite, Gesundheitsprojekte {c2} Punkte und Umweltprojekte {c3} Punkte. Der Kapitalbedarf liegt bei {a11} Einheiten für Bildung, {a12} für Gesundheit und {a13} für Umwelt bei einem Budget von {b1} Tausend Euro. Der Personalaufwand beträgt {a21} Einheiten für Bildung, {a22} für Gesundheit und {a23} für Umwelt bei maximal {b2} Personaleinheiten. Die Laufzeit liegt bei {a31} Jahren für Bildung, {a32} für Gesundheit und {a33} für Umwelt bei maximal {b3} Laufzeiteinheiten.",
   "hinweis": "Maximiere die Sozialrendite unter Beachtung von Budget, Personal und Laufzeit.",
   "highlights": {
     "zielfunktion": [
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Bildung",
+          "text": "{a11} Einheiten für Bildung",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Gesundheit",
+          "text": "{a12} für Gesundheit",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Umwelt",
+          "text": "{a13} für Umwelt",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Bildung",
+          "text": "{a21} Einheiten für Bildung",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Gesundheit",
+          "text": "{a22} für Gesundheit",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Umwelt",
+          "text": "{a23} für Umwelt",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Jahren fuer Bildung",
+          "text": "{a31} Jahren für Bildung",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Gesundheit",
+          "text": "{a32} für Gesundheit",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Umwelt",
+          "text": "{a33} für Umwelt",
           "bedeutung": "+ {a33}x₃"
         },
         {

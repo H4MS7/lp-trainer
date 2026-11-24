@@ -3,12 +3,12 @@
   "optimierungsziel": "maximieren",
   "numVars": 5,
   "id": "masch_cnc_fuenf_5v_02",
-  "titel": "5-Achs-CNC – Drehzahl, Vorschub, Tiefe, Kuehlmittel und Achsvorschub",
+  "titel": "5-Achs-CNC – Drehzahl, Vorschub, Tiefe, Kühlmittel und Achsvorschub",
   "variablen": [
     "x1 = Spindeldrehzahl (Stufen)",
     "x2 = Vorschub (Stufen)",
     "x3 = Schnitttiefe (Stufen)",
-    "x4 = Kuehlmitteldruck (Stufen)",
+    "x4 = Kühlmitteldruck (Stufen)",
     "x5 = Achsvorschub (Stufen)"
   ],
   "objective": [
@@ -33,7 +33,7 @@
     },
     {
       "type": "<=",
-      "label": "Werkzeugverschleiss",
+      "label": "Werkzeugverschleiß",
       "row": [
         "a21",
         "a22",
@@ -57,7 +57,7 @@
     },
     {
       "type": "<=",
-      "label": "Kuehlmittelverbrauch",
+      "label": "Kühlmittelverbrauch",
       "row": [
         "a41",
         "a42",
@@ -69,7 +69,7 @@
     },
     {
       "type": "<=",
-      "label": "Waermeentwicklung",
+      "label": "Wärmeentwicklung",
       "row": [
         "a51",
         "a52",
@@ -84,7 +84,7 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Oberflaechenguete Drehzahl"
+      "label": "Oberflächengüte Drehzahl"
     },
     "c2": {
       "min": 3,
@@ -99,7 +99,7 @@
     "c4": {
       "min": 2,
       "max": 5,
-      "label": "Standzeit Kuehlmittel"
+      "label": "Standzeit Kühlmittel"
     },
     "c5": {
       "min": 3,
@@ -124,7 +124,7 @@
     "a14": {
       "min": 1,
       "max": 2,
-      "label": "Spindel Kuehlmittel"
+      "label": "Spindel Kühlmittel"
     },
     "a15": {
       "min": 1,
@@ -139,32 +139,32 @@
     "a21": {
       "min": 2,
       "max": 6,
-      "label": "Verschleiss Drehzahl"
+      "label": "Verschleiß Drehzahl"
     },
     "a22": {
       "min": 3,
       "max": 7,
-      "label": "Verschleiss Vorschub"
+      "label": "Verschleiß Vorschub"
     },
     "a23": {
       "min": 4,
       "max": 10,
-      "label": "Verschleiss Tiefe"
+      "label": "Verschleiß Tiefe"
     },
     "a24": {
       "min": 1,
       "max": 2,
-      "label": "Verschleiss Kuehlmittel"
+      "label": "Verschleiß Kühlmittel"
     },
     "a25": {
       "min": 1,
       "max": 3,
-      "label": "Verschleiss Achse"
+      "label": "Verschleiß Achse"
     },
     "b2": {
       "min": 80,
       "max": 400,
-      "label": "Max. Verschleisseinheiten"
+      "label": "Max. Verschleißeinheiten"
     },
     "a31": {
       "min": 3,
@@ -184,7 +184,7 @@
     "a34": {
       "min": 1,
       "max": 2,
-      "label": "Vibration Kuehlmittel"
+      "label": "Vibration Kühlmittel"
     },
     "a35": {
       "min": 2,
@@ -199,70 +199,70 @@
     "a41": {
       "min": 1,
       "max": 2,
-      "label": "Kuehlmittel Drehzahl"
+      "label": "Kühlmittel Drehzahl"
     },
     "a42": {
       "min": 1,
       "max": 2,
-      "label": "Kuehlmittel Vorschub"
+      "label": "Kühlmittel Vorschub"
     },
     "a43": {
       "min": 1,
       "max": 3,
-      "label": "Kuehlmittel Tiefe"
+      "label": "Kühlmittel Tiefe"
     },
     "a44": {
       "min": 3,
       "max": 8,
-      "label": "Kuehlmittel Druck"
+      "label": "Kühlmittel Druck"
     },
     "a45": {
       "min": 1,
       "max": 2,
-      "label": "Kuehlmittel Achse"
+      "label": "Kühlmittel Achse"
     },
     "b4": {
       "min": 50,
       "max": 250,
-      "label": "Max. Kuehlmittelverbrauch"
+      "label": "Max. Kühlmittelverbrauch"
     },
     "a51": {
       "min": 3,
       "max": 7,
-      "label": "Waerme Drehzahl"
+      "label": "Wärme Drehzahl"
     },
     "a52": {
       "min": 1,
       "max": 3,
-      "label": "Waerme Vorschub"
+      "label": "Wärme Vorschub"
     },
     "a53": {
       "min": 2,
       "max": 5,
-      "label": "Waerme Tiefe"
+      "label": "Wärme Tiefe"
     },
     "a54": {
       "min": 1,
       "max": 2,
-      "label": "Waerme Kuehlmittel"
+      "label": "Wärme Kühlmittel"
     },
     "a55": {
       "min": 1,
       "max": 3,
-      "label": "Waerme Achse"
+      "label": "Wärme Achse"
     },
     "b5": {
       "min": 60,
       "max": 300,
-      "label": "Max. Waermeeinheiten"
+      "label": "Max. Wärmeeinheiten"
     }
   },
-  "beschreibung": "Ein 5-Achs-CNC-Bearbeitungszentrum wird ueber fuenf Parameter optimiert. Die Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte, der Kuehlmitteldruck {c4} Standzeitpunkte und der Achsvorschub {c5} Konturgenauigkeitspunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe, {a14} fuer Kuehlmittel und {a15} fuer Achse bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe, {a24} fuer Kuehlmittel und {a25} fuer Achse bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe, {a34} fuer Kuehlmittel und {a35} fuer Achse bei maximal {b3} Vibrationseinheiten. Der Kuehlmittelverbrauch liegt bei {a41} Einheiten fuer Drehzahl, {a42} fuer Vorschub, {a43} fuer Tiefe, {a44} fuer Kuehlmitteldruck und {a45} fuer Achse bei maximal {b4} Kuehleinheiten. Die Waermeentwicklung betraegt {a51} Einheiten fuer Drehzahl, {a52} fuer Vorschub, {a53} fuer Tiefe, {a54} fuer Kuehlmittel und {a55} fuer Achse bei maximal {b5} Waermeeinheiten.",
-  "hinweis": "Maximiere die Bearbeitungsqualitaet unter Beachtung aller fuenf Restriktionen.",
+  "beschreibung": "Ein 5-Achs-CNC-Bearbeitungszentrum wird über fünf Parameter optimiert. Die Spindeldrehzahl liefert {c1} Punkte Oberflächengüte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte, der Kühlmitteldruck {c4} Standzeitpunkte und der Achsvorschub {c5} Konturgenauigkeitspunkte. Die Spindelleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub, {a13} für Tiefe, {a14} für Kühlmittel und {a15} für Achse bei maximal {b1} Spindeleinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub, {a23} für Tiefe, {a24} für Kühlmittel und {a25} für Achse bei maximal {b2} Verschleißeinheiten. Die Vibration beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub, {a33} für Tiefe, {a34} für Kühlmittel und {a35} für Achse bei maximal {b3} Vibrationseinheiten. Der Kühlmittelverbrauch liegt bei {a41} Einheiten für Drehzahl, {a42} für Vorschub, {a43} für Tiefe, {a44} für Kühlmitteldruck und {a45} für Achse bei maximal {b4} Kühleinheiten. Die Wärmeentwicklung beträgt {a51} Einheiten für Drehzahl, {a52} für Vorschub, {a53} für Tiefe, {a54} für Kühlmittel und {a55} für Achse bei maximal {b5} Wärmeeinheiten.",
+  "hinweis": "Maximiere die Bearbeitungsqualität unter Beachtung aller fünf Restriktionen.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete",
+        "text": "Spindeldrehzahl liefert {c1} Punkte Oberflächengüte",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -274,7 +274,7 @@
         "bedeutung": "{c3} × x₃"
       },
       {
-        "text": "Kuehlmitteldruck {c4} Standzeitpunkte",
+        "text": "Kühlmitteldruck {c4} Standzeitpunkte",
         "bedeutung": "{c4} × x₄"
       },
       {
@@ -285,23 +285,23 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Drehzahl",
+          "text": "{a11} Einheiten für Drehzahl",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Vorschub",
+          "text": "{a12} für Vorschub",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Tiefe",
+          "text": "{a13} für Tiefe",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Kuehlmittel",
+          "text": "{a14} für Kühlmittel",
           "bedeutung": "+ {a14}x₄"
         },
         {
-          "text": "{a15} fuer Achse",
+          "text": "{a15} für Achse",
           "bedeutung": "+ {a15}x₅"
         },
         {
@@ -311,49 +311,49 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Drehzahl",
+          "text": "{a21} Einheiten für Drehzahl",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Vorschub",
+          "text": "{a22} für Vorschub",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Tiefe",
+          "text": "{a23} für Tiefe",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Kuehlmittel",
+          "text": "{a24} für Kühlmittel",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{a25} fuer Achse",
+          "text": "{a25} für Achse",
           "bedeutung": "+ {a25}x₅"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Drehzahl",
+          "text": "{a31} Einheiten für Drehzahl",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Vorschub",
+          "text": "{a32} für Vorschub",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Tiefe",
+          "text": "{a33} für Tiefe",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Kuehlmittel",
+          "text": "{a34} für Kühlmittel",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{a35} fuer Achse",
+          "text": "{a35} für Achse",
           "bedeutung": "+ {a35}x₅"
         },
         {
@@ -363,53 +363,53 @@
       ],
       [
         {
-          "text": "{a41} Einheiten fuer Drehzahl",
+          "text": "{a41} Einheiten für Drehzahl",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Vorschub",
+          "text": "{a42} für Vorschub",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Tiefe",
+          "text": "{a43} für Tiefe",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Kuehlmitteldruck",
+          "text": "{a44} für Kühlmitteldruck",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{a45} fuer Achse",
+          "text": "{a45} für Achse",
           "bedeutung": "+ {a45}x₅"
         },
         {
-          "text": "{b4} Kuehleinheiten",
+          "text": "{b4} Kühleinheiten",
           "bedeutung": "≤ {b4}"
         }
       ],
       [
         {
-          "text": "{a51} Einheiten fuer Drehzahl",
+          "text": "{a51} Einheiten für Drehzahl",
           "bedeutung": "{a51}x₁"
         },
         {
-          "text": "{a52} fuer Vorschub",
+          "text": "{a52} für Vorschub",
           "bedeutung": "+ {a52}x₂"
         },
         {
-          "text": "{a53} fuer Tiefe",
+          "text": "{a53} für Tiefe",
           "bedeutung": "+ {a53}x₃"
         },
         {
-          "text": "{a54} fuer Kuehlmittel",
+          "text": "{a54} für Kühlmittel",
           "bedeutung": "+ {a54}x₄"
         },
         {
-          "text": "{a55} fuer Achse",
+          "text": "{a55} für Achse",
           "bedeutung": "+ {a55}x₅"
         },
         {
-          "text": "{b5} Waermeeinheiten",
+          "text": "{b5} Wärmeeinheiten",
           "bedeutung": "≤ {b5}"
         }
       ]

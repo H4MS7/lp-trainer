@@ -123,7 +123,7 @@
       "label": "Max. Korrelationsbudget"
     }
   },
-  "beschreibung": "Ein Hedgefonds-Manager verteilt Kapital auf drei Strategien. Long Equity bringt {c1} % Rendite, Arbitrage {c2} % und Rohstoffe {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Equity, {a12} fuer Arbitrage und {a13} fuer Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Drawdown-Risiko betraegt {a21} Punkte fuer Equity, {a22} fuer Arbitrage und {a23} fuer Rohstoffe bei maximal {b2} Drawdown-Punkten. Die Korrelation liegt bei {a31} Punkten fuer Equity, {a32} fuer Arbitrage und {a33} fuer Rohstoffe bei maximal {b3} Korrelationspunkten.",
+  "beschreibung": "Ein Hedgefonds-Manager verteilt Kapital auf drei Strategien. Long Equity bringt {c1} % Rendite, Arbitrage {c2} % und Rohstoffe {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Equity, {a12} für Arbitrage und {a13} für Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Drawdown-Risiko beträgt {a21} Punkte für Equity, {a22} für Arbitrage und {a23} für Rohstoffe bei maximal {b2} Drawdown-Punkten. Die Korrelation liegt bei {a31} Punkten für Equity, {a32} für Arbitrage und {a33} für Rohstoffe bei maximal {b3} Korrelationspunkten.",
   "hinweis": "Maximiere die Rendite unter Beachtung von Fondsvolumen, Drawdown und Korrelation.",
   "highlights": {
     "zielfunktion": [
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Equity",
+          "text": "{a11} Einheiten für Equity",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Arbitrage",
+          "text": "{a12} für Arbitrage",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Rohstoffe",
+          "text": "{a13} für Rohstoffe",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Punkte fuer Equity",
+          "text": "{a21} Punkte für Equity",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Arbitrage",
+          "text": "{a22} für Arbitrage",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Rohstoffe",
+          "text": "{a23} für Rohstoffe",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Punkten fuer Equity",
+          "text": "{a31} Punkten für Equity",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Arbitrage",
+          "text": "{a32} für Arbitrage",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Rohstoffe",
+          "text": "{a33} für Rohstoffe",
           "bedeutung": "+ {a33}x₃"
         },
         {

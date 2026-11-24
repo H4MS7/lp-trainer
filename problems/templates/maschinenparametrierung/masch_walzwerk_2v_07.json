@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Walzenverschleiss",
+      "label": "Walzenverschleiß",
       "row": [
         "a21",
         "a22"
@@ -41,7 +41,7 @@
     "c2": {
       "min": 3,
       "max": 9,
-      "label": "Oberflaechenguete Kraft"
+      "label": "Oberflächengüte Kraft"
     },
     "a11": {
       "min": 3,
@@ -61,21 +61,21 @@
     "a21": {
       "min": 2,
       "max": 6,
-      "label": "Verschleiss Geschwindigkeit"
+      "label": "Verschleiß Geschwindigkeit"
     },
     "a22": {
       "min": 4,
       "max": 10,
-      "label": "Verschleiss Kraft"
+      "label": "Verschleiß Kraft"
     },
     "b2": {
       "min": 80,
       "max": 400,
-      "label": "Max. Verschleisseinheiten"
+      "label": "Max. Verschleißeinheiten"
     }
   },
-  "beschreibung": "Ein Walzwerk wird ueber Walzgeschwindigkeit und Anstellkraft parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflaechenguete. Die Motorleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Kraftstufe bei maximal {b1} Motoreinheiten. Der Walzenverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Kraftstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor und Verschleiss.",
+  "beschreibung": "Ein Walzwerk wird über Walzgeschwindigkeit und Anstellkraft parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflächengüte. Die Motorleistung beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Kraftstufe bei maximal {b1} Motoreinheiten. Der Walzenverschleiß liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Kraftstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor und Verschleiß.",
   "highlights": {
     "zielfunktion": [
       {
@@ -83,7 +83,7 @@
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Anstellkraft {c2} Punkte Oberflaechenguete",
+        "text": "Anstellkraft {c2} Punkte Oberflächengüte",
         "bedeutung": "{c2} × x₂"
       }
     ],
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

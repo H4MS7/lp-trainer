@@ -41,7 +41,7 @@
     },
     {
       "type": "<=",
-      "label": "Illiquiditaet",
+      "label": "Illiquidität",
       "row": [
         "a31",
         "a32",
@@ -125,31 +125,31 @@
     "a31": {
       "min": 2,
       "max": 5,
-      "label": "Illiquiditaet Aktien"
+      "label": "Illiquidität Aktien"
     },
     "a32": {
       "min": 1,
       "max": 2,
-      "label": "Illiquiditaet Anleihen"
+      "label": "Illiquidität Anleihen"
     },
     "a33": {
       "min": 5,
       "max": 10,
-      "label": "Illiquiditaet Immobilien"
+      "label": "Illiquidität Immobilien"
     },
     "a34": {
       "min": 3,
       "max": 7,
-      "label": "Illiquiditaet Rohstoffe"
+      "label": "Illiquidität Rohstoffe"
     },
     "b3": {
       "min": 60,
       "max": 300,
-      "label": "Max. Illiquiditaetsbudget"
+      "label": "Max. Illiquiditätsbudget"
     }
   },
-  "beschreibung": "Ein Pensionsfonds verteilt sein Kapital auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} % und Rohstoffe {c4} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Immobilien und {a14} fuer Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten fuer Aktien, {a22} fuer Anleihen, {a23} fuer Immobilien und {a24} fuer Rohstoffe bei maximal {b2} Risikopunkten. Die Illiquiditaet betraegt {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Immobilien und {a34} fuer Rohstoffe bei maximal {b3} Illiquiditaetseinheiten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Fondsvolumen, Risiko und Liquiditaet.",
+  "beschreibung": "Ein Pensionsfonds verteilt sein Kapital auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} % und Rohstoffe {c4} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Immobilien und {a14} für Rohstoffe bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten für Aktien, {a22} für Anleihen, {a23} für Immobilien und {a24} für Rohstoffe bei maximal {b2} Risikopunkten. Die Illiquidität beträgt {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Immobilien und {a34} für Rohstoffe bei maximal {b3} Illiquiditätseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Fondsvolumen, Risiko und Liquidität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -172,19 +172,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Aktien",
+          "text": "{a11} Einheiten für Aktien",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Anleihen",
+          "text": "{a12} für Anleihen",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Immobilien",
+          "text": "{a13} für Immobilien",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Rohstoffe",
+          "text": "{a14} für Rohstoffe",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -194,19 +194,19 @@
       ],
       [
         {
-          "text": "{a21} Punkten fuer Aktien",
+          "text": "{a21} Punkten für Aktien",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Anleihen",
+          "text": "{a22} für Anleihen",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Immobilien",
+          "text": "{a23} für Immobilien",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Rohstoffe",
+          "text": "{a24} für Rohstoffe",
           "bedeutung": "+ {a24}x₄"
         },
         {
@@ -216,23 +216,23 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Aktien",
+          "text": "{a31} Einheiten für Aktien",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Anleihen",
+          "text": "{a32} für Anleihen",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Immobilien",
+          "text": "{a33} für Immobilien",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Rohstoffe",
+          "text": "{a34} für Rohstoffe",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{b3} Illiquiditaetseinheiten",
+          "text": "{b3} Illiquiditätseinheiten",
           "bedeutung": "≤ {b3}"
         }
       ]

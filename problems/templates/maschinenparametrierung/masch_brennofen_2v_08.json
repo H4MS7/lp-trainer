@@ -36,12 +36,12 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Haertung Temperatur"
+      "label": "Härtung Temperatur"
     },
     "c2": {
       "min": 3,
       "max": 9,
-      "label": "Gleichmaessigkeit Dauer"
+      "label": "Gleichmäßigkeit Dauer"
     },
     "a11": {
       "min": 3,
@@ -74,16 +74,16 @@
       "label": "Max. Ofenbelastung"
     }
   },
-  "beschreibung": "Ein industrieller Brennofen wird ueber Temperatur und Brenndauer gesteuert. Die Temperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit. Der Gasverbrauch betraegt {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Dauerstufe bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Dauerstufe bei maximal {b2} Belastungseinheiten.",
-  "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gasverbrauch und Ofenbelastung.",
+  "beschreibung": "Ein industrieller Brennofen wird über Temperatur und Brenndauer gesteuert. Die Temperatur liefert {c1} Punkte Härtung, die Brenndauer {c2} Punkte Gleichmäßigkeit. Der Gasverbrauch beträgt {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Dauerstufe bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Dauerstufe bei maximal {b2} Belastungseinheiten.",
+  "hinweis": "Maximiere die Brennqualität unter Beachtung von Gasverbrauch und Ofenbelastung.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Temperatur liefert {c1} Punkte Haertung",
+        "text": "Temperatur liefert {c1} Punkte Härtung",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+        "text": "Brenndauer {c2} Punkte Gleichmäßigkeit",
         "bedeutung": "{c2} × x₂"
       }
     ],

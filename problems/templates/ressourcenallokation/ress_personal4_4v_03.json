@@ -8,13 +8,13 @@
   "constraints": [
     {"type": "<=", "label": "Gesamtstellen", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
     {"type": "<=", "label": "Gehaltsbudget", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
-    {"type": "<=", "label": "Bueroplaetze", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+    {"type": "<=", "label": "Büroplätze", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
   ],
   "coefficients": {
-    "c1":  {"min": 8, "max": 20,    "label": "Wertschoepfung/Stelle Entwicklung"},
-    "c2":  {"min": 10, "max": 25,   "label": "Wertschoepfung/Stelle Vertrieb"},
-    "c3":  {"min": 5, "max": 15,    "label": "Wertschoepfung/Stelle Support"},
-    "c4":  {"min": 6, "max": 18,    "label": "Wertschoepfung/Stelle Marketing"},
+    "c1":  {"min": 8, "max": 20,    "label": "Wertschöpfung/Stelle Entwicklung"},
+    "c2":  {"min": 10, "max": 25,   "label": "Wertschöpfung/Stelle Vertrieb"},
+    "c3":  {"min": 5, "max": 15,    "label": "Wertschöpfung/Stelle Support"},
+    "c4":  {"min": 6, "max": 18,    "label": "Wertschöpfung/Stelle Marketing"},
     "a11": {"min": 1, "max": 1,     "label": "Stellen Entwicklung"},
     "a12": {"min": 1, "max": 1,     "label": "Stellen Vertrieb"},
     "a13": {"min": 1, "max": 1,     "label": "Stellen Support"},
@@ -25,18 +25,18 @@
     "a23": {"min": 2, "max": 5,     "label": "Gehalt/Stelle Support (1000 €)"},
     "a24": {"min": 3, "max": 7,     "label": "Gehalt/Stelle Marketing (1000 €)"},
     "b2":  {"min": 40, "max": 200,  "label": "Gehaltsbudget (1000 €)"},
-    "a31": {"min": 1, "max": 2,     "label": "Bueroplaetze/Stelle Entwicklung"},
-    "a32": {"min": 1, "max": 1,     "label": "Bueroplaetze/Stelle Vertrieb"},
-    "a33": {"min": 1, "max": 1,     "label": "Bueroplaetze/Stelle Support"},
-    "a34": {"min": 1, "max": 2,     "label": "Bueroplaetze/Stelle Marketing"},
-    "b3":  {"min": 10, "max": 50,   "label": "Bueroplaetze gesamt"}
+    "a31": {"min": 1, "max": 2,     "label": "Büroplätze/Stelle Entwicklung"},
+    "a32": {"min": 1, "max": 1,     "label": "Büroplätze/Stelle Vertrieb"},
+    "a33": {"min": 1, "max": 1,     "label": "Büroplätze/Stelle Support"},
+    "a34": {"min": 1, "max": 2,     "label": "Büroplätze/Stelle Marketing"},
+    "b3":  {"min": 10, "max": 50,   "label": "Büroplätze gesamt"}
   },
   "titel": "Personalallokation – Entwicklung, Vertrieb, Support und Marketing",
-  "beschreibung": "Die Geschaeftsfuehrung verteilt Stellen auf vier Abteilungen: Entwicklung, Vertrieb, Support und Marketing. Jede Stelle in der Entwicklung generiert {c1} Einheiten Wertschoepfung, im Vertrieb {c2}, im Support {c3} und im Marketing {c4} Einheiten. Pro Abteilung benoetigt Entwicklung {a11} Stellenslot, Vertrieb {a12}, Support {a13} und Marketing {a14}. Es stehen {b1} Stellen bereit. Das monatliche Gehalt betraegt {a21} Tausend Euro pro Stelle Entwicklung, {a22} Tausend Euro Vertrieb, {a23} Tausend Euro Support und {a24} Tausend Euro Marketing. Das Gehaltsbudget umfasst {b2} Tausend Euro. An Bueroplaetzen werden {a31} pro Entwicklerstelle, {a32} pro Vertriebsstelle, {a33} pro Supportstelle und {a34} pro Marketingstelle benoetigt bei {b3} verfuegbaren Bueroplaetzen.",
-  "hinweis": "Vier Abteilungen mit Stellen-, Gehalts- und Bueroflaechenbeschraenkung.",
+  "beschreibung": "Die Geschäftsführung verteilt Stellen auf vier Abteilungen: Entwicklung, Vertrieb, Support und Marketing. Jede Stelle in der Entwicklung generiert {c1} Einheiten Wertschöpfung, im Vertrieb {c2}, im Support {c3} und im Marketing {c4} Einheiten. Pro Abteilung benötigt Entwicklung {a11} Stellenslot, Vertrieb {a12}, Support {a13} und Marketing {a14}. Es stehen {b1} Stellen bereit. Das monatliche Gehalt beträgt {a21} Tausend Euro pro Stelle Entwicklung, {a22} Tausend Euro Vertrieb, {a23} Tausend Euro Support und {a24} Tausend Euro Marketing. Das Gehaltsbudget umfasst {b2} Tausend Euro. An Büroplätzen werden {a31} pro Entwicklerstelle, {a32} pro Vertriebsstelle, {a33} pro Supportstelle und {a34} pro Marketingstelle benötigt bei {b3} verfügbaren Büroplätzen.",
+  "hinweis": "Vier Abteilungen mit Stellen-, Gehalts- und Büroflächenbeschränkung.",
   "highlights": {
     "zielfunktion": [
-      {"text": "Entwicklung generiert {c1} Einheiten Wertschoepfung", "bedeutung": "{c1} × x₁"},
+      {"text": "Entwicklung generiert {c1} Einheiten Wertschöpfung", "bedeutung": "{c1} × x₁"},
       {"text": "Vertrieb {c2}", "bedeutung": "{c2} × x₂"},
       {"text": "Support {c3}", "bedeutung": "{c3} × x₃"},
       {"text": "Marketing {c4} Einheiten", "bedeutung": "{c4} × x₄"}
@@ -61,7 +61,7 @@
         {"text": "{a32} pro Vertriebsstelle", "bedeutung": "+ {a32}x₂"},
         {"text": "{a33} pro Supportstelle", "bedeutung": "+ {a33}x₃"},
         {"text": "{a34} pro Marketingstelle", "bedeutung": "+ {a34}x₄"},
-        {"text": "{b3} verfuegbaren Bueroplaetzen", "bedeutung": "≤ {b3}"}
+        {"text": "{b3} verfügbaren Büroplätzen", "bedeutung": "≤ {b3}"}
       ]
     ]
   }

@@ -19,7 +19,7 @@
   "constraints": [
     {
       "type": "<=",
-      "label": "Familienvermoegen",
+      "label": "Familienvermögen",
       "row": [
         "a11",
         "a12",
@@ -30,7 +30,7 @@
     },
     {
       "type": "<=",
-      "label": "Komplexitaet",
+      "label": "Komplexität",
       "row": [
         "a21",
         "a22",
@@ -41,7 +41,7 @@
     },
     {
       "type": "<=",
-      "label": "Liquiditaetsreserve",
+      "label": "Liquiditätsreserve",
       "row": [
         "a31",
         "a32",
@@ -95,61 +95,61 @@
     "b1": {
       "min": 100,
       "max": 500,
-      "label": "Familienvermoegen (Tsd. EUR)"
+      "label": "Familienvermögen (Tsd. EUR)"
     },
     "a21": {
       "min": 2,
       "max": 4,
-      "label": "Komplexitaet Aktien"
+      "label": "Komplexität Aktien"
     },
     "a22": {
       "min": 1,
       "max": 2,
-      "label": "Komplexitaet Anleihen"
+      "label": "Komplexität Anleihen"
     },
     "a23": {
       "min": 4,
       "max": 9,
-      "label": "Komplexitaet Private Equity"
+      "label": "Komplexität Private Equity"
     },
     "a24": {
       "min": 3,
       "max": 7,
-      "label": "Komplexitaet Kunst"
+      "label": "Komplexität Kunst"
     },
     "b2": {
       "min": 60,
       "max": 250,
-      "label": "Max. Komplexitaetsbudget"
+      "label": "Max. Komplexitätsbudget"
     },
     "a31": {
       "min": 1,
       "max": 3,
-      "label": "Illiquiditaet Aktien"
+      "label": "Illiquidität Aktien"
     },
     "a32": {
       "min": 1,
       "max": 2,
-      "label": "Illiquiditaet Anleihen"
+      "label": "Illiquidität Anleihen"
     },
     "a33": {
       "min": 5,
       "max": 12,
-      "label": "Illiquiditaet Private Equity"
+      "label": "Illiquidität Private Equity"
     },
     "a34": {
       "min": 4,
       "max": 8,
-      "label": "Illiquiditaet Kunst"
+      "label": "Illiquidität Kunst"
     },
     "b3": {
       "min": 60,
       "max": 300,
-      "label": "Max. Illiquiditaetsbudget"
+      "label": "Max. Illiquiditätsbudget"
     }
   },
-  "beschreibung": "Ein Family Office verteilt Vermoegen auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Private Equity {c3} % und Kunst {c4} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Private Equity und {a14} fuer Kunst bei einem Familienvermoegen von {b1} Tausend Euro. Die Komplexitaet betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen, {a23} fuer Private Equity und {a24} fuer Kunst bei maximal {b2} Komplexitaetspunkten. Die Illiquiditaet liegt bei {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Private Equity und {a34} fuer Kunst bei maximal {b3} Illiquiditaetseinheiten.",
-  "hinweis": "Maximiere die Rendite unter Beachtung von Vermoegen, Komplexitaet und Liquiditaet.",
+  "beschreibung": "Ein Family Office verteilt Vermögen auf vier Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Private Equity {c3} % und Kunst {c4} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Private Equity und {a14} für Kunst bei einem Familienvermögen von {b1} Tausend Euro. Die Komplexität beträgt {a21} Punkte für Aktien, {a22} für Anleihen, {a23} für Private Equity und {a24} für Kunst bei maximal {b2} Komplexitätspunkten. Die Illiquidität liegt bei {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Private Equity und {a34} für Kunst bei maximal {b3} Illiquiditätseinheiten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Vermögen, Komplexität und Liquidität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -172,19 +172,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Aktien",
+          "text": "{a11} Einheiten für Aktien",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Anleihen",
+          "text": "{a12} für Anleihen",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Private Equity",
+          "text": "{a13} für Private Equity",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Kunst",
+          "text": "{a14} für Kunst",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -194,45 +194,45 @@
       ],
       [
         {
-          "text": "{a21} Punkte fuer Aktien",
+          "text": "{a21} Punkte für Aktien",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Anleihen",
+          "text": "{a22} für Anleihen",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Private Equity",
+          "text": "{a23} für Private Equity",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Kunst",
+          "text": "{a24} für Kunst",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{b2} Komplexitaetspunkten",
+          "text": "{b2} Komplexitätspunkten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Aktien",
+          "text": "{a31} Einheiten für Aktien",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Anleihen",
+          "text": "{a32} für Anleihen",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Private Equity",
+          "text": "{a33} für Private Equity",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Kunst",
+          "text": "{a34} für Kunst",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{b3} Illiquiditaetseinheiten",
+          "text": "{b3} Illiquiditätseinheiten",
           "bedeutung": "≤ {b3}"
         }
       ]

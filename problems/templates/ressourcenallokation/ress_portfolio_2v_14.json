@@ -6,7 +6,7 @@
   "variablen": ["x1 = Entwicklungsmonate Produkt P", "x2 = Entwicklungsmonate Produkt Q"],
   "objective": ["c1", "c2"],
   "constraints": [
-    {"type": "<=", "label": "Entwicklerkapazitaet", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Entwicklerkapazität", "row": ["a11","a12"], "rhs": "b1"},
     {"type": "<=", "label": "Testbudget", "row": ["a21","a22"], "rhs": "b2"}
   ],
   "coefficients": {
@@ -20,8 +20,8 @@
     "b2":  {"min": 15, "max": 60,   "label": "Testbudget (1000 €)"}
   },
   "titel": "Produktentwicklung – Produkt P und Q",
-  "beschreibung": "Eine Entwicklungsabteilung verteilt Ressourcen auf Produkt P und Produkt Q. Jeder Entwicklungsmonat fuer Produkt P generiert einen Marktwert von {c1}, fuer Produkt Q {c2}. Produkt P benoetigt {a11} Entwickler pro Monat, Produkt Q {a12} Entwickler. Es stehen {b1} Entwicklermonate zur Verfuegung. Die Testkosten betragen {a21} Tausend Euro pro Monat Produkt P und {a22} Tausend Euro pro Monat Produkt Q. Das Testbudget umfasst {b2} Tausend Euro.",
-  "hinweis": "Maximiere den Marktwert unter Entwickler- und Testbudgetbeschraenkung.",
+  "beschreibung": "Eine Entwicklungsabteilung verteilt Ressourcen auf Produkt P und Produkt Q. Jeder Entwicklungsmonat für Produkt P generiert einen Marktwert von {c1}, für Produkt Q {c2}. Produkt P benötigt {a11} Entwickler pro Monat, Produkt Q {a12} Entwickler. Es stehen {b1} Entwicklermonate zur Verfügung. Die Testkosten betragen {a21} Tausend Euro pro Monat Produkt P und {a22} Tausend Euro pro Monat Produkt Q. Das Testbudget umfasst {b2} Tausend Euro.",
+  "hinweis": "Maximiere den Marktwert unter Entwickler- und Testbudgetbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Produkt P generiert einen Marktwert von {c1}", "bedeutung": "{c1} × x₁"},
@@ -29,9 +29,9 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Produkt P benoetigt {a11} Entwickler", "bedeutung": "{a11}x₁"},
+        {"text": "Produkt P benötigt {a11} Entwickler", "bedeutung": "{a11}x₁"},
         {"text": "Produkt Q {a12} Entwickler", "bedeutung": "+ {a12}x₂"},
-        {"text": "{b1} Entwicklermonate zur Verfuegung", "bedeutung": "≤ {b1}"}
+        {"text": "{b1} Entwicklermonate zur Verfügung", "bedeutung": "≤ {b1}"}
       ],
       [
         {"text": "{a21} Tausend Euro pro Monat Produkt P", "bedeutung": "{a21}x₁"},

@@ -8,7 +8,7 @@
   "constraints": [
     {"type": "<=", "label": "Tensid", "row": ["a11","a12","a13"], "rhs": "b1"},
     {"type": "<=", "label": "Duftstoffe", "row": ["a21","a22","a23"], "rhs": "b2"},
-    {"type": "<=", "label": "Abfuellzeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+    {"type": "<=", "label": "Abfüllzeit", "row": ["a31","a32","a33"], "rhs": "b3"}
   ],
   "coefficients": {
     "c1":  {"min": 2, "max": 8,     "label": "Gewinn/l Shampoo (€)"},
@@ -22,23 +22,23 @@
     "a22": {"min": 2, "max": 5,     "label": "Duftstoff/l Duschgel (ml)"},
     "a23": {"min": 2, "max": 6,     "label": "Duftstoff/l Bodylotion (ml)"},
     "b2":  {"min": 30, "max": 150,  "label": "Duftstoffvorrat (ml)"},
-    "a31": {"min": 1, "max": 3,     "label": "Abfuellzeit/l Shampoo (min)"},
-    "a32": {"min": 1, "max": 3,     "label": "Abfuellzeit/l Duschgel (min)"},
-    "a33": {"min": 1, "max": 4,     "label": "Abfuellzeit/l Bodylotion (min)"},
-    "b3":  {"min": 40, "max": 180,  "label": "Abfuellminuten"}
+    "a31": {"min": 1, "max": 3,     "label": "Abfüllzeit/l Shampoo (min)"},
+    "a32": {"min": 1, "max": 3,     "label": "Abfüllzeit/l Duschgel (min)"},
+    "a33": {"min": 1, "max": 4,     "label": "Abfüllzeit/l Bodylotion (min)"},
+    "b3":  {"min": 40, "max": 180,  "label": "Abfüllminuten"}
   },
   "titel": "Kosmetikfabrik – Shampoo, Duschgel und Bodylotion",
-  "beschreibung": "Eine Kosmetikfabrik stellt Shampoo, Duschgel und Bodylotion her. Pro Liter Shampoo betraegt der Gewinn {c1} Euro, pro Liter Duschgel {c2} Euro und pro Liter Bodylotion {c3} Euro. Fuer einen Liter Shampoo werden {a11} dl Tensid benoetigt, fuer Duschgel {a12} dl und fuer Bodylotion {a13} dl. Der Tensidvorrat umfasst {b1} dl. An Duftstoffen verbraucht Shampoo {a21} ml pro Liter, Duschgel {a22} ml und Bodylotion {a23} ml. Es sind {b2} ml Duftstoffe vorhanden. Das Abfuellen dauert {a31} Minuten pro Liter Shampoo, {a32} Minuten pro Liter Duschgel und {a33} Minuten pro Liter Bodylotion. Die Abfuellkapazitaet betraegt {b3} Minuten.",
-  "hinweis": "Drei Produkte mit Beschraenkungen bei Tensid, Duftstoffen und Abfuellzeit.",
+  "beschreibung": "Eine Kosmetikfabrik stellt Shampoo, Duschgel und Bodylotion her. Pro Liter Shampoo beträgt der Gewinn {c1} Euro, pro Liter Duschgel {c2} Euro und pro Liter Bodylotion {c3} Euro. Für einen Liter Shampoo werden {a11} dl Tensid benötigt, für Duschgel {a12} dl und für Bodylotion {a13} dl. Der Tensidvorrat umfasst {b1} dl. An Duftstoffen verbraucht Shampoo {a21} ml pro Liter, Duschgel {a22} ml und Bodylotion {a23} ml. Es sind {b2} ml Duftstoffe vorhanden. Das Abfüllen dauert {a31} Minuten pro Liter Shampoo, {a32} Minuten pro Liter Duschgel und {a33} Minuten pro Liter Bodylotion. Die Abfüllkapazität beträgt {b3} Minuten.",
+  "hinweis": "Drei Produkte mit Beschränkungen bei Tensid, Duftstoffen und Abfüllzeit.",
   "highlights": {
     "zielfunktion": [
-      {"text": "Shampoo betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Shampoo beträgt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
       {"text": "Duschgel {c2} Euro", "bedeutung": "{c2} × x₂"},
       {"text": "Bodylotion {c3} Euro", "bedeutung": "{c3} × x₃"}
     ],
     "nebenbedingungen": [
       [
-        {"text": "Shampoo werden {a11} dl Tensid benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Shampoo werden {a11} dl Tensid benötigt", "bedeutung": "{a11}x₁"},
         {"text": "Duschgel {a12} dl", "bedeutung": "+ {a12}x₂"},
         {"text": "Bodylotion {a13} dl", "bedeutung": "+ {a13}x₃"},
         {"text": "{b1} dl", "bedeutung": "≤ {b1}"}

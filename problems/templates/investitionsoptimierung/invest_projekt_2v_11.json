@@ -3,15 +3,15 @@
   "optimierungsziel": "maximieren",
   "numVars": 2,
   "id": "invest_projekt_2v_11",
-  "titel": "Projektfinanzierung – Brueckenbau und Strassenbau",
+  "titel": "Projektfinanzierung – Brückenbau und Straßenbau",
   "variablen": [
-    "x1 = Investment in Brueckenbau (Tsd. EUR)",
-    "x2 = Investment in Strassenbau (Tsd. EUR)"
+    "x1 = Investment in Brückenbau (Tsd. EUR)",
+    "x2 = Investment in Straßenbau (Tsd. EUR)"
   ],
   "constraints": [
     {
       "type": "<=",
-      "label": "Oeffentliches Budget",
+      "label": "Öffentliches Budget",
       "row": [
         "a11",
         "a12"
@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Ingenieurkapazitaet",
+      "label": "Ingenieurkapazität",
       "row": [
         "a21",
         "a22"
@@ -32,65 +32,65 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Gesellschaftlicher Nutzen Bruecke"
+      "label": "Gesellschaftlicher Nutzen Brücke"
     },
     "c2": {
       "min": 3,
       "max": 8,
-      "label": "Gesellschaftlicher Nutzen Strasse"
+      "label": "Gesellschaftlicher Nutzen Straße"
     },
     "a11": {
       "min": 2,
       "max": 6,
-      "label": "Kosten Brueckenbau"
+      "label": "Kosten Brückenbau"
     },
     "a12": {
       "min": 1,
       "max": 4,
-      "label": "Kosten Strassenbau"
+      "label": "Kosten Straßenbau"
     },
     "b1": {
       "min": 100,
       "max": 400,
-      "label": "Oeffentliches Budget (Tsd. EUR)"
+      "label": "Öffentliches Budget (Tsd. EUR)"
     },
     "a21": {
       "min": 3,
       "max": 8,
-      "label": "Ingenieure Bruecke"
+      "label": "Ingenieure Brücke"
     },
     "a22": {
       "min": 1,
       "max": 4,
-      "label": "Ingenieure Strasse"
+      "label": "Ingenieure Straße"
     },
     "b2": {
       "min": 50,
       "max": 200,
-      "label": "Max. Ingenieurkapazitaet"
+      "label": "Max. Ingenieurkapazität"
     }
   },
-  "beschreibung": "Eine Kommune plant Infrastrukturinvestitionen. Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen, Strassenbau {c2} Einheiten. Die Kosten betragen {a11} Einheiten pro Brueckenprojekt und {a12} Einheiten pro Strassenprojekt. Das oeffentliche Budget liegt bei {b1} Tausend Euro. Pro Brueckenprojekt werden {a21} Ingenieure benoetigt, pro Strassenprojekt {a22} Ingenieure bei maximal {b2} verfuegbaren Ingenieuren.",
-  "hinweis": "Maximiere den gesellschaftlichen Nutzen unter Beachtung von Budget und Ingenieurkapazitaet.",
+  "beschreibung": "Eine Kommune plant Infrastrukturinvestitionen. Brückenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen, Straßenbau {c2} Einheiten. Die Kosten betragen {a11} Einheiten pro Brückenprojekt und {a12} Einheiten pro Straßenprojekt. Das öffentliche Budget liegt bei {b1} Tausend Euro. Pro Brückenprojekt werden {a21} Ingenieure benötigt, pro Straßenprojekt {a22} Ingenieure bei maximal {b2} verfügbaren Ingenieuren.",
+  "hinweis": "Maximiere den gesellschaftlichen Nutzen unter Beachtung von Budget und Ingenieurkapazität.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen",
+        "text": "Brückenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Strassenbau {c2} Einheiten",
+        "text": "Straßenbau {c2} Einheiten",
         "bedeutung": "{c2} × x₂"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten pro Brueckenprojekt",
+          "text": "{a11} Einheiten pro Brückenprojekt",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} Einheiten pro Strassenprojekt",
+          "text": "{a12} Einheiten pro Straßenprojekt",
           "bedeutung": "+ {a12}x₂"
         },
         {
@@ -100,15 +100,15 @@
       ],
       [
         {
-          "text": "{a21} Ingenieure benoetigt",
+          "text": "{a21} Ingenieure benötigt",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "Strassenprojekt {a22} Ingenieure",
+          "text": "Straßenprojekt {a22} Ingenieure",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Ingenieuren",
+          "text": "{b2} verfügbaren Ingenieuren",
           "bedeutung": "≤ {b2}"
         }
       ]

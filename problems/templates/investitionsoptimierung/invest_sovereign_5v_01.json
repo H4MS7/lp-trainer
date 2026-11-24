@@ -45,7 +45,7 @@
     },
     {
       "type": "<=",
-      "label": "Illiquiditaet",
+      "label": "Illiquidität",
       "row": [
         "a31",
         "a32",
@@ -157,32 +157,32 @@
     "a31": {
       "min": 2,
       "max": 4,
-      "label": "Illiquiditaet Aktien"
+      "label": "Illiquidität Aktien"
     },
     "a32": {
       "min": 1,
       "max": 2,
-      "label": "Illiquiditaet Anleihen"
+      "label": "Illiquidität Anleihen"
     },
     "a33": {
       "min": 5,
       "max": 10,
-      "label": "Illiquiditaet Immobilien"
+      "label": "Illiquidität Immobilien"
     },
     "a34": {
       "min": 2,
       "max": 5,
-      "label": "Illiquiditaet Rohstoffe"
+      "label": "Illiquidität Rohstoffe"
     },
     "a35": {
       "min": 6,
       "max": 12,
-      "label": "Illiquiditaet Infrastruktur"
+      "label": "Illiquidität Infrastruktur"
     },
     "b3": {
       "min": 80,
       "max": 350,
-      "label": "Max. Illiquiditaet"
+      "label": "Max. Illiquidität"
     },
     "a41": {
       "min": 1,
@@ -215,8 +215,8 @@
       "label": "Max. Verwaltungseinheiten"
     }
   },
-  "beschreibung": "Ein Staatsfonds verteilt sein Kapital auf fuenf Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} %, Rohstoffe {c4} % und Infrastruktur {c5} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Immobilien, {a14} fuer Rohstoffe und {a15} fuer Infrastruktur bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten fuer Aktien, {a22} fuer Anleihen, {a23} fuer Immobilien, {a24} fuer Rohstoffe und {a25} fuer Infrastruktur bei maximal {b2} Risikopunkten. Die Illiquiditaet betraegt {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Immobilien, {a34} fuer Rohstoffe und {a35} fuer Infrastruktur bei maximal {b3} Illiquiditaetseinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Aktien, {a42} fuer Anleihen, {a43} fuer Immobilien, {a44} fuer Rohstoffe und {a45} fuer Infrastruktur bei maximal {b4} Verwaltungseinheiten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko, Liquiditaet und Verwaltung.",
+  "beschreibung": "Ein Staatsfonds verteilt sein Kapital auf fünf Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} %, Rohstoffe {c4} % und Infrastruktur {c5} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen, {a13} für Immobilien, {a14} für Rohstoffe und {a15} für Infrastruktur bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten für Aktien, {a22} für Anleihen, {a23} für Immobilien, {a24} für Rohstoffe und {a25} für Infrastruktur bei maximal {b2} Risikopunkten. Die Illiquidität beträgt {a31} Einheiten für Aktien, {a32} für Anleihen, {a33} für Immobilien, {a34} für Rohstoffe und {a35} für Infrastruktur bei maximal {b3} Illiquiditätseinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten für Aktien, {a42} für Anleihen, {a43} für Immobilien, {a44} für Rohstoffe und {a45} für Infrastruktur bei maximal {b4} Verwaltungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko, Liquidität und Verwaltung.",
   "highlights": {
     "zielfunktion": [
       {
@@ -243,23 +243,23 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Aktien",
+          "text": "{a11} Einheiten für Aktien",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Anleihen",
+          "text": "{a12} für Anleihen",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Immobilien",
+          "text": "{a13} für Immobilien",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Rohstoffe",
+          "text": "{a14} für Rohstoffe",
           "bedeutung": "+ {a14}x₄"
         },
         {
-          "text": "{a15} fuer Infrastruktur",
+          "text": "{a15} für Infrastruktur",
           "bedeutung": "+ {a15}x₅"
         },
         {
@@ -269,23 +269,23 @@
       ],
       [
         {
-          "text": "{a21} Punkten fuer Aktien",
+          "text": "{a21} Punkten für Aktien",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Anleihen",
+          "text": "{a22} für Anleihen",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Immobilien",
+          "text": "{a23} für Immobilien",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Rohstoffe",
+          "text": "{a24} für Rohstoffe",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{a25} fuer Infrastruktur",
+          "text": "{a25} für Infrastruktur",
           "bedeutung": "+ {a25}x₅"
         },
         {
@@ -295,49 +295,49 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Aktien",
+          "text": "{a31} Einheiten für Aktien",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Anleihen",
+          "text": "{a32} für Anleihen",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Immobilien",
+          "text": "{a33} für Immobilien",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Rohstoffe",
+          "text": "{a34} für Rohstoffe",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{a35} fuer Infrastruktur",
+          "text": "{a35} für Infrastruktur",
           "bedeutung": "+ {a35}x₅"
         },
         {
-          "text": "{b3} Illiquiditaetseinheiten",
+          "text": "{b3} Illiquiditätseinheiten",
           "bedeutung": "≤ {b3}"
         }
       ],
       [
         {
-          "text": "{a41} Einheiten fuer Aktien",
+          "text": "{a41} Einheiten für Aktien",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Anleihen",
+          "text": "{a42} für Anleihen",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Immobilien",
+          "text": "{a43} für Immobilien",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Rohstoffe",
+          "text": "{a44} für Rohstoffe",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{a45} fuer Infrastruktur",
+          "text": "{a45} für Infrastruktur",
           "bedeutung": "+ {a45}x₅"
         },
         {

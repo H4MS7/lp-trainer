@@ -36,7 +36,7 @@
     "c1": {
       "min": 3,
       "max": 9,
-      "label": "Homogenitaet Temperatur"
+      "label": "Homogenität Temperatur"
     },
     "c2": {
       "min": 5,
@@ -74,12 +74,12 @@
       "label": "Max. Materialbelastung"
     }
   },
-  "beschreibung": "Ein Kunststoff-Extruder wird ueber Temperatur und Schneckendrehzahl gesteuert. Die Temperatur traegt {c1} Punkte zur Homogenitaet bei, die Schneckendrehzahl {c2} Punkte zum Durchsatz. Der Energieverbrauch liegt bei {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Drehzahlstufe bei maximal {b1} Energieeinheiten. Die Materialbelastung betraegt {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Drehzahlstufe bei maximal {b2} Belastungseinheiten.",
-  "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie und Materialbelastung.",
+  "beschreibung": "Ein Kunststoff-Extruder wird über Temperatur und Schneckendrehzahl gesteuert. Die Temperatur trägt {c1} Punkte zur Homogenität bei, die Schneckendrehzahl {c2} Punkte zum Durchsatz. Der Energieverbrauch liegt bei {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Drehzahlstufe bei maximal {b1} Energieeinheiten. Die Materialbelastung beträgt {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Drehzahlstufe bei maximal {b2} Belastungseinheiten.",
+  "hinweis": "Maximiere die Produktqualität unter Beachtung von Energie und Materialbelastung.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Temperatur traegt {c1} Punkte zur Homogenitaet bei",
+        "text": "Temperatur trägt {c1} Punkte zur Homogenität bei",
         "bedeutung": "{c1} × x₁"
       },
       {

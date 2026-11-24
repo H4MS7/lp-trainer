@@ -3,38 +3,38 @@
   "typ": "Ressourcenallokation",
   "optimierungsziel": "maximieren",
   "numVars": 2,
-  "variablen": ["x1 = Teilnehmer Fuehrungskraeftetraining", "x2 = Teilnehmer Fachschulung"],
+  "variablen": ["x1 = Teilnehmer Führungskräftetraining", "x2 = Teilnehmer Fachschulung"],
   "objective": ["c1", "c2"],
   "constraints": [
     {"type": "<=", "label": "Schulungsbudget", "row": ["a11","a12"], "rhs": "b1"},
-    {"type": "<=", "label": "Trainerkapazitaet", "row": ["a21","a22"], "rhs": "b2"}
+    {"type": "<=", "label": "Trainerkapazität", "row": ["a21","a22"], "rhs": "b2"}
   ],
   "coefficients": {
-    "c1":  {"min": 5, "max": 15,    "label": "Kompetenzgewinn/Teilnehmer Fuehrung"},
+    "c1":  {"min": 5, "max": 15,    "label": "Kompetenzgewinn/Teilnehmer Führung"},
     "c2":  {"min": 3, "max": 10,    "label": "Kompetenzgewinn/Teilnehmer Fach"},
-    "a11": {"min": 2, "max": 6,     "label": "Kosten/Teilnehmer Fuehrung (100 €)"},
+    "a11": {"min": 2, "max": 6,     "label": "Kosten/Teilnehmer Führung (100 €)"},
     "a12": {"min": 1, "max": 4,     "label": "Kosten/Teilnehmer Fach (100 €)"},
     "b1":  {"min": 30, "max": 120,  "label": "Schulungsbudget (100 €)"},
-    "a21": {"min": 2, "max": 5,     "label": "Trainerstunden/Teilnehmer Fuehrung"},
+    "a21": {"min": 2, "max": 5,     "label": "Trainerstunden/Teilnehmer Führung"},
     "a22": {"min": 1, "max": 3,     "label": "Trainerstunden/Teilnehmer Fach"},
     "b2":  {"min": 20, "max": 80,   "label": "Trainerstunden gesamt"}
   },
-  "titel": "Personalentwicklung – Fuehrung und Fachschulung",
-  "beschreibung": "Die Personalabteilung plant Schulungen fuer Fuehrungskraefte und Fachkraefte. Pro Teilnehmer im Fuehrungskraeftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt, pro Teilnehmer in der Fachschulung {c2} Punkte. Das Fuehrungstraining kostet {a11} Hundert Euro pro Teilnehmer, die Fachschulung {a12} Hundert Euro. Das Schulungsbudget umfasst {b1} Hundert Euro. Pro Teilnehmer Fuehrung werden {a21} Trainerstunden benoetigt, pro Teilnehmer Fachschulung {a22} Trainerstunden. Es stehen {b2} Trainerstunden bereit.",
-  "hinweis": "Maximiere den Kompetenzgewinn unter Budget- und Trainerbeschraenkung.",
+  "titel": "Personalentwicklung – Führung und Fachschulung",
+  "beschreibung": "Die Personalabteilung plant Schulungen für Führungskräfte und Fachkräfte. Pro Teilnehmer im Führungskräftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt, pro Teilnehmer in der Fachschulung {c2} Punkte. Das Führungstraining kostet {a11} Hundert Euro pro Teilnehmer, die Fachschulung {a12} Hundert Euro. Das Schulungsbudget umfasst {b1} Hundert Euro. Pro Teilnehmer Führung werden {a21} Trainerstunden benötigt, pro Teilnehmer Fachschulung {a22} Trainerstunden. Es stehen {b2} Trainerstunden bereit.",
+  "hinweis": "Maximiere den Kompetenzgewinn unter Budget- und Trainerbeschränkung.",
   "highlights": {
     "zielfunktion": [
-      {"text": "Fuehrungskraeftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Führungskräftetraining wird ein Kompetenzgewinn von {c1} Punkten erzielt", "bedeutung": "{c1} × x₁"},
       {"text": "Fachschulung {c2} Punkte", "bedeutung": "{c2} × x₂"}
     ],
     "nebenbedingungen": [
       [
-        {"text": "Fuehrungstraining kostet {a11} Hundert Euro", "bedeutung": "{a11}x₁"},
+        {"text": "Führungstraining kostet {a11} Hundert Euro", "bedeutung": "{a11}x₁"},
         {"text": "Fachschulung {a12} Hundert Euro", "bedeutung": "+ {a12}x₂"},
         {"text": "{b1} Hundert Euro", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "Fuehrung werden {a21} Trainerstunden benoetigt", "bedeutung": "{a21}x₁"},
+        {"text": "Führung werden {a21} Trainerstunden benötigt", "bedeutung": "{a21}x₁"},
         {"text": "Fachschulung {a22} Trainerstunden", "bedeutung": "+ {a22}x₂"},
         {"text": "{b2} Trainerstunden bereit", "bedeutung": "≤ {b2}"}
       ]

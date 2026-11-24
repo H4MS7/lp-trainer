@@ -11,7 +11,7 @@
   "constraints": [
     {
       "type": "<=",
-      "label": "Praemienbudget",
+      "label": "Prämienbudget",
       "row": [
         "a11",
         "a12"
@@ -42,17 +42,17 @@
     "a11": {
       "min": 1,
       "max": 3,
-      "label": "Praemie Leben"
+      "label": "Prämie Leben"
     },
     "a12": {
       "min": 1,
       "max": 4,
-      "label": "Praemie Sach"
+      "label": "Prämie Sach"
     },
     "b1": {
       "min": 60,
       "max": 250,
-      "label": "Praemienbudget (Tsd. EUR)"
+      "label": "Prämienbudget (Tsd. EUR)"
     },
     "a21": {
       "min": 2,
@@ -70,8 +70,8 @@
       "label": "Max. Verwaltungseinheiten"
     }
   },
-  "beschreibung": "Ein Versicherungsunternehmen optimiert sein Portfolio. Lebensversicherungen bringen {c1} % Rendite, Sachversicherungen {c2} %. Die Praemien betragen {a11} Einheiten pro Lebensversicherung und {a12} Einheiten pro Sachversicherung. Das Praemienbudget liegt bei {b1} Tausend Euro. Der Verwaltungsaufwand betraegt {a21} Einheiten pro Lebensversicherung und {a22} Einheiten pro Sachversicherung bei maximal {b2} Verwaltungseinheiten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Praemienbudget und Verwaltungsaufwand.",
+  "beschreibung": "Ein Versicherungsunternehmen optimiert sein Portfolio. Lebensversicherungen bringen {c1} % Rendite, Sachversicherungen {c2} %. Die Prämien betragen {a11} Einheiten pro Lebensversicherung und {a12} Einheiten pro Sachversicherung. Das Prämienbudget liegt bei {b1} Tausend Euro. Der Verwaltungsaufwand beträgt {a21} Einheiten pro Lebensversicherung und {a22} Einheiten pro Sachversicherung bei maximal {b2} Verwaltungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Prämienbudget und Verwaltungsaufwand.",
   "highlights": {
     "zielfunktion": [
       {

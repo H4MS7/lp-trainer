@@ -123,7 +123,7 @@
       "label": "Max. Betreuungsstunden"
     }
   },
-  "beschreibung": "Eine Stiftung legt ihr Kapital in drei Anlageklassen an. Aktien bringen {c1} % Rendite, Anleihen {c2} % und Mikrofinanzprojekte {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Aktien, {a12} fuer Anleihen und {a13} fuer Mikrofinanz bei einem Stiftungskapital von {b1} Tausend Euro. Das Risiko betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen und {a23} fuer Mikrofinanz bei maximal {b2} Risikopunkten. Die Betreuung erfordert {a31} Stunden fuer Aktien, {a32} fuer Anleihen und {a33} fuer Mikrofinanz bei maximal {b3} Betreuungsstunden.",
+  "beschreibung": "Eine Stiftung legt ihr Kapital in drei Anlageklassen an. Aktien bringen {c1} % Rendite, Anleihen {c2} % und Mikrofinanzprojekte {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten für Aktien, {a12} für Anleihen und {a13} für Mikrofinanz bei einem Stiftungskapital von {b1} Tausend Euro. Das Risiko beträgt {a21} Punkte für Aktien, {a22} für Anleihen und {a23} für Mikrofinanz bei maximal {b2} Risikopunkten. Die Betreuung erfordert {a31} Stunden für Aktien, {a32} für Anleihen und {a33} für Mikrofinanz bei maximal {b3} Betreuungsstunden.",
   "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Betreuungsaufwand.",
   "highlights": {
     "zielfunktion": [
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Aktien",
+          "text": "{a11} Einheiten für Aktien",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Anleihen",
+          "text": "{a12} für Anleihen",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Mikrofinanz",
+          "text": "{a13} für Mikrofinanz",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Punkte fuer Aktien",
+          "text": "{a21} Punkte für Aktien",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Anleihen",
+          "text": "{a22} für Anleihen",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Mikrofinanz",
+          "text": "{a23} für Mikrofinanz",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Stunden fuer Aktien",
+          "text": "{a31} Stunden für Aktien",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Anleihen",
+          "text": "{a32} für Anleihen",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Mikrofinanz",
+          "text": "{a33} für Mikrofinanz",
           "bedeutung": "+ {a33}x₃"
         },
         {

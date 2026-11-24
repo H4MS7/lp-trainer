@@ -17,7 +17,7 @@
   "constraints": [
     {
       "type": "<=",
-      "label": "Kuehlkapazitaet",
+      "label": "Kühlkapazität",
       "row": [
         "a11",
         "a12",
@@ -50,7 +50,7 @@
     "c1": {
       "min": 5,
       "max": 12,
-      "label": "Schnittqualitaet Leistung"
+      "label": "Schnittqualität Leistung"
     },
     "c2": {
       "min": 3,
@@ -60,27 +60,27 @@
     "c3": {
       "min": 2,
       "max": 7,
-      "label": "Praezision Fokus"
+      "label": "Präzision Fokus"
     },
     "a11": {
       "min": 4,
       "max": 10,
-      "label": "Kuehlung Leistung"
+      "label": "Kühlung Leistung"
     },
     "a12": {
       "min": 1,
       "max": 4,
-      "label": "Kuehlung Geschwindigkeit"
+      "label": "Kühlung Geschwindigkeit"
     },
     "a13": {
       "min": 1,
       "max": 3,
-      "label": "Kuehlung Fokus"
+      "label": "Kühlung Fokus"
     },
     "b1": {
       "min": 80,
       "max": 400,
-      "label": "Max. Kuehlkapazitaet"
+      "label": "Max. Kühlkapazität"
     },
     "a21": {
       "min": 2,
@@ -123,12 +123,12 @@
       "label": "Max. Optikbelastung"
     }
   },
-  "beschreibung": "Ein Laserschneider wird ueber drei Parameter optimiert. Die Laserleistung liefert {c1} Punkte Schnittqualitaet, die Geschwindigkeit {c2} Punkte Durchsatz und die Fokuslage {c3} Punkte Praezision. Die Kuehlkapazitaet erfordert {a11} Einheiten fuer Leistung, {a12} fuer Geschwindigkeit und {a13} fuer Fokus bei maximal {b1} Kuehleinheiten. Der Gasverbrauch betraegt {a21} Einheiten fuer Leistung, {a22} fuer Geschwindigkeit und {a23} fuer Fokus bei maximal {b2} Gaseinheiten. Die Optikbelastung liegt bei {a31} Einheiten fuer Leistung, {a32} fuer Geschwindigkeit und {a33} fuer Fokus bei maximal {b3} Optikeinheiten.",
-  "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kuehlung, Gas und Optik.",
+  "beschreibung": "Ein Laserschneider wird über drei Parameter optimiert. Die Laserleistung liefert {c1} Punkte Schnittqualität, die Geschwindigkeit {c2} Punkte Durchsatz und die Fokuslage {c3} Punkte Präzision. Die Kühlkapazität erfordert {a11} Einheiten für Leistung, {a12} für Geschwindigkeit und {a13} für Fokus bei maximal {b1} Kühleinheiten. Der Gasverbrauch beträgt {a21} Einheiten für Leistung, {a22} für Geschwindigkeit und {a23} für Fokus bei maximal {b2} Gaseinheiten. Die Optikbelastung liegt bei {a31} Einheiten für Leistung, {a32} für Geschwindigkeit und {a33} für Fokus bei maximal {b3} Optikeinheiten.",
+  "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kühlung, Gas und Optik.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Laserleistung liefert {c1} Punkte Schnittqualitaet",
+        "text": "Laserleistung liefert {c1} Punkte Schnittqualität",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -136,40 +136,40 @@
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Fokuslage {c3} Punkte Praezision",
+        "text": "Fokuslage {c3} Punkte Präzision",
         "bedeutung": "{c3} × x₃"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Leistung",
+          "text": "{a11} Einheiten für Leistung",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Geschwindigkeit",
+          "text": "{a12} für Geschwindigkeit",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Fokus",
+          "text": "{a13} für Fokus",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{b1} Kuehleinheiten",
+          "text": "{b1} Kühleinheiten",
           "bedeutung": "≤ {b1}"
         }
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Leistung",
+          "text": "{a21} Einheiten für Leistung",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Geschwindigkeit",
+          "text": "{a22} für Geschwindigkeit",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Fokus",
+          "text": "{a23} für Fokus",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Leistung",
+          "text": "{a31} Einheiten für Leistung",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Geschwindigkeit",
+          "text": "{a32} für Geschwindigkeit",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Fokus",
+          "text": "{a33} für Fokus",
           "bedeutung": "+ {a33}x₃"
         },
         {

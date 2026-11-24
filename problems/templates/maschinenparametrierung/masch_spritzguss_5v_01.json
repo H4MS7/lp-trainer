@@ -3,12 +3,12 @@
   "optimierungsziel": "maximieren",
   "numVars": 5,
   "id": "masch_spritzguss_5v_01",
-  "titel": "Spritzgussmaschine – Druck, Temperatur, Kuehlzeit, Nachdruck und Geschwindigkeit",
+  "titel": "Spritzgussmaschine – Druck, Temperatur, Kühlzeit, Nachdruck und Geschwindigkeit",
   "variablen": [
     "x1 = Einspritzdruck (Stufen)",
     "x2 = Massetemperatur (Stufen)",
-    "x3 = Kuehlzeit (Stufen)",
-    "x4 = Nachdruckhoehe (Stufen)",
+    "x3 = Kühlzeit (Stufen)",
+    "x4 = Nachdruckhöhe (Stufen)",
     "x5 = Einspritzgeschwindigkeit (Stufen)"
   ],
   "objective": [
@@ -72,17 +72,17 @@
     "c1": {
       "min": 5,
       "max": 12,
-      "label": "Formfuellung Druck"
+      "label": "Formfüllung Druck"
     },
     "c2": {
       "min": 3,
       "max": 7,
-      "label": "Fliessfaehigkeit Temperatur"
+      "label": "Fließfähigkeit Temperatur"
     },
     "c3": {
       "min": 2,
       "max": 6,
-      "label": "Masshaltigkeit Kuehlzeit"
+      "label": "Maßhaltigkeit Kühlzeit"
     },
     "c4": {
       "min": 3,
@@ -107,7 +107,7 @@
     "a13": {
       "min": 1,
       "max": 2,
-      "label": "Hydraulik Kuehlzeit"
+      "label": "Hydraulik Kühlzeit"
     },
     "a14": {
       "min": 2,
@@ -137,7 +137,7 @@
     "a23": {
       "min": 1,
       "max": 3,
-      "label": "Energie Kuehlzeit"
+      "label": "Energie Kühlzeit"
     },
     "a24": {
       "min": 1,
@@ -167,7 +167,7 @@
     "a33": {
       "min": 4,
       "max": 10,
-      "label": "Zyklus Kuehlzeit"
+      "label": "Zyklus Kühlzeit"
     },
     "a34": {
       "min": 2,
@@ -197,7 +197,7 @@
     "a43": {
       "min": 1,
       "max": 2,
-      "label": "Werkzeug Kuehlzeit"
+      "label": "Werkzeug Kühlzeit"
     },
     "a44": {
       "min": 2,
@@ -215,24 +215,24 @@
       "label": "Max. Werkzeugbelastung"
     }
   },
-  "beschreibung": "Eine Spritzgussmaschine wird ueber fuenf Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Massetemperatur {c2} Punkte Fliessfaehigkeit, die Kuehlzeit {c3} Punkte Masshaltigkeit, die Nachdruckhoehe {c4} Punkte gegen Einfallstellen und die Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz. Die Hydraulikleistung betraegt {a11} Einheiten fuer Druck, {a12} fuer Temperatur, {a13} fuer Kuehlzeit, {a14} fuer Nachdruck und {a15} fuer Geschwindigkeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Druck, {a22} fuer Temperatur, {a23} fuer Kuehlzeit, {a24} fuer Nachdruck und {a25} fuer Geschwindigkeit bei maximal {b2} Energieeinheiten. Die Zykluszeit betraegt {a31} Einheiten fuer Druck, {a32} fuer Temperatur, {a33} fuer Kuehlzeit, {a34} fuer Nachdruck und {a35} fuer Geschwindigkeit bei maximal {b3} Zeiteinheiten. Die Werkzeugbelastung liegt bei {a41} Einheiten fuer Druck, {a42} fuer Temperatur, {a43} fuer Kuehlzeit, {a44} fuer Nachdruck und {a45} fuer Geschwindigkeit bei maximal {b4} Werkzeugeinheiten.",
-  "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik, Energie, Zykluszeit und Werkzeug.",
+  "beschreibung": "Eine Spritzgussmaschine wird über fünf Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfüllung, die Massetemperatur {c2} Punkte Fließfähigkeit, die Kühlzeit {c3} Punkte Maßhaltigkeit, die Nachdruckhöhe {c4} Punkte gegen Einfallstellen und die Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz. Die Hydraulikleistung beträgt {a11} Einheiten für Druck, {a12} für Temperatur, {a13} für Kühlzeit, {a14} für Nachdruck und {a15} für Geschwindigkeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten für Druck, {a22} für Temperatur, {a23} für Kühlzeit, {a24} für Nachdruck und {a25} für Geschwindigkeit bei maximal {b2} Energieeinheiten. Die Zykluszeit beträgt {a31} Einheiten für Druck, {a32} für Temperatur, {a33} für Kühlzeit, {a34} für Nachdruck und {a35} für Geschwindigkeit bei maximal {b3} Zeiteinheiten. Die Werkzeugbelastung liegt bei {a41} Einheiten für Druck, {a42} für Temperatur, {a43} für Kühlzeit, {a44} für Nachdruck und {a45} für Geschwindigkeit bei maximal {b4} Werkzeugeinheiten.",
+  "hinweis": "Maximiere die Bauteilqualität unter Beachtung von Hydraulik, Energie, Zykluszeit und Werkzeug.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+        "text": "Einspritzdruck liefert {c1} Punkte Formfüllung",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Massetemperatur {c2} Punkte Fliessfaehigkeit",
+        "text": "Massetemperatur {c2} Punkte Fließfähigkeit",
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Kuehlzeit {c3} Punkte Masshaltigkeit",
+        "text": "Kühlzeit {c3} Punkte Maßhaltigkeit",
         "bedeutung": "{c3} × x₃"
       },
       {
-        "text": "Nachdruckhoehe {c4} Punkte gegen Einfallstellen",
+        "text": "Nachdruckhöhe {c4} Punkte gegen Einfallstellen",
         "bedeutung": "{c4} × x₄"
       },
       {
@@ -243,23 +243,23 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Druck",
+          "text": "{a11} Einheiten für Druck",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Temperatur",
+          "text": "{a12} für Temperatur",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Kuehlzeit",
+          "text": "{a13} für Kühlzeit",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Nachdruck",
+          "text": "{a14} für Nachdruck",
           "bedeutung": "+ {a14}x₄"
         },
         {
-          "text": "{a15} fuer Geschwindigkeit",
+          "text": "{a15} für Geschwindigkeit",
           "bedeutung": "+ {a15}x₅"
         },
         {
@@ -269,23 +269,23 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Druck",
+          "text": "{a21} Einheiten für Druck",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Temperatur",
+          "text": "{a22} für Temperatur",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Kuehlzeit",
+          "text": "{a23} für Kühlzeit",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Nachdruck",
+          "text": "{a24} für Nachdruck",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{a25} fuer Geschwindigkeit",
+          "text": "{a25} für Geschwindigkeit",
           "bedeutung": "+ {a25}x₅"
         },
         {
@@ -295,23 +295,23 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Druck",
+          "text": "{a31} Einheiten für Druck",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Temperatur",
+          "text": "{a32} für Temperatur",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Kuehlzeit",
+          "text": "{a33} für Kühlzeit",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Nachdruck",
+          "text": "{a34} für Nachdruck",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{a35} fuer Geschwindigkeit",
+          "text": "{a35} für Geschwindigkeit",
           "bedeutung": "+ {a35}x₅"
         },
         {
@@ -321,23 +321,23 @@
       ],
       [
         {
-          "text": "{a41} Einheiten fuer Druck",
+          "text": "{a41} Einheiten für Druck",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Temperatur",
+          "text": "{a42} für Temperatur",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Kuehlzeit",
+          "text": "{a43} für Kühlzeit",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Nachdruck",
+          "text": "{a44} für Nachdruck",
           "bedeutung": "+ {a44}x₄"
         },
         {
-          "text": "{a45} fuer Geschwindigkeit",
+          "text": "{a45} für Geschwindigkeit",
           "bedeutung": "+ {a45}x₅"
         },
         {

@@ -6,7 +6,7 @@
   "variablen": ["x1 = Schichten Linie Alpha", "x2 = Schichten Linie Beta"],
   "objective": ["c1", "c2"],
   "constraints": [
-    {"type": "<=", "label": "Schichtkapazitaet", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Schichtkapazität", "row": ["a11","a12"], "rhs": "b1"},
     {"type": "<=", "label": "Energiebudget", "row": ["a21","a22"], "rhs": "b2"}
   ],
   "coefficients": {
@@ -20,7 +20,7 @@
     "b2":  {"min": 40, "max": 160,  "label": "Energiebudget (kWh)"}
   },
   "titel": "Produktionslinien – Alpha und Beta",
-  "beschreibung": "Ein Werk verteilt Produktionsschichten auf Linie Alpha und Linie Beta. Jede Schicht auf Linie Alpha erzeugt {c1} Einheiten Output, auf Linie Beta {c2} Einheiten. Pro Schicht Alpha wird {a11} Schichtslot benoetigt, pro Schicht Beta {a12} Schichtslot. Es stehen {b1} Schichtslots bereit. Linie Alpha verbraucht {a21} kWh Energie pro Schicht, Linie Beta {a22} kWh. Das Energiebudget umfasst {b2} kWh.",
+  "beschreibung": "Ein Werk verteilt Produktionsschichten auf Linie Alpha und Linie Beta. Jede Schicht auf Linie Alpha erzeugt {c1} Einheiten Output, auf Linie Beta {c2} Einheiten. Pro Schicht Alpha wird {a11} Schichtslot benötigt, pro Schicht Beta {a12} Schichtslot. Es stehen {b1} Schichtslots bereit. Linie Alpha verbraucht {a21} kWh Energie pro Schicht, Linie Beta {a22} kWh. Das Energiebudget umfasst {b2} kWh.",
   "hinweis": "Maximiere den Output unter Beachtung der Schicht- und Energiegrenzen.",
   "highlights": {
     "zielfunktion": [
@@ -29,7 +29,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Alpha wird {a11} Schichtslot benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Alpha wird {a11} Schichtslot benötigt", "bedeutung": "{a11}x₁"},
         {"text": "Beta {a12} Schichtslot", "bedeutung": "+ {a12}x₂"},
         {"text": "{b1} Schichtslots bereit", "bedeutung": "≤ {b1}"}
       ],

@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Volatilitaetsbudget",
+      "label": "Volatilitätsbudget",
       "row": [
         "a21",
         "a22"
@@ -52,26 +52,26 @@
     "b1": {
       "min": 60,
       "max": 250,
-      "label": "Verfuegbares Anlagekapital (Tsd. EUR)"
+      "label": "Verfügbares Anlagekapital (Tsd. EUR)"
     },
     "a21": {
       "min": 4,
       "max": 10,
-      "label": "Volatilitaet Tech"
+      "label": "Volatilität Tech"
     },
     "a22": {
       "min": 1,
       "max": 4,
-      "label": "Volatilitaet Gesundheit"
+      "label": "Volatilität Gesundheit"
     },
     "b2": {
       "min": 50,
       "max": 200,
-      "label": "Max. Volatilitaetsbudget"
+      "label": "Max. Volatilitätsbudget"
     }
   },
-  "beschreibung": "Eine Anlegerin moechte in zwei ETFs investieren. Der Technologie-ETF verspricht {c1} % Rendite, der Gesundheits-ETF {c2} %. Pro Einheit Tech-ETF werden {a11} Kapitaleinheiten gebunden, pro Gesundheits-ETF {a12} Einheiten. Insgesamt stehen {b1} Tausend Euro Anlagekapital zur Verfuegung. Die Volatilitaet betraegt {a21} Punkte pro Tech-Einheit und {a22} Punkte pro Gesundheitseinheit bei einem maximalen Volatilitaetsbudget von {b2} Punkten.",
-  "hinweis": "Die Volatilitaet ist ein Mass fuer das Risiko. Maximiere die Rendite unter Beachtung von Kapital und Volatilitaet.",
+  "beschreibung": "Eine Anlegerin möchte in zwei ETFs investieren. Der Technologie-ETF verspricht {c1} % Rendite, der Gesundheits-ETF {c2} %. Pro Einheit Tech-ETF werden {a11} Kapitaleinheiten gebunden, pro Gesundheits-ETF {a12} Einheiten. Insgesamt stehen {b1} Tausend Euro Anlagekapital zur Verfügung. Die Volatilität beträgt {a21} Punkte pro Tech-Einheit und {a22} Punkte pro Gesundheitseinheit bei einem maximalen Volatilitätsbudget von {b2} Punkten.",
+  "hinweis": "Die Volatilität ist ein Maß für das Risiko. Maximiere die Rendite unter Beachtung von Kapital und Volatilität.",
   "highlights": {
     "zielfunktion": [
       {

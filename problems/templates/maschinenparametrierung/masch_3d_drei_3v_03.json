@@ -3,11 +3,11 @@
   "optimierungsziel": "maximieren",
   "numVars": 3,
   "id": "masch_3d_drei_3v_03",
-  "titel": "3D-Drucker – Geschwindigkeit, Schichthoehe und Duesentemperatur",
+  "titel": "3D-Drucker – Geschwindigkeit, Schichthöhe und Düsentemperatur",
   "variablen": [
     "x1 = Druckgeschwindigkeit (Stufen)",
-    "x2 = Schichthoehe (Stufen)",
-    "x3 = Duesentemperatur (Stufen)"
+    "x2 = Schichthöhe (Stufen)",
+    "x3 = Düsentemperatur (Stufen)"
   ],
   "objective": [
     "c1",
@@ -27,7 +27,7 @@
     },
     {
       "type": "<=",
-      "label": "Waermeentwicklung",
+      "label": "Wärmeentwicklung",
       "row": [
         "a21",
         "a22",
@@ -50,7 +50,7 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Produktivitaet Geschwindigkeit"
+      "label": "Produktivität Geschwindigkeit"
     },
     "c2": {
       "min": 3,
@@ -85,22 +85,22 @@
     "a21": {
       "min": 2,
       "max": 5,
-      "label": "Waerme Geschwindigkeit"
+      "label": "Wärme Geschwindigkeit"
     },
     "a22": {
       "min": 1,
       "max": 3,
-      "label": "Waerme Schicht"
+      "label": "Wärme Schicht"
     },
     "a23": {
       "min": 4,
       "max": 10,
-      "label": "Waerme Temperatur"
+      "label": "Wärme Temperatur"
     },
     "b2": {
       "min": 60,
       "max": 300,
-      "label": "Max. Waermeeinheiten"
+      "label": "Max. Wärmeeinheiten"
     },
     "a31": {
       "min": 3,
@@ -123,35 +123,35 @@
       "label": "Max. Motorbelastung"
     }
   },
-  "beschreibung": "Ein 3D-Drucker wird ueber drei Parameter optimiert. Die Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte und die Duesentemperatur {c3} Haftungspunkte. Der Filamentverbrauch betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Schicht und {a13} fuer Temperatur bei maximal {b1} Filamenteinheiten. Die Waerme liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Schicht und {a23} fuer Temperatur bei maximal {b2} Waermeeinheiten. Die Motorbelastung betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Schicht und {a33} fuer Temperatur bei maximal {b3} Motoreinheiten.",
-  "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Filament, Waerme und Motor.",
+  "beschreibung": "Ein 3D-Drucker wird über drei Parameter optimiert. Die Druckgeschwindigkeit liefert {c1} Produktivitätspunkte, die Schichthöhe {c2} Detailpunkte und die Düsentemperatur {c3} Haftungspunkte. Der Filamentverbrauch beträgt {a11} Einheiten für Geschwindigkeit, {a12} für Schicht und {a13} für Temperatur bei maximal {b1} Filamenteinheiten. Die Wärme liegt bei {a21} Einheiten für Geschwindigkeit, {a22} für Schicht und {a23} für Temperatur bei maximal {b2} Wärmeeinheiten. Die Motorbelastung beträgt {a31} Einheiten für Geschwindigkeit, {a32} für Schicht und {a33} für Temperatur bei maximal {b3} Motoreinheiten.",
+  "hinweis": "Maximiere die Druckqualität unter Beachtung von Filament, Wärme und Motor.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte",
+        "text": "Druckgeschwindigkeit liefert {c1} Produktivitätspunkte",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Schichthoehe {c2} Detailpunkte",
+        "text": "Schichthöhe {c2} Detailpunkte",
         "bedeutung": "{c2} × x₂"
       },
       {
-        "text": "Duesentemperatur {c3} Haftungspunkte",
+        "text": "Düsentemperatur {c3} Haftungspunkte",
         "bedeutung": "{c3} × x₃"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Geschwindigkeit",
+          "text": "{a11} Einheiten für Geschwindigkeit",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Schicht",
+          "text": "{a12} für Schicht",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Temperatur",
+          "text": "{a13} für Temperatur",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,33 +161,33 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Geschwindigkeit",
+          "text": "{a21} Einheiten für Geschwindigkeit",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Schicht",
+          "text": "{a22} für Schicht",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Temperatur",
+          "text": "{a23} für Temperatur",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{b2} Waermeeinheiten",
+          "text": "{b2} Wärmeeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Geschwindigkeit",
+          "text": "{a31} Einheiten für Geschwindigkeit",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Schicht",
+          "text": "{a32} für Schicht",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Temperatur",
+          "text": "{a33} für Temperatur",
           "bedeutung": "+ {a33}x₃"
         },
         {

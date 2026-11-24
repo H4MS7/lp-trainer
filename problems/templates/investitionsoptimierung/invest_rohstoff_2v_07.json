@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Lagerkapazitaet",
+      "label": "Lagerkapazität",
       "row": [
         "a21",
         "a22"
@@ -67,11 +67,11 @@
     "b2": {
       "min": 50,
       "max": 200,
-      "label": "Max. Lagerplaetze"
+      "label": "Max. Lagerplätze"
     }
   },
-  "beschreibung": "Ein Edelmetallhaendler moechte sein Investment optimieren. Pro Unze Gold erwartet er {c1} EUR Gewinn, pro Unze Silber {c2} EUR. Der Kaufpreis betraegt {a11} Einheiten pro Unze Gold und {a12} Einheiten pro Unze Silber. Das Kaufbudget liegt bei {b1} EUR. Jede Unze Gold belegt {a21} Lagerplaetze, jede Unze Silber {a22} Lagerplaetze bei maximal {b2} verfuegbaren Lagerplaetzen.",
-  "hinweis": "Maximiere den Gewinn unter Beachtung von Budget und Lagerkapazitaet.",
+  "beschreibung": "Ein Edelmetallhändler möchte sein Investment optimieren. Pro Unze Gold erwartet er {c1} EUR Gewinn, pro Unze Silber {c2} EUR. Der Kaufpreis beträgt {a11} Einheiten pro Unze Gold und {a12} Einheiten pro Unze Silber. Das Kaufbudget liegt bei {b1} EUR. Jede Unze Gold belegt {a21} Lagerplätze, jede Unze Silber {a22} Lagerplätze bei maximal {b2} verfügbaren Lagerplätzen.",
+  "hinweis": "Maximiere den Gewinn unter Beachtung von Budget und Lagerkapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -100,15 +100,15 @@
       ],
       [
         {
-          "text": "Gold belegt {a21} Lagerplaetze",
+          "text": "Gold belegt {a21} Lagerplätze",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "Silber {a22} Lagerplaetze",
+          "text": "Silber {a22} Lagerplätze",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Lagerplaetzen",
+          "text": "{b2} verfügbaren Lagerplätzen",
           "bedeutung": "≤ {b2}"
         }
       ]

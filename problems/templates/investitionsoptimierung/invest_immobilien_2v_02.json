@@ -70,8 +70,8 @@
       "label": "Max. Verwaltungsstunden"
     }
   },
-  "beschreibung": "Ein Investor plant Immobilieninvestitionen. Wohnimmobilien erzielen {c1} % Mietrendite, Gewerbeimmobilien {c2} %. Pro Einheit Wohnimmobilie werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Gewerbe {a12} Einheiten. Das Investitionsbudget betraegt {b1} Tausend Euro. Die Verwaltung erfordert {a21} Stunden pro Wohneinheit und {a22} Stunden pro Gewerbeeinheit bei maximal {b2} verfuegbaren Verwaltungsstunden.",
-  "hinweis": "Maximiere die Gesamtmietrendite unter Beachtung von Budget und Verwaltungskapazitaet.",
+  "beschreibung": "Ein Investor plant Immobilieninvestitionen. Wohnimmobilien erzielen {c1} % Mietrendite, Gewerbeimmobilien {c2} %. Pro Einheit Wohnimmobilie werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Gewerbe {a12} Einheiten. Das Investitionsbudget beträgt {b1} Tausend Euro. Die Verwaltung erfordert {a21} Stunden pro Wohneinheit und {a22} Stunden pro Gewerbeeinheit bei maximal {b2} verfügbaren Verwaltungsstunden.",
+  "hinweis": "Maximiere die Gesamtmietrendite unter Beachtung von Budget und Verwaltungskapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -108,7 +108,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Verwaltungsstunden",
+          "text": "{b2} verfügbaren Verwaltungsstunden",
           "bedeutung": "≤ {b2}"
         }
       ]

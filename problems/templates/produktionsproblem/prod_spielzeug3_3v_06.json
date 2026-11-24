@@ -3,7 +3,7 @@
   "typ": "Produktionsproblem",
   "optimierungsziel": "maximieren",
   "numVars": 3,
-  "variablen": ["x1 = Anzahl Puppen", "x2 = Anzahl Baukaesten", "x3 = Anzahl Brettspiele"],
+  "variablen": ["x1 = Anzahl Puppen", "x2 = Anzahl Baukästen", "x3 = Anzahl Brettspiele"],
   "objective": ["c1", "c2", "c3"],
   "constraints": [
     {"type": "<=", "label": "Kunststoff", "row": ["a11","a12","a13"], "rhs": "b1"},
@@ -27,9 +27,9 @@
     "a33": {"min": 1, "max": 4,     "label": "Verpackungszeit/Brettspiel (min)"},
     "b3":  {"min": 60, "max": 240,  "label": "Verpackungsminuten"}
   },
-  "titel": "Spielzeughersteller – Puppen, Baukaesten und Brettspiele",
-  "beschreibung": "Ein Spielzeughersteller produziert Puppen, Baukaesten und Brettspiele. Jede Puppe bringt {c1} Euro Gewinn, jeder Baukasten {c2} Euro und jedes Brettspiel {c3} Euro. Eine Puppe benoetigt {a11} kg Kunststoff, ein Baukasten {a12} kg und ein Brettspiel {a13} kg. Der Kunststoffvorrat betraegt {b1} kg. Die Bemalung einer Puppe dauert {a21} Minuten, eines Baukastens {a22} Minuten und eines Brettspiels {a23} Minuten. Insgesamt stehen {b2} Bemalungsminuten bereit. Die Verpackung benoetigt {a31} Minuten pro Puppe, {a32} Minuten pro Baukasten und {a33} Minuten pro Brettspiel bei einer Kapazitaet von {b3} Minuten.",
-  "hinweis": "Drei Produkte mit Beschraenkungen bei Kunststoff, Bemalung und Verpackung.",
+  "titel": "Spielzeughersteller – Puppen, Baukästen und Brettspiele",
+  "beschreibung": "Ein Spielzeughersteller produziert Puppen, Baukästen und Brettspiele. Jede Puppe bringt {c1} Euro Gewinn, jeder Baukasten {c2} Euro und jedes Brettspiel {c3} Euro. Eine Puppe benötigt {a11} kg Kunststoff, ein Baukasten {a12} kg und ein Brettspiel {a13} kg. Der Kunststoffvorrat beträgt {b1} kg. Die Bemalung einer Puppe dauert {a21} Minuten, eines Baukastens {a22} Minuten und eines Brettspiels {a23} Minuten. Insgesamt stehen {b2} Bemalungsminuten bereit. Die Verpackung benötigt {a31} Minuten pro Puppe, {a32} Minuten pro Baukasten und {a33} Minuten pro Brettspiel bei einer Kapazität von {b3} Minuten.",
+  "hinweis": "Drei Produkte mit Beschränkungen bei Kunststoff, Bemalung und Verpackung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Puppe bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
@@ -38,7 +38,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Puppe benoetigt {a11} kg Kunststoff", "bedeutung": "{a11}x₁"},
+        {"text": "Puppe benötigt {a11} kg Kunststoff", "bedeutung": "{a11}x₁"},
         {"text": "Baukasten {a12} kg", "bedeutung": "+ {a12}x₂"},
         {"text": "Brettspiel {a13} kg", "bedeutung": "+ {a13}x₃"},
         {"text": "{b1} kg", "bedeutung": "≤ {b1}"}

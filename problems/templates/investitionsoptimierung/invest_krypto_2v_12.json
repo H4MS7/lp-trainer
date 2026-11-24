@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Volatilitaetstoleranz",
+      "label": "Volatilitätstoleranz",
       "row": [
         "a21",
         "a22"
@@ -57,21 +57,21 @@
     "a21": {
       "min": 5,
       "max": 12,
-      "label": "Volatilitaet Bitcoin"
+      "label": "Volatilität Bitcoin"
     },
     "a22": {
       "min": 4,
       "max": 10,
-      "label": "Volatilitaet Ethereum"
+      "label": "Volatilität Ethereum"
     },
     "b2": {
       "min": 60,
       "max": 250,
-      "label": "Max. Volatilitaetstoleranz"
+      "label": "Max. Volatilitätstoleranz"
     }
   },
-  "beschreibung": "Ein Krypto-Investor moechte in Bitcoin und Ethereum investieren. Bitcoin verspricht {c1} % Rendite, Ethereum {c2} %. Pro Einheit Bitcoin werden {a11} Kapitaleinheiten benoetigt, pro Einheit Ethereum {a12} Einheiten. Das Handelsbudget betraegt {b1} Tausend Euro. Die Volatilitaet liegt bei {a21} Punkten fuer Bitcoin und {a22} Punkten fuer Ethereum bei einer maximalen Volatilitaetstoleranz von {b2} Punkten.",
-  "hinweis": "Maximiere die Rendite unter Beachtung von Handelsbudget und Volatilitaetstoleranz.",
+  "beschreibung": "Ein Krypto-Investor möchte in Bitcoin und Ethereum investieren. Bitcoin verspricht {c1} % Rendite, Ethereum {c2} %. Pro Einheit Bitcoin werden {a11} Kapitaleinheiten benötigt, pro Einheit Ethereum {a12} Einheiten. Das Handelsbudget beträgt {b1} Tausend Euro. Die Volatilität liegt bei {a21} Punkten für Bitcoin und {a22} Punkten für Ethereum bei einer maximalen Volatilitätstoleranz von {b2} Punkten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Handelsbudget und Volatilitätstoleranz.",
   "highlights": {
     "zielfunktion": [
       {
@@ -86,7 +86,7 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Kapitaleinheiten benoetigt",
+          "text": "{a11} Kapitaleinheiten benötigt",
           "bedeutung": "{a11}x₁"
         },
         {
@@ -100,11 +100,11 @@
       ],
       [
         {
-          "text": "{a21} Punkten fuer Bitcoin",
+          "text": "{a21} Punkten für Bitcoin",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} Punkten fuer Ethereum",
+          "text": "{a22} Punkten für Ethereum",
           "bedeutung": "+ {a22}x₂"
         },
         {

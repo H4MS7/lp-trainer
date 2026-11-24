@@ -3,9 +3,9 @@
   "optimierungsziel": "maximieren",
   "numVars": 2,
   "id": "invest_bildung_2v_14",
-  "titel": "Bildungsinvestment – Praesenz- und Onlinekurse",
+  "titel": "Bildungsinvestment – Präsenz- und Onlinekurse",
   "variablen": [
-    "x1 = Investment in Praesenzangebote (Tsd. EUR)",
+    "x1 = Investment in Präsenzangebote (Tsd. EUR)",
     "x2 = Investment in Onlineangebote (Tsd. EUR)"
   ],
   "constraints": [
@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Dozentenkapazitaet",
+      "label": "Dozentenkapazität",
       "row": [
         "a21",
         "a22"
@@ -32,7 +32,7 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Lerneffekt Praesenz"
+      "label": "Lerneffekt Präsenz"
     },
     "c2": {
       "min": 3,
@@ -42,7 +42,7 @@
     "a11": {
       "min": 2,
       "max": 6,
-      "label": "Kosten Praesenz"
+      "label": "Kosten Präsenz"
     },
     "a12": {
       "min": 1,
@@ -57,7 +57,7 @@
     "a21": {
       "min": 3,
       "max": 7,
-      "label": "Dozenten Praesenz"
+      "label": "Dozenten Präsenz"
     },
     "a22": {
       "min": 1,
@@ -70,12 +70,12 @@
       "label": "Max. Dozentenstunden"
     }
   },
-  "beschreibung": "Eine Hochschule investiert in Praesenz- und Onlinelehre. Praesenzangebote erzielen {c1} Punkte Lerneffekt, Onlineangebote {c2} Punkte. Die Kosten betragen {a11} Einheiten pro Praesenzeinheit und {a12} Einheiten pro Onlineeinheit. Das Bildungsbudget liegt bei {b1} Tausend Euro. Pro Praesenzeinheit werden {a21} Dozentenstunden benoetigt, pro Onlineeinheit {a22} Stunden bei maximal {b2} verfuegbaren Dozentenstunden.",
-  "hinweis": "Maximiere den Lerneffekt unter Beachtung von Budget und Dozentenkapazitaet.",
+  "beschreibung": "Eine Hochschule investiert in Präsenz- und Onlinelehre. Präsenzangebote erzielen {c1} Punkte Lerneffekt, Onlineangebote {c2} Punkte. Die Kosten betragen {a11} Einheiten pro Präsenzeinheit und {a12} Einheiten pro Onlineeinheit. Das Bildungsbudget liegt bei {b1} Tausend Euro. Pro Präsenzeinheit werden {a21} Dozentenstunden benötigt, pro Onlineeinheit {a22} Stunden bei maximal {b2} verfügbaren Dozentenstunden.",
+  "hinweis": "Maximiere den Lerneffekt unter Beachtung von Budget und Dozentenkapazität.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Praesenzangebote erzielen {c1} Punkte Lerneffekt",
+        "text": "Präsenzangebote erzielen {c1} Punkte Lerneffekt",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -86,7 +86,7 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten pro Praesenzeinheit",
+          "text": "{a11} Einheiten pro Präsenzeinheit",
           "bedeutung": "{a11}x₁"
         },
         {
@@ -100,7 +100,7 @@
       ],
       [
         {
-          "text": "{a21} Dozentenstunden benoetigt",
+          "text": "{a21} Dozentenstunden benötigt",
           "bedeutung": "{a21}x₁"
         },
         {
@@ -108,7 +108,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Dozentenstunden",
+          "text": "{b2} verfügbaren Dozentenstunden",
           "bedeutung": "≤ {b2}"
         }
       ]

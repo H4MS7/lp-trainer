@@ -123,7 +123,7 @@
       "label": "Max. Transaktionskosten"
     }
   },
-  "beschreibung": "Ein Mischfonds-Manager verteilt Kapital auf drei Segmente. Dividendentitel erzielen {c1} % Rendite, Wachstumswerte {c2} % und Geldmarktanlagen {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Dividendentitel, {a12} fuer Wachstumswerte und {a13} fuer Geldmarkt bei einem Fondsvolumen von {b1} Tausend Euro. Die Schwankungsbreite liegt bei {a21} Punkten fuer Dividendentitel, {a22} fuer Wachstumswerte und {a23} fuer Geldmarkt bei maximal {b2} Schwankungspunkten. Die Transaktionskosten betragen {a31} Einheiten fuer Dividendentitel, {a32} fuer Wachstumswerte und {a33} fuer Geldmarkt bei maximal {b3} Kosteneinheiten.",
+  "beschreibung": "Ein Mischfonds-Manager verteilt Kapital auf drei Segmente. Dividendentitel erzielen {c1} % Rendite, Wachstumswerte {c2} % und Geldmarktanlagen {c3} %. Der Kapitalbedarf beträgt {a11} Einheiten für Dividendentitel, {a12} für Wachstumswerte und {a13} für Geldmarkt bei einem Fondsvolumen von {b1} Tausend Euro. Die Schwankungsbreite liegt bei {a21} Punkten für Dividendentitel, {a22} für Wachstumswerte und {a23} für Geldmarkt bei maximal {b2} Schwankungspunkten. Die Transaktionskosten betragen {a31} Einheiten für Dividendentitel, {a32} für Wachstumswerte und {a33} für Geldmarkt bei maximal {b3} Kosteneinheiten.",
   "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Volumen, Schwankung und Transaktionskosten.",
   "highlights": {
     "zielfunktion": [
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Dividendentitel",
+          "text": "{a11} Einheiten für Dividendentitel",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Wachstumswerte",
+          "text": "{a12} für Wachstumswerte",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Geldmarkt",
+          "text": "{a13} für Geldmarkt",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Punkten fuer Dividendentitel",
+          "text": "{a21} Punkten für Dividendentitel",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Wachstumswerte",
+          "text": "{a22} für Wachstumswerte",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Geldmarkt",
+          "text": "{a23} für Geldmarkt",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,15 +179,15 @@
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Dividendentitel",
+          "text": "{a31} Einheiten für Dividendentitel",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Wachstumswerte",
+          "text": "{a32} für Wachstumswerte",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Geldmarkt",
+          "text": "{a33} für Geldmarkt",
           "bedeutung": "+ {a33}x₃"
         },
         {

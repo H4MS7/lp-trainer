@@ -17,10 +17,10 @@
     "b1":  {"min": 30, "max": 150,  "label": "Glasvorrat (kg)"},
     "a21": {"min": 2, "max": 8,     "label": "Schleifzeit/Vase (min)"},
     "a22": {"min": 1, "max": 5,     "label": "Schleifzeit/Schale (min)"},
-    "b2":  {"min": 60, "max": 300,  "label": "Schleifkapazitaet (min)"}
+    "b2":  {"min": 60, "max": 300,  "label": "Schleifkapazität (min)"}
   },
   "titel": "Glasmanufaktur – Vasen und Schalen",
-  "beschreibung": "Eine Glasmanufaktur fertigt Vasen und Schalen. Jede Vase bringt {c1} Euro Gewinn, jede Schale {c2} Euro. Pro Vase werden {a11} kg Glas verbraucht, pro Schale {a12} kg. Der Glasvorrat betraegt {b1} kg. Das Schleifen einer Vase dauert {a21} Minuten, einer Schale {a22} Minuten. Die Schleifkapazitaet umfasst {b2} Minuten.",
+  "beschreibung": "Eine Glasmanufaktur fertigt Vasen und Schalen. Jede Vase bringt {c1} Euro Gewinn, jede Schale {c2} Euro. Pro Vase werden {a11} kg Glas verbraucht, pro Schale {a12} kg. Der Glasvorrat beträgt {b1} kg. Das Schleifen einer Vase dauert {a21} Minuten, einer Schale {a22} Minuten. Die Schleifkapazität umfasst {b2} Minuten.",
   "hinweis": "Formuliere die Zielfunktion und die zwei Nebenbedingungen.",
   "highlights": {
     "zielfunktion": [

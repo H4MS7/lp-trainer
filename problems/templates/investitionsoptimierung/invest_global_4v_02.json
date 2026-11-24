@@ -30,7 +30,7 @@
     },
     {
       "type": "<=",
-      "label": "Waehrungsrisiko",
+      "label": "Währungsrisiko",
       "row": [
         "a21",
         "a22",
@@ -52,7 +52,7 @@
     },
     {
       "type": "<=",
-      "label": "Betreuungskapazitaet",
+      "label": "Betreuungskapazität",
       "row": [
         "a41",
         "a42",
@@ -111,27 +111,27 @@
     "a21": {
       "min": 1,
       "max": 3,
-      "label": "Waehrung Europa"
+      "label": "Währung Europa"
     },
     "a22": {
       "min": 3,
       "max": 8,
-      "label": "Waehrung Asien"
+      "label": "Währung Asien"
     },
     "a23": {
       "min": 2,
       "max": 5,
-      "label": "Waehrung Nordamerika"
+      "label": "Währung Nordamerika"
     },
     "a24": {
       "min": 4,
       "max": 10,
-      "label": "Waehrung Emerging"
+      "label": "Währung Emerging"
     },
     "b2": {
       "min": 60,
       "max": 300,
-      "label": "Max. Waehrungsrisiko"
+      "label": "Max. Währungsrisiko"
     },
     "a31": {
       "min": 1,
@@ -184,8 +184,8 @@
       "label": "Max. Betreuungsstunden"
     }
   },
-  "beschreibung": "Ein globaler Fonds investiert in vier Regionen. Europa bringt {c1} % Rendite, Asien {c2} %, Nordamerika {c3} % und Emerging Markets {c4} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Europa, {a12} fuer Asien, {a13} fuer Nordamerika und {a14} fuer Emerging Markets bei einem Gesamtkapital von {b1} Tausend Euro. Das Waehrungsrisiko liegt bei {a21} Punkten fuer Europa, {a22} fuer Asien, {a23} fuer Nordamerika und {a24} fuer Emerging Markets bei maximal {b2} Risikopunkten. Das politische Risiko betraegt {a31} Punkte fuer Europa, {a32} fuer Asien, {a33} fuer Nordamerika und {a34} fuer Emerging Markets bei maximal {b3} Punkten. Die Betreuung erfordert {a41} Stunden fuer Europa, {a42} fuer Asien, {a43} fuer Nordamerika und {a44} fuer Emerging Markets bei maximal {b4} Stunden.",
-  "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Waehrungsrisiko, politischem Risiko und Betreuung.",
+  "beschreibung": "Ein globaler Fonds investiert in vier Regionen. Europa bringt {c1} % Rendite, Asien {c2} %, Nordamerika {c3} % und Emerging Markets {c4} %. Der Kapitalbedarf beträgt {a11} Einheiten für Europa, {a12} für Asien, {a13} für Nordamerika und {a14} für Emerging Markets bei einem Gesamtkapital von {b1} Tausend Euro. Das Währungsrisiko liegt bei {a21} Punkten für Europa, {a22} für Asien, {a23} für Nordamerika und {a24} für Emerging Markets bei maximal {b2} Risikopunkten. Das politische Risiko beträgt {a31} Punkte für Europa, {a32} für Asien, {a33} für Nordamerika und {a34} für Emerging Markets bei maximal {b3} Punkten. Die Betreuung erfordert {a41} Stunden für Europa, {a42} für Asien, {a43} für Nordamerika und {a44} für Emerging Markets bei maximal {b4} Stunden.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Kapital, Währungsrisiko, politischem Risiko und Betreuung.",
   "highlights": {
     "zielfunktion": [
       {
@@ -208,19 +208,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Europa",
+          "text": "{a11} Einheiten für Europa",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Asien",
+          "text": "{a12} für Asien",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Nordamerika",
+          "text": "{a13} für Nordamerika",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Emerging Markets",
+          "text": "{a14} für Emerging Markets",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -230,19 +230,19 @@
       ],
       [
         {
-          "text": "{a21} Punkten fuer Europa",
+          "text": "{a21} Punkten für Europa",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Asien",
+          "text": "{a22} für Asien",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Nordamerika",
+          "text": "{a23} für Nordamerika",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Emerging Markets",
+          "text": "{a24} für Emerging Markets",
           "bedeutung": "+ {a24}x₄"
         },
         {
@@ -252,19 +252,19 @@
       ],
       [
         {
-          "text": "{a31} Punkte fuer Europa",
+          "text": "{a31} Punkte für Europa",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Asien",
+          "text": "{a32} für Asien",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Nordamerika",
+          "text": "{a33} für Nordamerika",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Emerging Markets",
+          "text": "{a34} für Emerging Markets",
           "bedeutung": "+ {a34}x₄"
         },
         {
@@ -274,19 +274,19 @@
       ],
       [
         {
-          "text": "{a41} Stunden fuer Europa",
+          "text": "{a41} Stunden für Europa",
           "bedeutung": "{a41}x₁"
         },
         {
-          "text": "{a42} fuer Asien",
+          "text": "{a42} für Asien",
           "bedeutung": "+ {a42}x₂"
         },
         {
-          "text": "{a43} fuer Nordamerika",
+          "text": "{a43} für Nordamerika",
           "bedeutung": "+ {a43}x₃"
         },
         {
-          "text": "{a44} fuer Emerging Markets",
+          "text": "{a44} für Emerging Markets",
           "bedeutung": "+ {a44}x₄"
         },
         {

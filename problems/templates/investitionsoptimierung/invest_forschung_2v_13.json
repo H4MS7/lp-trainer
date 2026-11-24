@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Personalkapazitaet",
+      "label": "Personalkapazität",
       "row": [
         "a21",
         "a22"
@@ -70,8 +70,8 @@
       "label": "Max. Forscherpersonal"
     }
   },
-  "beschreibung": "Ein Unternehmen verteilt sein F&E-Budget auf Grundlagen- und angewandte Forschung. Grundlagenforschung bringt {c1} Innovationspunkte, angewandte Forschung {c2} Punkte. Der Mittelbedarf betraegt {a11} Einheiten pro Grundlagenprojekt und {a12} Einheiten pro Anwendungsprojekt. Das F&E-Gesamtbudget liegt bei {b1} Tausend Euro. Pro Grundlagenprojekt werden {a21} Forscher benoetigt, pro Anwendungsprojekt {a22} Forscher bei maximal {b2} verfuegbaren Forschern.",
-  "hinweis": "Maximiere die Innovationspunkte unter Beachtung von Budget und Personalkapazitaet.",
+  "beschreibung": "Ein Unternehmen verteilt sein F&E-Budget auf Grundlagen- und angewandte Forschung. Grundlagenforschung bringt {c1} Innovationspunkte, angewandte Forschung {c2} Punkte. Der Mittelbedarf beträgt {a11} Einheiten pro Grundlagenprojekt und {a12} Einheiten pro Anwendungsprojekt. Das F&E-Gesamtbudget liegt bei {b1} Tausend Euro. Pro Grundlagenprojekt werden {a21} Forscher benötigt, pro Anwendungsprojekt {a22} Forscher bei maximal {b2} verfügbaren Forschern.",
+  "hinweis": "Maximiere die Innovationspunkte unter Beachtung von Budget und Personalkapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -100,7 +100,7 @@
       ],
       [
         {
-          "text": "{a21} Forscher benoetigt",
+          "text": "{a21} Forscher benötigt",
           "bedeutung": "{a21}x₁"
         },
         {
@@ -108,7 +108,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Forschern",
+          "text": "{b2} verfügbaren Forschern",
           "bedeutung": "≤ {b2}"
         }
       ]

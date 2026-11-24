@@ -30,7 +30,7 @@
     },
     {
       "type": "<=",
-      "label": "Werkzeugverschleiss",
+      "label": "Werkzeugverschleiß",
       "row": [
         "a21",
         "a22",
@@ -41,7 +41,7 @@
     },
     {
       "type": "<=",
-      "label": "Waermeentwicklung",
+      "label": "Wärmeentwicklung",
       "row": [
         "a31",
         "a32",
@@ -55,7 +55,7 @@
     "c1": {
       "min": 4,
       "max": 11,
-      "label": "Oberflaechenguete Drehzahl"
+      "label": "Oberflächengüte Drehzahl"
     },
     "c2": {
       "min": 3,
@@ -100,60 +100,60 @@
     "a21": {
       "min": 2,
       "max": 6,
-      "label": "Verschleiss Drehzahl"
+      "label": "Verschleiß Drehzahl"
     },
     "a22": {
       "min": 3,
       "max": 9,
-      "label": "Verschleiss Vorschub"
+      "label": "Verschleiß Vorschub"
     },
     "a23": {
       "min": 4,
       "max": 10,
-      "label": "Verschleiss Tiefe"
+      "label": "Verschleiß Tiefe"
     },
     "a24": {
       "min": 1,
       "max": 2,
-      "label": "Verschleiss Spannkraft"
+      "label": "Verschleiß Spannkraft"
     },
     "b2": {
       "min": 80,
       "max": 400,
-      "label": "Max. Verschleisseinheiten"
+      "label": "Max. Verschleißeinheiten"
     },
     "a31": {
       "min": 3,
       "max": 7,
-      "label": "Waerme Drehzahl"
+      "label": "Wärme Drehzahl"
     },
     "a32": {
       "min": 1,
       "max": 4,
-      "label": "Waerme Vorschub"
+      "label": "Wärme Vorschub"
     },
     "a33": {
       "min": 2,
       "max": 5,
-      "label": "Waerme Tiefe"
+      "label": "Wärme Tiefe"
     },
     "a34": {
       "min": 1,
       "max": 2,
-      "label": "Waerme Spannkraft"
+      "label": "Wärme Spannkraft"
     },
     "b3": {
       "min": 60,
       "max": 300,
-      "label": "Max. Waermeeinheiten"
+      "label": "Max. Wärmeeinheiten"
     }
   },
-  "beschreibung": "Eine Drehmaschine wird ueber vier Parameter eingestellt. Die Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und die Spannkraft {c4} Rundlaufpunkte. Die Antriebsleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe und {a14} fuer Spannkraft bei maximal {b1} Antriebseinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe und {a24} fuer Spannkraft bei maximal {b2} Verschleisseinheiten. Die Waermeentwicklung betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe und {a34} fuer Spannkraft bei maximal {b3} Waermeeinheiten.",
-  "hinweis": "Maximiere die Bearbeitungsqualitaet unter Beachtung von Antrieb, Verschleiss und Waerme.",
+  "beschreibung": "Eine Drehmaschine wird über vier Parameter eingestellt. Die Spindeldrehzahl liefert {c1} Punkte Oberflächengüte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und die Spannkraft {c4} Rundlaufpunkte. Die Antriebsleistung beträgt {a11} Einheiten für Drehzahl, {a12} für Vorschub, {a13} für Tiefe und {a14} für Spannkraft bei maximal {b1} Antriebseinheiten. Der Verschleiß liegt bei {a21} Einheiten für Drehzahl, {a22} für Vorschub, {a23} für Tiefe und {a24} für Spannkraft bei maximal {b2} Verschleißeinheiten. Die Wärmeentwicklung beträgt {a31} Einheiten für Drehzahl, {a32} für Vorschub, {a33} für Tiefe und {a34} für Spannkraft bei maximal {b3} Wärmeeinheiten.",
+  "hinweis": "Maximiere die Bearbeitungsqualität unter Beachtung von Antrieb, Verschleiß und Wärme.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Spindeldrehzahl liefert {c1} Punkte Oberflaechenguete",
+        "text": "Spindeldrehzahl liefert {c1} Punkte Oberflächengüte",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -172,19 +172,19 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Drehzahl",
+          "text": "{a11} Einheiten für Drehzahl",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Vorschub",
+          "text": "{a12} für Vorschub",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Tiefe",
+          "text": "{a13} für Tiefe",
           "bedeutung": "+ {a13}x₃"
         },
         {
-          "text": "{a14} fuer Spannkraft",
+          "text": "{a14} für Spannkraft",
           "bedeutung": "+ {a14}x₄"
         },
         {
@@ -194,45 +194,45 @@
       ],
       [
         {
-          "text": "{a21} Einheiten fuer Drehzahl",
+          "text": "{a21} Einheiten für Drehzahl",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Vorschub",
+          "text": "{a22} für Vorschub",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Tiefe",
+          "text": "{a23} für Tiefe",
           "bedeutung": "+ {a23}x₃"
         },
         {
-          "text": "{a24} fuer Spannkraft",
+          "text": "{a24} für Spannkraft",
           "bedeutung": "+ {a24}x₄"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ],
       [
         {
-          "text": "{a31} Einheiten fuer Drehzahl",
+          "text": "{a31} Einheiten für Drehzahl",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Vorschub",
+          "text": "{a32} für Vorschub",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Tiefe",
+          "text": "{a33} für Tiefe",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{a34} fuer Spannkraft",
+          "text": "{a34} für Spannkraft",
           "bedeutung": "+ {a34}x₄"
         },
         {
-          "text": "{b3} Waermeeinheiten",
+          "text": "{b3} Wärmeeinheiten",
           "bedeutung": "≤ {b3}"
         }
       ]

@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Poliermittelverschleiss",
+      "label": "Poliermittelverschleiß",
       "row": [
         "a21",
         "a22"
@@ -36,7 +36,7 @@
     "c1": {
       "min": 4,
       "max": 10,
-      "label": "Glaette Druck"
+      "label": "Glätte Druck"
     },
     "c2": {
       "min": 3,
@@ -61,25 +61,25 @@
     "a21": {
       "min": 4,
       "max": 10,
-      "label": "Verschleiss Druck"
+      "label": "Verschleiß Druck"
     },
     "a22": {
       "min": 2,
       "max": 6,
-      "label": "Verschleiss Rotation"
+      "label": "Verschleiß Rotation"
     },
     "b2": {
       "min": 60,
       "max": 350,
-      "label": "Max. Poliermittelverschleiss"
+      "label": "Max. Poliermittelverschleiß"
     }
   },
-  "beschreibung": "Eine Poliermaschine wird ueber Polierdruck und Rotationsgeschwindigkeit eingestellt. Der Polierdruck liefert {c1} Punkte Glaette, die Rotation {c2} Punkte Glanz. Der Energieverbrauch betraegt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Rotationsstufe bei maximal {b1} Energieeinheiten. Der Poliermittelverschleiss liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Rotationsstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Oberflaechenqualitaet unter Beachtung von Energie und Poliermittelverschleiss.",
+  "beschreibung": "Eine Poliermaschine wird über Polierdruck und Rotationsgeschwindigkeit eingestellt. Der Polierdruck liefert {c1} Punkte Glätte, die Rotation {c2} Punkte Glanz. Der Energieverbrauch beträgt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Rotationsstufe bei maximal {b1} Energieeinheiten. Der Poliermittelverschleiß liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Rotationsstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Oberflächenqualität unter Beachtung von Energie und Poliermittelverschleiß.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Polierdruck liefert {c1} Punkte Glaette",
+        "text": "Polierdruck liefert {c1} Punkte Glätte",
         "bedeutung": "{c1} × x₁"
       },
       {
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

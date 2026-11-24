@@ -17,11 +17,11 @@
     "b1":  {"min": 30, "max": 120,  "label": "Tonvorrat (t)"},
     "a21": {"min": 2, "max": 5,     "label": "Brennzeit/Palette Mauerziegel (h)"},
     "a22": {"min": 3, "max": 7,     "label": "Brennzeit/Palette Dachziegel (h)"},
-    "b2":  {"min": 30, "max": 140,  "label": "Brennofenkapazitaet (h)"}
+    "b2":  {"min": 30, "max": 140,  "label": "Brennofenkapazität (h)"}
   },
   "titel": "Ziegelei – Mauer- und Dachziegel",
-  "beschreibung": "Eine Ziegelei produziert Mauer- und Dachziegel. Pro Palette Mauerziegel wird ein Gewinn von {c1} Euro erzielt, pro Palette Dachziegel {c2} Euro. Eine Palette Mauerziegel benoetigt {a11} Tonnen Ton, Dachziegel {a12} Tonnen. Der Tonvorrat betraegt {b1} Tonnen. Das Brennen einer Palette Mauerziegel dauert {a21} Stunden, Dachziegel {a22} Stunden. Die Brennofenkapazitaet liegt bei {b2} Stunden.",
-  "hinweis": "Modelliere den Gewinn und die Beschraenkungen durch Ton und Brennofen.",
+  "beschreibung": "Eine Ziegelei produziert Mauer- und Dachziegel. Pro Palette Mauerziegel wird ein Gewinn von {c1} Euro erzielt, pro Palette Dachziegel {c2} Euro. Eine Palette Mauerziegel benötigt {a11} Tonnen Ton, Dachziegel {a12} Tonnen. Der Tonvorrat beträgt {b1} Tonnen. Das Brennen einer Palette Mauerziegel dauert {a21} Stunden, Dachziegel {a22} Stunden. Die Brennofenkapazität liegt bei {b2} Stunden.",
+  "hinweis": "Modelliere den Gewinn und die Beschränkungen durch Ton und Brennofen.",
   "highlights": {
     "zielfunktion": [
       {"text": "Mauerziegel wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},
@@ -29,7 +29,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Mauerziegel benoetigt {a11} Tonnen Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Mauerziegel benötigt {a11} Tonnen Ton", "bedeutung": "{a11}x₁"},
         {"text": "Dachziegel {a12} Tonnen", "bedeutung": "+ {a12}x₂"},
         {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
       ],

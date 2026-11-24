@@ -52,7 +52,7 @@
     "b1": {
       "min": 50,
       "max": 200,
-      "label": "Verfuegbare Ersparnisse (Tsd. EUR)"
+      "label": "Verfügbare Ersparnisse (Tsd. EUR)"
     },
     "a21": {
       "min": 3,
@@ -70,7 +70,7 @@
       "label": "Max. Bindungsmonate"
     }
   },
-  "beschreibung": "Ein Sparer moechte sein Geld auf Festgeld und Tagesgeld verteilen. Festgeld bringt {c1} % Zinsen, Tagesgeld {c2} %. Pro Einheit Festgeld werden {a11} Kapitaleinheiten gebunden, pro Einheit Tagesgeld {a12} Einheiten. Die Gesamtersparnisse betragen {b1} Tausend Euro. Die Bindungsdauer liegt bei {a21} Monaten pro Festgeldeinheit und {a22} Monaten pro Tagesgeldeinheit bei maximal {b2} Bindungsmonaten insgesamt.",
+  "beschreibung": "Ein Sparer möchte sein Geld auf Festgeld und Tagesgeld verteilen. Festgeld bringt {c1} % Zinsen, Tagesgeld {c2} %. Pro Einheit Festgeld werden {a11} Kapitaleinheiten gebunden, pro Einheit Tagesgeld {a12} Einheiten. Die Gesamtersparnisse betragen {b1} Tausend Euro. Die Bindungsdauer liegt bei {a21} Monaten pro Festgeldeinheit und {a22} Monaten pro Tagesgeldeinheit bei maximal {b2} Bindungsmonaten insgesamt.",
   "hinweis": "Maximiere die Zinseinnahmen unter Beachtung von Ersparnissen und Bindungsdauer.",
   "highlights": {
     "zielfunktion": [

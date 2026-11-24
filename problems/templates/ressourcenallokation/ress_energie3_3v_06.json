@@ -3,7 +3,7 @@
   "typ": "Ressourcenallokation",
   "optimierungsziel": "maximieren",
   "numVars": 3,
-  "variablen": ["x1 = Solaranlagen", "x2 = Windraeder", "x3 = Biogasanlagen"],
+  "variablen": ["x1 = Solaranlagen", "x2 = Windräder", "x3 = Biogasanlagen"],
   "objective": ["c1", "c2", "c3"],
   "constraints": [
     {"type": "<=", "label": "Investitionsbudget", "row": ["a11","a12","a13"], "rhs": "b1"},
@@ -21,15 +21,15 @@
     "a21": {"min": 1, "max": 3,     "label": "Techniker/Solaranlage"},
     "a22": {"min": 2, "max": 4,     "label": "Techniker/Windrad"},
     "a23": {"min": 2, "max": 5,     "label": "Techniker/Biogasanlage"},
-    "b2":  {"min": 8, "max": 30,    "label": "Verfuegbare Techniker"},
+    "b2":  {"min": 8, "max": 30,    "label": "Verfügbare Techniker"},
     "a31": {"min": 1, "max": 2,     "label": "Genehmigungen/Solaranlage"},
     "a32": {"min": 1, "max": 3,     "label": "Genehmigungen/Windrad"},
     "a33": {"min": 2, "max": 4,     "label": "Genehmigungen/Biogasanlage"},
-    "b3":  {"min": 5, "max": 20,    "label": "Genehmigungskapazitaet"}
+    "b3":  {"min": 5, "max": 20,    "label": "Genehmigungskapazität"}
   },
   "titel": "Energiemix – Solar, Wind und Biogas",
-  "beschreibung": "Ein Energieversorger plant drei Anlagentypen: Solar, Wind und Biogas. Jede Solaranlage liefert {c1} MWh, jedes Windrad {c2} MWh und jede Biogasanlage {c3} MWh Ertrag. Die Investition betraegt {a11} Zehntausend Euro pro Solaranlage, {a12} Zehntausend Euro pro Windrad und {a13} Zehntausend Euro pro Biogasanlage. Das Investitionsbudget umfasst {b1} Zehntausend Euro. Pro Solaranlage werden {a21} Techniker benoetigt, pro Windrad {a22} und pro Biogasanlage {a23} Techniker. Es stehen {b2} Techniker bereit. An Genehmigungen erfordert eine Solaranlage {a31}, ein Windrad {a32} und eine Biogasanlage {a33} Verfahren. Die Genehmigungskapazitaet liegt bei {b3} Verfahren.",
-  "hinweis": "Drei Energiequellen mit Budget-, Techniker- und Genehmigungsbeschraenkung.",
+  "beschreibung": "Ein Energieversorger plant drei Anlagentypen: Solar, Wind und Biogas. Jede Solaranlage liefert {c1} MWh, jedes Windrad {c2} MWh und jede Biogasanlage {c3} MWh Ertrag. Die Investition beträgt {a11} Zehntausend Euro pro Solaranlage, {a12} Zehntausend Euro pro Windrad und {a13} Zehntausend Euro pro Biogasanlage. Das Investitionsbudget umfasst {b1} Zehntausend Euro. Pro Solaranlage werden {a21} Techniker benötigt, pro Windrad {a22} und pro Biogasanlage {a23} Techniker. Es stehen {b2} Techniker bereit. An Genehmigungen erfordert eine Solaranlage {a31}, ein Windrad {a32} und eine Biogasanlage {a33} Verfahren. Die Genehmigungskapazität liegt bei {b3} Verfahren.",
+  "hinweis": "Drei Energiequellen mit Budget-, Techniker- und Genehmigungsbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Solaranlage liefert {c1} MWh", "bedeutung": "{c1} × x₁"},
@@ -44,7 +44,7 @@
         {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
       ],
       [
-        {"text": "{a21} Techniker benoetigt", "bedeutung": "{a21}x₁"},
+        {"text": "{a21} Techniker benötigt", "bedeutung": "{a21}x₁"},
         {"text": "Windrad {a22}", "bedeutung": "+ {a22}x₂"},
         {"text": "Biogasanlage {a23} Techniker", "bedeutung": "+ {a23}x₃"},
         {"text": "{b2} Techniker bereit", "bedeutung": "≤ {b2}"}

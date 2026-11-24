@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Managementgebuehren",
+      "label": "Managementgebühren",
       "row": [
         "a21",
         "a22"
@@ -52,26 +52,26 @@
     "b1": {
       "min": 80,
       "max": 350,
-      "label": "Verfuegbare Anlagesumme (Tsd. EUR)"
+      "label": "Verfügbare Anlagesumme (Tsd. EUR)"
     },
     "a21": {
       "min": 2,
       "max": 6,
-      "label": "Gebuehren Aktienfonds"
+      "label": "Gebühren Aktienfonds"
     },
     "a22": {
       "min": 1,
       "max": 3,
-      "label": "Gebuehren Rentenfonds"
+      "label": "Gebühren Rentenfonds"
     },
     "b2": {
       "min": 50,
       "max": 180,
-      "label": "Max. Gebuehrenbudget"
+      "label": "Max. Gebührenbudget"
     }
   },
-  "beschreibung": "Ein Vermogensberater verteilt Kundengelder auf Aktien- und Rentenfonds. Der Aktienfonds erzielt {c1} % Rendite, der Rentenfonds {c2} %. Pro Einheit Aktienfonds sind {a11} Kapitaleinheiten noetig, pro Einheit Rentenfonds {a12} Einheiten. Die Anlagesumme betraegt {b1} Tausend Euro. Die Managementgebuehren betragen {a21} Einheiten pro Aktienfondsanteil und {a22} Einheiten pro Rentenfondsanteil bei einem Gebuehrenbudget von {b2} Einheiten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Anlagesumme und Gebuehrenbudget.",
+  "beschreibung": "Ein Vermogensberater verteilt Kundengelder auf Aktien- und Rentenfonds. Der Aktienfonds erzielt {c1} % Rendite, der Rentenfonds {c2} %. Pro Einheit Aktienfonds sind {a11} Kapitaleinheiten nötig, pro Einheit Rentenfonds {a12} Einheiten. Die Anlagesumme beträgt {b1} Tausend Euro. Die Managementgebühren betragen {a21} Einheiten pro Aktienfondsanteil und {a22} Einheiten pro Rentenfondsanteil bei einem Gebührenbudget von {b2} Einheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Anlagesumme und Gebührenbudget.",
   "highlights": {
     "zielfunktion": [
       {
@@ -86,7 +86,7 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Kapitaleinheiten noetig",
+          "text": "{a11} Kapitaleinheiten nötig",
           "bedeutung": "{a11}x₁"
         },
         {

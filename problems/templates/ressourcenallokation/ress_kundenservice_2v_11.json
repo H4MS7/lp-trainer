@@ -20,8 +20,8 @@
     "b2":  {"min": 30, "max": 120,  "label": "Softwarelizenzen"}
   },
   "titel": "Kundenservice – Telefon und Chat",
-  "beschreibung": "Die Kundenservice-Abteilung verteilt Kapazitaeten auf Telefonsupport und Chat-Support. Jede Stunde Telefonsupport erzeugt {c1} Zufriedenheitspunkte, jede Stunde Chat-Support {c2} Punkte. Telefonsupport benoetigt {a11} Mitarbeiterstunden pro Stunde, Chat-Support {a12} Mitarbeiterstunde. Es stehen {b1} Mitarbeiterstunden bereit. An Softwarelizenzen werden {a21} pro Stunde Telefon und {a22} pro Stunde Chat benoetigt. Es gibt {b2} Lizenzen.",
-  "hinweis": "Maximiere die Kundenzufriedenheit mit Mitarbeiter- und Lizenzbeschraenkung.",
+  "beschreibung": "Die Kundenservice-Abteilung verteilt Kapazitäten auf Telefonsupport und Chat-Support. Jede Stunde Telefonsupport erzeugt {c1} Zufriedenheitspunkte, jede Stunde Chat-Support {c2} Punkte. Telefonsupport benötigt {a11} Mitarbeiterstunden pro Stunde, Chat-Support {a12} Mitarbeiterstunde. Es stehen {b1} Mitarbeiterstunden bereit. An Softwarelizenzen werden {a21} pro Stunde Telefon und {a22} pro Stunde Chat benötigt. Es gibt {b2} Lizenzen.",
+  "hinweis": "Maximiere die Kundenzufriedenheit mit Mitarbeiter- und Lizenzbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Telefonsupport erzeugt {c1} Zufriedenheitspunkte", "bedeutung": "{c1} × x₁"},
@@ -29,7 +29,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Telefonsupport benoetigt {a11} Mitarbeiterstunden", "bedeutung": "{a11}x₁"},
+        {"text": "Telefonsupport benötigt {a11} Mitarbeiterstunden", "bedeutung": "{a11}x₁"},
         {"text": "Chat-Support {a12} Mitarbeiterstunde", "bedeutung": "+ {a12}x₂"},
         {"text": "{b1} Mitarbeiterstunden bereit", "bedeutung": "≤ {b1}"}
       ],

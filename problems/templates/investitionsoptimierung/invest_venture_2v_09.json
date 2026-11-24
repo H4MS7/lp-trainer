@@ -70,8 +70,8 @@
       "label": "Max. Betreuungsstunden"
     }
   },
-  "beschreibung": "Ein Venture-Capital-Fonds investiert in E-Commerce und FinTech. E-Commerce verspricht {c1} % Rendite, FinTech {c2} %. Pro Einheit E-Commerce werden {a11} Kapitaleinheiten benoetigt, pro Einheit FinTech {a12} Einheiten. Das Fondskapital betraegt {b1} Tausend Euro. Der Betreuungsaufwand liegt bei {a21} Stunden pro E-Commerce-Einheit und {a22} Stunden pro FinTech-Einheit bei maximal {b2} Betreuungsstunden pro Woche.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital und Betreuungskapazitaet.",
+  "beschreibung": "Ein Venture-Capital-Fonds investiert in E-Commerce und FinTech. E-Commerce verspricht {c1} % Rendite, FinTech {c2} %. Pro Einheit E-Commerce werden {a11} Kapitaleinheiten benötigt, pro Einheit FinTech {a12} Einheiten. Das Fondskapital beträgt {b1} Tausend Euro. Der Betreuungsaufwand liegt bei {a21} Stunden pro E-Commerce-Einheit und {a22} Stunden pro FinTech-Einheit bei maximal {b2} Betreuungsstunden pro Woche.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital und Betreuungskapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -86,7 +86,7 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Kapitaleinheiten benoetigt",
+          "text": "{a11} Kapitaleinheiten benötigt",
           "bedeutung": "{a11}x₁"
         },
         {

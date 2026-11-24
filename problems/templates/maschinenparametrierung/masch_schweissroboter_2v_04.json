@@ -7,9 +7,9 @@
     "c2"
   ],
   "id": "masch_schweissroboter_2v_04",
-  "titel": "Schweissroboter – Stromstaerke und Drahtvorschub",
+  "titel": "Schweißroboter – Stromstärke und Drahtvorschub",
   "variablen": [
-    "x1 = Stromstaerke (Stufen)",
+    "x1 = Stromstärke (Stufen)",
     "x2 = Drahtvorschub (Stufen)"
   ],
   "constraints": [
@@ -41,7 +41,7 @@
     "c2": {
       "min": 3,
       "max": 10,
-      "label": "Schweissgeschwindigkeit Draht"
+      "label": "Schweißgeschwindigkeit Draht"
     },
     "a11": {
       "min": 3,
@@ -74,16 +74,16 @@
       "label": "Max. Spritzereinheiten"
     }
   },
-  "beschreibung": "Ein Schweissroboter wird ueber Stromstaerke und Drahtvorschub eingestellt. Die Stromstaerke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Schweissgeschwindigkeit. Die Energieaufnahme betraegt {a11} Einheiten pro Stromstufe und {a12} Einheiten pro Drahtstufe bei maximal {b1} Energieeinheiten. Die Spritzerbildung liegt bei {a21} Einheiten pro Stromstufe und {a22} Einheiten pro Drahtstufe bei maximal {b2} Spritzereinheiten.",
-  "hinweis": "Maximiere die Schweissqualitaet unter Beachtung von Energie und Spritzerbildung.",
+  "beschreibung": "Ein Schweißroboter wird über Stromstärke und Drahtvorschub eingestellt. Die Stromstärke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Schweißgeschwindigkeit. Die Energieaufnahme beträgt {a11} Einheiten pro Stromstufe und {a12} Einheiten pro Drahtstufe bei maximal {b1} Energieeinheiten. Die Spritzerbildung liegt bei {a21} Einheiten pro Stromstufe und {a22} Einheiten pro Drahtstufe bei maximal {b2} Spritzereinheiten.",
+  "hinweis": "Maximiere die Schweißqualität unter Beachtung von Energie und Spritzerbildung.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Stromstaerke liefert {c1} Punkte Nahtfestigkeit",
+        "text": "Stromstärke liefert {c1} Punkte Nahtfestigkeit",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Drahtvorschub {c2} Punkte Schweissgeschwindigkeit",
+        "text": "Drahtvorschub {c2} Punkte Schweißgeschwindigkeit",
         "bedeutung": "{c2} × x₂"
       }
     ],

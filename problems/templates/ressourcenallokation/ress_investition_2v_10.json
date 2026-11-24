@@ -20,8 +20,8 @@
     "b2":  {"min": 30, "max": 120,  "label": "Verwaltungsstunden"}
   },
   "titel": "Investmentplanung – Aktien und Immobilien",
-  "beschreibung": "Ein Investor verteilt Kapital auf einen Aktienfonds und einen Immobilienfonds. Pro 1000 Euro im Aktienfonds wird eine Rendite von {c1} Prozent erwartet, im Immobilienfonds {c2} Prozent. Jede Einheit Aktienfonds erfordert {a11} Tausend Euro Kapital, Immobilienfonds {a12} Tausend Euro. Das Gesamtkapital betraegt {b1} Tausend Euro. Die Verwaltung benoetigt {a21} Stunden pro Aktieneinheit und {a22} Stunden pro Immobilieneinheit. Es stehen {b2} Verwaltungsstunden bereit.",
-  "hinweis": "Maximiere die Rendite unter Kapital- und Verwaltungsbeschraenkung.",
+  "beschreibung": "Ein Investor verteilt Kapital auf einen Aktienfonds und einen Immobilienfonds. Pro 1000 Euro im Aktienfonds wird eine Rendite von {c1} Prozent erwartet, im Immobilienfonds {c2} Prozent. Jede Einheit Aktienfonds erfordert {a11} Tausend Euro Kapital, Immobilienfonds {a12} Tausend Euro. Das Gesamtkapital beträgt {b1} Tausend Euro. Die Verwaltung benötigt {a21} Stunden pro Aktieneinheit und {a22} Stunden pro Immobilieneinheit. Es stehen {b2} Verwaltungsstunden bereit.",
+  "hinweis": "Maximiere die Rendite unter Kapital- und Verwaltungsbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Aktienfonds wird eine Rendite von {c1} Prozent erwartet", "bedeutung": "{c1} × x₁"},

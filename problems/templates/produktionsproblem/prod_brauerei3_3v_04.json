@@ -8,7 +8,7 @@
   "constraints": [
     {"type": "<=", "label": "Malz", "row": ["a11","a12","a13"], "rhs": "b1"},
     {"type": "<=", "label": "Hopfen", "row": ["a21","a22","a23"], "rhs": "b2"},
-    {"type": "<=", "label": "Gaerkapazitaet", "row": ["a31","a32","a33"], "rhs": "b3"}
+    {"type": "<=", "label": "Gärkapazität", "row": ["a31","a32","a33"], "rhs": "b3"}
   ],
   "coefficients": {
     "c1":  {"min": 20, "max": 60,   "label": "Gewinn/hl Pils (€)"},
@@ -22,14 +22,14 @@
     "a22": {"min": 1, "max": 3,     "label": "Hopfen/hl Weizen (kg)"},
     "a23": {"min": 1, "max": 3,     "label": "Hopfen/hl Helles (kg)"},
     "b2":  {"min": 30, "max": 120,  "label": "Hopfenvorrat (kg)"},
-    "a31": {"min": 2, "max": 5,     "label": "Gaertankzeit/hl Pils (h)"},
-    "a32": {"min": 3, "max": 7,     "label": "Gaertankzeit/hl Weizen (h)"},
-    "a33": {"min": 2, "max": 4,     "label": "Gaertankzeit/hl Helles (h)"},
-    "b3":  {"min": 60, "max": 250,  "label": "Gaerkapazitaet (h)"}
+    "a31": {"min": 2, "max": 5,     "label": "Gärtankzeit/hl Pils (h)"},
+    "a32": {"min": 3, "max": 7,     "label": "Gärtankzeit/hl Weizen (h)"},
+    "a33": {"min": 2, "max": 4,     "label": "Gärtankzeit/hl Helles (h)"},
+    "b3":  {"min": 60, "max": 250,  "label": "Gärkapazität (h)"}
   },
   "titel": "Brauerei – Pils, Weizen und Helles",
-  "beschreibung": "Eine Brauerei stellt drei Biersorten her: Pils, Weizen und Helles. Der Gewinn betraegt {c1} Euro pro Hektoliter Pils, {c2} Euro pro Hektoliter Weizen und {c3} Euro pro Hektoliter Helles. Ein Hektoliter Pils benoetigt {a11} kg Malz, Weizen {a12} kg und Helles {a13} kg. Der Malzvorrat umfasst {b1} kg. Beim Hopfen verbraucht Pils {a21} kg, Weizen {a22} kg und Helles {a23} kg pro Hektoliter. Es sind {b2} kg Hopfen verfuegbar. Die Gaerung dauert {a31} Stunden fuer Pils, {a32} Stunden fuer Weizen und {a33} Stunden fuer Helles. Die Gaerkapazitaet betraegt {b3} Stunden.",
-  "hinweis": "Drei Biersorten mit Beschraenkungen bei Malz, Hopfen und Gaerkapazitaet.",
+  "beschreibung": "Eine Brauerei stellt drei Biersorten her: Pils, Weizen und Helles. Der Gewinn beträgt {c1} Euro pro Hektoliter Pils, {c2} Euro pro Hektoliter Weizen und {c3} Euro pro Hektoliter Helles. Ein Hektoliter Pils benötigt {a11} kg Malz, Weizen {a12} kg und Helles {a13} kg. Der Malzvorrat umfasst {b1} kg. Beim Hopfen verbraucht Pils {a21} kg, Weizen {a22} kg und Helles {a23} kg pro Hektoliter. Es sind {b2} kg Hopfen verfügbar. Die Gärung dauert {a31} Stunden für Pils, {a32} Stunden für Weizen und {a33} Stunden für Helles. Die Gärkapazität beträgt {b3} Stunden.",
+  "hinweis": "Drei Biersorten mit Beschränkungen bei Malz, Hopfen und Gärkapazität.",
   "highlights": {
     "zielfunktion": [
       {"text": "{c1} Euro pro Hektoliter Pils", "bedeutung": "{c1} × x₁"},
@@ -38,7 +38,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "Pils benoetigt {a11} kg Malz", "bedeutung": "{a11}x₁"},
+        {"text": "Pils benötigt {a11} kg Malz", "bedeutung": "{a11}x₁"},
         {"text": "Weizen {a12} kg", "bedeutung": "+ {a12}x₂"},
         {"text": "Helles {a13} kg", "bedeutung": "+ {a13}x₃"},
         {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
@@ -47,12 +47,12 @@
         {"text": "Pils {a21} kg", "bedeutung": "{a21}x₁"},
         {"text": "Weizen {a22} kg", "bedeutung": "+ {a22}x₂"},
         {"text": "Helles {a23} kg", "bedeutung": "+ {a23}x₃"},
-        {"text": "{b2} kg Hopfen verfuegbar", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} kg Hopfen verfügbar", "bedeutung": "≤ {b2}"}
       ],
       [
-        {"text": "{a31} Stunden fuer Pils", "bedeutung": "{a31}x₁"},
-        {"text": "{a32} Stunden fuer Weizen", "bedeutung": "+ {a32}x₂"},
-        {"text": "{a33} Stunden fuer Helles", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a31} Stunden für Pils", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden für Weizen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden für Helles", "bedeutung": "+ {a33}x₃"},
         {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
       ]
     ]

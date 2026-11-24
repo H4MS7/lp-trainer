@@ -20,7 +20,7 @@
     },
     {
       "type": "<=",
-      "label": "Due-Diligence-Kapazitaet",
+      "label": "Due-Diligence-Kapazität",
       "row": [
         "a21",
         "a22"
@@ -52,7 +52,7 @@
     "b1": {
       "min": 100,
       "max": 500,
-      "label": "Verfuegbares Fondskapital (Tsd. EUR)"
+      "label": "Verfügbares Fondskapital (Tsd. EUR)"
     },
     "a21": {
       "min": 2,
@@ -70,8 +70,8 @@
       "label": "Max. Due-Diligence-Tage"
     }
   },
-  "beschreibung": "Ein Risikokapitalgeber moechte in zwei Startups investieren. Das Software-Startup verspricht {c1} % Gewinn, das Biotech-Startup {c2} %. Pro Einheit Software werden {a11} Kapitaleinheiten benoetigt, pro Einheit Biotech {a12} Einheiten. Das Fondskapital betraegt {b1} Tausend Euro. Die Due-Diligence-Pruefung erfordert {a21} Tage pro Software-Einheit und {a22} Tage pro Biotech-Einheit bei maximal {b2} verfuegbaren Prueftagen.",
-  "hinweis": "Maximiere den erwarteten Gesamtgewinn unter Beachtung von Kapital und Pruefkapazitaet.",
+  "beschreibung": "Ein Risikokapitalgeber möchte in zwei Startups investieren. Das Software-Startup verspricht {c1} % Gewinn, das Biotech-Startup {c2} %. Pro Einheit Software werden {a11} Kapitaleinheiten benötigt, pro Einheit Biotech {a12} Einheiten. Das Fondskapital beträgt {b1} Tausend Euro. Die Due-Diligence-Prüfung erfordert {a21} Tage pro Software-Einheit und {a22} Tage pro Biotech-Einheit bei maximal {b2} verfügbaren Prüftagen.",
+  "hinweis": "Maximiere den erwarteten Gesamtgewinn unter Beachtung von Kapital und Prüfkapazität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -86,7 +86,7 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Kapitaleinheiten benoetigt",
+          "text": "{a11} Kapitaleinheiten benötigt",
           "bedeutung": "{a11}x₁"
         },
         {
@@ -108,7 +108,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} verfuegbaren Prueftagen",
+          "text": "{b2} verfügbaren Prüftagen",
           "bedeutung": "≤ {b2}"
         }
       ]

@@ -3,7 +3,7 @@
   "typ": "Produktionsproblem",
   "optimierungsziel": "maximieren",
   "numVars": 4,
-  "variablen": ["x1 = Anzahl Tische", "x2 = Anzahl Stuehle", "x3 = Anzahl Schraenke", "x4 = Anzahl Betten"],
+  "variablen": ["x1 = Anzahl Tische", "x2 = Anzahl Stühle", "x3 = Anzahl Schränke", "x4 = Anzahl Betten"],
   "objective": ["c1", "c2", "c3", "c4"],
   "constraints": [
     {"type": "<=", "label": "Holz", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
@@ -31,9 +31,9 @@
     "a34": {"min": 1, "max": 4,     "label": "Lackierzeit/Bett (h)"},
     "b3":  {"min": 30, "max": 120,  "label": "Lackierstunden"}
   },
-  "titel": "Moebelfabrik – Tische, Stuehle, Schraenke und Betten",
-  "beschreibung": "Eine Moebelfabrik stellt vier Produkte her: Tische, Stuehle, Schraenke und Betten. Der Gewinn betraegt {c1} Euro pro Tisch, {c2} Euro pro Stuhl, {c3} Euro pro Schrank und {c4} Euro pro Bett. Fuer einen Tisch werden {a11} m² Holz benoetigt, fuer einen Stuhl {a12} m², fuer einen Schrank {a13} m² und fuer ein Bett {a14} m². Der Holzvorrat belaeuft sich auf {b1} m². Die Fertigung dauert {a21} Arbeitsstunden pro Tisch, {a22} Arbeitsstunden pro Stuhl, {a23} Arbeitsstunden pro Schrank und {a24} Arbeitsstunden pro Bett bei {b2} verfuegbaren Arbeitsstunden. Die Lackierung benoetigt {a31} Lackierstunden pro Tisch, {a32} Lackierstunden pro Stuhl, {a33} Lackierstunden pro Schrank und {a34} Lackierstunden pro Bett. Die Lackierkapazitaet umfasst {b3} Lackierstunden.",
-  "hinweis": "Vier Produkte mit drei Beschraenkungen: Holz, Arbeitszeit und Lackierung.",
+  "titel": "Möbelfabrik – Tische, Stühle, Schränke und Betten",
+  "beschreibung": "Eine Möbelfabrik stellt vier Produkte her: Tische, Stühle, Schränke und Betten. Der Gewinn beträgt {c1} Euro pro Tisch, {c2} Euro pro Stuhl, {c3} Euro pro Schrank und {c4} Euro pro Bett. Für einen Tisch werden {a11} m² Holz benötigt, für einen Stuhl {a12} m², für einen Schrank {a13} m² und für ein Bett {a14} m². Der Holzvorrat beläuft sich auf {b1} m². Die Fertigung dauert {a21} Arbeitsstunden pro Tisch, {a22} Arbeitsstunden pro Stuhl, {a23} Arbeitsstunden pro Schrank und {a24} Arbeitsstunden pro Bett bei {b2} verfügbaren Arbeitsstunden. Die Lackierung benötigt {a31} Lackierstunden pro Tisch, {a32} Lackierstunden pro Stuhl, {a33} Lackierstunden pro Schrank und {a34} Lackierstunden pro Bett. Die Lackierkapazität umfasst {b3} Lackierstunden.",
+  "hinweis": "Vier Produkte mit drei Beschränkungen: Holz, Arbeitszeit und Lackierung.",
   "highlights": {
     "zielfunktion": [
       {"text": "{c1} Euro pro Tisch", "bedeutung": "{c1} × x₁"},
@@ -43,7 +43,7 @@
     ],
     "nebenbedingungen": [
       [
-        {"text": "{a11} m² Holz benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "{a11} m² Holz benötigt", "bedeutung": "{a11}x₁"},
         {"text": "Stuhl {a12} m²", "bedeutung": "+ {a12}x₂"},
         {"text": "Schrank {a13} m²", "bedeutung": "+ {a13}x₃"},
         {"text": "Bett {a14} m²", "bedeutung": "+ {a14}x₄"},
@@ -54,7 +54,7 @@
         {"text": "{a22} Arbeitsstunden pro Stuhl", "bedeutung": "+ {a22}x₂"},
         {"text": "{a23} Arbeitsstunden pro Schrank", "bedeutung": "+ {a23}x₃"},
         {"text": "{a24} Arbeitsstunden pro Bett", "bedeutung": "+ {a24}x₄"},
-        {"text": "{b2} verfuegbaren Arbeitsstunden", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} verfügbaren Arbeitsstunden", "bedeutung": "≤ {b2}"}
       ],
       [
         {"text": "{a31} Lackierstunden pro Tisch", "bedeutung": "{a31}x₁"},

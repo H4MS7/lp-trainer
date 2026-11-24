@@ -33,7 +33,7 @@
   },
   "titel": "Konferenzplanung – Workshops, Keynotes, Diskussionen und Networking",
   "beschreibung": "Ein Konferenzorganisator plant vier Formattypen: Workshops, Keynotes, Podiumsdiskussionen und Networking-Sessions. Jeder Workshop erzielt {c1} Zufriedenheitspunkte, jede Keynote {c2}, jede Podiumsdiskussion {c3} und jede Networking-Session {c4} Punkte. Ein Workshop belegt {a11} Zeitslots, eine Keynote {a12}, eine Podiumsdiskussion {a13} und eine Networking-Session {a14} Zeitslots. Es stehen {b1} Zeitslots bereit. Die Referentenkosten betragen {a21} Tausend Euro pro Workshop, {a22} Tausend Euro pro Keynote, {a23} Tausend Euro pro Podiumsdiskussion und {a24} Tausend Euro pro Networking-Session bei {b2} Tausend Euro Referentenbudget. Die Technik erfordert {a31} Stunden pro Workshop, {a32} Stunden pro Keynote, {a33} Stunden pro Podiumsdiskussion und {a34} Stunden pro Networking-Session bei {b3} Technikstunden.",
-  "hinweis": "Vier Konferenzformate mit Zeitslot-, Referenten- und Technikbeschraenkung.",
+  "hinweis": "Vier Konferenzformate mit Zeitslot-, Referenten- und Technikbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Workshop erzielt {c1} Zufriedenheitspunkte", "bedeutung": "{c1} × x₁"},

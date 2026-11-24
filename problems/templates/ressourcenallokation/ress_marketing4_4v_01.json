@@ -29,11 +29,11 @@
     "a32": {"min": 1, "max": 3,     "label": "Contentteile/1000€ Suchmaschinen"},
     "a33": {"min": 3, "max": 6,     "label": "Contentteile/1000€ Newsletter"},
     "a34": {"min": 1, "max": 4,     "label": "Contentteile/1000€ Messen"},
-    "b3":  {"min": 20, "max": 80,   "label": "Contentkapazitaet (Teile)"}
+    "b3":  {"min": 20, "max": 80,   "label": "Contentkapazität (Teile)"}
   },
-  "titel": "Marketingkanaele – Social Media, Suche, Newsletter und Messen",
-  "beschreibung": "Die Marketingleitung verteilt Budget auf vier Kanaele: Social Media, Suchmaschinen, Newsletter und Messen. Social Media generiert {c1} Leads pro 1000 Euro, Suchmaschinen {c2} Leads, Newsletter {c3} Leads und Messen {c4} Leads. Jeder Kanal kostet {a11} Tausend Euro Social Media, {a12} Tausend Euro Suchmaschinen, {a13} Tausend Euro Newsletter und {a14} Tausend Euro Messen pro Einheit. Das Gesamtbudget betraegt {b1} Tausend Euro. An Personalstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit Suchmaschinen, {a23} pro Einheit Newsletter und {a24} pro Einheit Messen benoetigt bei {b2} verfuegbaren Stunden. Die Contentproduktion erfordert {a31} Teile pro Einheit Social Media, {a32} pro Einheit Suchmaschinen, {a33} pro Einheit Newsletter und {a34} pro Einheit Messen bei {b3} Contentkapazitaet.",
-  "hinweis": "Vier Marketingkanaele mit Budget-, Personal- und Contentbeschraenkung.",
+  "titel": "Marketingkanäle – Social Media, Suche, Newsletter und Messen",
+  "beschreibung": "Die Marketingleitung verteilt Budget auf vier Kanäle: Social Media, Suchmaschinen, Newsletter und Messen. Social Media generiert {c1} Leads pro 1000 Euro, Suchmaschinen {c2} Leads, Newsletter {c3} Leads und Messen {c4} Leads. Jeder Kanal kostet {a11} Tausend Euro Social Media, {a12} Tausend Euro Suchmaschinen, {a13} Tausend Euro Newsletter und {a14} Tausend Euro Messen pro Einheit. Das Gesamtbudget beträgt {b1} Tausend Euro. An Personalstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit Suchmaschinen, {a23} pro Einheit Newsletter und {a24} pro Einheit Messen benötigt bei {b2} verfügbaren Stunden. Die Contentproduktion erfordert {a31} Teile pro Einheit Social Media, {a32} pro Einheit Suchmaschinen, {a33} pro Einheit Newsletter und {a34} pro Einheit Messen bei {b3} Contentkapazität.",
+  "hinweis": "Vier Marketingkanäle mit Budget-, Personal- und Contentbeschränkung.",
   "highlights": {
     "zielfunktion": [
       {"text": "Social Media generiert {c1} Leads", "bedeutung": "{c1} × x₁"},
@@ -54,14 +54,14 @@
         {"text": "{a22} pro Einheit Suchmaschinen", "bedeutung": "+ {a22}x₂"},
         {"text": "{a23} pro Einheit Newsletter", "bedeutung": "+ {a23}x₃"},
         {"text": "{a24} pro Einheit Messen", "bedeutung": "+ {a24}x₄"},
-        {"text": "{b2} verfuegbaren Stunden", "bedeutung": "≤ {b2}"}
+        {"text": "{b2} verfügbaren Stunden", "bedeutung": "≤ {b2}"}
       ],
       [
         {"text": "{a31} Teile pro Einheit Social Media", "bedeutung": "{a31}x₁"},
         {"text": "{a32} pro Einheit Suchmaschinen", "bedeutung": "+ {a32}x₂"},
         {"text": "{a33} pro Einheit Newsletter", "bedeutung": "+ {a33}x₃"},
         {"text": "{a34} pro Einheit Messen", "bedeutung": "+ {a34}x₄"},
-        {"text": "{b3} Contentkapazitaet", "bedeutung": "≤ {b3}"}
+        {"text": "{b3} Contentkapazität", "bedeutung": "≤ {b3}"}
       ]
     ]
   }

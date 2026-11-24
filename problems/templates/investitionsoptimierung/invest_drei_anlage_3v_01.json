@@ -37,7 +37,7 @@
     },
     {
       "type": "<=",
-      "label": "Liquiditaetsbedarf",
+      "label": "Liquiditätsbedarf",
       "row": [
         "a31",
         "a32",
@@ -80,7 +80,7 @@
     "b1": {
       "min": 100,
       "max": 400,
-      "label": "Verfuegbares Kapital (Tsd. EUR)"
+      "label": "Verfügbares Kapital (Tsd. EUR)"
     },
     "a21": {
       "min": 4,
@@ -105,26 +105,26 @@
     "a31": {
       "min": 3,
       "max": 8,
-      "label": "Illiquiditaet Aktien"
+      "label": "Illiquidität Aktien"
     },
     "a32": {
       "min": 1,
       "max": 2,
-      "label": "Illiquiditaet Anleihen"
+      "label": "Illiquidität Anleihen"
     },
     "a33": {
       "min": 5,
       "max": 10,
-      "label": "Illiquiditaet Immobilienfonds"
+      "label": "Illiquidität Immobilienfonds"
     },
     "b3": {
       "min": 60,
       "max": 250,
-      "label": "Max. Illiquiditaetsbudget"
+      "label": "Max. Illiquiditätsbudget"
     }
   },
-  "beschreibung": "Ein Anleger verteilt sein Kapital auf drei Anlageklassen. Aktien erzielen {c1} % Rendite, Anleihen {c2} % und Immobilienfonds {c3} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen und {a13} fuer Immobilienfonds. Das Gesamtkapital liegt bei {b1} Tausend Euro. Das Risiko betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen und {a23} fuer Immobilienfonds bei maximal {b2} Risikopunkten. Die Illiquiditaet liegt bei {a31} Punkten fuer Aktien, {a32} fuer Anleihen und {a33} fuer Immobilienfonds bei maximal {b3} Illiquiditaetspunkten.",
-  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Liquiditaet.",
+  "beschreibung": "Ein Anleger verteilt sein Kapital auf drei Anlageklassen. Aktien erzielen {c1} % Rendite, Anleihen {c2} % und Immobilienfonds {c3} %. Die Kapitalbindung beträgt {a11} Einheiten für Aktien, {a12} für Anleihen und {a13} für Immobilienfonds. Das Gesamtkapital liegt bei {b1} Tausend Euro. Das Risiko beträgt {a21} Punkte für Aktien, {a22} für Anleihen und {a23} für Immobilienfonds bei maximal {b2} Risikopunkten. Die Illiquidität liegt bei {a31} Punkten für Aktien, {a32} für Anleihen und {a33} für Immobilienfonds bei maximal {b3} Illiquiditätspunkten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Liquidität.",
   "highlights": {
     "zielfunktion": [
       {
@@ -143,15 +143,15 @@
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten fuer Aktien",
+          "text": "{a11} Einheiten für Aktien",
           "bedeutung": "{a11}x₁"
         },
         {
-          "text": "{a12} fuer Anleihen",
+          "text": "{a12} für Anleihen",
           "bedeutung": "+ {a12}x₂"
         },
         {
-          "text": "{a13} fuer Immobilienfonds",
+          "text": "{a13} für Immobilienfonds",
           "bedeutung": "+ {a13}x₃"
         },
         {
@@ -161,15 +161,15 @@
       ],
       [
         {
-          "text": "{a21} Punkte fuer Aktien",
+          "text": "{a21} Punkte für Aktien",
           "bedeutung": "{a21}x₁"
         },
         {
-          "text": "{a22} fuer Anleihen",
+          "text": "{a22} für Anleihen",
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{a23} fuer Immobilienfonds",
+          "text": "{a23} für Immobilienfonds",
           "bedeutung": "+ {a23}x₃"
         },
         {
@@ -179,19 +179,19 @@
       ],
       [
         {
-          "text": "{a31} Punkten fuer Aktien",
+          "text": "{a31} Punkten für Aktien",
           "bedeutung": "{a31}x₁"
         },
         {
-          "text": "{a32} fuer Anleihen",
+          "text": "{a32} für Anleihen",
           "bedeutung": "+ {a32}x₂"
         },
         {
-          "text": "{a33} fuer Immobilienfonds",
+          "text": "{a33} für Immobilienfonds",
           "bedeutung": "+ {a33}x₃"
         },
         {
-          "text": "{b3} Illiquiditaetspunkten",
+          "text": "{b3} Illiquiditätspunkten",
           "bedeutung": "≤ {b3}"
         }
       ]

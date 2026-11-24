@@ -24,7 +24,7 @@
     },
     {
       "type": "<=",
-      "label": "Messerverschleiss",
+      "label": "Messerverschleiß",
       "row": [
         "a21",
         "a22"
@@ -41,7 +41,7 @@
     "c2": {
       "min": 3,
       "max": 10,
-      "label": "Schnittqualitaet Druck"
+      "label": "Schnittqualität Druck"
     },
     "a11": {
       "min": 2,
@@ -61,21 +61,21 @@
     "a21": {
       "min": 2,
       "max": 6,
-      "label": "Verschleiss Geschwindigkeit"
+      "label": "Verschleiß Geschwindigkeit"
     },
     "a22": {
       "min": 4,
       "max": 10,
-      "label": "Verschleiss Druck"
+      "label": "Verschleiß Druck"
     },
     "b2": {
       "min": 60,
       "max": 350,
-      "label": "Max. Messerverschleiss"
+      "label": "Max. Messerverschleiß"
     }
   },
-  "beschreibung": "Eine Schneidanlage wird ueber Schnittgeschwindigkeit und Messerdruck parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, der Messerdruck {c2} Punkte Schnittqualitaet. Die Antriebsleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Druckstufe bei maximal {b1} Antriebseinheiten. Der Messerverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Druckstufe bei maximal {b2} Verschleisseinheiten.",
-  "hinweis": "Maximiere die Schneidleistung unter Beachtung von Antrieb und Messerverschleiss.",
+  "beschreibung": "Eine Schneidanlage wird über Schnittgeschwindigkeit und Messerdruck parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, der Messerdruck {c2} Punkte Schnittqualität. Die Antriebsleistung beträgt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Druckstufe bei maximal {b1} Antriebseinheiten. Der Messerverschleiß liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Druckstufe bei maximal {b2} Verschleißeinheiten.",
+  "hinweis": "Maximiere die Schneidleistung unter Beachtung von Antrieb und Messerverschleiß.",
   "highlights": {
     "zielfunktion": [
       {
@@ -83,7 +83,7 @@
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Messerdruck {c2} Punkte Schnittqualitaet",
+        "text": "Messerdruck {c2} Punkte Schnittqualität",
         "bedeutung": "{c2} × x₂"
       }
     ],
@@ -112,7 +112,7 @@
           "bedeutung": "+ {a22}x₂"
         },
         {
-          "text": "{b2} Verschleisseinheiten",
+          "text": "{b2} Verschleißeinheiten",
           "bedeutung": "≤ {b2}"
         }
       ]

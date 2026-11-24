@@ -7,9 +7,9 @@
     "c2"
   ],
   "id": "masch_beschichtung_2v_10",
-  "titel": "Beschichtungsanlage – Spruehrate und Abstand",
+  "titel": "Beschichtungsanlage – Sprührate und Abstand",
   "variablen": [
-    "x1 = Spruehrate (Stufen)",
+    "x1 = Sprührate (Stufen)",
     "x2 = Abstand (Stufen)"
   ],
   "constraints": [
@@ -36,17 +36,17 @@
     "c1": {
       "min": 4,
       "max": 11,
-      "label": "Deckung Spruehrate"
+      "label": "Deckung Sprührate"
     },
     "c2": {
       "min": 3,
       "max": 9,
-      "label": "Gleichmaessigkeit Abstand"
+      "label": "Gleichmäßigkeit Abstand"
     },
     "a11": {
       "min": 3,
       "max": 8,
-      "label": "Lack pro Spruehstufe"
+      "label": "Lack pro Sprühstufe"
     },
     "a12": {
       "min": 1,
@@ -61,7 +61,7 @@
     "a21": {
       "min": 2,
       "max": 7,
-      "label": "Overspray Spruehrate"
+      "label": "Overspray Sprührate"
     },
     "a22": {
       "min": 3,
@@ -74,23 +74,23 @@
       "label": "Max. Overspray"
     }
   },
-  "beschreibung": "Eine Beschichtungsanlage wird ueber Spruehrate und Abstand eingestellt. Die Spruehrate liefert {c1} Punkte Deckung, der Abstand {c2} Punkte Gleichmaessigkeit. Der Lackverbrauch betraegt {a11} Einheiten pro Spruehstufe und {a12} Einheiten pro Abstandsstufe bei maximal {b1} Lackeinheiten. Der Overspray liegt bei {a21} Einheiten pro Spruehstufe und {a22} Einheiten pro Abstandsstufe bei maximal {b2} Oversprayeinheiten.",
-  "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack und Overspray.",
+  "beschreibung": "Eine Beschichtungsanlage wird über Sprührate und Abstand eingestellt. Die Sprührate liefert {c1} Punkte Deckung, der Abstand {c2} Punkte Gleichmäßigkeit. Der Lackverbrauch beträgt {a11} Einheiten pro Sprühstufe und {a12} Einheiten pro Abstandsstufe bei maximal {b1} Lackeinheiten. Der Overspray liegt bei {a21} Einheiten pro Sprühstufe und {a22} Einheiten pro Abstandsstufe bei maximal {b2} Oversprayeinheiten.",
+  "hinweis": "Maximiere die Beschichtungsqualität unter Beachtung von Lack und Overspray.",
   "highlights": {
     "zielfunktion": [
       {
-        "text": "Spruehrate liefert {c1} Punkte Deckung",
+        "text": "Sprührate liefert {c1} Punkte Deckung",
         "bedeutung": "{c1} × x₁"
       },
       {
-        "text": "Abstand {c2} Punkte Gleichmaessigkeit",
+        "text": "Abstand {c2} Punkte Gleichmäßigkeit",
         "bedeutung": "{c2} × x₂"
       }
     ],
     "nebenbedingungen": [
       [
         {
-          "text": "{a11} Einheiten pro Spruehstufe",
+          "text": "{a11} Einheiten pro Sprühstufe",
           "bedeutung": "{a11}x₁"
         },
         {
@@ -104,7 +104,7 @@
       ],
       [
         {
-          "text": "{a21} Einheiten pro Spruehstufe",
+          "text": "{a21} Einheiten pro Sprühstufe",
           "bedeutung": "{a21}x₁"
         },
         {
