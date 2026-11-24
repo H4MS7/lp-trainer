@@ -1,0 +1,726 @@
+[
+  {
+    "titel": "Elektronikfertigung (Platinen und Sensoren)",
+    "beschreibung": "Ein Elektronikunternehmen fertigt Platinen und Sensoren. Jede Platine erzielt einen Gewinn von 12€, jeder Sensor bringt 18€ Gewinn. Für die Bestückung benötigt eine Platine 3 Minuten Maschinenzeit und ein Sensor 6 Minuten Maschinenzeit. Insgesamt stehen 1800 Minuten Maschinenzeit pro Woche zur Verfügung. An Lötzinn werden pro Platine 2 Gramm und pro Sensor 3 Gramm verbraucht; der wöchentliche Vorrat beträgt 1500 Gramm. Zusätzlich muss jede Einheit verpackt werden: Eine Platine belegt 0,5 Lagerplätze, ein Sensor 1,5 Lagerplätze, wobei maximal 600 Lagerplätze vorhanden sind.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Platinen pro Woche", "x2 = Anzahl Sensoren pro Woche"],
+    "zielfunktion": "Z = 12x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≤ 1800 (Maschinenzeit)",
+      "2x1 + 3x2 ≤ 1500 (Lötzinn)",
+      "0,5x1 + 1,5x2 ≤ 600 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Ressourcen: Maschinenzeit, Lötzinn und Lagerplatz. Stelle die Nebenbedingungen einzeln auf und maximiere den Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 12€", "bedeutung": "12 × x₁"},
+        {"text": "18€ Gewinn", "bedeutung": "18 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "eine Platine 3 Minuten Maschinenzeit", "bedeutung": "3x₁"},
+          {"text": "ein Sensor 6 Minuten Maschinenzeit", "bedeutung": "+ 6x₂"},
+          {"text": "1800 Minuten Maschinenzeit", "bedeutung": "≤ 1800"}
+        ],
+        [
+          {"text": "pro Platine 2 Gramm", "bedeutung": "2x₁"},
+          {"text": "pro Sensor 3 Gramm", "bedeutung": "+ 3x₂"},
+          {"text": "1500 Gramm", "bedeutung": "≤ 1500"}
+        ],
+        [
+          {"text": "0,5 Lagerplätze", "bedeutung": "0,5x₁"},
+          {"text": "1,5 Lagerplätze", "bedeutung": "+ 1,5x₂"},
+          {"text": "600 Lagerplätze", "bedeutung": "≤ 600"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kosmetikfabrik (Lippenstift und Mascara)",
+    "beschreibung": "Eine Kosmetikfabrik produziert Lippenstifte und Mascaras. Pro Lippenstift beträgt der Deckungsbeitrag 4,50€, pro Mascara 6€. Die Abfüllung benötigt je Lippenstift 2 Minuten und je Mascara 3 Minuten Arbeitszeit; insgesamt stehen täglich 480 Minuten Arbeitszeit zur Verfügung. An Pigmentpaste werden 5 Gramm pro Lippenstift und 3 Gramm pro Mascara benötigt, bei einem Tagesvorrat von 750 Gramm. Die Verpackungsanlage schafft maximal 200 Einheiten pro Tag, wobei jeder Lippenstift und jede Mascara als jeweils eine Einheit zählt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Lippenstifte pro Tag", "x2 = Anzahl Mascaras pro Tag"],
+    "zielfunktion": "Z = 4,5x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 480 (Arbeitszeit)",
+      "5x1 + 3x2 ≤ 750 (Pigmentpaste)",
+      "x1 + x2 ≤ 200 (Verpackungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verpackungsanlage limitiert die Gesamtzahl beider Produkte. Stelle zunächst alle drei Nebenbedingungen auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag 4,50€", "bedeutung": "4,5 × x₁"},
+        {"text": "6€", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "je Lippenstift 2 Minuten", "bedeutung": "2x₁"},
+          {"text": "je Mascara 3 Minuten Arbeitszeit", "bedeutung": "+ 3x₂"},
+          {"text": "480 Minuten Arbeitszeit", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "5 Gramm pro Lippenstift", "bedeutung": "5x₁"},
+          {"text": "3 Gramm pro Mascara", "bedeutung": "+ 3x₂"},
+          {"text": "750 Gramm", "bedeutung": "≤ 750"}
+        ],
+        [
+          {"text": "maximal 200 Einheiten pro Tag", "bedeutung": "x₁ + x₂ ≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Keramikwerk (Fliesen und Dachziegel)",
+    "beschreibung": "Ein Keramikwerk stellt Fliesen und Dachziegel her. Der Gewinn beträgt 1,80€ pro Fliese und 2,50€ pro Dachziegel. Für die Formgebung benötigt man pro Fliese 0,4 kg Ton und pro Dachziegel 0,8 kg Ton; das Werk verfügt über 960 kg Ton pro Schicht. Die Brennofenkapazität erlaubt pro Schicht 1200 Stück, wobei eine Fliese einen Ofenplatz und ein Dachziegel einen Ofenplatz belegt. Die Trocknungsanlage kann pro Fliese 1,5 Minuten und pro Dachziegel 3 Minuten aufwenden; insgesamt stehen 2400 Minuten Trocknungszeit zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Fliesen pro Schicht", "x2 = Anzahl Dachziegel pro Schicht"],
+    "zielfunktion": "Z = 1,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,8x2 ≤ 960 (Ton)",
+      "x1 + x2 ≤ 1200 (Brennofen)",
+      "1,5x1 + 3x2 ≤ 2400 (Trocknungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Produktion: Ton, Brennofenkapazität und Trocknungszeit. Vergiss nicht, alle Koeffizienten korrekt abzulesen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "1,80€ pro Fliese", "bedeutung": "1,8 × x₁"},
+        {"text": "2,50€ pro Dachziegel", "bedeutung": "2,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Fliese 0,4 kg Ton", "bedeutung": "0,4x₁"},
+          {"text": "pro Dachziegel 0,8 kg Ton", "bedeutung": "+ 0,8x₂"},
+          {"text": "960 kg Ton", "bedeutung": "≤ 960"}
+        ],
+        [
+          {"text": "1200 Stück", "bedeutung": "x₁ + x₂ ≤ 1200"}
+        ],
+        [
+          {"text": "pro Fliese 1,5 Minuten", "bedeutung": "1,5x₁"},
+          {"text": "pro Dachziegel 3 Minuten", "bedeutung": "+ 3x₂"},
+          {"text": "2400 Minuten Trocknungszeit", "bedeutung": "≤ 2400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Süßwarenfabrik (Pralinen und Bonbons)",
+    "beschreibung": "Eine Süßwarenfabrik stellt Pralinen und Bonbons her. Pro Praline wird ein Deckungsbeitrag von 0,90€ erzielt, pro Bonbon 0,40€. Für die Herstellung werden pro Praline 15 Gramm Kakao und pro Bonbon 5 Gramm Kakao benötigt; der Tagesvorrat liegt bei 4500 Gramm Kakao. An Zucker verbraucht eine Praline 10 Gramm und ein Bonbon 12 Gramm, bei einem Vorrat von 4800 Gramm Zucker pro Tag. Die Verpackungskapazität der Anlage beträgt 400 Stück pro Tag, wobei jede Praline und jedes Bonbon einzeln verpackt wird.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Pralinen pro Tag", "x2 = Anzahl Bonbons pro Tag"],
+    "zielfunktion": "Z = 0,9x1 + 0,4x2 (max)",
+    "nebenbedingungen": [
+      "15x1 + 5x2 ≤ 4500 (Kakao)",
+      "10x1 + 12x2 ≤ 4800 (Zucker)",
+      "x1 + x2 ≤ 400 (Verpackungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Ressourcenverbräuche: Kakao, Zucker und die begrenzte Verpackungskapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 0,90€", "bedeutung": "0,9 × x₁"},
+        {"text": "0,40€", "bedeutung": "0,4 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Praline 15 Gramm Kakao", "bedeutung": "15x₁"},
+          {"text": "pro Bonbon 5 Gramm Kakao", "bedeutung": "+ 5x₂"},
+          {"text": "4500 Gramm Kakao", "bedeutung": "≤ 4500"}
+        ],
+        [
+          {"text": "eine Praline 10 Gramm", "bedeutung": "10x₁"},
+          {"text": "ein Bonbon 12 Gramm", "bedeutung": "+ 12x₂"},
+          {"text": "4800 Gramm Zucker", "bedeutung": "≤ 4800"}
+        ],
+        [
+          {"text": "400 Stück pro Tag", "bedeutung": "x₁ + x₂ ≤ 400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Polsterei (Sessel und Sofas)",
+    "beschreibung": "Eine Polsterei fertigt Sessel und Sofas. Der Gewinn pro Sessel beträgt 85€ und pro Sofa 210€. Für einen Sessel werden 3,5 Stunden Arbeitszeit benötigt, für ein Sofa 8 Stunden. Pro Woche stehen insgesamt 280 Stunden Arbeitszeit zur Verfügung. An Polsterstoff verbraucht ein Sessel 4 Meter und ein Sofa 9 Meter; der Wochenbestand beträgt 360 Meter Polsterstoff. Das Lager bietet Platz für maximal 50 fertige Möbelstücke pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Sessel pro Woche", "x2 = Anzahl Sofas pro Woche"],
+    "zielfunktion": "Z = 85x1 + 210x2 (max)",
+    "nebenbedingungen": [
+      "3,5x1 + 8x2 ≤ 280 (Arbeitszeit)",
+      "4x1 + 9x2 ≤ 360 (Polsterstoff)",
+      "x1 + x2 ≤ 50 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen limitieren die Produktion: Arbeitszeit, Polsterstoff und Lagerplatz. Formuliere alle Ungleichungen und bestimme den optimalen Produktionsplan.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn pro Sessel beträgt 85€", "bedeutung": "85 × x₁"},
+        {"text": "210€", "bedeutung": "210 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3,5 Stunden Arbeitszeit", "bedeutung": "3,5x₁"},
+          {"text": "ein Sofa 8 Stunden", "bedeutung": "+ 8x₂"},
+          {"text": "280 Stunden Arbeitszeit", "bedeutung": "≤ 280"}
+        ],
+        [
+          {"text": "ein Sessel 4 Meter", "bedeutung": "4x₁"},
+          {"text": "ein Sofa 9 Meter", "bedeutung": "+ 9x₂"},
+          {"text": "360 Meter Polsterstoff", "bedeutung": "≤ 360"}
+        ],
+        [
+          {"text": "maximal 50 fertige Möbelstücke", "bedeutung": "x₁ + x₂ ≤ 50"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lampenfabrik (Stehlampen und Tischlampen)",
+    "beschreibung": "Eine Lampenfabrik produziert Stehlampen und Tischlampen. Jede Stehlampe bringt einen Deckungsbeitrag von 35€, jede Tischlampe 22€. Die Montage einer Stehlampe dauert 45 Minuten, die einer Tischlampe 20 Minuten. Pro Woche stehen 3600 Minuten Montagezeit zur Verfügung. An Metall werden pro Stehlampe 2,5 kg und pro Tischlampe 1 kg verbraucht; der Vorrat beträgt 250 kg Metall pro Woche. Die Qualitätsprüfung kann wöchentlich maximal 150 Lampen kontrollieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Stehlampen pro Woche", "x2 = Anzahl Tischlampen pro Woche"],
+    "zielfunktion": "Z = 35x1 + 22x2 (max)",
+    "nebenbedingungen": [
+      "45x1 + 20x2 ≤ 3600 (Montagezeit)",
+      "2,5x1 + x2 ≤ 250 (Metall)",
+      "x1 + x2 ≤ 150 (Qualitätsprüfung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben Montagezeit und Metallverbrauch begrenzt auch die Qualitätsprüfung die Gesamtzahl der Lampen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 35€", "bedeutung": "35 × x₁"},
+        {"text": "22€", "bedeutung": "22 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Stehlampe dauert 45 Minuten", "bedeutung": "45x₁"},
+          {"text": "Tischlampe 20 Minuten", "bedeutung": "+ 20x₂"},
+          {"text": "3600 Minuten Montagezeit", "bedeutung": "≤ 3600"}
+        ],
+        [
+          {"text": "pro Stehlampe 2,5 kg", "bedeutung": "2,5x₁"},
+          {"text": "pro Tischlampe 1 kg", "bedeutung": "+ x₂"},
+          {"text": "250 kg Metall", "bedeutung": "≤ 250"}
+        ],
+        [
+          {"text": "maximal 150 Lampen", "bedeutung": "x₁ + x₂ ≤ 150"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rucksackmanufaktur (Wanderrucksäcke und Tagesrucksäcke)",
+    "beschreibung": "Eine Rucksackmanufaktur stellt Wanderrucksäcke und Tagesrucksäcke her. Pro Wanderrucksack beträgt der Gewinn 28€, pro Tagesrucksack 16€. Für einen Wanderrucksack werden 1,2 Meter Nylonstoff benötigt, für einen Tagesrucksack 0,7 Meter. Pro Woche stehen 180 Meter Nylonstoff zur Verfügung. Das Nähen eines Wanderrucksacks erfordert 50 Minuten Arbeitszeit, das eines Tagesrucksacks 25 Minuten; die wöchentliche Arbeitszeit beträgt 5000 Minuten. Reißverschlüsse und Schnallen begrenzen die Produktion: Pro Wanderrucksack werden 4 Schnallen benötigt, pro Tagesrucksack 2 Schnallen, bei einem Vorrat von 480 Schnallen pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Wanderrucksäcke pro Woche", "x2 = Anzahl Tagesrucksäcke pro Woche"],
+    "zielfunktion": "Z = 28x1 + 16x2 (max)",
+    "nebenbedingungen": [
+      "1,2x1 + 0,7x2 ≤ 180 (Nylonstoff)",
+      "50x1 + 25x2 ≤ 5000 (Arbeitszeit)",
+      "4x1 + 2x2 ≤ 480 (Schnallen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei verschiedene Ressourcen sind knapp: Nylonstoff, Arbeitszeit und Schnallen. Bestimme für jede Ressource die Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 28€", "bedeutung": "28 × x₁"},
+        {"text": "16€", "bedeutung": "16 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1,2 Meter Nylonstoff", "bedeutung": "1,2x₁"},
+          {"text": "0,7 Meter", "bedeutung": "+ 0,7x₂"},
+          {"text": "180 Meter Nylonstoff", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "50 Minuten Arbeitszeit", "bedeutung": "50x₁"},
+          {"text": "25 Minuten", "bedeutung": "+ 25x₂"},
+          {"text": "5000 Minuten", "bedeutung": "≤ 5000"}
+        ],
+        [
+          {"text": "4 Schnallen", "bedeutung": "4x₁"},
+          {"text": "2 Schnallen", "bedeutung": "+ 2x₂"},
+          {"text": "480 Schnallen", "bedeutung": "≤ 480"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Uhrmacher (Armbanduhren und Wanduhren)",
+    "beschreibung": "Ein Uhrmacher fertigt Armbanduhren und Wanduhren. Eine Armbanduhr bringt 120€ Gewinn, eine Wanduhr 75€ Gewinn. Für eine Armbanduhr werden 2,5 Stunden Feinmontage benötigt, für eine Wanduhr 1,5 Stunden Feinmontage; insgesamt stehen pro Monat 300 Stunden Feinmontage zur Verfügung. An Uhrwerken werden je Armbanduhr 1 Stück und je Wanduhr 1 Stück benötigt, wobei monatlich 160 Uhrwerke verfügbar sind. Die Verglasung begrenzt die Produktion zusätzlich: Pro Armbanduhr wird 1 Saphirglas benötigt und pro Wanduhr werden 2 Gläser benötigt; es stehen monatlich 200 Gläser zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Armbanduhren pro Monat", "x2 = Anzahl Wanduhren pro Monat"],
+    "zielfunktion": "Z = 120x1 + 75x2 (max)",
+    "nebenbedingungen": [
+      "2,5x1 + 1,5x2 ≤ 300 (Feinmontage)",
+      "x1 + x2 ≤ 160 (Uhrwerke)",
+      "x1 + 2x2 ≤ 200 (Gläser)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass die Wanduhr doppelt so viele Gläser wie die Armbanduhr benötigt. Stelle alle drei Nebenbedingungen auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "120€ Gewinn", "bedeutung": "120 × x₁"},
+        {"text": "75€ Gewinn", "bedeutung": "75 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2,5 Stunden Feinmontage", "bedeutung": "2,5x₁"},
+          {"text": "1,5 Stunden Feinmontage", "bedeutung": "+ 1,5x₂"},
+          {"text": "300 Stunden Feinmontage", "bedeutung": "≤ 300"}
+        ],
+        [
+          {"text": "160 Uhrwerke", "bedeutung": "x₁ + x₂ ≤ 160"}
+        ],
+        [
+          {"text": "1 Saphirglas", "bedeutung": "x₁"},
+          {"text": "2 Gläser benötigt", "bedeutung": "+ 2x₂"},
+          {"text": "200 Gläser zur Verfügung", "bedeutung": "≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fotostudio (Passfotos und Porträts)",
+    "beschreibung": "Ein Fotostudio bietet Passfotos und Porträts an. Pro Passfoto-Auftrag beträgt der Erlös 15€, pro Porträt-Auftrag 55€. Ein Passfoto-Auftrag dauert 10 Minuten Fotografierzeit, ein Porträt-Auftrag 30 Minuten. Pro Tag stehen 480 Minuten Fotografierzeit zur Verfügung. Die Nachbearbeitung benötigt pro Passfoto-Auftrag 5 Minuten und pro Porträt 25 Minuten Bildbearbeitungszeit; insgesamt sind 400 Minuten Bildbearbeitungszeit am Tag verfügbar. Zudem können täglich maximal 30 Aufträge terminiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Passfoto-Aufträge pro Tag", "x2 = Anzahl Porträt-Aufträge pro Tag"],
+    "zielfunktion": "Z = 15x1 + 55x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 30x2 ≤ 480 (Fotografierzeit)",
+      "5x1 + 25x2 ≤ 400 (Bildbearbeitungszeit)",
+      "x1 + x2 ≤ 30 (Terminkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben der Fotografierzeit und Bildbearbeitungszeit begrenzt die Terminkapazität die Gesamtzahl der Aufträge.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös 15€", "bedeutung": "15 × x₁"},
+        {"text": "55€", "bedeutung": "55 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 Minuten Fotografierzeit", "bedeutung": "10x₁"},
+          {"text": "30 Minuten", "bedeutung": "+ 30x₂"},
+          {"text": "480 Minuten Fotografierzeit", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "5 Minuten", "bedeutung": "5x₁"},
+          {"text": "25 Minuten Bildbearbeitungszeit", "bedeutung": "+ 25x₂"},
+          {"text": "400 Minuten Bildbearbeitungszeit", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "maximal 30 Aufträge", "bedeutung": "x₁ + x₂ ≤ 30"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Surfboard-Werkstatt (Shortboards und Longboards)",
+    "beschreibung": "Eine Surfboard-Werkstatt baut Shortboards und Longboards. Pro Shortboard wird ein Gewinn von 95€ erzielt, pro Longboard 140€. Das Shapen eines Shortboards erfordert 3 Stunden Arbeitszeit, ein Longboard 5 Stunden Arbeitszeit. Wöchentlich stehen 240 Stunden Arbeitszeit zur Verfügung. An Glasfaser verbraucht ein Shortboard 2 kg und ein Longboard 3,5 kg; der Wochenvorrat beträgt 175 kg Glasfaser. Der Trockenraum fasst maximal 60 Boards gleichzeitig pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Shortboards pro Woche", "x2 = Anzahl Longboards pro Woche"],
+    "zielfunktion": "Z = 95x1 + 140x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 240 (Arbeitszeit)",
+      "2x1 + 3,5x2 ≤ 175 (Glasfaser)",
+      "x1 + x2 ≤ 60 (Trockenraum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Beschränkungen: Arbeitszeit, Glasfaservorrat und den begrenzten Trockenraum.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 95€", "bedeutung": "95 × x₁"},
+        {"text": "140€", "bedeutung": "140 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Shortboards erfordert 3 Stunden Arbeitszeit", "bedeutung": "3x₁"},
+          {"text": "Longboard 5 Stunden Arbeitszeit", "bedeutung": "+ 5x₂"},
+          {"text": "240 Stunden Arbeitszeit", "bedeutung": "≤ 240"}
+        ],
+        [
+          {"text": "Shortboard 2 kg", "bedeutung": "2x₁"},
+          {"text": "Longboard 3,5 kg", "bedeutung": "+ 3,5x₂"},
+          {"text": "175 kg Glasfaser", "bedeutung": "≤ 175"}
+        ],
+        [
+          {"text": "maximal 60 Boards", "bedeutung": "x₁ + x₂ ≤ 60"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gitarrenbauer (Akustik- und E-Gitarren)",
+    "beschreibung": "Ein Gitarrenbauer fertigt Akustikgitarren und E-Gitarren. Pro Akustikgitarre beträgt der Gewinn 180€, pro E-Gitarre 250€. Eine Akustikgitarre benötigt 12 Stunden Handarbeit, eine E-Gitarre 8 Stunden Handarbeit. Pro Monat stehen 480 Stunden Handarbeit zur Verfügung. An Tonholz werden pro Akustikgitarre 3 Bretter und pro E-Gitarre 1,5 Bretter verbraucht; monatlich sind 150 Bretter Tonholz vorhanden. Die Lackiererei kann monatlich höchstens 45 Gitarren bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Akustikgitarren pro Monat", "x2 = Anzahl E-Gitarren pro Monat"],
+    "zielfunktion": "Z = 180x1 + 250x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 8x2 ≤ 480 (Handarbeit)",
+      "3x1 + 1,5x2 ≤ 150 (Tonholz)",
+      "x1 + x2 ≤ 45 (Lackiererei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Lackiererei begrenzt die Gesamtproduktion. Vergiss nicht, alle drei Ressourcen in Nebenbedingungen zu übersetzen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 180€", "bedeutung": "180 × x₁"},
+        {"text": "250€", "bedeutung": "250 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "12 Stunden Handarbeit", "bedeutung": "12x₁"},
+          {"text": "8 Stunden Handarbeit", "bedeutung": "+ 8x₂"},
+          {"text": "480 Stunden Handarbeit", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "3 Bretter", "bedeutung": "3x₁"},
+          {"text": "1,5 Bretter", "bedeutung": "+ 1,5x₂"},
+          {"text": "150 Bretter Tonholz", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "höchstens 45 Gitarren", "bedeutung": "x₁ + x₂ ≤ 45"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Golfschläger-Produktion (Driver und Putter)",
+    "beschreibung": "Ein Hersteller produziert Driver und Putter. Der Deckungsbeitrag beträgt 42€ pro Driver und 28€ pro Putter. Die CNC-Fräse benötigt pro Driver 6 Minuten und pro Putter 4 Minuten Maschinenzeit; pro Schicht stehen 720 Minuten Maschinenzeit zur Verfügung. An Titanstahl werden pro Driver 0,8 kg und pro Putter 0,3 kg verbraucht; der Vorrat beträgt 96 kg Titanstahl pro Schicht. Die Endkontrolle erlaubt pro Schicht maximal 140 Schläger.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Driver pro Schicht", "x2 = Anzahl Putter pro Schicht"],
+    "zielfunktion": "Z = 42x1 + 28x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 4x2 ≤ 720 (Maschinenzeit)",
+      "0,8x1 + 0,3x2 ≤ 96 (Titanstahl)",
+      "x1 + x2 ≤ 140 (Endkontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Engpässe: Maschinenzeit, Titanstahl und die Endkontrolle. Formuliere für jeden Engpass eine Ungleichung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "42€ pro Driver", "bedeutung": "42 × x₁"},
+        {"text": "28€ pro Putter", "bedeutung": "28 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Driver 6 Minuten", "bedeutung": "6x₁"},
+          {"text": "pro Putter 4 Minuten Maschinenzeit", "bedeutung": "+ 4x₂"},
+          {"text": "720 Minuten Maschinenzeit", "bedeutung": "≤ 720"}
+        ],
+        [
+          {"text": "pro Driver 0,8 kg", "bedeutung": "0,8x₁"},
+          {"text": "pro Putter 0,3 kg", "bedeutung": "+ 0,3x₂"},
+          {"text": "96 kg Titanstahl", "bedeutung": "≤ 96"}
+        ],
+        [
+          {"text": "maximal 140 Schläger", "bedeutung": "x₁ + x₂ ≤ 140"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Snowboard-Fabrik (Freestyle und Freeride)",
+    "beschreibung": "Eine Snowboard-Fabrik produziert Freestyle-Boards und Freeride-Boards. Pro Freestyle-Board beträgt der Gewinn 110€, pro Freeride-Board 155€. Die Presse benötigt pro Freestyle-Board 2 Stunden und pro Freeride-Board 3,5 Stunden Pressenzeit; insgesamt stehen wöchentlich 280 Stunden Pressenzeit zur Verfügung. An Carbonfaser werden pro Freestyle-Board 1,5 kg und pro Freeride-Board 2 kg verbraucht; der Vorrat liegt bei 200 kg Carbonfaser pro Woche. Die Lackierstraße schafft maximal 100 Boards pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Freestyle-Boards pro Woche", "x2 = Anzahl Freeride-Boards pro Woche"],
+    "zielfunktion": "Z = 110x1 + 155x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3,5x2 ≤ 280 (Pressenzeit)",
+      "1,5x1 + 2x2 ≤ 200 (Carbonfaser)",
+      "x1 + x2 ≤ 100 (Lackierstraße)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Pressenzeit, Carbonfaser und Lackierstraße bilden die drei Engpässe. Formuliere jede Beschränkung als Ungleichung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 110€", "bedeutung": "110 × x₁"},
+        {"text": "155€", "bedeutung": "155 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Freestyle-Board 2 Stunden", "bedeutung": "2x₁"},
+          {"text": "pro Freeride-Board 3,5 Stunden Pressenzeit", "bedeutung": "+ 3,5x₂"},
+          {"text": "280 Stunden Pressenzeit", "bedeutung": "≤ 280"}
+        ],
+        [
+          {"text": "pro Freestyle-Board 1,5 kg", "bedeutung": "1,5x₁"},
+          {"text": "pro Freeride-Board 2 kg", "bedeutung": "+ 2x₂"},
+          {"text": "200 kg Carbonfaser", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "maximal 100 Boards", "bedeutung": "x₁ + x₂ ≤ 100"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kaffeerösterei (Espresso- und Filterkaffee)",
+    "beschreibung": "Eine Kaffeerösterei verarbeitet Rohkaffee zu Espresso-Mischungen und Filterkaffee-Mischungen. Pro Kilogramm Espresso beträgt der Deckungsbeitrag 8,50€, pro Kilogramm Filterkaffee 5€. Für ein Kilogramm Espresso werden 20 Minuten Röstzeit benötigt, für ein Kilogramm Filterkaffee 12 Minuten Röstzeit; insgesamt stehen täglich 600 Minuten Röstzeit zur Verfügung. An Arabica-Bohnen werden pro Kilogramm Espresso 0,7 kg und pro Kilogramm Filterkaffee 0,5 kg verbraucht; der Tagesvorrat beträgt 35 kg Arabica-Bohnen. Die Verpackungsmaschine schafft täglich höchstens 60 Kilogramm Kaffee.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Kilogramm Espresso pro Tag", "x2 = Kilogramm Filterkaffee pro Tag"],
+    "zielfunktion": "Z = 8,5x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 12x2 ≤ 600 (Röstzeit)",
+      "0,7x1 + 0,5x2 ≤ 35 (Arabica-Bohnen)",
+      "x1 + x2 ≤ 60 (Verpackungsmaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Röstvorgang dauert unterschiedlich lang. Zudem begrenzen Arabica-Bohnen und die Verpackungsmaschine die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag 8,50€", "bedeutung": "8,5 × x₁"},
+        {"text": "5€", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "20 Minuten Röstzeit", "bedeutung": "20x₁"},
+          {"text": "12 Minuten Röstzeit", "bedeutung": "+ 12x₂"},
+          {"text": "600 Minuten Röstzeit", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "0,7 kg", "bedeutung": "0,7x₁"},
+          {"text": "0,5 kg", "bedeutung": "+ 0,5x₂"},
+          {"text": "35 kg Arabica-Bohnen", "bedeutung": "≤ 35"}
+        ],
+        [
+          {"text": "höchstens 60 Kilogramm", "bedeutung": "x₁ + x₂ ≤ 60"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Marmeladenmanufaktur (Erdbeer und Aprikose)",
+    "beschreibung": "Eine Marmeladenmanufaktur produziert Erdbeermarmelade und Aprikosenmarmelade in Gläsern. Pro Glas Erdbeermarmelade beträgt der Gewinn 1,60€, pro Glas Aprikosenmarmelade 2,20€. Für ein Glas Erdbeermarmelade werden 150 Gramm Früchte benötigt, für ein Glas Aprikosenmarmelade 200 Gramm Früchte. Insgesamt stehen täglich 30000 Gramm Früchte zur Verfügung. An Gelierzucker werden pro Glas Erdbeer 80 Gramm und pro Glas Aprikose 60 Gramm verbraucht; der Vorrat beträgt 14400 Gramm Gelierzucker pro Tag. Die Etikettiermaschine kann täglich maximal 180 Gläser beschriften.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Gläser Erdbeermarmelade pro Tag", "x2 = Anzahl Gläser Aprikosenmarmelade pro Tag"],
+    "zielfunktion": "Z = 1,6x1 + 2,2x2 (max)",
+    "nebenbedingungen": [
+      "150x1 + 200x2 ≤ 30000 (Früchte)",
+      "80x1 + 60x2 ≤ 14400 (Gelierzucker)",
+      "x1 + x2 ≤ 180 (Etikettiermaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Einheiten (Gramm). Drei Beschränkungen: Früchte, Gelierzucker und Etikettiermaschine.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 1,60€", "bedeutung": "1,6 × x₁"},
+        {"text": "2,20€", "bedeutung": "2,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "150 Gramm Früchte", "bedeutung": "150x₁"},
+          {"text": "200 Gramm Früchte", "bedeutung": "+ 200x₂"},
+          {"text": "30000 Gramm Früchte", "bedeutung": "≤ 30000"}
+        ],
+        [
+          {"text": "80 Gramm", "bedeutung": "80x₁"},
+          {"text": "60 Gramm", "bedeutung": "+ 60x₂"},
+          {"text": "14400 Gramm Gelierzucker", "bedeutung": "≤ 14400"}
+        ],
+        [
+          {"text": "maximal 180 Gläser", "bedeutung": "x₁ + x₂ ≤ 180"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werkzeugfabrik (Hämmer und Zangen)",
+    "beschreibung": "Eine Werkzeugfabrik stellt Hämmer und Zangen her. Der Gewinn pro Hammer beträgt 3,80€, pro Zange 5,20€. Die Schmiedeabteilung benötigt pro Hammer 4 Minuten und pro Zange 7 Minuten Schmiedezeit; insgesamt stehen pro Schicht 840 Minuten Schmiedezeit zur Verfügung. An Stahl werden pro Hammer 0,6 kg und pro Zange 0,4 kg verbraucht; der Vorrat beträgt 90 kg Stahl pro Schicht. Die Härterei kann pro Schicht maximal 160 Werkzeuge härten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Hämmer pro Schicht", "x2 = Anzahl Zangen pro Schicht"],
+    "zielfunktion": "Z = 3,8x1 + 5,2x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 7x2 ≤ 840 (Schmiedezeit)",
+      "0,6x1 + 0,4x2 ≤ 90 (Stahl)",
+      "x1 + x2 ≤ 160 (Härterei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Engpässe: Schmiedezeit, Stahlvorrat und die begrenzte Härterei-Kapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn pro Hammer beträgt 3,80€", "bedeutung": "3,8 × x₁"},
+        {"text": "5,20€", "bedeutung": "5,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Hammer 4 Minuten", "bedeutung": "4x₁"},
+          {"text": "pro Zange 7 Minuten Schmiedezeit", "bedeutung": "+ 7x₂"},
+          {"text": "840 Minuten Schmiedezeit", "bedeutung": "≤ 840"}
+        ],
+        [
+          {"text": "pro Hammer 0,6 kg", "bedeutung": "0,6x₁"},
+          {"text": "pro Zange 0,4 kg", "bedeutung": "+ 0,4x₂"},
+          {"text": "90 kg Stahl", "bedeutung": "≤ 90"}
+        ],
+        [
+          {"text": "maximal 160 Werkzeuge", "bedeutung": "x₁ + x₂ ≤ 160"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brillenmanufaktur (Sonnenbrillen und Lesebrillen)",
+    "beschreibung": "Eine Brillenmanufaktur produziert Sonnenbrillen und Lesebrillen. Pro Sonnenbrille wird ein Deckungsbeitrag von 18€ erzielt, pro Lesebrille 11€. Die Rahmenfertigung dauert pro Sonnenbrille 8 Minuten und pro Lesebrille 5 Minuten; pro Tag stehen 640 Minuten Fertigungszeit zur Verfügung. An Acetat werden pro Sonnenbrille 25 Gramm und pro Lesebrille 15 Gramm verbraucht; der Tagesvorrat beträgt 2250 Gramm Acetat. Die Gläserschleiferei kann täglich maximal 90 Brillen bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Sonnenbrillen pro Tag", "x2 = Anzahl Lesebrillen pro Tag"],
+    "zielfunktion": "Z = 18x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 5x2 ≤ 640 (Rahmenfertigung)",
+      "25x1 + 15x2 ≤ 2250 (Acetat)",
+      "x1 + x2 ≤ 90 (Gläserschleiferei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben Rahmenfertigung und Acetat ist die Gläserschleiferei der dritte Engpass. Achte auf die verschiedenen Einheiten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 18€", "bedeutung": "18 × x₁"},
+        {"text": "11€", "bedeutung": "11 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Sonnenbrille 8 Minuten", "bedeutung": "8x₁"},
+          {"text": "pro Lesebrille 5 Minuten", "bedeutung": "+ 5x₂"},
+          {"text": "640 Minuten Fertigungszeit", "bedeutung": "≤ 640"}
+        ],
+        [
+          {"text": "pro Sonnenbrille 25 Gramm", "bedeutung": "25x₁"},
+          {"text": "pro Lesebrille 15 Gramm", "bedeutung": "+ 15x₂"},
+          {"text": "2250 Gramm Acetat", "bedeutung": "≤ 2250"}
+        ],
+        [
+          {"text": "maximal 90 Brillen", "bedeutung": "x₁ + x₂ ≤ 90"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Matratzenwerk (Federkern und Schaumstoff)",
+    "beschreibung": "Ein Matratzenwerk stellt Federkernmatratzen und Schaumstoffmatratzen her. Der Gewinn pro Federkernmatratze beträgt 65€, pro Schaumstoffmatratze 48€. Die Fertigung einer Federkernmatratze erfordert 2,5 Stunden Arbeitszeit, eine Schaumstoffmatratze 1,5 Stunden Arbeitszeit; insgesamt sind pro Woche 200 Stunden Arbeitszeit verfügbar. An Material werden pro Federkernmatratze 8 kg Stahldraht und pro Schaumstoffmatratze 6 kg Schaumstoff verbraucht; der Vorrat ist auf 640 kg Material pro Woche begrenzt. Der Versand kann pro Woche maximal 90 Matratzen abwickeln.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Federkernmatratzen pro Woche", "x2 = Anzahl Schaumstoffmatratzen pro Woche"],
+    "zielfunktion": "Z = 65x1 + 48x2 (max)",
+    "nebenbedingungen": [
+      "2,5x1 + 1,5x2 ≤ 200 (Arbeitszeit)",
+      "8x1 + 6x2 ≤ 640 (Material)",
+      "x1 + x2 ≤ 90 (Versandkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen: Arbeitszeit, Materialvorrat und die begrenzte Versandkapazität. Beachte die unterschiedlichen Stunden-Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn pro Federkernmatratze beträgt 65€", "bedeutung": "65 × x₁"},
+        {"text": "48€", "bedeutung": "48 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2,5 Stunden Arbeitszeit", "bedeutung": "2,5x₁"},
+          {"text": "1,5 Stunden Arbeitszeit", "bedeutung": "+ 1,5x₂"},
+          {"text": "200 Stunden Arbeitszeit", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "8 kg Stahldraht", "bedeutung": "8x₁"},
+          {"text": "6 kg Schaumstoff", "bedeutung": "+ 6x₂"},
+          {"text": "640 kg Material", "bedeutung": "≤ 640"}
+        ],
+        [
+          {"text": "maximal 90 Matratzen", "bedeutung": "x₁ + x₂ ≤ 90"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zahnbürstenfabrik (Handzahnbürsten und Elektroköpfe)",
+    "beschreibung": "Eine Zahnbürstenfabrik produziert Handzahnbürsten und Elektro-Bürstenköpfe. Pro Handzahnbürste beträgt der Deckungsbeitrag 0,70€, pro Elektro-Bürstenkopf 1,20€. Die Spritzgussmaschine braucht pro Handzahnbürste 0,3 Minuten und pro Elektro-Bürstenkopf 0,5 Minuten Maschinenzeit; insgesamt stehen pro Stunde 30 Minuten Maschinenzeit zur Verfügung. An Nylonborsten werden pro Handzahnbürste 2 Gramm und pro Elektro-Bürstenkopf 3,5 Gramm verbraucht; der Stundenvorrat beträgt 280 Gramm Nylonborsten. Die Qualitätskontrolle kann stündlich maximal 80 Stück prüfen.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Handzahnbürsten pro Stunde", "x2 = Anzahl Elektro-Bürstenköpfe pro Stunde"],
+    "zielfunktion": "Z = 0,7x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "0,3x1 + 0,5x2 ≤ 30 (Maschinenzeit)",
+      "2x1 + 3,5x2 ≤ 280 (Nylonborsten)",
+      "x1 + x2 ≤ 80 (Qualitätskontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Maschinenzeit ist in Minuten pro Stück angegeben. Daneben begrenzen Nylonborsten und die Qualitätskontrolle die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag 0,70€", "bedeutung": "0,7 × x₁"},
+        {"text": "1,20€", "bedeutung": "1,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,3 Minuten", "bedeutung": "0,3x₁"},
+          {"text": "0,5 Minuten Maschinenzeit", "bedeutung": "+ 0,5x₂"},
+          {"text": "30 Minuten Maschinenzeit", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "2 Gramm", "bedeutung": "2x₁"},
+          {"text": "3,5 Gramm", "bedeutung": "+ 3,5x₂"},
+          {"text": "280 Gramm Nylonborsten", "bedeutung": "≤ 280"}
+        ],
+        [
+          {"text": "maximal 80 Stück", "bedeutung": "x₁ + x₂ ≤ 80"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Skifabrik (Carving-Ski und Tourenski)",
+    "beschreibung": "Eine Skifabrik produziert Carving-Ski und Tourenski. Pro Paar Carving-Ski beträgt der Gewinn 72€, pro Paar Tourenski 98€. Die Kernfertigung benötigt pro Paar Carving-Ski 1,5 Stunden und pro Paar Tourenski 2,5 Stunden Maschinenzeit; wöchentlich stehen 300 Stunden Maschinenzeit zur Verfügung. An Glasfasergewebe werden pro Paar Carving-Ski 1,2 kg und pro Paar Tourenski 0,9 kg verbraucht; der Wochenvorrat beträgt 150 kg Glasfasergewebe. Die Endmontage kann wöchentlich maximal 130 Paar Ski bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Paar Carving-Ski pro Woche", "x2 = Anzahl Paar Tourenski pro Woche"],
+    "zielfunktion": "Z = 72x1 + 98x2 (max)",
+    "nebenbedingungen": [
+      "1,5x1 + 2,5x2 ≤ 300 (Maschinenzeit)",
+      "1,2x1 + 0,9x2 ≤ 150 (Glasfasergewebe)",
+      "x1 + x2 ≤ 130 (Endmontage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass Carving-Ski mehr Glasfasergewebe benötigen als Tourenski, aber weniger Maschinenzeit. Die Endmontage begrenzt die Gesamtstückzahl.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 72€", "bedeutung": "72 × x₁"},
+        {"text": "98€", "bedeutung": "98 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1,5 Stunden", "bedeutung": "1,5x₁"},
+          {"text": "2,5 Stunden Maschinenzeit", "bedeutung": "+ 2,5x₂"},
+          {"text": "300 Stunden Maschinenzeit", "bedeutung": "≤ 300"}
+        ],
+        [
+          {"text": "1,2 kg", "bedeutung": "1,2x₁"},
+          {"text": "0,9 kg", "bedeutung": "+ 0,9x₂"},
+          {"text": "150 kg Glasfasergewebe", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "maximal 130 Paar Ski", "bedeutung": "x₁ + x₂ ≤ 130"}
+        ]
+      ]
+    }
+  }
+]

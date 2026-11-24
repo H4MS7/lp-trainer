@@ -1,0 +1,43 @@
+{
+  "id": "lager_supermarkt_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Frischware (Paletten)", "x2 = Bestellmenge Trockenware (Paletten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Lagerkosten Frischware (€/Palette)"},
+    "c2":  {"min": 1, "max": 5,   "label": "Lagerkosten Trockenware (€/Palette)"},
+    "a11": {"min": 1, "max": 5,   "label": "Bestandseinheiten Frischware"},
+    "a12": {"min": 2, "max": 7,   "label": "Bestandseinheiten Trockenware"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestbestand (Einheiten)"},
+    "a21": {"min": 2, "max": 6,   "label": "Lagerfläche Frischware (m²)"},
+    "a22": {"min": 1, "max": 4,   "label": "Lagerfläche Trockenware (m²)"},
+    "b2":  {"min": 40, "max": 200, "label": "Lagerkapazität (m²)"}
+  },
+  "titel": "Supermarkt – Bestelloptimierung",
+  "beschreibung": "Ein Supermarkt optimiert seine Bestellmengen für Frischware und Trockenware. Die Lagerkosten betragen {c1} € pro Palette Frischware und {c2} € pro Palette Trockenware. Jede Palette Frischware deckt {a11} Bestandseinheiten, jede Palette Trockenware deckt {a12} Bestandseinheiten. Der Mindestbestand beträgt {b1} Einheiten. Die Lagerfläche beträgt {a21} m² pro Palette Frischware und {a22} m² pro Palette Trockenware. Die Lagerkapazität ist auf {b2} m² begrenzt.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands und der Lagerkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Frischware", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Trockenware", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Bestandseinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Bestandseinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Einheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² pro Palette Frischware", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m² pro Palette Trockenware", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m² begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "qual_lack_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Schichtdickenmessungen", "x2 = Anzahl Haftungstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Qualitätsscore", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüfzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten Schichtdickenmessung (€/Messung)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Haftungstest (€/Test)"},
+    "a11": {"min": 2, "max": 6,   "label": "Qualitätsscore Schichtdicke"},
+    "a12": {"min": 3, "max": 8,   "label": "Qualitätsscore Haftung"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindest-Qualitätsscore"},
+    "a21": {"min": 1, "max": 3,   "label": "Prüfzeit Schichtdicke (min)"},
+    "a22": {"min": 2, "max": 5,   "label": "Prüfzeit Haftung (min)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Prüfzeit (min)"}
+  },
+  "titel": "Lackiererei – Oberflächenprüfung",
+  "beschreibung": "Eine Lackiererei prüft die Oberflächenqualität mit Schichtdickenmessungen und Haftungstests. Eine Schichtdickenmessung kostet {c1} €, ein Haftungstest kostet {c2} €. Die Schichtdickenmessung liefert {a11} Qualitätsscorepunkte, der Haftungstest liefert {a12} Qualitätsscorepunkte. Der Mindest-Qualitätsscore beträgt {b1} Punkte. Eine Schichtdickenmessung dauert {a21} Minuten, ein Haftungstest dauert {a22} Minuten. Die verfügbare Prüfzeit beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichendem Qualitätsscore und begrenzter Prüfzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Schichtdickenmessung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Haftungstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Qualitätsscorepunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Qualitätsscorepunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

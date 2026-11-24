@@ -1,0 +1,106 @@
+{
+  "id": "lager_elektronik_5v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Bestellmenge Smartphones (Kartons)", "x2 = Bestellmenge Tablets (Kartons)", "x3 = Bestellmenge Laptops (Kartons)", "x4 = Bestellmenge Kopfhörer (Kartons)", "x5 = Bestellmenge Ladegeräte (Kartons)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestangebot", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Tresorkapazität", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Versicherungswert", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Lieferkapazität pro Woche", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Einkaufsbudget", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Lagerkosten Smartphones (€/Karton)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Tablets (€/Karton)"},
+    "c3":  {"min": 6, "max": 18,  "label": "Lagerkosten Laptops (€/Karton)"},
+    "c4":  {"min": 1, "max": 5,   "label": "Lagerkosten Kopfhörer (€/Karton)"},
+    "c5":  {"min": 1, "max": 3,   "label": "Lagerkosten Ladegeräte (€/Karton)"},
+    "a11": {"min": 3, "max": 8,   "label": "Geräte pro Karton Smartphones"},
+    "a12": {"min": 2, "max": 5,   "label": "Geräte pro Karton Tablets"},
+    "a13": {"min": 1, "max": 4,   "label": "Geräte pro Karton Laptops"},
+    "a14": {"min": 5, "max": 12,  "label": "Geräte pro Karton Kopfhörer"},
+    "a15": {"min": 8, "max": 20,  "label": "Geräte pro Karton Ladegeräte"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestangebot (Geräte)"},
+    "a21": {"min": 1, "max": 3,   "label": "Tresorplatz Smartphones (Fächer)"},
+    "a22": {"min": 2, "max": 4,   "label": "Tresorplatz Tablets (Fächer)"},
+    "a23": {"min": 2, "max": 5,   "label": "Tresorplatz Laptops (Fächer)"},
+    "a24": {"min": 1, "max": 2,   "label": "Tresorplatz Kopfhörer (Fächer)"},
+    "a25": {"min": 1, "max": 2,   "label": "Tresorplatz Ladegeräte (Fächer)"},
+    "b2":  {"min": 30, "max": 100, "label": "Tresorkapazität (Fächer)"},
+    "a31": {"min": 8, "max": 20,  "label": "Warenwert Smartphones (100€)"},
+    "a32": {"min": 5, "max": 15,  "label": "Warenwert Tablets (100€)"},
+    "a33": {"min": 10, "max": 25, "label": "Warenwert Laptops (100€)"},
+    "a34": {"min": 2, "max": 6,   "label": "Warenwert Kopfhörer (100€)"},
+    "a35": {"min": 1, "max": 3,   "label": "Warenwert Ladegeräte (100€)"},
+    "b3":  {"min": 300, "max": 1200, "label": "Versicherungswert (100€)"},
+    "a41": {"min": 1, "max": 2,   "label": "Liefereinheiten Smartphones"},
+    "a42": {"min": 1, "max": 2,   "label": "Liefereinheiten Tablets"},
+    "a43": {"min": 1, "max": 3,   "label": "Liefereinheiten Laptops"},
+    "a44": {"min": 1, "max": 2,   "label": "Liefereinheiten Kopfhörer"},
+    "a45": {"min": 1, "max": 2,   "label": "Liefereinheiten Ladegeräte"},
+    "b4":  {"min": 15, "max": 50,  "label": "Lieferkapazität (Einheiten/Woche)"},
+    "a51": {"min": 10, "max": 25, "label": "Einkaufspreis Smartphones (€)"},
+    "a52": {"min": 8, "max": 20,  "label": "Einkaufspreis Tablets (€)"},
+    "a53": {"min": 12, "max": 30, "label": "Einkaufspreis Laptops (€)"},
+    "a54": {"min": 3, "max": 10,  "label": "Einkaufspreis Kopfhörer (€)"},
+    "a55": {"min": 2, "max": 5,   "label": "Einkaufspreis Ladegeräte (€)"},
+    "b5":  {"min": 400, "max": 1600, "label": "Einkaufsbudget (€)"}
+  },
+  "titel": "Elektronikgroßhandel – Fünf Produktlinien",
+  "beschreibung": "Ein Elektronikgroßhandel lagert Smartphones, Tablets, Laptops, Kopfhörer und Ladegeräte. Die Lagerkosten betragen {c1} € pro Karton Smartphones, {c2} € pro Karton Tablets, {c3} € pro Karton Laptops, {c4} € pro Karton Kopfhörer und {c5} € pro Karton Ladegeräte. Smartphones liefern {a11} Geräte pro Karton, Tablets liefern {a12} Geräte, Laptops liefern {a13} Geräte, Kopfhörer liefern {a14} Geräte und Ladegeräte liefern {a15} Geräte. Das Mindestangebot umfasst {b1} Geräte. Im Tresor belegen Smartphones {a21} Fächer, Tablets belegen {a22} Fächer, Laptops belegen {a23} Fächer, Kopfhörer belegen {a24} Fächer und Ladegeräte belegen {a25} Fächer. Die Tresorkapazität beträgt {b2} Fächer. Der Warenwert beträgt {a31} Hundert-Euro pro Karton Smartphones, {a32} Hundert-Euro pro Karton Tablets, {a33} Hundert-Euro pro Karton Laptops, {a34} Hundert-Euro pro Karton Kopfhörer und {a35} Hundert-Euro pro Karton Ladegeräte. Der Versicherungswert ist auf {b3} Hundert-Euro begrenzt. Die Liefereinheiten betragen {a41} pro Karton Smartphones, {a42} pro Karton Tablets, {a43} pro Karton Laptops, {a44} pro Karton Kopfhörer und {a45} pro Karton Ladegeräte. Die Lieferkapazität beträgt {b4} Einheiten pro Woche. Die Einkaufspreise betragen {a51} € pro Karton Smartphones, {a52} € pro Karton Tablets, {a53} € pro Karton Laptops, {a54} € pro Karton Kopfhörer und {a55} € pro Karton Ladegeräte. Das Einkaufsbudget beträgt {b5} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung aller Kapazitäts- und Budgetgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Smartphones", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Tablets", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Karton Laptops", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Karton Kopfhörer", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} € pro Karton Ladegeräte", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Geräte pro Karton", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Geräte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Geräte", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Geräte", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Geräte", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Geräte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fächer", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Fächer", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Fächer", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Fächer", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Fächer", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Hundert-Euro pro Karton Smartphones", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Hundert-Euro pro Karton Tablets", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Hundert-Euro pro Karton Laptops", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Hundert-Euro pro Karton Kopfhörer", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Hundert-Euro pro Karton Ladegeräte", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Hundert-Euro begrenzt", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} pro Karton Smartphones", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} pro Karton Tablets", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} pro Karton Laptops", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} pro Karton Kopfhörer", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} pro Karton Ladegeräte", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Einheiten pro Woche", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} € pro Karton Smartphones", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} € pro Karton Tablets", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} € pro Karton Laptops", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} € pro Karton Kopfhörer", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} € pro Karton Ladegeräte", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} €", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "wart_flugzeug_4v_25",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Triebwerkschecks", "x2 = Anzahl Avionikprüfungen", "x3 = Anzahl Fahrwerksinspektionen", "x4 = Anzahl Strukturprüfungen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestflugsicherheit", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Hangarkapazität", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Ingenieurstunden", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Ersatzteilbudget", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,  "label": "Kosten Triebwerk (Tsd. €)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Kosten Avionik (Tsd. €)"},
+    "c3":  {"min": 6, "max": 16,  "label": "Kosten Fahrwerk (Tsd. €)"},
+    "c4":  {"min": 10, "max": 25, "label": "Kosten Struktur (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Sicherheit Triebwerk (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Sicherheit Avionik (%)"},
+    "a13": {"min": 3, "max": 7,   "label": "Sicherheit Fahrwerk (%)"},
+    "a14": {"min": 4, "max": 10,  "label": "Sicherheit Struktur (%)"},
+    "b1":  {"min": 60, "max": 180, "label": "Mindestflugsicherheit (%)"},
+    "a21": {"min": 4, "max": 8,   "label": "Hangar Triebwerk (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Hangar Avionik (h)"},
+    "a23": {"min": 3, "max": 6,   "label": "Hangar Fahrwerk (h)"},
+    "a24": {"min": 5, "max": 10,  "label": "Hangar Struktur (h)"},
+    "b2":  {"min": 40, "max": 150, "label": "Hangarkapazität (h)"},
+    "a31": {"min": 3, "max": 6,   "label": "Ingenieure Triebwerk (Personen)"},
+    "a32": {"min": 2, "max": 4,   "label": "Ingenieure Avionik (Personen)"},
+    "a33": {"min": 2, "max": 5,   "label": "Ingenieure Fahrwerk (Personen)"},
+    "a34": {"min": 3, "max": 7,   "label": "Ingenieure Struktur (Personen)"},
+    "b3":  {"min": 20, "max": 80,  "label": "Verfügbare Ingenieure (Personen)"},
+    "a41": {"min": 5, "max": 12,  "label": "Teile Triebwerk (Tsd. €)"},
+    "a42": {"min": 3, "max": 8,   "label": "Teile Avionik (Tsd. €)"},
+    "a43": {"min": 4, "max": 10,  "label": "Teile Fahrwerk (Tsd. €)"},
+    "a44": {"min": 2, "max": 6,   "label": "Teile Struktur (Tsd. €)"},
+    "b4":  {"min": 30, "max": 120, "label": "Ersatzteilbudget (Tsd. €)"}
+  },
+  "titel": "Fluggesellschaft – Vierstufige Flugzeugwartung",
+  "beschreibung": "Eine Fluggesellschaft plant die Wartung in vier Bereichen. Ein Triebwerkscheck kostet {c1} Tsd. €, eine Avionikprüfung kostet {c2} Tsd. €, eine Fahrwerksinspektion kostet {c3} Tsd. €, eine Strukturprüfung kostet {c4} Tsd. €. Ein Triebwerkscheck erhöht die Flugsicherheit um {a11} %, Avionik um {a12} %, Fahrwerk um {a13} %, Struktur um {a14} %. Die Mindestflugsicherheit beträgt {b1} %. Die Hangarzeit beträgt {a21} h pro Triebwerk, {a22} h pro Avionik, {a23} h pro Fahrwerk und {a24} h pro Struktur. Die Hangarkapazität beträgt {b2} Stunden. Es werden {a31} Ingenieure pro Triebwerk, {a32} pro Avionik, {a33} pro Fahrwerk und {a34} pro Struktur benötigt. Insgesamt stehen {b3} Ingenieure zur Verfügung. Die Ersatzteile kosten {a41} Tsd. € pro Triebwerk, {a42} Tsd. € pro Avionik, {a43} Tsd. € pro Fahrwerk und {a44} Tsd. € pro Struktur. Das Ersatzteilbudget beträgt {b4} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Sicherheits- und Kapazitätsvorgaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Triebwerkscheck kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Avionikprüfung kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Fahrwerksinspektion kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Strukturprüfung kostet {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Triebwerk", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Avionik", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Fahrwerk", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro Struktur", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Ingenieure pro Triebwerk", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Avionik", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Fahrwerk", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} pro Struktur", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Ingenieure zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tsd. € pro Triebwerk", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tsd. € pro Avionik", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tsd. € pro Fahrwerk", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tsd. € pro Struktur", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Tsd. €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

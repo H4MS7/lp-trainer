@@ -1,0 +1,60 @@
+{
+  "id": "wart_aufzug_3v_24",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Seilprüfungen", "x2 = Anzahl Steuerungsupdates", "x3 = Anzahl Türmechanikreparaturen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Technikerstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Seilprüfung (Tsd. €)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Kosten Steuerung (Tsd. €)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Kosten Türmechanik (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Verfügbarkeit Seil (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Verfügbarkeit Steuerung (%)"},
+    "a13": {"min": 3, "max": 7,   "label": "Verfügbarkeit Tür (%)"},
+    "b1":  {"min": 40, "max": 130, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Stunden Seil (h)"},
+    "a22": {"min": 1, "max": 3,   "label": "Stunden Steuerung (h)"},
+    "a23": {"min": 2, "max": 5,   "label": "Stunden Tür (h)"},
+    "b2":  {"min": 15, "max": 60,  "label": "Max. Technikerstunden (h)"},
+    "a31": {"min": 2, "max": 6,   "label": "Material Seil (Tsd. €)"},
+    "a32": {"min": 1, "max": 3,   "label": "Material Steuerung (Tsd. €)"},
+    "a33": {"min": 2, "max": 5,   "label": "Material Tür (Tsd. €)"},
+    "b3":  {"min": 10, "max": 50,  "label": "Materialbudget (Tsd. €)"}
+  },
+  "titel": "Aufzuganlage – Dreistufige Wartung",
+  "beschreibung": "Ein Aufzugservice plant die Wartung auf drei Stufen. Eine Seilprüfung kostet {c1} Tsd. €, ein Steuerungsupdate kostet {c2} Tsd. €, eine Türmechanikreparatur kostet {c3} Tsd. €. Eine Seilprüfung steigert die Verfügbarkeit um {a11} %, Steuerungsupdate um {a12} %, Türmechanik um {a13} %. Die Mindestverfügbarkeit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Seilprüfung, {a22} h pro Steuerungsupdate und {a23} h pro Türmechanikreparatur. Maximal {b2} Technikerstunden stehen zur Verfügung. Die Materialkosten betragen {a31} Tsd. € pro Seilprüfung, {a32} Tsd. € pro Steuerungsupdate und {a33} Tsd. € pro Türmechanikreparatur. Das Materialbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Verfügbarkeit, Personal und Materialbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Seilprüfung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Steuerungsupdate kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Türmechanikreparatur kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Seilprüfung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Steuerungsupdate", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Türmechanikreparatur", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Technikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Seilprüfung", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Steuerungsupdate", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Türmechanikreparatur", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

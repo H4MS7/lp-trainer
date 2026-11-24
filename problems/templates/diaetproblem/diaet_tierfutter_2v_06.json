@@ -1,0 +1,43 @@
+{
+  "id": "diaet_tierfutter_2v_06",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Trockenfutter", "x2 = Einheiten Nassfutter"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Fett", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Trockenfutter (€/Einheit)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Kosten Nassfutter (€/Einheit)"},
+    "a11": {"min": 4, "max": 10,  "label": "Protein Trockenfutter (g/Einheit)"},
+    "a12": {"min": 6, "max": 14,  "label": "Protein Nassfutter (g/Einheit)"},
+    "b1":  {"min": 40, "max": 100, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 2, "max": 6,   "label": "Fett Trockenfutter (g/Einheit)"},
+    "a22": {"min": 3, "max": 8,   "label": "Fett Nassfutter (g/Einheit)"},
+    "b2":  {"min": 20, "max": 60,  "label": "Mindest-Fett (g)"}
+  },
+  "titel": "Hundefutter – Trocken- und Nassfutter",
+  "beschreibung": "Ein Tierheim möchte die Futterkosten für Hunde minimieren. Eine Einheit Trockenfutter kostet {c1} €, eine Einheit Nassfutter kostet {c2} €. Trockenfutter liefert {a11} g Protein pro Einheit, Nassfutter liefert {a12} g Protein pro Einheit. Der Mindestbedarf an Protein beträgt {b1} g. Trockenfutter enthält {a21} g Fett pro Einheit, Nassfutter enthält {a22} g Fett pro Einheit. Mindestens {b2} g Fett werden benötigt.",
+  "hinweis": "Minimiere die Futterkosten bei Einhaltung der Nährstoff-Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Trockenfutter kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nassfutter kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein pro Einheit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Fett pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Fett pro Einheit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} g Fett werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

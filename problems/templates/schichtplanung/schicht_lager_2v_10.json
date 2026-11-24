@@ -1,0 +1,43 @@
+{
+  "id": "schicht_lager_2v_10",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Kommissionierung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Versand", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 120, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 65, "max": 130, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Kommissionierer pro Frühschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Kommissionierer pro Spätschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Kommissionierung"},
+    "a21": {"min": 2, "max": 6, "label": "Versandmitarbeiter pro Frühschicht"},
+    "a22": {"min": 2, "max": 5, "label": "Versandmitarbeiter pro Spätschicht"},
+    "b2":  {"min": 12, "max": 40, "label": "Mindestbesetzung Versand"}
+  },
+  "titel": "Lagerhalle – Schichtplanung",
+  "beschreibung": "Eine Lagerhalle plant die Schichtbesetzung für Kommissionierung und Versand. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Kommissionierer bereit, jede Spätschicht stellt {a12} Kommissionierer bereit. Mindestens {b1} Kommissionierer werden benötigt. Jede Frühschicht stellt {a21} Versandmitarbeiter bereit, jede Spätschicht stellt {a22} Versandmitarbeiter bereit. Mindestens {b2} Versandmitarbeiter werden benötigt.",
+  "hinweis": "Minimiere die Schichtkosten bei Einhaltung der Mindestbesetzung für Kommissionierung und Versand.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kommissionierer bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Kommissionierer bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Kommissionierer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Versandmitarbeiter bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Versandmitarbeiter bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Versandmitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

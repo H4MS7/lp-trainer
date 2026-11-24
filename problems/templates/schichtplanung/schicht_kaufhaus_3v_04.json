@@ -1,0 +1,54 @@
+{
+  "id": "schicht_kaufhaus_3v_04",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Mittagsschichten", "x3 = Anzahl Abendschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Verkauf", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Kasse", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Lager", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 100, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 55, "max": 110, "label": "Kosten Mittagsschicht (€)"},
+    "c3":  {"min": 60, "max": 120, "label": "Kosten Abendschicht (€)"},
+    "a11": {"min": 3, "max": 7, "label": "Verkäufer pro Frühschicht"},
+    "a12": {"min": 4, "max": 8, "label": "Verkäufer pro Mittagsschicht"},
+    "a13": {"min": 2, "max": 5, "label": "Verkäufer pro Abendschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Verkauf"},
+    "a21": {"min": 2, "max": 5, "label": "Kassierer pro Frühschicht"},
+    "a22": {"min": 3, "max": 6, "label": "Kassierer pro Mittagsschicht"},
+    "a23": {"min": 2, "max": 5, "label": "Kassierer pro Abendschicht"},
+    "b2":  {"min": 10, "max": 35, "label": "Mindestbesetzung Kasse"},
+    "a31": {"min": 2, "max": 5, "label": "Lagermitarbeiter pro Frühschicht"},
+    "a32": {"min": 1, "max": 3, "label": "Lagermitarbeiter pro Mittagsschicht"},
+    "a33": {"min": 1, "max": 3, "label": "Lagermitarbeiter pro Abendschicht"},
+    "b3":  {"min": 8, "max": 25, "label": "Mindestbesetzung Lager"}
+  },
+  "titel": "Kaufhaus – Drei-Schicht-Planung",
+  "beschreibung": "Ein Kaufhaus plant die Besetzung über drei Schichten. Eine Frühschicht kostet {c1} €, eine Mittagsschicht kostet {c2} € und eine Abendschicht kostet {c3} €. Jede Frühschicht stellt {a11} Verkäufer bereit, jede Mittagsschicht {a12} und jede Abendschicht {a13}. Mindestens {b1} Verkäufer werden benötigt. Jede Frühschicht stellt {a21} Kassierer bereit, jede Mittagsschicht {a22} und jede Abendschicht {a23}. Mindestens {b2} Kassierer werden benötigt. Jede Frühschicht stellt {a31} Lagermitarbeiter bereit, jede Mittagsschicht {a32} und jede Abendschicht {a33}. Mindestens {b3} Lagermitarbeiter werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Verkauf, Kasse und Lager.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Mittagsschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Abendschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Verkäufer bereit, jede Mittagsschicht {a12} und jede Abendschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Verkäufer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kassierer bereit, jede Mittagsschicht {a22} und jede Abendschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Kassierer werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Lagermitarbeiter bereit, jede Mittagsschicht {a32} und jede Abendschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Lagermitarbeiter werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

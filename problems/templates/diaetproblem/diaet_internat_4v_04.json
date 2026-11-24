@@ -1,0 +1,68 @@
+{
+  "id": "diaet_internat_4v_04",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Portionen Müsli", "x2 = Portionen Milch", "x3 = Portionen Apfel", "x4 = Portionen Vollkornbrot"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalzium", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Ballaststoffe", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 3,   "label": "Kosten Müsli (€/Portion)"},
+    "c2":  {"min": 1, "max": 2,   "label": "Kosten Milch (€/Portion)"},
+    "c3":  {"min": 1, "max": 2,   "label": "Kosten Apfel (€/Portion)"},
+    "c4":  {"min": 1, "max": 3,   "label": "Kosten Vollkornbrot (€/Portion)"},
+    "a11": {"min": 120, "max": 220, "label": "Kalorien Müsli (kcal/Portion)"},
+    "a12": {"min": 50, "max": 120,  "label": "Kalorien Milch (kcal/Portion)"},
+    "a13": {"min": 40, "max": 80,   "label": "Kalorien Apfel (kcal/Portion)"},
+    "a14": {"min": 80, "max": 160,  "label": "Kalorien Vollkornbrot (kcal/Portion)"},
+    "b1":  {"min": 600, "max": 1200, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 2, "max": 5,   "label": "Kalzium Müsli (mg/Portion)"},
+    "a22": {"min": 5, "max": 12,  "label": "Kalzium Milch (mg/Portion)"},
+    "a23": {"min": 1, "max": 2,   "label": "Kalzium Apfel (mg/Portion)"},
+    "a24": {"min": 1, "max": 3,   "label": "Kalzium Vollkornbrot (mg/Portion)"},
+    "b2":  {"min": 30, "max": 80,  "label": "Mindest-Kalzium (mg)"},
+    "a31": {"min": 3, "max": 7,   "label": "Ballaststoffe Müsli (g/Portion)"},
+    "a32": {"min": 1, "max": 1,   "label": "Ballaststoffe Milch (g/Portion)"},
+    "a33": {"min": 2, "max": 5,   "label": "Ballaststoffe Apfel (g/Portion)"},
+    "a34": {"min": 3, "max": 6,   "label": "Ballaststoffe Vollkornbrot (g/Portion)"},
+    "b3":  {"min": 20, "max": 50,  "label": "Mindest-Ballaststoffe (g)"}
+  },
+  "titel": "Internat-Frühstück – Müsli, Milch, Apfel und Vollkornbrot",
+  "beschreibung": "Ein Internat plant das Frühstück möglichst günstig aus Müsli, Milch, Apfel und Vollkornbrot. Müsli kostet {c1} €, Milch kostet {c2} €, Apfel kostet {c3} €, Vollkornbrot kostet {c4} € pro Portion. Müsli liefert {a11} kcal, Milch liefert {a12} kcal, Apfel liefert {a13} kcal, Vollkornbrot liefert {a14} kcal pro Portion. Mindestens {b1} kcal sind erforderlich. Müsli enthält {a21} mg Kalzium, Milch enthält {a22} mg Kalzium, Apfel enthält {a23} mg Kalzium, Vollkornbrot enthält {a24} mg Kalzium pro Portion. Mindestens {b2} mg Kalzium werden benötigt. Müsli liefert {a31} g Ballaststoffe, Milch liefert {a32} g Ballaststoffe, Apfel liefert {a33} g Ballaststoffe, Vollkornbrot liefert {a34} g Ballaststoffe pro Portion. Mindestens {b3} g Ballaststoffe sind nötig.",
+  "hinweis": "Minimiere die Frühstückskosten bei Einhaltung aller Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Müsli kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Milch kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Apfel kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Vollkornbrot kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kcal", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} kcal pro Portion", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} kcal sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Kalzium", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} mg Kalzium", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} mg Kalzium", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} mg Kalzium pro Portion", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} mg Kalzium werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} g Ballaststoffe", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} g Ballaststoffe", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} g Ballaststoffe", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} g Ballaststoffe pro Portion", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} g Ballaststoffe sind nötig", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

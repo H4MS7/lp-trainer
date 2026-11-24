@@ -1,0 +1,68 @@
+{
+  "id": "prod_metall4_4v_03",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Schrauben (1000er)", "x2 = Anzahl Muttern (1000er)", "x3 = Anzahl Bolzen (1000er)", "x4 = Anzahl Nieten (1000er)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Stahl", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Pressenzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Haerteofenzeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Gewinn/1000 Schrauben (€)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Gewinn/1000 Muttern (€)"},
+    "c3":  {"min": 8, "max": 25,    "label": "Gewinn/1000 Bolzen (€)"},
+    "c4":  {"min": 4, "max": 18,    "label": "Gewinn/1000 Nieten (€)"},
+    "a11": {"min": 2, "max": 6,     "label": "Stahl/1000 Schrauben (kg)"},
+    "a12": {"min": 1, "max": 4,     "label": "Stahl/1000 Muttern (kg)"},
+    "a13": {"min": 3, "max": 8,     "label": "Stahl/1000 Bolzen (kg)"},
+    "a14": {"min": 1, "max": 3,     "label": "Stahl/1000 Nieten (kg)"},
+    "b1":  {"min": 50, "max": 250,  "label": "Stahlvorrat (kg)"},
+    "a21": {"min": 1, "max": 4,     "label": "Pressenzeit/1000 Schrauben (h)"},
+    "a22": {"min": 1, "max": 3,     "label": "Pressenzeit/1000 Muttern (h)"},
+    "a23": {"min": 2, "max": 5,     "label": "Pressenzeit/1000 Bolzen (h)"},
+    "a24": {"min": 1, "max": 3,     "label": "Pressenzeit/1000 Nieten (h)"},
+    "b2":  {"min": 30, "max": 150,  "label": "Pressenkapazitaet (h)"},
+    "a31": {"min": 1, "max": 3,     "label": "Haertezeit/1000 Schrauben (h)"},
+    "a32": {"min": 1, "max": 2,     "label": "Haertezeit/1000 Muttern (h)"},
+    "a33": {"min": 2, "max": 4,     "label": "Haertezeit/1000 Bolzen (h)"},
+    "a34": {"min": 1, "max": 3,     "label": "Haertezeit/1000 Nieten (h)"},
+    "b3":  {"min": 20, "max": 100,  "label": "Haerteofenkapazitaet (h)"}
+  },
+  "titel": "Metallwerkstatt – Schrauben, Muttern, Bolzen und Nieten",
+  "beschreibung": "Eine Metallwerkstatt fertigt Schrauben, Muttern, Bolzen und Nieten in Tausendereinheiten. Pro 1000 Schrauben betraegt der Gewinn {c1} Euro, pro 1000 Muttern {c2} Euro, pro 1000 Bolzen {c3} Euro und pro 1000 Nieten {c4} Euro. An Stahl werden {a11} kg pro 1000 Schrauben verbraucht, {a12} kg pro 1000 Muttern, {a13} kg pro 1000 Bolzen und {a14} kg pro 1000 Nieten. Der Stahlvorrat betraegt {b1} kg. Die Presse benoetigt {a21} Stunden pro 1000 Schrauben, {a22} Stunden pro 1000 Muttern, {a23} Stunden pro 1000 Bolzen und {a24} Stunden pro 1000 Nieten. Die Pressenkapazitaet liegt bei {b2} Stunden. Der Haerteofen beansprucht {a31} Stunden pro 1000 Schrauben, {a32} Stunden pro 1000 Muttern, {a33} Stunden pro 1000 Bolzen und {a34} Stunden pro 1000 Nieten bei {b3} Stunden Kapazitaet.",
+  "hinweis": "Vier Verbindungselemente mit Beschraenkungen bei Stahl, Presse und Haerteofen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "1000 Schrauben betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "1000 Muttern {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "1000 Bolzen {c3} Euro", "bedeutung": "{c3} × x₃"},
+      {"text": "1000 Nieten {c4} Euro", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg pro 1000 Schrauben verbraucht", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kg pro 1000 Muttern", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kg pro 1000 Bolzen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} kg pro 1000 Nieten", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro 1000 Schrauben", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro 1000 Muttern", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden pro 1000 Bolzen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Stunden pro 1000 Nieten", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden pro 1000 Schrauben", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden pro 1000 Muttern", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden pro 1000 Bolzen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Stunden pro 1000 Nieten", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Stunden Kapazitaet", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

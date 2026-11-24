@@ -1,0 +1,54 @@
+{
+  "id": "medien_radio_outdoor_digital_3v_03",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Radiospots", "x2 = Anzahl Outdoor-Plakate", "x3 = Anzahl Digitalanzeigen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Kreativstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Kampagnenlaufzeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Hörer Radio (Tsd.)"},
+    "c2":  {"min": 8, "max": 30,    "label": "Sichtkontakte Outdoor (Tsd.)"},
+    "c3":  {"min": 3, "max": 15,    "label": "Impressionen Digital (Tsd.)"},
+    "a11": {"min": 1, "max": 4,     "label": "Kosten Radio (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten Outdoor (Tsd. €)"},
+    "a13": {"min": 1, "max": 5,     "label": "Kosten Digital (Tsd. €)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Kreativ Radio (Stunden)"},
+    "a22": {"min": 4, "max": 10,    "label": "Kreativ Outdoor (Stunden)"},
+    "a23": {"min": 1, "max": 3,     "label": "Kreativ Digital (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Kreativstunden"},
+    "a31": {"min": 1, "max": 3,     "label": "Laufzeit Radio (Wochen)"},
+    "a32": {"min": 2, "max": 4,     "label": "Laufzeit Outdoor (Wochen)"},
+    "a33": {"min": 1, "max": 2,     "label": "Laufzeit Digital (Wochen)"},
+    "b3":  {"min": 8, "max": 24,    "label": "Max. Kampagnenlaufzeit (Wochen)"}
+  },
+  "titel": "Lokale Kampagne – Radio, Outdoor und Digital",
+  "beschreibung": "Eine lokale Kampagne nutzt drei Kanäle. Radiospots erreichen {c1} Tsd. Hörer, Outdoor-Plakate erzielen {c2} Tsd. Sichtkontakte und Digitalanzeigen erzielen {c3} Tsd. Impressionen. Die Kosten betragen {a11} Tsd. € für Radio, {a12} Tsd. € für Outdoor und {a13} Tsd. € für Digital. Das Budget beträgt {b1} Tsd. €. Die Kreativzeit beträgt {a21} Stunden für Radio, {a22} Stunden für Outdoor und {a23} Stunden für Digital. Es stehen {b2} Kreativstunden zur Verfügung. Die Laufzeit beträgt {a31} Wochen für Radio, {a32} Wochen für Outdoor und {a33} Wochen für Digital. Die maximale Kampagnenlaufzeit beträgt {b3} Wochen.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Radiospots erreichen {c1} Tsd. Hörer", "bedeutung": "{c1} × x₁"},
+      {"text": "Outdoor-Plakate erzielen {c2} Tsd. Sichtkontakte", "bedeutung": "{c2} × x₂"},
+      {"text": "Digitalanzeigen erzielen {c3} Tsd. Impressionen", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Radio, {a12} Tsd. € für Outdoor und {a13} Tsd. € für Digital", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Radio, {a22} Stunden für Outdoor und {a23} Stunden für Digital", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Kreativstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Wochen für Radio, {a32} Wochen für Outdoor und {a33} Wochen für Digital", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Wochen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

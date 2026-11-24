@@ -1,0 +1,366 @@
+[
+  {
+    "titel": "Drei-Säulen-Portfolio: Aktien, Anleihen und Rohstoffe",
+    "beschreibung": "Ein Vermögensverwalter plant die optimale Aufteilung eines Portfolios auf drei Anlageklassen: Aktien, Anleihen und Rohstofffonds. Der Kunde hat klare Vorgaben hinsichtlich Kapitalrahmen, Risikotoleranz und Mindestdiversifikation formuliert, die bei der Portfoliokonstruktion strikt eingehalten werden müssen. Nach eingehender Marktanalyse wurden die erwarteten Erträge ermittelt. Pro Einheit Aktien wird eine jährliche Rendite von 8 Tausend € erwartet, pro Einheit Anleihen ebenfalls eine Rendite von 8 Tausend € und pro Einheit Rohstofffonds gleichfalls eine Rendite von 8 Tausend €. Das Gesamtkapital ist begrenzt: Jede Einheit Aktien bindet 4 Kapitaleinheiten, jede Einheit Anleihen 9 Kapitaleinheiten und jede Einheit Rohstofffonds 1 Kapitaleinheit. Insgesamt stehen höchstens 3790 Kapitaleinheiten zur Verfügung. Das Risikobudget umfasst maximal 2330 Risikopunkte, wobei jede Einheit Aktien 2 Risikopunkte, jede Einheit Anleihen 6 Risikopunkte und jede Einheit Rohstofffonds 2 Risikopunkte verursacht. Zur Diversifikation muss die gewichtete Portfoliostreuung mindestens 1153 Diversifikationseinheiten betragen: Jede Einheit Aktien trägt 3 Diversifikationseinheiten bei, jede Einheit Anleihen 3 Diversifikationseinheiten und jede Einheit Rohstofffonds 1 Diversifikationseinheit. Der Verwalter möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Aktien",
+      "x2 = Einheiten Anleihen",
+      "x3 = Einheiten Rohstofffonds"
+    ],
+    "zielfunktion": "Z = 8x1 + 8x2 + 8x3 (max)",
+    "nebenbedingungen": [
+      "4x1 + 9x2 + x3 ≤ 3790 (Gesamtkapital)",
+      "2x1 + 6x2 + 2x3 ≤ 2330 (Risikobudget)",
+      "3x1 + 3x2 + x3 ≥ 1153 (Mindestdiversifikation)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Alle drei Anlageformen haben die gleiche Rendite. Die Entscheidung hängt allein von den Nebenbedingungen ab. Kapital und Risiko sind Obergrenzen, die Diversifikation ist eine Untergrenze.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Einheit Aktien wird eine jährliche Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Einheit Anleihen ebenfalls eine Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        },
+        {
+          "text": "Einheit Rohstofffonds gleichfalls eine Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Aktien bindet 4 Kapitaleinheiten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Anleihen 9 Kapitaleinheiten",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Rohstofffonds 1 Kapitaleinheit",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "höchstens 3790 Kapitaleinheiten",
+            "bedeutung": "≤ 3790"
+          }
+        ],
+        [
+          {
+            "text": "Aktien 2 Risikopunkte",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Anleihen 6 Risikopunkte",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Rohstofffonds 2 Risikopunkte",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "maximal 2330 Risikopunkte",
+            "bedeutung": "≤ 2330"
+          }
+        ],
+        [
+          {
+            "text": "Aktien trägt 3 Diversifikationseinheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Anleihen 3 Diversifikationseinheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Rohstofffonds 1 Diversifikationseinheit",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "mindestens 1153 Diversifikationseinheiten",
+            "bedeutung": "≥ 1153"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Technologie-Investitionsstrategie",
+    "beschreibung": "Ein Technologie-Fonds möchte in drei innovative Anlageklassen investieren: KI-Startups, Halbleiter-Aktien und Cloud-ETFs. Der Fondsmanager hat die aktuellen Marktbewertungen und Wachstumsprognosen sorgfältig analysiert und möchte die verfügbaren Mittel möglichst gewinnbringend einsetzen, wobei strenge interne Richtlinien und Vorgaben zu beachten sind. Die Analysten erwarten pro Einheit KI-Startups einen jährlichen Ertrag von 15 Tausend €, pro Einheit Halbleiter-Aktien einen Ertrag von 4 Tausend € und pro Einheit Cloud-ETFs einen Ertrag von 15 Tausend €. Das Investitionsbudget umfasst höchstens 402 Kapitalblöcke: Jede Einheit KI-Startups erfordert 6 Kapitalblöcke, jede Einheit Halbleiter-Aktien 2 Kapitalblöcke und jede Einheit Cloud-ETFs 3 Kapitalblöcke. Die Due-Diligence-Kapazität beträgt maximal 1067 Prüfeinheiten, wobei jede Einheit KI-Startups 7 Prüfeinheiten, jede Einheit Halbleiter-Aktien 3 Prüfeinheiten und jede Einheit Cloud-ETFs 6 Prüfeinheiten beansprucht. Die strategische Mindestallokation verlangt mindestens 129 Allokationseinheiten. Dabei tragen jede Einheit KI-Startups 5 Allokationseinheiten, jede Einheit Halbleiter-Aktien 6 Allokationseinheiten und jede Einheit Cloud-ETFs 11 Allokationseinheiten bei. Der Fonds möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten KI-Startups",
+      "x2 = Einheiten Halbleiter-Aktien",
+      "x3 = Einheiten Cloud-ETFs"
+    ],
+    "zielfunktion": "Z = 15x1 + 4x2 + 15x3 (max)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 + 3x3 ≤ 402 (Investitionsbudget)",
+      "7x1 + 3x2 + 6x3 ≤ 1067 (Due-Diligence-Kapazität)",
+      "5x1 + 6x2 + 11x3 ≥ 129 (Mindestallokation)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "KI-Startups und Cloud-ETFs haben die gleiche Rendite, aber unterschiedliche Kosten. Drei Nebenbedingungen: zwei Obergrenzen (Budget, Due Diligence) und eine Untergrenze (Mindestallokation).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Einheit KI-Startups einen jährlichen Ertrag von 15 Tausend €",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Ertrag von 4 Tausend €",
+          "bedeutung": "4 × x₂"
+        },
+        {
+          "text": "Einheit Cloud-ETFs einen Ertrag von 15 Tausend €",
+          "bedeutung": "15 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "KI-Startups erfordert 6 Kapitalblöcke",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Halbleiter-Aktien 2 Kapitalblöcke",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Cloud-ETFs 3 Kapitalblöcke",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "höchstens 402 Kapitalblöcke",
+            "bedeutung": "≤ 402"
+          }
+        ],
+        [
+          {
+            "text": "KI-Startups 7 Prüfeinheiten",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Halbleiter-Aktien 3 Prüfeinheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Cloud-ETFs 6 Prüfeinheiten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "maximal 1067 Prüfeinheiten",
+            "bedeutung": "≤ 1067"
+          }
+        ],
+        [
+          {
+            "text": "KI-Startups 5 Allokationseinheiten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Halbleiter-Aktien 6 Allokationseinheiten",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Cloud-ETFs 11 Allokationseinheiten",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "mindestens 129 Allokationseinheiten",
+            "bedeutung": "≥ 129"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nachhaltige Anlageplanung mit drei Fonds",
+    "beschreibung": "Eine Stiftung plant Investitionen in drei nachhaltige Anlageklassen: Grüne Anleihen, Nachhaltigkeits-ETFs und Impact-Fonds. Die Stiftung verfolgt das Ziel, ihr Vermögen nachhaltig und gewinnbringend anzulegen und dabei strenge ökologische Mindeststandards einzuhalten. Alle drei Anlageformen wurden vom Stiftungsrat als geeignet eingestuft. Pro Einheit Grüne Anleihen wird eine jährliche Rendite von 4 Tausend € erwartet, pro Einheit Nachhaltigkeits-ETFs eine Rendite von 8 Tausend € und pro Einheit Impact-Fonds eine Rendite von 5 Tausend €. Das Gesamtbudget beträgt höchstens 2110 Budgeteinheiten: Jede Einheit Grüne Anleihen kostet 3 Budgeteinheiten, jede Einheit Nachhaltigkeits-ETFs 5 Budgeteinheiten und jede Einheit Impact-Fonds 9 Budgeteinheiten. Die Verwaltungskapazität ist auf maximal 2395 Verwaltungsstunden begrenzt, wobei jede Einheit Grüne Anleihen 10 Verwaltungsstunden, jede Einheit Nachhaltigkeits-ETFs 5 Verwaltungsstunden und jede Einheit Impact-Fonds 8 Verwaltungsstunden erfordert. Das Nachhaltigkeitsziel verlangt mindestens 824 Nachhaltigkeitspunkte: Jede Einheit Grüne Anleihen erbringt 2 Nachhaltigkeitspunkte, jede Einheit Nachhaltigkeits-ETFs 2 Nachhaltigkeitspunkte und jede Einheit Impact-Fonds 6 Nachhaltigkeitspunkte. Die Stiftung möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Grüne Anleihen",
+      "x2 = Einheiten Nachhaltigkeits-ETFs",
+      "x3 = Einheiten Impact-Fonds"
+    ],
+    "zielfunktion": "Z = 4x1 + 8x2 + 5x3 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 + 9x3 ≤ 2110 (Gesamtbudget)",
+      "10x1 + 5x2 + 8x3 ≤ 2395 (Verwaltungskapazität)",
+      "2x1 + 2x2 + 6x3 ≥ 824 (Nachhaltigkeitsziel)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Drei Anlageformen mit zwei Obergrenzen (Budget, Verwaltung) und einer Untergrenze (Nachhaltigkeit). Nachhaltigkeits-ETFs haben die höchste Rendite.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 4 Tausend €",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        },
+        {
+          "text": "Rendite von 5 Tausend €",
+          "bedeutung": "5 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Grüne Anleihen kostet 3 Budgeteinheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Nachhaltigkeits-ETFs 5 Budgeteinheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "Impact-Fonds 9 Budgeteinheiten",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "höchstens 2110 Budgeteinheiten",
+            "bedeutung": "≤ 2110"
+          }
+        ],
+        [
+          {
+            "text": "Grüne Anleihen 10 Verwaltungsstunden",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Nachhaltigkeits-ETFs 5 Verwaltungsstunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "Impact-Fonds 8 Verwaltungsstunden",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "maximal 2395 Verwaltungsstunden",
+            "bedeutung": "≤ 2395"
+          }
+        ],
+        [
+          {
+            "text": "Grüne Anleihen erbringt 2 Nachhaltigkeitspunkte",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Nachhaltigkeits-ETFs 2 Nachhaltigkeitspunkte",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Impact-Fonds 6 Nachhaltigkeitspunkte",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "mindestens 824 Nachhaltigkeitspunkte",
+            "bedeutung": "≥ 824"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Diversifiziertes Immobilienportfolio",
+    "beschreibung": "Ein Immobilieninvestor möchte sein Kapital auf drei Immobilienklassen verteilen: Wohnimmobilien, Gewerbeimmobilien und Logistikimmobilien. Der Investor hat bereits umfangreiche Erfahrung mit Immobilienportfolios gesammelt und möchte nun die Zusammensetzung systematisch optimieren, um den bestmöglichen Ertrag unter Einhaltung aller Vorgaben zu erzielen. Pro Einheit Wohnimmobilien wird ein jährlicher Ertrag von 10 Tausend € erwartet, pro Einheit Gewerbeimmobilien ein Ertrag von 3 Tausend € und pro Einheit Logistikimmobilien ein Ertrag von 11 Tausend €. Der Finanzierungsrahmen umfasst höchstens 4840 Finanzierungseinheiten: Jede Einheit Wohnimmobilien bindet 1 Finanzierungseinheit, jede Einheit Gewerbeimmobilien 1 Finanzierungseinheit und jede Einheit Logistikimmobilien 4 Finanzierungseinheiten. Der Verwaltungsaufwand darf maximal 2629 Verwaltungseinheiten betragen. Dabei erfordert jede Einheit Wohnimmobilien 3 Verwaltungseinheiten, jede Einheit Gewerbeimmobilien 6 Verwaltungseinheiten und jede Einheit Logistikimmobilien 6 Verwaltungseinheiten. Aus regulatorischen Gründen muss der gewichtete Mindestbestand mindestens 821 Bestandseinheiten umfassen: Jede Einheit Wohnimmobilien zählt 12 Bestandseinheiten, jede Einheit Gewerbeimmobilien 5 Bestandseinheiten und jede Einheit Logistikimmobilien 4 Bestandseinheiten. Der Investor möchte den jährlichen Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Wohnimmobilien",
+      "x2 = Einheiten Gewerbeimmobilien",
+      "x3 = Einheiten Logistikimmobilien"
+    ],
+    "zielfunktion": "Z = 10x1 + 3x2 + 11x3 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 + 4x3 ≤ 4840 (Finanzierungsrahmen)",
+      "3x1 + 6x2 + 6x3 ≤ 2629 (Verwaltungsaufwand)",
+      "12x1 + 5x2 + 4x3 ≥ 821 (Mindestbestand)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Drei Immobilienklassen mit zwei Obergrenzen (Finanzierung, Verwaltung) und einer Untergrenze (Mindestbestand). Logistikimmobilien haben die höchste Rendite.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 10 Tausend €",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Ertrag von 3 Tausend €",
+          "bedeutung": "3 × x₂"
+        },
+        {
+          "text": "Ertrag von 11 Tausend €",
+          "bedeutung": "11 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Wohnimmobilien bindet 1 Finanzierungseinheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Gewerbeimmobilien 1 Finanzierungseinheit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Logistikimmobilien 4 Finanzierungseinheiten",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "höchstens 4840 Finanzierungseinheiten",
+            "bedeutung": "≤ 4840"
+          }
+        ],
+        [
+          {
+            "text": "Wohnimmobilien 3 Verwaltungseinheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Gewerbeimmobilien 6 Verwaltungseinheiten",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Logistikimmobilien 6 Verwaltungseinheiten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "maximal 2629 Verwaltungseinheiten",
+            "bedeutung": "≤ 2629"
+          }
+        ],
+        [
+          {
+            "text": "Wohnimmobilien zählt 12 Bestandseinheiten",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Gewerbeimmobilien 5 Bestandseinheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "Logistikimmobilien 4 Bestandseinheiten",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "mindestens 821 Bestandseinheiten",
+            "bedeutung": "≥ 821"
+          }
+        ]
+      ]
+    }
+  }
+]

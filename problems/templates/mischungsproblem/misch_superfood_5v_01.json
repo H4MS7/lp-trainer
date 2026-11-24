@@ -1,0 +1,71 @@
+{
+  "id": "misch_superfood_5v_01",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Menge Zutat A (g)", "x2 = Menge Zutat B (g)", "x3 = Menge Zutat C (g)", "x4 = Menge Zutat D (g)", "x5 = Menge Zutat E (g)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Omega-3", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Kalorien", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Eisen", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Zutat A (Cent/g)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Zutat B (Cent/g)"},
+    "c3":  {"min": 1, "max": 6,   "label": "Kosten Zutat C (Cent/g)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Kosten Zutat D (Cent/g)"},
+    "c5":  {"min": 2, "max": 9,   "label": "Kosten Zutat E (Cent/g)"},
+    "a11": {"min": 3, "max": 9,   "label": "Protein in A (mg/g)"},
+    "a12": {"min": 2, "max": 7,   "label": "Protein in B (mg/g)"},
+    "a13": {"min": 1, "max": 5,   "label": "Protein in C (mg/g)"},
+    "a14": {"min": 2, "max": 8,   "label": "Protein in D (mg/g)"},
+    "a15": {"min": 1, "max": 6,   "label": "Protein in E (mg/g)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Protein (mg)"},
+    "a21": {"min": 1, "max": 5,   "label": "Omega-3 in A (mg/g)"},
+    "a22": {"min": 3, "max": 9,   "label": "Omega-3 in B (mg/g)"},
+    "a23": {"min": 2, "max": 7,   "label": "Omega-3 in C (mg/g)"},
+    "a24": {"min": 1, "max": 4,   "label": "Omega-3 in D (mg/g)"},
+    "a25": {"min": 2, "max": 8,   "label": "Omega-3 in E (mg/g)"},
+    "b2":  {"min": 30, "max": 120, "label": "Mindest-Omega-3 (mg)"},
+    "a31": {"min": 2, "max": 6,   "label": "Kalorien in A (kcal/g)"},
+    "a32": {"min": 1, "max": 5,   "label": "Kalorien in B (kcal/g)"},
+    "a33": {"min": 3, "max": 8,   "label": "Kalorien in C (kcal/g)"},
+    "a34": {"min": 2, "max": 7,   "label": "Kalorien in D (kcal/g)"},
+    "a35": {"min": 1, "max": 4,   "label": "Kalorien in E (kcal/g)"},
+    "b3":  {"min": 50, "max": 180, "label": "Max. Kalorien (kcal)"},
+    "a41": {"min": 1, "max": 4,   "label": "Eisen in A (mg/g)"},
+    "a42": {"min": 2, "max": 6,   "label": "Eisen in B (mg/g)"},
+    "a43": {"min": 1, "max": 5,   "label": "Eisen in C (mg/g)"},
+    "a44": {"min": 3, "max": 8,   "label": "Eisen in D (mg/g)"},
+    "a45": {"min": 1, "max": 5,   "label": "Eisen in E (mg/g)"},
+    "b4":  {"min": 30, "max": 120, "label": "Mindest-Eisen (mg)"}
+  },
+  "titel": "Superfood-Mischung – Protein, Omega-3, Kalorien und Eisen",
+  "beschreibung": "Ein Lebensmittelhersteller mischt ein Superfood-Pulver aus fünf Zutaten. Zutat A kostet {c1} Cent pro g, B kostet {c2} Cent pro g, C kostet {c3} Cent pro g, D kostet {c4} Cent pro g und E kostet {c5} Cent pro g. Zutat A enthält {a11} mg Protein pro g, B enthält {a12}, C enthält {a13}, D enthält {a14} und E enthält {a15} mg pro g. Es werden mindestens {b1} mg Protein benötigt. Zutat A enthält {a21} mg Omega-3 pro g, B enthält {a22}, C enthält {a23}, D enthält {a24} und E enthält {a25} mg pro g. Es werden mindestens {b2} mg Omega-3 benötigt. Zutat A hat {a31} kcal pro g, B hat {a32}, C hat {a33}, D hat {a34} und E hat {a35} kcal pro g. Die Kalorien dürfen höchstens {b3} kcal betragen. Zutat A enthält {a41} mg Eisen pro g, B enthält {a42}, C enthält {a43}, D enthält {a44} und E enthält {a45} mg pro g. Es werden mindestens {b4} mg Eisen benötigt.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Nährstoffanforderungen und der Kaloriengrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zutat A kostet {c1} Cent pro g", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet {c2} Cent pro g", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet {c3} Cent pro g", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet {c4} Cent pro g", "bedeutung": "{c4} × x₄"},
+      {"text": "E kostet {c5} Cent pro g", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Protein pro g, B enthält {a12}, C enthält {a13}, D enthält {a14} und E enthält {a15} mg pro g. Es werden mindestens {b1} mg Protein benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Omega-3 pro g, B enthält {a22}, C enthält {a23}, D enthält {a24} und E enthält {a25} mg pro g. Es werden mindestens {b2} mg Omega-3 benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} kcal pro g, B hat {a32}, C hat {a33}, D hat {a34} und E hat {a35} kcal pro g. Die Kalorien dürfen höchstens {b3} kcal betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} mg Eisen pro g, B enthält {a42}, C enthält {a43}, D enthält {a44} und E enthält {a45} mg pro g. Es werden mindestens {b4} mg Eisen benötigt", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≥ {b4}"}
+      ]
+    ]
+  }
+}

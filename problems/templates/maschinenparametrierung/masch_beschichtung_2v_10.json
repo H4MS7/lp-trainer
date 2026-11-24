@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_beschichtung_2v_10",
+  "titel": "Beschichtungsanlage – Spruehrate und Abstand",
+  "variablen": [
+    "x1 = Spruehrate (Stufen)",
+    "x2 = Abstand (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Lackverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Overspray",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 11,
+      "label": "Deckung Spruehrate"
+    },
+    "c2": {
+      "min": 3,
+      "max": 9,
+      "label": "Gleichmaessigkeit Abstand"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Lack pro Spruehstufe"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Lack pro Abstandsstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Lackverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 7,
+      "label": "Overspray Spruehrate"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Overspray Abstand"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Overspray"
+    }
+  },
+  "beschreibung": "Eine Beschichtungsanlage wird ueber Spruehrate und Abstand eingestellt. Die Spruehrate liefert {c1} Punkte Deckung, der Abstand {c2} Punkte Gleichmaessigkeit. Der Lackverbrauch betraegt {a11} Einheiten pro Spruehstufe und {a12} Einheiten pro Abstandsstufe bei maximal {b1} Lackeinheiten. Der Overspray liegt bei {a21} Einheiten pro Spruehstufe und {a22} Einheiten pro Abstandsstufe bei maximal {b2} Oversprayeinheiten.",
+  "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack und Overspray.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Spruehrate liefert {c1} Punkte Deckung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Abstand {c2} Punkte Gleichmaessigkeit",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Spruehstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Abstandsstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Lackeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Spruehstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Abstandsstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Oversprayeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "id": "kapa_cloud_4v_03",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Micro-VMs", "x2 = Anzahl Standard-VMs", "x3 = Anzahl Performance-VMs", "x4 = Anzahl GPU-VMs"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Budget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,     "label": "Durchsatz Micro (Req/s)"},
+    "c2":  {"min": 3, "max": 10,    "label": "Durchsatz Standard (Req/s)"},
+    "c3":  {"min": 8, "max": 25,    "label": "Durchsatz Performance (Req/s)"},
+    "c4":  {"min": 15, "max": 50,   "label": "Durchsatz GPU (Req/s)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Micro (Kerne)"},
+    "a12": {"min": 2, "max": 4,     "label": "CPU Standard (Kerne)"},
+    "a13": {"min": 4, "max": 8,     "label": "CPU Performance (Kerne)"},
+    "a14": {"min": 4, "max": 8,     "label": "CPU GPU-VM (Kerne)"},
+    "b1":  {"min": 40, "max": 160,  "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 2,     "label": "RAM Micro (GB)"},
+    "a22": {"min": 2, "max": 8,     "label": "RAM Standard (GB)"},
+    "a23": {"min": 8, "max": 16,    "label": "RAM Performance (GB)"},
+    "a24": {"min": 16, "max": 32,   "label": "RAM GPU-VM (GB)"},
+    "b2":  {"min": 64, "max": 256,  "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 1, "max": 3,     "label": "Kosten Micro (€/h)"},
+    "a32": {"min": 2, "max": 5,     "label": "Kosten Standard (€/h)"},
+    "a33": {"min": 5, "max": 12,    "label": "Kosten Performance (€/h)"},
+    "a34": {"min": 8, "max": 20,    "label": "Kosten GPU-VM (€/h)"},
+    "b3":  {"min": 50, "max": 200,  "label": "Stündliches Budget (€)"}
+  },
+  "titel": "Cloud – Vier VM-Klassen",
+  "beschreibung": "Ein Cloud-Anbieter plant die Verteilung von vier VM-Klassen. Micro-VMs verarbeiten {c1} Anfragen pro Sekunde, Standard-VMs verarbeiten {c2} Anfragen pro Sekunde, Performance-VMs verarbeiten {c3} Anfragen pro Sekunde und GPU-VMs verarbeiten {c4} Anfragen pro Sekunde. Der CPU-Bedarf beträgt {a11} Kerne für Micro, {a12} Kerne für Standard, {a13} Kerne für Performance und {a14} Kerne für GPU-VMs. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Micro, {a22} GB für Standard, {a23} GB für Performance und {a24} GB für GPU-VMs. Das verfügbare RAM beträgt {b2} GB. Die Kosten betragen {a31} € pro Stunde für Micro, {a32} € pro Stunde für Standard, {a33} € pro Stunde für Performance und {a34} € pro Stunde für GPU-VMs. Das stündliche Budget beträgt {b3} €.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Micro-VMs verarbeiten {c1} Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Standard-VMs verarbeiten {c2} Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Performance-VMs verarbeiten {c3} Anfragen pro Sekunde", "bedeutung": "{c3} × x₃"},
+      {"text": "GPU-VMs verarbeiten {c4} Anfragen pro Sekunde", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kerne für Micro, {a12} Kerne für Standard, {a13} Kerne für Performance und {a14} Kerne für GPU-VMs", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Micro, {a22} GB für Standard, {a23} GB für Performance und {a24} GB für GPU-VMs", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Stunde für Micro, {a32} € pro Stunde für Standard, {a33} € pro Stunde für Performance und {a34} € pro Stunde für GPU-VMs", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

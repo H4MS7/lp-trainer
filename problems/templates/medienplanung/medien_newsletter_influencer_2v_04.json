@@ -1,0 +1,41 @@
+{
+  "id": "medien_newsletter_influencer_2v_04",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Newsletter-Aussendungen", "x2 = Anzahl Influencer-Kooperationen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Bearbeitungszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,    "label": "Öffnungen Newsletter (Tsd.)"},
+    "c2":  {"min": 5, "max": 25,    "label": "Impressionen Influencer (Tsd.)"},
+    "a11": {"min": 1, "max": 3,     "label": "Kosten Newsletter (Tsd. €)"},
+    "a12": {"min": 3, "max": 12,    "label": "Kosten Influencer (Tsd. €)"},
+    "b1":  {"min": 20, "max": 100,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Bearbeitung Newsletter (Stunden)"},
+    "a22": {"min": 4, "max": 10,    "label": "Bearbeitung Influencer (Stunden)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Bearbeitungsstunden"}
+  },
+  "titel": "Direktmarketing – Newsletter und Influencer",
+  "beschreibung": "Ein Marketingteam plant den Einsatz von Newsletter-Aussendungen und Influencer-Kooperationen. Eine Newsletter-Aussendung erzielt {c1} Tsd. Öffnungen, eine Influencer-Kooperation erzielt {c2} Tsd. Impressionen. Eine Newsletter-Aussendung kostet {a11} Tsd. €, eine Influencer-Kooperation kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Bearbeitungszeit beträgt {a21} Stunden pro Newsletter-Aussendung und {a22} Stunden pro Influencer-Kooperation. Insgesamt stehen {b2} Bearbeitungsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Bearbeitungszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Newsletter-Aussendung erzielt {c1} Tsd. Öffnungen", "bedeutung": "{c1} × x₁"},
+      {"text": "Influencer-Kooperation erzielt {c2} Tsd. Impressionen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine Influencer-Kooperation kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Newsletter-Aussendung und {a22} Stunden pro Influencer-Kooperation", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Bearbeitungsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

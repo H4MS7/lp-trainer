@@ -1,0 +1,54 @@
+{
+  "id": "medien_seo_sea_social_3v_07",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl SEO-Maßnahmen", "x2 = Anzahl SEA-Kampagnen", "x3 = Anzahl Social-Ads"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Fachpersonal", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Tool-Lizenzen", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,    "label": "Organische Besucher SEO (Tsd./Monat)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Bezahlte Besucher SEA (Tsd./Monat)"},
+    "c3":  {"min": 2, "max": 12,    "label": "Social-Besucher (Tsd./Monat)"},
+    "a11": {"min": 1, "max": 4,     "label": "Kosten SEO (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten SEA (Tsd. €)"},
+    "a13": {"min": 1, "max": 5,     "label": "Kosten Social (Tsd. €)"},
+    "b1":  {"min": 20, "max": 100,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 4, "max": 10,    "label": "Personal SEO (Stunden)"},
+    "a22": {"min": 2, "max": 6,     "label": "Personal SEA (Stunden)"},
+    "a23": {"min": 2, "max": 5,     "label": "Personal Social (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Personalstunden"},
+    "a31": {"min": 1, "max": 3,     "label": "Lizenzen SEO (Stück)"},
+    "a32": {"min": 1, "max": 2,     "label": "Lizenzen SEA (Stück)"},
+    "a33": {"min": 1, "max": 2,     "label": "Lizenzen Social (Stück)"},
+    "b3":  {"min": 5, "max": 15,    "label": "Verfügbare Tool-Lizenzen"}
+  },
+  "titel": "Traffic-Optimierung – SEO, SEA und Social Ads",
+  "beschreibung": "Ein Online-Marketing-Team plant die Traffic-Optimierung über drei Kanäle. SEO-Maßnahmen generieren {c1} Tsd. organische Besucher pro Monat, SEA-Kampagnen generieren {c2} Tsd. bezahlte Besucher pro Monat und Social-Ads generieren {c3} Tsd. Social-Besucher pro Monat. Die Kosten betragen {a11} Tsd. € für SEO, {a12} Tsd. € für SEA und {a13} Tsd. € für Social. Das Budget beträgt {b1} Tsd. €. Der Personalbedarf beträgt {a21} Stunden für SEO, {a22} Stunden für SEA und {a23} Stunden für Social. Es stehen {b2} Personalstunden zur Verfügung. Der Tool-Bedarf beträgt {a31} Lizenzen für SEO, {a32} Lizenzen für SEA und {a33} Lizenzen für Social. Es stehen {b3} Tool-Lizenzen zur Verfügung.",
+  "hinweis": "Maximiere den Gesamttraffic unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "SEO-Maßnahmen generieren {c1} Tsd. organische Besucher pro Monat", "bedeutung": "{c1} × x₁"},
+      {"text": "SEA-Kampagnen generieren {c2} Tsd. bezahlte Besucher pro Monat", "bedeutung": "{c2} × x₂"},
+      {"text": "Social-Ads generieren {c3} Tsd. Social-Besucher pro Monat", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für SEO, {a12} Tsd. € für SEA und {a13} Tsd. € für Social", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für SEO, {a22} Stunden für SEA und {a23} Stunden für Social", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Lizenzen für SEO, {a32} Lizenzen für SEA und {a33} Lizenzen für Social", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tool-Lizenzen zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "trans_tankwagen_2v_12",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Tankwagen A", "x2 = Fahrten Tankwagen B"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Liefermenge", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Laderampen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 20,  "label": "Kosten Tankwagen A (EUR/Fahrt)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Tankwagen B (EUR/Fahrt)"},
+    "a11": {"min": 4, "max": 12,  "label": "Liter pro Fahrt A (kl)"},
+    "a12": {"min": 2, "max": 8,   "label": "Liter pro Fahrt B (kl)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Liefermenge (kl)"},
+    "a21": {"min": 1, "max": 4,   "label": "Rampen pro Fahrt A"},
+    "a22": {"min": 1, "max": 3,   "label": "Rampen pro Fahrt B"},
+    "b2":  {"min": 15, "max": 60, "label": "Verfügbare Laderampen"}
+  },
+  "titel": "Treibstofflieferung – zwei Tankwagen",
+  "beschreibung": "Ein Mineralölunternehmen liefert Treibstoff mit zwei Tankwagen. Tankwagen A kostet {c1} EUR pro Fahrt, Tankwagen B kostet {c2} EUR pro Fahrt. Tankwagen A liefert {a11} Kiloliter pro Fahrt, Tankwagen B liefert {a12} Kiloliter pro Fahrt. Mindestens {b1} Kiloliter müssen geliefert werden. Tankwagen A belegt {a21} Laderampen pro Fahrt, Tankwagen B belegt {a22} Laderampen pro Fahrt. Insgesamt stehen {b2} Laderampen zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Liefermenge und begrenzten Laderampen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tankwagen A kostet {c1} EUR pro Fahrt", "bedeutung": "{c1} × x₁"},
+      {"text": "Tankwagen B kostet {c2} EUR pro Fahrt", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kiloliter pro Fahrt, Tankwagen B liefert {a12} Kiloliter pro Fahrt. Mindestens {b1} Kiloliter müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Laderampen pro Fahrt, Tankwagen B belegt {a22} Laderampen pro Fahrt. Insgesamt stehen {b2} Laderampen zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "wart_flotte_3v_19",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Ölservice", "x2 = Anzahl Bremsenservice", "x3 = Anzahl Motorüberholungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsicherheit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Werkstattkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Ersatzteilbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Ölservice (Tsd. €)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Bremsen (Tsd. €)"},
+    "c3":  {"min": 6, "max": 18,  "label": "Kosten Motor (Tsd. €)"},
+    "a11": {"min": 1, "max": 4,   "label": "Sicherheit Öl (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Sicherheit Bremsen (%)"},
+    "a13": {"min": 4, "max": 10,  "label": "Sicherheit Motor (%)"},
+    "b1":  {"min": 40, "max": 130, "label": "Mindestsicherheit (%)"},
+    "a21": {"min": 1, "max": 2,   "label": "Werkstattzeit Öl (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Werkstattzeit Bremsen (h)"},
+    "a23": {"min": 4, "max": 10,  "label": "Werkstattzeit Motor (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Werkstattkapazität (h)"},
+    "a31": {"min": 1, "max": 2,   "label": "Teile Öl (Tsd. €)"},
+    "a32": {"min": 2, "max": 5,   "label": "Teile Bremsen (Tsd. €)"},
+    "a33": {"min": 4, "max": 10,  "label": "Teile Motor (Tsd. €)"},
+    "b3":  {"min": 15, "max": 60,  "label": "Ersatzteilbudget (Tsd. €)"}
+  },
+  "titel": "Spedition – Fahrzeugflotte",
+  "beschreibung": "Eine Spedition plant die Wartung ihrer Lkw-Flotte. Ein Ölservice kostet {c1} Tsd. €, ein Bremsenservice kostet {c2} Tsd. €, eine Motorüberholung kostet {c3} Tsd. €. Ein Ölservice verbessert die Sicherheit um {a11} %, Bremsenservice um {a12} %, Motorüberholung um {a13} %. Die Mindestsicherheit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Ölservice, {a22} h pro Bremsenservice und {a23} h pro Motorüberholung. Die Werkstattkapazität beträgt {b2} Stunden. Die Ersatzteile kosten {a31} Tsd. € pro Ölservice, {a32} Tsd. € pro Bremsenservice und {a33} Tsd. € pro Motorüberholung. Das Ersatzteilbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Sicherheit, Werkstattzeit und Ersatzteilbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Ölservice kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Bremsenservice kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Motorüberholung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Ölservice", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Bremsenservice", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Motorüberholung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Ölservice", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Bremsenservice", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Motorüberholung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,350 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "id": "invest_kommune_5v_03",
+  "titel": "Kommunalhaushalt – Bildung, Gesundheit, Verkehr, Kultur und Umwelt",
+  "variablen": [
+    "x1 = Budget Bildung (Tsd. EUR)",
+    "x2 = Budget Gesundheit (Tsd. EUR)",
+    "x3 = Budget Verkehr (Tsd. EUR)",
+    "x4 = Budget Kultur (Tsd. EUR)",
+    "x5 = Budget Umwelt (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gesamthaushalt",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Personalstellen",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Flaechenbedarf",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34",
+        "a35"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Politische Komplexitaet",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44",
+        "a45"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 11,
+      "label": "Lebensqualitaet Bildung"
+    },
+    "c2": {
+      "min": 4,
+      "max": 10,
+      "label": "Lebensqualitaet Gesundheit"
+    },
+    "c3": {
+      "min": 3,
+      "max": 8,
+      "label": "Lebensqualitaet Verkehr"
+    },
+    "c4": {
+      "min": 2,
+      "max": 6,
+      "label": "Lebensqualitaet Kultur"
+    },
+    "c5": {
+      "min": 4,
+      "max": 9,
+      "label": "Lebensqualitaet Umwelt"
+    },
+    "a11": {
+      "min": 2,
+      "max": 5,
+      "label": "Kosten Bildung"
+    },
+    "a12": {
+      "min": 2,
+      "max": 4,
+      "label": "Kosten Gesundheit"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Verkehr"
+    },
+    "a14": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Kultur"
+    },
+    "a15": {
+      "min": 1,
+      "max": 4,
+      "label": "Kosten Umwelt"
+    },
+    "b1": {
+      "min": 150,
+      "max": 500,
+      "label": "Gesamthaushalt (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Personal Bildung"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Personal Gesundheit"
+    },
+    "a23": {
+      "min": 1,
+      "max": 4,
+      "label": "Personal Verkehr"
+    },
+    "a24": {
+      "min": 1,
+      "max": 3,
+      "label": "Personal Kultur"
+    },
+    "a25": {
+      "min": 1,
+      "max": 3,
+      "label": "Personal Umwelt"
+    },
+    "b2": {
+      "min": 80,
+      "max": 300,
+      "label": "Max. Personalstellen"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Flaeche Bildung"
+    },
+    "a32": {
+      "min": 1,
+      "max": 4,
+      "label": "Flaeche Gesundheit"
+    },
+    "a33": {
+      "min": 3,
+      "max": 7,
+      "label": "Flaeche Verkehr"
+    },
+    "a34": {
+      "min": 1,
+      "max": 3,
+      "label": "Flaeche Kultur"
+    },
+    "a35": {
+      "min": 2,
+      "max": 5,
+      "label": "Flaeche Umwelt"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Flaecheneinheiten"
+    },
+    "a41": {
+      "min": 2,
+      "max": 5,
+      "label": "Komplexitaet Bildung"
+    },
+    "a42": {
+      "min": 2,
+      "max": 4,
+      "label": "Komplexitaet Gesundheit"
+    },
+    "a43": {
+      "min": 3,
+      "max": 6,
+      "label": "Komplexitaet Verkehr"
+    },
+    "a44": {
+      "min": 1,
+      "max": 3,
+      "label": "Komplexitaet Kultur"
+    },
+    "a45": {
+      "min": 2,
+      "max": 5,
+      "label": "Komplexitaet Umwelt"
+    },
+    "b4": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Komplexitaetspunkte"
+    }
+  },
+  "beschreibung": "Eine Kommune optimiert ihre Haushaltsinvestitionen. Bildung bringt {c1} Punkte Lebensqualitaet, Gesundheit {c2}, Verkehr {c3}, Kultur {c4} und Umwelt {c5}. Die Kosten betragen {a11} Einheiten fuer Bildung, {a12} fuer Gesundheit, {a13} fuer Verkehr, {a14} fuer Kultur und {a15} fuer Umwelt bei einem Gesamthaushalt von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Stellen fuer Bildung, {a22} fuer Gesundheit, {a23} fuer Verkehr, {a24} fuer Kultur und {a25} fuer Umwelt bei maximal {b2} Personalstellen. Der Flaechenbedarf betraegt {a31} Einheiten fuer Bildung, {a32} fuer Gesundheit, {a33} fuer Verkehr, {a34} fuer Kultur und {a35} fuer Umwelt bei maximal {b3} Flaecheneinheiten. Die politische Komplexitaet liegt bei {a41} Punkten fuer Bildung, {a42} fuer Gesundheit, {a43} fuer Verkehr, {a44} fuer Kultur und {a45} fuer Umwelt bei maximal {b4} Komplexitaetspunkten.",
+  "hinweis": "Maximiere die Lebensqualitaet unter Beachtung von Haushalt, Personal, Flaeche und Komplexitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Bildung bringt {c1} Punkte Lebensqualitaet",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Gesundheit {c2}",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Verkehr {c3}",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Kultur {c4}",
+        "bedeutung": "{c4} × x₄"
+      },
+      {
+        "text": "Umwelt {c5}",
+        "bedeutung": "{c5} × x₅"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Bildung",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Gesundheit",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Verkehr",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Kultur",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{a15} fuer Umwelt",
+          "bedeutung": "+ {a15}x₅"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Stellen fuer Bildung",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Gesundheit",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Verkehr",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Kultur",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{a25} fuer Umwelt",
+          "bedeutung": "+ {a25}x₅"
+        },
+        {
+          "text": "{b2} Personalstellen",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Bildung",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Gesundheit",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Verkehr",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Kultur",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{a35} fuer Umwelt",
+          "bedeutung": "+ {a35}x₅"
+        },
+        {
+          "text": "{b3} Flaecheneinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Punkten fuer Bildung",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Gesundheit",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Verkehr",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Kultur",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{a45} fuer Umwelt",
+          "bedeutung": "+ {a45}x₅"
+        },
+        {
+          "text": "{b4} Komplexitaetspunkten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

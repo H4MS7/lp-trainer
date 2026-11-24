@@ -1,0 +1,91 @@
+[
+  {
+    "titel": "Portfolio mit drei Anlageformen",
+    "beschreibung": "Ein Vermögensverwalter plant Investitionen in drei Anlageformen: Aktien, Anleihen und Immobilienfonds. Die erwartete Rendite beträgt 9 Tausend € pro Einheit Aktien, 5 Tausend € pro Einheit Anleihen und 7 Tausend € pro Einheit Immobilienfonds. Das Gesamtkapital von 500 Tausend € ist begrenzt, wobei eine Einheit Aktien 3 Tausend €, eine Einheit Anleihen 1 Tausend € und eine Einheit Immobilienfonds 4 Tausend € kostet. Das Risikobudget beträgt höchstens 600 Punkte: Aktien haben 5 Risikopunkte, Anleihen 1 Risikopunkt und Immobilienfonds 3 Risikopunkte pro Einheit. Zur Diversifikation muss die Gesamtallokation mindestens 200 Einheiten betragen, wobei jede Anlageform mit je 2 Einheiten Aktien, 3 Einheiten Anleihen und 1 Einheit Immobilienfonds zur Diversifikation beiträgt. Der Verwalter möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Aktien (in Tausend €)", "x2 = Einheiten Anleihen (in Tausend €)", "x3 = Einheiten Immobilienfonds (in Tausend €)"],
+    "zielfunktion": "Z = 9x1 + 5x2 + 7x3 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 + 4x3 ≤ 500 (Gesamtkapital)",
+      "5x1 + x2 + 3x3 ≤ 600 (Risikobudget)",
+      "2x1 + 3x2 + x3 ≥ 200 (Diversifikation)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Kapital und Risiko sind Obergrenzen (≤), die Diversifikationsanforderung ist eine Untergrenze (≥). Ordne jeder Anlageform eine Variable zu.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "9 Tausend € pro Einheit Aktien", "bedeutung": "9 × x₁"},
+        {"text": "5 Tausend € pro Einheit Anleihen", "bedeutung": "5 × x₂"},
+        {"text": "7 Tausend € pro Einheit Immobilienfonds", "bedeutung": "7 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Einheit Aktien 3 Tausend €", "bedeutung": "3x₁"},
+          {"text": "Einheit Anleihen 1 Tausend €", "bedeutung": "+ x₂"},
+          {"text": "Einheit Immobilienfonds 4 Tausend €", "bedeutung": "+ 4x₃"},
+          {"text": "Gesamtkapital von 500 Tausend €", "bedeutung": "≤ 500"}
+        ],
+        [
+          {"text": "5 Risikopunkte", "bedeutung": "5x₁"},
+          {"text": "1 Risikopunkt", "bedeutung": "+ x₂"},
+          {"text": "3 Risikopunkte", "bedeutung": "+ 3x₃"},
+          {"text": "höchstens 600 Punkte", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "2 Einheiten Aktien", "bedeutung": "2x₁"},
+          {"text": "3 Einheiten Anleihen", "bedeutung": "+ 3x₂"},
+          {"text": "1 Einheit Immobilienfonds", "bedeutung": "+ x₃"},
+          {"text": "mindestens 200 Einheiten", "bedeutung": "≥ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Investitionsplanung mit vier Anlageklassen",
+    "beschreibung": "Eine Stiftung verteilt ihr Vermögen auf vier Anlageklassen: Staatsanleihen, Unternehmensanleihen, Aktien-ETFs und Immobilien-REITs. Die jährliche Rendite beträgt 3 Tausend € pro Einheit Staatsanleihen, 6 Tausend € pro Einheit Unternehmensanleihen, 10 Tausend € pro Einheit Aktien-ETFs und 8 Tausend € pro Einheit REITs. Das Gesamtbudget beträgt 1000 Tausend €, wobei die Kosten 1 Tausend €, 2 Tausend €, 4 Tausend € bzw. 5 Tausend € pro Einheit betragen. Das Risikobudget von 800 Punkten wird mit 1, 3, 7 bzw. 4 Risikopunkten pro Einheit belastet. Eine Mindestrendite von 400 Tausend € ist vorgeschrieben: 3 Einheiten Staatsanleihen plus 6 Einheiten Unternehmensanleihen plus 10 Einheiten Aktien-ETFs plus 8 Einheiten REITs müssen mindestens 400 ergeben. Die Liquiditätsreserve erfordert höchstens 300 Einheiten, wobei Staatsanleihen 2, Unternehmensanleihen 1, Aktien-ETFs 3 und REITs 4 Liquiditätspunkte binden. Die Stiftung möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Staatsanleihen", "x2 = Einheiten Unternehmensanleihen", "x3 = Einheiten Aktien-ETFs", "x4 = Einheiten REITs"],
+    "zielfunktion": "Z = 3x1 + 6x2 + 10x3 + 8x4 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 + 4x3 + 5x4 ≤ 1000 (Budget)",
+      "x1 + 3x2 + 7x3 + 4x4 ≤ 800 (Risikobudget)",
+      "3x1 + 6x2 + 10x3 + 8x4 ≥ 400 (Mindestrendite)",
+      "2x1 + x2 + 3x3 + 4x4 ≤ 300 (Liquidität)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Vier Anlageformen mit drei Obergrenzen und einer Mindestanforderung. Beachte, dass die Mindestrendite-NB die gleichen Koeffizienten wie die Zielfunktion hat.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "3 Tausend € pro Einheit Staatsanleihen", "bedeutung": "3 × x₁"},
+        {"text": "6 Tausend € pro Einheit Unternehmensanleihen", "bedeutung": "6 × x₂"},
+        {"text": "10 Tausend € pro Einheit Aktien-ETFs", "bedeutung": "10 × x₃"},
+        {"text": "8 Tausend € pro Einheit REITs", "bedeutung": "8 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Kosten 1 Tausend €", "bedeutung": "x₁"},
+          {"text": "2 Tausend €", "bedeutung": "+ 2x₂"},
+          {"text": "4 Tausend €", "bedeutung": "+ 4x₃"},
+          {"text": "5 Tausend €", "bedeutung": "+ 5x₄"},
+          {"text": "Gesamtbudget beträgt 1000 Tausend €", "bedeutung": "≤ 1000"}
+        ],
+        [
+          {"text": "1, 3, 7 bzw. 4 Risikopunkten", "bedeutung": "x₁ + 3x₂ + 7x₃ + 4x₄"},
+          {"text": "Risikobudget von 800 Punkten", "bedeutung": "≤ 800"}
+        ],
+        [
+          {"text": "mindestens 400 ergeben", "bedeutung": "3x₁ + 6x₂ + 10x₃ + 8x₄ ≥ 400"}
+        ],
+        [
+          {"text": "Staatsanleihen 2", "bedeutung": "2x₁"},
+          {"text": "Unternehmensanleihen 1", "bedeutung": "+ x₂"},
+          {"text": "Aktien-ETFs 3", "bedeutung": "+ 3x₃"},
+          {"text": "REITs 4", "bedeutung": "+ 4x₄"},
+          {"text": "höchstens 300 Einheiten", "bedeutung": "≤ 300"}
+        ]
+      ]
+    }
+  }
+]

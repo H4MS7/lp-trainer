@@ -1,0 +1,51 @@
+{
+  "id": "misch_kosmetik_3v_05",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Inhaltsstoff A (g)", "x2 = Menge Inhaltsstoff B (g)", "x3 = Menge Inhaltsstoff C (g)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Feuchtigkeitswirkung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Allergierisiko", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "UV-Schutz", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Inhaltsstoff A (EUR/g)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Inhaltsstoff B (EUR/g)"},
+    "c3":  {"min": 4, "max": 14,  "label": "Kosten Inhaltsstoff C (EUR/g)"},
+    "a11": {"min": 3, "max": 9,   "label": "Feuchtigkeit durch A (Einheiten/g)"},
+    "a12": {"min": 2, "max": 7,   "label": "Feuchtigkeit durch B (Einheiten/g)"},
+    "a13": {"min": 1, "max": 5,   "label": "Feuchtigkeit durch C (Einheiten/g)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindest-Feuchtigkeit (Einheiten)"},
+    "a21": {"min": 1, "max": 4,   "label": "Allergierisiko A (Einheiten/g)"},
+    "a22": {"min": 2, "max": 6,   "label": "Allergierisiko B (Einheiten/g)"},
+    "a23": {"min": 1, "max": 5,   "label": "Allergierisiko C (Einheiten/g)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Allergierisiko (Einheiten)"},
+    "a31": {"min": 1, "max": 6,   "label": "UV-Schutz durch A (Einheiten/g)"},
+    "a32": {"min": 2, "max": 8,   "label": "UV-Schutz durch B (Einheiten/g)"},
+    "a33": {"min": 3, "max": 10,  "label": "UV-Schutz durch C (Einheiten/g)"},
+    "b3":  {"min": 40, "max": 150, "label": "Mindest-UV-Schutz (Einheiten)"}
+  },
+  "titel": "Kosmetikcreme – Feuchtigkeit, Allergie und UV-Schutz",
+  "beschreibung": "Ein Kosmetikhersteller mischt eine Creme aus drei Inhaltsstoffen. Inhaltsstoff A kostet {c1} EUR pro g, Inhaltsstoff B kostet {c2} EUR pro g und Inhaltsstoff C kostet {c3} EUR pro g. Inhaltsstoff A liefert {a11} Feuchtigkeits-Einheiten pro g, Inhaltsstoff B liefert {a12} und Inhaltsstoff C liefert {a13} Einheiten pro g. Die Creme muss mindestens {b1} Feuchtigkeits-Einheiten erreichen. Inhaltsstoff A hat {a21} Allergierisiko-Einheiten pro g, Inhaltsstoff B hat {a22} und Inhaltsstoff C hat {a23} Einheiten pro g. Das Allergierisiko darf höchstens {b2} Einheiten betragen. Inhaltsstoff A liefert {a31} UV-Schutz-Einheiten pro g, Inhaltsstoff B liefert {a32} und Inhaltsstoff C liefert {a33} Einheiten pro g. Der UV-Schutz muss mindestens {b3} Einheiten erreichen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Feuchtigkeit und UV-Schutz sowie begrenztem Allergierisiko.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Inhaltsstoff A kostet {c1} EUR pro g", "bedeutung": "{c1} × x₁"},
+      {"text": "Inhaltsstoff B kostet {c2} EUR pro g", "bedeutung": "{c2} × x₂"},
+      {"text": "Inhaltsstoff C kostet {c3} EUR pro g", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Feuchtigkeits-Einheiten pro g, Inhaltsstoff B liefert {a12} und Inhaltsstoff C liefert {a13} Einheiten pro g. Die Creme muss mindestens {b1} Feuchtigkeits-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Allergierisiko-Einheiten pro g, Inhaltsstoff B hat {a22} und Inhaltsstoff C hat {a23} Einheiten pro g. Das Allergierisiko darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} UV-Schutz-Einheiten pro g, Inhaltsstoff B liefert {a32} und Inhaltsstoff C liefert {a33} Einheiten pro g. Der UV-Schutz muss mindestens {b3} Einheiten erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≥ {b3}"}
+      ]
+    ]
+  }
+}

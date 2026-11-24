@@ -1,0 +1,43 @@
+{
+  "id": "wart_gebaeude_2v_04",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl planmäßige Wartungen", "x2 = Anzahl Sofortreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbetriebssicherheit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Hausmeisterstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 6,   "label": "Kosten planmäßig (Tsd. €)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Sofortreparatur (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Sicherheit planmäßig (%)"},
+    "a12": {"min": 1, "max": 4,   "label": "Sicherheit Sofort (%)"},
+    "b1":  {"min": 30, "max": 100, "label": "Mindestbetriebssicherheit (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Stunden planmäßig (h)"},
+    "a22": {"min": 4, "max": 10,  "label": "Stunden Sofort (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Hausmeisterstunden (h)"}
+  },
+  "titel": "Gebäudetechnik – Haustechnikwartung",
+  "beschreibung": "Ein Gebäudeverwalter plant die Wartung der Haustechnik. Eine planmäßige Wartung kostet {c1} Tsd. €, eine Sofortreparatur kostet {c2} Tsd. €. Eine planmäßige Wartung erhöht die Betriebssicherheit um {a11} %, eine Sofortreparatur um {a12} %. Die Mindestbetriebssicherheit beträgt {b1} %. Eine planmäßige Wartung benötigt {a21} Hausmeisterstunden, eine Sofortreparatur benötigt {a22} Hausmeisterstunden. Maximal {b2} Hausmeisterstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Betriebssicherheit und Personalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "planmäßige Wartung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sofortreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Hausmeisterstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Hausmeisterstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Hausmeisterstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

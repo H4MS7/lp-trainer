@@ -1,0 +1,56 @@
+{
+  "id": "trans_paketverteil_4v_04",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Touren Region A", "x2 = Touren Region B", "x3 = Touren Region C", "x4 = Touren Region D"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Pakete", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Fahrzeuge", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Arbeitsstunden", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Region A (EUR/Tour)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Region B (EUR/Tour)"},
+    "c3":  {"min": 2, "max": 9,   "label": "Kosten Region C (EUR/Tour)"},
+    "c4":  {"min": 5, "max": 15,  "label": "Kosten Region D (EUR/Tour)"},
+    "a11": {"min": 3, "max": 10,  "label": "Pakete Region A pro Tour"},
+    "a12": {"min": 2, "max": 8,   "label": "Pakete Region B pro Tour"},
+    "a13": {"min": 4, "max": 12,  "label": "Pakete Region C pro Tour"},
+    "a14": {"min": 2, "max": 7,   "label": "Pakete Region D pro Tour"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Pakete"},
+    "a21": {"min": 1, "max": 3,   "label": "Fahrzeuge Region A"},
+    "a22": {"min": 1, "max": 2,   "label": "Fahrzeuge Region B"},
+    "a23": {"min": 1, "max": 3,   "label": "Fahrzeuge Region C"},
+    "a24": {"min": 2, "max": 4,   "label": "Fahrzeuge Region D"},
+    "b2":  {"min": 15, "max": 60, "label": "Verfügbare Fahrzeuge"},
+    "a31": {"min": 2, "max": 5,   "label": "Stunden Region A"},
+    "a32": {"min": 1, "max": 4,   "label": "Stunden Region B"},
+    "a33": {"min": 2, "max": 6,   "label": "Stunden Region C"},
+    "a34": {"min": 3, "max": 7,   "label": "Stunden Region D"},
+    "b3":  {"min": 30, "max": 120, "label": "Max. Arbeitsstunden"}
+  },
+  "titel": "Paketverteilung – vier Regionen",
+  "beschreibung": "Ein Paketzusteller verteilt Pakete in vier Regionen. Eine Tour in Region A kostet {c1} EUR, in B kostet sie {c2} EUR, in C kostet sie {c3} EUR und in D kostet sie {c4} EUR. In Region A werden {a11} Pakete pro Tour zugestellt, in B werden {a12}, in C werden {a13} und in D werden {a14} Pakete pro Tour zugestellt. Mindestens {b1} Pakete müssen zugestellt werden. In Region A werden {a21} Fahrzeuge benötigt, in B werden {a22}, in C werden {a23} und in D werden {a24} Fahrzeuge pro Tour benötigt. Insgesamt stehen {b2} Fahrzeuge zur Verfügung. Eine Tour in Region A dauert {a31} Stunden, in B dauert sie {a32}, in C dauert sie {a33} und in D dauert sie {a34} Stunden. Die Arbeitsstunden betragen höchstens {b3} Stunden.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Paketen, begrenzten Fahrzeugen und Arbeitsstunden.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Region A kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet sie {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet sie {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet sie {c4} EUR", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Pakete pro Tour zugestellt, in B werden {a12}, in C werden {a13} und in D werden {a14} Pakete pro Tour zugestellt. Mindestens {b1} Pakete müssen zugestellt werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrzeuge benötigt, in B werden {a22}, in C werden {a23} und in D werden {a24} Fahrzeuge pro Tour benötigt. Insgesamt stehen {b2} Fahrzeuge zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden, in B dauert sie {a32}, in C dauert sie {a33} und in D dauert sie {a34} Stunden. Die Arbeitsstunden betragen höchstens {b3} Stunden", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "trans_lebensmittel_2v_16",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Kühlwagen", "x2 = Fahrten Isolierwagen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Liefermenge", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kühlkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 20,  "label": "Kosten Kühlwagen (EUR/Fahrt)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Isolierwagen (EUR/Fahrt)"},
+    "a11": {"min": 3, "max": 10,  "label": "Paletten pro Kühlwagen"},
+    "a12": {"min": 2, "max": 7,   "label": "Paletten pro Isolierwagen"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Paletten"},
+    "a21": {"min": 2, "max": 6,   "label": "Kühlung pro Kühlwagen (kWh)"},
+    "a22": {"min": 1, "max": 4,   "label": "Kühlung pro Isolierwagen (kWh)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Kühlkapazität (kWh)"}
+  },
+  "titel": "Lebensmittellogistik – Kühl- und Isolierwagen",
+  "beschreibung": "Ein Lebensmittelgroßhändler liefert Ware mit zwei Fahrzeugtypen. Eine Fahrt mit dem Kühlwagen kostet {c1} EUR, eine Fahrt mit dem Isolierwagen kostet {c2} EUR. Der Kühlwagen transportiert {a11} Paletten pro Fahrt, der Isolierwagen transportiert {a12} Paletten pro Fahrt. Mindestens {b1} Paletten müssen geliefert werden. Der Kühlwagen verbraucht {a21} kWh Kühlenergie pro Fahrt, der Isolierwagen verbraucht {a22} kWh pro Fahrt. Die Kühlkapazität beträgt höchstens {b2} kWh.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Liefermenge und begrenzter Kühlkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kühlwagen kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Isolierwagen kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Paletten pro Fahrt, der Isolierwagen transportiert {a12} Paletten pro Fahrt. Mindestens {b1} Paletten müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kWh Kühlenergie pro Fahrt, der Isolierwagen verbraucht {a22} kWh pro Fahrt. Die Kühlkapazität beträgt höchstens {b2} kWh", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

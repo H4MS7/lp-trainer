@@ -1,0 +1,86 @@
+{
+  "id": "kapa_cloud_5v_02",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Web-Server", "x2 = Anzahl App-Server", "x3 = Anzahl DB-Server", "x4 = Anzahl Cache-Server", "x5 = Anzahl Queue-Server"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Speicherplatz", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Budget", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,     "label": "Durchsatz Web (Tsd. Req/s)"},
+    "c2":  {"min": 3, "max": 15,     "label": "Durchsatz App (Tsd. Req/s)"},
+    "c3":  {"min": 2, "max": 10,     "label": "Durchsatz DB (Tsd. Queries/s)"},
+    "c4":  {"min": 20, "max": 100,   "label": "Durchsatz Cache (Tsd. Ops/s)"},
+    "c5":  {"min": 5, "max": 30,     "label": "Durchsatz Queue (Tsd. Msg/s)"},
+    "a11": {"min": 1, "max": 2,      "label": "CPU Web (Kerne)"},
+    "a12": {"min": 2, "max": 4,      "label": "CPU App (Kerne)"},
+    "a13": {"min": 2, "max": 8,      "label": "CPU DB (Kerne)"},
+    "a14": {"min": 1, "max": 2,      "label": "CPU Cache (Kerne)"},
+    "a15": {"min": 1, "max": 2,      "label": "CPU Queue (Kerne)"},
+    "b1":  {"min": 32, "max": 128,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 2,      "label": "RAM Web (GB)"},
+    "a22": {"min": 2, "max": 8,      "label": "RAM App (GB)"},
+    "a23": {"min": 4, "max": 16,     "label": "RAM DB (GB)"},
+    "a24": {"min": 4, "max": 16,     "label": "RAM Cache (GB)"},
+    "a25": {"min": 2, "max": 4,      "label": "RAM Queue (GB)"},
+    "b2":  {"min": 64, "max": 256,   "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 5, "max": 20,     "label": "Speicher Web (GB)"},
+    "a32": {"min": 10, "max": 50,    "label": "Speicher App (GB)"},
+    "a33": {"min": 50, "max": 200,   "label": "Speicher DB (GB)"},
+    "a34": {"min": 5, "max": 20,     "label": "Speicher Cache (GB)"},
+    "a35": {"min": 20, "max": 100,   "label": "Speicher Queue (GB)"},
+    "b3":  {"min": 500, "max": 2000, "label": "Verfügbarer Speicher (GB)"},
+    "a41": {"min": 1, "max": 2,      "label": "Strom Web (kW)"},
+    "a42": {"min": 1, "max": 2,      "label": "Strom App (kW)"},
+    "a43": {"min": 1, "max": 3,      "label": "Strom DB (kW)"},
+    "a44": {"min": 1, "max": 2,      "label": "Strom Cache (kW)"},
+    "a45": {"min": 1, "max": 2,      "label": "Strom Queue (kW)"},
+    "b4":  {"min": 20, "max": 60,    "label": "Strombudget (kW)"},
+    "a51": {"min": 1, "max": 3,      "label": "Kosten Web (€/h)"},
+    "a52": {"min": 2, "max": 5,      "label": "Kosten App (€/h)"},
+    "a53": {"min": 3, "max": 8,      "label": "Kosten DB (€/h)"},
+    "a54": {"min": 2, "max": 5,      "label": "Kosten Cache (€/h)"},
+    "a55": {"min": 1, "max": 3,      "label": "Kosten Queue (€/h)"},
+    "b5":  {"min": 50, "max": 200,   "label": "Stündliches Budget (€)"}
+  },
+  "titel": "Cloud-Infrastruktur – Fünf Serverrollen",
+  "beschreibung": "Ein Cloud-Anbieter plant die optimale Verteilung von fünf Serverrollen. Web-Server verarbeiten {c1} Tsd. Anfragen pro Sekunde, App-Server verarbeiten {c2} Tsd. Anfragen pro Sekunde, DB-Server verarbeiten {c3} Tsd. Abfragen pro Sekunde, Cache-Server verarbeiten {c4} Tsd. Operationen pro Sekunde und Queue-Server verarbeiten {c5} Tsd. Nachrichten pro Sekunde. Der CPU-Bedarf beträgt {a11} Kerne für Web, {a12} Kerne für App, {a13} Kerne für DB, {a14} Kerne für Cache und {a15} Kerne für Queue. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Web, {a22} GB für App, {a23} GB für DB, {a24} GB für Cache und {a25} GB für Queue. Das verfügbare RAM beträgt {b2} GB. Der Speicherbedarf beträgt {a31} GB für Web, {a32} GB für App, {a33} GB für DB, {a34} GB für Cache und {a35} GB für Queue. Der verfügbare Speicher beträgt {b3} GB. Der Stromverbrauch beträgt {a41} kW für Web, {a42} kW für App, {a43} kW für DB, {a44} kW für Cache und {a45} kW für Queue. Das Strombudget beträgt {b4} kW. Die Kosten betragen {a51} € pro Stunde für Web, {a52} € pro Stunde für App, {a53} € pro Stunde für DB, {a54} € pro Stunde für Cache und {a55} € pro Stunde für Queue. Das stündliche Budget beträgt {b5} €.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller fünf Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Web-Server verarbeiten {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "App-Server verarbeiten {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "DB-Server verarbeiten {c3} Tsd. Abfragen pro Sekunde", "bedeutung": "{c3} × x₃"},
+      {"text": "Cache-Server verarbeiten {c4} Tsd. Operationen pro Sekunde", "bedeutung": "{c4} × x₄"},
+      {"text": "Queue-Server verarbeiten {c5} Tsd. Nachrichten pro Sekunde", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kerne für Web, {a12} Kerne für App, {a13} Kerne für DB, {a14} Kerne für Cache und {a15} Kerne für Queue", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Web, {a22} GB für App, {a23} GB für DB, {a24} GB für Cache und {a25} GB für Queue", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} GB für Web, {a32} GB für App, {a33} GB für DB, {a34} GB für Cache und {a35} GB für Queue", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} GB", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} kW für Web, {a42} kW für App, {a43} kW für DB, {a44} kW für Cache und {a45} kW für Queue", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} kW", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} € pro Stunde für Web, {a52} € pro Stunde für App, {a53} € pro Stunde für DB, {a54} € pro Stunde für Cache und {a55} € pro Stunde für Queue", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅"},
+        {"text": "{b5} €", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

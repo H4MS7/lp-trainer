@@ -1,0 +1,43 @@
+{
+  "id": "qual_bruecke_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Ultraschallprüfungen", "x2 = Anzahl Belastungstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Schadensabdeckung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Inspektionszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Ultraschall (€/Prüfung)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Kosten Belastungstest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Schadensabdeckung Ultraschall (%)"},
+    "a12": {"min": 5, "max": 12,  "label": "Schadensabdeckung Belastungstest (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Schadensabdeckung (%)"},
+    "a21": {"min": 1, "max": 4,   "label": "Zeit Ultraschall (Stunden)"},
+    "a22": {"min": 3, "max": 8,   "label": "Zeit Belastungstest (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Inspektionszeit (Stunden)"}
+  },
+  "titel": "Brückeninspektion – Strukturprüfung",
+  "beschreibung": "Bei einer Brückeninspektion werden Ultraschallprüfungen und Belastungstests eingesetzt. Eine Ultraschallprüfung kostet {c1} €, ein Belastungstest kostet {c2} €. Die Ultraschallprüfung erreicht {a11} % Schadensabdeckung, der Belastungstest erreicht {a12} % Schadensabdeckung. Die Mindest-Schadensabdeckung beträgt {b1} %. Eine Ultraschallprüfung dauert {a21} Stunden, ein Belastungstest dauert {a22} Stunden. Die Inspektionszeit ist auf {b2} Stunden begrenzt.",
+  "hinweis": "Minimiere die Inspektionskosten bei ausreichender Schadensabdeckung und begrenzter Inspektionszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Ultraschallprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Belastungstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Schadensabdeckung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Schadensabdeckung", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

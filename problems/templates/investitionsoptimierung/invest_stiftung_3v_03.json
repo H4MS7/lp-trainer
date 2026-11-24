@@ -1,0 +1,200 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "invest_stiftung_3v_03",
+  "titel": "Stiftungskapital – Aktien, Anleihen und Mikrofinanz",
+  "variablen": [
+    "x1 = Betrag in Aktien (Tsd. EUR)",
+    "x2 = Betrag in Anleihen (Tsd. EUR)",
+    "x3 = Betrag in Mikrofinanz (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Stiftungskapital",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Risikobudget",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Betreuungsaufwand",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 10,
+      "label": "Rendite Aktien (%)"
+    },
+    "c2": {
+      "min": 2,
+      "max": 5,
+      "label": "Rendite Anleihen (%)"
+    },
+    "c3": {
+      "min": 3,
+      "max": 7,
+      "label": "Rendite Mikrofinanz (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Aktien"
+    },
+    "a12": {
+      "min": 1,
+      "max": 2,
+      "label": "Kapitalbedarf Anleihen"
+    },
+    "a13": {
+      "min": 1,
+      "max": 4,
+      "label": "Kapitalbedarf Mikrofinanz"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "Stiftungskapital (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 4,
+      "max": 9,
+      "label": "Risiko Aktien"
+    },
+    "a22": {
+      "min": 1,
+      "max": 3,
+      "label": "Risiko Anleihen"
+    },
+    "a23": {
+      "min": 3,
+      "max": 7,
+      "label": "Risiko Mikrofinanz"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Risikobudget"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Betreuung Aktien (h)"
+    },
+    "a32": {
+      "min": 1,
+      "max": 2,
+      "label": "Betreuung Anleihen (h)"
+    },
+    "a33": {
+      "min": 3,
+      "max": 8,
+      "label": "Betreuung Mikrofinanz (h)"
+    },
+    "b3": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Betreuungsstunden"
+    }
+  },
+  "beschreibung": "Eine Stiftung legt ihr Kapital in drei Anlageklassen an. Aktien bringen {c1} % Rendite, Anleihen {c2} % und Mikrofinanzprojekte {c3} %. Der Kapitalbedarf liegt bei {a11} Einheiten fuer Aktien, {a12} fuer Anleihen und {a13} fuer Mikrofinanz bei einem Stiftungskapital von {b1} Tausend Euro. Das Risiko betraegt {a21} Punkte fuer Aktien, {a22} fuer Anleihen und {a23} fuer Mikrofinanz bei maximal {b2} Risikopunkten. Die Betreuung erfordert {a31} Stunden fuer Aktien, {a32} fuer Anleihen und {a33} fuer Mikrofinanz bei maximal {b3} Betreuungsstunden.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko und Betreuungsaufwand.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Aktien bringen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Anleihen {c2} %",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Mikrofinanzprojekte {c3} %",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Aktien",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Anleihen",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Mikrofinanz",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkte fuer Aktien",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Anleihen",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Mikrofinanz",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Risikopunkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Stunden fuer Aktien",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Anleihen",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Mikrofinanz",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Betreuungsstunden",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

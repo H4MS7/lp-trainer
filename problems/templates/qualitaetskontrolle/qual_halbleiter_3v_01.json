@@ -1,0 +1,60 @@
+{
+  "id": "qual_halbleiter_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl optische Inspektionen", "x2 = Anzahl elektrische Tests", "x3 = Anzahl thermische Tests"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fehlererfassung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Reinraumzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Gerätebudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten optisch (€/Inspektion)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten elektrisch (€/Test)"},
+    "c3":  {"min": 5, "max": 15,  "label": "Kosten thermisch (€/Test)"},
+    "a11": {"min": 2, "max": 6,   "label": "Fehlererfassung optisch (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Fehlererfassung elektrisch (%)"},
+    "a13": {"min": 4, "max": 10,  "label": "Fehlererfassung thermisch (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Fehlererfassung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Reinraumzeit optisch (min)"},
+    "a22": {"min": 2, "max": 5,   "label": "Reinraumzeit elektrisch (min)"},
+    "a23": {"min": 3, "max": 6,   "label": "Reinraumzeit thermisch (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Reinraumzeit (min)"},
+    "a31": {"min": 3, "max": 8,   "label": "Gerätekosten optisch (€)"},
+    "a32": {"min": 5, "max": 12,  "label": "Gerätekosten elektrisch (€)"},
+    "a33": {"min": 6, "max": 15,  "label": "Gerätekosten thermisch (€)"},
+    "b3":  {"min": 100, "max": 400, "label": "Gerätebudget (€)"}
+  },
+  "titel": "Halbleiterfertigung – Drei Prüfverfahren",
+  "beschreibung": "Ein Halbleiterhersteller setzt optische Inspektionen, elektrische Tests und thermische Tests ein. Eine optische Inspektion kostet {c1} €, ein elektrischer Test kostet {c2} € und ein thermischer Test kostet {c3} €. Optische Inspektionen erfassen {a11} % der Fehler, elektrische Tests erfassen {a12} % und thermische Tests erfassen {a13} % der Fehler. Die Mindest-Fehlererfassung beträgt {b1} %. Optische Inspektionen benötigen {a21} Minuten Reinraumzeit, elektrische Tests benötigen {a22} Minuten und thermische Tests benötigen {a23} Minuten. Die Reinraumzeit beträgt {b2} Minuten. Die Gerätekosten betragen {a31} € pro optische Inspektion, {a32} € pro elektrischen Test und {a33} € pro thermischen Test. Das Gerätebudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Fehlererfassung, begrenzter Reinraumzeit und Gerätebudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "optische Inspektion kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "elektrischer Test kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "thermischer Test kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Fehler", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % der Fehler", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Reinraumzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro optische Inspektion", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro elektrischen Test", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro thermischen Test", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

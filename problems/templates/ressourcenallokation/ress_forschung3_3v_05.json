@@ -1,0 +1,60 @@
+{
+  "id": "ress_forschung3_3v_05",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Monate Grundlagenforschung", "x2 = Monate Anwendungsforschung", "x3 = Monate Produktentwicklung"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Forschungsmonate", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborgeraete", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Forschungsbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Patentpotenzial/Monat Grundlagen"},
+    "c2":  {"min": 5, "max": 15,    "label": "Patentpotenzial/Monat Anwendung"},
+    "c3":  {"min": 8, "max": 20,    "label": "Patentpotenzial/Monat Produktentw."},
+    "a11": {"min": 1, "max": 1,     "label": "Monate/Monat Grundlagen"},
+    "a12": {"min": 1, "max": 1,     "label": "Monate/Monat Anwendung"},
+    "a13": {"min": 1, "max": 1,     "label": "Monate/Monat Produktentw."},
+    "b1":  {"min": 6, "max": 24,    "label": "Forschungsmonate gesamt"},
+    "a21": {"min": 2, "max": 5,     "label": "Geraete/Monat Grundlagen"},
+    "a22": {"min": 3, "max": 7,     "label": "Geraete/Monat Anwendung"},
+    "a23": {"min": 1, "max": 4,     "label": "Geraete/Monat Produktentw."},
+    "b2":  {"min": 10, "max": 40,   "label": "Laborgeraete gesamt"},
+    "a31": {"min": 3, "max": 8,     "label": "Budget/Monat Grundlagen (10.000 €)"},
+    "a32": {"min": 2, "max": 6,     "label": "Budget/Monat Anwendung (10.000 €)"},
+    "a33": {"min": 4, "max": 10,    "label": "Budget/Monat Produktentw. (10.000 €)"},
+    "b3":  {"min": 20, "max": 80,   "label": "Forschungsbudget (10.000 €)"}
+  },
+  "titel": "Forschungsallokation – Grundlagen, Anwendung und Produktentwicklung",
+  "beschreibung": "Ein Forschungsinstitut verteilt Kapazitaeten auf Grundlagenforschung, Anwendungsforschung und Produktentwicklung. Jeder Monat Grundlagenforschung erzeugt ein Patentpotenzial von {c1}, Anwendungsforschung {c2} und Produktentwicklung {c3}. Grundlagen benoetigt {a11} Forschungsmonat, Anwendung {a12} und Produktentwicklung {a13} Forschungsmonat pro Monat. Es stehen {b1} Forschungsmonate bereit. An Laborgeraeten werden {a21} Einheiten pro Monat Grundlagen, {a22} pro Monat Anwendung und {a23} pro Monat Produktentwicklung benoetigt. Es gibt {b2} Laborgeraete. Das Budget betraegt {a31} Zehntausend Euro pro Monat Grundlagen, {a32} pro Monat Anwendung und {a33} pro Monat Produktentwicklung bei {b3} Zehntausend Euro Gesamtbudget.",
+  "hinweis": "Drei Forschungsarten mit Zeit-, Geraete- und Budgetbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Grundlagenforschung erzeugt ein Patentpotenzial von {c1}", "bedeutung": "{c1} × x₁"},
+      {"text": "Anwendungsforschung {c2}", "bedeutung": "{c2} × x₂"},
+      {"text": "Produktentwicklung {c3}", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Grundlagen benoetigt {a11} Forschungsmonat", "bedeutung": "{a11}x₁"},
+        {"text": "Anwendung {a12}", "bedeutung": "+ {a12}x₂"},
+        {"text": "Produktentwicklung {a13} Forschungsmonat", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Forschungsmonate bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Einheiten pro Monat Grundlagen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} pro Monat Anwendung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} pro Monat Produktentwicklung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Laborgeraete", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Zehntausend Euro pro Monat Grundlagen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Monat Anwendung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Monat Produktentwicklung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Zehntausend Euro Gesamtbudget", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

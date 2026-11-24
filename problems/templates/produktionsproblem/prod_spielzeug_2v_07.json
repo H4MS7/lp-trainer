@@ -1,0 +1,43 @@
+{
+  "id": "prod_spielzeug_2v_07",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Holzautos", "x2 = Anzahl Puzzles"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Holz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Lackierzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 18,   "label": "Gewinn/Holzauto (€)"},
+    "c2":  {"min": 3, "max": 12,   "label": "Gewinn/Puzzle (€)"},
+    "a11": {"min": 1, "max": 4,    "label": "Holz/Auto (dm³)"},
+    "a12": {"min": 1, "max": 3,    "label": "Holz/Puzzle (dm³)"},
+    "b1":  {"min": 50, "max": 200, "label": "Holzvorrat (dm³)"},
+    "a21": {"min": 2, "max": 8,    "label": "Lackierzeit/Auto (min)"},
+    "a22": {"min": 1, "max": 5,    "label": "Lackierzeit/Puzzle (min)"},
+    "b2":  {"min": 100, "max": 400, "label": "Lackierminuten"}
+  },
+  "titel": "Spielzeughersteller – Holzautos und Puzzles",
+  "beschreibung": "Ein Spielzeughersteller produziert Holzautos und Puzzles. Pro Holzauto wird ein Gewinn von {c1} Euro erzielt, pro Puzzle {c2} Euro. Jedes Holzauto benoetigt {a11} dm³ Holz, jedes Puzzle {a12} dm³. Es stehen {b1} dm³ Holz bereit. Das Lackieren eines Autos dauert {a21} Minuten, das eines Puzzles {a22} Minuten. Die Lackierkapazitaet betraegt {b2} Minuten.",
+  "hinweis": "Formuliere die Gewinnmaximierung unter Beachtung der Holz- und Lackierbeschraenkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Holzauto wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Puzzle {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} dm³ Holz, jedes Puzzle", "bedeutung": "{a11}x₁"},
+        {"text": "Puzzle {a12} dm³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} dm³ Holz bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Autos dauert {a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "Puzzles {a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

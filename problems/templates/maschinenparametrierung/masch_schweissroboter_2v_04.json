@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_schweissroboter_2v_04",
+  "titel": "Schweissroboter – Stromstaerke und Drahtvorschub",
+  "variablen": [
+    "x1 = Stromstaerke (Stufen)",
+    "x2 = Drahtvorschub (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieaufnahme",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Spritzerbildung",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 12,
+      "label": "Nahtfestigkeit Strom"
+    },
+    "c2": {
+      "min": 3,
+      "max": 10,
+      "label": "Schweissgeschwindigkeit Draht"
+    },
+    "a11": {
+      "min": 3,
+      "max": 10,
+      "label": "Energie pro Stromstufe"
+    },
+    "a12": {
+      "min": 1,
+      "max": 5,
+      "label": "Energie pro Drahtstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieaufnahme"
+    },
+    "a21": {
+      "min": 2,
+      "max": 8,
+      "label": "Spritzer pro Stromstufe"
+    },
+    "a22": {
+      "min": 3,
+      "max": 9,
+      "label": "Spritzer pro Drahtstufe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Spritzereinheiten"
+    }
+  },
+  "beschreibung": "Ein Schweissroboter wird ueber Stromstaerke und Drahtvorschub eingestellt. Die Stromstaerke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Schweissgeschwindigkeit. Die Energieaufnahme betraegt {a11} Einheiten pro Stromstufe und {a12} Einheiten pro Drahtstufe bei maximal {b1} Energieeinheiten. Die Spritzerbildung liegt bei {a21} Einheiten pro Stromstufe und {a22} Einheiten pro Drahtstufe bei maximal {b2} Spritzereinheiten.",
+  "hinweis": "Maximiere die Schweissqualitaet unter Beachtung von Energie und Spritzerbildung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Stromstaerke liefert {c1} Punkte Nahtfestigkeit",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Drahtvorschub {c2} Punkte Schweissgeschwindigkeit",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Stromstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Drahtstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Stromstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Drahtstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Spritzereinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

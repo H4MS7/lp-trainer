@@ -1,0 +1,313 @@
+[
+  {
+    "titel": "Supermarkt-Dreisortenlager",
+    "beschreibung": "Ein Supermarkt in der Innenstadt von München optimiert die Bestellmengen für drei Produktgruppen: Frischware, Trockenware und Tiefkühlprodukte. Der Filialleiter plant die wöchentliche Bestellung und muss dabei Mindestbestände, Kapazitätsgrenzen und Budgetvorgaben beachten. Die Lagerkosten betragen 1€ pro Einheit Frischware, 1€ pro Einheit Trockenware und 10€ pro Einheit Tiefkühlprodukte. Um die Grundversorgung sicherzustellen, muss ein Mindestbestand eingehalten werden: 6 Regalplätze pro Einheit Frischware, 7 Regalplätze pro Einheit Trockenware und 11 Regalplätze pro Einheit Tiefkühlprodukte ergeben zusammen mindestens 890 Regalplätze. Die Kühlraumkapazität ist begrenzt: 1 Stellplatz pro Einheit Frischware, 11 Stellplätze pro Einheit Trockenware und 11 Stellplätze pro Einheit Tiefkühlprodukte dürfen zusammen höchstens 982 Stellplätze belegen. Die Gesamtlagerfläche ist ebenfalls begrenzt: 5 Lagerplätze pro Einheit Frischware, 7 Lagerplätze pro Einheit Trockenware und 2 Lagerplätze pro Einheit Tiefkühlprodukte dürfen zusammen höchstens 1508 Lagerplätze beanspruchen. Darüber hinaus erfordert die Liefervertragspflicht einen weiteren Mindestbestand: 5 Palettenplätze pro Einheit Frischware, 5 Palettenplätze pro Einheit Trockenware und 3 Palettenplätze pro Einheit Tiefkühlprodukte müssen zusammen mindestens 1452 Palettenplätze ausmachen. Gesucht ist die kostenminimale Bestellstrategie, die alle Versorgungsanforderungen und Kapazitätsgrenzen gleichzeitig erfüllt.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Frischware",
+      "x2 = Bestellmenge Trockenware",
+      "x3 = Bestellmenge Tiefkühlprodukte"
+    ],
+    "zielfunktion": "Z = 1x1 + 1x2 + 10x3 (min)",
+    "nebenbedingungen": [
+      "6x1 + 7x2 + 11x3 ≥ 890 (Mindestbestand)",
+      "1x1 + 11x2 + 11x3 ≤ 982 (Kühlraumkapazität)",
+      "5x1 + 7x2 + 2x3 ≤ 1508 (Gesamtlagerfläche)",
+      "5x1 + 5x2 + 3x3 ≥ 1452 (Liefervertragspflicht)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier drei Produktgruppen gleichzeitig optimiert werden. Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "1€ pro Einheit Frischware",
+          "bedeutung": "1 × x₁"
+        },
+        {
+          "text": "1€ pro Einheit Trockenware",
+          "bedeutung": "1 × x₂"
+        },
+        {
+          "text": "10€ pro Einheit Tiefkühlprodukte",
+          "bedeutung": "10 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Regalplätze pro Einheit Frischware",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "7 Regalplätze pro Einheit Trockenware",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "11 Regalplätze pro Einheit Tiefkühlprodukte",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "mindestens 890 Regalplätze",
+            "bedeutung": "≥ 890"
+          }
+        ],
+        [
+          {
+            "text": "1 Stellplatz pro Einheit Frischware",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "11 Stellplätze pro Einheit Trockenware",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "11 Stellplätze pro Einheit Tiefkühlprodukte",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "höchstens 982 Stellplätze",
+            "bedeutung": "≤ 982"
+          }
+        ],
+        [
+          {
+            "text": "5 Lagerplätze pro Einheit Frischware",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "7 Lagerplätze pro Einheit Trockenware",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "2 Lagerplätze pro Einheit Tiefkühlprodukte",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "höchstens 1508 Lagerplätze",
+            "bedeutung": "≤ 1508"
+          }
+        ],
+        [
+          {
+            "text": "5 Palettenplätze pro Einheit Frischware",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "5 Palettenplätze pro Einheit Trockenware",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "3 Palettenplätze pro Einheit Tiefkühlprodukte",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "mindestens 1452 Palettenplätze",
+            "bedeutung": "≥ 1452"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Apotheken-Dreispartenbestand",
+    "beschreibung": "Eine große Apotheke nahe dem Hauptbahnhof optimiert die Bestellmengen für drei Produktgruppen: verschreibungspflichtige Medikamente, Nahrungsergänzungsmittel und Pflegeprodukte. Die Apothekenleiterin muss gesetzliche Vorratspflichten und strenge Kühlvorschriften einhalten und gleichzeitig die Kosten kontrollieren. Die Lagerkosten betragen 10€ pro Packung verschreibungspflichtige Medikamente, 4€ pro Packung Nahrungsergänzungsmittel und 1€ pro Packung Pflegeprodukte. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 6 Regalfächer pro Packung verschreibungspflichtige Medikamente, 1 Regalfach pro Packung Nahrungsergänzungsmittel und 9 Regalfächer pro Packung Pflegeprodukte ergeben zusammen mindestens 275 Regalfächer. Die Kühlschrankkapazität ist begrenzt: 11 Stellplätze pro Packung verschreibungspflichtige Medikamente, 7 Stellplätze pro Packung Nahrungsergänzungsmittel und 7 Stellplätze pro Packung Pflegeprodukte dürfen zusammen höchstens 1816 Stellplätze belegen. Zudem gilt eine Regalflächengrenze: 5 Regalfächer pro Packung verschreibungspflichtige Medikamente, 3 Regalfächer pro Packung Nahrungsergänzungsmittel und 6 Regalfächer pro Packung Pflegeprodukte dürfen zusammen höchstens 1575 Regalfächer beanspruchen. Schließlich erfordert die Arzneimittelsicherheit einen zusätzlichen Mindestbestand: 1 Lagerplatz pro Packung verschreibungspflichtige Medikamente, 9 Lagerplätze pro Packung Nahrungsergänzungsmittel und 6 Lagerplätze pro Packung Pflegeprodukte müssen zusammen mindestens 1394 Lagerplätze ausmachen. Gesucht ist die kostenminimale Bestellstrategie unter Einhaltung aller regulatorischen Vorgaben.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge verschreibungspflichtige Medikamente",
+      "x2 = Bestellmenge Nahrungsergänzungsmittel",
+      "x3 = Bestellmenge Pflegeprodukte"
+    ],
+    "zielfunktion": "Z = 10x1 + 4x2 + 1x3 (min)",
+    "nebenbedingungen": [
+      "6x1 + 1x2 + 9x3 ≥ 275 (Mindestbestand)",
+      "11x1 + 7x2 + 7x3 ≤ 1816 (Kühlschrankkapazität)",
+      "5x1 + 3x2 + 6x3 ≤ 1575 (Regalflächengrenze)",
+      "1x1 + 9x2 + 6x3 ≥ 1394 (Arzneimittelsicherheit)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier drei Produktgruppen gleichzeitig optimiert werden. Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "10€ pro Packung verschreibungspflichtige Medikamente",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "4€ pro Packung Nahrungsergänzungsmittel",
+          "bedeutung": "4 × x₂"
+        },
+        {
+          "text": "1€ pro Packung Pflegeprodukte",
+          "bedeutung": "1 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "1 Regalfach pro Packung Nahrungsergänzungsmittel",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "9 Regalfächer pro Packung Pflegeprodukte",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "mindestens 275 Regalfächer",
+            "bedeutung": "≥ 275"
+          }
+        ],
+        [
+          {
+            "text": "11 Stellplätze pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "7 Stellplätze pro Packung Nahrungsergänzungsmittel",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "7 Stellplätze pro Packung Pflegeprodukte",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "höchstens 1816 Stellplätze",
+            "bedeutung": "≤ 1816"
+          }
+        ],
+        [
+          {
+            "text": "5 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Regalfächer pro Packung Nahrungsergänzungsmittel",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "6 Regalfächer pro Packung Pflegeprodukte",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "höchstens 1575 Regalfächer beanspruchen",
+            "bedeutung": "≤ 1575"
+          }
+        ],
+        [
+          {
+            "text": "1 Lagerplatz pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "9 Lagerplätze pro Packung Nahrungsergänzungsmittel",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "6 Lagerplätze pro Packung Pflegeprodukte",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "mindestens 1394 Lagerplätze",
+            "bedeutung": "≥ 1394"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baumateriallager-Dreisortiment",
+    "beschreibung": "Ein Baumateriallager am Stadtrand von Stuttgart optimiert die Bestellmengen für drei Produktgruppen: Zement, Holzplatten und Dämmstoffe. Der Lagerleiter bereitet die Saisonbestellung vor und möchte die Lagerhaltungskosten senken, ohne die Lieferfähigkeit zu gefährden. Die Lagerkosten betragen 9€ pro Palette Zement, 4€ pro Palette Holzplatten und 12€ pro Palette Dämmstoffe. Um die Versorgungssicherheit für laufende Bauprojekte zu gewährleisten, muss ein Mindestbestand eingehalten werden: 8 Stellflächen pro Palette Zement, 6 Stellflächen pro Palette Holzplatten und 6 Stellflächen pro Palette Dämmstoffe ergeben zusammen mindestens 783 Stellflächen. Die Hallenkapazität ist begrenzt: 11 Lagerplätze pro Palette Zement, 9 Lagerplätze pro Palette Holzplatten und 10 Lagerplätze pro Palette Dämmstoffe dürfen zusammen höchstens 1821 Lagerplätze belegen. Darüber hinaus ist das Außenlager beschränkt: 11 Stellplätze pro Palette Zement, 5 Stellplätze pro Palette Holzplatten und 1 Stellplatz pro Palette Dämmstoffe dürfen zusammen höchstens 1537 Stellplätze beanspruchen. Das Optimierungsziel ist die Minimierung der Gesamtkosten bei gleichzeitiger Absicherung der Materialverfügbarkeit und Einhaltung aller Kapazitätsgrenzen.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Zement",
+      "x2 = Bestellmenge Holzplatten",
+      "x3 = Bestellmenge Dämmstoffe"
+    ],
+    "zielfunktion": "Z = 9x1 + 4x2 + 12x3 (min)",
+    "nebenbedingungen": [
+      "8x1 + 6x2 + 6x3 ≥ 783 (Mindestbestand)",
+      "11x1 + 9x2 + 10x3 ≤ 1821 (Hallenkapazität)",
+      "11x1 + 5x2 + 1x3 ≤ 1537 (Außenlager)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier drei Produktgruppen gleichzeitig optimiert werden. Der Mindestbestand erfordert ≥, die Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Palette Zement",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "4€ pro Palette Holzplatten",
+          "bedeutung": "4 × x₂"
+        },
+        {
+          "text": "12€ pro Palette Dämmstoffe",
+          "bedeutung": "12 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "8 Stellflächen pro Palette Zement",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "6 Stellflächen pro Palette Holzplatten",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "6 Stellflächen pro Palette Dämmstoffe",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "mindestens 783 Stellflächen",
+            "bedeutung": "≥ 783"
+          }
+        ],
+        [
+          {
+            "text": "11 Lagerplätze pro Palette Zement",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "9 Lagerplätze pro Palette Holzplatten",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "10 Lagerplätze pro Palette Dämmstoffe",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "höchstens 1821 Lagerplätze",
+            "bedeutung": "≤ 1821"
+          }
+        ],
+        [
+          {
+            "text": "11 Stellplätze pro Palette Zement",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "5 Stellplätze pro Palette Holzplatten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "1 Stellplatz pro Palette Dämmstoffe",
+            "bedeutung": "+ 1x₃"
+          },
+          {
+            "text": "höchstens 1537 Stellplätze",
+            "bedeutung": "≤ 1537"
+          }
+        ]
+      ]
+    }
+  }
+]

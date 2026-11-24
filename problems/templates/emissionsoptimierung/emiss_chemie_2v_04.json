@@ -1,0 +1,43 @@
+{
+  "id": "emiss_chemie_2v_04",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Produkt A", "x2 = Einheiten Produkt B"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Abwasser", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Abgase", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Produkt A (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Produkt B (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Abwasser Produkt A (m³)"},
+    "a12": {"min": 2, "max": 8,   "label": "Abwasser Produkt B (m³)"},
+    "b1":  {"min": 80, "max": 350, "label": "Abwasserlimit (m³)"},
+    "a21": {"min": 2, "max": 8,   "label": "Abgase Produkt A (t)"},
+    "a22": {"min": 1, "max": 5,   "label": "Abgase Produkt B (t)"},
+    "b2":  {"min": 60, "max": 250, "label": "Abgaslimit (t)"}
+  },
+  "titel": "Chemiefabrik – Produkt A und Produkt B",
+  "beschreibung": "Eine Chemiefabrik stellt Produkt A und Produkt B her. Produkt A erwirtschaftet {c1} Tsd. € pro Einheit, Produkt B {c2} Tsd. €. Produkt A erzeugt {a11} m³ Abwasser pro Einheit, Produkt B {a12} m³. Das Abwasserlimit beträgt {b1} m³. Produkt A verursacht {a21} Tonnen Abgase pro Einheit, Produkt B {a22} Tonnen. Das Abgaslimit liegt bei {b2} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung der Abwasser- und Abgaslimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Produkt A erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Produkt B {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ Abwasser pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} m³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m³", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen Abgase pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

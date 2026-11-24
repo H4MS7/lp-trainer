@@ -1,0 +1,60 @@
+{
+  "id": "qual_auto_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Sichtprüfungen", "x2 = Anzahl Fahrwerktests", "x3 = Anzahl Elektroniktests"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Qualitätssicherung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Bandzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Prüfpersonal", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Sichtprüfung (€/Prüfung)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Fahrwerktest (€/Test)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Kosten Elektroniktest (€/Test)"},
+    "a11": {"min": 2, "max": 5,   "label": "Qualitätswert Sichtprüfung (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Qualitätswert Fahrwerktest (%)"},
+    "a13": {"min": 4, "max": 10,  "label": "Qualitätswert Elektroniktest (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Qualitätssicherung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Bandzeit Sichtprüfung (min)"},
+    "a22": {"min": 3, "max": 7,   "label": "Bandzeit Fahrwerktest (min)"},
+    "a23": {"min": 2, "max": 5,   "label": "Bandzeit Elektroniktest (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Bandzeit (min)"},
+    "a31": {"min": 1, "max": 2,   "label": "Prüfer Sichtprüfung (Personen)"},
+    "a32": {"min": 2, "max": 3,   "label": "Prüfer Fahrwerktest (Personen)"},
+    "a33": {"min": 1, "max": 3,   "label": "Prüfer Elektroniktest (Personen)"},
+    "b3":  {"min": 10, "max": 40,  "label": "Prüfpersonal (Personen)"}
+  },
+  "titel": "Automobilwerk – Drei Prüfstationen",
+  "beschreibung": "Ein Automobilwerk betreibt drei Prüfstationen: Sichtprüfungen, Fahrwerktests und Elektroniktests. Eine Sichtprüfung kostet {c1} €, ein Fahrwerktest kostet {c2} € und ein Elektroniktest kostet {c3} €. Die Sichtprüfung erreicht {a11} % Qualitätswert, der Fahrwerktest erreicht {a12} % und der Elektroniktest erreicht {a13} % Qualitätswert. Die Mindest-Qualitätssicherung beträgt {b1} %. Die Sichtprüfung benötigt {a21} Minuten Bandzeit, der Fahrwerktest benötigt {a22} Minuten und der Elektroniktest benötigt {a23} Minuten. Die Bandzeit beträgt {b2} Minuten. Die Sichtprüfung erfordert {a31} Prüfer, der Fahrwerktest erfordert {a32} Prüfer und der Elektroniktest erfordert {a33} Prüfer. Das Prüfpersonal umfasst {b3} Personen.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Qualitätssicherung, begrenzter Bandzeit und Prüfpersonal.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sichtprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Fahrwerktest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Elektroniktest kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Qualitätswert", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % Qualitätswert", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Bandzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Prüfer", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Prüfer", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Prüfer", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Personen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

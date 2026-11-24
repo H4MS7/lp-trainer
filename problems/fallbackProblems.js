@@ -1,0 +1,10452 @@
+const fallbackProblems = [
+  {
+    "titel": "Bäckerei – Brote und Kuchen",
+    "beschreibung": "Eine Bäckerei stellt Brote und Kuchen her. Jedes Brot bringt einen Gewinn von 3€, jeder Kuchen einen Gewinn von 5€. Für ein Brot werden 2 kg Mehl benötigt, für einen Kuchen 4 kg Mehl. Insgesamt stehen 120 kg Mehl zur Verfügung. Außerdem braucht ein Brot 3 Arbeitsstunden und ein Kuchen 2 Arbeitsstunden. Es sind höchstens 90 Arbeitsstunden verfügbar.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Brote",
+      "x2 = Anzahl Kuchen"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 120 (Mehl)",
+      "3x1 + 2x2 ≤ 90 (Arbeitsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme zuerst die Restriktionen für Mehl und Arbeitsstunden, dann den Gewinn pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 3€",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Gewinn von 5€",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 kg Mehl benötigt",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "4 kg Mehl",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "120 kg Mehl zur Verfügung",
+            "bedeutung": "≤ 120"
+          }
+        ],
+        [
+          {
+            "text": "3 Arbeitsstunden",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Arbeitsstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "90 Arbeitsstunden verfügbar",
+            "bedeutung": "≤ 90"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauerei – Helles und Weizen",
+    "beschreibung": "Eine Brauerei produziert Helles und Weizenbier. Pro Hektoliter Helles erzielt sie einen Deckungsbeitrag von 45€, pro Hektoliter Weizen 60€. Für einen Hektoliter Helles werden 4 Stunden Brauzeit benötigt, für einen Hektoliter Weizen 6 Stunden. Die Brauanlage steht wöchentlich 240 Stunden zur Verfügung. An Rohstoffen verbraucht ein Hektoliter Helles 50 kg Malz und ein Hektoliter Weizen 35 kg Malz. Der wöchentliche Malzvorrat beträgt 2100 kg.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Hektoliter Helles",
+      "x2 = Hektoliter Weizen"
+    ],
+    "zielfunktion": "Z = 45x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 6x2 ≤ 240 (Brauzeit)",
+      "50x1 + 35x2 ≤ 2100 (Malz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Einheiten: Stunden für Brauzeit und Kilogramm für Malz.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 45€",
+          "bedeutung": "45 × x₁"
+        },
+        {
+          "text": "60€",
+          "bedeutung": "60 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Stunden Brauzeit",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "240 Stunden zur Verfügung",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "50 kg Malz",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "35 kg Malz",
+            "bedeutung": "+ 35x₂"
+          },
+          {
+            "text": "2100 kg",
+            "bedeutung": "≤ 2100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schreinerei – Regale und Kommoden",
+    "beschreibung": "Eine Schreinerei fertigt Regale und Kommoden. Pro Regal beträgt der Gewinn 80€, pro Kommode 130€. Ein Regal erfordert 6 Stunden Arbeitszeit, eine Kommode 8 Stunden. Pro Woche stehen 240 Arbeitsstunden zur Verfügung. Für ein Regal werden 4 m² Holz verbraucht, für eine Kommode 3 m² Holz. Der wöchentliche Holzvorrat beträgt 120 m².",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Regale",
+      "x2 = Anzahl Kommoden"
+    ],
+    "zielfunktion": "Z = 80x1 + 130x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 8x2 ≤ 240 (Arbeitszeit)",
+      "4x1 + 3x2 ≤ 120 (Holz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Stelle die Nebenbedingungen für Arbeitszeit und Holz getrennt auf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 80€",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "130€",
+          "bedeutung": "130 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden Arbeitszeit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "8 Stunden",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "240 Arbeitsstunden",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "4 m² Holz",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "3 m² Holz",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "120 m²",
+            "bedeutung": "≤ 120"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textilfabrik – T-Shirts und Jacken",
+    "beschreibung": "Eine Textilfabrik produziert T-Shirts und Jacken. Ein T-Shirt bringt 12€ Gewinn, eine Jacke 35€ Gewinn. Pro T-Shirt werden 2 m Stoff benötigt, pro Jacke 3 m Stoff. Insgesamt sind 600 m Stoff vorhanden. Ein T-Shirt erfordert 1 Stunde Nähzeit, eine Jacke 4 Stunden Nähzeit. Die Nähkapazität beträgt 480 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl T-Shirts",
+      "x2 = Anzahl Jacken"
+    ],
+    "zielfunktion": "Z = 12x1 + 35x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 600 (Stoff)",
+      "x1 + 4x2 ≤ 480 (Nähzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass Jacken mehr Nähzeit relativ zum Stoff erfordern als T-Shirts.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "12€ Gewinn",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "35€ Gewinn",
+          "bedeutung": "35 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 m Stoff benötigt",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 m Stoff",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "600 m Stoff vorhanden",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "1 Stunde Nähzeit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "4 Stunden Nähzeit",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "480 Stunden pro Woche",
+            "bedeutung": "≤ 480"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Druckerei – Flyer und Poster",
+    "beschreibung": "Eine Druckerei druckt Flyer und Poster. Ein Flyer bringt 0,80€ Gewinn, ein Poster 2,50€ Gewinn. Für 1 Flyer werden 3 Blatt Spezialpapier benötigt, für 1 Poster 5 Blatt. Es stehen 3000 Blatt Spezialpapier zur Verfügung. Die Druckmaschine benötigt 1 Minute pro Flyer und 4 Minuten pro Poster. Die wöchentliche Maschinenzeit beträgt 1600 Minuten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Flyer",
+      "x2 = Anzahl Poster"
+    ],
+    "zielfunktion": "Z = 0,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 3000 (Spezialpapier)",
+      "x1 + 4x2 ≤ 1600 (Maschinenzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gewinnkoeffizienten sind Dezimalzahlen. Achte auf die richtigen Papier- und Zeitverbräuche.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "0,80€ Gewinn",
+          "bedeutung": "0,8 × x₁"
+        },
+        {
+          "text": "2,50€ Gewinn",
+          "bedeutung": "2,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Blatt Spezialpapier benötigt",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 Blatt",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "3000 Blatt Spezialpapier zur Verfügung",
+            "bedeutung": "≤ 3000"
+          }
+        ],
+        [
+          {
+            "text": "1 Minute pro Flyer",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "4 Minuten pro Poster",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "1600 Minuten",
+            "bedeutung": "≤ 1600"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Töpferei – Teller und Vasen",
+    "beschreibung": "Eine Töpferei stellt Teller und Vasen her. Ein Teller bringt 8€ Gewinn, eine Vase 15€ Gewinn. Für einen Teller werden 0,8 kg Ton benötigt, für eine Vase 1,2 kg Ton. Der wöchentliche Tonvorrat beträgt 96 kg. Ein Teller benötigt 15 Minuten Brennzeit im Ofen, eine Vase 40 Minuten Brennzeit. Die Ofenkapazität liegt bei 2400 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Teller",
+      "x2 = Anzahl Vasen"
+    ],
+    "zielfunktion": "Z = 8x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "0,8x1 + 1,2x2 ≤ 96 (Ton)",
+      "15x1 + 40x2 ≤ 2400 (Brennzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Wandle die Tonmengen und Brennzeiten in die passenden Nebenbedingungen um.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ Gewinn",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "15€ Gewinn",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,8 kg Ton benötigt",
+            "bedeutung": "0,8x₁"
+          },
+          {
+            "text": "1,2 kg Ton",
+            "bedeutung": "+ 1,2x₂"
+          },
+          {
+            "text": "96 kg",
+            "bedeutung": "≤ 96"
+          }
+        ],
+        [
+          {
+            "text": "15 Minuten Brennzeit",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "40 Minuten Brennzeit",
+            "bedeutung": "+ 40x₂"
+          },
+          {
+            "text": "2400 Minuten pro Woche",
+            "bedeutung": "≤ 2400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kerzenhersteller – Stumpenkerzen und Teelichter",
+    "beschreibung": "Ein Kerzenhersteller produziert Stumpenkerzen und Teelichter. Eine Stumpenkerze bringt 4€ Gewinn, ein Teelicht 1,20€ Gewinn. Für eine Stumpenkerze werden 250 g Wachs benötigt, für ein Teelicht 30 g Wachs. Pro Woche stehen 15000 g Wachs zur Verfügung. Eine Stumpenkerze benötigt 6 Minuten Herstellungszeit, ein Teelicht 1 Minute Herstellungszeit. Die verfügbare Herstellungszeit beträgt 480 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Stumpenkerzen",
+      "x2 = Anzahl Teelichter"
+    ],
+    "zielfunktion": "Z = 4x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "250x1 + 30x2 ≤ 15000 (Wachs)",
+      "6x1 + x2 ≤ 480 (Herstellungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die stark unterschiedlichen Wachsmengen: 250 g gegenüber 30 g.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "4€ Gewinn",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "1,20€ Gewinn",
+          "bedeutung": "1,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "250 g Wachs benötigt",
+            "bedeutung": "250x₁"
+          },
+          {
+            "text": "30 g Wachs",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "15000 g Wachs zur Verfügung",
+            "bedeutung": "≤ 15000"
+          }
+        ],
+        [
+          {
+            "text": "6 Minuten Herstellungszeit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "1 Minute Herstellungszeit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "480 Minuten pro Woche",
+            "bedeutung": "≤ 480"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Seifenmanufaktur – Lavendel- und Zitronenseife",
+    "beschreibung": "Eine Seifenmanufaktur stellt Lavendelseife und Zitronenseife her. Ein Stück Lavendelseife bringt 6€ Gewinn, ein Stück Zitronenseife 4,50€ Gewinn. Für eine Lavendelseife werden 150 g Seifenbasis benötigt, für eine Zitronenseife 100 g Seifenbasis. Insgesamt stehen 6000 g Seifenbasis zur Verfügung. Die Herstellung einer Lavendelseife dauert 8 Minuten, die einer Zitronenseife 12 Minuten. Die verfügbare Produktionszeit beträgt 600 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Stück Lavendelseife",
+      "x2 = Stück Zitronenseife"
+    ],
+    "zielfunktion": "Z = 6x1 + 4,5x2 (max)",
+    "nebenbedingungen": [
+      "150x1 + 100x2 ≤ 6000 (Seifenbasis)",
+      "8x1 + 12x2 ≤ 600 (Produktionszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Lavendelseife braucht mehr Seifenbasis, Zitronenseife mehr Produktionszeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "6€ Gewinn",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "4,50€ Gewinn",
+          "bedeutung": "4,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "150 g Seifenbasis benötigt",
+            "bedeutung": "150x₁"
+          },
+          {
+            "text": "100 g Seifenbasis",
+            "bedeutung": "+ 100x₂"
+          },
+          {
+            "text": "6000 g Seifenbasis zur Verfügung",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "8 Minuten",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "12 Minuten",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "600 Minuten pro Woche",
+            "bedeutung": "≤ 600"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eiscafé – Becher und Waffeln",
+    "beschreibung": "Ein Eiscafé verkauft Eisbecher und Eiswaffeln. Ein Eisbecher bringt 3,50€ Gewinn, eine Eiswaffel 2€ Gewinn. Für einen Eisbecher werden 3 Kugeln Eis verwendet, für eine Eiswaffel 2 Kugeln Eis. Pro Tag stehen maximal 360 Kugeln zur Verfügung. Die Zubereitung eines Eisbechers dauert 4 Minuten, die einer Eiswaffel 1 Minute. Die tägliche Zubereitungszeit ist auf 300 Minuten begrenzt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Eisbecher",
+      "x2 = Anzahl Eiswaffeln"
+    ],
+    "zielfunktion": "Z = 3,5x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 360 (Eiskugeln)",
+      "4x1 + x2 ≤ 300 (Zubereitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Eisbecher ist aufwendiger (mehr Kugeln und mehr Zubereitungszeit), bringt aber auch mehr Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3,50€ Gewinn",
+          "bedeutung": "3,5 × x₁"
+        },
+        {
+          "text": "2€ Gewinn",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Kugeln Eis",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Kugeln Eis",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "360 Kugeln zur Verfügung",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "1 Minute",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "300 Minuten begrenzt",
+            "bedeutung": "≤ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schmuckwerkstatt – Ringe und Ketten",
+    "beschreibung": "Eine Schmuckwerkstatt fertigt Ringe und Ketten. Ein Ring bringt 25€ Gewinn, eine Kette 40€ Gewinn. Für einen Ring werden 5 g Silber benötigt, für eine Kette 12 g Silber. Pro Woche stehen 480 g Silber zur Verfügung. Die Herstellung eines Rings dauert 2 Stunden, die einer Kette 3 Stunden. Die wöchentliche Arbeitszeit beträgt 150 Stunden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Ringe",
+      "x2 = Anzahl Ketten"
+    ],
+    "zielfunktion": "Z = 25x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 12x2 ≤ 480 (Silber)",
+      "2x1 + 3x2 ≤ 150 (Arbeitszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Ketten verbrauchen mehr als doppelt so viel Silber wie Ringe, bringen aber auch mehr Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ Gewinn",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "40€ Gewinn",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 g Silber benötigt",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "12 g Silber",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "480 g Silber zur Verfügung",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "150 Stunden",
+            "bedeutung": "≤ 150"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Papierfabrik – Kopierpapier und Karton",
+    "beschreibung": "Eine Papierfabrik stellt Kopierpapier und Karton her. Eine Palette Kopierpapier bringt 70€ Gewinn, eine Palette Karton 110€ Gewinn. Für eine Palette Kopierpapier werden 8 Stunden Maschinenzeit benötigt, für eine Palette Karton 10 Stunden Maschinenzeit. Die Maschinen stehen wöchentlich 400 Stunden zur Verfügung. Außerdem verbraucht eine Palette Kopierpapier 3 m³ Lagerplatz und eine Palette Karton 5 m³ Lagerplatz. Es sind insgesamt 180 m³ Lagerplatz vorhanden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Paletten Kopierpapier",
+      "x2 = Paletten Karton"
+    ],
+    "zielfunktion": "Z = 70x1 + 110x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 10x2 ≤ 400 (Maschinenzeit)",
+      "3x1 + 5x2 ≤ 180 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte beide Beschränkungen: Maschinenzeit und Lagerplatz begrenzen die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "70€ Gewinn",
+          "bedeutung": "70 × x₁"
+        },
+        {
+          "text": "110€ Gewinn",
+          "bedeutung": "110 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "8 Stunden Maschinenzeit benötigt",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "10 Stunden Maschinenzeit",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "400 Stunden zur Verfügung",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "3 m³ Lagerplatz",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 m³ Lagerplatz",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "180 m³ Lagerplatz vorhanden",
+            "bedeutung": "≤ 180"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Glasmanufaktur – Trinkgläser und Windlichter",
+    "beschreibung": "Eine Glasmanufaktur produziert Trinkgläser und Windlichter. Ein Trinkglas bringt 7€ Gewinn, ein Windlicht 11€ Gewinn. Für ein Trinkglas werden 300 g Glasmasse benötigt, für ein Windlicht 200 g Glasmasse. Die wöchentliche Glasmasse beträgt 12000 g. Die Formung eines Trinkglases dauert 10 Minuten, die eines Windlichts 25 Minuten. Die Formanlage steht 1250 Minuten pro Woche zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Trinkgläser",
+      "x2 = Anzahl Windlichter"
+    ],
+    "zielfunktion": "Z = 7x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "300x1 + 200x2 ≤ 12000 (Glasmasse)",
+      "10x1 + 25x2 ≤ 1250 (Formzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Trinkgläser brauchen mehr Glasmasse, Windlichter mehr Formzeit. Die Engpässe wirken gegenläufig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "7€ Gewinn",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "11€ Gewinn",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "300 g Glasmasse benötigt",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "200 g Glasmasse",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "12000 g",
+            "bedeutung": "≤ 12000"
+          }
+        ],
+        [
+          {
+            "text": "10 Minuten",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "25 Minuten",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "1250 Minuten pro Woche",
+            "bedeutung": "≤ 1250"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schuhfabrik – Sneaker und Stiefel",
+    "beschreibung": "Eine Schuhfabrik produziert Sneaker und Stiefel. Ein Paar Sneaker bringt 22€ Gewinn, ein Paar Stiefel 38€ Gewinn. Für ein Paar Sneaker werden 3 m² Leder benötigt, für ein Paar Stiefel 2 m² Leder. Es stehen wöchentlich 180 m² Leder zur Verfügung. Die Fertigung eines Paars Sneaker dauert 1 Stunde, die eines Paars Stiefel 4 Stunden. Die Produktionskapazität beträgt 200 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Paar Sneaker",
+      "x2 = Paar Stiefel"
+    ],
+    "zielfunktion": "Z = 22x1 + 38x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 180 (Leder)",
+      "x1 + 4x2 ≤ 200 (Fertigungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Sneaker brauchen mehr Leder, Stiefel mehr Fertigungszeit. Finde den optimalen Produktionsmix.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "22€ Gewinn",
+          "bedeutung": "22 × x₁"
+        },
+        {
+          "text": "38€ Gewinn",
+          "bedeutung": "38 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 m² Leder benötigt",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 m² Leder",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "180 m² Leder",
+            "bedeutung": "≤ 180"
+          }
+        ],
+        [
+          {
+            "text": "1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "200 Stunden pro Woche",
+            "bedeutung": "≤ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spielzeugwerkstatt – Holzautos und Puzzles",
+    "beschreibung": "Eine Spielzeugwerkstatt stellt Holzautos und Puzzles her. Ein Holzauto bringt 9€ Gewinn, ein Puzzle 14€ Gewinn. Für ein Holzauto werden 0,4 kg Holz verbraucht, für ein Puzzle 0,3 kg Holz. Der wöchentliche Holzvorrat beträgt 36 kg. Die Bearbeitung eines Holzautos dauert 20 Minuten, die eines Puzzles 45 Minuten. Die Werkstatt steht 2700 Minuten pro Woche zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Holzautos",
+      "x2 = Anzahl Puzzles"
+    ],
+    "zielfunktion": "Z = 9x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,3x2 ≤ 36 (Holz)",
+      "20x1 + 45x2 ≤ 2700 (Bearbeitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Holzautos brauchen mehr Holz, Puzzles mehr Bearbeitungszeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ Gewinn",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "14€ Gewinn",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,4 kg Holz",
+            "bedeutung": "0,4x₁"
+          },
+          {
+            "text": "0,3 kg Holz",
+            "bedeutung": "+ 0,3x₂"
+          },
+          {
+            "text": "36 kg",
+            "bedeutung": "≤ 36"
+          }
+        ],
+        [
+          {
+            "text": "20 Minuten",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "45 Minuten",
+            "bedeutung": "+ 45x₂"
+          },
+          {
+            "text": "2700 Minuten pro Woche",
+            "bedeutung": "≤ 2700"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Käserei – Gouda und Camembert",
+    "beschreibung": "Eine Käserei produziert Gouda und Camembert. Ein Laib Gouda bringt 18€ Gewinn, ein Laib Camembert 24€ Gewinn. Für einen Laib Gouda werden 10 Liter Milch benötigt, für einen Laib Camembert 8 Liter Milch. Wöchentlich stehen 960 Liter Milch zur Verfügung. Die Reifezeit für einen Gouda beträgt 6 Stunden Betreuung, für einen Camembert 9 Stunden Betreuung. Die Betreuungskapazität liegt bei 630 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Laibe Gouda",
+      "x2 = Laibe Camembert"
+    ],
+    "zielfunktion": "Z = 18x1 + 24x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 8x2 ≤ 960 (Milch)",
+      "6x1 + 9x2 ≤ 630 (Betreuungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gouda braucht mehr Milch, Camembert mehr Betreuungszeit. Finde den besten Kompromiss.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "18€ Gewinn",
+          "bedeutung": "18 × x₁"
+        },
+        {
+          "text": "24€ Gewinn",
+          "bedeutung": "24 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "10 Liter Milch benötigt",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "8 Liter Milch",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "960 Liter Milch zur Verfügung",
+            "bedeutung": "≤ 960"
+          }
+        ],
+        [
+          {
+            "text": "6 Stunden Betreuung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "9 Stunden Betreuung",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "630 Stunden pro Woche",
+            "bedeutung": "≤ 630"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Weinbauer – Rot- und Weißwein",
+    "beschreibung": "Ein Weinbauer produziert Rotwein und Weißwein. Eine Flasche Rotwein bringt 8€ Gewinn, eine Flasche Weißwein 6€ Gewinn. Für eine Flasche Rotwein werden 1,5 kg Trauben benötigt, für eine Flasche Weißwein 1 kg Trauben. Insgesamt stehen 900 kg Trauben zur Verfügung. Die Abfüllung einer Flasche Rotwein dauert 3 Minuten, die einer Flasche Weißwein 5 Minuten. Die Abfüllanlage steht 2400 Minuten pro Saison bereit.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Flaschen Rotwein",
+      "x2 = Flaschen Weißwein"
+    ],
+    "zielfunktion": "Z = 8x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "1,5x1 + x2 ≤ 900 (Trauben)",
+      "3x1 + 5x2 ≤ 2400 (Abfüllzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Rotwein braucht mehr Trauben, Weißwein mehr Abfüllzeit. Die Optimierung erfordert einen guten Mix.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ Gewinn",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "6€ Gewinn",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1,5 kg Trauben benötigt",
+            "bedeutung": "1,5x₁"
+          },
+          {
+            "text": "1 kg Trauben",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "900 kg Trauben zur Verfügung",
+            "bedeutung": "≤ 900"
+          }
+        ],
+        [
+          {
+            "text": "3 Minuten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 Minuten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "2400 Minuten pro Saison",
+            "bedeutung": "≤ 2400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gärtnerei – Rosen und Tulpen",
+    "beschreibung": "Eine Gärtnerei züchtet Rosen und Tulpen für den Verkauf. Ein Rosenstrauß bringt 15€ Gewinn, ein Tulpenstrauß 10€ Gewinn. Für einen Rosenstrauß werden 0,6 m² Beetfläche benötigt, für einen Tulpenstrauß 0,8 m² Beetfläche. Die Gärtnerei hat 200 m² Beetfläche. Pro Rosenstrauß fallen 30 Minuten Pflegezeit an, pro Tulpenstrauß 15 Minuten Pflegezeit. Die verfügbare Pflegezeit beträgt 4500 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Rosensträuße",
+      "x2 = Anzahl Tulpensträuße"
+    ],
+    "zielfunktion": "Z = 15x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "0,6x1 + 0,8x2 ≤ 200 (Beetfläche)",
+      "30x1 + 15x2 ≤ 4500 (Pflegezeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Rosen brauchen weniger Fläche, aber mehr Pflege als Tulpen. Achte auf die unterschiedlichen Verhältnisse.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "15€ Gewinn",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "10€ Gewinn",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,6 m² Beetfläche benötigt",
+            "bedeutung": "0,6x₁"
+          },
+          {
+            "text": "0,8 m² Beetfläche",
+            "bedeutung": "+ 0,8x₂"
+          },
+          {
+            "text": "200 m² Beetfläche",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "30 Minuten Pflegezeit",
+            "bedeutung": "30x₁"
+          },
+          {
+            "text": "15 Minuten Pflegezeit",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "4500 Minuten pro Woche",
+            "bedeutung": "≤ 4500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hutmacher – Filzhüte und Strohhüte",
+    "beschreibung": "Ein Hutmacher fertigt Filzhüte und Strohhüte. Ein Filzhut bringt 28€ Gewinn, ein Strohhut 16€ Gewinn. Für einen Filzhut werden 3 Stunden Arbeitszeit benötigt, für einen Strohhut 2 Stunden Arbeitszeit. Die wöchentliche Arbeitskapazität liegt bei 90 Stunden. Außerdem verbraucht ein Filzhut 100 g Hutband und ein Strohhut 200 g Hutband. Der Vorrat an Hutband beträgt 5000 g pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Filzhüte",
+      "x2 = Anzahl Strohhüte"
+    ],
+    "zielfunktion": "Z = 28x1 + 16x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 90 (Arbeitszeit)",
+      "100x1 + 200x2 ≤ 5000 (Hutband)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Filzhüte brauchen mehr Arbeitszeit, Strohhüte mehr Hutband. Die Engpässe wirken gegenläufig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "28€ Gewinn",
+          "bedeutung": "28 × x₁"
+        },
+        {
+          "text": "16€ Gewinn",
+          "bedeutung": "16 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Stunden Arbeitszeit benötigt",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Stunden Arbeitszeit",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "90 Stunden",
+            "bedeutung": "≤ 90"
+          }
+        ],
+        [
+          {
+            "text": "100 g Hutband",
+            "bedeutung": "100x₁"
+          },
+          {
+            "text": "200 g Hutband",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "5000 g pro Woche",
+            "bedeutung": "≤ 5000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nudelfabrik – Spaghetti und Penne",
+    "beschreibung": "Eine Nudelfabrik produziert Spaghetti und Penne. Eine Packung Spaghetti bringt 1,80€ Gewinn, eine Packung Penne 2,20€ Gewinn. Für eine Packung Spaghetti werden 0,5 kg Hartweizengrieß benötigt, für eine Packung Penne 0,8 kg Hartweizengrieß. Insgesamt stehen 480 kg Hartweizengrieß zur Verfügung. Die Nudelpresse schafft eine Packung Spaghetti in 3 Minuten und eine Packung Penne in 2 Minuten. Die Presskapazität beträgt 1800 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Packungen Spaghetti",
+      "x2 = Packungen Penne"
+    ],
+    "zielfunktion": "Z = 1,8x1 + 2,2x2 (max)",
+    "nebenbedingungen": [
+      "0,5x1 + 0,8x2 ≤ 480 (Hartweizengrieß)",
+      "3x1 + 2x2 ≤ 1800 (Presszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Spaghetti brauchen mehr Presszeit, Penne dagegen mehr Grieß pro Packung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "1,80€ Gewinn",
+          "bedeutung": "1,8 × x₁"
+        },
+        {
+          "text": "2,20€ Gewinn",
+          "bedeutung": "2,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,5 kg Hartweizengrieß benötigt",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "0,8 kg Hartweizengrieß",
+            "bedeutung": "+ 0,8x₂"
+          },
+          {
+            "text": "480 kg Hartweizengrieß zur Verfügung",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "3 Minuten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Minuten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "1800 Minuten pro Woche",
+            "bedeutung": "≤ 1800"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fahrradwerkstatt – Citybikes und Mountainbikes",
+    "beschreibung": "Eine Fahrradwerkstatt montiert Citybikes und Mountainbikes. Ein Citybike bringt 55€ Gewinn, ein Mountainbike 85€ Gewinn. Für ein Citybike werden 5 Stunden Montagezeit benötigt, für ein Mountainbike 7 Stunden Montagezeit. Pro Woche stehen 350 Montagestunden zur Verfügung. Außerdem belegt ein Citybike 3 m² Lagerfläche und ein Mountainbike 2 m² Lagerfläche. Die Lagerfläche ist auf 120 m² begrenzt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Citybikes",
+      "x2 = Anzahl Mountainbikes"
+    ],
+    "zielfunktion": "Z = 55x1 + 85x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 7x2 ≤ 350 (Montagezeit)",
+      "3x1 + 2x2 ≤ 120 (Lagerfläche)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Citybikes brauchen mehr Lagerfläche, Mountainbikes mehr Montagezeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "55€ Gewinn",
+          "bedeutung": "55 × x₁"
+        },
+        {
+          "text": "85€ Gewinn",
+          "bedeutung": "85 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden Montagezeit benötigt",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "7 Stunden Montagezeit",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "350 Montagestunden zur Verfügung",
+            "bedeutung": "≤ 350"
+          }
+        ],
+        [
+          {
+            "text": "3 m² Lagerfläche",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 m² Lagerfläche",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "120 m² begrenzt",
+            "bedeutung": "≤ 120"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikfertigung (Platinen und Sensoren)",
+    "beschreibung": "Ein Elektronikunternehmen fertigt Platinen und Sensoren. Jede Platine erzielt einen Gewinn von 12€, jeder Sensor bringt 18€ Gewinn. Für die Bestückung benötigt eine Platine 3 Minuten Maschinenzeit und ein Sensor 6 Minuten Maschinenzeit. Insgesamt stehen 1800 Minuten Maschinenzeit pro Woche zur Verfügung. An Lötzinn werden pro Platine 2 Gramm und pro Sensor 3 Gramm verbraucht; der wöchentliche Vorrat beträgt 1500 Gramm. Zusätzlich muss jede Einheit verpackt werden: Eine Platine belegt 0,5 Lagerplätze, ein Sensor 1,5 Lagerplätze, wobei maximal 600 Lagerplätze vorhanden sind.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Platinen pro Woche",
+      "x2 = Anzahl Sensoren pro Woche"
+    ],
+    "zielfunktion": "Z = 12x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≤ 1800 (Maschinenzeit)",
+      "2x1 + 3x2 ≤ 1500 (Lötzinn)",
+      "0,5x1 + 1,5x2 ≤ 600 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Ressourcen: Maschinenzeit, Lötzinn und Lagerplatz. Stelle die Nebenbedingungen einzeln auf und maximiere den Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 12€",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "18€ Gewinn",
+          "bedeutung": "18 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "eine Platine 3 Minuten Maschinenzeit",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "ein Sensor 6 Minuten Maschinenzeit",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "1800 Minuten Maschinenzeit",
+            "bedeutung": "≤ 1800"
+          }
+        ],
+        [
+          {
+            "text": "pro Platine 2 Gramm",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Sensor 3 Gramm",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "1500 Gramm",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "0,5 Lagerplätze",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "1,5 Lagerplätze",
+            "bedeutung": "+ 1,5x₂"
+          },
+          {
+            "text": "600 Lagerplätze",
+            "bedeutung": "≤ 600"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kosmetikfabrik (Lippenstift und Mascara)",
+    "beschreibung": "Eine Kosmetikfabrik produziert Lippenstifte und Mascaras. Pro Lippenstift beträgt der Deckungsbeitrag 4,50€, pro Mascara 6€. Die Abfüllung benötigt je Lippenstift 2 Minuten und je Mascara 3 Minuten Arbeitszeit; insgesamt stehen täglich 480 Minuten Arbeitszeit zur Verfügung. An Pigmentpaste werden 5 Gramm pro Lippenstift und 3 Gramm pro Mascara benötigt, bei einem Tagesvorrat von 750 Gramm. Die Verpackungsanlage schafft maximal 200 Einheiten pro Tag, wobei jeder Lippenstift und jede Mascara als jeweils eine Einheit zählt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Lippenstifte pro Tag",
+      "x2 = Anzahl Mascaras pro Tag"
+    ],
+    "zielfunktion": "Z = 4,5x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 480 (Arbeitszeit)",
+      "5x1 + 3x2 ≤ 750 (Pigmentpaste)",
+      "x1 + x2 ≤ 200 (Verpackungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verpackungsanlage limitiert die Gesamtzahl beider Produkte. Stelle zunächst alle drei Nebenbedingungen auf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag 4,50€",
+          "bedeutung": "4,5 × x₁"
+        },
+        {
+          "text": "6€",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "je Lippenstift 2 Minuten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "je Mascara 3 Minuten Arbeitszeit",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "480 Minuten Arbeitszeit",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "5 Gramm pro Lippenstift",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Gramm pro Mascara",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "750 Gramm",
+            "bedeutung": "≤ 750"
+          }
+        ],
+        [
+          {
+            "text": "maximal 200 Einheiten pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Keramikwerk (Fliesen und Dachziegel)",
+    "beschreibung": "Ein Keramikwerk stellt Fliesen und Dachziegel her. Der Gewinn beträgt 1,80€ pro Fliese und 2,50€ pro Dachziegel. Für die Formgebung benötigt man pro Fliese 0,4 kg Ton und pro Dachziegel 0,8 kg Ton; das Werk verfügt über 960 kg Ton pro Schicht. Die Brennofenkapazität erlaubt pro Schicht 1200 Stück, wobei eine Fliese einen Ofenplatz und ein Dachziegel einen Ofenplatz belegt. Die Trocknungsanlage kann pro Fliese 1,5 Minuten und pro Dachziegel 3 Minuten aufwenden; insgesamt stehen 2400 Minuten Trocknungszeit zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Fliesen pro Schicht",
+      "x2 = Anzahl Dachziegel pro Schicht"
+    ],
+    "zielfunktion": "Z = 1,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,8x2 ≤ 960 (Ton)",
+      "x1 + x2 ≤ 1200 (Brennofen)",
+      "1,5x1 + 3x2 ≤ 2400 (Trocknungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Produktion: Ton, Brennofenkapazität und Trocknungszeit. Vergiss nicht, alle Koeffizienten korrekt abzulesen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "1,80€ pro Fliese",
+          "bedeutung": "1,8 × x₁"
+        },
+        {
+          "text": "2,50€ pro Dachziegel",
+          "bedeutung": "2,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Fliese 0,4 kg Ton",
+            "bedeutung": "0,4x₁"
+          },
+          {
+            "text": "pro Dachziegel 0,8 kg Ton",
+            "bedeutung": "+ 0,8x₂"
+          },
+          {
+            "text": "960 kg Ton",
+            "bedeutung": "≤ 960"
+          }
+        ],
+        [
+          {
+            "text": "1200 Stück",
+            "bedeutung": "x₁ + x₂ ≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "pro Fliese 1,5 Minuten",
+            "bedeutung": "1,5x₁"
+          },
+          {
+            "text": "pro Dachziegel 3 Minuten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "2400 Minuten Trocknungszeit",
+            "bedeutung": "≤ 2400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Süßwarenfabrik (Pralinen und Bonbons)",
+    "beschreibung": "Eine Süßwarenfabrik stellt Pralinen und Bonbons her. Pro Praline wird ein Deckungsbeitrag von 0,90€ erzielt, pro Bonbon 0,40€. Für die Herstellung werden pro Praline 15 Gramm Kakao und pro Bonbon 5 Gramm Kakao benötigt; der Tagesvorrat liegt bei 4500 Gramm Kakao. An Zucker verbraucht eine Praline 10 Gramm und ein Bonbon 12 Gramm, bei einem Vorrat von 4800 Gramm Zucker pro Tag. Die Verpackungskapazität der Anlage beträgt 400 Stück pro Tag, wobei jede Praline und jedes Bonbon einzeln verpackt wird.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Pralinen pro Tag",
+      "x2 = Anzahl Bonbons pro Tag"
+    ],
+    "zielfunktion": "Z = 0,9x1 + 0,4x2 (max)",
+    "nebenbedingungen": [
+      "15x1 + 5x2 ≤ 4500 (Kakao)",
+      "10x1 + 12x2 ≤ 4800 (Zucker)",
+      "x1 + x2 ≤ 400 (Verpackungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Ressourcenverbräuche: Kakao, Zucker und die begrenzte Verpackungskapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 0,90€",
+          "bedeutung": "0,9 × x₁"
+        },
+        {
+          "text": "0,40€",
+          "bedeutung": "0,4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Praline 15 Gramm Kakao",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "pro Bonbon 5 Gramm Kakao",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "4500 Gramm Kakao",
+            "bedeutung": "≤ 4500"
+          }
+        ],
+        [
+          {
+            "text": "eine Praline 10 Gramm",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "ein Bonbon 12 Gramm",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "4800 Gramm Zucker",
+            "bedeutung": "≤ 4800"
+          }
+        ],
+        [
+          {
+            "text": "400 Stück pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Polsterei (Sessel und Sofas)",
+    "beschreibung": "Eine Polsterei fertigt Sessel und Sofas. Der Gewinn pro Sessel beträgt 85€ und pro Sofa 210€. Für einen Sessel werden 3,5 Stunden Arbeitszeit benötigt, für ein Sofa 8 Stunden. Pro Woche stehen insgesamt 280 Stunden Arbeitszeit zur Verfügung. An Polsterstoff verbraucht ein Sessel 4 Meter und ein Sofa 9 Meter; der Wochenbestand beträgt 360 Meter Polsterstoff. Das Lager bietet Platz für maximal 50 fertige Möbelstücke pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Sessel pro Woche",
+      "x2 = Anzahl Sofas pro Woche"
+    ],
+    "zielfunktion": "Z = 85x1 + 210x2 (max)",
+    "nebenbedingungen": [
+      "3,5x1 + 8x2 ≤ 280 (Arbeitszeit)",
+      "4x1 + 9x2 ≤ 360 (Polsterstoff)",
+      "x1 + x2 ≤ 50 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen limitieren die Produktion: Arbeitszeit, Polsterstoff und Lagerplatz. Formuliere alle Ungleichungen und bestimme den optimalen Produktionsplan.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn pro Sessel beträgt 85€",
+          "bedeutung": "85 × x₁"
+        },
+        {
+          "text": "210€",
+          "bedeutung": "210 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3,5 Stunden Arbeitszeit",
+            "bedeutung": "3,5x₁"
+          },
+          {
+            "text": "ein Sofa 8 Stunden",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "280 Stunden Arbeitszeit",
+            "bedeutung": "≤ 280"
+          }
+        ],
+        [
+          {
+            "text": "ein Sessel 4 Meter",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "ein Sofa 9 Meter",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "360 Meter Polsterstoff",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "maximal 50 fertige Möbelstücke",
+            "bedeutung": "x₁ + x₂ ≤ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lampenfabrik (Stehlampen und Tischlampen)",
+    "beschreibung": "Eine Lampenfabrik produziert Stehlampen und Tischlampen. Jede Stehlampe bringt einen Deckungsbeitrag von 35€, jede Tischlampe 22€. Die Montage einer Stehlampe dauert 45 Minuten, die einer Tischlampe 20 Minuten. Pro Woche stehen 3600 Minuten Montagezeit zur Verfügung. An Metall werden pro Stehlampe 2,5 kg und pro Tischlampe 1 kg verbraucht; der Vorrat beträgt 250 kg Metall pro Woche. Die Qualitätsprüfung kann wöchentlich maximal 150 Lampen kontrollieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Stehlampen pro Woche",
+      "x2 = Anzahl Tischlampen pro Woche"
+    ],
+    "zielfunktion": "Z = 35x1 + 22x2 (max)",
+    "nebenbedingungen": [
+      "45x1 + 20x2 ≤ 3600 (Montagezeit)",
+      "2,5x1 + x2 ≤ 250 (Metall)",
+      "x1 + x2 ≤ 150 (Qualitätsprüfung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben Montagezeit und Metallverbrauch begrenzt auch die Qualitätsprüfung die Gesamtzahl der Lampen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 35€",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "22€",
+          "bedeutung": "22 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Stehlampe dauert 45 Minuten",
+            "bedeutung": "45x₁"
+          },
+          {
+            "text": "Tischlampe 20 Minuten",
+            "bedeutung": "+ 20x₂"
+          },
+          {
+            "text": "3600 Minuten Montagezeit",
+            "bedeutung": "≤ 3600"
+          }
+        ],
+        [
+          {
+            "text": "pro Stehlampe 2,5 kg",
+            "bedeutung": "2,5x₁"
+          },
+          {
+            "text": "pro Tischlampe 1 kg",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "250 kg Metall",
+            "bedeutung": "≤ 250"
+          }
+        ],
+        [
+          {
+            "text": "maximal 150 Lampen",
+            "bedeutung": "x₁ + x₂ ≤ 150"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rucksackmanufaktur (Wanderrucksäcke und Tagesrucksäcke)",
+    "beschreibung": "Eine Rucksackmanufaktur stellt Wanderrucksäcke und Tagesrucksäcke her. Pro Wanderrucksack beträgt der Gewinn 28€, pro Tagesrucksack 16€. Für einen Wanderrucksack werden 1,2 Meter Nylonstoff benötigt, für einen Tagesrucksack 0,7 Meter. Pro Woche stehen 180 Meter Nylonstoff zur Verfügung. Das Nähen eines Wanderrucksacks erfordert 50 Minuten Arbeitszeit, das eines Tagesrucksacks 25 Minuten; die wöchentliche Arbeitszeit beträgt 5000 Minuten. Reißverschlüsse und Schnallen begrenzen die Produktion: Pro Wanderrucksack werden 4 Schnallen benötigt, pro Tagesrucksack 2 Schnallen, bei einem Vorrat von 480 Schnallen pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Wanderrucksäcke pro Woche",
+      "x2 = Anzahl Tagesrucksäcke pro Woche"
+    ],
+    "zielfunktion": "Z = 28x1 + 16x2 (max)",
+    "nebenbedingungen": [
+      "1,2x1 + 0,7x2 ≤ 180 (Nylonstoff)",
+      "50x1 + 25x2 ≤ 5000 (Arbeitszeit)",
+      "4x1 + 2x2 ≤ 480 (Schnallen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei verschiedene Ressourcen sind knapp: Nylonstoff, Arbeitszeit und Schnallen. Bestimme für jede Ressource die Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 28€",
+          "bedeutung": "28 × x₁"
+        },
+        {
+          "text": "16€",
+          "bedeutung": "16 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1,2 Meter Nylonstoff",
+            "bedeutung": "1,2x₁"
+          },
+          {
+            "text": "0,7 Meter",
+            "bedeutung": "+ 0,7x₂"
+          },
+          {
+            "text": "180 Meter Nylonstoff",
+            "bedeutung": "≤ 180"
+          }
+        ],
+        [
+          {
+            "text": "50 Minuten Arbeitszeit",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "25 Minuten",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "5000 Minuten",
+            "bedeutung": "≤ 5000"
+          }
+        ],
+        [
+          {
+            "text": "4 Schnallen",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Schnallen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "480 Schnallen",
+            "bedeutung": "≤ 480"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Uhrmacher (Armbanduhren und Wanduhren)",
+    "beschreibung": "Ein Uhrmacher fertigt Armbanduhren und Wanduhren. Eine Armbanduhr bringt 120€ Gewinn, eine Wanduhr 75€ Gewinn. Für eine Armbanduhr werden 2,5 Stunden Feinmontage benötigt, für eine Wanduhr 1,5 Stunden Feinmontage; insgesamt stehen pro Monat 300 Stunden Feinmontage zur Verfügung. An Uhrwerken werden je Armbanduhr 1 Stück und je Wanduhr 1 Stück benötigt, wobei monatlich 160 Uhrwerke verfügbar sind. Die Verglasung begrenzt die Produktion zusätzlich: Pro Armbanduhr wird 1 Saphirglas benötigt und pro Wanduhr werden 2 Gläser benötigt; es stehen monatlich 200 Gläser zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Armbanduhren pro Monat",
+      "x2 = Anzahl Wanduhren pro Monat"
+    ],
+    "zielfunktion": "Z = 120x1 + 75x2 (max)",
+    "nebenbedingungen": [
+      "2,5x1 + 1,5x2 ≤ 300 (Feinmontage)",
+      "x1 + x2 ≤ 160 (Uhrwerke)",
+      "x1 + 2x2 ≤ 200 (Gläser)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass die Wanduhr doppelt so viele Gläser wie die Armbanduhr benötigt. Stelle alle drei Nebenbedingungen auf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "120€ Gewinn",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "75€ Gewinn",
+          "bedeutung": "75 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2,5 Stunden Feinmontage",
+            "bedeutung": "2,5x₁"
+          },
+          {
+            "text": "1,5 Stunden Feinmontage",
+            "bedeutung": "+ 1,5x₂"
+          },
+          {
+            "text": "300 Stunden Feinmontage",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "160 Uhrwerke",
+            "bedeutung": "x₁ + x₂ ≤ 160"
+          }
+        ],
+        [
+          {
+            "text": "1 Saphirglas",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Gläser benötigt",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "200 Gläser zur Verfügung",
+            "bedeutung": "≤ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fotostudio (Passfotos und Porträts)",
+    "beschreibung": "Ein Fotostudio bietet Passfotos und Porträts an. Pro Passfoto-Auftrag beträgt der Erlös 15€, pro Porträt-Auftrag 55€. Ein Passfoto-Auftrag dauert 10 Minuten Fotografierzeit, ein Porträt-Auftrag 30 Minuten. Pro Tag stehen 480 Minuten Fotografierzeit zur Verfügung. Die Nachbearbeitung benötigt pro Passfoto-Auftrag 5 Minuten und pro Porträt 25 Minuten Bildbearbeitungszeit; insgesamt sind 400 Minuten Bildbearbeitungszeit am Tag verfügbar. Zudem können täglich maximal 30 Aufträge terminiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Passfoto-Aufträge pro Tag",
+      "x2 = Anzahl Porträt-Aufträge pro Tag"
+    ],
+    "zielfunktion": "Z = 15x1 + 55x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 30x2 ≤ 480 (Fotografierzeit)",
+      "5x1 + 25x2 ≤ 400 (Bildbearbeitungszeit)",
+      "x1 + x2 ≤ 30 (Terminkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben der Fotografierzeit und Bildbearbeitungszeit begrenzt die Terminkapazität die Gesamtzahl der Aufträge.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Erlös 15€",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "55€",
+          "bedeutung": "55 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "10 Minuten Fotografierzeit",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "30 Minuten",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "480 Minuten Fotografierzeit",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "5 Minuten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "25 Minuten Bildbearbeitungszeit",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "400 Minuten Bildbearbeitungszeit",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "maximal 30 Aufträge",
+            "bedeutung": "x₁ + x₂ ≤ 30"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Surfboard-Werkstatt (Shortboards und Longboards)",
+    "beschreibung": "Eine Surfboard-Werkstatt baut Shortboards und Longboards. Pro Shortboard wird ein Gewinn von 95€ erzielt, pro Longboard 140€. Das Shapen eines Shortboards erfordert 3 Stunden Arbeitszeit, ein Longboard 5 Stunden Arbeitszeit. Wöchentlich stehen 240 Stunden Arbeitszeit zur Verfügung. An Glasfaser verbraucht ein Shortboard 2 kg und ein Longboard 3,5 kg; der Wochenvorrat beträgt 175 kg Glasfaser. Der Trockenraum fasst maximal 60 Boards gleichzeitig pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Shortboards pro Woche",
+      "x2 = Anzahl Longboards pro Woche"
+    ],
+    "zielfunktion": "Z = 95x1 + 140x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 240 (Arbeitszeit)",
+      "2x1 + 3,5x2 ≤ 175 (Glasfaser)",
+      "x1 + x2 ≤ 60 (Trockenraum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Beschränkungen: Arbeitszeit, Glasfaservorrat und den begrenzten Trockenraum.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 95€",
+          "bedeutung": "95 × x₁"
+        },
+        {
+          "text": "140€",
+          "bedeutung": "140 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Shortboards erfordert 3 Stunden Arbeitszeit",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Longboard 5 Stunden Arbeitszeit",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "240 Stunden Arbeitszeit",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "Shortboard 2 kg",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Longboard 3,5 kg",
+            "bedeutung": "+ 3,5x₂"
+          },
+          {
+            "text": "175 kg Glasfaser",
+            "bedeutung": "≤ 175"
+          }
+        ],
+        [
+          {
+            "text": "maximal 60 Boards",
+            "bedeutung": "x₁ + x₂ ≤ 60"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gitarrenbauer (Akustik- und E-Gitarren)",
+    "beschreibung": "Ein Gitarrenbauer fertigt Akustikgitarren und E-Gitarren. Pro Akustikgitarre beträgt der Gewinn 180€, pro E-Gitarre 250€. Eine Akustikgitarre benötigt 12 Stunden Handarbeit, eine E-Gitarre 8 Stunden Handarbeit. Pro Monat stehen 480 Stunden Handarbeit zur Verfügung. An Tonholz werden pro Akustikgitarre 3 Bretter und pro E-Gitarre 1,5 Bretter verbraucht; monatlich sind 150 Bretter Tonholz vorhanden. Die Lackiererei kann monatlich höchstens 45 Gitarren bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Akustikgitarren pro Monat",
+      "x2 = Anzahl E-Gitarren pro Monat"
+    ],
+    "zielfunktion": "Z = 180x1 + 250x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 8x2 ≤ 480 (Handarbeit)",
+      "3x1 + 1,5x2 ≤ 150 (Tonholz)",
+      "x1 + x2 ≤ 45 (Lackiererei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Lackiererei begrenzt die Gesamtproduktion. Vergiss nicht, alle drei Ressourcen in Nebenbedingungen zu übersetzen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 180€",
+          "bedeutung": "180 × x₁"
+        },
+        {
+          "text": "250€",
+          "bedeutung": "250 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "12 Stunden Handarbeit",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "8 Stunden Handarbeit",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "480 Stunden Handarbeit",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "3 Bretter",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1,5 Bretter",
+            "bedeutung": "+ 1,5x₂"
+          },
+          {
+            "text": "150 Bretter Tonholz",
+            "bedeutung": "≤ 150"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 45 Gitarren",
+            "bedeutung": "x₁ + x₂ ≤ 45"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Golfschläger-Produktion (Driver und Putter)",
+    "beschreibung": "Ein Hersteller produziert Driver und Putter. Der Deckungsbeitrag beträgt 42€ pro Driver und 28€ pro Putter. Die CNC-Fräse benötigt pro Driver 6 Minuten und pro Putter 4 Minuten Maschinenzeit; pro Schicht stehen 720 Minuten Maschinenzeit zur Verfügung. An Titanstahl werden pro Driver 0,8 kg und pro Putter 0,3 kg verbraucht; der Vorrat beträgt 96 kg Titanstahl pro Schicht. Die Endkontrolle erlaubt pro Schicht maximal 140 Schläger.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Driver pro Schicht",
+      "x2 = Anzahl Putter pro Schicht"
+    ],
+    "zielfunktion": "Z = 42x1 + 28x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 4x2 ≤ 720 (Maschinenzeit)",
+      "0,8x1 + 0,3x2 ≤ 96 (Titanstahl)",
+      "x1 + x2 ≤ 140 (Endkontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Engpässe: Maschinenzeit, Titanstahl und die Endkontrolle. Formuliere für jeden Engpass eine Ungleichung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "42€ pro Driver",
+          "bedeutung": "42 × x₁"
+        },
+        {
+          "text": "28€ pro Putter",
+          "bedeutung": "28 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Driver 6 Minuten",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "pro Putter 4 Minuten Maschinenzeit",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "720 Minuten Maschinenzeit",
+            "bedeutung": "≤ 720"
+          }
+        ],
+        [
+          {
+            "text": "pro Driver 0,8 kg",
+            "bedeutung": "0,8x₁"
+          },
+          {
+            "text": "pro Putter 0,3 kg",
+            "bedeutung": "+ 0,3x₂"
+          },
+          {
+            "text": "96 kg Titanstahl",
+            "bedeutung": "≤ 96"
+          }
+        ],
+        [
+          {
+            "text": "maximal 140 Schläger",
+            "bedeutung": "x₁ + x₂ ≤ 140"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Snowboard-Fabrik (Freestyle und Freeride)",
+    "beschreibung": "Eine Snowboard-Fabrik produziert Freestyle-Boards und Freeride-Boards. Pro Freestyle-Board beträgt der Gewinn 110€, pro Freeride-Board 155€. Die Presse benötigt pro Freestyle-Board 2 Stunden und pro Freeride-Board 3,5 Stunden Pressenzeit; insgesamt stehen wöchentlich 280 Stunden Pressenzeit zur Verfügung. An Carbonfaser werden pro Freestyle-Board 1,5 kg und pro Freeride-Board 2 kg verbraucht; der Vorrat liegt bei 200 kg Carbonfaser pro Woche. Die Lackierstraße schafft maximal 100 Boards pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Freestyle-Boards pro Woche",
+      "x2 = Anzahl Freeride-Boards pro Woche"
+    ],
+    "zielfunktion": "Z = 110x1 + 155x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3,5x2 ≤ 280 (Pressenzeit)",
+      "1,5x1 + 2x2 ≤ 200 (Carbonfaser)",
+      "x1 + x2 ≤ 100 (Lackierstraße)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Pressenzeit, Carbonfaser und Lackierstraße bilden die drei Engpässe. Formuliere jede Beschränkung als Ungleichung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 110€",
+          "bedeutung": "110 × x₁"
+        },
+        {
+          "text": "155€",
+          "bedeutung": "155 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Freestyle-Board 2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Freeride-Board 3,5 Stunden Pressenzeit",
+            "bedeutung": "+ 3,5x₂"
+          },
+          {
+            "text": "280 Stunden Pressenzeit",
+            "bedeutung": "≤ 280"
+          }
+        ],
+        [
+          {
+            "text": "pro Freestyle-Board 1,5 kg",
+            "bedeutung": "1,5x₁"
+          },
+          {
+            "text": "pro Freeride-Board 2 kg",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "200 kg Carbonfaser",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "maximal 100 Boards",
+            "bedeutung": "x₁ + x₂ ≤ 100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kaffeerösterei (Espresso- und Filterkaffee)",
+    "beschreibung": "Eine Kaffeerösterei verarbeitet Rohkaffee zu Espresso-Mischungen und Filterkaffee-Mischungen. Pro Kilogramm Espresso beträgt der Deckungsbeitrag 8,50€, pro Kilogramm Filterkaffee 5€. Für ein Kilogramm Espresso werden 20 Minuten Röstzeit benötigt, für ein Kilogramm Filterkaffee 12 Minuten Röstzeit; insgesamt stehen täglich 600 Minuten Röstzeit zur Verfügung. An Arabica-Bohnen werden pro Kilogramm Espresso 0,7 kg und pro Kilogramm Filterkaffee 0,5 kg verbraucht; der Tagesvorrat beträgt 35 kg Arabica-Bohnen. Die Verpackungsmaschine schafft täglich höchstens 60 Kilogramm Kaffee.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Kilogramm Espresso pro Tag",
+      "x2 = Kilogramm Filterkaffee pro Tag"
+    ],
+    "zielfunktion": "Z = 8,5x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 12x2 ≤ 600 (Röstzeit)",
+      "0,7x1 + 0,5x2 ≤ 35 (Arabica-Bohnen)",
+      "x1 + x2 ≤ 60 (Verpackungsmaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Röstvorgang dauert unterschiedlich lang. Zudem begrenzen Arabica-Bohnen und die Verpackungsmaschine die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag 8,50€",
+          "bedeutung": "8,5 × x₁"
+        },
+        {
+          "text": "5€",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "20 Minuten Röstzeit",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "12 Minuten Röstzeit",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "600 Minuten Röstzeit",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "0,7 kg",
+            "bedeutung": "0,7x₁"
+          },
+          {
+            "text": "0,5 kg",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "35 kg Arabica-Bohnen",
+            "bedeutung": "≤ 35"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 60 Kilogramm",
+            "bedeutung": "x₁ + x₂ ≤ 60"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Marmeladenmanufaktur (Erdbeer und Aprikose)",
+    "beschreibung": "Eine Marmeladenmanufaktur produziert Erdbeermarmelade und Aprikosenmarmelade in Gläsern. Pro Glas Erdbeermarmelade beträgt der Gewinn 1,60€, pro Glas Aprikosenmarmelade 2,20€. Für ein Glas Erdbeermarmelade werden 150 Gramm Früchte benötigt, für ein Glas Aprikosenmarmelade 200 Gramm Früchte. Insgesamt stehen täglich 30000 Gramm Früchte zur Verfügung. An Gelierzucker werden pro Glas Erdbeer 80 Gramm und pro Glas Aprikose 60 Gramm verbraucht; der Vorrat beträgt 14400 Gramm Gelierzucker pro Tag. Die Etikettiermaschine kann täglich maximal 180 Gläser beschriften.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gläser Erdbeermarmelade pro Tag",
+      "x2 = Anzahl Gläser Aprikosenmarmelade pro Tag"
+    ],
+    "zielfunktion": "Z = 1,6x1 + 2,2x2 (max)",
+    "nebenbedingungen": [
+      "150x1 + 200x2 ≤ 30000 (Früchte)",
+      "80x1 + 60x2 ≤ 14400 (Gelierzucker)",
+      "x1 + x2 ≤ 180 (Etikettiermaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Einheiten (Gramm). Drei Beschränkungen: Früchte, Gelierzucker und Etikettiermaschine.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 1,60€",
+          "bedeutung": "1,6 × x₁"
+        },
+        {
+          "text": "2,20€",
+          "bedeutung": "2,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "150 Gramm Früchte",
+            "bedeutung": "150x₁"
+          },
+          {
+            "text": "200 Gramm Früchte",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "30000 Gramm Früchte",
+            "bedeutung": "≤ 30000"
+          }
+        ],
+        [
+          {
+            "text": "80 Gramm",
+            "bedeutung": "80x₁"
+          },
+          {
+            "text": "60 Gramm",
+            "bedeutung": "+ 60x₂"
+          },
+          {
+            "text": "14400 Gramm Gelierzucker",
+            "bedeutung": "≤ 14400"
+          }
+        ],
+        [
+          {
+            "text": "maximal 180 Gläser",
+            "bedeutung": "x₁ + x₂ ≤ 180"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werkzeugfabrik (Hämmer und Zangen)",
+    "beschreibung": "Eine Werkzeugfabrik stellt Hämmer und Zangen her. Der Gewinn pro Hammer beträgt 3,80€, pro Zange 5,20€. Die Schmiedeabteilung benötigt pro Hammer 4 Minuten und pro Zange 7 Minuten Schmiedezeit; insgesamt stehen pro Schicht 840 Minuten Schmiedezeit zur Verfügung. An Stahl werden pro Hammer 0,6 kg und pro Zange 0,4 kg verbraucht; der Vorrat beträgt 90 kg Stahl pro Schicht. Die Härterei kann pro Schicht maximal 160 Werkzeuge härten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Hämmer pro Schicht",
+      "x2 = Anzahl Zangen pro Schicht"
+    ],
+    "zielfunktion": "Z = 3,8x1 + 5,2x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 7x2 ≤ 840 (Schmiedezeit)",
+      "0,6x1 + 0,4x2 ≤ 90 (Stahl)",
+      "x1 + x2 ≤ 160 (Härterei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Engpässe: Schmiedezeit, Stahlvorrat und die begrenzte Härterei-Kapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn pro Hammer beträgt 3,80€",
+          "bedeutung": "3,8 × x₁"
+        },
+        {
+          "text": "5,20€",
+          "bedeutung": "5,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Hammer 4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "pro Zange 7 Minuten Schmiedezeit",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "840 Minuten Schmiedezeit",
+            "bedeutung": "≤ 840"
+          }
+        ],
+        [
+          {
+            "text": "pro Hammer 0,6 kg",
+            "bedeutung": "0,6x₁"
+          },
+          {
+            "text": "pro Zange 0,4 kg",
+            "bedeutung": "+ 0,4x₂"
+          },
+          {
+            "text": "90 kg Stahl",
+            "bedeutung": "≤ 90"
+          }
+        ],
+        [
+          {
+            "text": "maximal 160 Werkzeuge",
+            "bedeutung": "x₁ + x₂ ≤ 160"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brillenmanufaktur (Sonnenbrillen und Lesebrillen)",
+    "beschreibung": "Eine Brillenmanufaktur produziert Sonnenbrillen und Lesebrillen. Pro Sonnenbrille wird ein Deckungsbeitrag von 18€ erzielt, pro Lesebrille 11€. Die Rahmenfertigung dauert pro Sonnenbrille 8 Minuten und pro Lesebrille 5 Minuten; pro Tag stehen 640 Minuten Fertigungszeit zur Verfügung. An Acetat werden pro Sonnenbrille 25 Gramm und pro Lesebrille 15 Gramm verbraucht; der Tagesvorrat beträgt 2250 Gramm Acetat. Die Gläserschleiferei kann täglich maximal 90 Brillen bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Sonnenbrillen pro Tag",
+      "x2 = Anzahl Lesebrillen pro Tag"
+    ],
+    "zielfunktion": "Z = 18x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 5x2 ≤ 640 (Rahmenfertigung)",
+      "25x1 + 15x2 ≤ 2250 (Acetat)",
+      "x1 + x2 ≤ 90 (Gläserschleiferei)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Neben Rahmenfertigung und Acetat ist die Gläserschleiferei der dritte Engpass. Achte auf die verschiedenen Einheiten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 18€",
+          "bedeutung": "18 × x₁"
+        },
+        {
+          "text": "11€",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Sonnenbrille 8 Minuten",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "pro Lesebrille 5 Minuten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "640 Minuten Fertigungszeit",
+            "bedeutung": "≤ 640"
+          }
+        ],
+        [
+          {
+            "text": "pro Sonnenbrille 25 Gramm",
+            "bedeutung": "25x₁"
+          },
+          {
+            "text": "pro Lesebrille 15 Gramm",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "2250 Gramm Acetat",
+            "bedeutung": "≤ 2250"
+          }
+        ],
+        [
+          {
+            "text": "maximal 90 Brillen",
+            "bedeutung": "x₁ + x₂ ≤ 90"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Matratzenwerk (Federkern und Schaumstoff)",
+    "beschreibung": "Ein Matratzenwerk stellt Federkernmatratzen und Schaumstoffmatratzen her. Der Gewinn pro Federkernmatratze beträgt 65€, pro Schaumstoffmatratze 48€. Die Fertigung einer Federkernmatratze erfordert 2,5 Stunden Arbeitszeit, eine Schaumstoffmatratze 1,5 Stunden Arbeitszeit; insgesamt sind pro Woche 200 Stunden Arbeitszeit verfügbar. An Material werden pro Federkernmatratze 8 kg Stahldraht und pro Schaumstoffmatratze 6 kg Schaumstoff verbraucht; der Vorrat ist auf 640 kg Material pro Woche begrenzt. Der Versand kann pro Woche maximal 90 Matratzen abwickeln.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Federkernmatratzen pro Woche",
+      "x2 = Anzahl Schaumstoffmatratzen pro Woche"
+    ],
+    "zielfunktion": "Z = 65x1 + 48x2 (max)",
+    "nebenbedingungen": [
+      "2,5x1 + 1,5x2 ≤ 200 (Arbeitszeit)",
+      "8x1 + 6x2 ≤ 640 (Material)",
+      "x1 + x2 ≤ 90 (Versandkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen: Arbeitszeit, Materialvorrat und die begrenzte Versandkapazität. Beachte die unterschiedlichen Stunden-Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn pro Federkernmatratze beträgt 65€",
+          "bedeutung": "65 × x₁"
+        },
+        {
+          "text": "48€",
+          "bedeutung": "48 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2,5 Stunden Arbeitszeit",
+            "bedeutung": "2,5x₁"
+          },
+          {
+            "text": "1,5 Stunden Arbeitszeit",
+            "bedeutung": "+ 1,5x₂"
+          },
+          {
+            "text": "200 Stunden Arbeitszeit",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "8 kg Stahldraht",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "6 kg Schaumstoff",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "640 kg Material",
+            "bedeutung": "≤ 640"
+          }
+        ],
+        [
+          {
+            "text": "maximal 90 Matratzen",
+            "bedeutung": "x₁ + x₂ ≤ 90"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zahnbürstenfabrik (Handzahnbürsten und Elektroköpfe)",
+    "beschreibung": "Eine Zahnbürstenfabrik produziert Handzahnbürsten und Elektro-Bürstenköpfe. Pro Handzahnbürste beträgt der Deckungsbeitrag 0,70€, pro Elektro-Bürstenkopf 1,20€. Die Spritzgussmaschine braucht pro Handzahnbürste 0,3 Minuten und pro Elektro-Bürstenkopf 0,5 Minuten Maschinenzeit; insgesamt stehen pro Stunde 30 Minuten Maschinenzeit zur Verfügung. An Nylonborsten werden pro Handzahnbürste 2 Gramm und pro Elektro-Bürstenkopf 3,5 Gramm verbraucht; der Stundenvorrat beträgt 280 Gramm Nylonborsten. Die Qualitätskontrolle kann stündlich maximal 80 Stück prüfen.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Handzahnbürsten pro Stunde",
+      "x2 = Anzahl Elektro-Bürstenköpfe pro Stunde"
+    ],
+    "zielfunktion": "Z = 0,7x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "0,3x1 + 0,5x2 ≤ 30 (Maschinenzeit)",
+      "2x1 + 3,5x2 ≤ 280 (Nylonborsten)",
+      "x1 + x2 ≤ 80 (Qualitätskontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Maschinenzeit ist in Minuten pro Stück angegeben. Daneben begrenzen Nylonborsten und die Qualitätskontrolle die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag 0,70€",
+          "bedeutung": "0,7 × x₁"
+        },
+        {
+          "text": "1,20€",
+          "bedeutung": "1,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,3 Minuten",
+            "bedeutung": "0,3x₁"
+          },
+          {
+            "text": "0,5 Minuten Maschinenzeit",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "30 Minuten Maschinenzeit",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "2 Gramm",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3,5 Gramm",
+            "bedeutung": "+ 3,5x₂"
+          },
+          {
+            "text": "280 Gramm Nylonborsten",
+            "bedeutung": "≤ 280"
+          }
+        ],
+        [
+          {
+            "text": "maximal 80 Stück",
+            "bedeutung": "x₁ + x₂ ≤ 80"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Skifabrik (Carving-Ski und Tourenski)",
+    "beschreibung": "Eine Skifabrik produziert Carving-Ski und Tourenski. Pro Paar Carving-Ski beträgt der Gewinn 72€, pro Paar Tourenski 98€. Die Kernfertigung benötigt pro Paar Carving-Ski 1,5 Stunden und pro Paar Tourenski 2,5 Stunden Maschinenzeit; wöchentlich stehen 300 Stunden Maschinenzeit zur Verfügung. An Glasfasergewebe werden pro Paar Carving-Ski 1,2 kg und pro Paar Tourenski 0,9 kg verbraucht; der Wochenvorrat beträgt 150 kg Glasfasergewebe. Die Endmontage kann wöchentlich maximal 130 Paar Ski bearbeiten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Paar Carving-Ski pro Woche",
+      "x2 = Anzahl Paar Tourenski pro Woche"
+    ],
+    "zielfunktion": "Z = 72x1 + 98x2 (max)",
+    "nebenbedingungen": [
+      "1,5x1 + 2,5x2 ≤ 300 (Maschinenzeit)",
+      "1,2x1 + 0,9x2 ≤ 150 (Glasfasergewebe)",
+      "x1 + x2 ≤ 130 (Endmontage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass Carving-Ski mehr Glasfasergewebe benötigen als Tourenski, aber weniger Maschinenzeit. Die Endmontage begrenzt die Gesamtstückzahl.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn 72€",
+          "bedeutung": "72 × x₁"
+        },
+        {
+          "text": "98€",
+          "bedeutung": "98 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1,5 Stunden",
+            "bedeutung": "1,5x₁"
+          },
+          {
+            "text": "2,5 Stunden Maschinenzeit",
+            "bedeutung": "+ 2,5x₂"
+          },
+          {
+            "text": "300 Stunden Maschinenzeit",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "1,2 kg",
+            "bedeutung": "1,2x₁"
+          },
+          {
+            "text": "0,9 kg",
+            "bedeutung": "+ 0,9x₂"
+          },
+          {
+            "text": "150 kg Glasfasergewebe",
+            "bedeutung": "≤ 150"
+          }
+        ],
+        [
+          {
+            "text": "maximal 130 Paar Ski",
+            "bedeutung": "x₁ + x₂ ≤ 130"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Automobilzulieferer – Bremsscheiben und Kupplungen",
+    "beschreibung": "Ein Automobilzulieferer fertigt Bremsscheiben und Kupplungen. Der Deckungsbeitrag beträgt 45€ pro Bremsscheibe und 60€ pro Kupplung. Jede Bremsscheibe benötigt 3 Stunden Maschinenzeit, jede Kupplung 5 Stunden Maschinenzeit. Insgesamt stehen 1500 Stunden Maschinenzeit pro Monat zur Verfügung. An Arbeitsstunden werden 2 Stunden pro Bremsscheibe und 4 Stunden pro Kupplung benötigt, wobei maximal 1200 Arbeitsstunden verfügbar sind. Der Stahlverbrauch liegt bei 8 kg pro Bremsscheibe und 6 kg pro Kupplung, mit einem Vorrat von 3200 kg Stahl. Aus Qualitätssicherungsgründen darf die Produktion von Kupplungen nicht mehr als das Doppelte der Bremsscheibenproduktion betragen, also gilt x2 ≤ 2x1. Wie lässt sich der Deckungsbeitrag maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Bremsscheiben",
+      "x2 = Anzahl Kupplungen"
+    ],
+    "zielfunktion": "Z = 45x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 1500 (Maschinenzeit)",
+      "2x1 + 4x2 ≤ 1200 (Arbeitsstunden)",
+      "8x1 + 6x2 ≤ 3200 (Stahl)",
+      "x2 ≤ 2x1 (Verhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x2 ≤ 2x1 kann umgeschrieben werden zu -2x1 + x2 ≤ 0. Zeichne diese Gerade und beachte, welche Seite zulässig ist.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "45€ pro Bremsscheibe",
+          "bedeutung": "45 × x₁"
+        },
+        {
+          "text": "60€ pro Kupplung",
+          "bedeutung": "60 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Stunden Maschinenzeit, jede Kupplung 5 Stunden Maschinenzeit",
+            "bedeutung": "3x₁ + 5x₂"
+          },
+          {
+            "text": "1500 Stunden Maschinenzeit pro Monat",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro Bremsscheibe und 4 Stunden pro Kupplung",
+            "bedeutung": "2x₁ + 4x₂"
+          },
+          {
+            "text": "1200 Arbeitsstunden",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "8 kg pro Bremsscheibe und 6 kg pro Kupplung",
+            "bedeutung": "8x₁ + 6x₂"
+          },
+          {
+            "text": "3200 kg Stahl",
+            "bedeutung": "≤ 3200"
+          }
+        ],
+        [
+          {
+            "text": "x2 ≤ 2x1",
+            "bedeutung": "x₂ ≤ 2x₁"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Pharma-Unternehmen – Tabletten und Kapseln",
+    "beschreibung": "Ein Pharma-Unternehmen produziert Tabletten und Kapseln eines Vitaminpräparats. Der Gewinn beträgt 0,80€ pro Tablette und 1,20€ pro Kapsel. Für die Herstellung einer Tablette werden 0,5 Minuten Presszeit benötigt, für eine Kapsel 1 Minute Presszeit. Die Pressmaschine ist maximal 500 Minuten pro Schicht verfügbar. Die Qualitätskontrolle dauert 0,3 Minuten pro Tablette und 0,6 Minuten pro Kapsel, insgesamt stehen 360 Minuten für Qualitätskontrolle bereit. Der Verpackungsautomat schafft maximal 800 Einheiten pro Schicht, wobei Tabletten und Kapseln gleich gezählt werden. Aufgrund der Nachfrage dürfen höchstens 600 Tabletten pro Schicht produziert werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Tabletten pro Schicht",
+      "x2 = Anzahl Kapseln pro Schicht"
+    ],
+    "zielfunktion": "Z = 0,8x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "0,5x1 + x2 ≤ 500 (Presszeit)",
+      "0,3x1 + 0,6x2 ≤ 360 (Qualitätskontrolle)",
+      "x1 + x2 ≤ 800 (Verpackung)",
+      "x1 ≤ 600 (Nachfrage Tabletten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die individuelle Nachfragegrenze für Tabletten. Die Presszeit-Beschränkung enthält den Koeffizienten 1 bei x2, was direkt aus der Angabe '1 Minute Presszeit' folgt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "0,80€ pro Tablette",
+          "bedeutung": "0,8 × x₁"
+        },
+        {
+          "text": "1,20€ pro Kapsel",
+          "bedeutung": "1,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,5 Minuten Presszeit",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "für eine Kapsel 1 Minute Presszeit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "500 Minuten pro Schicht",
+            "bedeutung": "≤ 500"
+          }
+        ],
+        [
+          {
+            "text": "0,3 Minuten pro Tablette und 0,6 Minuten pro Kapsel",
+            "bedeutung": "0,3x₁ + 0,6x₂"
+          },
+          {
+            "text": "360 Minuten für Qualitätskontrolle",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "800 Einheiten pro Schicht",
+            "bedeutung": "x₁ + x₂ ≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "600 Tabletten pro Schicht",
+            "bedeutung": "x₁ ≤ 600"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Metallverarbeitung – Stahlträger und Rohre",
+    "beschreibung": "Ein Metallverarbeitungsbetrieb stellt Stahlträger und Rohre her. Der Deckungsbeitrag beträgt 120€ pro Stahlträger und 85€ pro Rohr. Für einen Stahlträger werden 6 Stunden an der Walzstraße und für ein Rohr 3 Stunden an der Walzstraße benötigt. Die Walzstraße ist 1800 Stunden pro Monat verfügbar. Jeder Stahlträger verbraucht 50 kg Rohstahl und jedes Rohr 30 kg Rohstahl, bei einer monatlichen Liefermenge von 12000 kg Rohstahl. Der Energieverbrauch liegt bei 15 kWh pro Stahlträger und 10 kWh pro Rohr, wobei das Werk maximal 5000 kWh Energie pro Monat beziehen kann. Außerdem dürfen aufgrund von Lagerkapazitäten höchstens 250 Stahlträger und höchstens 350 Rohre pro Monat gefertigt werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Stahlträger pro Monat",
+      "x2 = Anzahl Rohre pro Monat"
+    ],
+    "zielfunktion": "Z = 120x1 + 85x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 1800 (Walzstraße)",
+      "50x1 + 30x2 ≤ 12000 (Rohstahl)",
+      "15x1 + 10x2 ≤ 5000 (Energie)",
+      "x1 ≤ 250 (Lager Stahlträger)",
+      "x2 ≤ 350 (Lager Rohre)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es 5 Nebenbedingungen plus Nichtnegativität. Prüfe alle Schnittpunkte sorgfältig, insbesondere wo die Lagergrenzen die anderen Beschränkungen schneiden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "120€ pro Stahlträger",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "85€ pro Rohr",
+          "bedeutung": "85 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden an der Walzstraße und für ein Rohr 3 Stunden an der Walzstraße",
+            "bedeutung": "6x₁ + 3x₂"
+          },
+          {
+            "text": "1800 Stunden pro Monat",
+            "bedeutung": "≤ 1800"
+          }
+        ],
+        [
+          {
+            "text": "50 kg Rohstahl und jedes Rohr 30 kg Rohstahl",
+            "bedeutung": "50x₁ + 30x₂"
+          },
+          {
+            "text": "12000 kg Rohstahl",
+            "bedeutung": "≤ 12000"
+          }
+        ],
+        [
+          {
+            "text": "15 kWh pro Stahlträger und 10 kWh pro Rohr",
+            "bedeutung": "15x₁ + 10x₂"
+          },
+          {
+            "text": "5000 kWh Energie",
+            "bedeutung": "≤ 5000"
+          }
+        ],
+        [
+          {
+            "text": "250 Stahlträger",
+            "bedeutung": "x₁ ≤ 250"
+          }
+        ],
+        [
+          {
+            "text": "350 Rohre",
+            "bedeutung": "x₂ ≤ 350"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kunststoffwerk – Gehäuse und Abdeckungen",
+    "beschreibung": "Ein Kunststoffwerk produziert Gehäuse und Abdeckungen im Spritzgussverfahren. Der Deckungsbeitrag beträgt 9€ pro Gehäuse und 6€ pro Abdeckung. Jedes Gehäuse benötigt 4 Minuten Spritzgusszeit und jede Abdeckung 2 Minuten Spritzgusszeit. Pro Tag stehen 960 Minuten Spritzgusszeit zur Verfügung. Der Kunststoffgranulat-Verbrauch beträgt 0,5 kg pro Gehäuse und 0,3 kg pro Abdeckung, bei einem Tagesvorrat von 120 kg Granulat. Für die Nachbearbeitung werden 3 Minuten pro Gehäuse und 1 Minute pro Abdeckung benötigt, maximal 600 Minuten Nachbearbeitung pro Tag. Aus vertraglichen Gründen muss die Anzahl der Gehäuse mindestens halb so groß sein wie die Anzahl der Abdeckungen, also x1 ≥ 0,5x2. Wie wird der Tagesgewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gehäuse pro Tag",
+      "x2 = Anzahl Abdeckungen pro Tag"
+    ],
+    "zielfunktion": "Z = 9x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 960 (Spritzgusszeit)",
+      "0,5x1 + 0,3x2 ≤ 120 (Granulat)",
+      "3x1 + x2 ≤ 600 (Nachbearbeitung)",
+      "x1 ≥ 0,5x2 (Vertragsverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Vertragsbedingung x1 ≥ 0,5x2 kann umgeformt werden zu -x1 + 0,5x2 ≤ 0 oder äquivalent -2x1 + x2 ≤ 0. Achte auf die richtige Halbebene beim Zeichnen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Gehäuse",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "6€ pro Abdeckung",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Minuten Spritzgusszeit und jede Abdeckung 2 Minuten Spritzgusszeit",
+            "bedeutung": "4x₁ + 2x₂"
+          },
+          {
+            "text": "960 Minuten Spritzgusszeit",
+            "bedeutung": "≤ 960"
+          }
+        ],
+        [
+          {
+            "text": "0,5 kg pro Gehäuse und 0,3 kg pro Abdeckung",
+            "bedeutung": "0,5x₁ + 0,3x₂"
+          },
+          {
+            "text": "120 kg Granulat",
+            "bedeutung": "≤ 120"
+          }
+        ],
+        [
+          {
+            "text": "3 Minuten pro Gehäuse und 1 Minute pro Abdeckung",
+            "bedeutung": "3x₁ + x₂"
+          },
+          {
+            "text": "600 Minuten Nachbearbeitung",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "x1 ≥ 0,5x2",
+            "bedeutung": "x₁ ≥ 0,5x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chipfabrik – Prozessoren und Speicherchips",
+    "beschreibung": "Eine Chipfabrik produziert Prozessoren und Speicherchips. Der Gewinn beträgt 25€ pro Prozessor und 10€ pro Speicherchip. Die Belichtung dauert 8 Minuten pro Prozessor und 3 Minuten pro Speicherchip, bei einer verfügbaren Belichtungszeit von 2400 Minuten pro Schicht. Die Ätzanlage benötigt 5 Minuten pro Prozessor und 4 Minuten pro Speicherchip, mit einer Kapazität von 2000 Minuten pro Schicht. Für die Endprüfung werden 2 Minuten pro Prozessor und 1 Minute pro Speicherchip aufgewendet, insgesamt maximal 700 Minuten Endprüfung pro Schicht. Zudem können aufgrund von Wafer-Lieferungen maximal 200 Prozessoren pro Schicht gefertigt werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Prozessoren pro Schicht",
+      "x2 = Anzahl Speicherchips pro Schicht"
+    ],
+    "zielfunktion": "Z = 25x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 3x2 ≤ 2400 (Belichtung)",
+      "5x1 + 4x2 ≤ 2000 (Ätzanlage)",
+      "2x1 + x2 ≤ 700 (Endprüfung)",
+      "x1 ≤ 200 (Wafer-Lieferung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die individuelle Beschränkung auf 200 Prozessoren ist eine vertikale Linie im Diagramm. Teste alle Eckpunkte der zulässigen Menge.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ pro Prozessor",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "10€ pro Speicherchip",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "8 Minuten pro Prozessor und 3 Minuten pro Speicherchip",
+            "bedeutung": "8x₁ + 3x₂"
+          },
+          {
+            "text": "2400 Minuten pro Schicht",
+            "bedeutung": "≤ 2400"
+          }
+        ],
+        [
+          {
+            "text": "5 Minuten pro Prozessor und 4 Minuten pro Speicherchip",
+            "bedeutung": "5x₁ + 4x₂"
+          },
+          {
+            "text": "2000 Minuten pro Schicht",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "2 Minuten pro Prozessor und 1 Minute pro Speicherchip",
+            "bedeutung": "2x₁ + x₂"
+          },
+          {
+            "text": "700 Minuten Endprüfung",
+            "bedeutung": "≤ 700"
+          }
+        ],
+        [
+          {
+            "text": "200 Prozessoren pro Schicht",
+            "bedeutung": "x₁ ≤ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbeldesign – Schreibtische und Bücherregale",
+    "beschreibung": "Ein Möbeldesign-Unternehmen fertigt Schreibtische und Bücherregale. Der Deckungsbeitrag beträgt 150€ pro Schreibtisch und 100€ pro Bücherregal. In der Schreinerei dauert ein Schreibtisch 5 Stunden und ein Bücherregal 4 Stunden. Die Schreinerei hat eine Kapazität von 200 Stunden pro Woche. Die Lackiererei benötigt 2 Stunden pro Schreibtisch und 3 Stunden pro Bücherregal, bei maximal 150 Stunden Lackiererei pro Woche. An Holz werden 12 Bretter pro Schreibtisch und 8 Bretter pro Bücherregal gebraucht, wobei 480 Bretter pro Woche verfügbar sind. Die Lagerfläche reicht für insgesamt 45 Möbelstücke pro Woche. Was ist die gewinnmaximale Produktion?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Schreibtische pro Woche",
+      "x2 = Anzahl Bücherregale pro Woche"
+    ],
+    "zielfunktion": "Z = 150x1 + 100x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≤ 200 (Schreinerei)",
+      "2x1 + 3x2 ≤ 150 (Lackiererei)",
+      "12x1 + 8x2 ≤ 480 (Holz)",
+      "x1 + x2 ≤ 45 (Lagerfläche)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität ergeben ein Polygon mit mehreren Eckpunkten. Berechne alle Schnittpunkte und prüfe deren Zulässigkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "150€ pro Schreibtisch",
+          "bedeutung": "150 × x₁"
+        },
+        {
+          "text": "100€ pro Bücherregal",
+          "bedeutung": "100 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden und ein Bücherregal 4 Stunden",
+            "bedeutung": "5x₁ + 4x₂"
+          },
+          {
+            "text": "200 Stunden pro Woche",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro Schreibtisch und 3 Stunden pro Bücherregal",
+            "bedeutung": "2x₁ + 3x₂"
+          },
+          {
+            "text": "150 Stunden Lackiererei",
+            "bedeutung": "≤ 150"
+          }
+        ],
+        [
+          {
+            "text": "12 Bretter pro Schreibtisch und 8 Bretter pro Bücherregal",
+            "bedeutung": "12x₁ + 8x₂"
+          },
+          {
+            "text": "480 Bretter pro Woche",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "45 Möbelstücke pro Woche",
+            "bedeutung": "x₁ + x₂ ≤ 45"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sportartikelhersteller – Tennisschläger und Badmintonschläger",
+    "beschreibung": "Ein Sportartikelhersteller produziert Tennisschläger und Badmintonschläger. Der Gewinn beträgt 35€ pro Tennisschläger und 20€ pro Badmintonschläger. Für einen Tennisschläger werden 2 Stunden Arbeitszeit und für einen Badmintonschläger 1,5 Stunden Arbeitszeit benötigt. Insgesamt stehen 900 Stunden Arbeitszeit pro Monat zur Verfügung. Die Bespannungsmaschine benötigt 30 Minuten pro Tennisschläger und 20 Minuten pro Badmintonschläger, wobei die Maschine maximal 12000 Minuten pro Monat läuft. Der Kohlefaserverbrauch liegt bei 0,4 kg pro Tennisschläger und 0,25 kg pro Badmintonschläger, mit einem Vorrat von 160 kg Kohlefaser pro Monat. Aufgrund der Marktnachfrage können höchstens 350 Tennisschläger pro Monat abgesetzt werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Tennisschläger pro Monat",
+      "x2 = Anzahl Badmintonschläger pro Monat"
+    ],
+    "zielfunktion": "Z = 35x1 + 20x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 1,5x2 ≤ 900 (Arbeitszeit)",
+      "30x1 + 20x2 ≤ 12000 (Bespannung)",
+      "0,4x1 + 0,25x2 ≤ 160 (Kohlefaser)",
+      "x1 ≤ 350 (Nachfrage Tennisschläger)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfragegrenze für Tennisschläger ist eine einfache vertikale Beschränkung. Achte darauf, dass die Bespannungsbedingung und die Arbeitszeitbedingung ähnliche Steigungen haben können.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Tennisschläger",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "20€ pro Badmintonschläger",
+          "bedeutung": "20 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Arbeitszeit und für einen Badmintonschläger 1,5 Stunden Arbeitszeit",
+            "bedeutung": "2x₁ + 1,5x₂"
+          },
+          {
+            "text": "900 Stunden Arbeitszeit pro Monat",
+            "bedeutung": "≤ 900"
+          }
+        ],
+        [
+          {
+            "text": "30 Minuten pro Tennisschläger und 20 Minuten pro Badmintonschläger",
+            "bedeutung": "30x₁ + 20x₂"
+          },
+          {
+            "text": "12000 Minuten pro Monat",
+            "bedeutung": "≤ 12000"
+          }
+        ],
+        [
+          {
+            "text": "0,4 kg pro Tennisschläger und 0,25 kg pro Badmintonschläger",
+            "bedeutung": "0,4x₁ + 0,25x₂"
+          },
+          {
+            "text": "160 kg Kohlefaser",
+            "bedeutung": "≤ 160"
+          }
+        ],
+        [
+          {
+            "text": "350 Tennisschläger pro Monat",
+            "bedeutung": "x₁ ≤ 350"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Verpackungshersteller – Kartons und Tüten",
+    "beschreibung": "Ein Verpackungshersteller produziert Kartons und Tüten. Der Gewinn beträgt 0,50€ pro Karton und 0,30€ pro Tüte. Die Stanzmaschine benötigt 0,2 Minuten pro Karton und 0,1 Minuten pro Tüte. Die Stanzmaschine kann maximal 480 Minuten pro Tag laufen. Beim Kleben werden 0,15 Minuten pro Karton und 0,05 Minuten pro Tüte benötigt, wobei die Klebestation 300 Minuten pro Tag verfügbar ist. An Pappe werden 0,08 m² pro Karton und 0,04 m² pro Tüte verbraucht, bei einem Tagesvorrat von 200 m² Pappe. Die Gesamtstückzahl aus Kartons und Tüten darf 3000 Stück pro Tag nicht überschreiten. Welche Produktion maximiert den Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Kartons pro Tag",
+      "x2 = Anzahl Tüten pro Tag"
+    ],
+    "zielfunktion": "Z = 0,5x1 + 0,3x2 (max)",
+    "nebenbedingungen": [
+      "0,2x1 + 0,1x2 ≤ 480 (Stanzmaschine)",
+      "0,15x1 + 0,05x2 ≤ 300 (Klebestation)",
+      "0,08x1 + 0,04x2 ≤ 200 (Pappe)",
+      "x1 + x2 ≤ 3000 (Gesamtstückzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Alle Koeffizienten sind relativ klein, da es sich um Massenproduktion handelt. Rechne sorgfältig mit den Dezimalzahlen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "0,50€ pro Karton",
+          "bedeutung": "0,5 × x₁"
+        },
+        {
+          "text": "0,30€ pro Tüte",
+          "bedeutung": "0,3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,2 Minuten pro Karton und 0,1 Minuten pro Tüte",
+            "bedeutung": "0,2x₁ + 0,1x₂"
+          },
+          {
+            "text": "480 Minuten pro Tag",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "0,15 Minuten pro Karton und 0,05 Minuten pro Tüte",
+            "bedeutung": "0,15x₁ + 0,05x₂"
+          },
+          {
+            "text": "300 Minuten pro Tag",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "0,08 m² pro Karton und 0,04 m² pro Tüte",
+            "bedeutung": "0,08x₁ + 0,04x₂"
+          },
+          {
+            "text": "200 m² Pappe",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "3000 Stück pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 3000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ziegelei – Mauerziegel und Pflastersteine",
+    "beschreibung": "Eine Ziegelei stellt Mauerziegel und Pflastersteine her. Der Deckungsbeitrag beträgt 0,40€ pro Mauerziegel und 0,70€ pro Pflasterstein. Das Formen dauert 0,1 Minuten pro Mauerziegel und 0,2 Minuten pro Pflasterstein, bei einer Formkapazität von 600 Minuten pro Tag. Im Brennofen werden 0,3 Minuten pro Mauerziegel und 0,5 Minuten pro Pflasterstein benötigt, wobei der Brennofen 1500 Minuten pro Tag verfügbar ist. Der Tonverbrauch liegt bei 2 kg pro Mauerziegel und 3 kg pro Pflasterstein, mit einem Tagesvorrat von 9000 kg Ton. Die Trocknungsanlage ist auf insgesamt 4000 Stück pro Tag begrenzt. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Mauerziegel pro Tag",
+      "x2 = Anzahl Pflastersteine pro Tag"
+    ],
+    "zielfunktion": "Z = 0,4x1 + 0,7x2 (max)",
+    "nebenbedingungen": [
+      "0,1x1 + 0,2x2 ≤ 600 (Formen)",
+      "0,3x1 + 0,5x2 ≤ 1500 (Brennofen)",
+      "2x1 + 3x2 ≤ 9000 (Ton)",
+      "x1 + x2 ≤ 4000 (Trocknungsanlage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte darauf, dass die Formkapazität und der Brennofen unterschiedliche Engpässe darstellen. Die Tonbeschränkung hat ganzzahlige Koeffizienten, was das Rechnen erleichtert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "0,40€ pro Mauerziegel",
+          "bedeutung": "0,4 × x₁"
+        },
+        {
+          "text": "0,70€ pro Pflasterstein",
+          "bedeutung": "0,7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,1 Minuten pro Mauerziegel und 0,2 Minuten pro Pflasterstein",
+            "bedeutung": "0,1x₁ + 0,2x₂"
+          },
+          {
+            "text": "600 Minuten pro Tag",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "0,3 Minuten pro Mauerziegel und 0,5 Minuten pro Pflasterstein",
+            "bedeutung": "0,3x₁ + 0,5x₂"
+          },
+          {
+            "text": "1500 Minuten pro Tag",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "2 kg pro Mauerziegel und 3 kg pro Pflasterstein",
+            "bedeutung": "2x₁ + 3x₂"
+          },
+          {
+            "text": "9000 kg Ton",
+            "bedeutung": "≤ 9000"
+          }
+        ],
+        [
+          {
+            "text": "4000 Stück pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 4000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lederwerkstatt – Taschen und Gürtel",
+    "beschreibung": "Eine Lederwerkstatt fertigt Taschen und Gürtel. Der Gewinn beträgt 70€ pro Tasche und 25€ pro Gürtel. Eine Tasche benötigt 4 Stunden Handarbeit und ein Gürtel 1 Stunde Handarbeit. Pro Woche stehen 160 Stunden Handarbeit zur Verfügung. Der Lederverbrauch liegt bei 1,5 m² pro Tasche und 0,5 m² pro Gürtel, bei einem Wochenvorrat von 75 m² Leder. Für Metallbeschläge werden 5 Stück pro Tasche und 2 Stück pro Gürtel benötigt, wobei 250 Beschläge pro Woche vorrätig sind. Die Nachfrage nach Gürteln ist auf höchstens 80 Stück pro Woche begrenzt. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Taschen pro Woche",
+      "x2 = Anzahl Gürtel pro Woche"
+    ],
+    "zielfunktion": "Z = 70x1 + 25x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + x2 ≤ 160 (Handarbeit)",
+      "1,5x1 + 0,5x2 ≤ 75 (Leder)",
+      "5x1 + 2x2 ≤ 250 (Beschläge)",
+      "x2 ≤ 80 (Nachfrage Gürtel)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfragegrenze für Gürtel ist eine horizontale Linie bei x2 = 80. Prüfe, ob diese Grenze tatsächlich bindend wird.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "70€ pro Tasche",
+          "bedeutung": "70 × x₁"
+        },
+        {
+          "text": "25€ pro Gürtel",
+          "bedeutung": "25 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Stunden Handarbeit und ein Gürtel 1 Stunde Handarbeit",
+            "bedeutung": "4x₁ + x₂"
+          },
+          {
+            "text": "160 Stunden Handarbeit",
+            "bedeutung": "≤ 160"
+          }
+        ],
+        [
+          {
+            "text": "1,5 m² pro Tasche und 0,5 m² pro Gürtel",
+            "bedeutung": "1,5x₁ + 0,5x₂"
+          },
+          {
+            "text": "75 m² Leder",
+            "bedeutung": "≤ 75"
+          }
+        ],
+        [
+          {
+            "text": "5 Stück pro Tasche und 2 Stück pro Gürtel",
+            "bedeutung": "5x₁ + 2x₂"
+          },
+          {
+            "text": "250 Beschläge pro Woche",
+            "bedeutung": "≤ 250"
+          }
+        ],
+        [
+          {
+            "text": "80 Stück pro Woche",
+            "bedeutung": "x₂ ≤ 80"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fensterbauer – Holzfenster und Kunststofffenster",
+    "beschreibung": "Ein Fensterbauer produziert Holzfenster und Kunststofffenster. Der Deckungsbeitrag beträgt 200€ pro Holzfenster und 140€ pro Kunststofffenster. Die Fertigung dauert 6 Stunden pro Holzfenster und 3 Stunden pro Kunststofffenster. Die Werkstatt hat 360 Stunden Fertigungskapazität pro Monat. Für die Verglasung werden 1,5 Stunden pro Holzfenster und 1 Stunde pro Kunststofffenster benötigt, bei maximal 100 Stunden Verglasungskapazität pro Monat. Die Montageabteilung benötigt 2 Stunden pro Holzfenster und 2 Stunden pro Kunststofffenster, wobei 160 Stunden Montagezeit pro Monat verfügbar sind. Aufgrund einer Vereinbarung mit dem Lieferanten muss das Verhältnis Holzfenster zu Kunststofffenster mindestens 1 zu 3 betragen, also x1 ≥ x2 / 3, umgeformt: x2 ≤ 3x1. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Holzfenster pro Monat",
+      "x2 = Anzahl Kunststofffenster pro Monat"
+    ],
+    "zielfunktion": "Z = 200x1 + 140x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 360 (Fertigung)",
+      "1,5x1 + x2 ≤ 100 (Verglasung)",
+      "2x1 + 2x2 ≤ 160 (Montage)",
+      "x2 ≤ 3x1 (Lieferantenverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x2 ≤ 3x1 entspricht -3x1 + x2 ≤ 0. Diese Gerade verläuft durch den Ursprung. Achte auf die korrekte Halbebene.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "200€ pro Holzfenster",
+          "bedeutung": "200 × x₁"
+        },
+        {
+          "text": "140€ pro Kunststofffenster",
+          "bedeutung": "140 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden pro Holzfenster und 3 Stunden pro Kunststofffenster",
+            "bedeutung": "6x₁ + 3x₂"
+          },
+          {
+            "text": "360 Stunden Fertigungskapazität",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "1,5 Stunden pro Holzfenster und 1 Stunde pro Kunststofffenster",
+            "bedeutung": "1,5x₁ + x₂"
+          },
+          {
+            "text": "100 Stunden Verglasungskapazität",
+            "bedeutung": "≤ 100"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro Holzfenster und 2 Stunden pro Kunststofffenster",
+            "bedeutung": "2x₁ + 2x₂"
+          },
+          {
+            "text": "160 Stunden Montagezeit",
+            "bedeutung": "≤ 160"
+          }
+        ],
+        [
+          {
+            "text": "x2 ≤ 3x1",
+            "bedeutung": "x₂ ≤ 3x₁"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bootswerft – Ruderboote und Kanus",
+    "beschreibung": "Eine Bootswerft baut Ruderboote und Kanus. Der Deckungsbeitrag beträgt 800€ pro Ruderboot und 500€ pro Kanu. Der Holzbau benötigt 20 Stunden pro Ruderboot und 12 Stunden pro Kanu, bei insgesamt 480 Stunden Holzbau pro Monat. Die Lackierung dauert 8 Stunden pro Ruderboot und 5 Stunden pro Kanu, mit maximal 200 Stunden Lackierung pro Monat. Für die Endmontage werden 6 Stunden pro Ruderboot und 4 Stunden pro Kanu benötigt, wobei 150 Stunden Endmontage pro Monat zur Verfügung stehen. Der Lagerplatz reicht für maximal 30 Boote insgesamt pro Monat. Wie lässt sich der Deckungsbeitrag maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Ruderboote pro Monat",
+      "x2 = Anzahl Kanus pro Monat"
+    ],
+    "zielfunktion": "Z = 800x1 + 500x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 12x2 ≤ 480 (Holzbau)",
+      "8x1 + 5x2 ≤ 200 (Lackierung)",
+      "6x1 + 4x2 ≤ 150 (Endmontage)",
+      "x1 + x2 ≤ 30 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass der Holzbau die stärkste Einschränkung sein könnte. Berechne die Eckpunkte systematisch.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "800€ pro Ruderboot",
+          "bedeutung": "800 × x₁"
+        },
+        {
+          "text": "500€ pro Kanu",
+          "bedeutung": "500 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "20 Stunden pro Ruderboot und 12 Stunden pro Kanu",
+            "bedeutung": "20x₁ + 12x₂"
+          },
+          {
+            "text": "480 Stunden Holzbau",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "8 Stunden pro Ruderboot und 5 Stunden pro Kanu",
+            "bedeutung": "8x₁ + 5x₂"
+          },
+          {
+            "text": "200 Stunden Lackierung",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "6 Stunden pro Ruderboot und 4 Stunden pro Kanu",
+            "bedeutung": "6x₁ + 4x₂"
+          },
+          {
+            "text": "150 Stunden Endmontage",
+            "bedeutung": "≤ 150"
+          }
+        ],
+        [
+          {
+            "text": "30 Boote insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 30"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textildruck – Poster und Leinwände",
+    "beschreibung": "Ein Textildruckbetrieb fertigt bedruckte Poster und Leinwände. Der Gewinn beträgt 18€ pro Poster und 40€ pro Leinwand. Die Druckmaschine benötigt 5 Minuten pro Poster und 15 Minuten pro Leinwand. Pro Tag stehen 900 Minuten Druckzeit zur Verfügung. Für den Zuschnitt werden 2 Minuten pro Poster und 6 Minuten pro Leinwand benötigt, bei maximal 420 Minuten Zuschnitt pro Tag. Der Farbverbrauch beträgt 0,1 Liter pro Poster und 0,4 Liter pro Leinwand, mit einem Tagesvorrat von 24 Liter Farbe. Die Qualitätskontrolle dauert 1 Minute pro Poster und 3 Minuten pro Leinwand, wobei 180 Minuten Qualitätskontrolle pro Tag eingeplant sind. Welche Produktion maximiert den Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Poster pro Tag",
+      "x2 = Anzahl Leinwände pro Tag"
+    ],
+    "zielfunktion": "Z = 18x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 15x2 ≤ 900 (Druckzeit)",
+      "2x1 + 6x2 ≤ 420 (Zuschnitt)",
+      "0,1x1 + 0,4x2 ≤ 24 (Farbe)",
+      "x1 + 3x2 ≤ 180 (Qualitätskontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Einige Nebenbedingungen haben proportionale Koeffizienten. Prüfe, ob manche Bedingungen redundant sind, also von anderen dominiert werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "18€ pro Poster",
+          "bedeutung": "18 × x₁"
+        },
+        {
+          "text": "40€ pro Leinwand",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Minuten pro Poster und 15 Minuten pro Leinwand",
+            "bedeutung": "5x₁ + 15x₂"
+          },
+          {
+            "text": "900 Minuten Druckzeit",
+            "bedeutung": "≤ 900"
+          }
+        ],
+        [
+          {
+            "text": "2 Minuten pro Poster und 6 Minuten pro Leinwand",
+            "bedeutung": "2x₁ + 6x₂"
+          },
+          {
+            "text": "420 Minuten Zuschnitt",
+            "bedeutung": "≤ 420"
+          }
+        ],
+        [
+          {
+            "text": "0,1 Liter pro Poster und 0,4 Liter pro Leinwand",
+            "bedeutung": "0,1x₁ + 0,4x₂"
+          },
+          {
+            "text": "24 Liter Farbe",
+            "bedeutung": "≤ 24"
+          }
+        ],
+        [
+          {
+            "text": "1 Minute pro Poster und 3 Minuten pro Leinwand",
+            "bedeutung": "x₁ + 3x₂"
+          },
+          {
+            "text": "180 Minuten Qualitätskontrolle",
+            "bedeutung": "≤ 180"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiewerk – Reinigungsmittel und Poliermittel",
+    "beschreibung": "Ein Chemiewerk produziert Reinigungsmittel und Poliermittel. Der Gewinn beträgt 3€ pro Flasche Reinigungsmittel und 5€ pro Flasche Poliermittel. Die Mischanlage benötigt 0,4 Minuten pro Flasche Reinigungsmittel und 0,8 Minuten pro Flasche Poliermittel, bei einer Kapazität von 320 Minuten pro Schicht. Die Abfüllanlage benötigt 0,2 Minuten pro Flasche Reinigungsmittel und 0,3 Minuten pro Flasche Poliermittel, wobei maximal 180 Minuten pro Schicht verfügbar sind. Der Chemikalienverbrauch liegt bei 0,15 kg pro Flasche Reinigungsmittel und 0,25 kg pro Flasche Poliermittel, mit einem Vorrat von 125 kg Chemikalien pro Schicht. Die Etikettierung erlaubt höchstens 700 Flaschen Reinigungsmittel und höchstens 400 Flaschen Poliermittel pro Schicht. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Flaschen Reinigungsmittel pro Schicht",
+      "x2 = Flaschen Poliermittel pro Schicht"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,8x2 ≤ 320 (Mischanlage)",
+      "0,2x1 + 0,3x2 ≤ 180 (Abfüllanlage)",
+      "0,15x1 + 0,25x2 ≤ 125 (Chemikalien)",
+      "x1 ≤ 700 (Etikettierung Reinigungsmittel)",
+      "x2 ≤ 400 (Etikettierung Poliermittel)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es 5 echte Nebenbedingungen. Beachte die beiden individuellen Obergrenzen und wie sie den zulässigen Bereich einschränken.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Flasche Reinigungsmittel",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "5€ pro Flasche Poliermittel",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,4 Minuten pro Flasche Reinigungsmittel und 0,8 Minuten pro Flasche Poliermittel",
+            "bedeutung": "0,4x₁ + 0,8x₂"
+          },
+          {
+            "text": "320 Minuten pro Schicht",
+            "bedeutung": "≤ 320"
+          }
+        ],
+        [
+          {
+            "text": "0,2 Minuten pro Flasche Reinigungsmittel und 0,3 Minuten pro Flasche Poliermittel",
+            "bedeutung": "0,2x₁ + 0,3x₂"
+          },
+          {
+            "text": "180 Minuten pro Schicht",
+            "bedeutung": "≤ 180"
+          }
+        ],
+        [
+          {
+            "text": "0,15 kg pro Flasche Reinigungsmittel und 0,25 kg pro Flasche Poliermittel",
+            "bedeutung": "0,15x₁ + 0,25x₂"
+          },
+          {
+            "text": "125 kg Chemikalien",
+            "bedeutung": "≤ 125"
+          }
+        ],
+        [
+          {
+            "text": "700 Flaschen Reinigungsmittel",
+            "bedeutung": "x₁ ≤ 700"
+          }
+        ],
+        [
+          {
+            "text": "400 Flaschen Poliermittel",
+            "bedeutung": "x₂ ≤ 400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Batteriefabrik – AA-Batterien und Knopfzellen",
+    "beschreibung": "Eine Batteriefabrik stellt AA-Batterien und Knopfzellen her. Der Gewinn beträgt 0,15€ pro AA-Batterie und 0,35€ pro Knopfzelle. Die Elektrodenfertigung dauert 0,02 Minuten pro AA-Batterie und 0,05 Minuten pro Knopfzelle, bei einer Kapazität von 400 Minuten pro Schicht. Die Befüllung mit Elektrolyt benötigt 0,01 Minuten pro AA-Batterie und 0,03 Minuten pro Knopfzelle, wobei maximal 240 Minuten pro Schicht verfügbar sind. Das Versiegeln dauert 0,008 Minuten pro AA-Batterie und 0,02 Minuten pro Knopfzelle, bei maximal 160 Minuten pro Schicht. Die Zink-Menge ist auf insgesamt 500 kg begrenzt, wobei 0,025 kg pro AA-Batterie und 0,015 kg pro Knopfzelle verbraucht werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl AA-Batterien pro Schicht",
+      "x2 = Anzahl Knopfzellen pro Schicht"
+    ],
+    "zielfunktion": "Z = 0,15x1 + 0,35x2 (max)",
+    "nebenbedingungen": [
+      "0,02x1 + 0,05x2 ≤ 400 (Elektrodenfertigung)",
+      "0,01x1 + 0,03x2 ≤ 240 (Elektrolyt)",
+      "0,008x1 + 0,02x2 ≤ 160 (Versiegelung)",
+      "0,025x1 + 0,015x2 ≤ 500 (Zink)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die sehr kleinen Koeffizienten lassen sich vereinfachen, indem man alle Terme mit einem gemeinsamen Faktor multipliziert, z. B. ×1000. Achte auf die Genauigkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "0,15€ pro AA-Batterie",
+          "bedeutung": "0,15 × x₁"
+        },
+        {
+          "text": "0,35€ pro Knopfzelle",
+          "bedeutung": "0,35 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "0,02 Minuten pro AA-Batterie und 0,05 Minuten pro Knopfzelle",
+            "bedeutung": "0,02x₁ + 0,05x₂"
+          },
+          {
+            "text": "400 Minuten pro Schicht",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "0,01 Minuten pro AA-Batterie und 0,03 Minuten pro Knopfzelle",
+            "bedeutung": "0,01x₁ + 0,03x₂"
+          },
+          {
+            "text": "240 Minuten pro Schicht",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "0,008 Minuten pro AA-Batterie und 0,02 Minuten pro Knopfzelle",
+            "bedeutung": "0,008x₁ + 0,02x₂"
+          },
+          {
+            "text": "160 Minuten pro Schicht",
+            "bedeutung": "≤ 160"
+          }
+        ],
+        [
+          {
+            "text": "0,025 kg pro AA-Batterie und 0,015 kg pro Knopfzelle",
+            "bedeutung": "0,025x₁ + 0,015x₂"
+          },
+          {
+            "text": "500 kg",
+            "bedeutung": "≤ 500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Optiker-Werkstatt – Brillenfassungen und Kontaktlinsen",
+    "beschreibung": "Eine Optiker-Werkstatt fertigt Brillenfassungen und Kontaktlinsen. Der Deckungsbeitrag beträgt 55€ pro Brillenfassung und 12€ pro Kontaktlinse. Die Formgebung dauert 3 Stunden pro Brillenfassung und 0,5 Stunden pro Kontaktlinse, bei maximal 180 Stunden pro Monat. Die Politur benötigt 1 Stunde pro Brillenfassung und 0,4 Stunden pro Kontaktlinse, wobei 100 Stunden pro Monat verfügbar sind. Für die Qualitätsmessung werden 0,5 Stunden pro Brillenfassung und 0,2 Stunden pro Kontaktlinse aufgewendet, insgesamt maximal 50 Stunden Qualitätsmessung pro Monat. Wegen begrenzter Spezialmaschinen können höchstens 40 Brillenfassungen pro Monat gefertigt werden. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Brillenfassungen pro Monat",
+      "x2 = Anzahl Kontaktlinsen pro Monat"
+    ],
+    "zielfunktion": "Z = 55x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 0,5x2 ≤ 180 (Formgebung)",
+      "x1 + 0,4x2 ≤ 100 (Politur)",
+      "0,5x1 + 0,2x2 ≤ 50 (Qualitätsmessung)",
+      "x1 ≤ 40 (Spezialmaschinen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die individuelle Obergrenze für Brillenfassungen bei 40 kann zusammen mit der Formgebungsbedingung den zulässigen Bereich stark einschränken. Achte auf den Koeffizienten 1 bei x1 in der Politur.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "55€ pro Brillenfassung",
+          "bedeutung": "55 × x₁"
+        },
+        {
+          "text": "12€ pro Kontaktlinse",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Stunden pro Brillenfassung und 0,5 Stunden pro Kontaktlinse",
+            "bedeutung": "3x₁ + 0,5x₂"
+          },
+          {
+            "text": "180 Stunden pro Monat",
+            "bedeutung": "≤ 180"
+          }
+        ],
+        [
+          {
+            "text": "1 Stunde pro Brillenfassung und 0,4 Stunden pro Kontaktlinse",
+            "bedeutung": "x₁ + 0,4x₂"
+          },
+          {
+            "text": "100 Stunden pro Monat",
+            "bedeutung": "≤ 100"
+          }
+        ],
+        [
+          {
+            "text": "0,5 Stunden pro Brillenfassung und 0,2 Stunden pro Kontaktlinse",
+            "bedeutung": "0,5x₁ + 0,2x₂"
+          },
+          {
+            "text": "50 Stunden Qualitätsmessung",
+            "bedeutung": "≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "40 Brillenfassungen pro Monat",
+            "bedeutung": "x₁ ≤ 40"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Biotech-Labor – Testkit A und Testkit B",
+    "beschreibung": "Ein Biotech-Labor produziert Testkit A und Testkit B. Der Gewinn beträgt 30€ pro Testkit A und 22€ pro Testkit B. Die Reagenzienvorbereitung dauert 4 Minuten pro Testkit A und 3 Minuten pro Testkit B, mit einer Kapazität von 600 Minuten pro Tag. Die Sterilisation benötigt 2 Minuten pro Testkit A und 2 Minuten pro Testkit B, wobei maximal 400 Minuten pro Tag zur Verfügung stehen. Die Verpackung dauert 1 Minute pro Testkit A und 1,5 Minuten pro Testkit B, bei maximal 250 Minuten pro Tag. Aus regulatorischen Gründen darf die Anzahl von Testkit A das Dreifache von Testkit B nicht übersteigen, also x1 ≤ 3x2. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Testkit A pro Tag",
+      "x2 = Anzahl Testkit B pro Tag"
+    ],
+    "zielfunktion": "Z = 30x1 + 22x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≤ 600 (Reagenzien)",
+      "2x1 + 2x2 ≤ 400 (Sterilisation)",
+      "x1 + 1,5x2 ≤ 250 (Verpackung)",
+      "x1 ≤ 3x2 (Regulierung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x1 ≤ 3x2 kann umgeschrieben werden zu x1 - 3x2 ≤ 0. Diese Gerade verläuft durch den Ursprung mit Steigung 1/3.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "30€ pro Testkit A",
+          "bedeutung": "30 × x₁"
+        },
+        {
+          "text": "22€ pro Testkit B",
+          "bedeutung": "22 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Minuten pro Testkit A und 3 Minuten pro Testkit B",
+            "bedeutung": "4x₁ + 3x₂"
+          },
+          {
+            "text": "600 Minuten pro Tag",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "2 Minuten pro Testkit A und 2 Minuten pro Testkit B",
+            "bedeutung": "2x₁ + 2x₂"
+          },
+          {
+            "text": "400 Minuten pro Tag",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "1 Minute pro Testkit A und 1,5 Minuten pro Testkit B",
+            "bedeutung": "x₁ + 1,5x₂"
+          },
+          {
+            "text": "250 Minuten pro Tag",
+            "bedeutung": "≤ 250"
+          }
+        ],
+        [
+          {
+            "text": "x1 ≤ 3x2",
+            "bedeutung": "x₁ ≤ 3x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Solarpanel-Produktion – Monokristallin und Polykristallin",
+    "beschreibung": "Ein Solarpanel-Hersteller produziert monokristalline und polykristalline Panels. Der Deckungsbeitrag beträgt 180€ pro monokristallines Panel und 110€ pro polykristallines Panel. Die Zellenfertigung dauert 5 Stunden pro monokristallines Panel und 3 Stunden pro polykristallines Panel, bei einer Kapazität von 450 Stunden pro Woche. Die Laminierung benötigt 2 Stunden pro monokristallines Panel und 2 Stunden pro polykristallines Panel, wobei maximal 200 Stunden pro Woche verfügbar sind. Der Siliziumverbrauch beträgt 4 kg pro monokristallines Panel und 3 kg pro polykristallines Panel, mit einem Wochenvorrat von 360 kg Silizium. Für die Elektroprüfung werden 1,5 Stunden pro monokristallines Panel und 1 Stunde pro polykristallines Panel benötigt, bei maximal 120 Stunden Elektroprüfung pro Woche. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl monokristalline Panels pro Woche",
+      "x2 = Anzahl polykristalline Panels pro Woche"
+    ],
+    "zielfunktion": "Z = 180x1 + 110x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 450 (Zellenfertigung)",
+      "2x1 + 2x2 ≤ 200 (Laminierung)",
+      "4x1 + 3x2 ≤ 360 (Silizium)",
+      "1,5x1 + x2 ≤ 120 (Elektroprüfung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vergleiche die Steigungen der Nebenbedingungen. Die Laminierung hat gleiche Koeffizienten, was zu einer Geraden mit Steigung -1 führt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "180€ pro monokristallines Panel",
+          "bedeutung": "180 × x₁"
+        },
+        {
+          "text": "110€ pro polykristallines Panel",
+          "bedeutung": "110 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden pro monokristallines Panel und 3 Stunden pro polykristallines Panel",
+            "bedeutung": "5x₁ + 3x₂"
+          },
+          {
+            "text": "450 Stunden pro Woche",
+            "bedeutung": "≤ 450"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro monokristallines Panel und 2 Stunden pro polykristallines Panel",
+            "bedeutung": "2x₁ + 2x₂"
+          },
+          {
+            "text": "200 Stunden pro Woche",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "4 kg pro monokristallines Panel und 3 kg pro polykristallines Panel",
+            "bedeutung": "4x₁ + 3x₂"
+          },
+          {
+            "text": "360 kg Silizium",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "1,5 Stunden pro monokristallines Panel und 1 Stunde pro polykristallines Panel",
+            "bedeutung": "1,5x₁ + x₂"
+          },
+          {
+            "text": "120 Stunden Elektroprüfung",
+            "bedeutung": "≤ 120"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonwerk – Fertigteile und Pflanzsteine",
+    "beschreibung": "Ein Betonwerk produziert Fertigteile und Pflanzsteine. Der Deckungsbeitrag beträgt 35€ pro Fertigteil und 8€ pro Pflanzstein. Die Betonmischanlage benötigt 10 Minuten pro Fertigteil und 3 Minuten pro Pflanzstein, bei einer Kapazität von 1800 Minuten pro Tag. Die Formanlage benötigt 8 Minuten pro Fertigteil und 2 Minuten pro Pflanzstein, wobei maximal 1200 Minuten pro Tag verfügbar sind. Der Zementverbrauch beträgt 25 kg pro Fertigteil und 5 kg pro Pflanzstein, mit einem Tagesvorrat von 4000 kg Zement. Es können maximal 500 Pflanzsteine pro Tag gelagert werden. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Fertigteile pro Tag",
+      "x2 = Anzahl Pflanzsteine pro Tag"
+    ],
+    "zielfunktion": "Z = 35x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 3x2 ≤ 1800 (Betonmischanlage)",
+      "8x1 + 2x2 ≤ 1200 (Formanlage)",
+      "25x1 + 5x2 ≤ 4000 (Zement)",
+      "x2 ≤ 500 (Lager Pflanzsteine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Lagerbeschränkung für Pflanzsteine ist eine horizontale Linie. Prüfe, ob der optimale Punkt auf dieser Grenze oder auf einer anderen liegt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Fertigteil",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "8€ pro Pflanzstein",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "10 Minuten pro Fertigteil und 3 Minuten pro Pflanzstein",
+            "bedeutung": "10x₁ + 3x₂"
+          },
+          {
+            "text": "1800 Minuten pro Tag",
+            "bedeutung": "≤ 1800"
+          }
+        ],
+        [
+          {
+            "text": "8 Minuten pro Fertigteil und 2 Minuten pro Pflanzstein",
+            "bedeutung": "8x₁ + 2x₂"
+          },
+          {
+            "text": "1200 Minuten pro Tag",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "25 kg pro Fertigteil und 5 kg pro Pflanzstein",
+            "bedeutung": "25x₁ + 5x₂"
+          },
+          {
+            "text": "4000 kg Zement",
+            "bedeutung": "≤ 4000"
+          }
+        ],
+        [
+          {
+            "text": "500 Pflanzsteine pro Tag",
+            "bedeutung": "x₂ ≤ 500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waffelfabrik – Belgische und Lütticher Waffeln",
+    "beschreibung": "Eine Waffelfabrik produziert Belgische Waffeln und Lütticher Waffeln. Der Gewinn beträgt 1,80€ pro Belgische Waffel und 2,50€ pro Lütticher Waffel. Jedes Waffeleisen braucht 2 Minuten pro Belgische Waffel und 3 Minuten pro Lütticher Waffel. Die Waffeleisen stehen insgesamt 600 Minuten pro Schicht zur Verfügung. Der Teigverbrauch liegt bei 0,15 kg pro Belgische Waffel und 0,2 kg pro Lütticher Waffel, bei einem Vorrat von 50 kg Teig pro Schicht. Für die Verzierung werden 1 Minute pro Belgische Waffel und 2 Minuten pro Lütticher Waffel benötigt, wobei maximal 400 Minuten Verzierungszeit pro Schicht verfügbar sind. Die Verpackungsanlage schafft insgesamt höchstens 250 Waffeln pro Schicht. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Belgische Waffeln pro Schicht",
+      "x2 = Anzahl Lütticher Waffeln pro Schicht"
+    ],
+    "zielfunktion": "Z = 1,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 600 (Waffeleisen)",
+      "0,15x1 + 0,2x2 ≤ 50 (Teig)",
+      "x1 + 2x2 ≤ 400 (Verzierung)",
+      "x1 + x2 ≤ 250 (Verpackung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen mit relativ einfachen Koeffizienten. Die Verpackungsbeschränkung hat gleiche Koeffizienten, was eine Gerade mit Steigung -1 ergibt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "1,80€ pro Belgische Waffel",
+          "bedeutung": "1,8 × x₁"
+        },
+        {
+          "text": "2,50€ pro Lütticher Waffel",
+          "bedeutung": "2,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Minuten pro Belgische Waffel und 3 Minuten pro Lütticher Waffel",
+            "bedeutung": "2x₁ + 3x₂"
+          },
+          {
+            "text": "600 Minuten pro Schicht",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "0,15 kg pro Belgische Waffel und 0,2 kg pro Lütticher Waffel",
+            "bedeutung": "0,15x₁ + 0,2x₂"
+          },
+          {
+            "text": "50 kg Teig",
+            "bedeutung": "≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "1 Minute pro Belgische Waffel und 2 Minuten pro Lütticher Waffel",
+            "bedeutung": "x₁ + 2x₂"
+          },
+          {
+            "text": "400 Minuten Verzierungszeit",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "250 Waffeln pro Schicht",
+            "bedeutung": "x₁ + x₂ ≤ 250"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Tierfutter-Mischung",
+    "beschreibung": "Ein Landwirt stellt eine Futtermischung aus Mais und Soja her. Mais kostet 0,40€ pro kg und enthält 10% Protein. Soja kostet 0,90€ pro kg und enthält 40% Protein. Es sollen insgesamt 1000 kg Futter gemischt werden. Der Proteingehalt der Mischung muss mindestens 20% betragen, also mindestens 200 kg Protein enthalten. Der Soja-Anteil darf höchstens 600 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Mais in kg",
+      "x2 = Menge Soja in kg"
+    ],
+    "zielfunktion": "Z = 0,4x1 + 0,9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "0,1x1 + 0,4x2 ≥ 200 (Proteingehalt)",
+      "x2 ≤ 600 (Soja-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "20% von 1000 kg = 200 kg Protein als Mindestanforderung. Mais liefert 10% Protein (0,1 pro kg) und Soja 40% Protein (0,4 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Mais kostet 0,40€ pro kg",
+          "bedeutung": "0,4 × x₁"
+        },
+        {
+          "text": "Soja kostet 0,90€ pro kg",
+          "bedeutung": "0,9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 1000 kg Futter gemischt werden",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "enthält 10% Protein",
+            "bedeutung": "0,1x₁"
+          },
+          {
+            "text": "enthält 40% Protein",
+            "bedeutung": "+ 0,4x₂"
+          },
+          {
+            "text": "mindestens 200 kg Protein",
+            "bedeutung": "≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "Soja-Anteil darf höchstens 600 kg",
+            "bedeutung": "x₂ ≤ 600"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Metalllegierung",
+    "beschreibung": "Eine Gießerei stellt eine Legierung aus Zink und Kupfer her. Zink kostet 3€ pro kg und hat einen Härtewert von 2 Einheiten pro kg. Kupfer kostet 5€ pro kg und hat einen Härtewert von 6 Einheiten pro kg. Es werden insgesamt 500 kg Legierung benötigt. Die Mindesthärte der Legierung muss 2000 Einheiten betragen. Der Zinkanteil muss mindestens 100 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Zink in kg",
+      "x2 = Menge Kupfer in kg"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "2x1 + 6x2 ≥ 2000 (Mindesthärte)",
+      "x1 ≥ 100 (Zink-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 500 kg. Die Härteanforderung von 2000 Einheiten ergibt sich aus dem gewünschten Härtegrad der Legierung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Zink kostet 3€ pro kg",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Kupfer kostet 5€ pro kg",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 500 kg Legierung benötigt",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ],
+        [
+          {
+            "text": "Härtewert von 2 Einheiten pro kg",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Härtewert von 6 Einheiten pro kg",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Mindesthärte der Legierung muss 2000 Einheiten",
+            "bedeutung": "≥ 2000"
+          }
+        ],
+        [
+          {
+            "text": "Zinkanteil muss mindestens 100 kg",
+            "bedeutung": "x₁ ≥ 100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Düngemittel-Mischung",
+    "beschreibung": "Ein Gartenbaubetrieb mischt Dünger aus Stickstoffdünger und Phosphordünger. Stickstoffdünger kostet 1,20€ pro kg und enthält 30% Stickstoff sowie 5% Phosphor. Phosphordünger kostet 1,80€ pro kg und enthält 10% Stickstoff sowie 25% Phosphor. Es werden mindestens 800 kg Düngemischung benötigt. Die Mischung muss mindestens 160 kg Stickstoff und mindestens 120 kg Phosphor enthalten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Stickstoffdünger in kg",
+      "x2 = Menge Phosphordünger in kg"
+    ],
+    "zielfunktion": "Z = 1,2x1 + 1,8x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 800 (Mindestmenge)",
+      "0,3x1 + 0,1x2 ≥ 160 (Stickstoffbedarf)",
+      "0,05x1 + 0,25x2 ≥ 120 (Phosphorbedarf)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Stickstoffdünger enthält 30% Stickstoff (0,3 pro kg) und 5% Phosphor (0,05 pro kg). Phosphordünger enthält 10% Stickstoff (0,1 pro kg) und 25% Phosphor (0,25 pro kg). Die Mindestmengen 160 kg Stickstoff und 120 kg Phosphor ergeben sich aus dem Nährstoffbedarf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Stickstoffdünger kostet 1,20€ pro kg",
+          "bedeutung": "1,2 × x₁"
+        },
+        {
+          "text": "Phosphordünger kostet 1,80€ pro kg",
+          "bedeutung": "1,8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 800 kg Düngemischung benötigt",
+            "bedeutung": "x₁ + x₂ ≥ 800"
+          }
+        ],
+        [
+          {
+            "text": "enthält 30% Stickstoff",
+            "bedeutung": "0,3x₁"
+          },
+          {
+            "text": "enthält 10% Stickstoff",
+            "bedeutung": "+ 0,1x₂"
+          },
+          {
+            "text": "mindestens 160 kg Stickstoff",
+            "bedeutung": "≥ 160"
+          }
+        ],
+        [
+          {
+            "text": "5% Phosphor",
+            "bedeutung": "0,05x₁"
+          },
+          {
+            "text": "25% Phosphor",
+            "bedeutung": "+ 0,25x₂"
+          },
+          {
+            "text": "mindestens 120 kg Phosphor",
+            "bedeutung": "≥ 120"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonmischung",
+    "beschreibung": "Ein Bauunternehmen mischt Beton aus Zement und Sand. Zement kostet 0,15€ pro kg und liefert 8 Festigkeitseinheiten pro kg. Sand kostet 0,05€ pro kg und liefert 2 Festigkeitseinheiten pro kg. Es werden insgesamt 2000 kg Betonmischung benötigt. Die Mischung muss eine Mindestfestigkeit von 6000 Einheiten erreichen. Der Zementanteil muss mindestens 400 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Zement in kg",
+      "x2 = Menge Sand in kg"
+    ],
+    "zielfunktion": "Z = 0,15x1 + 0,05x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "8x1 + 2x2 ≥ 6000 (Mindestfestigkeit)",
+      "x1 ≥ 400 (Zement-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 2000 kg. Die Festigkeitsanforderung von 6000 Einheiten ergibt sich aus dem Einsatzzweck des Betons.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Zement kostet 0,15€ pro kg",
+          "bedeutung": "0,15 × x₁"
+        },
+        {
+          "text": "Sand kostet 0,05€ pro kg",
+          "bedeutung": "0,05 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 2000 kg Betonmischung benötigt",
+            "bedeutung": "x₁ + x₂ = 2000"
+          }
+        ],
+        [
+          {
+            "text": "8 Festigkeitseinheiten pro kg",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "2 Festigkeitseinheiten pro kg",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Mindestfestigkeit von 6000 Einheiten",
+            "bedeutung": "≥ 6000"
+          }
+        ],
+        [
+          {
+            "text": "Zementanteil muss mindestens 400 kg",
+            "bedeutung": "x₁ ≥ 400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Farbmischung",
+    "beschreibung": "Ein Farbenhersteller mischt Farbe aus Pigment A und Pigment B. Pigment A kostet 12€ pro Liter und hat eine Farbintensität von 3 Einheiten pro Liter. Pigment B kostet 8€ pro Liter und hat eine Farbintensität von 7 Einheiten pro Liter. Es sollen insgesamt 500 Liter Farbe hergestellt werden. Die Farbintensität der Mischung muss mindestens 2500 Einheiten betragen. Der Anteil von Pigment A darf höchstens 350 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Pigment A in Liter",
+      "x2 = Menge Pigment B in Liter"
+    ],
+    "zielfunktion": "Z = 12x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "3x1 + 7x2 ≥ 2500 (Mindest-Farbintensität)",
+      "x1 ≤ 350 (Pigment-A-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist 500 Liter. Die Farbintensität von 2500 Einheiten ergibt sich aus dem Qualitätsanspruch der Mischung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Pigment A kostet 12€ pro Liter",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Pigment B kostet 8€ pro Liter",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 500 Liter Farbe hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ],
+        [
+          {
+            "text": "Farbintensität von 3 Einheiten pro Liter",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Farbintensität von 7 Einheiten pro Liter",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 2500 Einheiten",
+            "bedeutung": "≥ 2500"
+          }
+        ],
+        [
+          {
+            "text": "Pigment A darf höchstens 350 Liter",
+            "bedeutung": "x₁ ≤ 350"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Benzinmischung",
+    "beschreibung": "Eine Raffinerie mischt Benzin aus Super und Normal. Super kostet 1,60€ pro Liter und hat eine Oktanzahl von 98. Normal kostet 1,20€ pro Liter und hat eine Oktanzahl von 91. Es sollen insgesamt 10000 Liter Benzin gemischt werden. Die durchschnittliche Oktanzahl der Mischung muss mindestens 94 betragen, also eine Gesamt-Oktanleistung von mindestens 940000 erreichen. Der Anteil von Normal darf höchstens 6000 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Super in Liter",
+      "x2 = Menge Normal in Liter"
+    ],
+    "zielfunktion": "Z = 1,6x1 + 1,2x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 10000 (Gesamtmenge)",
+      "98x1 + 91x2 ≥ 940000 (Mindest-Oktanzahl)",
+      "x2 ≤ 6000 (Normal-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindest-Oktanzahl von 94 bei 10000 Litern ergibt: 94 × 10000 = 940000 Gesamt-Oktanleistung. Super liefert 98 Oktaneinheiten pro Liter, Normal liefert 91.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Super kostet 1,60€ pro Liter",
+          "bedeutung": "1,6 × x₁"
+        },
+        {
+          "text": "Normal kostet 1,20€ pro Liter",
+          "bedeutung": "1,2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 10000 Liter Benzin gemischt werden",
+            "bedeutung": "x₁ + x₂ = 10000"
+          }
+        ],
+        [
+          {
+            "text": "Oktanzahl von 98",
+            "bedeutung": "98x₁"
+          },
+          {
+            "text": "Oktanzahl von 91",
+            "bedeutung": "+ 91x₂"
+          },
+          {
+            "text": "Gesamt-Oktanleistung von mindestens 940000",
+            "bedeutung": "≥ 940000"
+          }
+        ],
+        [
+          {
+            "text": "Normal darf höchstens 6000 Liter",
+            "bedeutung": "x₂ ≤ 6000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Teemischung",
+    "beschreibung": "Ein Teehaus mischt Tee aus Assam und Darjeeling. Assam kostet 6€ pro kg und hat eine Aromastärke von 4 Einheiten pro kg. Darjeeling kostet 10€ pro kg und hat eine Aromastärke von 9 Einheiten pro kg. Es sollen insgesamt 200 kg Teemischung hergestellt werden. Die Gesamtaromastärke muss mindestens 1200 Einheiten betragen. Der Assam-Anteil muss mindestens 50 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Assam in kg",
+      "x2 = Menge Darjeeling in kg"
+    ],
+    "zielfunktion": "Z = 6x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 200 (Gesamtmenge)",
+      "4x1 + 9x2 ≥ 1200 (Mindest-Aromastärke)",
+      "x1 ≥ 50 (Assam-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 200 kg. Die Aromastärke von 1200 Einheiten ergibt sich aus der gewünschten Qualität der Teemischung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Assam kostet 6€ pro kg",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Darjeeling kostet 10€ pro kg",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 200 kg Teemischung hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 200"
+          }
+        ],
+        [
+          {
+            "text": "Aromastärke von 4 Einheiten pro kg",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Aromastärke von 9 Einheiten pro kg",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "mindestens 1200 Einheiten",
+            "bedeutung": "≥ 1200"
+          }
+        ],
+        [
+          {
+            "text": "Assam-Anteil muss mindestens 50 kg",
+            "bedeutung": "x₁ ≥ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Müslimischung",
+    "beschreibung": "Ein Müslihersteller mischt Müsli aus Haferflocken und Nüssen. Haferflocken kosten 2€ pro kg und enthalten 12% Protein. Nüsse kosten 7€ pro kg und enthalten 20% Protein. Es sollen insgesamt 500 kg Müsli gemischt werden. Der Proteingehalt der Mischung muss mindestens 15% betragen, also mindestens 75 kg Protein enthalten. Der Nussanteil darf höchstens 250 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Haferflocken in kg",
+      "x2 = Menge Nüsse in kg"
+    ],
+    "zielfunktion": "Z = 2x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "0,12x1 + 0,2x2 ≥ 75 (Proteingehalt)",
+      "x2 ≤ 250 (Nuss-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "15% von 500 kg = 75 kg Protein als Mindestanforderung. Haferflocken liefern 12% Protein (0,12 pro kg) und Nüsse 20% Protein (0,2 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Haferflocken kosten 2€ pro kg",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Nüsse kosten 7€ pro kg",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 500 kg Müsli gemischt werden",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ],
+        [
+          {
+            "text": "enthalten 12% Protein",
+            "bedeutung": "0,12x₁"
+          },
+          {
+            "text": "enthalten 20% Protein",
+            "bedeutung": "+ 0,2x₂"
+          },
+          {
+            "text": "mindestens 75 kg Protein",
+            "bedeutung": "≥ 75"
+          }
+        ],
+        [
+          {
+            "text": "Nussanteil darf höchstens 250 kg",
+            "bedeutung": "x₂ ≤ 250"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Smoothie-Bar Mischung",
+    "beschreibung": "Eine Smoothie-Bar mischt Getränke aus Obst und Gemüse. Obst kostet 3€ pro kg und enthält 5 Vitamineinheiten pro kg. Gemüse kostet 2€ pro kg und enthält 8 Vitamineinheiten pro kg. Es werden mindestens 300 kg Zutaten pro Woche benötigt. Die Mischung muss mindestens 2100 Vitamineinheiten enthalten. Der Obstanteil muss mindestens 100 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Obst in kg",
+      "x2 = Menge Gemüse in kg"
+    ],
+    "zielfunktion": "Z = 3x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 300 (Mindestmenge)",
+      "5x1 + 8x2 ≥ 2100 (Vitamingehalt)",
+      "x1 ≥ 100 (Obst-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindestmenge von 300 kg und der Vitaminbedarf von 2100 Einheiten müssen gleichzeitig erfüllt werden. Obst liefert 5 Vitamineinheiten pro kg und Gemüse 8.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Obst kostet 3€ pro kg",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Gemüse kostet 2€ pro kg",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 300 kg Zutaten pro Woche benötigt",
+            "bedeutung": "x₁ + x₂ ≥ 300"
+          }
+        ],
+        [
+          {
+            "text": "5 Vitamineinheiten pro kg",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "8 Vitamineinheiten pro kg",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 2100 Vitamineinheiten",
+            "bedeutung": "≥ 2100"
+          }
+        ],
+        [
+          {
+            "text": "Obstanteil muss mindestens 100 kg",
+            "bedeutung": "x₁ ≥ 100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waschmittel-Mischung",
+    "beschreibung": "Ein Waschmittelhersteller mischt aus Tensid A und Tensid B. Tensid A kostet 4€ pro Liter und hat eine Reinigungskraft von 6 Einheiten pro Liter. Tensid B kostet 2,50€ pro Liter und hat eine Reinigungskraft von 3 Einheiten pro Liter. Es sollen insgesamt 1000 Liter Waschmittel hergestellt werden. Die Gesamt-Reinigungskraft muss mindestens 4500 Einheiten betragen. Der Anteil von Tensid B darf höchstens 700 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Tensid A in Liter",
+      "x2 = Menge Tensid B in Liter"
+    ],
+    "zielfunktion": "Z = 4x1 + 2,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "6x1 + 3x2 ≥ 4500 (Mindest-Reinigungskraft)",
+      "x2 ≤ 700 (Tensid-B-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 1000 Litern. Die Reinigungskraft von 4500 Einheiten ergibt sich aus der gewünschten Wirksamkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tensid A kostet 4€ pro Liter",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Tensid B kostet 2,50€ pro Liter",
+          "bedeutung": "2,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 1000 Liter Waschmittel hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "Reinigungskraft von 6 Einheiten pro Liter",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Reinigungskraft von 3 Einheiten pro Liter",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 4500 Einheiten",
+            "bedeutung": "≥ 4500"
+          }
+        ],
+        [
+          {
+            "text": "Tensid B darf höchstens 700 Liter",
+            "bedeutung": "x₂ ≤ 700"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schokoladenmischung",
+    "beschreibung": "Ein Schokoladenhersteller mischt aus Kakao und Milchpulver. Kakao kostet 8€ pro kg und enthält 85% Kakaoanteil. Milchpulver kostet 3€ pro kg und enthält 10% Kakaoanteil. Es sollen insgesamt 400 kg Schokoladenmasse hergestellt werden. Der Kakaoanteil der Mischung muss mindestens 40% betragen, also mindestens 160 kg reinen Kakao enthalten. Der Milchpulveranteil darf höchstens 300 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Kakao in kg",
+      "x2 = Menge Milchpulver in kg"
+    ],
+    "zielfunktion": "Z = 8x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 400 (Gesamtmenge)",
+      "0,85x1 + 0,1x2 ≥ 160 (Kakaoanteil)",
+      "x2 ≤ 300 (Milchpulver-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "40% von 400 kg = 160 kg reinen Kakao als Mindestanforderung. Kakao enthält 85% Kakaoanteil (0,85 pro kg) und Milchpulver enthält 10% Kakaoanteil (0,1 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Kakao kostet 8€ pro kg",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Milchpulver kostet 3€ pro kg",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 400 kg Schokoladenmasse hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 400"
+          }
+        ],
+        [
+          {
+            "text": "enthält 85% Kakaoanteil",
+            "bedeutung": "0,85x₁"
+          },
+          {
+            "text": "enthält 10% Kakaoanteil",
+            "bedeutung": "+ 0,1x₂"
+          },
+          {
+            "text": "mindestens 160 kg reinen Kakao",
+            "bedeutung": "≥ 160"
+          }
+        ],
+        [
+          {
+            "text": "Milchpulveranteil darf höchstens 300 kg",
+            "bedeutung": "x₂ ≤ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brotmehlmischung",
+    "beschreibung": "Eine Bäckerei mischt Mehl aus Weizen und Roggen. Weizenmehl kostet 0,80€ pro kg und enthält 12% Gluten. Roggenmehl kostet 0,60€ pro kg und enthält 5% Gluten. Es werden insgesamt 1000 kg Mehl benötigt. Der Glutengehalt der Mischung muss mindestens 8% betragen, also mindestens 80 kg Gluten enthalten. Der Roggenanteil muss mindestens 200 kg betragen, um den typischen Geschmack zu erzielen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Weizenmehl in kg",
+      "x2 = Menge Roggenmehl in kg"
+    ],
+    "zielfunktion": "Z = 0,8x1 + 0,6x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "0,12x1 + 0,05x2 ≥ 80 (Glutengehalt)",
+      "x2 ≥ 200 (Roggen-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "8% von 1000 kg = 80 kg Gluten als Mindestanforderung. Weizen liefert 12% Gluten (0,12 pro kg) und Roggen 5% Gluten (0,05 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Weizenmehl kostet 0,80€ pro kg",
+          "bedeutung": "0,8 × x₁"
+        },
+        {
+          "text": "Roggenmehl kostet 0,60€ pro kg",
+          "bedeutung": "0,6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 1000 kg Mehl benötigt",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "enthält 12% Gluten",
+            "bedeutung": "0,12x₁"
+          },
+          {
+            "text": "enthält 5% Gluten",
+            "bedeutung": "+ 0,05x₂"
+          },
+          {
+            "text": "mindestens 80 kg Gluten",
+            "bedeutung": "≥ 80"
+          }
+        ],
+        [
+          {
+            "text": "Roggenanteil muss mindestens 200 kg",
+            "bedeutung": "x₂ ≥ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Pflanzerde-Mischung",
+    "beschreibung": "Ein Gartencenter mischt Pflanzerde aus Torf und Kompost. Torf kostet 0,50€ pro kg und enthält 3 Nährstoffeinheiten pro kg. Kompost kostet 0,30€ pro kg und enthält 7 Nährstoffeinheiten pro kg. Es sollen insgesamt 2000 kg Pflanzerde hergestellt werden. Die Mischung muss mindestens 8000 Nährstoffeinheiten enthalten. Der Torfanteil muss mindestens 400 kg betragen, um die Struktur zu gewährleisten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Torf in kg",
+      "x2 = Menge Kompost in kg"
+    ],
+    "zielfunktion": "Z = 0,5x1 + 0,3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "3x1 + 7x2 ≥ 8000 (Nährstoffgehalt)",
+      "x1 ≥ 400 (Torf-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 2000 kg. Die 8000 Nährstoffeinheiten müssen durch die Kombination von Torf (3 Einheiten/kg) und Kompost (7 Einheiten/kg) erreicht werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Torf kostet 0,50€ pro kg",
+          "bedeutung": "0,5 × x₁"
+        },
+        {
+          "text": "Kompost kostet 0,30€ pro kg",
+          "bedeutung": "0,3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 2000 kg Pflanzerde hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 2000"
+          }
+        ],
+        [
+          {
+            "text": "3 Nährstoffeinheiten pro kg",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "7 Nährstoffeinheiten pro kg",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 8000 Nährstoffeinheiten",
+            "bedeutung": "≥ 8000"
+          }
+        ],
+        [
+          {
+            "text": "Torfanteil muss mindestens 400 kg",
+            "bedeutung": "x₁ ≥ 400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Joghurt-Mischung",
+    "beschreibung": "Eine Molkerei mischt Joghurt aus Vollmilch und Magermilch. Vollmilch kostet 0,90€ pro Liter und enthält 3,5% Fett. Magermilch kostet 0,50€ pro Liter und enthält 0,5% Fett. Es sollen insgesamt 2000 Liter Joghurt hergestellt werden. Der Fettgehalt der Mischung muss mindestens 1,5% betragen, also mindestens 30 Liter Fett enthalten. Der Fettgehalt darf höchstens 2,5% betragen, also höchstens 50 Liter Fett enthalten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Vollmilch in Liter",
+      "x2 = Menge Magermilch in Liter"
+    ],
+    "zielfunktion": "Z = 0,9x1 + 0,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "0,035x1 + 0,005x2 ≥ 30 (Mindest-Fettgehalt)",
+      "0,035x1 + 0,005x2 ≤ 50 (Maximal-Fettgehalt)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "1,5% von 2000 Litern = 30 Liter Fett (Minimum) und 2,5% von 2000 Litern = 50 Liter Fett (Maximum). Vollmilch enthält 3,5% Fett (0,035 pro Liter) und Magermilch 0,5% Fett (0,005 pro Liter).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Vollmilch kostet 0,90€ pro Liter",
+          "bedeutung": "0,9 × x₁"
+        },
+        {
+          "text": "Magermilch kostet 0,50€ pro Liter",
+          "bedeutung": "0,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 2000 Liter Joghurt hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 2000"
+          }
+        ],
+        [
+          {
+            "text": "enthält 3,5% Fett",
+            "bedeutung": "0,035x₁"
+          },
+          {
+            "text": "enthält 0,5% Fett",
+            "bedeutung": "+ 0,005x₂"
+          },
+          {
+            "text": "mindestens 30 Liter Fett",
+            "bedeutung": "≥ 30"
+          }
+        ],
+        [
+          {
+            "text": "enthält 3,5% Fett",
+            "bedeutung": "0,035x₁"
+          },
+          {
+            "text": "enthält 0,5% Fett",
+            "bedeutung": "+ 0,005x₂"
+          },
+          {
+            "text": "höchstens 50 Liter Fett",
+            "bedeutung": "≤ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kaffeeröstung",
+    "beschreibung": "Eine Kaffeerösterei mischt aus Arabica und Robusta. Arabica kostet 15€ pro kg und enthält 1,2% Koffein. Robusta kostet 9€ pro kg und enthält 2,4% Koffein. Es sollen insgesamt 500 kg Kaffeemischung hergestellt werden. Der Koffeingehalt der Mischung muss mindestens 1,6% betragen, also mindestens 8 kg Koffein enthalten. Der Robusta-Anteil darf höchstens 300 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Arabica in kg",
+      "x2 = Menge Robusta in kg"
+    ],
+    "zielfunktion": "Z = 15x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "0,012x1 + 0,024x2 ≥ 8 (Koffeingehalt)",
+      "x2 ≤ 300 (Robusta-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "1,6% von 500 kg = 8 kg Koffein als Mindestanforderung. Arabica enthält 1,2% Koffein (0,012 pro kg) und Robusta 2,4% Koffein (0,024 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Arabica kostet 15€ pro kg",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Robusta kostet 9€ pro kg",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 500 kg Kaffeemischung hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ],
+        [
+          {
+            "text": "enthält 1,2% Koffein",
+            "bedeutung": "0,012x₁"
+          },
+          {
+            "text": "enthält 2,4% Koffein",
+            "bedeutung": "+ 0,024x₂"
+          },
+          {
+            "text": "mindestens 8 kg Koffein",
+            "bedeutung": "≥ 8"
+          }
+        ],
+        [
+          {
+            "text": "Robusta-Anteil darf höchstens 300 kg",
+            "bedeutung": "x₂ ≤ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gummimischung",
+    "beschreibung": "Ein Reifenhersteller mischt aus Naturkautschuk und Synthesekautschuk. Naturkautschuk kostet 5€ pro kg und hat eine Elastizität von 9 Einheiten pro kg. Synthesekautschuk kostet 3€ pro kg und hat eine Elastizität von 4 Einheiten pro kg. Es sollen insgesamt 800 kg Gummimischung hergestellt werden. Die Gesamtelastizität muss mindestens 4800 Einheiten betragen. Der Anteil von Synthesekautschuk darf höchstens 500 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Naturkautschuk in kg",
+      "x2 = Menge Synthesekautschuk in kg"
+    ],
+    "zielfunktion": "Z = 5x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 800 (Gesamtmenge)",
+      "9x1 + 4x2 ≥ 4800 (Mindest-Elastizität)",
+      "x2 ≤ 500 (Synthesekautschuk-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 800 kg. Die Elastizität von 4800 Einheiten ergibt sich aus den Anforderungen an die Gummimischung. Naturkautschuk liefert 9 Einheiten/kg, Synthesekautschuk nur 4.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Naturkautschuk kostet 5€ pro kg",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Synthesekautschuk kostet 3€ pro kg",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 800 kg Gummimischung hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 800"
+          }
+        ],
+        [
+          {
+            "text": "Elastizität von 9 Einheiten pro kg",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Elastizität von 4 Einheiten pro kg",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 4800 Einheiten",
+            "bedeutung": "≥ 4800"
+          }
+        ],
+        [
+          {
+            "text": "Synthesekautschuk darf höchstens 500 kg",
+            "bedeutung": "x₂ ≤ 500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Salatdressing-Mischung",
+    "beschreibung": "Ein Feinkosthersteller mischt Salatdressing aus Öl und Essig. Öl kostet 4€ pro Liter und hat einen Säuregehalt von 0,5 Einheiten pro Liter. Essig kostet 1,50€ pro Liter und hat einen Säuregehalt von 6 Einheiten pro Liter. Es sollen insgesamt 600 Liter Dressing hergestellt werden. Der Gesamtsäuregehalt muss mindestens 1200 Einheiten betragen. Der Ölanteil muss mindestens 200 Liter betragen, damit das Dressing die richtige Konsistenz hat. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Öl in Liter",
+      "x2 = Menge Essig in Liter"
+    ],
+    "zielfunktion": "Z = 4x1 + 1,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 600 (Gesamtmenge)",
+      "0,5x1 + 6x2 ≥ 1200 (Mindestsäuregehalt)",
+      "x1 ≥ 200 (Öl-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 600 Litern. Der Säuregehalt von 1200 Einheiten ergibt sich aus der gewünschten Geschmacksintensität. Öl liefert 0,5 Säureeinheiten/Liter, Essig 6.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Öl kostet 4€ pro Liter",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Essig kostet 1,50€ pro Liter",
+          "bedeutung": "1,5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 600 Liter Dressing hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 600"
+          }
+        ],
+        [
+          {
+            "text": "Säuregehalt von 0,5 Einheiten pro Liter",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "Säuregehalt von 6 Einheiten pro Liter",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 1200 Einheiten",
+            "bedeutung": "≥ 1200"
+          }
+        ],
+        [
+          {
+            "text": "Ölanteil muss mindestens 200 Liter",
+            "bedeutung": "x₁ ≥ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kosmetik-Creme Mischung",
+    "beschreibung": "Ein Kosmetikhersteller mischt Creme aus Basis A und Basis B. Basis A kostet 20€ pro kg und enthält 60% Feuchtigkeitsgehalt. Basis B kostet 12€ pro kg und enthält 25% Feuchtigkeitsgehalt. Es sollen insgesamt 300 kg Creme hergestellt werden. Der Feuchtigkeitsgehalt der Mischung muss mindestens 35% betragen, also mindestens 105 kg Feuchtigkeit enthalten. Der Anteil von Basis A darf höchstens 200 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Basis A in kg",
+      "x2 = Menge Basis B in kg"
+    ],
+    "zielfunktion": "Z = 20x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 300 (Gesamtmenge)",
+      "0,6x1 + 0,25x2 ≥ 105 (Feuchtigkeitsgehalt)",
+      "x1 ≤ 200 (Basis-A-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "35% von 300 kg = 105 kg Feuchtigkeit als Mindestanforderung. Basis A enthält 60% Feuchtigkeit (0,6 pro kg) und Basis B 25% Feuchtigkeit (0,25 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Basis A kostet 20€ pro kg",
+          "bedeutung": "20 × x₁"
+        },
+        {
+          "text": "Basis B kostet 12€ pro kg",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 300 kg Creme hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 300"
+          }
+        ],
+        [
+          {
+            "text": "enthält 60% Feuchtigkeitsgehalt",
+            "bedeutung": "0,6x₁"
+          },
+          {
+            "text": "enthält 25% Feuchtigkeitsgehalt",
+            "bedeutung": "+ 0,25x₂"
+          },
+          {
+            "text": "mindestens 105 kg Feuchtigkeit",
+            "bedeutung": "≥ 105"
+          }
+        ],
+        [
+          {
+            "text": "Basis A darf höchstens 200 kg",
+            "bedeutung": "x₁ ≤ 200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wein-Cuvee Mischung",
+    "beschreibung": "Ein Winzer mischt eine Cuvee aus Merlot und Cabernet. Merlot kostet 6€ pro Liter und hat einen Tanningehalt von 3 Einheiten pro Liter. Cabernet kostet 9€ pro Liter und hat einen Tanningehalt von 8 Einheiten pro Liter. Es sollen insgesamt 1000 Liter Cuvee hergestellt werden. Der Gesamttanningehalt muss mindestens 5000 Einheiten betragen. Der Merlot-Anteil muss mindestens 300 Liter betragen, um den typischen Charakter zu wahren. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Merlot in Liter",
+      "x2 = Menge Cabernet in Liter"
+    ],
+    "zielfunktion": "Z = 6x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "3x1 + 8x2 ≥ 5000 (Mindest-Tanningehalt)",
+      "x1 ≥ 300 (Merlot-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 1000 Litern. Die 5000 Tannineinheiten ergeben sich aus der gewünschten Geschmacksintensität. Merlot liefert 3 Tannineinheiten/Liter, Cabernet 8.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Merlot kostet 6€ pro Liter",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Cabernet kostet 9€ pro Liter",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 1000 Liter Cuvee hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "Tanningehalt von 3 Einheiten pro Liter",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Tanningehalt von 8 Einheiten pro Liter",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 5000 Einheiten",
+            "bedeutung": "≥ 5000"
+          }
+        ],
+        [
+          {
+            "text": "Merlot-Anteil muss mindestens 300 Liter",
+            "bedeutung": "x₁ ≥ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kunststoffgranulat-Mischung",
+    "beschreibung": "Ein Kunststoffhersteller mischt Granulat aus Recyclingmaterial und Neuware. Recyclingmaterial kostet 1,50€ pro kg und hat einen Reinheitsgrad von 70%. Neuware kostet 4€ pro kg und hat einen Reinheitsgrad von 98%. Es sollen insgesamt 2000 kg Granulat hergestellt werden. Der Reinheitsgrad der Mischung muss mindestens 85% betragen, also mindestens 1700 kg reine Substanz enthalten. Der Recyclinganteil darf höchstens 1200 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Menge Recyclingmaterial in kg",
+      "x2 = Menge Neuware in kg"
+    ],
+    "zielfunktion": "Z = 1,5x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "0,7x1 + 0,98x2 ≥ 1700 (Reinheitsgrad)",
+      "x1 ≤ 1200 (Recycling-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "85% von 2000 kg = 1700 kg reine Substanz als Mindestanforderung. Recyclingmaterial hat 70% Reinheit (0,7 pro kg) und Neuware 98% Reinheit (0,98 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Recyclingmaterial kostet 1,50€ pro kg",
+          "bedeutung": "1,5 × x₁"
+        },
+        {
+          "text": "Neuware kostet 4€ pro kg",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "insgesamt 2000 kg Granulat hergestellt werden",
+            "bedeutung": "x₁ + x₂ = 2000"
+          }
+        ],
+        [
+          {
+            "text": "Reinheitsgrad von 70%",
+            "bedeutung": "0,7x₁"
+          },
+          {
+            "text": "Reinheitsgrad von 98%",
+            "bedeutung": "+ 0,98x₂"
+          },
+          {
+            "text": "mindestens 1700 kg reine Substanz",
+            "bedeutung": "≥ 1700"
+          }
+        ],
+        [
+          {
+            "text": "Recyclinganteil darf höchstens 1200 kg",
+            "bedeutung": "x₁ ≤ 1200"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fluglinie: Passagier- und Frachttransport",
+    "beschreibung": "Eine Fluglinie setzt Großflugzeuge und Kleinflugzeuge ein, um Passagiere und Fracht zu befördern. Ein Großflugzeug kostet 12000€ pro Flug, ein Kleinflugzeug kostet 5000€ pro Flug. Ein Großflugzeug befördert 300 Passagiere, ein Kleinflugzeug 120 Passagiere. Es müssen mindestens 2400 Passagiere befördert werden. An Fracht transportiert ein Großflugzeug 20 Tonnen und ein Kleinflugzeug 8 Tonnen. Es müssen mindestens 140 Tonnen Fracht transportiert werden. Es stehen maximal 10 Großflugzeuge und maximal 15 Kleinflugzeuge zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Flüge mit Großflugzeug",
+      "x2 = Anzahl Flüge mit Kleinflugzeug"
+    ],
+    "zielfunktion": "Z = 12000x1 + 5000x2 (min)",
+    "nebenbedingungen": [
+      "300x1 + 120x2 ≥ 2400 (Passagiere)",
+      "20x1 + 8x2 ≥ 140 (Fracht in Tonnen)",
+      "x1 ≤ 10 (Großflugzeuge verfügbar)",
+      "x2 ≤ 15 (Kleinflugzeuge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Flugkosten, aber beachte die Mindestanforderungen an Passagier- und Frachttransport sowie die Verfügbarkeit der Flugzeuge.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Großflugzeug kostet 12000€ pro Flug",
+          "bedeutung": "12000 × x₁"
+        },
+        {
+          "text": "Kleinflugzeug kostet 5000€ pro Flug",
+          "bedeutung": "5000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Großflugzeug befördert 300 Passagiere",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "Kleinflugzeug 120 Passagiere",
+            "bedeutung": "+ 120x₂"
+          },
+          {
+            "text": "mindestens 2400 Passagiere",
+            "bedeutung": "≥ 2400"
+          }
+        ],
+        [
+          {
+            "text": "Großflugzeug 20 Tonnen",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "Kleinflugzeug 8 Tonnen",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 140 Tonnen Fracht",
+            "bedeutung": "≥ 140"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Großflugzeuge",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 15 Kleinflugzeuge",
+            "bedeutung": "x₂ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spedition: Pakete und Gewicht",
+    "beschreibung": "Eine Spedition setzt LKWs und Transporter ein, um Waren auszuliefern. Ein LKW kostet 800€ pro Tour, ein Transporter kostet 350€ pro Tour. Ein LKW transportiert 200 Pakete, ein Transporter 80 Pakete. Es müssen mindestens 1600 Pakete ausgeliefert werden. An Gewicht fasst ein LKW 12 Tonnen und ein Transporter 4 Tonnen. Es müssen mindestens 80 Tonnen transportiert werden. Es stehen maximal 12 LKWs und maximal 20 Transporter zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Touren mit LKW",
+      "x2 = Anzahl Touren mit Transporter"
+    ],
+    "zielfunktion": "Z = 800x1 + 350x2 (min)",
+    "nebenbedingungen": [
+      "200x1 + 80x2 ≥ 1600 (Pakete)",
+      "12x1 + 4x2 ≥ 80 (Gewicht in Tonnen)",
+      "x1 ≤ 12 (LKWs verfügbar)",
+      "x2 ≤ 20 (Transporter verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Tourenkosten und achte auf die Mindestmengen bei Paketen und Gewicht sowie die Fahrzeugverfügbarkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "LKW kostet 800€ pro Tour",
+          "bedeutung": "800 × x₁"
+        },
+        {
+          "text": "Transporter kostet 350€ pro Tour",
+          "bedeutung": "350 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "LKW transportiert 200 Pakete",
+            "bedeutung": "200x₁"
+          },
+          {
+            "text": "Transporter 80 Pakete",
+            "bedeutung": "+ 80x₂"
+          },
+          {
+            "text": "mindestens 1600 Pakete",
+            "bedeutung": "≥ 1600"
+          }
+        ],
+        [
+          {
+            "text": "LKW 12 Tonnen",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Transporter 4 Tonnen",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 80 Tonnen",
+            "bedeutung": "≥ 80"
+          }
+        ],
+        [
+          {
+            "text": "maximal 12 LKWs",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "maximal 20 Transporter",
+            "bedeutung": "x₂ ≤ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Busunternehmen: Fahrgäste und Gepäck",
+    "beschreibung": "Ein Busunternehmen plant den Einsatz von Reisebussen und Kleinbussen für eine Strecke. Ein Reisebus kostet 600€ pro Fahrt, ein Kleinbus kostet 250€ pro Fahrt. Ein Reisebus befördert 50 Fahrgäste, ein Kleinbus 18 Fahrgäste. Es müssen mindestens 400 Fahrgäste befördert werden. Ein Reisebus fasst 60 Gepäckstücke, ein Kleinbus 20 Gepäckstücke. Es müssen mindestens 480 Gepäckstücke transportiert werden. Es stehen maximal 10 Reisebusse und maximal 25 Kleinbusse zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Reisebus",
+      "x2 = Anzahl Fahrten mit Kleinbus"
+    ],
+    "zielfunktion": "Z = 600x1 + 250x2 (min)",
+    "nebenbedingungen": [
+      "50x1 + 18x2 ≥ 400 (Fahrgäste)",
+      "60x1 + 20x2 ≥ 480 (Gepäckstücke)",
+      "x1 ≤ 10 (Reisebusse verfügbar)",
+      "x2 ≤ 25 (Kleinbusse verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die Mindestanforderungen bei Fahrgästen und Gepäck. Stelle die Ungleichungen mit ≥ auf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Reisebus kostet 600€ pro Fahrt",
+          "bedeutung": "600 × x₁"
+        },
+        {
+          "text": "Kleinbus kostet 250€ pro Fahrt",
+          "bedeutung": "250 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Reisebus befördert 50 Fahrgäste",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "Kleinbus 18 Fahrgäste",
+            "bedeutung": "+ 18x₂"
+          },
+          {
+            "text": "mindestens 400 Fahrgäste",
+            "bedeutung": "≥ 400"
+          }
+        ],
+        [
+          {
+            "text": "Reisebus fasst 60 Gepäckstücke",
+            "bedeutung": "60x₁"
+          },
+          {
+            "text": "Kleinbus 20 Gepäckstücke",
+            "bedeutung": "+ 20x₂"
+          },
+          {
+            "text": "mindestens 480 Gepäckstücke",
+            "bedeutung": "≥ 480"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Reisebusse",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 25 Kleinbusse",
+            "bedeutung": "x₂ ≤ 25"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Reederei: Container und Tonnage",
+    "beschreibung": "Eine Reederei setzt Containerschiffe und Frachtkähne ein, um Waren über einen Fluss zu transportieren. Ein Containerschiff kostet 15000€ pro Fahrt, ein Frachtkahn kostet 4000€ pro Fahrt. Ein Containerschiff transportiert 80 Container, ein Frachtkahn 25 Container. Es müssen mindestens 500 Container befördert werden. An Tonnage bewältigt ein Containerschiff 2000 Tonnen und ein Frachtkahn 600 Tonnen. Es müssen mindestens 12000 Tonnen transportiert werden. Es stehen maximal 8 Containerschiffe und maximal 24 Frachtkähne zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Containerschiff",
+      "x2 = Anzahl Fahrten mit Frachtkahn"
+    ],
+    "zielfunktion": "Z = 15000x1 + 4000x2 (min)",
+    "nebenbedingungen": [
+      "80x1 + 25x2 ≥ 500 (Container)",
+      "2000x1 + 600x2 ≥ 12000 (Tonnage)",
+      "x1 ≤ 8 (Containerschiffe verfügbar)",
+      "x2 ≤ 24 (Frachtkähne verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Transportkosten unter Einhaltung der Mindestmengen für Container und Tonnage.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Containerschiff kostet 15000€ pro Fahrt",
+          "bedeutung": "15000 × x₁"
+        },
+        {
+          "text": "Frachtkahn kostet 4000€ pro Fahrt",
+          "bedeutung": "4000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Containerschiff transportiert 80 Container",
+            "bedeutung": "80x₁"
+          },
+          {
+            "text": "Frachtkahn 25 Container",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "mindestens 500 Container",
+            "bedeutung": "≥ 500"
+          }
+        ],
+        [
+          {
+            "text": "Containerschiff 2000 Tonnen",
+            "bedeutung": "2000x₁"
+          },
+          {
+            "text": "Frachtkahn 600 Tonnen",
+            "bedeutung": "+ 600x₂"
+          },
+          {
+            "text": "mindestens 12000 Tonnen",
+            "bedeutung": "≥ 12000"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Containerschiffe",
+            "bedeutung": "x₁ ≤ 8"
+          }
+        ],
+        [
+          {
+            "text": "maximal 24 Frachtkähne",
+            "bedeutung": "x₂ ≤ 24"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kurierdienst: Innerstädtische Paketzustellung",
+    "beschreibung": "Ein Kurierdienst liefert Pakete innerstädtisch mit Fahrrädern und Autos aus. Ein Fahrrad kostet 15€ pro Tour, ein Auto kostet 45€ pro Tour. Ein Fahrrad liefert 8 Pakete pro Tour, ein Auto liefert 30 Pakete pro Tour. Es müssen mindestens 360 Pakete pro Tag ausgeliefert werden. Ein Fahrrad schafft 3 Stadtteile pro Tour, ein Auto schafft 5 Stadtteile pro Tour. Es müssen mindestens 60 Stadtteile abgedeckt werden. Es stehen maximal 20 Fahrräder und maximal 14 Autos zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Touren mit Fahrrad",
+      "x2 = Anzahl Touren mit Auto"
+    ],
+    "zielfunktion": "Z = 15x1 + 45x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 30x2 ≥ 360 (Pakete)",
+      "3x1 + 5x2 ≥ 60 (Stadtteile)",
+      "x1 ≤ 20 (Fahrräder verfügbar)",
+      "x2 ≤ 14 (Autos verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte darauf, dass die Mindestanzahl an Paketen und abgedeckten Stadtteilen erreicht wird. Die Fahrrad-Touren sind günstiger, liefern aber weniger.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Fahrrad kostet 15€ pro Tour",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Auto kostet 45€ pro Tour",
+          "bedeutung": "45 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Fahrrad liefert 8 Pakete pro Tour",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Auto liefert 30 Pakete pro Tour",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "mindestens 360 Pakete",
+            "bedeutung": "≥ 360"
+          }
+        ],
+        [
+          {
+            "text": "Fahrrad schafft 3 Stadtteile pro Tour",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Auto schafft 5 Stadtteile pro Tour",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 60 Stadtteile",
+            "bedeutung": "≥ 60"
+          }
+        ],
+        [
+          {
+            "text": "maximal 20 Fahrräder",
+            "bedeutung": "x₁ ≤ 20"
+          }
+        ],
+        [
+          {
+            "text": "maximal 14 Autos",
+            "bedeutung": "x₂ ≤ 14"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Umzugsunternehmen: Möbel und Kartons",
+    "beschreibung": "Ein Umzugsunternehmen setzt große LKWs und Kleintransporter ein. Ein großer LKW kostet 500€ pro Fahrt, ein Kleintransporter kostet 200€ pro Fahrt. Ein großer LKW transportiert 40 Möbelstücke, ein Kleintransporter 15 Möbelstücke. Es müssen mindestens 300 Möbelstücke transportiert werden. Ein großer LKW fasst 80 Kartons, ein Kleintransporter 35 Kartons. Es müssen mindestens 600 Kartons transportiert werden. Es stehen maximal 9 große LKWs und maximal 18 Kleintransporter zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit großem LKW",
+      "x2 = Anzahl Fahrten mit Kleintransporter"
+    ],
+    "zielfunktion": "Z = 500x1 + 200x2 (min)",
+    "nebenbedingungen": [
+      "40x1 + 15x2 ≥ 300 (Möbelstücke)",
+      "80x1 + 35x2 ≥ 600 (Kartons)",
+      "x1 ≤ 9 (große LKWs verfügbar)",
+      "x2 ≤ 18 (Kleintransporter verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Mindestanforderungen für Möbelstücke und Kartons. Prüfe, ob die Kapazitätsgrenzen der Fahrzeuge eingehalten werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "großer LKW kostet 500€ pro Fahrt",
+          "bedeutung": "500 × x₁"
+        },
+        {
+          "text": "Kleintransporter kostet 200€ pro Fahrt",
+          "bedeutung": "200 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "großer LKW transportiert 40 Möbelstücke",
+            "bedeutung": "40x₁"
+          },
+          {
+            "text": "Kleintransporter 15 Möbelstücke",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "mindestens 300 Möbelstücke",
+            "bedeutung": "≥ 300"
+          }
+        ],
+        [
+          {
+            "text": "großer LKW fasst 80 Kartons",
+            "bedeutung": "80x₁"
+          },
+          {
+            "text": "Kleintransporter 35 Kartons",
+            "bedeutung": "+ 35x₂"
+          },
+          {
+            "text": "mindestens 600 Kartons",
+            "bedeutung": "≥ 600"
+          }
+        ],
+        [
+          {
+            "text": "maximal 9 große LKWs",
+            "bedeutung": "x₁ ≤ 9"
+          }
+        ],
+        [
+          {
+            "text": "maximal 18 Kleintransporter",
+            "bedeutung": "x₂ ≤ 18"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lieferservice: Bestellungen und Volumen",
+    "beschreibung": "Ein Lieferservice nutzt E-Bikes und Lieferwagen für die Auslieferung. Ein E-Bike kostet 10€ pro Tour, ein Lieferwagen kostet 40€ pro Tour. Ein E-Bike liefert 6 Bestellungen pro Tour, ein Lieferwagen liefert 25 Bestellungen pro Tour. Es müssen mindestens 300 Bestellungen pro Tag ausgeliefert werden. An Volumen fasst ein E-Bike 50 Liter, ein Lieferwagen 250 Liter. Es müssen mindestens 3000 Liter Volumen transportiert werden. Es stehen maximal 30 E-Bikes und maximal 12 Lieferwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Touren mit E-Bike",
+      "x2 = Anzahl Touren mit Lieferwagen"
+    ],
+    "zielfunktion": "Z = 10x1 + 40x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 25x2 ≥ 300 (Bestellungen)",
+      "50x1 + 250x2 ≥ 3000 (Volumen in Liter)",
+      "x1 ≤ 30 (E-Bikes verfügbar)",
+      "x2 ≤ 12 (Lieferwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass E-Bikes zwar günstiger sind, aber deutlich weniger Volumen transportieren. Beide Mindestanforderungen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "E-Bike kostet 10€ pro Tour",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Lieferwagen kostet 40€ pro Tour",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "E-Bike liefert 6 Bestellungen pro Tour",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Lieferwagen liefert 25 Bestellungen pro Tour",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "mindestens 300 Bestellungen",
+            "bedeutung": "≥ 300"
+          }
+        ],
+        [
+          {
+            "text": "E-Bike 50 Liter",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "Lieferwagen 250 Liter",
+            "bedeutung": "+ 250x₂"
+          },
+          {
+            "text": "mindestens 3000 Liter Volumen",
+            "bedeutung": "≥ 3000"
+          }
+        ],
+        [
+          {
+            "text": "maximal 30 E-Bikes",
+            "bedeutung": "x₁ ≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "maximal 12 Lieferwagen",
+            "bedeutung": "x₂ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bahntransport: Güter und Passagiere",
+    "beschreibung": "Ein Bahnunternehmen setzt Güterzüge und Schnellzüge auf einer Strecke ein. Ein Güterzug kostet 3000€ pro Fahrt, ein Schnellzug kostet 5000€ pro Fahrt. Ein Güterzug transportiert 500 Tonnen Fracht, ein Schnellzug 60 Tonnen Fracht. Es müssen mindestens 4000 Tonnen Fracht befördert werden. Ein Güterzug befördert 0 Passagiere, ein Schnellzug 400 Passagiere. Es müssen mindestens 2000 Passagiere befördert werden. Es stehen maximal 10 Güterzüge und maximal 8 Schnellzüge zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Güterzug",
+      "x2 = Anzahl Fahrten mit Schnellzug"
+    ],
+    "zielfunktion": "Z = 3000x1 + 5000x2 (min)",
+    "nebenbedingungen": [
+      "500x1 + 60x2 ≥ 4000 (Fracht in Tonnen)",
+      "400x2 ≥ 2000 (Passagiere)",
+      "x1 ≤ 10 (Güterzüge verfügbar)",
+      "x2 ≤ 8 (Schnellzüge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass nur Schnellzüge Passagiere befördern. Die Mindestanzahl an Passagieren bestimmt direkt die Mindestanzahl der Schnellzüge.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Güterzug kostet 3000€ pro Fahrt",
+          "bedeutung": "3000 × x₁"
+        },
+        {
+          "text": "Schnellzug kostet 5000€ pro Fahrt",
+          "bedeutung": "5000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Güterzug transportiert 500 Tonnen Fracht",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "Schnellzug 60 Tonnen Fracht",
+            "bedeutung": "+ 60x₂"
+          },
+          {
+            "text": "mindestens 4000 Tonnen Fracht",
+            "bedeutung": "≥ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Schnellzug 400 Passagiere",
+            "bedeutung": "400x₂"
+          },
+          {
+            "text": "mindestens 2000 Passagiere",
+            "bedeutung": "≥ 2000"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Güterzüge",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Schnellzüge",
+            "bedeutung": "x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rettungsdienst: Einsätze und Personal",
+    "beschreibung": "Ein Rettungsdienst setzt Rettungswagen (RTW) und Notarzteinsatzfahrzeuge (NEF) ein. Ein RTW kostet 400€ pro Schicht, ein NEF kostet 600€ pro Schicht. Ein RTW bewältigt 8 Einsätze pro Schicht, ein NEF bewältigt 5 Einsätze pro Schicht. Es müssen mindestens 60 Einsätze pro Tag abgedeckt werden. Ein RTW bindet 3 Personen Personal, ein NEF bindet 2 Personen Personal. Es müssen mindestens 24 Personen Personal im Einsatz sein. Es stehen maximal 10 RTWs und maximal 8 NEFs zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl RTW-Schichten",
+      "x2 = Anzahl NEF-Schichten"
+    ],
+    "zielfunktion": "Z = 400x1 + 600x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 5x2 ≥ 60 (Einsätze)",
+      "3x1 + 2x2 ≥ 24 (Personal)",
+      "x1 ≤ 10 (RTWs verfügbar)",
+      "x2 ≤ 8 (NEFs verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Mindestanforderungen (Einsätze und Personalstärke) müssen gleichzeitig erfüllt werden. RTWs sind günstiger, binden aber mehr Personal.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "RTW kostet 400€ pro Schicht",
+          "bedeutung": "400 × x₁"
+        },
+        {
+          "text": "NEF kostet 600€ pro Schicht",
+          "bedeutung": "600 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "RTW bewältigt 8 Einsätze pro Schicht",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "NEF bewältigt 5 Einsätze pro Schicht",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 60 Einsätze",
+            "bedeutung": "≥ 60"
+          }
+        ],
+        [
+          {
+            "text": "RTW bindet 3 Personen Personal",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "NEF bindet 2 Personen Personal",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 24 Personen Personal",
+            "bedeutung": "≥ 24"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 RTWs",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 NEFs",
+            "bedeutung": "x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Müllabfuhr: Tonnen und Bezirke",
+    "beschreibung": "Die Müllabfuhr einer Stadt setzt große Müllfahrzeuge und kleine Sammelfahrzeuge ein. Ein großes Müllfahrzeug kostet 700€ pro Einsatz, ein kleines Sammelfahrzeug kostet 300€ pro Einsatz. Ein großes Müllfahrzeug sammelt 10 Tonnen Müll, ein kleines Sammelfahrzeug sammelt 3 Tonnen Müll. Es müssen mindestens 80 Tonnen Müll abgeholt werden. Ein großes Müllfahrzeug deckt 4 Bezirke ab, ein kleines Sammelfahrzeug deckt 6 Bezirke ab. Es müssen mindestens 48 Bezirke bedient werden. Es stehen maximal 10 große Müllfahrzeuge und maximal 16 kleine Sammelfahrzeuge zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Einsätze mit großem Müllfahrzeug",
+      "x2 = Anzahl Einsätze mit kleinem Sammelfahrzeug"
+    ],
+    "zielfunktion": "Z = 700x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "10x1 + 3x2 ≥ 80 (Tonnen Müll)",
+      "4x1 + 6x2 ≥ 48 (Bezirke)",
+      "x1 ≤ 10 (große Müllfahrzeuge verfügbar)",
+      "x2 ≤ 16 (kleine Sammelfahrzeuge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die großen Fahrzeuge sammeln mehr Müll, die kleinen decken mehr Bezirke ab. Beachte beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "großes Müllfahrzeug kostet 700€ pro Einsatz",
+          "bedeutung": "700 × x₁"
+        },
+        {
+          "text": "kleines Sammelfahrzeug kostet 300€ pro Einsatz",
+          "bedeutung": "300 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "großes Müllfahrzeug sammelt 10 Tonnen Müll",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "kleines Sammelfahrzeug sammelt 3 Tonnen Müll",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 80 Tonnen Müll",
+            "bedeutung": "≥ 80"
+          }
+        ],
+        [
+          {
+            "text": "großes Müllfahrzeug deckt 4 Bezirke ab",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "kleines Sammelfahrzeug deckt 6 Bezirke ab",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 48 Bezirke",
+            "bedeutung": "≥ 48"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 große Müllfahrzeuge",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 16 kleine Sammelfahrzeuge",
+            "bedeutung": "x₂ ≤ 16"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baustellenlogistik: Beton und Schotter",
+    "beschreibung": "Für eine Baustelle werden Schwerlaster und Kipper eingesetzt. Ein Schwerlaster kostet 900€ pro Fahrt, ein Kipper kostet 450€ pro Fahrt. Ein Schwerlaster liefert 15 Kubikmeter Beton, ein Kipper liefert 5 Kubikmeter Beton. Es müssen mindestens 120 Kubikmeter Beton geliefert werden. Ein Schwerlaster transportiert 20 Tonnen Schotter, ein Kipper transportiert 10 Tonnen Schotter. Es müssen mindestens 160 Tonnen Schotter geliefert werden. Es stehen maximal 10 Schwerlaster und maximal 18 Kipper zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Schwerlaster",
+      "x2 = Anzahl Fahrten mit Kipper"
+    ],
+    "zielfunktion": "Z = 900x1 + 450x2 (min)",
+    "nebenbedingungen": [
+      "15x1 + 5x2 ≥ 120 (Beton in Kubikmeter)",
+      "20x1 + 10x2 ≥ 160 (Schotter in Tonnen)",
+      "x1 ≤ 10 (Schwerlaster verfügbar)",
+      "x2 ≤ 18 (Kipper verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Baumaterialien müssen in ausreichender Menge geliefert werden. Der Schwerlaster ist teurer, hat aber mehr Kapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Schwerlaster kostet 900€ pro Fahrt",
+          "bedeutung": "900 × x₁"
+        },
+        {
+          "text": "Kipper kostet 450€ pro Fahrt",
+          "bedeutung": "450 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Schwerlaster liefert 15 Kubikmeter Beton",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "Kipper liefert 5 Kubikmeter Beton",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 120 Kubikmeter Beton",
+            "bedeutung": "≥ 120"
+          }
+        ],
+        [
+          {
+            "text": "Schwerlaster transportiert 20 Tonnen Schotter",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "Kipper transportiert 10 Tonnen Schotter",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 160 Tonnen Schotter",
+            "bedeutung": "≥ 160"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Schwerlaster",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 18 Kipper",
+            "bedeutung": "x₂ ≤ 18"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Erntehelfer: Hektar und Tonnen",
+    "beschreibung": "Ein landwirtschaftlicher Betrieb setzt Traktoren und Erntemaschinen ein. Ein Traktor kostet 250€ pro Tag, eine Erntemaschine kostet 800€ pro Tag. Ein Traktor bearbeitet 5 Hektar pro Tag, eine Erntemaschine bearbeitet 20 Hektar pro Tag. Es müssen mindestens 100 Hektar bearbeitet werden. Ein Traktor erntet 3 Tonnen pro Tag, eine Erntemaschine erntet 15 Tonnen pro Tag. Es müssen mindestens 60 Tonnen geerntet werden. Es stehen maximal 12 Traktoren und maximal 6 Erntemaschinen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Einsatztage Traktor",
+      "x2 = Anzahl Einsatztage Erntemaschine"
+    ],
+    "zielfunktion": "Z = 250x1 + 800x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 20x2 ≥ 100 (Hektar)",
+      "3x1 + 15x2 ≥ 60 (Tonnen Ernte)",
+      "x1 ≤ 12 (Traktoren verfügbar)",
+      "x2 ≤ 6 (Erntemaschinen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Erntemaschinen sind teurer, aber leistungsfähiger. Prüfe, ob mit günstigeren Traktoren die Mindestanforderungen erfüllt werden können.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Traktor kostet 250€ pro Tag",
+          "bedeutung": "250 × x₁"
+        },
+        {
+          "text": "Erntemaschine kostet 800€ pro Tag",
+          "bedeutung": "800 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Traktor bearbeitet 5 Hektar pro Tag",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Erntemaschine bearbeitet 20 Hektar pro Tag",
+            "bedeutung": "+ 20x₂"
+          },
+          {
+            "text": "mindestens 100 Hektar",
+            "bedeutung": "≥ 100"
+          }
+        ],
+        [
+          {
+            "text": "Traktor erntet 3 Tonnen pro Tag",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Erntemaschine erntet 15 Tonnen pro Tag",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "mindestens 60 Tonnen",
+            "bedeutung": "≥ 60"
+          }
+        ],
+        [
+          {
+            "text": "maximal 12 Traktoren",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "maximal 6 Erntemaschinen",
+            "bedeutung": "x₂ ≤ 6"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Postverteilung: Briefe und Pakete",
+    "beschreibung": "Ein Postunternehmen setzt Postbusse und Fahrradkuriere ein. Ein Postbus kostet 120€ pro Tour, ein Fahrradkurier kostet 30€ pro Tour. Ein Postbus verteilt 500 Briefe pro Tour, ein Fahrradkurier verteilt 80 Briefe pro Tour. Es müssen mindestens 4000 Briefe verteilt werden. Ein Postbus liefert 60 Pakete pro Tour, ein Fahrradkurier liefert 10 Pakete pro Tour. Es müssen mindestens 400 Pakete ausgeliefert werden. Es stehen maximal 10 Postbusse und maximal 30 Fahrradkuriere zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Touren mit Postbus",
+      "x2 = Anzahl Touren mit Fahrradkurier"
+    ],
+    "zielfunktion": "Z = 120x1 + 30x2 (min)",
+    "nebenbedingungen": [
+      "500x1 + 80x2 ≥ 4000 (Briefe)",
+      "60x1 + 10x2 ≥ 400 (Pakete)",
+      "x1 ≤ 10 (Postbusse verfügbar)",
+      "x2 ≤ 30 (Fahrradkuriere verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Postbusse sind teurer, transportieren aber viel mehr. Fahrradkuriere sind günstig, aber mit geringer Kapazität. Beide Mindestmengen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Postbus kostet 120€ pro Tour",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "Fahrradkurier kostet 30€ pro Tour",
+          "bedeutung": "30 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Postbus verteilt 500 Briefe pro Tour",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "Fahrradkurier verteilt 80 Briefe pro Tour",
+            "bedeutung": "+ 80x₂"
+          },
+          {
+            "text": "mindestens 4000 Briefe",
+            "bedeutung": "≥ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Postbus liefert 60 Pakete pro Tour",
+            "bedeutung": "60x₁"
+          },
+          {
+            "text": "Fahrradkurier liefert 10 Pakete pro Tour",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 400 Pakete",
+            "bedeutung": "≥ 400"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Postbusse",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 30 Fahrradkuriere",
+            "bedeutung": "x₂ ≤ 30"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Taxiunternehmen: Fahrten und Personen",
+    "beschreibung": "Ein Taxiunternehmen setzt Limousinen und Kleinwagen ein. Eine Limousine kostet 90€ pro Schicht, ein Kleinwagen kostet 50€ pro Schicht. Eine Limousine schafft 12 Fahrten pro Schicht, ein Kleinwagen schafft 10 Fahrten pro Schicht. Es müssen mindestens 120 Fahrten pro Tag durchgeführt werden. Eine Limousine befördert 5 Personen pro Fahrt, ein Kleinwagen befördert 3 Personen pro Fahrt. Es müssen mindestens 45 Personen pro Schicht befördert werden können. Es stehen maximal 8 Limousinen und maximal 15 Kleinwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Limousinen-Schichten",
+      "x2 = Anzahl Kleinwagen-Schichten"
+    ],
+    "zielfunktion": "Z = 90x1 + 50x2 (min)",
+    "nebenbedingungen": [
+      "12x1 + 10x2 ≥ 120 (Fahrten)",
+      "5x1 + 3x2 ≥ 45 (Personenkapazität)",
+      "x1 ≤ 8 (Limousinen verfügbar)",
+      "x2 ≤ 15 (Kleinwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Limousinen sind teurer, bieten aber mehr Plätze. Beide Mindestanforderungen (Fahrten und Personenkapazität) müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Limousine kostet 90€ pro Schicht",
+          "bedeutung": "90 × x₁"
+        },
+        {
+          "text": "Kleinwagen kostet 50€ pro Schicht",
+          "bedeutung": "50 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Limousine schafft 12 Fahrten pro Schicht",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Kleinwagen schafft 10 Fahrten pro Schicht",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 120 Fahrten",
+            "bedeutung": "≥ 120"
+          }
+        ],
+        [
+          {
+            "text": "Limousine befördert 5 Personen pro Fahrt",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Kleinwagen befördert 3 Personen pro Fahrt",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 45 Personen",
+            "bedeutung": "≥ 45"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Limousinen",
+            "bedeutung": "x₁ ≤ 8"
+          }
+        ],
+        [
+          {
+            "text": "maximal 15 Kleinwagen",
+            "bedeutung": "x₂ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Containerterminal: Container und Stunden",
+    "beschreibung": "Ein Containerterminal setzt Portalkräne und Stapler ein. Ein Portalkran kostet 1200€ pro Schicht, ein Stapler kostet 400€ pro Schicht. Ein Portalkran bewegt 50 Container pro Schicht, ein Stapler bewegt 15 Container pro Schicht. Es müssen mindestens 400 Container pro Tag bewegt werden. Ein Portalkran benötigt 2 Bedienstunden Wartung, ein Stapler benötigt 3 Bedienstunden Wartung. Es stehen maximal 30 Bedienstunden Wartung zur Verfügung. Es stehen maximal 10 Portalkräne und maximal 20 Stapler zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Portalkran-Schichten",
+      "x2 = Anzahl Stapler-Schichten"
+    ],
+    "zielfunktion": "Z = 1200x1 + 400x2 (min)",
+    "nebenbedingungen": [
+      "50x1 + 15x2 ≥ 400 (Container)",
+      "2x1 + 3x2 ≤ 30 (Wartungsstunden)",
+      "x1 ≤ 10 (Portalkräne verfügbar)",
+      "x2 ≤ 20 (Stapler verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es eine Mischung aus ≥ (Mindestcontainer) und ≤ (Wartungsstunden, Verfügbarkeit). Achte auf die unterschiedlichen Ungleichungsrichtungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Portalkran kostet 1200€ pro Schicht",
+          "bedeutung": "1200 × x₁"
+        },
+        {
+          "text": "Stapler kostet 400€ pro Schicht",
+          "bedeutung": "400 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Portalkran bewegt 50 Container pro Schicht",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "Stapler bewegt 15 Container pro Schicht",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "mindestens 400 Container",
+            "bedeutung": "≥ 400"
+          }
+        ],
+        [
+          {
+            "text": "Portalkran benötigt 2 Bedienstunden Wartung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Stapler benötigt 3 Bedienstunden Wartung",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 30 Bedienstunden Wartung",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Portalkräne",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 20 Stapler",
+            "bedeutung": "x₂ ≤ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wasserversorgung: Liter und Ortschaften",
+    "beschreibung": "Ein Wasserversorger setzt Großtanker und Kleintanker ein, um Trinkwasser zu liefern. Ein Großtanker kostet 350€ pro Fahrt, ein Kleintanker kostet 150€ pro Fahrt. Ein Großtanker liefert 10000 Liter, ein Kleintanker liefert 3000 Liter. Es müssen mindestens 80000 Liter Trinkwasser geliefert werden. Ein Großtanker versorgt 2 Ortschaften, ein Kleintanker versorgt 3 Ortschaften. Es müssen mindestens 24 Ortschaften versorgt werden. Es stehen maximal 10 Großtanker und maximal 12 Kleintanker zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Großtanker",
+      "x2 = Anzahl Fahrten mit Kleintanker"
+    ],
+    "zielfunktion": "Z = 350x1 + 150x2 (min)",
+    "nebenbedingungen": [
+      "10000x1 + 3000x2 ≥ 80000 (Liter Trinkwasser)",
+      "2x1 + 3x2 ≥ 24 (Ortschaften)",
+      "x1 ≤ 10 (Großtanker verfügbar)",
+      "x2 ≤ 12 (Kleintanker verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Großtanker liefert mehr Wasser, der Kleintanker erreicht mehr Ortschaften. Beide Mindestanforderungen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Großtanker kostet 350€ pro Fahrt",
+          "bedeutung": "350 × x₁"
+        },
+        {
+          "text": "Kleintanker kostet 150€ pro Fahrt",
+          "bedeutung": "150 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Großtanker liefert 10000 Liter",
+            "bedeutung": "10000x₁"
+          },
+          {
+            "text": "Kleintanker liefert 3000 Liter",
+            "bedeutung": "+ 3000x₂"
+          },
+          {
+            "text": "mindestens 80000 Liter Trinkwasser",
+            "bedeutung": "≥ 80000"
+          }
+        ],
+        [
+          {
+            "text": "Großtanker versorgt 2 Ortschaften",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Kleintanker versorgt 3 Ortschaften",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 24 Ortschaften",
+            "bedeutung": "≥ 24"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Großtanker",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 12 Kleintanker",
+            "bedeutung": "x₂ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbellieferung: Möbelstücke und Volumen",
+    "beschreibung": "Ein Möbelhaus setzt Sattelschlepper und Kastenwagen für Auslieferungen ein. Ein Sattelschlepper kostet 650€ pro Tour, ein Kastenwagen kostet 280€ pro Tour. Ein Sattelschlepper transportiert 35 Möbelstücke, ein Kastenwagen transportiert 12 Möbelstücke. Es müssen mindestens 280 Möbelstücke ausgeliefert werden. Ein Sattelschlepper fasst 45 Kubikmeter Volumen, ein Kastenwagen fasst 15 Kubikmeter Volumen. Es müssen mindestens 360 Kubikmeter Volumen transportiert werden. Es stehen maximal 10 Sattelschlepper und maximal 20 Kastenwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Touren mit Sattelschlepper",
+      "x2 = Anzahl Touren mit Kastenwagen"
+    ],
+    "zielfunktion": "Z = 650x1 + 280x2 (min)",
+    "nebenbedingungen": [
+      "35x1 + 12x2 ≥ 280 (Möbelstücke)",
+      "45x1 + 15x2 ≥ 360 (Volumen in Kubikmeter)",
+      "x1 ≤ 10 (Sattelschlepper verfügbar)",
+      "x2 ≤ 20 (Kastenwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anforderungen (Stückzahl und Volumen) müssen gleichzeitig erfüllt werden. Sattelschlepper bieten mehr Kapazität, sind aber teurer.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Sattelschlepper kostet 650€ pro Tour",
+          "bedeutung": "650 × x₁"
+        },
+        {
+          "text": "Kastenwagen kostet 280€ pro Tour",
+          "bedeutung": "280 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Sattelschlepper transportiert 35 Möbelstücke",
+            "bedeutung": "35x₁"
+          },
+          {
+            "text": "Kastenwagen transportiert 12 Möbelstücke",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "mindestens 280 Möbelstücke",
+            "bedeutung": "≥ 280"
+          }
+        ],
+        [
+          {
+            "text": "Sattelschlepper fasst 45 Kubikmeter Volumen",
+            "bedeutung": "45x₁"
+          },
+          {
+            "text": "Kastenwagen fasst 15 Kubikmeter Volumen",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "mindestens 360 Kubikmeter Volumen",
+            "bedeutung": "≥ 360"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Sattelschlepper",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 20 Kastenwagen",
+            "bedeutung": "x₂ ≤ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankentransport: Patienten und Rollstühle",
+    "beschreibung": "Ein Krankentransportdienst setzt Großraumwagen und Kombis ein. Ein Großraumwagen kostet 180€ pro Fahrt, ein Kombi kostet 80€ pro Fahrt. Ein Großraumwagen befördert 6 Patienten, ein Kombi befördert 2 Patienten. Es müssen mindestens 48 Patienten pro Tag befördert werden. Ein Großraumwagen nimmt 4 Rollstühle mit, ein Kombi nimmt 1 Rollstuhl mit. Es müssen mindestens 30 Rollstühle transportiert werden. Es stehen maximal 10 Großraumwagen und maximal 20 Kombis zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten mit Großraumwagen",
+      "x2 = Anzahl Fahrten mit Kombi"
+    ],
+    "zielfunktion": "Z = 180x1 + 80x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≥ 48 (Patienten)",
+      "4x1 + x2 ≥ 30 (Rollstühle)",
+      "x1 ≤ 10 (Großraumwagen verfügbar)",
+      "x2 ≤ 20 (Kombis verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Großraumwagen transportieren mehr Patienten und Rollstühle, sind aber teurer. Achte auf beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Großraumwagen kostet 180€ pro Fahrt",
+          "bedeutung": "180 × x₁"
+        },
+        {
+          "text": "Kombi kostet 80€ pro Fahrt",
+          "bedeutung": "80 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Großraumwagen befördert 6 Patienten",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Kombi befördert 2 Patienten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 48 Patienten",
+            "bedeutung": "≥ 48"
+          }
+        ],
+        [
+          {
+            "text": "Großraumwagen nimmt 4 Rollstühle mit",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Kombi nimmt 1 Rollstuhl mit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "mindestens 30 Rollstühle",
+            "bedeutung": "≥ 30"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Großraumwagen",
+            "bedeutung": "x₁ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "maximal 20 Kombis",
+            "bedeutung": "x₂ ≤ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schulbusverkehr: Schüler und Routen",
+    "beschreibung": "Ein Schulbusunternehmen setzt Doppeldecker und Standardbusse ein. Ein Doppeldecker kostet 500€ pro Tag, ein Standardbus kostet 300€ pro Tag. Ein Doppeldecker befördert 80 Schüler, ein Standardbus befördert 45 Schüler. Es müssen mindestens 720 Schüler befördert werden. Ein Doppeldecker fährt 3 Routen pro Tag, ein Standardbus fährt 5 Routen pro Tag. Es müssen mindestens 40 Routen pro Tag abgedeckt werden. Es stehen maximal 12 Doppeldecker und maximal 10 Standardbusse zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Doppeldecker im Einsatz",
+      "x2 = Anzahl Standardbusse im Einsatz"
+    ],
+    "zielfunktion": "Z = 500x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "80x1 + 45x2 ≥ 720 (Schüler)",
+      "3x1 + 5x2 ≥ 40 (Routen)",
+      "x1 ≤ 12 (Doppeldecker verfügbar)",
+      "x2 ≤ 10 (Standardbusse verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Doppeldecker befördern mehr Schüler, Standardbusse decken mehr Routen ab. Beachte beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Doppeldecker kostet 500€ pro Tag",
+          "bedeutung": "500 × x₁"
+        },
+        {
+          "text": "Standardbus kostet 300€ pro Tag",
+          "bedeutung": "300 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Doppeldecker befördert 80 Schüler",
+            "bedeutung": "80x₁"
+          },
+          {
+            "text": "Standardbus befördert 45 Schüler",
+            "bedeutung": "+ 45x₂"
+          },
+          {
+            "text": "mindestens 720 Schüler",
+            "bedeutung": "≥ 720"
+          }
+        ],
+        [
+          {
+            "text": "Doppeldecker fährt 3 Routen pro Tag",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Standardbus fährt 5 Routen pro Tag",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 40 Routen",
+            "bedeutung": "≥ 40"
+          }
+        ],
+        [
+          {
+            "text": "maximal 12 Doppeldecker",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Standardbusse",
+            "bedeutung": "x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waldholztransport: Festmeter und Fahrten",
+    "beschreibung": "Ein Forstbetrieb setzt Langholzwagen und Kurzholzwagen für den Holztransport ein. Ein Langholzwagen kostet 550€ pro Fahrt, ein Kurzholzwagen kostet 300€ pro Fahrt. Ein Langholzwagen transportiert 25 Festmeter, ein Kurzholzwagen transportiert 10 Festmeter. Es müssen mindestens 200 Festmeter Holz transportiert werden. Ein Langholzwagen schafft 2 Fahrten pro Tag, ein Kurzholzwagen schafft 4 Fahrten pro Tag. Es müssen mindestens 28 Fahrten pro Tag durchgeführt werden. Es stehen maximal 8 Langholzwagen und maximal 10 Kurzholzwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Langholzwagen im Einsatz",
+      "x2 = Anzahl Kurzholzwagen im Einsatz"
+    ],
+    "zielfunktion": "Z = 550x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "25x1 + 10x2 ≥ 200 (Festmeter)",
+      "2x1 + 4x2 ≥ 28 (Fahrten pro Tag)",
+      "x1 ≤ 8 (Langholzwagen verfügbar)",
+      "x2 ≤ 10 (Kurzholzwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Langholzwagen transportieren mehr Festmeter, Kurzholzwagen schaffen mehr Fahrten. Beachte die Verfügbarkeitsgrenzen beider Fahrzeugtypen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Langholzwagen kostet 550€ pro Fahrt",
+          "bedeutung": "550 × x₁"
+        },
+        {
+          "text": "Kurzholzwagen kostet 300€ pro Fahrt",
+          "bedeutung": "300 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Langholzwagen transportiert 25 Festmeter",
+            "bedeutung": "25x₁"
+          },
+          {
+            "text": "Kurzholzwagen transportiert 10 Festmeter",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 200 Festmeter",
+            "bedeutung": "≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "Langholzwagen schafft 2 Fahrten pro Tag",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Kurzholzwagen schafft 4 Fahrten pro Tag",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 28 Fahrten",
+            "bedeutung": "≥ 28"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Langholzwagen",
+            "bedeutung": "x₁ ≤ 8"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Kurzholzwagen",
+            "bedeutung": "x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werbeagentur – TV-Spots und Online-Kampagnen",
+    "beschreibung": "Eine Werbeagentur bietet TV-Spots und Online-Kampagnen an. Ein TV-Spot bringt einen Gewinn von 5000€, eine Online-Kampagne einen Gewinn von 3000€. Für einen TV-Spot werden 20 Personalstunden benötigt, für eine Online-Kampagne 10 Personalstunden. Insgesamt stehen 200 Personalstunden pro Monat zur Verfügung. Das Budget für Medienkosten beträgt 60000€ pro Monat, wobei ein TV-Spot 8000€ und eine Online-Kampagne 3000€ an Medienkosten verursacht. Aufgrund der Sendeplatzverfügbarkeit können höchstens 6 TV-Spots pro Monat produziert werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl TV-Spots pro Monat",
+      "x2 = Anzahl Online-Kampagnen pro Monat"
+    ],
+    "zielfunktion": "Z = 5000x1 + 3000x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 10x2 ≤ 200 (Personalstunden)",
+      "8000x1 + 3000x2 ≤ 60000 (Budget)",
+      "x1 ≤ 6 (Sendeplätze)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Beschränkungen: Personalstunden, Budget und maximale Sendeplätze.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "TV-Spot bringt einen Gewinn von 5000€",
+          "bedeutung": "5000 × x₁"
+        },
+        {
+          "text": "Online-Kampagne einen Gewinn von 3000€",
+          "bedeutung": "3000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "TV-Spot werden 20 Personalstunden benötigt",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "Online-Kampagne 10 Personalstunden",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "200 Personalstunden pro Monat zur Verfügung",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "TV-Spot 8000€",
+            "bedeutung": "8000x₁"
+          },
+          {
+            "text": "Online-Kampagne 3000€ an Medienkosten",
+            "bedeutung": "+ 3000x₂"
+          },
+          {
+            "text": "60000€ pro Monat",
+            "bedeutung": "≤ 60000"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 6 TV-Spots pro Monat",
+            "bedeutung": "x₁ ≤ 6"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "IT-Firma – Webseiten und Apps",
+    "beschreibung": "Eine IT-Firma entwickelt Webseiten und Apps. Eine Webseite bringt einen Umsatz von 4000€, eine App einen Umsatz von 7000€. Für eine Webseite werden 40 Entwicklerstunden benötigt, für eine App 80 Entwicklerstunden. Insgesamt stehen 480 Entwicklerstunden pro Monat zur Verfügung. Außerdem braucht eine Webseite 15 Designerstunden und eine App 25 Designerstunden, wobei das Designerteam 150 Stunden pro Monat leisten kann. Die Nachfrage nach Apps liegt bei höchstens 4 Aufträgen pro Monat.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Webseiten pro Monat",
+      "x2 = Anzahl Apps pro Monat"
+    ],
+    "zielfunktion": "Z = 4000x1 + 7000x2 (max)",
+    "nebenbedingungen": [
+      "40x1 + 80x2 ≤ 480 (Entwicklerstunden)",
+      "15x1 + 25x2 ≤ 150 (Designerstunden)",
+      "x2 ≤ 4 (Nachfrage Apps)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfrage nach Apps begrenzt x₂ direkt. Prüfe, welche Ressource zuerst knapp wird.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Webseite bringt einen Umsatz von 4000€",
+          "bedeutung": "4000 × x₁"
+        },
+        {
+          "text": "App einen Umsatz von 7000€",
+          "bedeutung": "7000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Webseite werden 40 Entwicklerstunden benötigt",
+            "bedeutung": "40x₁"
+          },
+          {
+            "text": "App 80 Entwicklerstunden",
+            "bedeutung": "+ 80x₂"
+          },
+          {
+            "text": "480 Entwicklerstunden pro Monat",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "Webseite 15 Designerstunden",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "App 25 Designerstunden",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "150 Stunden pro Monat",
+            "bedeutung": "≤ 150"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 4 Aufträgen pro Monat",
+            "bedeutung": "x₂ ≤ 4"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Unternehmensberatung – Strategie und Prozessoptimierung",
+    "beschreibung": "Eine Unternehmensberatung bietet Strategieprojekte und Prozessoptimierungen an. Ein Strategieprojekt erzielt einen Deckungsbeitrag von 12000€, eine Prozessoptimierung einen Deckungsbeitrag von 8000€. Ein Strategieprojekt erfordert 3 Berater, eine Prozessoptimierung 2 Berater. Insgesamt stehen 18 Berater zur Verfügung. Zusätzlich benötigt ein Strategieprojekt 2 Analysten und eine Prozessoptimierung 3 Analysten, wobei 15 Analysten verfügbar sind. Pro Quartal können maximal 5 Strategieprojekte angenommen werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Strategieprojekte",
+      "x2 = Anzahl Prozessoptimierungen"
+    ],
+    "zielfunktion": "Z = 12000x1 + 8000x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 18 (Berater)",
+      "2x1 + 3x2 ≤ 15 (Analysten)",
+      "x1 ≤ 5 (Strategieprojekte max)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Berater und Analysten werden unterschiedlich beansprucht – achte auf die gegenläufigen Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Strategieprojekt erzielt einen Deckungsbeitrag von 12000€",
+          "bedeutung": "12000 × x₁"
+        },
+        {
+          "text": "Prozessoptimierung einen Deckungsbeitrag von 8000€",
+          "bedeutung": "8000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Strategieprojekt erfordert 3 Berater",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Prozessoptimierung 2 Berater",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "18 Berater zur Verfügung",
+            "bedeutung": "≤ 18"
+          }
+        ],
+        [
+          {
+            "text": "Strategieprojekt 2 Analysten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Prozessoptimierung 3 Analysten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "15 Analysten verfügbar",
+            "bedeutung": "≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "maximal 5 Strategieprojekte",
+            "bedeutung": "x₁ ≤ 5"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Personalvermittlung – Fachkräfte und Aushilfen",
+    "beschreibung": "Eine Personalvermittlung vermittelt Fachkräfte und Aushilfen. Die Vermittlung einer Fachkraft bringt eine Provision von 2500€, die einer Aushilfe eine Provision von 800€. Für die Vermittlung einer Fachkraft benötigt ein Recruiter 6 Stunden, für eine Aushilfe 2 Stunden. Es stehen 120 Recruiterstunden pro Monat zur Verfügung. Pro Fachkraft werden 3 Interviews durchgeführt, pro Aushilfe 1 Interview. Insgesamt können 45 Interviews pro Monat stattfinden. Die Nachfrage liegt bei höchstens 12 Fachkräften pro Monat.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl vermittelter Fachkräfte pro Monat",
+      "x2 = Anzahl vermittelter Aushilfen pro Monat"
+    ],
+    "zielfunktion": "Z = 2500x1 + 800x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≤ 120 (Recruiterstunden)",
+      "3x1 + x2 ≤ 45 (Interviews)",
+      "x1 ≤ 12 (Nachfrage Fachkräfte)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Fachkräfte bringen mehr Provision, verbrauchen aber deutlich mehr Recruiterzeit und Interviews.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Fachkraft bringt eine Provision von 2500€",
+          "bedeutung": "2500 × x₁"
+        },
+        {
+          "text": "Aushilfe eine Provision von 800€",
+          "bedeutung": "800 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Fachkraft benötigt ein Recruiter 6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Aushilfe 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "120 Recruiterstunden pro Monat",
+            "bedeutung": "≤ 120"
+          }
+        ],
+        [
+          {
+            "text": "Fachkraft werden 3 Interviews durchgeführt",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Aushilfe 1 Interview",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "45 Interviews pro Monat",
+            "bedeutung": "≤ 45"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 12 Fachkräften pro Monat",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eventagentur – Firmenfeiern und Hochzeiten",
+    "beschreibung": "Eine Eventagentur organisiert Firmenfeiern und Hochzeiten. Eine Firmenfeier erzielt einen Gewinn von 3500€, eine Hochzeit einen Gewinn von 5000€. Für eine Firmenfeier werden 2 Eventplaner eingesetzt, für eine Hochzeit 3 Eventplaner. Insgesamt stehen 18 Eventplaner pro Monat zur Verfügung. An Equipment-Tagen benötigt eine Firmenfeier 4 Tage und eine Hochzeit 5 Tage, wobei 30 Equipment-Tage pro Monat verfügbar sind. Außerdem ist das Budget für Fremdleistungen auf 40000€ begrenzt, wobei eine Firmenfeier 5000€ und eine Hochzeit 6000€ an Fremdleistungen erfordert.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Firmenfeiern pro Monat",
+      "x2 = Anzahl Hochzeiten pro Monat"
+    ],
+    "zielfunktion": "Z = 3500x1 + 5000x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 18 (Eventplaner)",
+      "4x1 + 5x2 ≤ 30 (Equipment-Tage)",
+      "5000x1 + 6000x2 ≤ 40000 (Fremdleistungen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Planung – finde heraus, welche zuerst erschöpft ist.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Firmenfeier erzielt einen Gewinn von 3500€",
+          "bedeutung": "3500 × x₁"
+        },
+        {
+          "text": "Hochzeit einen Gewinn von 5000€",
+          "bedeutung": "5000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Firmenfeier werden 2 Eventplaner eingesetzt",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Hochzeit 3 Eventplaner",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "18 Eventplaner pro Monat",
+            "bedeutung": "≤ 18"
+          }
+        ],
+        [
+          {
+            "text": "Firmenfeier 4 Tage",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Hochzeit 5 Tage",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "30 Equipment-Tage pro Monat",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "Firmenfeier 5000€",
+            "bedeutung": "5000x₁"
+          },
+          {
+            "text": "Hochzeit 6000€ an Fremdleistungen",
+            "bedeutung": "+ 6000x₂"
+          },
+          {
+            "text": "40000€ begrenzt",
+            "bedeutung": "≤ 40000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nachhilfe-Institut – Einzel- und Gruppenunterricht",
+    "beschreibung": "Ein Nachhilfe-Institut bietet Einzelunterricht und Gruppenunterricht an. Eine Einzelstunde bringt einen Erlös von 45€, eine Gruppenstunde einen Erlös von 80€. Für eine Einzelstunde wird 1 Lehrer benötigt, für eine Gruppenstunde ebenfalls 1 Lehrer. Insgesamt stehen 30 Lehrerstunden pro Woche zur Verfügung. Eine Einzelstunde benötigt 1 Raum für 1 Stunde, eine Gruppenstunde benötigt 1 Raum für 2 Stunden. Es sind 40 Raumstunden pro Woche verfügbar. Die Nachfrage nach Gruppenunterricht liegt bei höchstens 10 Stunden pro Woche.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Einzelstunden pro Woche",
+      "x2 = Anzahl Gruppenstunden pro Woche"
+    ],
+    "zielfunktion": "Z = 45x1 + 80x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 30 (Lehrerstunden)",
+      "x1 + 2x2 ≤ 40 (Raumstunden)",
+      "x2 ≤ 10 (Nachfrage Gruppenunterricht)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gruppenunterricht bringt mehr Erlös, verbraucht aber doppelt so viele Raumstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Einzelstunde bringt einen Erlös von 45€",
+          "bedeutung": "45 × x₁"
+        },
+        {
+          "text": "Gruppenstunde einen Erlös von 80€",
+          "bedeutung": "80 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Einzelstunde wird 1 Lehrer benötigt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Gruppenstunde ebenfalls 1 Lehrer",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "30 Lehrerstunden pro Woche",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "Einzelstunde benötigt 1 Raum für 1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Gruppenstunde benötigt 1 Raum für 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "40 Raumstunden pro Woche",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 10 Stunden pro Woche",
+            "bedeutung": "x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fitnessstudio – Personal Training und Gruppenkurse",
+    "beschreibung": "Ein Fitnessstudio bietet Personal Training und Gruppenkurse an. Eine Personal-Training-Einheit erzielt einen Umsatz von 70€, ein Gruppenkurs einen Umsatz von 120€. Für eine Personal-Training-Einheit wird 1 Trainer für 1 Stunde benötigt, für einen Gruppenkurs 1 Trainer für 2 Stunden. Insgesamt stehen 50 Trainerstunden pro Woche zur Verfügung. An Räumlichkeiten benötigt Personal Training 1 Raumstunde und ein Gruppenkurs 2 Raumstunden, wobei 60 Raumstunden pro Woche verfügbar sind. Die maximale Anzahl an Gruppenkursen ist durch die Teilnehmernachfrage auf 15 pro Woche beschränkt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Personal-Training-Einheiten pro Woche",
+      "x2 = Anzahl Gruppenkurse pro Woche"
+    ],
+    "zielfunktion": "Z = 70x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 50 (Trainerstunden)",
+      "x1 + 2x2 ≤ 60 (Raumstunden)",
+      "x2 ≤ 15 (Nachfrage Gruppenkurse)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Trainerstunden und Raumstunden haben dieselbe Struktur – eine der beiden wird stärker einschränken.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Personal-Training-Einheit erzielt einen Umsatz von 70€",
+          "bedeutung": "70 × x₁"
+        },
+        {
+          "text": "Gruppenkurs einen Umsatz von 120€",
+          "bedeutung": "120 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Personal-Training-Einheit wird 1 Trainer für 1 Stunde benötigt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Gruppenkurs 1 Trainer für 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "50 Trainerstunden pro Woche",
+            "bedeutung": "≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "Personal Training 1 Raumstunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Gruppenkurs 2 Raumstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "60 Raumstunden pro Woche",
+            "bedeutung": "≤ 60"
+          }
+        ],
+        [
+          {
+            "text": "auf 15 pro Woche beschränkt",
+            "bedeutung": "x₂ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werbeflächen – Plakatwände und Digitaldisplays",
+    "beschreibung": "Ein Werbevermarkter betreibt Plakatwände und Digitaldisplays. Eine Plakatwand bringt einen monatlichen Erlös von 600€, ein Digitaldisplay einen monatlichen Erlös von 1000€. Für die Wartung einer Plakatwand werden 2 Wartungsstunden pro Monat benötigt, für ein Digitaldisplay 5 Wartungsstunden. Es stehen insgesamt 200 Wartungsstunden pro Monat zur Verfügung. An verfügbaren Standorten gibt es 60 Plätze für Plakatwände und 30 Plätze für Digitaldisplays. Das Installationsbudget beträgt 50000€, wobei eine Plakatwand 500€ und ein Digitaldisplay 1200€ Installationskosten verursacht.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Plakatwände",
+      "x2 = Anzahl Digitaldisplays"
+    ],
+    "zielfunktion": "Z = 600x1 + 1000x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 200 (Wartungsstunden)",
+      "x1 ≤ 60 (Standorte Plakatwände)",
+      "x2 ≤ 30 (Standorte Digitaldisplays)",
+      "500x1 + 1200x2 ≤ 50000 (Installationsbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen – prüfe Wartung, Standorte und Budget getrennt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Plakatwand bringt einen monatlichen Erlös von 600€",
+          "bedeutung": "600 × x₁"
+        },
+        {
+          "text": "Digitaldisplay einen monatlichen Erlös von 1000€",
+          "bedeutung": "1000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Plakatwand werden 2 Wartungsstunden pro Monat benötigt",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Digitaldisplay 5 Wartungsstunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "200 Wartungsstunden pro Monat",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "60 Plätze für Plakatwände",
+            "bedeutung": "x₁ ≤ 60"
+          }
+        ],
+        [
+          {
+            "text": "30 Plätze für Digitaldisplays",
+            "bedeutung": "x₂ ≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwand 500€",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "Digitaldisplay 1200€ Installationskosten",
+            "bedeutung": "+ 1200x₂"
+          },
+          {
+            "text": "50000€",
+            "bedeutung": "≤ 50000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Landwirt – Weizen und Mais",
+    "beschreibung": "Ein Landwirt kann Weizen und Mais anbauen. Pro Hektar Weizen erzielt er einen Gewinn von 800€, pro Hektar Mais einen Gewinn von 1000€. Er verfügt über 50 Hektar Ackerfläche. Für die Bewässerung benötigt ein Hektar Weizen 3 Einheiten und ein Hektar Mais 5 Einheiten Wasser. Insgesamt stehen 200 Einheiten Bewässerung zur Verfügung. Außerdem erfordert ein Hektar Weizen 4 Arbeitsstunden und ein Hektar Mais 6 Arbeitsstunden zur Ernte, wobei maximal 240 Arbeitsstunden verfügbar sind.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Hektar Weizen",
+      "x2 = Hektar Mais"
+    ],
+    "zielfunktion": "Z = 800x1 + 1000x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 50 (Ackerfläche)",
+      "3x1 + 5x2 ≤ 200 (Bewässerung)",
+      "4x1 + 6x2 ≤ 240 (Arbeitsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Mais bringt mehr Gewinn, benötigt aber auch mehr Wasser und Arbeit pro Hektar.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Hektar Weizen erzielt er einen Gewinn von 800€",
+          "bedeutung": "800 × x₁"
+        },
+        {
+          "text": "Hektar Mais einen Gewinn von 1000€",
+          "bedeutung": "1000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "50 Hektar Ackerfläche",
+            "bedeutung": "x₁ + x₂ ≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "Hektar Weizen 3 Einheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Hektar Mais 5 Einheiten Wasser",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "200 Einheiten Bewässerung",
+            "bedeutung": "≤ 200"
+          }
+        ],
+        [
+          {
+            "text": "Hektar Weizen 4 Arbeitsstunden",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Hektar Mais 6 Arbeitsstunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "240 Arbeitsstunden verfügbar",
+            "bedeutung": "≤ 240"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Obstbauer – Äpfel und Birnen",
+    "beschreibung": "Ein Obstbauer kann Äpfel und Birnen anbauen. Pro Hektar Äpfel erzielt er einen Erlös von 3000€, pro Hektar Birnen einen Erlös von 2500€. Ihm stehen 20 Hektar Anbaufläche zur Verfügung. Pro Hektar Äpfel werden 50 Arbeitsstunden und pro Hektar Birnen 30 Arbeitsstunden zur Pflege benötigt. Die verfügbaren Arbeitskräfte leisten insgesamt 700 Arbeitsstunden pro Saison. Außerdem ist der Absatzmarkt für Birnen auf maximal 10 Hektar Ertrag begrenzt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Hektar Äpfel",
+      "x2 = Hektar Birnen"
+    ],
+    "zielfunktion": "Z = 3000x1 + 2500x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 20 (Anbaufläche)",
+      "50x1 + 30x2 ≤ 700 (Arbeitsstunden)",
+      "x2 ≤ 10 (Absatzmarkt Birnen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Äpfel bringen mehr Erlös pro Hektar, brauchen aber deutlich mehr Arbeitsstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Hektar Äpfel erzielt er einen Erlös von 3000€",
+          "bedeutung": "3000 × x₁"
+        },
+        {
+          "text": "Hektar Birnen einen Erlös von 2500€",
+          "bedeutung": "2500 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "20 Hektar Anbaufläche",
+            "bedeutung": "x₁ + x₂ ≤ 20"
+          }
+        ],
+        [
+          {
+            "text": "Hektar Äpfel werden 50 Arbeitsstunden",
+            "bedeutung": "50x₁"
+          },
+          {
+            "text": "Hektar Birnen 30 Arbeitsstunden",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "700 Arbeitsstunden pro Saison",
+            "bedeutung": "≤ 700"
+          }
+        ],
+        [
+          {
+            "text": "maximal 10 Hektar",
+            "bedeutung": "x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Investmentfirma – Aktien und Anleihen",
+    "beschreibung": "Eine Investmentfirma legt Kapital in Aktien und Anleihen an. Aktien erzielen eine erwartete Rendite von 8% (also 0,08 pro Euro) pro Jahr, Anleihen eine erwartete Rendite von 4% (also 0,04 pro Euro) pro Jahr. Das verfügbare Kapital beträgt 500000€. Zur Risikobegrenzung wird jeder Euro in Aktien mit einem Risikofaktor von 0,6 und jeder Euro in Anleihen mit einem Risikofaktor von 0,2 bewertet. Das gesamte Risikobudget darf 240000 nicht überschreiten. Zudem sollen mindestens 100000€ in Anleihen investiert werden, um die Stabilität zu sichern.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Investment in Aktien (€)",
+      "x2 = Investment in Anleihen (€)"
+    ],
+    "zielfunktion": "Z = 0,08x1 + 0,04x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 500000 (Kapital)",
+      "0,6x1 + 0,2x2 ≤ 240000 (Risikobudget)",
+      "x2 ≥ 100000 (Mindestanlage Anleihen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Aktien bringen mehr Rendite, aber auch höheres Risiko. Beachte die Mindestanlage in Anleihen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 8% (also 0,08 pro Euro)",
+          "bedeutung": "0,08 × x₁"
+        },
+        {
+          "text": "Rendite von 4% (also 0,04 pro Euro)",
+          "bedeutung": "0,04 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "500000€",
+            "bedeutung": "x₁ + x₂ ≤ 500000"
+          }
+        ],
+        [
+          {
+            "text": "Aktien mit einem Risikofaktor von 0,6",
+            "bedeutung": "0,6x₁"
+          },
+          {
+            "text": "Anleihen mit einem Risikofaktor von 0,2",
+            "bedeutung": "+ 0,2x₂"
+          },
+          {
+            "text": "240000 nicht überschreiten",
+            "bedeutung": "≤ 240000"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 100000€ in Anleihen",
+            "bedeutung": "x₂ ≥ 100000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hotel – Einzel- und Doppelzimmer",
+    "beschreibung": "Ein Hotel vermietet Einzelzimmer und Doppelzimmer. Ein Einzelzimmer bringt einen Tageserlös von 80€, ein Doppelzimmer einen Tageserlös von 130€. Das Hotel verfügt über insgesamt 100 Zimmer. Für die Reinigung benötigt ein Einzelzimmer 0,5 Stunden und ein Doppelzimmer 1 Stunde. Das Reinigungspersonal kann maximal 70 Stunden pro Tag leisten. Außerdem stehen nur 60 Doppelbetten zur Verfügung, sodass höchstens 60 Doppelzimmer eingerichtet werden können.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl belegter Einzelzimmer",
+      "x2 = Anzahl belegter Doppelzimmer"
+    ],
+    "zielfunktion": "Z = 80x1 + 130x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 100 (Zimmer)",
+      "0,5x1 + x2 ≤ 70 (Reinigungsstunden)",
+      "x2 ≤ 60 (Doppelbetten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Doppelzimmer bringen mehr Erlös, brauchen aber doppelt so viel Reinigungszeit.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Einzelzimmer bringt einen Tageserlös von 80€",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "Doppelzimmer einen Tageserlös von 130€",
+          "bedeutung": "130 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "100 Zimmer",
+            "bedeutung": "x₁ + x₂ ≤ 100"
+          }
+        ],
+        [
+          {
+            "text": "Einzelzimmer 0,5 Stunden",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "Doppelzimmer 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "70 Stunden pro Tag",
+            "bedeutung": "≤ 70"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 60 Doppelzimmer",
+            "bedeutung": "x₂ ≤ 60"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Restaurant – Menü A und Menü B",
+    "beschreibung": "Ein Restaurant bietet Menü A und Menü B an. Menü A bringt einen Gewinn von 12€ pro Portion, Menü B einen Gewinn von 18€ pro Portion. Für Menü A werden 15 Minuten Küchenzeit benötigt, für Menü B 25 Minuten. Die Küche ist pro Abend 600 Minuten verfügbar. An Zutaten benötigt Menü A Wareneinsatz von 8€ und Menü B Wareneinsatz von 14€ pro Portion. Das tägliche Budget für Zutaten beträgt 420€. Außerdem kann der Koch maximal 35 Portionen pro Abend zubereiten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Portionen Menü A pro Abend",
+      "x2 = Anzahl Portionen Menü B pro Abend"
+    ],
+    "zielfunktion": "Z = 12x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "15x1 + 25x2 ≤ 600 (Küchenzeit)",
+      "8x1 + 14x2 ≤ 420 (Zutatenbudget)",
+      "x1 + x2 ≤ 35 (Kapazität Koch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Menü B bringt mehr Gewinn, verbraucht aber auch mehr Küchenzeit und teurere Zutaten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Menü A bringt einen Gewinn von 12€ pro Portion",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Menü B einen Gewinn von 18€ pro Portion",
+          "bedeutung": "18 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Menü A werden 15 Minuten Küchenzeit benötigt",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "Menü B 25 Minuten",
+            "bedeutung": "+ 25x₂"
+          },
+          {
+            "text": "600 Minuten verfügbar",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Menü A Wareneinsatz von 8€",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Menü B Wareneinsatz von 14€",
+            "bedeutung": "+ 14x₂"
+          },
+          {
+            "text": "420€",
+            "bedeutung": "≤ 420"
+          }
+        ],
+        [
+          {
+            "text": "maximal 35 Portionen pro Abend",
+            "bedeutung": "x₁ + x₂ ≤ 35"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Verlag – Taschenbücher und Hardcover",
+    "beschreibung": "Ein Verlag produziert Taschenbücher und Hardcover-Bücher. Ein Taschenbuch bringt einen Gewinn von 3€, ein Hardcover einen Gewinn von 7€. Die Druckkapazität beträgt 10000 Einheiten pro Monat, wobei ein Taschenbuch 1 Einheit und ein Hardcover 2 Einheiten Druckkapazität benötigt. Der Lagerplatz umfasst 6000 Stellplätze, wobei ein Taschenbuch 1 Stellplatz und ein Hardcover 1 Stellplatz belegt. Außerdem können aufgrund der Bindemaschine maximal 3000 Hardcover pro Monat gebunden werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Taschenbücher pro Monat",
+      "x2 = Anzahl Hardcover pro Monat"
+    ],
+    "zielfunktion": "Z = 3x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 10000 (Druckkapazität)",
+      "x1 + x2 ≤ 6000 (Lagerplatz)",
+      "x2 ≤ 3000 (Bindemaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hardcover bringen mehr Gewinn, brauchen aber doppelte Druckkapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Taschenbuch bringt einen Gewinn von 3€",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Hardcover einen Gewinn von 7€",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Taschenbuch 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Hardcover 2 Einheiten Druckkapazität",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "10000 Einheiten pro Monat",
+            "bedeutung": "≤ 10000"
+          }
+        ],
+        [
+          {
+            "text": "Taschenbuch 1 Stellplatz",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Hardcover 1 Stellplatz",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "6000 Stellplätze",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "maximal 3000 Hardcover pro Monat",
+            "bedeutung": "x₂ ≤ 3000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fahrschule – Fahrstunden Auto und Motorrad",
+    "beschreibung": "Eine Fahrschule bietet Fahrstunden für Auto und Motorrad an. Eine Fahrstunde Auto bringt 50€ Umsatz, eine Fahrstunde Motorrad bringt 60€ Umsatz. Für eine Fahrstunde Auto wird 1 Fahrlehrer für 1 Stunde benötigt, für eine Fahrstunde Motorrad ebenfalls 1 Fahrlehrer für 1 Stunde. Es stehen insgesamt 40 Fahrlehrerstunden pro Woche zur Verfügung. An Fahrzeugen stehen 25 verfügbare Autostunden und 20 verfügbare Motorradstunden pro Woche bereit. Außerdem ist die Nachfrage nach Motorradstunden auf höchstens 15 pro Woche begrenzt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Fahrstunden Auto pro Woche",
+      "x2 = Anzahl Fahrstunden Motorrad pro Woche"
+    ],
+    "zielfunktion": "Z = 50x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 40 (Fahrlehrerstunden)",
+      "x1 ≤ 25 (Autos verfügbar)",
+      "x2 ≤ 20 (Motorräder verfügbar)",
+      "x2 ≤ 15 (Nachfrage Motorrad)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Motorrad bringt mehr Umsatz pro Stunde, ist aber durch Fahrzeuge und Nachfrage doppelt begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Fahrstunde Auto bringt 50€ Umsatz",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "Fahrstunde Motorrad bringt 60€ Umsatz",
+          "bedeutung": "60 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Fahrstunde Auto wird 1 Fahrlehrer für 1 Stunde benötigt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Fahrstunde Motorrad ebenfalls 1 Fahrlehrer für 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "40 Fahrlehrerstunden pro Woche",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "25 verfügbare Autostunden",
+            "bedeutung": "x₁ ≤ 25"
+          }
+        ],
+        [
+          {
+            "text": "20 verfügbare Motorradstunden",
+            "bedeutung": "x₂ ≤ 20"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 15 pro Woche begrenzt",
+            "bedeutung": "x₂ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Reinigungsfirma – Büroreinigung und Grundreinigung",
+    "beschreibung": "Eine Reinigungsfirma bietet Büroreinigungen und Grundreinigungen an. Eine Büroreinigung bringt einen Gewinn von 150€, eine Grundreinigung einen Gewinn von 400€. Für eine Büroreinigung werden 2 Mitarbeiter benötigt, für eine Grundreinigung 5 Mitarbeiter. Insgesamt stehen 30 Mitarbeiter pro Woche zur Verfügung. An Spezialequipment benötigt eine Büroreinigung 1 Set und eine Grundreinigung 3 Sets, wobei 18 Equipment-Sets verfügbar sind. Die Gesamtzahl der Aufträge darf 10 pro Woche nicht überschreiten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Büroreinigungen pro Woche",
+      "x2 = Anzahl Grundreinigungen pro Woche"
+    ],
+    "zielfunktion": "Z = 150x1 + 400x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 30 (Personal)",
+      "x1 + 3x2 ≤ 18 (Equipment)",
+      "x1 + x2 ≤ 10 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Grundreinigungen sind lukrativer, brauchen aber deutlich mehr Personal und Equipment.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Büroreinigung bringt einen Gewinn von 150€",
+          "bedeutung": "150 × x₁"
+        },
+        {
+          "text": "Grundreinigung einen Gewinn von 400€",
+          "bedeutung": "400 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Büroreinigung werden 2 Mitarbeiter benötigt",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Grundreinigung 5 Mitarbeiter",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "30 Mitarbeiter pro Woche",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "Büroreinigung 1 Set",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Grundreinigung 3 Sets",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "18 Equipment-Sets verfügbar",
+            "bedeutung": "≤ 18"
+          }
+        ],
+        [
+          {
+            "text": "10 pro Woche nicht überschreiten",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fotografenteam – Porträts und Eventfotografie",
+    "beschreibung": "Ein Fotografenteam bietet Porträtshootings und Eventfotografie an. Ein Porträtshooting bringt einen Erlös von 300€, ein Eventauftrag einen Erlös von 800€. Für ein Porträtshooting wird 1 Fotograf benötigt, für einen Eventauftrag werden 2 Fotografen benötigt. Es stehen insgesamt 12 Fotografentage pro Woche zur Verfügung. Ein Porträtshooting belegt 2 Stunden Studiozeit, ein Eventauftrag benötigt kein Studio, also 0 Stunden Studiozeit. Die Studiozeit ist auf 16 Stunden pro Woche begrenzt. Insgesamt können maximal 8 Aufträge pro Woche angenommen werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Porträtshootings pro Woche",
+      "x2 = Anzahl Eventaufträge pro Woche"
+    ],
+    "zielfunktion": "Z = 300x1 + 800x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 12 (Fotografentage)",
+      "2x1 ≤ 16 (Studiozeit)",
+      "x1 + x2 ≤ 8 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Eventaufträge brauchen kein Studio, aber doppelt so viele Fotografentage.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Porträtshooting bringt einen Erlös von 300€",
+          "bedeutung": "300 × x₁"
+        },
+        {
+          "text": "Eventauftrag einen Erlös von 800€",
+          "bedeutung": "800 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Porträtshooting wird 1 Fotograf benötigt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Eventauftrag werden 2 Fotografen benötigt",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "12 Fotografentage pro Woche",
+            "bedeutung": "≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "Porträtshooting belegt 2 Stunden Studiozeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "16 Stunden pro Woche begrenzt",
+            "bedeutung": "≤ 16"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Aufträge pro Woche",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sprachschule – Intensivkurse und Abendkurse",
+    "beschreibung": "Eine Sprachschule bietet Intensivkurse und Abendkurse an. Ein Intensivkurs erzielt einen Umsatz von 2000€, ein Abendkurs einen Umsatz von 1200€. Für einen Intensivkurs werden 4 Dozentenstunden pro Woche benötigt, für einen Abendkurs 2 Dozentenstunden. Es stehen insgesamt 24 Dozentenstunden pro Woche zur Verfügung. An Kursräumen benötigt ein Intensivkurs 5 Raumstunden und ein Abendkurs 2 Raumstunden pro Woche, wobei 30 Raumstunden verfügbar sind. Zudem kann die Schule maximal 8 Kurse gleichzeitig anbieten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Intensivkurse",
+      "x2 = Anzahl Abendkurse"
+    ],
+    "zielfunktion": "Z = 2000x1 + 1200x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 24 (Dozentenstunden)",
+      "5x1 + 2x2 ≤ 30 (Raumstunden)",
+      "x1 + x2 ≤ 8 (Kursanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Intensivkurse bringen mehr Umsatz, beanspruchen aber deutlich mehr Dozenten- und Raumstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Intensivkurs erzielt einen Umsatz von 2000€",
+          "bedeutung": "2000 × x₁"
+        },
+        {
+          "text": "Abendkurs einen Umsatz von 1200€",
+          "bedeutung": "1200 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Intensivkurs werden 4 Dozentenstunden pro Woche benötigt",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Abendkurs 2 Dozentenstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "24 Dozentenstunden pro Woche",
+            "bedeutung": "≤ 24"
+          }
+        ],
+        [
+          {
+            "text": "Intensivkurs 5 Raumstunden",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Abendkurs 2 Raumstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "30 Raumstunden verfügbar",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "maximal 8 Kurse gleichzeitig",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gartenbauunternehmen – Gartengestaltung und Pflege",
+    "beschreibung": "Ein Gartenbauunternehmen bietet Gartengestaltung und Gartenpflege an. Ein Gestaltungsauftrag bringt einen Gewinn von 1500€, ein Pflegeauftrag einen Gewinn von 500€. Für einen Gestaltungsauftrag werden 3 Gärtner benötigt, für einen Pflegeauftrag 1 Gärtner. Insgesamt stehen 15 Gärtner pro Woche zur Verfügung. An Maschinen benötigt ein Gestaltungsauftrag 4 Maschinentage und ein Pflegeauftrag 1 Maschinentag, wobei 20 Maschinentage pro Woche verfügbar sind. Die Nachfrage nach Gestaltungsaufträgen liegt bei höchstens 4 pro Woche.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gestaltungsaufträge pro Woche",
+      "x2 = Anzahl Pflegeaufträge pro Woche"
+    ],
+    "zielfunktion": "Z = 1500x1 + 500x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 15 (Gärtner)",
+      "4x1 + x2 ≤ 20 (Maschinentage)",
+      "x1 ≤ 4 (Nachfrage Gestaltung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gestaltungsaufträge bringen dreimal so viel Gewinn, brauchen aber mehr Gärtner und Maschinen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gestaltungsauftrag bringt einen Gewinn von 1500€",
+          "bedeutung": "1500 × x₁"
+        },
+        {
+          "text": "Pflegeauftrag einen Gewinn von 500€",
+          "bedeutung": "500 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Gestaltungsauftrag werden 3 Gärtner benötigt",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Pflegeauftrag 1 Gärtner",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "15 Gärtner pro Woche",
+            "bedeutung": "≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "Gestaltungsauftrag 4 Maschinentage",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Pflegeauftrag 1 Maschinentag",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "20 Maschinentage pro Woche",
+            "bedeutung": "≤ 20"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 4 pro Woche",
+            "bedeutung": "x₁ ≤ 4"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Copyshop – Farb- und SW-Druckaufträge",
+    "beschreibung": "Ein Copyshop nimmt Farbdruckaufträge und SW-Druckaufträge an. Ein Farbdruckauftrag bringt einen Gewinn von 25€, ein SW-Druckauftrag einen Gewinn von 10€. Der Farbdrucker schafft pro Auftrag 30 Minuten Druckzeit, der SW-Drucker pro Auftrag 10 Minuten. An Druckerkapazität stehen 600 Minuten für Farbdruck und 400 Minuten für SW-Druck pro Tag zur Verfügung. Jeder Farbdruckauftrag verbraucht 500 Blatt Papier und jeder SW-Druckauftrag 200 Blatt. Insgesamt stehen 12000 Blatt Papier pro Tag bereit. Außerdem beträgt die Gesamtkapazität des Shops maximal 50 Aufträge pro Tag.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Farbdruckaufträge pro Tag",
+      "x2 = Anzahl SW-Druckaufträge pro Tag"
+    ],
+    "zielfunktion": "Z = 25x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "30x1 ≤ 600 (Farbdruckerkapazität)",
+      "10x2 ≤ 400 (SW-Druckerkapazität)",
+      "500x1 + 200x2 ≤ 12000 (Papier)",
+      "x1 + x2 ≤ 50 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Farb- und SW-Drucker sind getrennte Ressourcen, aber Papier und Auftragskapazität werden gemeinsam genutzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Farbdruckauftrag bringt einen Gewinn von 25€",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "SW-Druckauftrag einen Gewinn von 10€",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "pro Auftrag 30 Minuten Druckzeit",
+            "bedeutung": "30x₁"
+          },
+          {
+            "text": "600 Minuten für Farbdruck",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "SW-Drucker pro Auftrag 10 Minuten",
+            "bedeutung": "10x₂"
+          },
+          {
+            "text": "400 Minuten für SW-Druck",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "Farbdruckauftrag verbraucht 500 Blatt Papier",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "SW-Druckauftrag 200 Blatt",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "12000 Blatt Papier pro Tag",
+            "bedeutung": "≤ 12000"
+          }
+        ],
+        [
+          {
+            "text": "maximal 50 Aufträge pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Getränkeabfüllung",
+    "beschreibung": "Eine Getränkefabrik füllt zwei Sorten ab: Saft A und Saft B. Der Gewinn beträgt 3€ pro Liter für Saft A und 5€ pro Liter für Saft B. Die Abfüllanlage hat eine Kapazität von 8000 Litern pro Tag. An Rohstoffen stehen 6000 Einheiten Zucker zur Verfügung, wobei Saft A 2 Einheiten und Saft B 3 Einheiten pro Liter benötigt. Außerdem gilt die Vorgabe: Produkt B darf höchstens 3-mal so viel wie A produziert werden, also x2 ≤ 3x1.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter Saft A pro Tag",
+      "x2 = Liter Saft B pro Tag"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 8000 (Abfüllkapazität)",
+      "2x1 + 3x2 ≤ 6000 (Zucker)",
+      "-3x1 + x2 ≤ 0 (Verhältnis B zu A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung 'B darf höchstens 3-mal so viel wie A' bedeutet x2 ≤ 3x1. Umgestellt ergibt das: -3x1 + x2 ≤ 0. Achten Sie darauf, welche Variable auf welcher Seite steht.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Liter für Saft A",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "5€ pro Liter für Saft B",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Kapazität von 8000 Litern pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 8000"
+          }
+        ],
+        [
+          {
+            "text": "Saft A 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Saft B 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "6000 Einheiten Zucker",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "Produkt B darf höchstens 3-mal so viel wie A",
+            "bedeutung": "-3x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bekleidungsfabrik",
+    "beschreibung": "Eine Bekleidungsfabrik produziert Hosen und Hemden. Der Deckungsbeitrag beträgt 25€ pro Hose und 18€ pro Hemd. Pro Hose werden 4 Meter Stoff benötigt, pro Hemd 2 Meter. Insgesamt stehen 2000 Meter Stoff zur Verfügung. Die Nähzeit beträgt 3 Stunden pro Hose und 2 Stunden pro Hemd bei einer Gesamtkapazität von 1500 Stunden. Laut Vertrag müssen mindestens doppelt so viele Hosen wie Hemden produziert werden, also x1 ≥ 2x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Hosen",
+      "x2 = Anzahl Hemden"
+    ],
+    "zielfunktion": "Z = 25x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 2000 (Stoff)",
+      "3x1 + 2x2 ≤ 1500 (Nähzeit)",
+      "x1 ≥ 2x2 (Vertragsverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens doppelt so viele Hosen wie Hemden' heißt x1 ≥ 2x2. Umgestellt: x1 - 2x2 ≥ 0. Das ist eine ≥-Nebenbedingung!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ pro Hose",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "18€ pro Hemd",
+          "bedeutung": "18 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Meter Stoff",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "pro Hemd 2 Meter",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "2000 Meter Stoff",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "3 Stunden pro Hose",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Stunden pro Hemd",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 1500 Stunden",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "mindestens doppelt so viele Hosen wie Hemden",
+            "bedeutung": "x₁ ≥ 2x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Druckerei",
+    "beschreibung": "Eine Druckerei produziert Broschüren (Typ A) und Flyer (Typ B). Die Druckkosten betragen 2€ pro Broschüre und 1€ pro Flyer. Für jede Broschüre werden 3 Minuten Maschinenzeit benötigt, für jeden Flyer 1 Minute, bei einer Gesamtkapazität von 9000 Minuten. An Papier stehen 7000 Bogen zur Verfügung, wobei eine Broschüre 2 Bogen und ein Flyer 1 Bogen verbraucht. Die Gesamtauflage muss mindestens 5000 Stück betragen, also x1 + x2 ≥ 5000. Ziel ist die Minimierung der Kosten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Broschüren",
+      "x2 = Anzahl Flyer"
+    ],
+    "zielfunktion": "Z = 2x1 + x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 9000 (Maschinenzeit)",
+      "2x1 + x2 ≤ 7000 (Papier)",
+      "x1 + x2 ≥ 5000 (Mindestauflage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier wird minimiert! Die Mindestauflage x1 + x2 ≥ 5000 ist eine ≥-Bedingung. Bei Minimierung sucht man den kostenminimalen Punkt, der trotzdem alle Mindestanforderungen erfüllt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro Broschüre",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "1€ pro Flyer",
+          "bedeutung": "1 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Minuten Maschinenzeit",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "für jeden Flyer 1 Minute",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 9000 Minuten",
+            "bedeutung": "≤ 9000"
+          }
+        ],
+        [
+          {
+            "text": "eine Broschüre 2 Bogen",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "ein Flyer 1 Bogen",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "7000 Bogen",
+            "bedeutung": "≤ 7000"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtauflage muss mindestens 5000 Stück betragen",
+            "bedeutung": "x₁ + x₂ ≥ 5000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikladen",
+    "beschreibung": "Ein Elektronikladen bestellt Laptops und Tablets. Pro Laptop erzielt er einen Gewinn von 120€, pro Tablet 80€. Das Lager bietet Platz für maximal 300 Geräte. Das Budget beträgt 90000€, wobei ein Laptop 500€ und ein Tablet 250€ kostet. Das Verhältnis von Laptops zu Tablets soll genau 1 zu 2 sein, also 2x1 = x2. Ziel ist die Gewinnmaximierung.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Laptops",
+      "x2 = Anzahl Tablets"
+    ],
+    "zielfunktion": "Z = 120x1 + 80x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 300 (Lagerplatz)",
+      "500x1 + 250x2 ≤ 90000 (Budget)",
+      "2x1 = x2 (Verhältnis 1:2)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichungsnebenbedingung 2x1 = x2 bedeutet: Für jedes Laptop müssen genau 2 Tablets bestellt werden. Dies ist eine Gleichung (=), keine Ungleichung! Die zulässige Menge ist dadurch nur noch eine Linie statt einer Fläche.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 120€",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "pro Tablet 80€",
+          "bedeutung": "80 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Platz für maximal 300 Geräte",
+            "bedeutung": "x₁ + x₂ ≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "ein Laptop 500€",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "ein Tablet 250€",
+            "bedeutung": "+ 250x₂"
+          },
+          {
+            "text": "Budget beträgt 90000€",
+            "bedeutung": "≤ 90000"
+          }
+        ],
+        [
+          {
+            "text": "Verhältnis von Laptops zu Tablets soll genau 1 zu 2 sein",
+            "bedeutung": "2x₁ = x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zementwerk",
+    "beschreibung": "Ein Zementwerk stellt zwei Sorten her: Standardzement und Spezialzement. Die Produktionskosten betragen 40€ pro Tonne Standardzement und 65€ pro Tonne Spezialzement. Pro Tonne Standardzement werden 2 Stunden Brennofenzeit benötigt, pro Tonne Spezialzement 4 Stunden, bei maximal 1200 Stunden Brennofenzeit. An Energie stehen 800 Einheiten zur Verfügung, wobei Standardzement 1 Einheit und Spezialzement 3 Einheiten pro Tonne verbraucht. Der Kunde verlangt genau 500 Tonnen pro Tag, also x1 + x2 = 500. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Standardzement pro Tag",
+      "x2 = Tonnen Spezialzement pro Tag"
+    ],
+    "zielfunktion": "Z = 40x1 + 65x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 1200 (Brennofenzeit)",
+      "x1 + 3x2 ≤ 800 (Energie)",
+      "x1 + x2 = 500 (Tagesproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichungsnebenbedingung x1 + x2 = 500 bedeutet: Es müssen exakt 500 Tonnen produziert werden, nicht mehr und nicht weniger. Gleichungen schränken die Lösung stark ein. Zusammen mit Minimierung suchen wir die günstigste Mischung bei festem Gesamtoutput.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ pro Tonne Standardzement",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "65€ pro Tonne Spezialzement",
+          "bedeutung": "65 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Brennofenzeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Tonne Spezialzement 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "maximal 1200 Stunden Brennofenzeit",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "Standardzement 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Spezialzement 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "800 Einheiten",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "genau 500 Tonnen pro Tag",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Obsthandel",
+    "beschreibung": "Ein Obsthändler verkauft Äpfel (Sorte A) und Birnen (Sorte B). Der Gewinn beträgt 4€ pro Kiste Äpfel und 6€ pro Kiste Birnen. Im Lager ist Platz für maximal 600 Kisten insgesamt. An Kühlkapazität stehen 400 Einheiten zur Verfügung, wobei Äpfel 1 Einheit und Birnen 2 Einheiten benötigen. Aufgrund bestehender Lieferverträge müssen mindestens 100 Kisten Äpfel und mindestens 50 Kisten Birnen vorrätig sein.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Kisten Äpfel",
+      "x2 = Kisten Birnen"
+    ],
+    "zielfunktion": "Z = 4x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 600 (Lagerplatz)",
+      "x1 + 2x2 ≤ 400 (Kühlung)",
+      "x1 ≥ 100 (Mindestmenge Äpfel)",
+      "x2 ≥ 50 (Mindestmenge Birnen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindestmengen x1 ≥ 100 und x2 ≥ 50 sind ≥-Nebenbedingungen, die den zulässigen Bereich nach unten begrenzen. Der optimale Punkt liegt dann in einem kleineren zulässigen Bereich.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "4€ pro Kiste Äpfel",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "6€ pro Kiste Birnen",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Platz für maximal 600 Kisten",
+            "bedeutung": "x₁ + x₂ ≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Äpfel 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Birnen 2 Einheiten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "400 Einheiten",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 100 Kisten Äpfel",
+            "bedeutung": "x₁ ≥ 100"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 50 Kisten Birnen",
+            "bedeutung": "x₂ ≥ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Stahlwerk",
+    "beschreibung": "Ein Stahlwerk produziert zwei Legierungen: Legierung A und Legierung B. Der Erlös beträgt 80€ pro Tonne Legierung A und 120€ pro Tonne Legierung B. Pro Tonne Legierung A werden 5 Stunden Schmelzzeit benötigt, pro Tonne Legierung B 3 Stunden, bei maximal 1500 Stunden. An Erz stehen 2000 Tonnen zur Verfügung, wobei Legierung A 4 Tonnen und Legierung B 2 Tonnen Erz pro Tonne benötigt. Legierung B braucht höchstens halb so viel wie Legierung A, also x2 ≤ 0,5x1.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Tonnen Legierung A",
+      "x2 = Tonnen Legierung B"
+    ],
+    "zielfunktion": "Z = 80x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 1500 (Schmelzzeit)",
+      "4x1 + 2x2 ≤ 2000 (Erz)",
+      "-0,5x1 + x2 ≤ 0 (Verhältnis B zu A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'Legierung B höchstens halb so viel wie A' heißt x2 ≤ 0,5x1. Umgestellt: -0,5x1 + x2 ≤ 0. Der Faktor 0,5 kommt von 'halb so viel'. Achten Sie auf die Richtung: B wird durch A begrenzt, nicht umgekehrt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "80€ pro Tonne Legierung A",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "120€ pro Tonne Legierung B",
+          "bedeutung": "120 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden Schmelzzeit",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "pro Tonne Legierung B 3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 1500 Stunden",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "Legierung A 4 Tonnen",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Legierung B 2 Tonnen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "2000 Tonnen",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "Legierung B braucht höchstens halb so viel wie Legierung A",
+            "bedeutung": "-0,5x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werft",
+    "beschreibung": "Eine Werft baut Segelboote (Typ A) und Motorboote (Typ B). Der Gewinn beträgt 15000€ pro Segelboot und 22000€ pro Motorboot. Pro Segelboot werden 200 Arbeitsstunden benötigt, pro Motorboot 300 Arbeitsstunden. Die Werft hat eine Kapazität von maximal 6000 Arbeitsstunden. An Material stehen 4000 Einheiten zur Verfügung, wobei ein Segelboot 100 Einheiten und ein Motorboot 200 Einheiten verbraucht. Es gibt eine Mindestbestellung von 5 Segelbooten und 3 Motorbooten. Außerdem können höchstens 25 Boote insgesamt gebaut werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Segelboote",
+      "x2 = Anzahl Motorboote"
+    ],
+    "zielfunktion": "Z = 15000x1 + 22000x2 (max)",
+    "nebenbedingungen": [
+      "200x1 + 300x2 ≤ 6000 (Arbeitsstunden)",
+      "100x1 + 200x2 ≤ 4000 (Material)",
+      "x1 ≥ 5 (Mindestbestellung Segelboote)",
+      "x2 ≥ 3 (Mindestbestellung Motorboote)",
+      "x1 + x2 ≤ 25 (Gesamtkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem hat sowohl ≤-Bedingungen (Kapazitäten, Gesamtzahl) als auch ≥-Bedingungen (Mindestbestellungen). Der zulässige Bereich wird von beiden Seiten eingeschränkt. Prüfen Sie, ob der zulässige Bereich nicht leer ist!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "15000€ pro Segelboot",
+          "bedeutung": "15000 × x₁"
+        },
+        {
+          "text": "22000€ pro Motorboot",
+          "bedeutung": "22000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "200 Arbeitsstunden",
+            "bedeutung": "200x₁"
+          },
+          {
+            "text": "pro Motorboot 300 Arbeitsstunden",
+            "bedeutung": "+ 300x₂"
+          },
+          {
+            "text": "maximal 6000 Arbeitsstunden",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "ein Segelboot 100 Einheiten",
+            "bedeutung": "100x₁"
+          },
+          {
+            "text": "ein Motorboot 200 Einheiten",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "4000 Einheiten",
+            "bedeutung": "≤ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Mindestbestellung von 5 Segelbooten",
+            "bedeutung": "x₁ ≥ 5"
+          }
+        ],
+        [
+          {
+            "text": "3 Motorbooten",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 25 Boote insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 25"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiefabrik",
+    "beschreibung": "Eine Chemiefabrik stellt Chemikalie A und Chemikalie B her. Der Gewinn beträgt 10€ pro Liter Chemikalie A und 8€ pro Liter Chemikalie B. An Reaktorkapazität stehen 3000 Stunden zur Verfügung, wobei Chemikalie A 2 Stunden und Chemikalie B 1 Stunde pro Liter benötigt. Die Gesamtproduktion darf maximal 2000 Liter betragen. Es gilt die Vorschrift: Mindestens 30% des Gesamtoutputs muss Chemikalie A sein, also x1 ≥ 0,3(x1 + x2), was umgeformt 0,7x1 - 0,3x2 ≥ 0 ergibt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter Chemikalie A",
+      "x2 = Liter Chemikalie B"
+    ],
+    "zielfunktion": "Z = 10x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + x2 ≤ 3000 (Reaktorkapazität)",
+      "x1 + x2 ≤ 2000 (Gesamtproduktion)",
+      "0,7x1 - 0,3x2 ≥ 0 (Mindestanteil A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Prozentbedingung 'mindestens 30% des Gesamtoutputs' wird so formuliert: x1 ≥ 0,3(x1 + x2). Ausmultiplizieren: x1 ≥ 0,3x1 + 0,3x2. Umstellen: 0,7x1 - 0,3x2 ≥ 0. Diese Umformung ist ein häufiger Stolperstein!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "10€ pro Liter Chemikalie A",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "8€ pro Liter Chemikalie B",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Chemikalie A 2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Chemikalie B 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "3000 Stunden",
+            "bedeutung": "≤ 3000"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtproduktion darf maximal 2000 Liter betragen",
+            "bedeutung": "x₁ + x₂ ≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "Mindestens 30% des Gesamtoutputs muss Chemikalie A sein",
+            "bedeutung": "0,7x₁ - 0,3x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbellager",
+    "beschreibung": "Ein Möbellager muss Tische und Stühle für eine Bestellung produzieren. Die Herstellungskosten betragen 50€ pro Tisch und 30€ pro Stuhl. Für die Montage stehen 800 Stunden zur Verfügung, wobei ein Tisch 4 Stunden und ein Stuhl 2 Stunden benötigt. Es müssen insgesamt mindestens 200 Möbelstücke geliefert werden. Außerdem sollen mindestens doppelt so viele Stühle wie Tische produziert werden, also x2 ≥ 2x1. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tische",
+      "x2 = Anzahl Stühle"
+    ],
+    "zielfunktion": "Z = 50x1 + 30x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 800 (Montage)",
+      "x1 + x2 ≥ 200 (Mindestlieferung)",
+      "-2x1 + x2 ≥ 0 (Verhältnis Stühle zu Tische)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens doppelt so viele Stühle wie Tische' bedeutet x2 ≥ 2x1, also -2x1 + x2 ≥ 0. Hier wird minimiert bei gleichzeitiger Mindestliefermenge (≥ 200) und Verhältnisbedingung. Der zulässige Bereich wird von ≥-Bedingungen nach unten und von ≤-Bedingung nach oben begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50€ pro Tisch",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "30€ pro Stuhl",
+          "bedeutung": "30 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "ein Tisch 4 Stunden",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "ein Stuhl 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "800 Stunden",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 200 Möbelstücke",
+            "bedeutung": "x₁ + x₂ ≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "mindestens doppelt so viele Stühle wie Tische",
+            "bedeutung": "-2x₁ + x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Softwarefirma",
+    "beschreibung": "Eine Softwarefirma entwickelt Webapplikationen (Projekt A) und Mobile Apps (Projekt B). Der Gewinn beträgt 8000€ pro Webapplikation und 12000€ pro Mobile App. Das Budget ist auf 120000€ begrenzt, wobei eine Webapplikation 10000€ und eine Mobile App 15000€ kostet. An Entwicklerstunden stehen 2000 zur Verfügung, wobei Projekt A 100 Stunden und Projekt B 200 Stunden benötigt. Es müssen insgesamt mindestens 6 Projekte realisiert werden. Außerdem dürfen höchstens 3-mal so viele Mobile Apps wie Webapplikationen entwickelt werden, also x2 ≤ 3x1.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Webapplikationen",
+      "x2 = Anzahl Mobile Apps"
+    ],
+    "zielfunktion": "Z = 8000x1 + 12000x2 (max)",
+    "nebenbedingungen": [
+      "10000x1 + 15000x2 ≤ 120000 (Budget)",
+      "100x1 + 200x2 ≤ 2000 (Entwicklerstunden)",
+      "x1 + x2 ≥ 6 (Mindestprojekte)",
+      "-3x1 + x2 ≤ 0 (Verhältnis Apps zu Web)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei verschiedene Nebenbedingungstypen in einem Problem: Budget ≤ (Kapazität), Mindestprojekte ≥ (Untergrenze) und Verhältnis x2 ≤ 3x1 (umgestellt: -3x1 + x2 ≤ 0). Achten Sie bei jeder Bedingung auf die korrekte Richtung!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8000€ pro Webapplikation",
+          "bedeutung": "8000 × x₁"
+        },
+        {
+          "text": "12000€ pro Mobile App",
+          "bedeutung": "12000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "eine Webapplikation 10000€",
+            "bedeutung": "10000x₁"
+          },
+          {
+            "text": "eine Mobile App 15000€",
+            "bedeutung": "+ 15000x₂"
+          },
+          {
+            "text": "Budget ist auf 120000€ begrenzt",
+            "bedeutung": "≤ 120000"
+          }
+        ],
+        [
+          {
+            "text": "Projekt A 100 Stunden",
+            "bedeutung": "100x₁"
+          },
+          {
+            "text": "Projekt B 200 Stunden",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "2000",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 6 Projekte",
+            "bedeutung": "x₁ + x₂ ≥ 6"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 3-mal so viele Mobile Apps wie Webapplikationen",
+            "bedeutung": "-3x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Papiermühle",
+    "beschreibung": "Eine Papiermühle produziert Recyclingpapier (Sorte A) und Premiumpapier (Sorte B). Die Kosten betragen 3€ pro Tonne Recyclingpapier und 7€ pro Tonne Premiumpapier. Die Tagesproduktion muss genau 400 Tonnen betragen, also x1 + x2 = 400. Für die Qualitätskontrolle stehen 600 Stunden zur Verfügung, wobei Recyclingpapier 1 Stunde und Premiumpapier 2 Stunden pro Tonne benötigt. Außerdem muss der Qualitätsindex mindestens 300 Punkte erreichen, wobei Recyclingpapier 0,5 Punkte und Premiumpapier 1 Punkt pro Tonne beiträgt, also 0,5x1 + x2 ≥ 300. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Recyclingpapier",
+      "x2 = Tonnen Premiumpapier"
+    ],
+    "zielfunktion": "Z = 3x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 400 (Tagesproduktion)",
+      "x1 + 2x2 ≤ 600 (Qualitätskontrolle)",
+      "0,5x1 + x2 ≥ 300 (Qualitätsindex)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem kombiniert eine Gleichung (= 400) mit einer ≥-Bedingung (Qualitätsindex). Die Gleichung fixiert die Gesamtmenge, die ≥-Bedingung sichert die Mindestqualität. Bei Minimierung sucht man die billigste Mischung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Tonne Recyclingpapier",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "7€ pro Tonne Premiumpapier",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagesproduktion muss genau 400 Tonnen betragen",
+            "bedeutung": "x₁ + x₂ = 400"
+          }
+        ],
+        [
+          {
+            "text": "Recyclingpapier 1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Premiumpapier 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "600 Stunden",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Recyclingpapier 0,5 Punkte",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "Premiumpapier 1 Punkt",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "mindestens 300 Punkte",
+            "bedeutung": "≥ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ölraffinerie",
+    "beschreibung": "Eine Ölraffinerie mischt Rohöl A und Rohöl B zu Benzin. Die Kosten betragen 50€ pro Barrel Rohöl A und 70€ pro Barrel Rohöl B. Es müssen genau 1000 Barrel Benzin produziert werden, also x1 + x2 = 1000. Die Oktanzahl von Rohöl A beträgt 85 und die von Rohöl B beträgt 95. Die Oktanzahl des Gemischs muss mindestens 88 betragen, also 85x1 + 95x2 ≥ 88000. Gleichzeitig darf die Oktanzahl höchstens 92 betragen, also 85x1 + 95x2 ≤ 92000. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Barrel Rohöl A",
+      "x2 = Barrel Rohöl B"
+    ],
+    "zielfunktion": "Z = 50x1 + 70x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "85x1 + 95x2 ≥ 88000 (Mindest-Oktanzahl)",
+      "85x1 + 95x2 ≤ 92000 (Maximal-Oktanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bei Mischungsproblemen mit Qualitätsgrenzen: Die Mindestoktanzahl 88 bei 1000 Barrel ergibt die ≥-Bedingung 85x1 + 95x2 ≥ 88 × 1000 = 88000. Die Maximaloktanzahl 92 ergibt analog 85x1 + 95x2 ≤ 92000. Beides zusammen bildet einen Korridor.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50€ pro Barrel Rohöl A",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "70€ pro Barrel Rohöl B",
+          "bedeutung": "70 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "genau 1000 Barrel Benzin",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "Oktanzahl von Rohöl A beträgt 85",
+            "bedeutung": "85x₁"
+          },
+          {
+            "text": "Rohöl B beträgt 95",
+            "bedeutung": "+ 95x₂"
+          },
+          {
+            "text": "mindestens 88",
+            "bedeutung": "≥ 88000"
+          }
+        ],
+        [
+          {
+            "text": "Oktanzahl von Rohöl A beträgt 85",
+            "bedeutung": "85x₁"
+          },
+          {
+            "text": "Rohöl B beträgt 95",
+            "bedeutung": "+ 95x₂"
+          },
+          {
+            "text": "höchstens 92",
+            "bedeutung": "≤ 92000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textilfärberei",
+    "beschreibung": "Eine Textilfärberei produziert Stoff in Farbe A und Farbe B. Der Erlös beträgt 15€ pro Meter Farbe A und 20€ pro Meter Farbe B. Pro Meter Farbe A werden 2 Stunden Färbezeit benötigt, pro Meter Farbe B 3 Stunden, bei maximal 1800 Stunden. An Farbstoff stehen 1000 Einheiten zur Verfügung, wobei Farbe A 1 Einheit und Farbe B 2 Einheiten verbraucht. Farbe B soll mindestens 40% der Gesamtproduktion ausmachen, also x2 ≥ 0,4(x1 + x2), was umgeformt -0,4x1 + 0,6x2 ≥ 0 ergibt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Meter Stoff in Farbe A",
+      "x2 = Meter Stoff in Farbe B"
+    ],
+    "zielfunktion": "Z = 15x1 + 20x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 1800 (Färbezeit)",
+      "x1 + 2x2 ≤ 1000 (Farbstoff)",
+      "-0,4x1 + 0,6x2 ≥ 0 (Mindestanteil Farbe B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens 40% der Gesamtproduktion' heißt x2 ≥ 0,4(x1 + x2). Auflösen: x2 ≥ 0,4x1 + 0,4x2, also 0,6x2 ≥ 0,4x1, also -0,4x1 + 0,6x2 ≥ 0. Prozentbedingungen beziehen sich immer auf die Gesamtmenge!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "15€ pro Meter Farbe A",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "20€ pro Meter Farbe B",
+          "bedeutung": "20 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Färbezeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Meter Farbe B 3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 1800 Stunden",
+            "bedeutung": "≤ 1800"
+          }
+        ],
+        [
+          {
+            "text": "Farbe A 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Farbe B 2 Einheiten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "1000 Einheiten",
+            "bedeutung": "≤ 1000"
+          }
+        ],
+        [
+          {
+            "text": "Farbe B soll mindestens 40% der Gesamtproduktion ausmachen",
+            "bedeutung": "-0,4x₁ + 0,6x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baumschule",
+    "beschreibung": "Eine Baumschule züchtet Obstbäume (Sorte A) und Zierbäume (Sorte B). Der Gewinn beträgt 35€ pro Obstbaum und 45€ pro Zierbaum. An Beetfläche stehen 1200 Quadratmeter zur Verfügung, wobei ein Obstbaum 3 Quadratmeter und ein Zierbaum 4 Quadratmeter benötigt. Die Bewässerungskapazität beträgt 800 Einheiten, wobei ein Obstbaum 2 Einheiten und ein Zierbaum 3 Einheiten braucht. Es darf nicht weniger von Sorte A als von Sorte B gezüchtet werden, also x1 ≥ x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Obstbäume",
+      "x2 = Anzahl Zierbäume"
+    ],
+    "zielfunktion": "Z = 35x1 + 45x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≤ 1200 (Beetfläche)",
+      "2x1 + 3x2 ≤ 800 (Bewässerung)",
+      "x1 ≥ x2 (Mindestens gleich viel A wie B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'nicht weniger von A als von B' heißt x1 ≥ x2, also x1 - x2 ≥ 0. Das ist eine einfache Vergleichsbedingung zwischen den beiden Variablen. Grafisch teilt diese Linie x1 = x2 den ersten Quadranten diagonal.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Obstbaum",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "45€ pro Zierbaum",
+          "bedeutung": "45 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "ein Obstbaum 3 Quadratmeter",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "ein Zierbaum 4 Quadratmeter",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "1200 Quadratmeter",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "ein Obstbaum 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "ein Zierbaum 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "800 Einheiten",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "nicht weniger von Sorte A als von Sorte B",
+            "bedeutung": "x₁ ≥ x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Recyclinganlage",
+    "beschreibung": "Eine Recyclinganlage verarbeitet Kunststoff (Typ A) und Glas (Typ B). Die Verarbeitungskosten betragen 6€ pro Tonne Kunststoff und 4€ pro Tonne Glas. Die Anlage hat eine Kapazität von maximal 500 Tonnen pro Tag. Es müssen mindestens 150 Tonnen Kunststoff und mindestens 100 Tonnen Glas verarbeitet werden. Die Sortieranlage kann 300 Einheiten leisten, wobei Kunststoff 1 Einheit und Glas 0,5 Einheiten pro Tonne benötigt. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Kunststoff pro Tag",
+      "x2 = Tonnen Glas pro Tag"
+    ],
+    "zielfunktion": "Z = 6x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 500 (Anlagenkapazität)",
+      "x1 + 0,5x2 ≤ 300 (Sortieranlage)",
+      "x1 ≥ 150 (Mindestmenge Kunststoff)",
+      "x2 ≥ 100 (Mindestmenge Glas)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bei Minimierung mit Mindestmengen muss der zulässige Bereich sowohl durch Obergrenzen (≤ Kapazitäten) als auch durch Untergrenzen (≥ Mindestmengen) begrenzt sein. Der kostenminimale Punkt erfüllt alle Bedingungen gleichzeitig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "6€ pro Tonne Kunststoff",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "4€ pro Tonne Glas",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Kapazität von maximal 500 Tonnen pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 500"
+          }
+        ],
+        [
+          {
+            "text": "Kunststoff 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Glas 0,5 Einheiten",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "300 Einheiten",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 150 Tonnen Kunststoff",
+            "bedeutung": "x₁ ≥ 150"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 100 Tonnen Glas",
+            "bedeutung": "x₂ ≥ 100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Konservenfabrik",
+    "beschreibung": "Eine Konservenfabrik produziert Dosentomaten (Typ A) und Dosenmais (Typ B). Der Gewinn beträgt 2€ pro Dose Tomaten und 3€ pro Dose Mais. Die Abfüllmaschine schafft pro Schicht 4000 Dosen, wobei Tomaten 1 Einheit und Mais 2 Einheiten Maschinenzeit kosten. An Rohmaterial stehen 3000 Einheiten zur Verfügung, wobei Tomaten 1 Einheit und Mais 1 Einheit pro Dose benötigen. Ein Großkunde bestellt mindestens 500 Dosen Tomaten und mindestens 800 Dosen Mais. Die Gesamtkapazität beträgt maximal 2500 Dosen.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Dosen Tomaten",
+      "x2 = Anzahl Dosen Mais"
+    ],
+    "zielfunktion": "Z = 2x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 4000 (Maschinenzeit)",
+      "x1 + x2 ≤ 3000 (Rohmaterial)",
+      "x1 ≥ 500 (Mindestbestellung Tomaten)",
+      "x2 ≥ 800 (Mindestbestellung Mais)",
+      "x1 + x2 ≤ 2500 (Gesamtkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem hat fünf Nebenbedingungen: zwei ≤-Kapazitäten, zwei ≥-Mindestbestellungen und eine ≤-Gesamtkapazität. Prüfen Sie, ob die Mindestbestellungen zusammen (500 + 800 = 1300) die Gesamtkapazität von 2500 nicht überschreiten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro Dose Tomaten",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "3€ pro Dose Mais",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tomaten 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Mais 2 Einheiten Maschinenzeit",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "4000 Dosen",
+            "bedeutung": "≤ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Tomaten 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Mais 1 Einheit pro Dose",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "3000 Einheiten",
+            "bedeutung": "≤ 3000"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 500 Dosen Tomaten",
+            "bedeutung": "x₁ ≥ 500"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 800 Dosen Mais",
+            "bedeutung": "x₂ ≥ 800"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtkapazität beträgt maximal 2500 Dosen",
+            "bedeutung": "x₁ + x₂ ≤ 2500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauhaus",
+    "beschreibung": "Ein Brauhaus stellt Helles (Bier A) und Dunkles (Bier B) her. Der Gewinn beträgt 5€ pro Fass Helles und 7€ pro Fass Dunkles. Pro Fass Helles werden 2 Stunden Brauzeit benötigt, pro Fass Dunkles 4 Stunden, bei einer Gesamtkapazität von 2400 Stunden. An Lagertankkapazität stehen 800 Fässer zur Verfügung. Das Rezept verlangt: Es muss doppelt so viel Malz wie Hopfen verwendet werden, was sich in der Produktion so niederschlägt, dass genau doppelt so viel Helles wie Dunkles gebraut wird, also x1 = 2x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Fässer Helles",
+      "x2 = Fässer Dunkles"
+    ],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 2400 (Brauzeit)",
+      "x1 + x2 ≤ 800 (Lagertank)",
+      "x1 = 2x2 (Rezeptverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichung x1 = 2x2 ist eine strikte Verhältnisbedingung: Für jedes Fass Dunkles müssen genau 2 Fässer Helles gebraut werden. Dies reduziert den zulässigen Bereich auf eine Linie. Das Optimum liegt auf dieser Linie am Schnittpunkt mit einer der anderen Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "5€ pro Fass Helles",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "7€ pro Fass Dunkles",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Brauzeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Fass Dunkles 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 2400 Stunden",
+            "bedeutung": "≤ 2400"
+          }
+        ],
+        [
+          {
+            "text": "800 Fässer",
+            "bedeutung": "x₁ + x₂ ≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "genau doppelt so viel Helles wie Dunkles",
+            "bedeutung": "x₁ = 2x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Windpark",
+    "beschreibung": "Ein Energieunternehmen plant einen Windpark mit kleinen Turbinen (Typ A) und großen Turbinen (Typ B). Die Kosten betragen 200000€ pro kleine Turbine und 500000€ pro große Turbine. Es dürfen maximal 30 Turbinen insgesamt aufgestellt werden. Das Budget beträgt 8000000€. Die Mindestleistung des Parks muss 50 MW betragen, wobei eine kleine Turbine 1 MW und eine große Turbine 3 MW liefert, also x1 + 3x2 ≥ 50. Es müssen mindestens 5 große Turbinen gebaut werden. Die Kosten sollen minimiert werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl kleine Turbinen",
+      "x2 = Anzahl große Turbinen"
+    ],
+    "zielfunktion": "Z = 200000x1 + 500000x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 30 (Maximale Turbinenzahl)",
+      "200000x1 + 500000x2 ≤ 8000000 (Budget)",
+      "x1 + 3x2 ≥ 50 (Mindestleistung)",
+      "x2 ≥ 5 (Mindestanzahl große Turbinen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier wird die Zielfunktion minimiert, aber es gibt gleichzeitig eine Budgetbeschränkung als ≤-Bedingung. Die Mindestleistung x1 + 3x2 ≥ 50 ist eine ≥-Bedingung. Prüfen Sie, ob alle Bedingungen gleichzeitig erfüllbar sind!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "200000€ pro kleine Turbine",
+          "bedeutung": "200000 × x₁"
+        },
+        {
+          "text": "500000€ pro große Turbine",
+          "bedeutung": "500000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "maximal 30 Turbinen insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "200000€",
+            "bedeutung": "200000x₁"
+          },
+          {
+            "text": "500000€",
+            "bedeutung": "+ 500000x₂"
+          },
+          {
+            "text": "Budget beträgt 8000000€",
+            "bedeutung": "≤ 8000000"
+          }
+        ],
+        [
+          {
+            "text": "eine kleine Turbine 1 MW",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "eine große Turbine 3 MW",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Mindestleistung des Parks muss 50 MW betragen",
+            "bedeutung": "≥ 50"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 5 große Turbinen",
+            "bedeutung": "x₂ ≥ 5"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bioreaktor",
+    "beschreibung": "Ein Biotechnologieunternehmen betreibt einen Bioreaktor zur Herstellung von Enzym A und Enzym B. Die Herstellungskosten betragen 25€ pro Einheit Enzym A und 40€ pro Einheit Enzym B. Die Reaktorkapazität beträgt maximal 600 Einheiten. An Nährstoff stehen 1500 Einheiten zur Verfügung, wobei Enzym A 2 Einheiten und Enzym B 3 Einheiten Nährstoff benötigt. Das Verhältnis muss exakt 1 zu 3 sein, also x2 = 3x1. Der Gesamtertrag muss mindestens 400 Einheiten betragen, also x1 + x2 ≥ 400. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Einheiten Enzym A",
+      "x2 = Einheiten Enzym B"
+    ],
+    "zielfunktion": "Z = 25x1 + 40x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 600 (Reaktorkapazität)",
+      "2x1 + 3x2 ≤ 1500 (Nährstoff)",
+      "x2 = 3x1 (Verhältnis 1:3)",
+      "x1 + x2 ≥ 400 (Mindest-Gesamtertrag)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem kombiniert drei schwierige Nebenbedingungstypen: eine Gleichung (x2 = 3x1), eine ≥-Bedingung (Mindestertrag) und ≤-Bedingungen (Kapazitäten). Die Gleichung reduziert das Problem quasi auf eine Variable. Setzen Sie x2 = 3x1 in die anderen Bedingungen ein!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ pro Einheit Enzym A",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "40€ pro Einheit Enzym B",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Reaktorkapazität beträgt maximal 600 Einheiten",
+            "bedeutung": "x₁ + x₂ ≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Enzym A 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Enzym B 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "1500 Einheiten",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "Verhältnis muss exakt 1 zu 3 sein",
+            "bedeutung": "x₂ = 3x₁"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtertrag muss mindestens 400 Einheiten betragen",
+            "bedeutung": "x₁ + x₂ ≥ 400"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Foodtruck-Festival: Burger vs. Tacos",
+    "beschreibung": "Auf dem legendären Streetfood-Festival am Rheinufer betreibst du den beliebtesten Foodtruck der Stadt. Du verkaufst zwei Klassiker: saftige Smash-Burger mit einem Gewinn von 5€ pro Stück und knusprige Fish-Tacos mit einem Gewinn von 3€ pro Stück. Für einen Burger brauchst du 300g Fleisch, für einen Taco 100g Fisch – insgesamt hast du 24 kg Fleisch und Fisch zusammen, also 24000g verfügbar. Außerdem dauert die Zubereitung pro Burger 4 Minuten und pro Taco 3 Minuten, und dein Team schafft maximal 360 Minuten Zubereitungszeit am Tag. Wie viele Burger und Tacos solltest du verkaufen, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Burger",
+      "x2 = Anzahl Tacos"
+    ],
+    "zielfunktion": "Z = 5x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "300x1 + 100x2 ≤ 24000 (Zutaten)",
+      "4x1 + 3x2 ≤ 360 (Zubereitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die Einheiten: Fleisch/Fisch ist in Gramm angegeben (24000g = 24kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 5€ pro Stück",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Gewinn von 3€ pro Stück",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "300g Fleisch",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "100g Fisch",
+            "bedeutung": "+ 100x₂"
+          },
+          {
+            "text": "24000g verfügbar",
+            "bedeutung": "≤ 24000"
+          }
+        ],
+        [
+          {
+            "text": "pro Burger 4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "pro Taco 3 Minuten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "360 Minuten Zubereitungszeit",
+            "bedeutung": "≤ 360"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Escape Room: Grusel oder Rätsel?",
+    "beschreibung": "Du bist stolzer Betreiber zweier Escape Rooms in einer alten Fabrikhalle. Dein Grusel-Room »Keller des Grauens« bringt 180€ pro Durchgang ein, der Rätsel-Room »Da Vincis Geheimnis« bringt 120€ pro Durchgang. Für den Grusel-Room brauchst du 3 Schauspieler pro Durchgang, für den Rätsel-Room nur 1 Schauspieler. Du hast insgesamt 15 Schauspieler zur Verfügung. Jeder Durchgang belegt einen Raum für 2 Stunden beim Grusel-Room und 1 Stunde beim Rätsel-Room. Pro Tag stehen dir 12 Raumstunden zur Verfügung. Außerdem kannst du maximal 8 Durchgänge pro Tag insgesamt durchführen. Wie maximierst du deine Einnahmen?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Durchgänge Grusel-Room",
+      "x2 = Anzahl Durchgänge Rätsel-Room"
+    ],
+    "zielfunktion": "Z = 180x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 15 (Schauspieler)",
+      "2x1 + x2 ≤ 12 (Raumstunden)",
+      "x1 + x2 ≤ 8 (Durchgänge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Schauspieler, Raumstunden und Gesamtdurchgänge. Zeichne alle drei Geraden ein.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "180€ pro Durchgang",
+          "bedeutung": "180 × x₁"
+        },
+        {
+          "text": "120€ pro Durchgang",
+          "bedeutung": "120 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Schauspieler pro Durchgang",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1 Schauspieler",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "15 Schauspieler zur Verfügung",
+            "bedeutung": "≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden beim Grusel-Room",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "1 Stunde beim Rätsel-Room",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "12 Raumstunden",
+            "bedeutung": "≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "8 Durchgänge pro Tag insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Tattoo-Studio: Kleine Motive, große Kunst",
+    "beschreibung": "In deinem Tattoo-Studio »Nadel & Faden« bietest du zwei Kategorien an: kleine Tattoos (z.B. Symbole, Schriftzüge) für 80€ pro Stück und große Tattoos (z.B. Sleeves, Rückenteile) für 350€ pro Stück. Ein kleines Tattoo dauert 1 Stunde, ein großes Tattoo 4 Stunden – du hast pro Woche 40 Stunden Arbeitszeit. An Tinte verbrauchst du 2 ml für ein kleines Tattoo und 8 ml für ein großes, und dein Vorrat beträgt 80 ml pro Woche. Außerdem kannst du wegen der Terminplanung maximal 15 kleine Tattoos pro Woche annehmen. Wie planst du die Woche, um den Umsatz zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl kleine Tattoos",
+      "x2 = Anzahl große Tattoos"
+    ],
+    "zielfunktion": "Z = 80x1 + 350x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 4x2 ≤ 40 (Arbeitszeit)",
+      "2x1 + 8x2 ≤ 80 (Tinte)",
+      "x1 ≤ 15 (Termine kleine Tattoos)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Tinten-Nebenbedingung ist ein Vielfaches der Arbeitszeit-NB – prüfe, ob sie wirklich eine zusätzliche Einschränkung darstellt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "80€ pro Stück",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "350€ pro Stück",
+          "bedeutung": "350 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "40 Stunden Arbeitszeit",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "2 ml für ein kleines Tattoo",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "8 ml für ein großes",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "80 ml pro Woche",
+            "bedeutung": "≤ 80"
+          }
+        ],
+        [
+          {
+            "text": "15 kleine Tattoos pro Woche",
+            "bedeutung": "x₁ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Craft-Bier-Startup: IPA trifft Stout",
+    "beschreibung": "Dein Craft-Bier-Startup »Hopfenträume« braut zwei Biersorten: ein fruchtiges IPA und ein samtiges Stout. Pro Liter IPA verdienst du 6€, pro Liter Stout 8€. Für einen Liter IPA benötigst du 5g Hopfen und für einen Liter Stout 2g Hopfen – insgesamt stehen 400g Hopfen zur Verfügung. An Malz brauchst du 3g pro Liter IPA und 6g pro Liter Stout, wobei du 480g Malz auf Lager hast. Die Gärung dauert 2 Stunden pro Liter IPA und 3 Stunden pro Liter Stout, und du hast 240 Stunden Gärkapazität. Außerdem verlangt dein Vertriebspartner, dass du mindestens 20 Liter IPA produzierst. Wie viel braust du von jeder Sorte, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter IPA",
+      "x2 = Liter Stout"
+    ],
+    "zielfunktion": "Z = 6x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≤ 400 (Hopfen)",
+      "3x1 + 6x2 ≤ 480 (Malz)",
+      "2x1 + 3x2 ≤ 240 (Gärkapazität)",
+      "x1 ≥ 20 (Mindestmenge IPA)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achtung: Die Mindestmenge IPA ist eine ≥-Bedingung – das zulässige Gebiet beginnt erst bei x₁ = 20.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "6€",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "8€",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5g Hopfen",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "2g Hopfen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "400g Hopfen",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "3g pro Liter IPA",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "6g pro Liter Stout",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "480g Malz",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro Liter IPA",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Stunden pro Liter Stout",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "240 Stunden Gärkapazität",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 20 Liter IPA",
+            "bedeutung": "x₁ ≥ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Podcast-Produktion: Interview oder Solo?",
+    "beschreibung": "Du produzierst den True-Crime-Podcast »Mordakte Mittwoch« und planst die nächsten Wochen. Pro Interview-Episode erreichst du 8000 Hörer, pro Solo-Episode 5000 Hörer. Eine Interview-Folge benötigt 6 Stunden Produktionszeit, eine Solo-Folge 3 Stunden – du hast 36 Stunden pro Monat verfügbar. In der Nachbearbeitung kostet ein Interview 4 Stunden Schnitt und eine Solo-Folge 2 Stunden Schnitt, wobei dein Editor insgesamt 28 Stunden pro Monat arbeiten kann. Dein Sponsor verlangt außerdem mindestens 3 Solo-Episoden pro Monat. Wie viele Episoden jedes Typs produzierst du, um die Reichweite zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Interview-Episoden",
+      "x2 = Anzahl Solo-Episoden"
+    ],
+    "zielfunktion": "Z = 8000x1 + 5000x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 36 (Produktionszeit)",
+      "4x1 + 2x2 ≤ 28 (Schnittzeit)",
+      "x2 ≥ 3 (Mindest-Solo-Episoden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Sponsor verlangt mindestens 3 Solo-Episoden – das ist eine ≥-Bedingung für x₂.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8000 Hörer",
+          "bedeutung": "8000 × x₁"
+        },
+        {
+          "text": "5000 Hörer",
+          "bedeutung": "5000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden Produktionszeit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "36 Stunden pro Monat verfügbar",
+            "bedeutung": "≤ 36"
+          }
+        ],
+        [
+          {
+            "text": "4 Stunden Schnitt",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Stunden Schnitt",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "28 Stunden pro Monat",
+            "bedeutung": "≤ 28"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Solo-Episoden",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "YouTuber: Tutorials vs. Vlogs",
+    "beschreibung": "Als erfolgreicher Tech-YouTuber »GadgetGuru« verdienst du durch Werbung 120€ pro Tutorial-Video und 75€ pro Vlog. Das Filmen eines Tutorials dauert 5 Stunden, ein Vlog braucht 2 Stunden – dir stehen 40 Stunden Filmzeit pro Monat zur Verfügung. Die Nachbearbeitung verschlingt 8 Stunden pro Tutorial und 3 Stunden pro Vlog, und dein Cutter hat 48 Stunden pro Monat. Da deine Community nach Abwechslung verlangt, willst du insgesamt höchstens 10 Videos im Monat veröffentlichen. Wie viele Tutorials und Vlogs drehst du, um die Werbeeinnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Tutorials",
+      "x2 = Anzahl Vlogs"
+    ],
+    "zielfunktion": "Z = 120x1 + 75x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≤ 40 (Filmzeit)",
+      "8x1 + 3x2 ≤ 48 (Nachbearbeitung)",
+      "x1 + x2 ≤ 10 (Videoanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Begrenzungen: Filmzeit, Schnittzeit und Gesamtanzahl Videos. Alle drei Geraden ergeben das zulässige Gebiet.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "120€ pro Tutorial-Video",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "75€ pro Vlog",
+          "bedeutung": "75 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "40 Stunden Filmzeit",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "8 Stunden pro Tutorial",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "3 Stunden pro Vlog",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "48 Stunden pro Monat",
+            "bedeutung": "≤ 48"
+          }
+        ],
+        [
+          {
+            "text": "10 Videos im Monat",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hundeschule: Einzel oder Gruppe?",
+    "beschreibung": "In deiner Hundeschule »Pfote drauf!« musst du diese Woche die Kosten im Griff behalten. Ein Einzeltraining kostet dich 40€ an Aufwand, ein Gruppenkurs kostet dich 60€ an Aufwand. Dein Vertrag mit der Gemeinde schreibt vor, dass du pro Woche mindestens 10 Trainingseinheiten insgesamt anbietest. Außerdem müssen mindestens 3 Gruppenkurse pro Woche stattfinden, da die Warteliste lang ist. Wie viele Trainings jeder Art bietest du an, um die Kosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Einzeltrainings",
+      "x2 = Anzahl Gruppenkurse"
+    ],
+    "zielfunktion": "Z = 40x1 + 60x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 10 (Mindesttrainings)",
+      "x2 ≥ 3 (Mindest-Gruppenkurse)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich beginnt bei x₂ = 3 und x₁ + x₂ = 10.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ an Aufwand",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "60€ an Aufwand",
+          "bedeutung": "60 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 10 Trainingseinheiten insgesamt",
+            "bedeutung": "x₁ + x₂ ≥ 10"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Gruppenkurse",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Imker: Blüten- oder Waldhonig?",
+    "beschreibung": "Als leidenschaftlicher Imker am Bodensee produzierst du zwei Honigsorten: feinen Blütenhonig mit einem Gewinn von 12€ pro Glas und kräftigen Waldhonig mit einem Gewinn von 15€ pro Glas. Für die Produktion eines Glases Blütenhonig brauchst du die Kapazität von 2 Bienenstöcken, für ein Glas Waldhonig 3 Bienenstöcke – du bewirtschaftest insgesamt 60 Bienenstöcke. Die Abfüllung dauert 10 Minuten pro Glas Blütenhonig und 15 Minuten pro Glas Waldhonig, wobei dir insgesamt 300 Minuten Abfüllzeit pro Tag zur Verfügung stehen. Wie viele Gläser jeder Sorte füllst du ab, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gläser Blütenhonig",
+      "x2 = Anzahl Gläser Waldhonig"
+    ],
+    "zielfunktion": "Z = 12x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 60 (Bienenstöcke)",
+      "10x1 + 15x2 ≤ 300 (Abfüllzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Prüfe, ob die zweite Nebenbedingung ein Vielfaches der ersten ist – das vereinfacht die Lösung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 12€ pro Glas",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Gewinn von 15€ pro Glas",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Bienenstöcken",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Bienenstöcke",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "60 Bienenstöcke",
+            "bedeutung": "≤ 60"
+          }
+        ],
+        [
+          {
+            "text": "10 Minuten pro Glas Blütenhonig",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "15 Minuten pro Glas Waldhonig",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "300 Minuten Abfüllzeit",
+            "bedeutung": "≤ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Surfschule: Anfänger und Profis",
+    "beschreibung": "Du betreibst die Surfschule »Wellenreiter« an der Nordsee. Ein Anfängerkurs bringt 60€ ein, ein Fortgeschrittenenkurs bringt 100€ ein. Pro Anfängerkurs brauchst du 4 Surfbretter, pro Fortgeschrittenenkurs 2 Surfbretter – du hast insgesamt 24 Surfbretter. Einen Anfängerkurs leitet 1 Instructor, einen Fortgeschrittenenkurs leiten 2 Instructors – dir stehen 10 Instructors zur Verfügung. Aus Sicherheitsgründen dürfen maximal 7 Kurse gleichzeitig stattfinden. Wie viele Kurse jeder Art bietest du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Anfängerkurse",
+      "x2 = Anzahl Fortgeschrittenenkurse"
+    ],
+    "zielfunktion": "Z = 60x1 + 100x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 24 (Surfbretter)",
+      "x1 + 2x2 ≤ 10 (Instructors)",
+      "x1 + x2 ≤ 7 (Kurse maximal)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen: Surfbretter, Instructors und Gesamtzahl der Kurse. Prüfe alle Eckpunkte.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "60€",
+          "bedeutung": "60 × x₁"
+        },
+        {
+          "text": "100€",
+          "bedeutung": "100 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Surfbretter",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Surfbretter",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "24 Surfbretter",
+            "bedeutung": "≤ 24"
+          }
+        ],
+        [
+          {
+            "text": "1 Instructor",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Instructors",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "10 Instructors",
+            "bedeutung": "≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "7 Kurse gleichzeitig",
+            "bedeutung": "x₁ + x₂ ≤ 7"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zaubershop: Kartentricks und Bühnenzauber",
+    "beschreibung": "In deinem Online-Zaubershop »Hokus Fokus« verkaufst du zwei Sets: ein Kartentricks-Set mit einem Gewinn von 15€ und ein Bühnenzauber-Set mit einem Gewinn von 40€. Für ein Kartentricks-Set benötigst du 2 Stunden Montage und für ein Bühnenzauber-Set 5 Stunden Montage – deine Werkstatt hat 50 Stunden Montagezeit pro Woche. An Materialkosten fallen 10€ pro Kartentricks-Set und 30€ pro Bühnenzauber-Set an, wobei das wöchentliche Materialbudget bei 300€ liegt. Außerdem kannst du maximal 12 Kartentricks-Sets pro Woche verpacken. Wie viele Sets jeder Art produzierst du für maximalen Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Kartentricks-Sets",
+      "x2 = Anzahl Bühnenzauber-Sets"
+    ],
+    "zielfunktion": "Z = 15x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 50 (Montagezeit)",
+      "10x1 + 30x2 ≤ 300 (Materialbudget)",
+      "x1 ≤ 12 (Verpackung Kartentricks)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Prüfe zunächst, ob die Materialbudget-NB eine echte Einschränkung ist oder ob sie durch die Montagezeit-NB dominiert wird.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 15€",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Gewinn von 40€",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Montage",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "5 Stunden Montage",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "50 Stunden Montagezeit",
+            "bedeutung": "≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "10€ pro Kartentricks-Set",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "30€ pro Bühnenzauber-Set",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "300€",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "12 Kartentricks-Sets pro Woche",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bouldering-Halle: Tagespass vs. Monatskarte",
+    "beschreibung": "Deine Bouldering-Halle »Kraxelkönig« bietet Tagespässe und Monatskarten an. Du möchtest die Personalkosten minimieren. Ein Tagespass-Besucher verursacht Personalkosten von 3€, ein Monatskarten-Inhaber verursacht Personalkosten von 1€ pro Besuch. Du musst mindestens 50 Besucher pro Tag haben, um den Betrieb wirtschaftlich zu halten. Außerdem verlangt dein Franchisegeber mindestens 20 Tagespass-Besucher und mindestens 10 Monatskarten-Inhaber pro Tag. Wie sieht die kostenminimale Besuchermischung aus?",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagespass-Besucher",
+      "x2 = Anzahl Monatskarten-Inhaber"
+    ],
+    "zielfunktion": "Z = 3x1 + x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 50 (Mindestbesucher)",
+      "x1 ≥ 20 (Mindest-Tagespass)",
+      "x2 ≥ 10 (Mindest-Monatskarten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich ist nach rechts oben offen. Suche den Eckpunkt mit minimalen Kosten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Personalkosten von 3€",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Personalkosten von 1€",
+          "bedeutung": "1 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 50 Besucher",
+            "bedeutung": "x₁ + x₂ ≥ 50"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 20 Tagespass-Besucher",
+            "bedeutung": "x₁ ≥ 20"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 10 Monatskarten-Inhaber",
+            "bedeutung": "x₂ ≥ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Streetfood: Currywurst gegen Döner",
+    "beschreibung": "Am Wochenmarkt betreibst du den legendären Stand »Wurst & Würze«. Du planst den Einkauf für morgen und willst die Kosten minimieren. Eine Portion Currywurst kostet dich 2€ in der Herstellung, eine Portion Döner kostet dich 3€. Du musst mindestens 80 Portionen insgesamt vorbereiten, um die Standgebühr zu rechtfertigen. Außerdem hat dein Stammkunde eine Vorbestellung aufgegeben: Du brauchst mindestens 30 Portionen Currywurst. Wie viele Portionen bereitest du von jedem Gericht vor, um die Herstellungskosten zu minimieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Portionen Currywurst",
+      "x2 = Anzahl Portionen Döner"
+    ],
+    "zielfunktion": "Z = 2x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 80 (Mindestportionen)",
+      "x1 ≥ 30 (Mindest-Currywurst)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich ist nach rechts oben offen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ in der Herstellung",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "3€",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 80 Portionen insgesamt",
+            "bedeutung": "x₁ + x₂ ≥ 80"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 30 Portionen Currywurst",
+            "bedeutung": "x₁ ≥ 30"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Vintage-Laden: Möbel und Klamotten",
+    "beschreibung": "Dein Vintage-Laden »Retro Paradies« in Berlin-Neukölln verkauft restaurierte Möbelstücke mit einem Gewinn von 200€ pro Stück und ausgewählte Vintage-Kleidung mit einem Gewinn von 30€ pro Stück. Ein Möbelstück benötigt 4 Quadratmeter Lagerfläche, ein Kleidungsstück nur 0,5 Quadratmeter – insgesamt stehen dir 40 Quadratmeter zur Verfügung. Die Restauration eines Möbelstücks dauert 6 Stunden, die Aufbereitung eines Kleidungsstücks 1 Stunde, und du hast 48 Stunden Arbeitszeit pro Woche. Dein Laden kann außerdem maximal 60 Artikel insgesamt ausstellen. Wie viele Möbelstücke und Kleidungsstücke bereitest du auf, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Möbelstücke",
+      "x2 = Anzahl Kleidungsstücke"
+    ],
+    "zielfunktion": "Z = 200x1 + 30x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 0,5x2 ≤ 40 (Lagerfläche)",
+      "6x1 + x2 ≤ 48 (Arbeitszeit)",
+      "x1 + x2 ≤ 60 (Ausstellungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte den Koeffizienten 0,5 bei der Lagerfläche. Du kannst die Nebenbedingung mit 2 multiplizieren, um ganzzahlige Koeffizienten zu erhalten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 200€ pro Stück",
+          "bedeutung": "200 × x₁"
+        },
+        {
+          "text": "Gewinn von 30€ pro Stück",
+          "bedeutung": "30 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Quadratmeter Lagerfläche",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "0,5 Quadratmeter",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "40 Quadratmeter",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "48 Stunden Arbeitszeit",
+            "bedeutung": "≤ 48"
+          }
+        ],
+        [
+          {
+            "text": "60 Artikel insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 60"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Musikschule: Gitarre oder Klavier?",
+    "beschreibung": "Deine Musikschule »Tonleiter« bietet Gitarrenunterricht für 35€ pro Stunde und Klavierunterricht für 45€ pro Stunde an. Pro Gitarrenstunde brauchst du 1 Lehrer, pro Klavierstunde ebenfalls 1 Lehrer – du hast 8 Lehrer insgesamt. An Übungsräumen benötigst du 1 Raum pro Unterrichtsstunde. Du verfügst über 10 Räume. Wie viele Stunden jedes Fachs bietest du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gitarrenstunden",
+      "x2 = Anzahl Klavierstunden"
+    ],
+    "zielfunktion": "Z = 35x1 + 45x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 8 (Lehrer)",
+      "x1 + x2 ≤ 10 (Räume)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen mit gleichen Koeffizienten – welche ist die wirklich einschränkende?",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Stunde",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "45€ pro Stunde",
+          "bedeutung": "45 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Lehrer",
+            "bedeutung": "x₁ + x₂"
+          },
+          {
+            "text": "8 Lehrer insgesamt",
+            "bedeutung": "≤ 8"
+          }
+        ],
+        [
+          {
+            "text": "1 Raum pro Unterrichtsstunde",
+            "bedeutung": "x₁ + x₂"
+          },
+          {
+            "text": "10 Räume",
+            "bedeutung": "≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Drohnenpilot: Luftbilder und Inspektionen",
+    "beschreibung": "Als zertifizierter Drohnenpilot bietest du zwei Dienstleistungen an: Luftaufnahmen für Immobilienmakler zu 250€ pro Auftrag und technische Inspektionen von Windrädern zu 400€ pro Auftrag. Eine Luftaufnahme dauert 2 Flugstunden, eine Inspektion dauert 3 Flugstunden – pro Woche hast du 30 Flugstunden genehmigt. Pro Luftaufnahme verbrauchst du 3 Akkus, pro Inspektion 5 Akkus, und du besitzt 45 voll geladene Akkus pro Woche. Deine Versicherung erlaubt maximal 12 Aufträge pro Woche insgesamt. Wie viele Aufträge jeder Art nimmst du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Luftaufnahmen",
+      "x2 = Anzahl Inspektionen"
+    ],
+    "zielfunktion": "Z = 250x1 + 400x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 30 (Flugstunden)",
+      "3x1 + 5x2 ≤ 45 (Akkus)",
+      "x1 + x2 ≤ 12 (Aufträge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Aufträge. Bestimme die Eckpunkte des zulässigen Bereichs sorgfältig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "250€ pro Auftrag",
+          "bedeutung": "250 × x₁"
+        },
+        {
+          "text": "400€ pro Auftrag",
+          "bedeutung": "400 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Flugstunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Flugstunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "30 Flugstunden",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "3 Akkus",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 Akkus",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "45 voll geladene Akkus",
+            "bedeutung": "≤ 45"
+          }
+        ],
+        [
+          {
+            "text": "12 Aufträge pro Woche",
+            "bedeutung": "x₁ + x₂ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Freizeitpark: Achterbahn und Karussell",
+    "beschreibung": "Du bist Betriebsleiter des Freizeitparks »Adrenalina«. Die Achterbahn kostet 500€ pro Betriebsstunde und das Karussell kostet 200€ pro Betriebsstunde. Die Behörde verlangt, dass mindestens 1200 Besucher pro Tag befördert werden. Die Achterbahn befördert 300 Besucher pro Stunde und das Karussell 150 Besucher pro Stunde. Zusätzlich muss die Achterbahn mindestens 2 Stunden täglich laufen, und das Karussell muss mindestens 3 Stunden täglich laufen. Aus Sicherheitsgründen dürfen insgesamt höchstens 10 Betriebsstunden pro Tag stattfinden. Wie viele Stunden betreibst du jedes Fahrgeschäft, um die Betriebskosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Betriebsstunden Achterbahn",
+      "x2 = Betriebsstunden Karussell"
+    ],
+    "zielfunktion": "Z = 500x1 + 200x2 (min)",
+    "nebenbedingungen": [
+      "300x1 + 150x2 ≥ 1200 (Mindestbesucher)",
+      "x1 ≥ 2 (Mindestbetrieb Achterbahn)",
+      "x2 ≥ 3 (Mindestbetrieb Karussell)",
+      "x1 + x2 ≤ 10 (Maximale Betriebsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥- und ≤-Bedingungen. Zeichne das zulässige Gebiet sorgfältig ein – es ist begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "500€ pro Betriebsstunde",
+          "bedeutung": "500 × x₁"
+        },
+        {
+          "text": "200€ pro Betriebsstunde",
+          "bedeutung": "200 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "300 Besucher pro Stunde",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "150 Besucher pro Stunde",
+            "bedeutung": "+ 150x₂"
+          },
+          {
+            "text": "1200 Besucher pro Tag",
+            "bedeutung": "≥ 1200"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 2 Stunden",
+            "bedeutung": "x₁ ≥ 2"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Stunden",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ],
+        [
+          {
+            "text": "10 Betriebsstunden pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Theatertruppe: Komödie oder Drama?",
+    "beschreibung": "Deine freie Theatertruppe »Vorhang auf!« plant die neue Saison. Eine Komödie bringt 2000€ Einnahmen pro Aufführung, ein Drama bringt 1500€ Einnahmen pro Aufführung. Jede Komödie benötigt 20 Stunden Probezeit, jedes Drama benötigt 30 Stunden Probezeit – insgesamt stehen 240 Stunden Probezeit in der Saison zur Verfügung. Das Produktionsbudget erlaubt 800€ pro Komödie und 600€ pro Drama, wobei das Gesamtbudget bei 6000€ liegt. Die Bühne kann maximal 10 Produktionen in der Saison aufnehmen. Außerdem wünscht sich das Kulturamt mindestens 2 Dramen pro Saison. Wie planst du die Saison, um die Einnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Komödien",
+      "x2 = Anzahl Dramen"
+    ],
+    "zielfunktion": "Z = 2000x1 + 1500x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 30x2 ≤ 240 (Probezeit)",
+      "800x1 + 600x2 ≤ 6000 (Budget)",
+      "x1 + x2 ≤ 10 (Bühnenkapazität)",
+      "x2 ≥ 2 (Mindestdramen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität. Beachte die ≥-Bedingung für die Dramen – sie begrenzt das Gebiet von unten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2000€ Einnahmen pro Aufführung",
+          "bedeutung": "2000 × x₁"
+        },
+        {
+          "text": "1500€ Einnahmen pro Aufführung",
+          "bedeutung": "1500 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "20 Stunden Probezeit",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "30 Stunden Probezeit",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "240 Stunden Probezeit in der Saison",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "800€ pro Komödie",
+            "bedeutung": "800x₁"
+          },
+          {
+            "text": "600€ pro Drama",
+            "bedeutung": "+ 600x₂"
+          },
+          {
+            "text": "6000€",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "10 Produktionen in der Saison",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 2 Dramen",
+            "bedeutung": "x₂ ≥ 2"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eislaufschule: Pirouette für Anfänger und Profis",
+    "beschreibung": "In deiner Eislaufschule »Kufe & Kür« auf der größten Eisbahn der Stadt bietest du Anfängerkurse für 40€ pro Kurs und Fortgeschrittenenkurse für 70€ pro Kurs an. Für einen Anfängerkurs brauchst du 1 Trainer, für einen Fortgeschrittenenkurs 2 Trainer – insgesamt hast du 10 Trainer. Die Eiszeit pro Anfängerkurs beträgt 1 Stunde, pro Fortgeschrittenenkurs 2 Stunden, und die Eisbahn ist 14 Stunden am Tag verfügbar. Außerdem dürfen aus Platzgründen maximal 8 Kurse pro Tag stattfinden. Wie viele Kurse jeder Art bietest du an, um die Einnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Anfängerkurse",
+      "x2 = Anzahl Fortgeschrittenenkurse"
+    ],
+    "zielfunktion": "Z = 40x1 + 70x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 10 (Trainer)",
+      "x1 + 2x2 ≤ 14 (Eiszeit)",
+      "x1 + x2 ≤ 8 (Kursanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Trainer- und Eiszeit-NB haben die gleichen Koeffizienten – eine davon wird immer die engere Grenze sein.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ pro Kurs",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "70€ pro Kurs",
+          "bedeutung": "70 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Trainer",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Trainer",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "10 Trainer",
+            "bedeutung": "≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "14 Stunden am Tag",
+            "bedeutung": "≤ 14"
+          }
+        ],
+        [
+          {
+            "text": "8 Kurse pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Cannabis-Farm: Indica und Sativa",
+    "beschreibung": "Auf deiner lizenzierten Cannabis-Farm »Grüne Wiese« baust du zwei Sorten an: Indica mit einem Ertrag von 25€ pro Pflanze und Sativa mit einem Ertrag von 35€ pro Pflanze. Jede Indica-Pflanze benötigt 6 Stunden Beleuchtung pro Tag, jede Sativa-Pflanze 10 Stunden Beleuchtung – deine Lampen liefern insgesamt 600 Stunden Licht pro Tag. An Wasser verbraucht eine Indica-Pflanze 3 Liter pro Tag und eine Sativa-Pflanze 4 Liter pro Tag, wobei du 360 Liter Wasser am Tag zur Verfügung hast. Die Anbaufläche reicht für maximal 80 Pflanzen insgesamt. Außerdem schreibt die Lizenz vor, dass du mindestens 10 Indica-Pflanzen anbaust. Wie verteilst du die Pflanzen, um den Ertrag zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Indica-Pflanzen",
+      "x2 = Anzahl Sativa-Pflanzen"
+    ],
+    "zielfunktion": "Z = 25x1 + 35x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 10x2 ≤ 600 (Beleuchtung)",
+      "3x1 + 4x2 ≤ 360 (Wasser)",
+      "x1 + x2 ≤ 80 (Anbaufläche)",
+      "x1 ≥ 10 (Mindest-Indica)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität. Beachte die Mindestmenge für Indica (≥-Bedingung).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 25€ pro Pflanze",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "Ertrag von 35€ pro Pflanze",
+          "bedeutung": "35 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden Beleuchtung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "10 Stunden Beleuchtung",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "600 Stunden Licht",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "3 Liter pro Tag",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "4 Liter pro Tag",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "360 Liter Wasser",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "80 Pflanzen insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 80"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 10 Indica-Pflanzen",
+            "bedeutung": "x₁ ≥ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Weltraumtourismus: Orbit oder Suborbital?",
+    "beschreibung": "Als CEO des Weltraumtourismus-Startups »StellarTrips« planst du die erste Saison. Ein Orbitalflug kostet dich 50 Millionen Euro, ein Suborbitalflug kostet dich 8 Millionen Euro. Deine Investoren verlangen, dass du mindestens 200 Passagiere beförderst: Ein Orbitalflug nimmt 6 Passagiere mit, ein Suborbitalflug nimmt 20 Passagiere mit. Außerdem musst du mindestens 5 Tonnen wissenschaftliche Fracht transportieren – ein Orbitalflug nimmt 2 Tonnen Fracht mit, ein Suborbitalflug nimmt 0,5 Tonnen Fracht mit. Du hast maximal 15 Startfenster in der Saison, und dein Kontrollzentrum verlangt mindestens 3 Orbitalflüge. Wie viele Flüge jeder Art planst du, um die Kosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Orbitalflüge",
+      "x2 = Anzahl Suborbitalflüge"
+    ],
+    "zielfunktion": "Z = 50x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 20x2 ≥ 200 (Mindestpassagiere)",
+      "2x1 + 0,5x2 ≥ 5 (Mindestfracht)",
+      "x1 + x2 ≤ 15 (Startfenster)",
+      "x1 ≥ 3 (Mindest-Orbitalflüge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Komplexes Minimierungsproblem mit ≥- und ≤-Bedingungen. Zeichne alle Geraden sorgfältig ein und identifiziere das begrenzte zulässige Gebiet.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50 Millionen Euro",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "8 Millionen Euro",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Passagiere",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "20 Passagiere",
+            "bedeutung": "+ 20x₂"
+          },
+          {
+            "text": "mindestens 200 Passagiere",
+            "bedeutung": "≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "2 Tonnen Fracht",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "0,5 Tonnen Fracht",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "mindestens 5 Tonnen",
+            "bedeutung": "≥ 5"
+          }
+        ],
+        [
+          {
+            "text": "15 Startfenster",
+            "bedeutung": "x₁ + x₂ ≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Orbitalflüge",
+            "bedeutung": "x₁ ≥ 3"
+          }
+        ]
+      ]
+    }
+  }
+];

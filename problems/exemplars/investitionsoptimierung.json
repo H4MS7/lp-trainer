@@ -1,0 +1,67 @@
+[
+  {
+    "titel": "Aktien und Anleihen",
+    "beschreibung": "Ein Anleger möchte sein Kapital in zwei Anlageformen investieren: Aktien und Anleihen. Pro investierter Einheit in Aktien erzielt er eine jährliche Rendite von 8 Tausend €, pro Einheit in Anleihen eine Rendite von 5 Tausend €. Dem Anleger stehen insgesamt 100 Tausend € Kapital zur Verfügung. Jede Einheit Aktien verbraucht 3 Risikopunkte, jede Einheit Anleihen verbraucht 1 Risikopunkt. Das gesamte Risikobudget darf höchstens 180 Risikopunkte betragen. Der Anleger möchte seine jährliche Rendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten in Aktien (in Tausend €)", "x2 = Einheiten in Anleihen (in Tausend €)"],
+    "zielfunktion": "Z = 8x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 100 (Kapital)",
+      "3x1 + x2 ≤ 180 (Risikobudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere zuerst die Kapitalgrenze und das Risikobudget als Nebenbedingungen. Die Rendite pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Rendite von 8 Tausend €", "bedeutung": "8 × x₁"},
+        {"text": "Rendite von 5 Tausend €", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 100 Tausend € Kapital zur Verfügung", "bedeutung": "x₁ + x₂ ≤ 100"}
+        ],
+        [
+          {"text": "3 Risikopunkte", "bedeutung": "3x₁"},
+          {"text": "1 Risikopunkt", "bedeutung": "+ x₂"},
+          {"text": "höchstens 180 Risikopunkte", "bedeutung": "≤ 180"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Immobilienfonds und ETF",
+    "beschreibung": "Eine Vermögensverwaltung plant Investitionen in Immobilienfonds und ETF. Pro Einheit Immobilienfonds wird ein jährlicher Ertrag von 6 Tausend € erwartet, pro Einheit ETF ein Ertrag von 4 Tausend €. Das verfügbare Investitionskapital beträgt 200 Tausend €, wobei eine Einheit Immobilienfonds 2 Tausend € und eine Einheit ETF 1 Tausend € kostet. Jede Einheit Immobilienfonds hat ein Risikomaß von 5 Punkten und jede Einheit ETF ein Risikomaß von 2 Punkten. Das maximale Risikobudget liegt bei 400 Punkten. Zudem verlangt die Anlagepolitik, dass die Gesamtrendite mindestens 300 Tausend € beträgt, also muss 6 Einheiten Immobilienfonds plus 4 Einheiten ETF zusammen mindestens 300 Tausend € Mindestrendite erbringen. Die Verwaltung möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Immobilienfonds", "x2 = Einheiten ETF"],
+    "zielfunktion": "Z = 6x1 + 4x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + x2 ≤ 200 (Investitionskapital)",
+      "5x1 + 2x2 ≤ 400 (Risikobudget)",
+      "6x1 + 4x2 ≥ 300 (Mindestrendite)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass hier sowohl Obergrenzen (≤) für Kapital und Risiko als auch eine Untergrenze (≥) für die Mindestrendite gelten. Stelle alle drei Nebenbedingungen korrekt auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 6 Tausend €", "bedeutung": "6 × x₁"},
+        {"text": "Ertrag von 4 Tausend €", "bedeutung": "4 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Tausend € und eine Einheit ETF 1 Tausend € kostet", "bedeutung": "2x₁ + x₂"},
+          {"text": "200 Tausend €", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "Risikomaß von 5 Punkten", "bedeutung": "5x₁"},
+          {"text": "Risikomaß von 2 Punkten", "bedeutung": "+ 2x₂"},
+          {"text": "400 Punkten", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "mindestens 300 Tausend € Mindestrendite", "bedeutung": "6x₁ + 4x₂ ≥ 300"}
+        ]
+      ]
+    }
+  }
+]

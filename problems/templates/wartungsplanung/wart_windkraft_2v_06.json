@@ -1,0 +1,43 @@
+{
+  "id": "wart_windkraft_2v_06",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Regelwartungen", "x2 = Anzahl Störungsbehebungen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Monteurskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten Regelwartung (Tsd. €)"},
+    "c2":  {"min": 8, "max": 22,  "label": "Kosten Störungsbehebung (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Leistung Regelwartung (%)"},
+    "a12": {"min": 1, "max": 5,   "label": "Leistung Störung (%)"},
+    "b1":  {"min": 40, "max": 130, "label": "Mindestleistung (%)"},
+    "a21": {"min": 3, "max": 8,   "label": "Monteurszeit Regelwartung (h)"},
+    "a22": {"min": 5, "max": 12,  "label": "Monteurszeit Störung (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Monteurskapazität (h)"}
+  },
+  "titel": "Windpark – Turbinenwartung",
+  "beschreibung": "Ein Windparkbetreiber plant die Wartung seiner Turbinen. Eine Regelwartung kostet {c1} Tsd. €, eine Störungsbehebung kostet {c2} Tsd. €. Eine Regelwartung sichert {a11} % Leistung, eine Störungsbehebung sichert {a12} % Leistung. Die Mindestleistung beträgt {b1} %. Eine Regelwartung benötigt {a21} Monteurstunden, eine Störungsbehebung benötigt {a22} Monteurstunden. Die Monteurskapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Mindestleistung und Monteurskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Regelwartung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Störungsbehebung kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Leistung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Leistung", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Monteurstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Monteurstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

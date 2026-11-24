@@ -1,0 +1,59 @@
+{
+  "id": "schicht_rechenzentrum_4v_04",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten", "x3 = Anzahl Nachtschichten", "x4 = Anzahl Bereitschaftsschichten"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Netzwerk-Admins", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Server-Techniker", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Helpdesk", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 130, "max": 250, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 140, "max": 260, "label": "Kosten Spätschicht (€)"},
+    "c3":  {"min": 180, "max": 320, "label": "Kosten Nachtschicht (€)"},
+    "c4":  {"min": 80, "max": 160, "label": "Kosten Bereitschaftsschicht (€)"},
+    "a11": {"min": 2, "max": 5, "label": "Netzwerk-Admins pro Frühschicht"},
+    "a12": {"min": 2, "max": 4, "label": "Netzwerk-Admins pro Spätschicht"},
+    "a13": {"min": 1, "max": 3, "label": "Netzwerk-Admins pro Nachtschicht"},
+    "a14": {"min": 1, "max": 2, "label": "Netzwerk-Admins pro Bereitschaft"},
+    "b1":  {"min": 8, "max": 25, "label": "Mindestbesetzung Netzwerk-Admins"},
+    "a21": {"min": 3, "max": 6, "label": "Server-Techniker pro Frühschicht"},
+    "a22": {"min": 2, "max": 5, "label": "Server-Techniker pro Spätschicht"},
+    "a23": {"min": 2, "max": 4, "label": "Server-Techniker pro Nachtschicht"},
+    "a24": {"min": 1, "max": 3, "label": "Server-Techniker pro Bereitschaft"},
+    "b2":  {"min": 10, "max": 30, "label": "Mindestbesetzung Server-Techniker"},
+    "a31": {"min": 2, "max": 5, "label": "Helpdesk pro Frühschicht"},
+    "a32": {"min": 2, "max": 4, "label": "Helpdesk pro Spätschicht"},
+    "a33": {"min": 1, "max": 2, "label": "Helpdesk pro Nachtschicht"},
+    "a34": {"min": 1, "max": 2, "label": "Helpdesk pro Bereitschaft"},
+    "b3":  {"min": 6, "max": 20, "label": "Mindestbesetzung Helpdesk"}
+  },
+  "titel": "Rechenzentrum – Vier-Schicht-Planung",
+  "beschreibung": "Ein Rechenzentrum plant die Besetzung mit vier Schichttypen. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €, eine Nachtschicht kostet {c3} € und eine Bereitschaftsschicht kostet {c4} €. Für Netzwerk-Admins stellt jede Frühschicht {a11} bereit, jede Spätschicht {a12}, jede Nachtschicht {a13} und jede Bereitschaftsschicht {a14}. Mindestens {b1} Netzwerk-Admins werden benötigt. Für Server-Techniker stellt jede Frühschicht {a21} bereit, jede Spätschicht {a22}, jede Nachtschicht {a23} und jede Bereitschaftsschicht {a24}. Mindestens {b2} Server-Techniker werden benötigt. Für das Helpdesk stellt jede Frühschicht {a31} Mitarbeiter bereit, jede Spätschicht {a32}, jede Nachtschicht {a33} und jede Bereitschaftsschicht {a34}. Mindestens {b3} Helpdesk-Mitarbeiter werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Netzwerk, Server und Helpdesk.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Bereitschaftsschicht kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} bereit, jede Spätschicht {a12}, jede Nachtschicht {a13} und jede Bereitschaftsschicht {a14}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Netzwerk-Admins werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} bereit, jede Spätschicht {a22}, jede Nachtschicht {a23} und jede Bereitschaftsschicht {a24}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Server-Techniker werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Mitarbeiter bereit, jede Spätschicht {a32}, jede Nachtschicht {a33} und jede Bereitschaftsschicht {a34}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Helpdesk-Mitarbeiter werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

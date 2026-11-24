@@ -1,0 +1,54 @@
+{
+  "id": "energie_pellets_gas_solar_3v_07",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Holzpellets", "x2 = MWh Erdgas", "x3 = MWh Solarthermie"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Lagerraum", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 70, "label": "Kosten Pellets (€/MWh)"},
+    "c2":  {"min": 35, "max": 80, "label": "Kosten Erdgas (€/MWh)"},
+    "c3":  {"min": 20, "max": 50, "label": "Kosten Solarthermie (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärme Pellets (MW/MWh)"},
+    "a12": {"min": 3, "max": 6, "label": "Wärme Erdgas (MW/MWh)"},
+    "a13": {"min": 1, "max": 3, "label": "Wärme Solarthermie (MW/MWh)"},
+    "b1":  {"min": 30, "max": 130, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Lager Pellets (m³/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Lager Erdgas (m³/MWh)"},
+    "a23": {"min": 1, "max": 2, "label": "Lager Solarthermie (m³/MWh)"},
+    "b2":  {"min": 25, "max": 100, "label": "Maximaler Lagerraum (m³)"},
+    "a31": {"min": 2, "max": 4, "label": "CO2 Pellets (t/MWh)"},
+    "a32": {"min": 3, "max": 6, "label": "CO2 Erdgas (t/MWh)"},
+    "a33": {"min": 1, "max": 1, "label": "CO2 Solarthermie (t/MWh)"},
+    "b3":  {"min": 20, "max": 80, "label": "Maximale CO2-Emission (t)"}
+  },
+  "titel": "Wärmemix – Pellets, Erdgas und Solarthermie",
+  "beschreibung": "Eine Schule plant die Wärmeversorgung aus Holzpellets, Erdgas und Solarthermie. Pellets kosten {c1} € pro MWh, Erdgas kostet {c2} € pro MWh und Solarthermie kostet {c3} € pro MWh. Pellets liefern {a11} MW Wärme pro MWh, Erdgas liefert {a12} MW pro MWh und Solarthermie liefert {a13} MW pro MWh. Mindestens {b1} MW Wärmeleistung müssen bereitgestellt werden. Der Lagerraumbedarf beträgt {a21} m³ pro MWh Pellets, {a22} m³ pro MWh Erdgas und {a23} m³ pro MWh Solarthermie. Maximal {b2} m³ Lagerraum stehen zur Verfügung. Die CO2-Emission beträgt {a31} t pro MWh Pellets, {a32} t pro MWh Erdgas und {a33} t pro MWh Solarthermie. Maximal {b3} Tonnen CO2 sind zulässig.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung von Mindestwärmeleistung, Lagerraum und CO2-Grenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pellets kosten {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Erdgas kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Solarthermie kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Wärme pro MWh, Erdgas liefert {a12} MW pro MWh und Solarthermie liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Wärmeleistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro MWh Pellets, {a22} m³ pro MWh Erdgas und {a23} m³ pro MWh Solarthermie", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} m³ Lagerraum stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} t pro MWh Pellets, {a32} t pro MWh Erdgas und {a33} t pro MWh Solarthermie", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

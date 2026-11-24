@@ -1,0 +1,91 @@
+{
+  "id": "diaet_expedition_5v_03",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Portionen Nüsse", "x2 = Portionen Schokolade", "x3 = Portionen Trockenfleisch", "x4 = Portionen Kekse", "x5 = Portionen Milchpulver"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Protein", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Kalzium", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Magnesium", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Nüsse (€/Portion)"},
+    "c2":  {"min": 1, "max": 4,   "label": "Kosten Schokolade (€/Portion)"},
+    "c3":  {"min": 3, "max": 8,   "label": "Kosten Trockenfleisch (€/Portion)"},
+    "c4":  {"min": 1, "max": 3,   "label": "Kosten Kekse (€/Portion)"},
+    "c5":  {"min": 2, "max": 5,   "label": "Kosten Milchpulver (€/Portion)"},
+    "a11": {"min": 150, "max": 280, "label": "Kalorien Nüsse (kcal/Portion)"},
+    "a12": {"min": 120, "max": 250, "label": "Kalorien Schokolade (kcal/Portion)"},
+    "a13": {"min": 80, "max": 160,  "label": "Kalorien Trockenfleisch (kcal/Portion)"},
+    "a14": {"min": 100, "max": 200, "label": "Kalorien Kekse (kcal/Portion)"},
+    "a15": {"min": 60, "max": 140,  "label": "Kalorien Milchpulver (kcal/Portion)"},
+    "b1":  {"min": 1500, "max": 3000, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 4, "max": 10,  "label": "Protein Nüsse (g/Portion)"},
+    "a22": {"min": 1, "max": 3,   "label": "Protein Schokolade (g/Portion)"},
+    "a23": {"min": 8, "max": 15,  "label": "Protein Trockenfleisch (g/Portion)"},
+    "a24": {"min": 1, "max": 3,   "label": "Protein Kekse (g/Portion)"},
+    "a25": {"min": 3, "max": 8,   "label": "Protein Milchpulver (g/Portion)"},
+    "b2":  {"min": 60, "max": 140, "label": "Mindest-Protein (g)"},
+    "a31": {"min": 2, "max": 5,   "label": "Kalzium Nüsse (mg/Portion)"},
+    "a32": {"min": 1, "max": 4,   "label": "Kalzium Schokolade (mg/Portion)"},
+    "a33": {"min": 1, "max": 2,   "label": "Kalzium Trockenfleisch (mg/Portion)"},
+    "a34": {"min": 1, "max": 3,   "label": "Kalzium Kekse (mg/Portion)"},
+    "a35": {"min": 5, "max": 12,  "label": "Kalzium Milchpulver (mg/Portion)"},
+    "b3":  {"min": 30, "max": 80,  "label": "Mindest-Kalzium (mg)"},
+    "a41": {"min": 3, "max": 8,   "label": "Magnesium Nüsse (mg/Portion)"},
+    "a42": {"min": 2, "max": 5,   "label": "Magnesium Schokolade (mg/Portion)"},
+    "a43": {"min": 1, "max": 3,   "label": "Magnesium Trockenfleisch (mg/Portion)"},
+    "a44": {"min": 1, "max": 2,   "label": "Magnesium Kekse (mg/Portion)"},
+    "a45": {"min": 1, "max": 4,   "label": "Magnesium Milchpulver (mg/Portion)"},
+    "b4":  {"min": 20, "max": 50,  "label": "Mindest-Magnesium (mg)"}
+  },
+  "titel": "Expeditionsnahrung – Nüsse, Schokolade, Trockenfleisch, Kekse und Milchpulver",
+  "beschreibung": "Eine Polarexpedition plant die Tagesration aus Nüssen, Schokolade, Trockenfleisch, Keksen und Milchpulver. Nüsse kosten {c1} €, Schokolade kostet {c2} €, Trockenfleisch kostet {c3} €, Kekse kosten {c4} €, Milchpulver kostet {c5} € pro Portion. Nüsse liefern {a11} kcal, Schokolade liefert {a12} kcal, Trockenfleisch liefert {a13} kcal, Kekse liefern {a14} kcal, Milchpulver liefert {a15} kcal pro Portion. Mindestens {b1} kcal sind täglich nötig. Nüsse enthalten {a21} g Protein, Schokolade enthält {a22} g Protein, Trockenfleisch enthält {a23} g Protein, Kekse enthalten {a24} g Protein, Milchpulver enthält {a25} g Protein pro Portion. Mindestens {b2} g Protein werden benötigt. Nüsse liefern {a31} mg Kalzium, Schokolade liefert {a32} mg Kalzium, Trockenfleisch liefert {a33} mg Kalzium, Kekse liefern {a34} mg Kalzium, Milchpulver liefert {a35} mg Kalzium pro Portion. Mindestens {b3} mg Kalzium sind erforderlich. Nüsse enthalten {a41} mg Magnesium, Schokolade enthält {a42} mg Magnesium, Trockenfleisch enthält {a43} mg Magnesium, Kekse enthalten {a44} mg Magnesium, Milchpulver enthält {a45} mg Magnesium pro Portion. Mindestens {b4} mg Magnesium werden benötigt.",
+  "hinweis": "Minimiere die Kosten der Tagesration bei Einhaltung aller Nährstoff-Mindestmengen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Nüsse kosten {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Schokolade kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Trockenfleisch kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Kekse kosten {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Milchpulver kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kcal", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} kcal", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} kcal pro Portion", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} kcal sind täglich nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Protein", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Protein", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g Protein", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} g Protein", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} g Protein pro Portion", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} g Protein werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Kalzium", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Kalzium", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Kalzium", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} mg Kalzium", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} mg Kalzium pro Portion", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} mg Kalzium sind erforderlich", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} mg Magnesium", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} mg Magnesium", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} mg Magnesium", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} mg Magnesium", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} mg Magnesium pro Portion", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} mg Magnesium werden benötigt", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

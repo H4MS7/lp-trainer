@@ -1,0 +1,41 @@
+{
+  "id": "kapa_cache_2v_12",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Redis-Instanzen", "x2 = Anzahl Memcached-Instanzen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "RAM", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 200,  "label": "Durchsatz Redis (Tsd. Ops/s)"},
+    "c2":  {"min": 80, "max": 300,  "label": "Durchsatz Memcached (Tsd. Ops/s)"},
+    "a11": {"min": 4, "max": 16,    "label": "RAM Redis (GB)"},
+    "a12": {"min": 2, "max": 8,     "label": "RAM Memcached (GB)"},
+    "b1":  {"min": 32, "max": 128,  "label": "Verfügbares RAM (GB)"},
+    "a21": {"min": 1, "max": 4,     "label": "CPU Redis (Kerne)"},
+    "a22": {"min": 1, "max": 2,     "label": "CPU Memcached (Kerne)"},
+    "b2":  {"min": 8, "max": 32,    "label": "Verfügbare CPU-Kerne"}
+  },
+  "titel": "Caching-Infrastruktur – Instanzverteilung",
+  "beschreibung": "Ein Entwicklungsteam plant die Caching-Infrastruktur. Eine Redis-Instanz verarbeitet {c1} Tsd. Operationen pro Sekunde, eine Memcached-Instanz verarbeitet {c2} Tsd. Operationen pro Sekunde. Eine Redis-Instanz benötigt {a11} GB RAM, eine Memcached-Instanz benötigt {a12} GB RAM. Insgesamt stehen {b1} GB RAM zur Verfügung. Der CPU-Bedarf beträgt {a21} Kerne pro Redis-Instanz und {a22} Kerne pro Memcached-Instanz. Es stehen {b2} CPU-Kerne zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der RAM- und CPU-Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Redis-Instanz verarbeitet {c1} Tsd. Operationen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Memcached-Instanz verarbeitet {c2} Tsd. Operationen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} GB RAM, eine Memcached-Instanz benötigt {a12} GB RAM", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} GB RAM zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kerne pro Redis-Instanz und {a22} Kerne pro Memcached-Instanz", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

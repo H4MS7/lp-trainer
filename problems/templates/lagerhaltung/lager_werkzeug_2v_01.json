@@ -1,0 +1,43 @@
+{
+  "id": "lager_werkzeug_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Bohrer (Sätze)", "x2 = Bestellmenge Fräser (Sätze)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestausstattung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Werkzeugschrankkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Lagerkosten Bohrer (€/Satz)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Lagerkosten Fräser (€/Satz)"},
+    "a11": {"min": 3, "max": 8,   "label": "Werkzeuge pro Satz Bohrer"},
+    "a12": {"min": 2, "max": 6,   "label": "Werkzeuge pro Satz Fräser"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestausstattung (Werkzeuge)"},
+    "a21": {"min": 1, "max": 3,   "label": "Schrankplatz Bohrer (Schubladen)"},
+    "a22": {"min": 2, "max": 4,   "label": "Schrankplatz Fräser (Schubladen)"},
+    "b2":  {"min": 15, "max": 50,  "label": "Werkzeugschrankkapazität (Schubladen)"}
+  },
+  "titel": "Werkzeugdepot – Zerspanungswerkzeuge",
+  "beschreibung": "Ein Fertigungsbetrieb verwaltet sein Werkzeugdepot für Bohrer und Fräser. Die Lagerkosten betragen {c1} € pro Satz Bohrer und {c2} € pro Satz Fräser. Jeder Satz Bohrer enthält {a11} Werkzeuge, jeder Satz Fräser enthält {a12} Werkzeuge. Die Mindestausstattung umfasst {b1} Werkzeuge. Bohrer belegen {a21} Schubladen pro Satz, Fräser belegen {a22} Schubladen pro Satz. Die Werkzeugschrankkapazität beträgt {b2} Schubladen.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung der Mindestausstattung und der Schrankkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Satz Bohrer", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Satz Fräser", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Werkzeuge", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Werkzeuge", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Werkzeuge", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Schubladen pro Satz", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Schubladen pro Satz", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Schubladen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

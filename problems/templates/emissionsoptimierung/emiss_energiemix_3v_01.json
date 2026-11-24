@@ -1,0 +1,60 @@
+{
+  "id": "emiss_energiemix_3v_01",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Kohle", "x2 = Einheiten Gas", "x3 = Einheiten Biomasse"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Feinstaubemissionen", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 12,  "label": "Ertrag Kohle (Tsd. €)"},
+    "c2":  {"min": 4, "max": 10,  "label": "Ertrag Gas (Tsd. €)"},
+    "c3":  {"min": 2, "max": 7,   "label": "Ertrag Biomasse (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "CO₂ Kohle (t)"},
+    "a12": {"min": 2, "max": 6,   "label": "CO₂ Gas (t)"},
+    "a13": {"min": 1, "max": 3,   "label": "CO₂ Biomasse (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 4, "max": 10,  "label": "Wasser Kohle (m³)"},
+    "a22": {"min": 1, "max": 4,   "label": "Wasser Gas (m³)"},
+    "a23": {"min": 2, "max": 6,   "label": "Wasser Biomasse (m³)"},
+    "b2":  {"min": 80, "max": 350, "label": "Wasserbudget (m³)"},
+    "a31": {"min": 3, "max": 8,   "label": "Feinstaub Kohle (kg)"},
+    "a32": {"min": 1, "max": 3,   "label": "Feinstaub Gas (kg)"},
+    "a33": {"min": 2, "max": 5,   "label": "Feinstaub Biomasse (kg)"},
+    "b3":  {"min": 50, "max": 200, "label": "Feinstaubgrenze (kg)"}
+  },
+  "titel": "Energiemix – Kohle, Gas und Biomasse",
+  "beschreibung": "Ein Energieerzeuger betreibt Kohle-, Gas- und Biomassekraftwerke. Kohle erwirtschaftet {c1} Tsd. € pro Einheit, Gas {c2} Tsd. €, Biomasse {c3} Tsd. €. Kohle verursacht {a11} Tonnen CO₂, Gas {a12} Tonnen, Biomasse {a13} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Kohle verbraucht {a21} m³ Wasser, Gas {a22} m³, Biomasse {a23} m³ pro Einheit. Das Wasserbudget beträgt {b2} m³. Kohle erzeugt {a31} kg Feinstaub, Gas {a32} kg, Biomasse {a33} kg pro Einheit. Die Feinstaubgrenze liegt bei {b3} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kohle erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Gas {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Biomasse {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Wasser", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kg Feinstaub", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} kg", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} kg pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} kg", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

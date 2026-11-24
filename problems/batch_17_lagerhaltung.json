@@ -1,0 +1,947 @@
+[
+  {
+    "titel": "Supermarkt-Frischwarenbestand",
+    "beschreibung": "Ein Supermarkt in der Innenstadt optimiert die Bestellmengen für zwei Produktgruppen: Frischware und Trockenware. Der Filialleiter plant die wöchentliche Bestellung, um sowohl Frische als auch Verfügbarkeit sicherzustellen. Die Lagerkosten betragen 9€ pro Einheit Frischware und 7€ pro Einheit Trockenware. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 4 Regalplätze pro Einheit Frischware und 5 Regalplätze pro Einheit Trockenware ergeben zusammen mindestens 229 Regalplätze. Gleichzeitig ist die Lagerkapazität begrenzt: 12 Regalplätze pro Einheit Frischware und 10 Regalplätze pro Einheit Trockenware dürfen zusammen höchstens 1514 Regalplätze belegen. Dabei soll die Bestellung so gewählt werden, dass die Gesamtlagerkosten möglichst gering ausfallen, ohne die Kundenzufriedenheit zu gefährden.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Frischware",
+      "x2 = Bestellmenge Trockenware"
+    ],
+    "zielfunktion": "Z = 9x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 5x2 ≥ 229 (Mindestbestand)",
+      "12x1 + 10x2 ≤ 1514 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Einheit Frischware",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "7€ pro Einheit Trockenware",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Regalplätze pro Einheit Frischware",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "5 Regalplätze pro Einheit Trockenware",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 229 Regalplätze",
+            "bedeutung": "≥ 229"
+          }
+        ],
+        [
+          {
+            "text": "12 Regalplätze pro Einheit Frischware",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "10 Regalplätze pro Einheit Trockenware",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 1514 Regalplätze",
+            "bedeutung": "≤ 1514"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Apotheken-Medikamentenlager",
+    "beschreibung": "Eine Apotheke im Stadtzentrum optimiert die Bestellmengen für zwei Produktgruppen: verschreibungspflichtige Medikamente und freiverkäufliche Produkte. Die Apothekenleiterin muss gesetzliche Vorratspflichten einhalten und gleichzeitig wirtschaftlich arbeiten. Die Lagerkosten betragen 3€ pro Packung verschreibungspflichtige Medikamente und 5€ pro Packung freiverkäufliche Produkte. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 4 Regalfächer pro Packung verschreibungspflichtige Medikamente und 2 Regalfächer pro Packung freiverkäufliche Produkte ergeben zusammen mindestens 317 Regalfächer. Die Kühlschrankkapazität ist begrenzt: 1 Regalfächer pro Packung verschreibungspflichtige Medikamente und 7 Regalfächer pro Packung freiverkäufliche Produkte dürfen zusammen höchstens 1797 Regalfächer belegen. Zusätzlich gilt eine Budgetgrenze: 1 Regalfächer pro Packung verschreibungspflichtige Medikamente und 4 Regalfächer pro Packung freiverkäufliche Produkte dürfen zusammen höchstens 855 Regalfächer beanspruchen. Das Ziel ist die Minimierung der gesamten Lager- und Bestellkosten unter Einhaltung aller regulatorischen Vorgaben.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge verschreibungspflichtige Medikamente",
+      "x2 = Bestellmenge freiverkäufliche Produkte"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≥ 317 (Mindestbestand)",
+      "1x1 + 7x2 ≤ 1797 (Kühlschrankkapazität)",
+      "1x1 + 4x2 ≤ 855 (Budgetgrenze)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Packung verschreibungspflichtige Medikamente",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "5€ pro Packung freiverkäufliche Produkte",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Regalfächer pro Packung freiverkäufliche Produkte",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 317 Regalfächer",
+            "bedeutung": "≥ 317"
+          }
+        ],
+        [
+          {
+            "text": "1 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "7 Regalfächer pro Packung freiverkäufliche Produkte",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 1797 Regalfächer belegen",
+            "bedeutung": "≤ 1797"
+          }
+        ],
+        [
+          {
+            "text": "1 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "4 Regalfächer pro Packung freiverkäufliche Produkte",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 855 Regalfächer beanspruchen",
+            "bedeutung": "≤ 855"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ersatzteillager-Elektronik",
+    "beschreibung": "Ein Ersatzteillager eines Maschinenbauunternehmens optimiert die Bestellmengen für zwei Produktgruppen: Elektronikteile und Mechanikteile. Der Lagerleiter muss sicherstellen, dass im Störungsfall ausreichend Ersatzteile beider Kategorien verfügbar sind. Die Lagerkosten betragen 5€ pro Einheit Elektronikteile und 8€ pro Einheit Mechanikteile. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 5 Fachbodenplätze pro Einheit Elektronikteile und 3 Fachbodenplätze pro Einheit Mechanikteile ergeben zusammen mindestens 1862 Fachbodenplätze. Die Gesamtkapazität ist begrenzt: 2 Fachbodenplätze pro Einheit Elektronikteile und 10 Fachbodenplätze pro Einheit Mechanikteile dürfen zusammen höchstens 1429 Fachbodenplätze belegen. Zusätzlich gilt eine Budgetgrenze: 3 Fachbodenplätze pro Einheit Elektronikteile und 9 Fachbodenplätze pro Einheit Mechanikteile dürfen zusammen höchstens 1568 Fachbodenplätze beanspruchen. Gesucht ist die kostenminimale Bestellstrategie, die alle Versorgungsanforderungen und Kapazitätsgrenzen respektiert.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Elektronikteile",
+      "x2 = Bestellmenge Mechanikteile"
+    ],
+    "zielfunktion": "Z = 5x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≥ 1862 (Mindestbestand)",
+      "2x1 + 10x2 ≤ 1429 (Gesamtkapazität)",
+      "3x1 + 9x2 ≤ 1568 (Budgetgrenze)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "5€ pro Einheit Elektronikteile",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "8€ pro Einheit Mechanikteile",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 1862 Fachbodenplätze",
+            "bedeutung": "≥ 1862"
+          }
+        ],
+        [
+          {
+            "text": "2 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "10 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 1429 Fachbodenplätze belegen",
+            "bedeutung": "≤ 1429"
+          }
+        ],
+        [
+          {
+            "text": "3 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "9 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 1568 Fachbodenplätze beanspruchen",
+            "bedeutung": "≤ 1568"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baustoff-Palettenlager",
+    "beschreibung": "Ein Baustoffhändler am Stadtrand optimiert die Bestellmengen für zwei Produktgruppen: Zement und Holzplatten. Der Geschäftsführer plant den Bestand für die kommende Bausaison und möchte die Lagerhaltungskosten senken. Die Lagerkosten betragen 4€ pro Palette Zement und 7€ pro Palette Holzplatten. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 3 Lagerplätze pro Palette Zement und 6 Lagerplätze pro Palette Holzplatten ergeben zusammen mindestens 329 Lagerplätze. Gleichzeitig ist die Hallenkapazität begrenzt: 7 Lagerplätze pro Palette Zement und 9 Lagerplätze pro Palette Holzplatten dürfen zusammen höchstens 1720 Lagerplätze belegen. Das Optimierungsziel ist die Minimierung der Gesamtkosten bei gleichzeitiger Absicherung der Materialverfügbarkeit für laufende Bauprojekte.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Zement",
+      "x2 = Bestellmenge Holzplatten"
+    ],
+    "zielfunktion": "Z = 4x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≥ 329 (Mindestbestand)",
+      "7x1 + 9x2 ≤ 1720 (Hallenkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "4€ pro Palette Zement",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "7€ pro Palette Holzplatten",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Lagerplätze pro Palette Zement",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "6 Lagerplätze pro Palette Holzplatten",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 329 Lagerplätze",
+            "bedeutung": "≥ 329"
+          }
+        ],
+        [
+          {
+            "text": "7 Lagerplätze pro Palette Zement",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "9 Lagerplätze pro Palette Holzplatten",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 1720 Lagerplätze",
+            "bedeutung": "≤ 1720"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikversand-Regaloptimierung",
+    "beschreibung": "Ein Elektronikversand mit Hauptlager in Leipzig optimiert die Bestellmengen für zwei Produktgruppen: Smartphones und Tablets. Der Logistikleiter möchte den begrenzten Lagerraum effizient nutzen und die Bestellkosten niedrig halten. Die Lagerkosten betragen 9€ pro Karton Smartphones und 11€ pro Karton Tablets. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 6 Regalplätze pro Karton Smartphones und 7 Regalplätze pro Karton Tablets ergeben zusammen mindestens 235 Regalplätze. Gleichzeitig ist die Lagerkapazität begrenzt: 5 Regalplätze pro Karton Smartphones und 7 Regalplätze pro Karton Tablets dürfen zusammen höchstens 1812 Regalplätze belegen. Es sollen die Gesamtlagerkosten minimiert werden, wobei weder der Mindestbestand unterschritten noch die Kapazitätsgrenze überschritten werden darf.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Smartphones",
+      "x2 = Bestellmenge Tablets"
+    ],
+    "zielfunktion": "Z = 9x1 + 11x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 7x2 ≥ 235 (Mindestbestand)",
+      "5x1 + 7x2 ≤ 1812 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Karton Smartphones",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "11€ pro Karton Tablets",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Regalplätze pro Karton Smartphones",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "7 Regalplätze pro Karton Tablets",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 235 Regalplätze",
+            "bedeutung": "≥ 235"
+          }
+        ],
+        [
+          {
+            "text": "5 Regalplätze pro Karton Smartphones",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "7 Regalplätze pro Karton Tablets",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 1812 Regalplätze",
+            "bedeutung": "≤ 1812"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Buchhandlung-Sortimentsplanung",
+    "beschreibung": "Eine traditionsreiche Buchhandlung optimiert die Bestellmengen für zwei Produktgruppen: Hardcover-Bücher und Taschenbücher. Der Buchhändler bereitet die Bestellung für das nächste Quartal vor und muss Bestseller beider Kategorien vorrätig halten. Die Lagerkosten betragen 8€ pro Karton Hardcover-Bücher und 12€ pro Karton Taschenbücher. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 5 Regalmeter pro Karton Hardcover-Bücher und 6 Regalmeter pro Karton Taschenbücher ergeben zusammen mindestens 297 Regalmeter. Gleichzeitig ist die Lagerkapazität begrenzt: 5 Regalmeter pro Karton Hardcover-Bücher und 12 Regalmeter pro Karton Taschenbücher dürfen zusammen höchstens 1617 Regalmeter belegen. Das Ziel ist eine kostenoptimale Lagerstrategie, die den Mindestbestand sichert und die verfügbare Regalfläche nicht überschreitet.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Hardcover-Bücher",
+      "x2 = Bestellmenge Taschenbücher"
+    ],
+    "zielfunktion": "Z = 8x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 6x2 ≥ 297 (Mindestbestand)",
+      "5x1 + 12x2 ≤ 1617 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ pro Karton Hardcover-Bücher",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "12€ pro Karton Taschenbücher",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Regalmeter pro Karton Hardcover-Bücher",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "6 Regalmeter pro Karton Taschenbücher",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 297 Regalmeter",
+            "bedeutung": "≥ 297"
+          }
+        ],
+        [
+          {
+            "text": "5 Regalmeter pro Karton Hardcover-Bücher",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "12 Regalmeter pro Karton Taschenbücher",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "höchstens 1617 Regalmeter",
+            "bedeutung": "≤ 1617"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bio-Supermarkt-Kühllagerhaltung",
+    "beschreibung": "Ein Bio-Supermarkt mit regionaler Ausrichtung optimiert die Bestellmengen für zwei Produktgruppen: Tiefkühlware und Konserven. Die Filialleiterin achtet besonders auf die Frische der Ware und muss den Kühlraum wirtschaftlich bewirtschaften. Die Lagerkosten betragen 1€ pro Einheit Tiefkühlware und 10€ pro Einheit Konserven. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 5 Palettenplätze pro Einheit Tiefkühlware und 12 Palettenplätze pro Einheit Konserven ergeben zusammen mindestens 133 Palettenplätze. Gleichzeitig ist die Kühlraumkapazität begrenzt: 7 Palettenplätze pro Einheit Tiefkühlware und 5 Palettenplätze pro Einheit Konserven dürfen zusammen höchstens 1096 Palettenplätze belegen. Gesucht wird die Bestellkombination, die bei minimalen Lagerkosten alle Versorgungsanforderungen erfüllt und die begrenzte Kühlkapazität berücksichtigt.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Tiefkühlware",
+      "x2 = Bestellmenge Konserven"
+    ],
+    "zielfunktion": "Z = 1x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 12x2 ≥ 133 (Mindestbestand)",
+      "7x1 + 5x2 ≤ 1096 (Kühlraumkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "1€ pro Einheit Tiefkühlware",
+          "bedeutung": "1 × x₁"
+        },
+        {
+          "text": "10€ pro Einheit Konserven",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Palettenplätze pro Einheit Tiefkühlware",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "12 Palettenplätze pro Einheit Konserven",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "mindestens 133 Palettenplätze",
+            "bedeutung": "≥ 133"
+          }
+        ],
+        [
+          {
+            "text": "7 Palettenplätze pro Einheit Tiefkühlware",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "5 Palettenplätze pro Einheit Konserven",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1096 Palettenplätze",
+            "bedeutung": "≤ 1096"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Versandapotheke-Bestandsmanagement",
+    "beschreibung": "Eine Versandapotheke mit Sitz in Hamburg optimiert die Bestellmengen für zwei Produktgruppen: Schmerzmittel und Erkältungspräparate. Der Apothekenleiter muss die saisonale Nachfrage nach Erkältungsmitteln berücksichtigen und den Mindestbestand vorschriftsmäßig einhalten. Die Lagerkosten betragen 2€ pro Packung Schmerzmittel und 8€ pro Packung Erkältungspräparate. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 6 Lagerplätze pro Packung Schmerzmittel und 5 Lagerplätze pro Packung Erkältungspräparate ergeben zusammen mindestens 1896 Lagerplätze. Gleichzeitig ist die Versandkapazität begrenzt: 3 Lagerplätze pro Packung Schmerzmittel und 1 Lagerplätze pro Packung Erkältungspräparate dürfen zusammen höchstens 1431 Lagerplätze belegen. Es gilt, die Gesamtlagerkosten zu minimieren und dabei alle Bestandsanforderungen sowie die Versandkapazität einzuhalten.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Schmerzmittel",
+      "x2 = Bestellmenge Erkältungspräparate"
+    ],
+    "zielfunktion": "Z = 2x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 5x2 ≥ 1896 (Mindestbestand)",
+      "3x1 + 1x2 ≤ 1431 (Versandkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro Packung Schmerzmittel",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "8€ pro Packung Erkältungspräparate",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Lagerplätze pro Packung Schmerzmittel",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "5 Lagerplätze pro Packung Erkältungspräparate",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 1896 Lagerplätze",
+            "bedeutung": "≥ 1896"
+          }
+        ],
+        [
+          {
+            "text": "3 Lagerplätze pro Packung Schmerzmittel",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1 Lagerplätze pro Packung Erkältungspräparate",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 1431 Lagerplätze",
+            "bedeutung": "≤ 1431"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Industrielager-Hydraulikteile",
+    "beschreibung": "Ein Industrielager eines Automobilzulieferers optimiert die Bestellmengen für zwei Produktgruppen: Hydraulikkomponenten und Dichtungen. Die Lagerleiterin muss die Just-in-Time-Lieferfähigkeit für die Produktionslinie gewährleisten und gleichzeitig die Lagerkosten unter Kontrolle halten. Die Lagerkosten betragen 10€ pro Einheit Hydraulikkomponenten und 11€ pro Einheit Dichtungen. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 3 Regalfächer pro Einheit Hydraulikkomponenten und 1 Regalfächer pro Einheit Dichtungen ergeben zusammen mindestens 292 Regalfächer. Gleichzeitig ist die Gesamtkapazität begrenzt: 3 Regalfächer pro Einheit Hydraulikkomponenten und 9 Regalfächer pro Einheit Dichtungen dürfen zusammen höchstens 587 Regalfächer belegen. Die optimale Lösung minimiert die Gesamtlagerkosten bei gleichzeitiger Einhaltung des Mindestbestands und der Kapazitätsobergrenze.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Hydraulikkomponenten",
+      "x2 = Bestellmenge Dichtungen"
+    ],
+    "zielfunktion": "Z = 10x1 + 11x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 1x2 ≥ 292 (Mindestbestand)",
+      "3x1 + 9x2 ≤ 587 (Gesamtkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "10€ pro Einheit Hydraulikkomponenten",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "11€ pro Einheit Dichtungen",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Regalfächer pro Einheit Hydraulikkomponenten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1 Regalfächer pro Einheit Dichtungen",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 292 Regalfächer",
+            "bedeutung": "≥ 292"
+          }
+        ],
+        [
+          {
+            "text": "3 Regalfächer pro Einheit Hydraulikkomponenten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "9 Regalfächer pro Einheit Dichtungen",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 587 Regalfächer",
+            "bedeutung": "≤ 587"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baumaterial-Dämmstofflager",
+    "beschreibung": "Ein Baumateriallager für Handwerksbetriebe optimiert die Bestellmengen für zwei Produktgruppen: Dämmstoffe und Fliesen. Die Lagerverantwortliche plant die monatliche Nachbestellung und will die Lagerhaltungskosten für beide Produktgruppen senken. Die Lagerkosten betragen 3€ pro Palette Dämmstoffe und 10€ pro Palette Fliesen. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 3 Stellflächen pro Palette Dämmstoffe und 2 Stellflächen pro Palette Fliesen ergeben zusammen mindestens 739 Stellflächen. Gleichzeitig ist die Hallenkapazität begrenzt: 1 Stellflächen pro Palette Dämmstoffe und 7 Stellflächen pro Palette Fliesen dürfen zusammen höchstens 629 Stellflächen belegen. Gesucht ist die kostengünstigste Bestellstrategie, die sowohl den geforderten Mindestbestand sichert als auch die begrenzte Hallenfläche nicht überlastet.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Dämmstoffe",
+      "x2 = Bestellmenge Fliesen"
+    ],
+    "zielfunktion": "Z = 3x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≥ 739 (Mindestbestand)",
+      "1x1 + 7x2 ≤ 629 (Hallenkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Palette Dämmstoffe",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "10€ pro Palette Fliesen",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Stellflächen pro Palette Dämmstoffe",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Stellflächen pro Palette Fliesen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 739 Stellflächen",
+            "bedeutung": "≥ 739"
+          }
+        ],
+        [
+          {
+            "text": "1 Stellflächen pro Palette Dämmstoffe",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "7 Stellflächen pro Palette Fliesen",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 629 Stellflächen",
+            "bedeutung": "≤ 629"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Online-Elektronik-Stellplatzoptimierung",
+    "beschreibung": "Ein Online-Elektronikhändler mit Zentrallager in Dortmund optimiert die Bestellmengen für zwei Produktgruppen: Laptops und Monitore. Die Logistikleiterin steht vor der Herausforderung, bei begrenztem Platzangebot stets lieferfähig zu bleiben. Die Lagerkosten betragen 3€ pro Karton Laptops und 3€ pro Karton Monitore. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 6 Stellplätze pro Karton Laptops und 1 Stellplätze pro Karton Monitore ergeben zusammen mindestens 604 Stellplätze. Gleichzeitig ist die Lagerkapazität begrenzt: 1 Stellplätze pro Karton Laptops und 9 Stellplätze pro Karton Monitore dürfen zusammen höchstens 1760 Stellplätze belegen. Ziel der Optimierung ist die Minimierung der Lagergesamtkosten unter Berücksichtigung aller Mindestbestands- und Kapazitätsvorgaben.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Laptops",
+      "x2 = Bestellmenge Monitore"
+    ],
+    "zielfunktion": "Z = 3x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 1x2 ≥ 604 (Mindestbestand)",
+      "1x1 + 9x2 ≤ 1760 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Karton Laptops",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "3€ pro Karton Monitore",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stellplätze pro Karton Laptops",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "1 Stellplätze pro Karton Monitore",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 604 Stellplätze",
+            "bedeutung": "≥ 604"
+          }
+        ],
+        [
+          {
+            "text": "1 Stellplätze pro Karton Laptops",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "9 Stellplätze pro Karton Monitore",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 1760 Stellplätze",
+            "bedeutung": "≤ 1760"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Universitätsbuchhandlung-Bestandsplanung",
+    "beschreibung": "Eine Universitätsbuchhandlung nahe dem Campus optimiert die Bestellmengen für zwei Produktgruppen: Sachbücher und Romane. Die Buchhändlerin muss zu Semesterbeginn genügend Fachbücher vorrätig haben und gleichzeitig das Romanprogramm pflegen. Die Lagerkosten betragen 12€ pro Einheit Sachbücher und 3€ pro Einheit Romane. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 11 Regalplätze pro Einheit Sachbücher und 6 Regalplätze pro Einheit Romane ergeben zusammen mindestens 1404 Regalplätze. Gleichzeitig ist die Lagerkapazität begrenzt: 9 Regalplätze pro Einheit Sachbücher und 3 Regalplätze pro Einheit Romane dürfen zusammen höchstens 1823 Regalplätze belegen. Die Gesamtlagerkosten sollen minimiert werden, wobei der Mindestbestand für beide Kategorien und die Kapazitätsgrenze zu beachten sind.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Sachbücher",
+      "x2 = Bestellmenge Romane"
+    ],
+    "zielfunktion": "Z = 12x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "11x1 + 6x2 ≥ 1404 (Mindestbestand)",
+      "9x1 + 3x2 ≤ 1823 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "12€ pro Einheit Sachbücher",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "3€ pro Einheit Romane",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "11 Regalplätze pro Einheit Sachbücher",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "6 Regalplätze pro Einheit Romane",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 1404 Regalplätze",
+            "bedeutung": "≥ 1404"
+          }
+        ],
+        [
+          {
+            "text": "9 Regalplätze pro Einheit Sachbücher",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "3 Regalplätze pro Einheit Romane",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 1823 Regalplätze",
+            "bedeutung": "≤ 1823"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Verbrauchermarkt-Molkereiprodukte",
+    "beschreibung": "Ein großer Verbrauchermarkt mit täglicher Frischelieferung optimiert die Bestellmengen für zwei Produktgruppen: Molkereiprodukte und Backwaren. Der Marktleiter muss die kurze Haltbarkeit der Molkereiprodukte berücksichtigen und die Bestellmengen sorgfältig planen. Die Lagerkosten betragen 9€ pro Einheit Molkereiprodukte und 3€ pro Einheit Backwaren. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 7 Kühlregalmeter pro Einheit Molkereiprodukte und 6 Kühlregalmeter pro Einheit Backwaren ergeben zusammen mindestens 684 Kühlregalmeter. Gleichzeitig ist die Lagerkapazität begrenzt: 9 Kühlregalmeter pro Einheit Molkereiprodukte und 11 Kühlregalmeter pro Einheit Backwaren dürfen zusammen höchstens 1498 Kühlregalmeter belegen. Es soll die kostenoptimale Bestellmenge ermittelt werden, die den Mindestbestand gewährleistet und die verfügbare Kühlfläche nicht überschreitet.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Molkereiprodukte",
+      "x2 = Bestellmenge Backwaren"
+    ],
+    "zielfunktion": "Z = 9x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "7x1 + 6x2 ≥ 684 (Mindestbestand)",
+      "9x1 + 11x2 ≤ 1498 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Einheit Molkereiprodukte",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "3€ pro Einheit Backwaren",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "7 Kühlregalmeter pro Einheit Molkereiprodukte",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "6 Kühlregalmeter pro Einheit Backwaren",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 684 Kühlregalmeter",
+            "bedeutung": "≥ 684"
+          }
+        ],
+        [
+          {
+            "text": "9 Kühlregalmeter pro Einheit Molkereiprodukte",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "11 Kühlregalmeter pro Einheit Backwaren",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 1498 Kühlregalmeter",
+            "bedeutung": "≤ 1498"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Apotheken-Kühlschrankoptimierung",
+    "beschreibung": "Eine Apotheke in einem Einkaufszentrum optimiert die Bestellmengen für zwei Produktgruppen: verschreibungspflichtige Medikamente und freiverkäufliche Produkte. Der Apotheker muss die strengen Aufbewahrungsvorschriften für temperaturempfindliche Medikamente einhalten und die Kosten im Rahmen halten. Die Lagerkosten betragen 3€ pro Packung verschreibungspflichtige Medikamente und 4€ pro Packung freiverkäufliche Produkte. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 4 Regalfächer pro Packung verschreibungspflichtige Medikamente und 1 Regalfächer pro Packung freiverkäufliche Produkte ergeben zusammen mindestens 394 Regalfächer. Gleichzeitig ist die Kühlschrankkapazität begrenzt: 9 Regalfächer pro Packung verschreibungspflichtige Medikamente und 1 Regalfächer pro Packung freiverkäufliche Produkte dürfen zusammen höchstens 1735 Regalfächer belegen. Die Aufgabe besteht darin, die Gesamtlagerkosten zu minimieren und dabei sowohl den Mindestbestand als auch die Kühlschrankkapazität zu berücksichtigen.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge verschreibungspflichtige Medikamente",
+      "x2 = Bestellmenge freiverkäufliche Produkte"
+    ],
+    "zielfunktion": "Z = 3x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 1x2 ≥ 394 (Mindestbestand)",
+      "9x1 + 1x2 ≤ 1735 (Kühlschrankkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Packung verschreibungspflichtige Medikamente",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "4€ pro Packung freiverkäufliche Produkte",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "1 Regalfächer pro Packung freiverkäufliche Produkte",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 394 Regalfächer",
+            "bedeutung": "≥ 394"
+          }
+        ],
+        [
+          {
+            "text": "9 Regalfächer pro Packung verschreibungspflichtige Medikamente",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "1 Regalfächer pro Packung freiverkäufliche Produkte",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 1735 Regalfächer",
+            "bedeutung": "≤ 1735"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ersatzteillager-Produktionssicherung",
+    "beschreibung": "Ein Ersatzteillager eines Kraftwerks optimiert die Bestellmengen für zwei Produktgruppen: Elektronikteile und Mechanikteile. Der Lagerverwalter muss die Betriebssicherheit des Kraftwerks gewährleisten und die Ersatzteile beider Kategorien in ausreichender Menge bereithalten. Die Lagerkosten betragen 5€ pro Einheit Elektronikteile und 4€ pro Einheit Mechanikteile. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 6 Fachbodenplätze pro Einheit Elektronikteile und 5 Fachbodenplätze pro Einheit Mechanikteile ergeben zusammen mindestens 487 Fachbodenplätze. Die Gesamtkapazität ist begrenzt: 7 Fachbodenplätze pro Einheit Elektronikteile und 1 Fachbodenplätze pro Einheit Mechanikteile dürfen zusammen höchstens 633 Fachbodenplätze belegen. Zusätzlich gilt eine Budgetgrenze: 7 Fachbodenplätze pro Einheit Elektronikteile und 6 Fachbodenplätze pro Einheit Mechanikteile dürfen zusammen höchstens 1505 Fachbodenplätze beanspruchen. Schließlich müssen 2 Fachbodenplätze pro Einheit Elektronikteile und 6 Fachbodenplätze pro Einheit Mechanikteile zusammen mindestens 504 Fachbodenplätze ausmachen. Gesucht ist die kostenminimale Bestellstrategie, die alle vier Restriktionen gleichzeitig erfüllt und den störungsfreien Betrieb sicherstellt.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Elektronikteile",
+      "x2 = Bestellmenge Mechanikteile"
+    ],
+    "zielfunktion": "Z = 5x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 5x2 ≥ 487 (Mindestbestand)",
+      "7x1 + 1x2 ≤ 633 (Gesamtkapazität)",
+      "7x1 + 6x2 ≤ 1505 (Budgetgrenze)",
+      "2x1 + 6x2 ≥ 504 (Mindestanforderung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Mindestbestände erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "5€ pro Einheit Elektronikteile",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "4€ pro Einheit Mechanikteile",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "5 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 487 Fachbodenplätze",
+            "bedeutung": "≥ 487"
+          }
+        ],
+        [
+          {
+            "text": "7 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "1 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 633 Fachbodenplätze belegen",
+            "bedeutung": "≤ 633"
+          }
+        ],
+        [
+          {
+            "text": "7 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "6 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 1505 Fachbodenplätze beanspruchen",
+            "bedeutung": "≤ 1505"
+          }
+        ],
+        [
+          {
+            "text": "2 Fachbodenplätze pro Einheit Elektronikteile",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "6 Fachbodenplätze pro Einheit Mechanikteile",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 504 Fachbodenplätze ausmachen",
+            "bedeutung": "≥ 504"
+          }
+        ]
+      ]
+    }
+  }
+]

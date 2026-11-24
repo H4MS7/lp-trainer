@@ -1,0 +1,43 @@
+{
+  "id": "lager_elektronik_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Smartphones (Kartons)", "x2 = Bestellmenge Tablets (Kartons)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Tresorkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Lagerkosten Smartphones (€/Karton)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Tablets (€/Karton)"},
+    "a11": {"min": 3, "max": 8,   "label": "Geräte pro Karton Smartphones"},
+    "a12": {"min": 2, "max": 6,   "label": "Geräte pro Karton Tablets"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestverfügbarkeit (Geräte)"},
+    "a21": {"min": 1, "max": 4,   "label": "Tresorplatz Smartphones (Fächer)"},
+    "a22": {"min": 2, "max": 5,   "label": "Tresorplatz Tablets (Fächer)"},
+    "b2":  {"min": 30, "max": 100, "label": "Tresorkapazität (Fächer)"}
+  },
+  "titel": "Elektroniklager – Smartphones und Tablets",
+  "beschreibung": "Ein Elektronikhändler lagert Smartphones und Tablets in einem gesicherten Tresor. Die Lagerkosten betragen {c1} € pro Karton Smartphones und {c2} € pro Karton Tablets. Jeder Karton Smartphones enthält {a11} Geräte, jeder Karton Tablets enthält {a12} Geräte. Die Mindestverfügbarkeit liegt bei {b1} Geräten. Smartphones belegen {a21} Tresorfächer pro Karton, Tablets belegen {a22} Tresorfächer pro Karton. Die Tresorkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung der Mindestverfügbarkeit und der Tresorkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Smartphones", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Tablets", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Geräte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Geräte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Geräten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tresorfächer pro Karton", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tresorfächer pro Karton", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

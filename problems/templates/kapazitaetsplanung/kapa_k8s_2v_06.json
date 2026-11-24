@@ -1,0 +1,41 @@
+{
+  "id": "kapa_k8s_2v_06",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Compute-Nodes", "x2 = Anzahl Memory-Nodes"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Rack-Einheiten", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Strombudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,   "label": "Leistung Compute (Tsd. IOPS)"},
+    "c2":  {"min": 3, "max": 15,   "label": "Leistung Memory (Tsd. IOPS)"},
+    "a11": {"min": 2, "max": 6,    "label": "Rack-Einheiten Compute (HE)"},
+    "a12": {"min": 1, "max": 4,    "label": "Rack-Einheiten Memory (HE)"},
+    "b1":  {"min": 30, "max": 84,  "label": "Verfügbare Rack-Einheiten (HE)"},
+    "a21": {"min": 1, "max": 5,    "label": "Strom Compute (kW)"},
+    "a22": {"min": 1, "max": 3,    "label": "Strom Memory (kW)"},
+    "b2":  {"min": 20, "max": 60,  "label": "Strombudget (kW)"}
+  },
+  "titel": "Kubernetes-Cluster – Node-Konfiguration",
+  "beschreibung": "Ein Kubernetes-Cluster wird mit Compute- und Memory-Nodes ausgestattet. Ein Compute-Node liefert {c1} Tsd. IOPS, ein Memory-Node liefert {c2} Tsd. IOPS. Ein Compute-Node belegt {a11} Höheneinheiten im Rack, ein Memory-Node belegt {a12} Höheneinheiten. Insgesamt stehen {b1} Höheneinheiten zur Verfügung. Der Stromverbrauch beträgt {a21} kW pro Compute-Node und {a22} kW pro Memory-Node. Das Strombudget beträgt {b2} kW.",
+  "hinweis": "Maximiere die Gesamt-IOPS unter Beachtung der Rack- und Strombeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Compute-Node liefert {c1} Tsd. IOPS", "bedeutung": "{c1} × x₁"},
+      {"text": "Memory-Node liefert {c2} Tsd. IOPS", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Höheneinheiten im Rack, ein Memory-Node belegt {a12} Höheneinheiten", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Höheneinheiten zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kW pro Compute-Node und {a22} kW pro Memory-Node", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} kW", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

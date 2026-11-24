@@ -1,0 +1,54 @@
+{
+  "id": "medien_podcast_video_blog_3v_08",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Podcast-Episoden", "x2 = Anzahl Video-Produktionen", "x3 = Anzahl Blog-Beiträge"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Produktionsbudget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Redaktionszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Studiozeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,    "label": "Hörer Podcast (Tsd.)"},
+    "c2":  {"min": 5, "max": 25,    "label": "Views Video (Tsd.)"},
+    "c3":  {"min": 1, "max": 5,     "label": "Leser Blog (Tsd.)"},
+    "a11": {"min": 1, "max": 4,     "label": "Kosten Podcast (Tsd. €)"},
+    "a12": {"min": 3, "max": 10,    "label": "Kosten Video (Tsd. €)"},
+    "a13": {"min": 1, "max": 2,     "label": "Kosten Blog (Tsd. €)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Produktionsbudget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Redaktion Podcast (Stunden)"},
+    "a22": {"min": 5, "max": 15,    "label": "Redaktion Video (Stunden)"},
+    "a23": {"min": 3, "max": 8,     "label": "Redaktion Blog (Stunden)"},
+    "b2":  {"min": 30, "max": 100,  "label": "Redaktionsstunden"},
+    "a31": {"min": 2, "max": 4,     "label": "Studio Podcast (Stunden)"},
+    "a32": {"min": 4, "max": 10,    "label": "Studio Video (Stunden)"},
+    "a33": {"min": 0, "max": 1,     "label": "Studio Blog (Stunden)"},
+    "b3":  {"min": 10, "max": 40,   "label": "Studiostunden"}
+  },
+  "titel": "Content-Strategie – Podcast, Video und Blog",
+  "beschreibung": "Ein Content-Team plant die Produktion von drei Formaten. Eine Podcast-Episode erreicht {c1} Tsd. Hörer, eine Video-Produktion erreicht {c2} Tsd. Views und ein Blog-Beitrag erreicht {c3} Tsd. Leser. Die Kosten betragen {a11} Tsd. € für Podcast, {a12} Tsd. € für Video und {a13} Tsd. € für Blog. Das Produktionsbudget beträgt {b1} Tsd. €. Die Redaktionszeit beträgt {a21} Stunden für Podcast, {a22} Stunden für Video und {a23} Stunden für Blog. Es stehen {b2} Redaktionsstunden zur Verfügung. Die Studiozeit beträgt {a31} Stunden für Podcast, {a32} Stunden für Video und {a33} Stunden für Blog. Es stehen {b3} Studiostunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Podcast-Episode erreicht {c1} Tsd. Hörer", "bedeutung": "{c1} × x₁"},
+      {"text": "Video-Produktion erreicht {c2} Tsd. Views", "bedeutung": "{c2} × x₂"},
+      {"text": "Blog-Beitrag erreicht {c3} Tsd. Leser", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Podcast, {a12} Tsd. € für Video und {a13} Tsd. € für Blog", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Podcast, {a22} Stunden für Video und {a23} Stunden für Blog", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Redaktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für Podcast, {a32} Stunden für Video und {a33} Stunden für Blog", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Studiostunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

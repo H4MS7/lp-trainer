@@ -1,0 +1,60 @@
+{
+  "id": "qual_pharma_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl HPLC-Analysen", "x2 = Anzahl Massenspektrometrien", "x3 = Anzahl Stabilitätstests"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Zulassungspunkte", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Gerätelaufzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Reagenzienbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten HPLC (€/Analyse)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Kosten Massenspektrometrie (€/Analyse)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Stabilitätstest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Zulassungspunkte HPLC"},
+    "a12": {"min": 5, "max": 12,  "label": "Zulassungspunkte Massenspektrometrie"},
+    "a13": {"min": 2, "max": 6,   "label": "Zulassungspunkte Stabilitätstest"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindest-Zulassungspunkte"},
+    "a21": {"min": 1, "max": 3,   "label": "Gerätezeit HPLC (Stunden)"},
+    "a22": {"min": 2, "max": 5,   "label": "Gerätezeit Massenspektrometrie (Stunden)"},
+    "a23": {"min": 3, "max": 7,   "label": "Gerätezeit Stabilitätstest (Stunden)"},
+    "b2":  {"min": 30, "max": 100, "label": "Gerätelaufzeit (Stunden)"},
+    "a31": {"min": 3, "max": 8,   "label": "Reagenzien HPLC (€)"},
+    "a32": {"min": 5, "max": 12,  "label": "Reagenzien Massenspektrometrie (€)"},
+    "a33": {"min": 2, "max": 6,   "label": "Reagenzien Stabilitätstest (€)"},
+    "b3":  {"min": 80, "max": 300, "label": "Reagenzienbudget (€)"}
+  },
+  "titel": "Pharmalabor – Drei Analyseverfahren",
+  "beschreibung": "Ein Pharmalabor setzt HPLC-Analysen, Massenspektrometrien und Stabilitätstests ein. Eine HPLC-Analyse kostet {c1} €, eine Massenspektrometrie kostet {c2} € und ein Stabilitätstest kostet {c3} €. HPLC liefert {a11} Zulassungspunkte, Massenspektrometrie liefert {a12} Zulassungspunkte und der Stabilitätstest liefert {a13} Zulassungspunkte. Die Mindest-Zulassungspunkte betragen {b1} Punkte. HPLC benötigt {a21} Stunden Gerätezeit, Massenspektrometrie benötigt {a22} Stunden und der Stabilitätstest benötigt {a23} Stunden. Die Gerätelaufzeit beträgt {b2} Stunden. Die Reagenzienkosten betragen {a31} € pro HPLC-Analyse, {a32} € pro Massenspektrometrie und {a33} € pro Stabilitätstest. Das Reagenzienbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Analysekosten bei ausreichenden Zulassungspunkten, begrenzter Gerätezeit und Reagenzienbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "HPLC-Analyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Massenspektrometrie kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Stabilitätstest kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Zulassungspunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Zulassungspunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Zulassungspunkte", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden Gerätezeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro HPLC-Analyse", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Massenspektrometrie", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Stabilitätstest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "energie_biogas_solar_2v_09",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Biogas", "x2 = MWh Solarthermie"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Rohstoffverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 35, "max": 80, "label": "Kosten Biogas (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Solarthermie (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärmeleistung Biogas (MW/MWh)"},
+    "a12": {"min": 1, "max": 4, "label": "Wärmeleistung Solarthermie (MW/MWh)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 2, "max": 6, "label": "Rohstoff Biogas (t/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Rohstoff Solarthermie (t/MWh)"},
+    "b2":  {"min": 30, "max": 120, "label": "Maximaler Rohstoffverbrauch (t)"}
+  },
+  "titel": "Energiemix – Biogas und Solarthermie",
+  "beschreibung": "Ein Agrarbetrieb plant die Wärmeversorgung aus Biogas und Solarthermie. Biogas kostet {c1} € pro MWh, Solarthermie kostet {c2} € pro MWh. Biogas liefert {a11} MW Wärmeleistung pro MWh, Solarthermie liefert {a12} MW Wärmeleistung pro MWh. Mindestens {b1} MW Wärmeleistung müssen bereitgestellt werden. Der Rohstoffverbrauch beträgt {a21} Tonnen pro MWh Biogas und {a22} Tonnen pro MWh Solarthermie. Maximal {b2} Tonnen Rohstoff stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung der Mindestwärmeleistung und Rohstoffbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Biogas kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Solarthermie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Wärmeleistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Wärmeleistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Wärmeleistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen pro MWh Biogas", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen pro MWh Solarthermie", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen Rohstoff stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

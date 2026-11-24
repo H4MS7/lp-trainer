@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_schleif_2v_09",
+  "titel": "Schleifmaschine – Drehzahl und Zustellung",
+  "variablen": [
+    "x1 = Scheibendrehzahl (Stufen)",
+    "x2 = Zustellung (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Leistungsaufnahme",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Scheibenverschleiss",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Abtragrate Drehzahl"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Oberflaechenguete Zustellung"
+    },
+    "a11": {
+      "min": 2,
+      "max": 8,
+      "label": "Leistung pro Drehzahlstufe"
+    },
+    "a12": {
+      "min": 1,
+      "max": 5,
+      "label": "Leistung pro Zustellstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Leistungsaufnahme"
+    },
+    "a21": {
+      "min": 3,
+      "max": 9,
+      "label": "Verschleiss pro Drehzahlstufe"
+    },
+    "a22": {
+      "min": 2,
+      "max": 7,
+      "label": "Verschleiss pro Zustellstufe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Scheibenverschleiss"
+    }
+  },
+  "beschreibung": "Eine Schleifmaschine wird ueber Scheibendrehzahl und Zustellung parametriert. Die Drehzahl liefert {c1} Punkte Abtragrate, die Zustellung {c2} Punkte Oberflaechenguete. Die Leistungsaufnahme betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Zustellstufe bei maximal {b1} Leistungseinheiten. Der Scheibenverschleiss liegt bei {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Zustellstufe bei maximal {b2} Verschleisseinheiten.",
+  "hinweis": "Maximiere die Schleifleistung unter Beachtung von Energie und Verschleiss.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Drehzahl liefert {c1} Punkte Abtragrate",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Zustellung {c2} Punkte Oberflaechenguete",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Drehzahlstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Zustellstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Leistungseinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Drehzahlstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Zustellstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

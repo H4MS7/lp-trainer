@@ -1,0 +1,366 @@
+[
+  {
+    "titel": "Sportlerdiät mit Reis, Quark und Nüssen",
+    "beschreibung": "Ein ambitionierter Sportler bereitet sich auf einen Triathlon vor und plant seinen täglichen Ernährungsplan mit drei Lebensmitteln: Reis, Quark und Nüssen. Er möchte die Gesamtkosten so gering wie möglich halten und dabei alle Nährstoffvorgaben erfüllen. Die Kosten betragen 12 Euro pro Portion Reis, 3 Euro pro Portion Quark und 10 Euro pro Portion Nüsse. Der Tagesbedarf an Kalzium von mindestens 220 mg muss gedeckt werden: eine Portion Reis liefert 1 mg, eine Portion Quark 12 mg und eine Portion Nüsse 7 mg Kalzium. Zusätzlich benötigt der Sportler mindestens 370 mg Magnesium pro Tag, um Muskelkrämpfe während des intensiven Trainings zu vermeiden. Reis enthält 3 mg, Quark 1 mg und Nüsse 5 mg Magnesium pro Portion. Die Gesamtkalorienzufuhr darf 1458 kcal nicht überschreiten, damit das Wettkampfgewicht gehalten wird, wobei eine Portion Reis 14 kcal, eine Portion Quark 12 kcal und eine Portion Nüsse 14 kcal beiträgt. Der Sportler möchte die Gesamtkosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Reis",
+      "x2 = Portionen Quark",
+      "x3 = Portionen Nüsse"
+    ],
+    "zielfunktion": "Z = 12x1 + 3x2 + 10x3 (min)",
+    "nebenbedingungen": [
+      "x1 + 12x2 + 7x3 ≥ 220 (Kalzium)",
+      "3x1 + x2 + 5x3 ≥ 370 (Magnesium)",
+      "14x1 + 12x2 + 14x3 ≤ 1458 (Kalorien)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Kalzium und Magnesium sind Mindestbedarfe (≥-Nebenbedingungen), die Kalorienbegrenzung ist eine ≤-Nebenbedingung. Ordne jedem Lebensmittel eine Variable zu.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "12 Euro pro Portion Reis",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "3 Euro pro Portion Quark",
+          "bedeutung": "3 × x₂"
+        },
+        {
+          "text": "10 Euro pro Portion Nüsse",
+          "bedeutung": "10 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Reis liefert 1 mg",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Quark 12 mg",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "Nüsse 7 mg Kalzium",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "mindestens 220 mg",
+            "bedeutung": "≥ 220"
+          }
+        ],
+        [
+          {
+            "text": "Reis enthält 3 mg",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Quark 1 mg",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Nüsse 5 mg Magnesium",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "mindestens 370 mg Magnesium",
+            "bedeutung": "≥ 370"
+          }
+        ],
+        [
+          {
+            "text": "Reis 14 kcal",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "Quark 12 kcal",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "Nüsse 14 kcal",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "1458 kcal nicht überschreiten",
+            "bedeutung": "≤ 1458"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankenhausernährung mit Fleisch, Getreide und Gemüse",
+    "beschreibung": "Ein Krankenhaus mit einer großen Patientenstation stellt den täglichen Speiseplan aus drei Lebensmittelgruppen zusammen: Fleisch, Getreide und Gemüse. Die Ernährungsberatung hat klare Nährstoffvorgaben für die Genesung der Patienten formuliert, und die Verwaltung möchte dabei die Gesamtkosten so niedrig wie möglich halten. Die Kosten pro Portion betragen 12 Euro für Fleisch, 7 Euro für Getreide und 12 Euro für Gemüse. Der tägliche Eisenbedarf von mindestens 355 mg muss gedeckt werden: eine Portion Fleisch liefert 3 mg, eine Portion Getreide 6 mg und eine Portion Gemüse 15 mg Eisen. Zudem ist der Vitaminbedarf von mindestens 1486 Einheiten zu erfüllen, wobei Fleisch 1 Einheit, Getreide 5 Einheiten und Gemüse 3 Einheiten pro Portion liefern. Die Gesamtfettaufnahme darf 1756 g nicht überschreiten, da viele Patienten an Herz-Kreislauf-Erkrankungen leiden. Eine Portion Fleisch enthält 13 g, eine Portion Getreide 1 g und eine Portion Gemüse 9 g Fett. Das Krankenhaus möchte die Gesamtkosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Fleisch",
+      "x2 = Portionen Getreide",
+      "x3 = Portionen Gemüse"
+    ],
+    "zielfunktion": "Z = 12x1 + 7x2 + 12x3 (min)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 + 15x3 ≥ 355 (Eisen)",
+      "x1 + 5x2 + 3x3 ≥ 1486 (Vitamine)",
+      "13x1 + x2 + 9x3 ≤ 1756 (Fett)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Eisen und Vitamine sind Mindestbedarfe (≥), die Fettbegrenzung ist eine Obergrenze (≤). Achte darauf, welche Nährstoffe ein Minimum erfordern und welche begrenzt sind.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "12 Euro für Fleisch",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "7 Euro für Getreide",
+          "bedeutung": "7 × x₂"
+        },
+        {
+          "text": "12 Euro für Gemüse",
+          "bedeutung": "12 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Fleisch liefert 3 mg",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Getreide 6 mg",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Gemüse 15 mg Eisen",
+            "bedeutung": "+ 15x₃"
+          },
+          {
+            "text": "mindestens 355 mg",
+            "bedeutung": "≥ 355"
+          }
+        ],
+        [
+          {
+            "text": "Fleisch 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Getreide 5 Einheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "Gemüse 3 Einheiten",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "mindestens 1486 Einheiten",
+            "bedeutung": "≥ 1486"
+          }
+        ],
+        [
+          {
+            "text": "Fleisch enthält 13 g",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "Getreide 1 g",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Gemüse 9 g Fett",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "1756 g nicht überschreiten",
+            "bedeutung": "≤ 1756"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schulkantine mit Nudeln, Fisch und Salat",
+    "beschreibung": "Eine Schulkantine plant das tägliche Mittagessen für rund 500 Schülerinnen und Schüler aus drei Komponenten: Nudeln, Fisch und Salat. Das städtische Budget ist begrenzt, daher möchte die Kantine die Kosten minimieren und gleichzeitig alle Ernährungsrichtlinien der Schulbehörde einhalten. Die Kosten betragen 9 Euro pro Portion Nudeln, 12 Euro pro Portion Fisch und 4 Euro pro Portion Salat. Der Proteinbedarf der Schüler von mindestens 170 g muss gedeckt werden: eine Portion Nudeln liefert 11 g, eine Portion Fisch 14 g und eine Portion Salat 5 g Protein. Außerdem benötigen die Schüler mindestens 414 mg Kalzium pro Tag für ein gesundes Knochenwachstum. Nudeln enthalten 9 mg, Fisch 13 mg und Salat 5 mg Kalzium pro Portion. Die tägliche Kohlenhydratzufuhr darf 905 g nicht überschreiten, da zu viele Kohlenhydrate die Konzentrationsfähigkeit am Nachmittag beeinträchtigen können. Eine Portion Nudeln liefert 4 g, eine Portion Fisch 9 g und eine Portion Salat 7 g Kohlenhydrate.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Nudeln",
+      "x2 = Portionen Fisch",
+      "x3 = Portionen Salat"
+    ],
+    "zielfunktion": "Z = 9x1 + 12x2 + 4x3 (min)",
+    "nebenbedingungen": [
+      "11x1 + 14x2 + 5x3 ≥ 170 (Protein)",
+      "9x1 + 13x2 + 5x3 ≥ 414 (Kalzium)",
+      "4x1 + 9x2 + 7x3 ≤ 905 (Kohlenhydrate)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Protein und Kalzium sind Mindestbedarfe (≥-Nebenbedingungen), die Kohlenhydratzufuhr ist begrenzt (≤). Vergleiche die Nährstoffwerte der drei Lebensmittel sorgfältig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9 Euro pro Portion Nudeln",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "12 Euro pro Portion Fisch",
+          "bedeutung": "12 × x₂"
+        },
+        {
+          "text": "4 Euro pro Portion Salat",
+          "bedeutung": "4 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Nudeln liefert 11 g",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Fisch 14 g",
+            "bedeutung": "+ 14x₂"
+          },
+          {
+            "text": "Salat 5 g Protein",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "mindestens 170 g",
+            "bedeutung": "≥ 170"
+          }
+        ],
+        [
+          {
+            "text": "Nudeln enthalten 9 mg",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Fisch 13 mg",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "Salat 5 mg Kalzium",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "mindestens 414 mg Kalzium",
+            "bedeutung": "≥ 414"
+          }
+        ],
+        [
+          {
+            "text": "Nudeln liefert 4 g",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Fisch 9 g",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Salat 7 g Kohlenhydrate",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "905 g nicht überschreiten",
+            "bedeutung": "≤ 905"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Seniorenheim – Ernährungsplan mit Brot, Milch und Obst",
+    "beschreibung": "Ein Seniorenheim mit 120 Bewohnern erstellt einen täglichen Ernährungsplan mit drei Lebensmitteln: Brot, Milch und Obst. Die Heimleitung möchte die täglichen Kosten minimieren und gleichzeitig alle medizinischen Nährstoffvorgaben des Hausarztes einhalten. Die Kosten betragen 2 Euro pro Portion Brot, 4 Euro pro Portion Milch und 6 Euro pro Portion Obst. Der tägliche Ballaststoffbedarf von mindestens 1254 mg muss gedeckt werden, um die Verdauung zu fördern: eine Portion Brot liefert 6 mg, eine Portion Milch 10 mg und eine Portion Obst 13 mg Ballaststoffe. Zudem benötigen die Bewohner mindestens 817 mg Vitamin C pro Tag, um das Immunsystem zu stärken. Brot enthält 11 mg, Milch 12 mg und Obst 9 mg Vitamin C pro Portion. Die Gesamtnatriumaufnahme darf 1689 mg nicht überschreiten, da viele Bewohner unter Bluthochdruck leiden. Eine Portion Brot enthält 2 mg, eine Portion Milch 15 mg und eine Portion Obst 11 mg Natrium.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Brot",
+      "x2 = Portionen Milch",
+      "x3 = Portionen Obst"
+    ],
+    "zielfunktion": "Z = 2x1 + 4x2 + 6x3 (min)",
+    "nebenbedingungen": [
+      "6x1 + 10x2 + 13x3 ≥ 1254 (Ballaststoffe)",
+      "11x1 + 12x2 + 9x3 ≥ 817 (Vitamin C)",
+      "2x1 + 15x2 + 11x3 ≤ 1689 (Natrium)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Ballaststoffe und Vitamin C sind Mindestbedarfe (≥), die Natriumobergrenze ist eine ≤-Nebenbedingung. Brot ist am günstigsten, liefert aber weniger Ballaststoffe pro Portion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2 Euro pro Portion Brot",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "4 Euro pro Portion Milch",
+          "bedeutung": "4 × x₂"
+        },
+        {
+          "text": "6 Euro pro Portion Obst",
+          "bedeutung": "6 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Brot liefert 6 mg",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Milch 10 mg",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "Obst 13 mg Ballaststoffe",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "mindestens 1254 mg",
+            "bedeutung": "≥ 1254"
+          }
+        ],
+        [
+          {
+            "text": "Brot enthält 11 mg",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Milch 12 mg",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "Obst 9 mg Vitamin C",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "mindestens 817 mg Vitamin C",
+            "bedeutung": "≥ 817"
+          }
+        ],
+        [
+          {
+            "text": "Brot enthält 2 mg",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Milch 15 mg",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "Obst 11 mg Natrium",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "1689 mg nicht überschreiten",
+            "bedeutung": "≤ 1689"
+          }
+        ]
+      ]
+    }
+  }
+]

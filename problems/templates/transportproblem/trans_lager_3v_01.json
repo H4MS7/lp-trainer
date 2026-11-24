@@ -1,0 +1,51 @@
+{
+  "id": "trans_lager_3v_01",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Fahrten von Lager A", "x2 = Fahrten von Lager B", "x3 = Fahrten von Lager C"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Liefermenge", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Fahrerkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Budget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten ab Lager A (EUR/Fahrt)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten ab Lager B (EUR/Fahrt)"},
+    "c3":  {"min": 5, "max": 16,  "label": "Kosten ab Lager C (EUR/Fahrt)"},
+    "a11": {"min": 3, "max": 10,  "label": "Liefermenge ab A (t/Fahrt)"},
+    "a12": {"min": 2, "max": 8,   "label": "Liefermenge ab B (t/Fahrt)"},
+    "a13": {"min": 4, "max": 12,  "label": "Liefermenge ab C (t/Fahrt)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Liefermenge (t)"},
+    "a21": {"min": 1, "max": 4,   "label": "Fahrer pro Fahrt ab A"},
+    "a22": {"min": 1, "max": 3,   "label": "Fahrer pro Fahrt ab B"},
+    "a23": {"min": 2, "max": 5,   "label": "Fahrer pro Fahrt ab C"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Fahrer"},
+    "a31": {"min": 2, "max": 7,   "label": "Mautkosten ab A (EUR/Fahrt)"},
+    "a32": {"min": 1, "max": 5,   "label": "Mautkosten ab B (EUR/Fahrt)"},
+    "a33": {"min": 3, "max": 8,   "label": "Mautkosten ab C (EUR/Fahrt)"},
+    "b3":  {"min": 40, "max": 150, "label": "Max. Mautbudget (EUR)"}
+  },
+  "titel": "Lagerversorgung – drei Standorte",
+  "beschreibung": "Ein Großhändler beliefert Kunden von drei Lagern aus. Eine Fahrt ab Lager A kostet {c1} EUR, ab Lager B kostet sie {c2} EUR und ab Lager C kostet sie {c3} EUR. Ab Lager A werden {a11} Tonnen pro Fahrt geliefert, ab B werden {a12} Tonnen und ab C werden {a13} Tonnen pro Fahrt geliefert. Mindestens {b1} Tonnen müssen geliefert werden. Ab Lager A werden {a21} Fahrer benötigt, ab B werden {a22} und ab C werden {a23} Fahrer pro Fahrt benötigt. Insgesamt stehen {b2} Fahrer zur Verfügung. Die Mautkosten betragen {a31} EUR ab A, {a32} EUR ab B und {a33} EUR ab C pro Fahrt. Das Mautbudget beträgt höchstens {b3} EUR.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Liefermenge, begrenzten Fahrern und Mautbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lager A kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Lager B kostet sie {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Lager C kostet sie {c3} EUR", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen pro Fahrt geliefert, ab B werden {a12} Tonnen und ab C werden {a13} Tonnen pro Fahrt geliefert. Mindestens {b1} Tonnen müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrer benötigt, ab B werden {a22} und ab C werden {a23} Fahrer pro Fahrt benötigt. Insgesamt stehen {b2} Fahrer zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} EUR ab A, {a32} EUR ab B und {a33} EUR ab C pro Fahrt. Das Mautbudget beträgt höchstens {b3} EUR", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

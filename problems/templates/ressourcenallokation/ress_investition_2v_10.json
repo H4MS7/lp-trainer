@@ -1,0 +1,43 @@
+{
+  "id": "ress_investition_2v_10",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anteile Aktienfonds (1000 €)", "x2 = Anteile Immobilienfonds (1000 €)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Anlagekapital", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Verwaltungsaufwand", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Rendite/1000€ Aktien (%)"},
+    "c2":  {"min": 2, "max": 7,     "label": "Rendite/1000€ Immobilien (%)"},
+    "a11": {"min": 1, "max": 1,     "label": "Kapital Aktien (1000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kapital Immobilien (1000€)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Gesamtkapital (1000 €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Verwaltung/1000€ Aktien (h)"},
+    "a22": {"min": 1, "max": 3,     "label": "Verwaltung/1000€ Immobilien (h)"},
+    "b2":  {"min": 30, "max": 120,  "label": "Verwaltungsstunden"}
+  },
+  "titel": "Investmentplanung – Aktien und Immobilien",
+  "beschreibung": "Ein Investor verteilt Kapital auf einen Aktienfonds und einen Immobilienfonds. Pro 1000 Euro im Aktienfonds wird eine Rendite von {c1} Prozent erwartet, im Immobilienfonds {c2} Prozent. Jede Einheit Aktienfonds erfordert {a11} Tausend Euro Kapital, Immobilienfonds {a12} Tausend Euro. Das Gesamtkapital betraegt {b1} Tausend Euro. Die Verwaltung benoetigt {a21} Stunden pro Aktieneinheit und {a22} Stunden pro Immobilieneinheit. Es stehen {b2} Verwaltungsstunden bereit.",
+  "hinweis": "Maximiere die Rendite unter Kapital- und Verwaltungsbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Aktienfonds wird eine Rendite von {c1} Prozent erwartet", "bedeutung": "{c1} × x₁"},
+      {"text": "Immobilienfonds {c2} Prozent", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Aktienfonds erfordert {a11} Tausend Euro", "bedeutung": "{a11}x₁"},
+        {"text": "Immobilienfonds {a12} Tausend Euro", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Aktieneinheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Immobilieneinheit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Verwaltungsstunden bereit", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

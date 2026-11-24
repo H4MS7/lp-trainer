@@ -1,0 +1,54 @@
+{
+  "id": "medien_influencer_youtube_tiktok_3v_04",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Influencer-Posts", "x2 = Anzahl YouTube-Videos", "x3 = Anzahl TikTok-Clips"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Koordinationszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Freigabeprozess", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 25,    "label": "Reichweite Influencer (Tsd.)"},
+    "c2":  {"min": 10, "max": 50,   "label": "Views YouTube (Tsd.)"},
+    "c3":  {"min": 15, "max": 80,   "label": "Views TikTok (Tsd.)"},
+    "a11": {"min": 3, "max": 12,    "label": "Kosten Influencer (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten YouTube (Tsd. €)"},
+    "a13": {"min": 1, "max": 5,     "label": "Kosten TikTok (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 4, "max": 10,    "label": "Koordination Influencer (Stunden)"},
+    "a22": {"min": 3, "max": 8,     "label": "Koordination YouTube (Stunden)"},
+    "a23": {"min": 2, "max": 5,     "label": "Koordination TikTok (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Koordinationsstunden"},
+    "a31": {"min": 2, "max": 5,     "label": "Freigabe Influencer (Stunden)"},
+    "a32": {"min": 1, "max": 3,     "label": "Freigabe YouTube (Stunden)"},
+    "a33": {"min": 1, "max": 3,     "label": "Freigabe TikTok (Stunden)"},
+    "b3":  {"min": 10, "max": 40,   "label": "Freigabestunden"}
+  },
+  "titel": "Creator-Marketing – Influencer, YouTube und TikTok",
+  "beschreibung": "Ein Creator-Marketing-Team plant Kampagnen über drei Kanäle. Ein Influencer-Post erreicht {c1} Tsd. Personen, ein YouTube-Video erzielt {c2} Tsd. Views und ein TikTok-Clip erzielt {c3} Tsd. Views. Die Kosten betragen {a11} Tsd. € für Influencer, {a12} Tsd. € für YouTube und {a13} Tsd. € für TikTok. Das Budget beträgt {b1} Tsd. €. Die Koordinationszeit beträgt {a21} Stunden für Influencer, {a22} Stunden für YouTube und {a23} Stunden für TikTok. Es stehen {b2} Koordinationsstunden zur Verfügung. Der Freigabeprozess beträgt {a31} Stunden für Influencer, {a32} Stunden für YouTube und {a33} Stunden für TikTok. Es stehen {b3} Freigabestunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Influencer-Post erreicht {c1} Tsd. Personen", "bedeutung": "{c1} × x₁"},
+      {"text": "YouTube-Video erzielt {c2} Tsd. Views", "bedeutung": "{c2} × x₂"},
+      {"text": "TikTok-Clip erzielt {c3} Tsd. Views", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Influencer, {a12} Tsd. € für YouTube und {a13} Tsd. € für TikTok", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Influencer, {a22} Stunden für YouTube und {a23} Stunden für TikTok", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Koordinationsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für Influencer, {a32} Stunden für YouTube und {a33} Stunden für TikTok", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Freigabestunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

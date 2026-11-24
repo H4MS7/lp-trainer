@@ -1,0 +1,39 @@
+{
+  "id": "misch_keramik_2v_09",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Ton A (kg)", "x2 = Menge Ton B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Härtegrad", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Schrumpfung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,  "label": "Kosten Ton A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Ton B (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Härte durch A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Härte durch B (Einheiten/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Härtegrad (Einheiten)"},
+    "a21": {"min": 1, "max": 4,   "label": "Schrumpfung durch A (mm/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Schrumpfung durch B (mm/kg)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Schrumpfung (mm)"}
+  },
+  "titel": "Keramikmischung – Härte und Schrumpfung",
+  "beschreibung": "Eine Keramikwerkstatt mischt Ton aus zwei Sorten. Ton A kostet {c1} EUR pro kg, Ton B kostet {c2} EUR pro kg. Ton A liefert {a11} Härte-Einheiten pro kg, Ton B liefert {a12} Härte-Einheiten pro kg. Die Mischung muss mindestens {b1} Härte-Einheiten erreichen. Ton A verursacht {a21} mm Schrumpfung pro kg, Ton B verursacht {a22} mm Schrumpfung pro kg. Die Schrumpfung darf höchstens {b2} mm betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Härte und begrenzter Schrumpfung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Ton A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Ton B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Härte-Einheiten pro kg, Ton B liefert {a12} Härte-Einheiten pro kg. Die Mischung muss mindestens {b1} Härte-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mm Schrumpfung pro kg, Ton B verursacht {a22} mm Schrumpfung pro kg. Die Schrumpfung darf höchstens {b2} mm betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

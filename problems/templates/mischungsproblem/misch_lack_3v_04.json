@@ -1,0 +1,51 @@
+{
+  "id": "misch_lack_3v_04",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Harz A (kg)", "x2 = Menge Harz B (kg)", "x3 = Menge Harz C (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Glanzgrad", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Trocknungszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Kratzfestigkeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Harz A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Harz B (EUR/kg)"},
+    "c3":  {"min": 5, "max": 16,  "label": "Kosten Harz C (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Glanz durch A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Glanz durch B (Einheiten/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Glanz durch C (Einheiten/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Glanzgrad (Einheiten)"},
+    "a21": {"min": 2, "max": 6,   "label": "Trocknungszeit durch A (min/kg)"},
+    "a22": {"min": 1, "max": 5,   "label": "Trocknungszeit durch B (min/kg)"},
+    "a23": {"min": 3, "max": 8,   "label": "Trocknungszeit durch C (min/kg)"},
+    "b2":  {"min": 40, "max": 140, "label": "Max. Trocknungszeit (min)"},
+    "a31": {"min": 2, "max": 7,   "label": "Kratzfestigkeit durch A (Einheiten/kg)"},
+    "a32": {"min": 3, "max": 9,   "label": "Kratzfestigkeit durch B (Einheiten/kg)"},
+    "a33": {"min": 1, "max": 5,   "label": "Kratzfestigkeit durch C (Einheiten/kg)"},
+    "b3":  {"min": 30, "max": 120, "label": "Mindest-Kratzfestigkeit (Einheiten)"}
+  },
+  "titel": "Lackmischung – Glanz, Trocknung und Kratzfestigkeit",
+  "beschreibung": "Ein Lackhersteller mischt einen Lack aus drei Harzen. Harz A kostet {c1} EUR pro kg, Harz B kostet {c2} EUR pro kg und Harz C kostet {c3} EUR pro kg. Harz A liefert {a11} Glanz-Einheiten pro kg, Harz B liefert {a12} und Harz C liefert {a13} Einheiten pro kg. Der Lack muss mindestens {b1} Glanz-Einheiten erreichen. Harz A benötigt {a21} min Trocknungszeit pro kg, Harz B benötigt {a22} min und Harz C benötigt {a23} min pro kg. Die Trocknungszeit darf höchstens {b2} min betragen. Harz A liefert {a31} Kratzfestigkeits-Einheiten pro kg, Harz B liefert {a32} und Harz C liefert {a33} Einheiten pro kg. Die Kratzfestigkeit muss mindestens {b3} Einheiten erreichen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Glanz und Kratzfestigkeit sowie begrenzter Trocknungszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Harz A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Harz B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Harz C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Glanz-Einheiten pro kg, Harz B liefert {a12} und Harz C liefert {a13} Einheiten pro kg. Der Lack muss mindestens {b1} Glanz-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} min Trocknungszeit pro kg, Harz B benötigt {a22} min und Harz C benötigt {a23} min pro kg. Die Trocknungszeit darf höchstens {b2} min betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Kratzfestigkeits-Einheiten pro kg, Harz B liefert {a32} und Harz C liefert {a33} Einheiten pro kg. Die Kratzfestigkeit muss mindestens {b3} Einheiten erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≥ {b3}"}
+      ]
+    ]
+  }
+}

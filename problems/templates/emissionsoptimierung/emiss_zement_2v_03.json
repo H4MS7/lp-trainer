@@ -1,0 +1,43 @@
+{
+  "id": "emiss_zement_2v_03",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Standardzement", "x2 = Einheiten Ökozement"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Staubemissionen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 12,  "label": "Ertrag Standardzement (Tsd. €)"},
+    "c2":  {"min": 3, "max": 8,   "label": "Ertrag Ökozement (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "CO₂ Standardzement (t)"},
+    "a12": {"min": 2, "max": 6,   "label": "CO₂ Ökozement (t)"},
+    "b1":  {"min": 100, "max": 400, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Staub Standardzement (kg)"},
+    "a22": {"min": 1, "max": 4,   "label": "Staub Ökozement (kg)"},
+    "b2":  {"min": 60, "max": 200, "label": "Staublimit (kg)"}
+  },
+  "titel": "Zementwerk – Standard- und Ökozement",
+  "beschreibung": "Ein Zementwerk produziert Standardzement und Ökozement. Standardzement erwirtschaftet {c1} Tsd. € pro Einheit, Ökozement {c2} Tsd. €. Standardzement verursacht {a11} Tonnen CO₂ pro Einheit, Ökozement {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. Standardzement erzeugt {a21} kg Staub pro Einheit, Ökozement {a22} kg. Das Staublimit liegt bei {b2} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Staublimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Standardzement erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Ökozement {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kg Staub pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kg", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kg", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

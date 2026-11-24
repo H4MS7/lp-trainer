@@ -1,0 +1,39 @@
+{
+  "id": "misch_kraftstoff_2v_07",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Benzin A (Liter)", "x2 = Menge Benzin B (Liter)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Oktanzahl", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Schwefelgehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Benzin A (EUR/Liter)"},
+    "c2":  {"min": 2, "max": 9,   "label": "Kosten Benzin B (EUR/Liter)"},
+    "a11": {"min": 2, "max": 8,   "label": "Oktan in A (Einheiten/Liter)"},
+    "a12": {"min": 3, "max": 10,  "label": "Oktan in B (Einheiten/Liter)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Oktanzahl (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Schwefel in A (mg/Liter)"},
+    "a22": {"min": 2, "max": 6,   "label": "Schwefel in B (mg/Liter)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Schwefelgehalt (mg)"}
+  },
+  "titel": "Kraftstoffmischung – Oktan und Schwefel",
+  "beschreibung": "Eine Raffinerie mischt Kraftstoff aus zwei Benzinsorten. Benzin A kostet {c1} EUR pro Liter, Benzin B kostet {c2} EUR pro Liter. Benzin A liefert {a11} Oktan-Einheiten pro Liter, Benzin B liefert {a12} Oktan-Einheiten pro Liter. Die Mischung muss mindestens {b1} Oktan-Einheiten erreichen. Benzin A enthält {a21} mg Schwefel pro Liter, Benzin B enthält {a22} mg Schwefel pro Liter. Der Schwefelgehalt darf höchstens {b2} mg betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Oktanzahl und begrenztem Schwefelgehalt.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Benzin A kostet {c1} EUR pro Liter", "bedeutung": "{c1} × x₁"},
+      {"text": "Benzin B kostet {c2} EUR pro Liter", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Oktan-Einheiten pro Liter, Benzin B liefert {a12} Oktan-Einheiten pro Liter. Die Mischung muss mindestens {b1} Oktan-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Schwefel pro Liter, Benzin B enthält {a22} mg Schwefel pro Liter. Der Schwefelgehalt darf höchstens {b2} mg betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

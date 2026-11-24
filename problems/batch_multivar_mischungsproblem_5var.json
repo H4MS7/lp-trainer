@@ -1,0 +1,76 @@
+[
+  {
+    "titel": "Futtermischung mit fünf Rohstoffen",
+    "beschreibung": "Ein Futtermittelhersteller mischt fünf Rohstoffe: Mais, Soja, Weizen, Luzerne und Melasse. Die Kosten betragen 8 Euro pro Einheit Mais, 19 Euro pro Einheit Soja, 31 Euro pro Einheit Weizen, 18 Euro pro Einheit Luzerne und 46 Euro pro Einheit Melasse. Die Mischung muss bestimmte Qualitätsanforderungen erfüllen. Für den Proteingehalt gilt eine Mindestanforderung von 314 Punkten, wobei eine Einheit Mais 4 Punkte, eine Einheit Soja 3 Punkte, eine Einheit Weizen 5 Punkte, eine Einheit Luzerne 5 Punkte und eine Einheit Melasse 4 Punkte zum Proteingehalt beiträgt. Der Feuchtigkeitsgehalt darf höchstens 497 Einheiten betragen: eine Einheit Mais liefert 6 Einheiten, eine Einheit Soja 1 Einheit, eine Einheit Weizen 10 Einheiten, eine Einheit Luzerne 3 Einheiten und eine Einheit Melasse 6 Einheiten Feuchtigkeit. Der Fettgehalt ist auf maximal 442 Einheiten begrenzt, wobei eine Einheit Mais 5 Einheiten, eine Einheit Soja 12 Einheiten, eine Einheit Weizen 5 Einheiten, eine Einheit Luzerne 6 Einheiten und eine Einheit Melasse 6 Einheiten zum Fettgehalt beiträgt. Für den Energiewert gilt eine weitere Mindestanforderung von 382 Punkten, wobei eine Einheit Mais 5 Punkte, eine Einheit Soja 1 Punkt, eine Einheit Weizen 12 Punkte, eine Einheit Luzerne 8 Punkte und eine Einheit Melasse 13 Punkte zum Energiewert beiträgt. Zudem darf der Rohfasergehalt höchstens 203 Einheiten betragen, wobei eine Einheit Mais 1 Einheit, eine Einheit Soja 3 Einheiten, eine Einheit Weizen 11 Einheiten, eine Einheit Luzerne 15 Einheiten und eine Einheit Melasse 10 Einheiten zum Rohfasergehalt beiträgt. Der Hersteller möchte die Gesamtkosten der Futtermischung minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Einheiten Mais",
+      "x2 = Einheiten Soja",
+      "x3 = Einheiten Weizen",
+      "x4 = Einheiten Luzerne",
+      "x5 = Einheiten Melasse"
+    ],
+    "zielfunktion": "Z = 8x1 + 19x2 + 31x3 + 18x4 + 46x5 (min)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 + 5x3 + 5x4 + 4x5 ≥ 314 (Proteingehalt)",
+      "6x1 + x2 + 10x3 + 3x4 + 6x5 ≤ 497 (Feuchtigkeitsgehalt)",
+      "5x1 + 12x2 + 5x3 + 6x4 + 6x5 ≤ 442 (Fettgehalt)",
+      "5x1 + x2 + 12x3 + 8x4 + 13x5 ≥ 382 (Energiewert)",
+      "x1 + 3x2 + 11x3 + 15x4 + 10x5 ≤ 203 (Rohfasergehalt)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Zwei Qualitätsanforderungen (Protein und Energiewert) ergeben ≥-Nebenbedingungen. Drei Obergrenzen (Feuchtigkeit, Fett und Rohfaser) ergeben ≤-Nebenbedingungen. Achte bei fünf Variablen besonders sorgfältig auf die richtige Zuordnung aller Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "8 Euro pro Einheit Mais", "bedeutung": "8 × x₁"},
+        {"text": "19 Euro pro Einheit Soja", "bedeutung": "19 × x₂"},
+        {"text": "31 Euro pro Einheit Weizen", "bedeutung": "31 × x₃"},
+        {"text": "18 Euro pro Einheit Luzerne", "bedeutung": "18 × x₄"},
+        {"text": "46 Euro pro Einheit Melasse", "bedeutung": "46 × x₅"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "eine Einheit Mais 4 Punkte", "bedeutung": "4x₁"},
+          {"text": "eine Einheit Soja 3 Punkte", "bedeutung": "+ 3x₂"},
+          {"text": "eine Einheit Weizen 5 Punkte", "bedeutung": "+ 5x₃"},
+          {"text": "eine Einheit Luzerne 5 Punkte", "bedeutung": "+ 5x₄"},
+          {"text": "eine Einheit Melasse 4 Punkte zum Proteingehalt", "bedeutung": "+ 4x₅"},
+          {"text": "Mindestanforderung von 314 Punkten", "bedeutung": "≥ 314"}
+        ],
+        [
+          {"text": "eine Einheit Mais liefert 6 Einheiten", "bedeutung": "6x₁"},
+          {"text": "eine Einheit Soja 1 Einheit", "bedeutung": "+ x₂"},
+          {"text": "eine Einheit Weizen 10 Einheiten", "bedeutung": "+ 10x₃"},
+          {"text": "eine Einheit Luzerne 3 Einheiten", "bedeutung": "+ 3x₄"},
+          {"text": "eine Einheit Melasse 6 Einheiten Feuchtigkeit", "bedeutung": "+ 6x₅"},
+          {"text": "höchstens 497 Einheiten", "bedeutung": "≤ 497"}
+        ],
+        [
+          {"text": "eine Einheit Mais 5 Einheiten", "bedeutung": "5x₁"},
+          {"text": "eine Einheit Soja 12 Einheiten", "bedeutung": "+ 12x₂"},
+          {"text": "eine Einheit Weizen 5 Einheiten", "bedeutung": "+ 5x₃"},
+          {"text": "eine Einheit Luzerne 6 Einheiten", "bedeutung": "+ 6x₄"},
+          {"text": "eine Einheit Melasse 6 Einheiten zum Fettgehalt", "bedeutung": "+ 6x₅"},
+          {"text": "maximal 442 Einheiten begrenzt", "bedeutung": "≤ 442"}
+        ],
+        [
+          {"text": "eine Einheit Mais 5 Punkte", "bedeutung": "5x₁"},
+          {"text": "eine Einheit Soja 1 Punkt", "bedeutung": "+ x₂"},
+          {"text": "eine Einheit Weizen 12 Punkte", "bedeutung": "+ 12x₃"},
+          {"text": "eine Einheit Luzerne 8 Punkte", "bedeutung": "+ 8x₄"},
+          {"text": "eine Einheit Melasse 13 Punkte zum Energiewert", "bedeutung": "+ 13x₅"},
+          {"text": "Mindestanforderung von 382 Punkten", "bedeutung": "≥ 382"}
+        ],
+        [
+          {"text": "eine Einheit Mais 1 Einheit", "bedeutung": "x₁"},
+          {"text": "eine Einheit Soja 3 Einheiten", "bedeutung": "+ 3x₂"},
+          {"text": "eine Einheit Weizen 11 Einheiten", "bedeutung": "+ 11x₃"},
+          {"text": "eine Einheit Luzerne 15 Einheiten", "bedeutung": "+ 15x₄"},
+          {"text": "eine Einheit Melasse 10 Einheiten zum Rohfasergehalt", "bedeutung": "+ 10x₅"},
+          {"text": "höchstens 203 Einheiten", "bedeutung": "≤ 203"}
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "id": "qual_schmuck_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Lupenprüfungen", "x2 = Anzahl Spektralanalysen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Echtheitswert", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Gutachterzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Lupenprüfung (€/Prüfung)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Kosten Spektralanalyse (€/Analyse)"},
+    "a11": {"min": 2, "max": 6,   "label": "Echtheitswert Lupe (Punkte)"},
+    "a12": {"min": 4, "max": 10,  "label": "Echtheitswert Spektral (Punkte)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Echtheitswert (Punkte)"},
+    "a21": {"min": 1, "max": 3,   "label": "Gutachterzeit Lupe (min)"},
+    "a22": {"min": 3, "max": 8,   "label": "Gutachterzeit Spektral (min)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Gutachterzeit (min)"}
+  },
+  "titel": "Schmuckbewertung – Echtheitsprüfung",
+  "beschreibung": "Ein Juwelier bewertet Schmuckstücke mit Lupenprüfungen und Spektralanalysen. Eine Lupenprüfung kostet {c1} €, eine Spektralanalyse kostet {c2} €. Die Lupenprüfung liefert {a11} Echtheitspunkte, die Spektralanalyse liefert {a12} Echtheitspunkte. Der Mindest-Echtheitswert beträgt {b1} Punkte. Eine Lupenprüfung dauert {a21} Minuten, eine Spektralanalyse dauert {a22} Minuten. Die Gutachterzeit beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichendem Echtheitswert und begrenzter Gutachterzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lupenprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spektralanalyse kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Echtheitspunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Echtheitspunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

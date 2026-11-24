@@ -1,0 +1,51 @@
+{
+  "id": "misch_bronze_3v_02",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Kupfer (kg)", "x2 = Menge Zinn (kg)", "x3 = Menge Zink (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Zugfestigkeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Korrosionsanfälligkeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Leitfähigkeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Kupfer (EUR/kg)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Kosten Zinn (EUR/kg)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Zink (EUR/kg)"},
+    "a11": {"min": 2, "max": 7,   "label": "Zugfestigkeit durch Kupfer (MPa/kg)"},
+    "a12": {"min": 3, "max": 9,   "label": "Zugfestigkeit durch Zinn (MPa/kg)"},
+    "a13": {"min": 1, "max": 5,   "label": "Zugfestigkeit durch Zink (MPa/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Zugfestigkeit (MPa)"},
+    "a21": {"min": 1, "max": 4,   "label": "Korrosion durch Kupfer (Einheiten/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Korrosion durch Zinn (Einheiten/kg)"},
+    "a23": {"min": 3, "max": 8,   "label": "Korrosion durch Zink (Einheiten/kg)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Korrosion (Einheiten)"},
+    "a31": {"min": 4, "max": 10,  "label": "Leitfähigkeit durch Kupfer (S/kg)"},
+    "a32": {"min": 1, "max": 5,   "label": "Leitfähigkeit durch Zinn (S/kg)"},
+    "a33": {"min": 2, "max": 6,   "label": "Leitfähigkeit durch Zink (S/kg)"},
+    "b3":  {"min": 50, "max": 180, "label": "Mindest-Leitfähigkeit (S)"}
+  },
+  "titel": "Bronzelegierung – Festigkeit, Korrosion und Leitfähigkeit",
+  "beschreibung": "Eine Gießerei stellt eine Bronzelegierung aus drei Metallen her. Kupfer kostet {c1} EUR pro kg, Zinn kostet {c2} EUR pro kg und Zink kostet {c3} EUR pro kg. Kupfer liefert {a11} MPa Zugfestigkeit pro kg, Zinn liefert {a12} MPa und Zink liefert {a13} MPa pro kg. Die Legierung muss mindestens {b1} MPa Zugfestigkeit erreichen. Kupfer verursacht {a21} Korrosions-Einheiten pro kg, Zinn verursacht {a22} und Zink verursacht {a23} Einheiten pro kg. Die Korrosion darf höchstens {b2} Einheiten betragen. Kupfer liefert {a31} S Leitfähigkeit pro kg, Zinn liefert {a32} S und Zink liefert {a33} S pro kg. Die Leitfähigkeit muss mindestens {b3} S erreichen.",
+  "hinweis": "Minimiere die Materialkosten bei Einhaltung von Zugfestigkeit, Korrosionsgrenze und Leitfähigkeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kupfer kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Zinn kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Zink kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MPa Zugfestigkeit pro kg, Zinn liefert {a12} MPa und Zink liefert {a13} MPa pro kg. Die Legierung muss mindestens {b1} MPa Zugfestigkeit erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Korrosions-Einheiten pro kg, Zinn verursacht {a22} und Zink verursacht {a23} Einheiten pro kg. Die Korrosion darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} S Leitfähigkeit pro kg, Zinn liefert {a32} S und Zink liefert {a33} S pro kg. Die Leitfähigkeit muss mindestens {b3} S erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≥ {b3}"}
+      ]
+    ]
+  }
+}

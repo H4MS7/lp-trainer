@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_spritzguss_2v_06",
+  "titel": "Spritzgussmaschine – Einspritzdruck und Nachdruckzeit",
+  "variablen": [
+    "x1 = Einspritzdruck (Stufen)",
+    "x2 = Nachdruckzeit (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Hydraulikleistung",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Zykluszeit",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Formfuellung Druck"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Masshaltigkeit Nachdruck"
+    },
+    "a11": {
+      "min": 3,
+      "max": 9,
+      "label": "Hydraulik pro Druckstufe"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Hydraulik pro Nachdruckstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Hydraulikleistung"
+    },
+    "a21": {
+      "min": 1,
+      "max": 4,
+      "label": "Zeit pro Druckstufe"
+    },
+    "a22": {
+      "min": 3,
+      "max": 9,
+      "label": "Zeit pro Nachdruckstufe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Zykluszeit"
+    }
+  },
+  "beschreibung": "Eine Spritzgussmaschine wird ueber Einspritzdruck und Nachdruckzeit optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Nachdruckzeit {c2} Punkte Masshaltigkeit. Die Hydraulikleistung betraegt {a11} Einheiten pro Druckstufe und {a12} Einheiten pro Nachdruckstufe bei maximal {b1} Hydraulikeinheiten. Die Zykluszeit liegt bei {a21} Einheiten pro Druckstufe und {a22} Einheiten pro Nachdruckstufe bei maximal {b2} Zeiteinheiten.",
+  "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik und Zykluszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Nachdruckzeit {c2} Punkte Masshaltigkeit",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Druckstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Nachdruckstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Hydraulikeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Druckstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Nachdruckstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Zeiteinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

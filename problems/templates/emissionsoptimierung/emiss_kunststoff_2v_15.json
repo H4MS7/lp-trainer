@@ -1,0 +1,43 @@
+{
+  "id": "emiss_kunststoff_2v_15",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten PVC", "x2 = Einheiten Biokunststoff"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Giftmüll", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag PVC (Tsd. €)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Ertrag Biokunststoff (Tsd. €)"},
+    "a11": {"min": 4, "max": 10,  "label": "CO₂ PVC (t)"},
+    "a12": {"min": 1, "max": 4,   "label": "CO₂ Biokunststoff (t)"},
+    "b1":  {"min": 80, "max": 350, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Giftmüll PVC (kg)"},
+    "a22": {"min": 1, "max": 3,   "label": "Giftmüll Biokunststoff (kg)"},
+    "b2":  {"min": 50, "max": 200, "label": "Giftmülllimit (kg)"}
+  },
+  "titel": "Kunststoffwerk – PVC und Biokunststoff",
+  "beschreibung": "Ein Kunststoffwerk produziert PVC und Biokunststoff. PVC erwirtschaftet {c1} Tsd. € pro Einheit, Biokunststoff {c2} Tsd. €. PVC verursacht {a11} Tonnen CO₂ pro Einheit, Biokunststoff {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. PVC erzeugt {a21} kg Giftmüll pro Einheit, Biokunststoff {a22} kg. Das Giftmülllimit liegt bei {b2} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Giftmülllimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "PVC erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Biokunststoff {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kg Giftmüll pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kg", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kg", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

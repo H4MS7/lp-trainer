@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_reis_fisch_2v_07",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Reisfeld", "x2 = Hektar Fischteich"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Reisfeld (Tsd. €/ha)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Fischteich (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Reisfeld (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Fischteich (ha/ha)"},
+    "b1":  {"min": 30, "max": 200, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 5, "max": 12,  "label": "Wasserverbrauch Reis (m³/ha)"},
+    "a22": {"min": 3, "max": 8,   "label": "Wasserverbrauch Fisch (m³/ha)"},
+    "b2":  {"min": 100, "max": 500, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Landwirtschaft – Reisfeld und Fischteich",
+  "beschreibung": "Ein Betrieb bewirtschaftet Reisfelder und Fischteiche. Ein Hektar Reisfeld bringt {c1} Tsd. € Ertrag, ein Hektar Fischteich bringt {c2} Tsd. € Ertrag. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Reis und {a12} Hektar pro Hektar Fischteich. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserverbrauch liegt bei {a21} m³ pro Hektar Reis und {a22} m³ pro Hektar Fischteich. Das Wasserbudget beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Wasserbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Reisfeld bringt {c1} Tsd. € Ertrag", "bedeutung": "{c1} × x₁"},
+      {"text": "Fischteich bringt {c2} Tsd. € Ertrag", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Reis", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Fischteich", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro Hektar Reis", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro Hektar Fischteich", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

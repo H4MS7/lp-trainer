@@ -1,0 +1,43 @@
+{
+  "id": "schicht_callcenter_2v_02",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Vormittag", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Nachmittag", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 120, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 70, "max": 140, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Agenten vormittags pro Frühschicht"},
+    "a12": {"min": 1, "max": 3, "label": "Agenten vormittags pro Spätschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Vormittag"},
+    "a21": {"min": 1, "max": 3, "label": "Agenten nachmittags pro Frühschicht"},
+    "a22": {"min": 3, "max": 7, "label": "Agenten nachmittags pro Spätschicht"},
+    "b2":  {"min": 20, "max": 60, "label": "Mindestbesetzung Nachmittag"}
+  },
+  "titel": "Callcenter – Schichtplanung",
+  "beschreibung": "Ein Callcenter plant die Besetzung seiner Telefonleitungen. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Agenten für den Vormittag bereit, jede Spätschicht stellt {a12} Agenten für den Vormittag bereit. Mindestens {b1} Agenten werden vormittags benötigt. Jede Frühschicht stellt {a21} Agenten für den Nachmittag bereit, jede Spätschicht stellt {a22} Agenten für den Nachmittag bereit. Mindestens {b2} Agenten werden nachmittags benötigt.",
+  "hinweis": "Minimiere die Schichtkosten bei Einhaltung der Mindestbesetzung für Vormittag und Nachmittag.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Agenten für den Vormittag bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Agenten für den Vormittag bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Agenten werden vormittags benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Agenten für den Nachmittag bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Agenten für den Nachmittag bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Agenten werden nachmittags benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

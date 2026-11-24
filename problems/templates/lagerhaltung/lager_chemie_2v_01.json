@@ -1,0 +1,43 @@
+{
+  "id": "lager_chemie_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Säuren (Fässer)", "x2 = Bestellmenge Laugen (Fässer)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestvorrat Labor", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Sicherheitsschrankkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Lagerkosten Säuren (€/Fass)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Laugen (€/Fass)"},
+    "a11": {"min": 3, "max": 8,   "label": "Laboreinheiten pro Fass Säuren"},
+    "a12": {"min": 2, "max": 6,   "label": "Laboreinheiten pro Fass Laugen"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestvorrat (Laboreinheiten)"},
+    "a21": {"min": 2, "max": 5,   "label": "Schrankplatz Säuren (Fächer)"},
+    "a22": {"min": 2, "max": 4,   "label": "Schrankplatz Laugen (Fächer)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Sicherheitsschrankkapazität (Fächer)"}
+  },
+  "titel": "Chemielager – Gefahrstoffverwaltung",
+  "beschreibung": "Ein Chemielabor verwaltet die Lagerung von Säuren und Laugen in Sicherheitsschränken. Die Lagerkosten betragen {c1} € pro Fass Säuren und {c2} € pro Fass Laugen. Jedes Fass Säuren liefert {a11} Laboreinheiten, jedes Fass Laugen liefert {a12} Laboreinheiten. Der Mindestvorrat für das Labor beträgt {b1} Laboreinheiten. Säuren belegen {a21} Schrankfächer pro Fass, Laugen belegen {a22} Schrankfächer pro Fass. Die Sicherheitsschrankkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestvorrats und der Schrankkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Fass Säuren", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Fass Laugen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Laboreinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Laboreinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Laboreinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Schrankfächer pro Fass", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Schrankfächer pro Fass", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

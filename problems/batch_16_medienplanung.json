@@ -1,0 +1,977 @@
+[
+  {
+    "titel": "Medienplanung TV und Social Media I",
+    "beschreibung": "Eine Werbeagentur plant eine Kampagne mit TV-Spots und Social-Media-Anzeigen. Jede TV-Spot generiert 7 Kontakte und jede Social-Media-Anzeige generiert 14 Kontakte. Das Werbebudget beträgt höchstens 1345 Euro Werbebudget. Jede TV-Spot verbraucht 1 Euro Werbebudget und jede Social-Media-Anzeige verbraucht 5 Euro Werbebudget. Die Kampagne muss mindestens 1853 Personen Reichweite erreichen. Jede TV-Spot erzielt 4 Personen Reichweite und jede Social-Media-Anzeige erzielt 7 Personen Reichweite. Die Gesamtzahl der Kontakte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten TV-Spots",
+      "x2 = Einheiten Social-Media-Anzeigen"
+    ],
+    "zielfunktion": "Z = 7x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 5x2 ≤ 1345 (Werbebudget in Euro)",
+      "4x1 + 7x2 ≥ 1853 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "TV-Spot generiert 7 Kontakte",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "Social-Media-Anzeige generiert 14 Kontakte",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "TV-Spot verbraucht 1 Euro Werbebudget",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige verbraucht 5 Euro Werbebudget",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1345 Euro Werbebudget",
+            "bedeutung": "≤ 1345"
+          }
+        ],
+        [
+          {
+            "text": "TV-Spot erzielt 4 Personen Reichweite",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige erzielt 7 Personen Reichweite",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 1853 Personen Reichweite",
+            "bedeutung": "≥ 1853"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Google-Ads und Instagram II",
+    "beschreibung": "Eine Online-Marketing-Agentur plant eine Kampagne mit Google-Ads und Instagram-Anzeigen. Jede Google-Ad generiert 10 Conversions und jede Instagram-Anzeige generiert 12 Conversions. Das Werbebudget beträgt höchstens 1023 Euro Werbebudget. Jede Google-Ad verbraucht 9 Euro Werbebudget und jede Instagram-Anzeige verbraucht 8 Euro Werbebudget. Die Kampagne muss mindestens 462 Personen Reichweite erreichen. Jede Google-Ad erzielt 5 Personen Reichweite und jede Instagram-Anzeige erzielt 4 Personen Reichweite. Das Personalstunden beträgt höchstens 234 Personalstunden. Jede Google-Ad verbraucht 3 Personalstunden und jede Instagram-Anzeige verbraucht 2 Personalstunden. Die Gesamtzahl der Conversions soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Google-Ads",
+      "x2 = Einheiten Instagram-Anzeigen"
+    ],
+    "zielfunktion": "Z = 10x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + 8x2 ≤ 1023 (Werbebudget in Euro)",
+      "5x1 + 4x2 ≥ 462 (Mindestreichweite in Personen)",
+      "3x1 + 2x2 ≤ 234 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Google-Ad generiert 10 Conversions",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Instagram-Anzeige generiert 12 Conversions",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Google-Ad verbraucht 9 Euro Werbebudget",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Instagram-Anzeige verbraucht 8 Euro Werbebudget",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 1023 Euro Werbebudget",
+            "bedeutung": "≤ 1023"
+          }
+        ],
+        [
+          {
+            "text": "Google-Ad erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Instagram-Anzeige erzielt 4 Personen Reichweite",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 462 Personen Reichweite",
+            "bedeutung": "≥ 462"
+          }
+        ],
+        [
+          {
+            "text": "Google-Ad verbraucht 3 Personalstunden",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Instagram-Anzeige verbraucht 2 Personalstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 234 Personalstunden",
+            "bedeutung": "≤ 234"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Plakat und Radio III",
+    "beschreibung": "Eine Mediaagentur plant eine Kampagne mit Plakatwerbungen und Radio-Spots. Jede Plakatwerbung generiert 6 Reichweitenpunkte und jede Radio-Spot generiert 2 Reichweitenpunkte. Das Werbebudget beträgt höchstens 1434 Euro Werbebudget. Jede Plakatwerbung verbraucht 4 Euro Werbebudget und jede Radio-Spot verbraucht 2 Euro Werbebudget. Die Kampagne muss mindestens 242 Personen Reichweite erreichen. Jede Plakatwerbung erzielt 1 Personen Reichweite und jede Radio-Spot erzielt 6 Personen Reichweite. Das Personalstunden beträgt höchstens 942 Personalstunden. Jede Plakatwerbung verbraucht 2 Personalstunden und jede Radio-Spot verbraucht 5 Personalstunden. Die Gesamtzahl der Reichweitenpunkte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Plakatwerbungen",
+      "x2 = Einheiten Radio-Spots"
+    ],
+    "zielfunktion": "Z = 6x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 1434 (Werbebudget in Euro)",
+      "x1 + 6x2 ≥ 242 (Mindestreichweite in Personen)",
+      "2x1 + 5x2 ≤ 942 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Plakatwerbung generiert 6 Reichweitenpunkte",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Radio-Spot generiert 2 Reichweitenpunkte",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Plakatwerbung verbraucht 4 Euro Werbebudget",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Radio-Spot verbraucht 2 Euro Werbebudget",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 1434 Euro Werbebudget",
+            "bedeutung": "≤ 1434"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwerbung erzielt 1 Personen Reichweite",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Radio-Spot erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 242 Personen Reichweite",
+            "bedeutung": "≥ 242"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwerbung verbraucht 2 Personalstunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Radio-Spot verbraucht 5 Personalstunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 942 Personalstunden",
+            "bedeutung": "≤ 942"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Newsletter und Influencer IV",
+    "beschreibung": "Eine Marketingabteilung plant eine Kampagne mit Newsletter-Kampagnen und Influencer-Kooperationen. Jede Newsletter-Kampagne generiert 8 Leads und jede Influencer-Kooperation generiert 3 Leads. Das Werbebudget beträgt höchstens 420 Euro Werbebudget. Jede Newsletter-Kampagne verbraucht 11 Euro Werbebudget und jede Influencer-Kooperation verbraucht 1 Euro Werbebudget. Die Kampagne muss mindestens 312 Personen Reichweite erreichen. Jede Newsletter-Kampagne erzielt 2 Personen Reichweite und jede Influencer-Kooperation erzielt 1 Personen Reichweite. Das Personalstunden beträgt höchstens 780 Personalstunden. Jede Newsletter-Kampagne verbraucht 12 Personalstunden und jede Influencer-Kooperation verbraucht 2 Personalstunden. Die Gesamtzahl der Leads soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Newsletter-Kampagnen",
+      "x2 = Einheiten Influencer-Kooperationen"
+    ],
+    "zielfunktion": "Z = 8x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "11x1 + x2 ≤ 420 (Werbebudget in Euro)",
+      "2x1 + x2 ≥ 312 (Mindestreichweite in Personen)",
+      "12x1 + 2x2 ≤ 780 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Newsletter-Kampagne generiert 8 Leads",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Influencer-Kooperation generiert 3 Leads",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Newsletter-Kampagne verbraucht 11 Euro Werbebudget",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Influencer-Kooperation verbraucht 1 Euro Werbebudget",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 420 Euro Werbebudget",
+            "bedeutung": "≤ 420"
+          }
+        ],
+        [
+          {
+            "text": "Newsletter-Kampagne erzielt 2 Personen Reichweite",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Influencer-Kooperation erzielt 1 Personen Reichweite",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 312 Personen Reichweite",
+            "bedeutung": "≥ 312"
+          }
+        ],
+        [
+          {
+            "text": "Newsletter-Kampagne verbraucht 12 Personalstunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Influencer-Kooperation verbraucht 2 Personalstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 780 Personalstunden",
+            "bedeutung": "≤ 780"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Print und Online V",
+    "beschreibung": "Eine Verlag plant eine Kampagne mit Print-Anzeigen und Online-Banner. Jede Print-Anzeige generiert 9 Impressionen und jede Online-Banner generiert 14 Impressionen. Das Werbebudget beträgt höchstens 1713 Euro Werbebudget. Jede Print-Anzeige verbraucht 6 Euro Werbebudget und jede Online-Banner verbraucht 3 Euro Werbebudget. Die Kampagne muss mindestens 112 Personen Reichweite erreichen. Jede Print-Anzeige erzielt 1 Personen Reichweite und jede Online-Banner erzielt 4 Personen Reichweite. Die Gesamtzahl der Impressionen soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Print-Anzeigen",
+      "x2 = Einheiten Online-Banner"
+    ],
+    "zielfunktion": "Z = 9x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 1713 (Werbebudget in Euro)",
+      "x1 + 4x2 ≥ 112 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Print-Anzeige generiert 9 Impressionen",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "Online-Banner generiert 14 Impressionen",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Print-Anzeige verbraucht 6 Euro Werbebudget",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Online-Banner verbraucht 3 Euro Werbebudget",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 1713 Euro Werbebudget",
+            "bedeutung": "≤ 1713"
+          }
+        ],
+        [
+          {
+            "text": "Print-Anzeige erzielt 1 Personen Reichweite",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Online-Banner erzielt 4 Personen Reichweite",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 112 Personen Reichweite",
+            "bedeutung": "≥ 112"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung TV und Social Media VI",
+    "beschreibung": "Eine Werbeagentur plant eine Kampagne mit TV-Spots und Social-Media-Anzeigen. Jede TV-Spot generiert 5 Kontakte und jede Social-Media-Anzeige generiert 7 Kontakte. Das Werbebudget beträgt höchstens 873 Euro Werbebudget. Jede TV-Spot verbraucht 1 Euro Werbebudget und jede Social-Media-Anzeige verbraucht 3 Euro Werbebudget. Die Kampagne muss mindestens 114 Personen Reichweite erreichen. Jede TV-Spot erzielt 1 Personen Reichweite und jede Social-Media-Anzeige erzielt 6 Personen Reichweite. Das Personalstunden beträgt höchstens 1656 Personalstunden. Jede TV-Spot verbraucht 6 Personalstunden und jede Social-Media-Anzeige verbraucht 6 Personalstunden. Die Gesamtzahl der Kontakte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten TV-Spots",
+      "x2 = Einheiten Social-Media-Anzeigen"
+    ],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 3x2 ≤ 873 (Werbebudget in Euro)",
+      "x1 + 6x2 ≥ 114 (Mindestreichweite in Personen)",
+      "6x1 + 6x2 ≤ 1656 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "TV-Spot generiert 5 Kontakte",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Social-Media-Anzeige generiert 7 Kontakte",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "TV-Spot verbraucht 1 Euro Werbebudget",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige verbraucht 3 Euro Werbebudget",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 873 Euro Werbebudget",
+            "bedeutung": "≤ 873"
+          }
+        ],
+        [
+          {
+            "text": "TV-Spot erzielt 1 Personen Reichweite",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 114 Personen Reichweite",
+            "bedeutung": "≥ 114"
+          }
+        ],
+        [
+          {
+            "text": "TV-Spot verbraucht 6 Personalstunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige verbraucht 6 Personalstunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 1656 Personalstunden",
+            "bedeutung": "≤ 1656"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Google-Ads und Instagram VII",
+    "beschreibung": "Eine Online-Marketing-Agentur plant eine Kampagne mit Google-Ads und Instagram-Anzeigen. Jede Google-Ad generiert 5 Conversions und jede Instagram-Anzeige generiert 10 Conversions. Das Werbebudget beträgt höchstens 281 Euro Werbebudget. Jede Google-Ad verbraucht 4 Euro Werbebudget und jede Instagram-Anzeige verbraucht 2 Euro Werbebudget. Die Kampagne muss mindestens 54 Personen Reichweite erreichen. Jede Google-Ad erzielt 4 Personen Reichweite und jede Instagram-Anzeige erzielt 6 Personen Reichweite. Das Personalstunden beträgt höchstens 641 Personalstunden. Jede Google-Ad verbraucht 9 Personalstunden und jede Instagram-Anzeige verbraucht 1 Personalstunden. Die Gesamtzahl der Conversions soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Google-Ads",
+      "x2 = Einheiten Instagram-Anzeigen"
+    ],
+    "zielfunktion": "Z = 5x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 281 (Werbebudget in Euro)",
+      "4x1 + 6x2 ≥ 54 (Mindestreichweite in Personen)",
+      "9x1 + x2 ≤ 641 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Google-Ad generiert 5 Conversions",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Instagram-Anzeige generiert 10 Conversions",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Google-Ad verbraucht 4 Euro Werbebudget",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Instagram-Anzeige verbraucht 2 Euro Werbebudget",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 281 Euro Werbebudget",
+            "bedeutung": "≤ 281"
+          }
+        ],
+        [
+          {
+            "text": "Google-Ad erzielt 4 Personen Reichweite",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Instagram-Anzeige erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 54 Personen Reichweite",
+            "bedeutung": "≥ 54"
+          }
+        ],
+        [
+          {
+            "text": "Google-Ad verbraucht 9 Personalstunden",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Instagram-Anzeige verbraucht 1 Personalstunden",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 641 Personalstunden",
+            "bedeutung": "≤ 641"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Plakat und Radio VIII",
+    "beschreibung": "Eine Mediaagentur plant eine Kampagne mit Plakatwerbungen und Radio-Spots. Jede Plakatwerbung generiert 7 Reichweitenpunkte und jede Radio-Spot generiert 13 Reichweitenpunkte. Das Werbebudget beträgt höchstens 1792 Euro Werbebudget. Jede Plakatwerbung verbraucht 5 Euro Werbebudget und jede Radio-Spot verbraucht 6 Euro Werbebudget. Die Kampagne muss mindestens 231 Personen Reichweite erreichen. Jede Plakatwerbung erzielt 5 Personen Reichweite und jede Radio-Spot erzielt 4 Personen Reichweite. Das Personalstunden beträgt höchstens 1954 Personalstunden. Jede Plakatwerbung verbraucht 8 Personalstunden und jede Radio-Spot verbraucht 2 Personalstunden. Die Gesamtzahl der Reichweitenpunkte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Plakatwerbungen",
+      "x2 = Einheiten Radio-Spots"
+    ],
+    "zielfunktion": "Z = 7x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 6x2 ≤ 1792 (Werbebudget in Euro)",
+      "5x1 + 4x2 ≥ 231 (Mindestreichweite in Personen)",
+      "8x1 + 2x2 ≤ 1954 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 2 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Plakatwerbung generiert 7 Reichweitenpunkte",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "Radio-Spot generiert 13 Reichweitenpunkte",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Plakatwerbung verbraucht 5 Euro Werbebudget",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Radio-Spot verbraucht 6 Euro Werbebudget",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 1792 Euro Werbebudget",
+            "bedeutung": "≤ 1792"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwerbung erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Radio-Spot erzielt 4 Personen Reichweite",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 231 Personen Reichweite",
+            "bedeutung": "≥ 231"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwerbung verbraucht 8 Personalstunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Radio-Spot verbraucht 2 Personalstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 1954 Personalstunden",
+            "bedeutung": "≤ 1954"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Newsletter und Influencer IX",
+    "beschreibung": "Eine Marketingabteilung plant eine Kampagne mit Newsletter-Kampagnen und Influencer-Kooperationen. Jede Newsletter-Kampagne generiert 13 Leads und jede Influencer-Kooperation generiert 13 Leads. Das Werbebudget beträgt höchstens 1619 Euro Werbebudget. Jede Newsletter-Kampagne verbraucht 6 Euro Werbebudget und jede Influencer-Kooperation verbraucht 10 Euro Werbebudget. Die Kampagne muss mindestens 1032 Personen Reichweite erreichen. Jede Newsletter-Kampagne erzielt 5 Personen Reichweite und jede Influencer-Kooperation erzielt 5 Personen Reichweite. Die Gesamtzahl der Leads soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Newsletter-Kampagnen",
+      "x2 = Einheiten Influencer-Kooperationen"
+    ],
+    "zielfunktion": "Z = 13x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 10x2 ≤ 1619 (Werbebudget in Euro)",
+      "5x1 + 5x2 ≥ 1032 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Newsletter-Kampagne generiert 13 Leads",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Influencer-Kooperation generiert 13 Leads",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Newsletter-Kampagne verbraucht 6 Euro Werbebudget",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Influencer-Kooperation verbraucht 10 Euro Werbebudget",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 1619 Euro Werbebudget",
+            "bedeutung": "≤ 1619"
+          }
+        ],
+        [
+          {
+            "text": "Newsletter-Kampagne erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Influencer-Kooperation erzielt 5 Personen Reichweite",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 1032 Personen Reichweite",
+            "bedeutung": "≥ 1032"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Print und Online X",
+    "beschreibung": "Eine Verlag plant eine Kampagne mit Print-Anzeigen und Online-Banner. Jede Print-Anzeige generiert 10 Impressionen und jede Online-Banner generiert 6 Impressionen. Das Werbebudget beträgt höchstens 1969 Euro Werbebudget. Jede Print-Anzeige verbraucht 4 Euro Werbebudget und jede Online-Banner verbraucht 5 Euro Werbebudget. Die Kampagne muss mindestens 1797 Personen Reichweite erreichen. Jede Print-Anzeige erzielt 5 Personen Reichweite und jede Online-Banner erzielt 6 Personen Reichweite. Die Gesamtzahl der Impressionen soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Print-Anzeigen",
+      "x2 = Einheiten Online-Banner"
+    ],
+    "zielfunktion": "Z = 10x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 5x2 ≤ 1969 (Werbebudget in Euro)",
+      "5x1 + 6x2 ≥ 1797 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Print-Anzeige generiert 10 Impressionen",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Online-Banner generiert 6 Impressionen",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Print-Anzeige verbraucht 4 Euro Werbebudget",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Online-Banner verbraucht 5 Euro Werbebudget",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1969 Euro Werbebudget",
+            "bedeutung": "≤ 1969"
+          }
+        ],
+        [
+          {
+            "text": "Print-Anzeige erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Online-Banner erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 1797 Personen Reichweite",
+            "bedeutung": "≥ 1797"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung TV und Social Media XI",
+    "beschreibung": "Eine Werbeagentur plant eine Kampagne mit TV-Spots und Social-Media-Anzeigen. Jede TV-Spot generiert 13 Kontakte und jede Social-Media-Anzeige generiert 14 Kontakte. Das Werbebudget beträgt höchstens 1526 Euro Werbebudget. Jede TV-Spot verbraucht 10 Euro Werbebudget und jede Social-Media-Anzeige verbraucht 3 Euro Werbebudget. Die Kampagne muss mindestens 268 Personen Reichweite erreichen. Jede TV-Spot erzielt 5 Personen Reichweite und jede Social-Media-Anzeige erzielt 1 Personen Reichweite. Die Gesamtzahl der Kontakte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten TV-Spots",
+      "x2 = Einheiten Social-Media-Anzeigen"
+    ],
+    "zielfunktion": "Z = 13x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 3x2 ≤ 1526 (Werbebudget in Euro)",
+      "5x1 + x2 ≥ 268 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "TV-Spot generiert 13 Kontakte",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Social-Media-Anzeige generiert 14 Kontakte",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "TV-Spot verbraucht 10 Euro Werbebudget",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige verbraucht 3 Euro Werbebudget",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 1526 Euro Werbebudget",
+            "bedeutung": "≤ 1526"
+          }
+        ],
+        [
+          {
+            "text": "TV-Spot erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Social-Media-Anzeige erzielt 1 Personen Reichweite",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 268 Personen Reichweite",
+            "bedeutung": "≥ 268"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Google-Ads und Instagram XII",
+    "beschreibung": "Eine Online-Marketing-Agentur plant eine Kampagne mit Google-Ads und Instagram-Anzeigen. Jede Google-Ad generiert 3 Conversions und jede Instagram-Anzeige generiert 3 Conversions. Das Werbebudget beträgt höchstens 1325 Euro Werbebudget. Jede Google-Ad verbraucht 4 Euro Werbebudget und jede Instagram-Anzeige verbraucht 8 Euro Werbebudget. Die Kampagne muss mindestens 711 Personen Reichweite erreichen. Jede Google-Ad erzielt 3 Personen Reichweite und jede Instagram-Anzeige erzielt 6 Personen Reichweite. Die Gesamtzahl der Conversions soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Google-Ads",
+      "x2 = Einheiten Instagram-Anzeigen"
+    ],
+    "zielfunktion": "Z = 3x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 8x2 ≤ 1325 (Werbebudget in Euro)",
+      "3x1 + 6x2 ≥ 711 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Google-Ad generiert 3 Conversions",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Instagram-Anzeige generiert 3 Conversions",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Google-Ad verbraucht 4 Euro Werbebudget",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Instagram-Anzeige verbraucht 8 Euro Werbebudget",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 1325 Euro Werbebudget",
+            "bedeutung": "≤ 1325"
+          }
+        ],
+        [
+          {
+            "text": "Google-Ad erzielt 3 Personen Reichweite",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Instagram-Anzeige erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 711 Personen Reichweite",
+            "bedeutung": "≥ 711"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Plakat und Radio XIII",
+    "beschreibung": "Eine Mediaagentur plant eine Kampagne mit Plakatwerbungen und Radio-Spots. Jede Plakatwerbung generiert 11 Reichweitenpunkte und jede Radio-Spot generiert 6 Reichweitenpunkte. Das Werbebudget beträgt höchstens 1575 Euro Werbebudget. Jede Plakatwerbung verbraucht 5 Euro Werbebudget und jede Radio-Spot verbraucht 4 Euro Werbebudget. Die Kampagne muss mindestens 1206 Personen Reichweite erreichen. Jede Plakatwerbung erzielt 4 Personen Reichweite und jede Radio-Spot erzielt 6 Personen Reichweite. Die Gesamtzahl der Reichweitenpunkte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Plakatwerbungen",
+      "x2 = Einheiten Radio-Spots"
+    ],
+    "zielfunktion": "Z = 11x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≤ 1575 (Werbebudget in Euro)",
+      "4x1 + 6x2 ≥ 1206 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Plakatwerbung generiert 11 Reichweitenpunkte",
+          "bedeutung": "11 × x₁"
+        },
+        {
+          "text": "Radio-Spot generiert 6 Reichweitenpunkte",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Plakatwerbung verbraucht 5 Euro Werbebudget",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Radio-Spot verbraucht 4 Euro Werbebudget",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 1575 Euro Werbebudget",
+            "bedeutung": "≤ 1575"
+          }
+        ],
+        [
+          {
+            "text": "Plakatwerbung erzielt 4 Personen Reichweite",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Radio-Spot erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 1206 Personen Reichweite",
+            "bedeutung": "≥ 1206"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Newsletter und Influencer XIV",
+    "beschreibung": "Eine Marketingabteilung plant eine Kampagne mit Newsletter-Kampagnen und Influencer-Kooperationen. Jede Newsletter-Kampagne generiert 12 Leads und jede Influencer-Kooperation generiert 15 Leads. Das Werbebudget beträgt höchstens 1651 Euro Werbebudget. Jede Newsletter-Kampagne verbraucht 3 Euro Werbebudget und jede Influencer-Kooperation verbraucht 1 Euro Werbebudget. Die Kampagne muss mindestens 92 Personen Reichweite erreichen. Jede Newsletter-Kampagne erzielt 5 Personen Reichweite und jede Influencer-Kooperation erzielt 3 Personen Reichweite. Die Gesamtzahl der Leads soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Newsletter-Kampagnen",
+      "x2 = Einheiten Influencer-Kooperationen"
+    ],
+    "zielfunktion": "Z = 12x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 1651 (Werbebudget in Euro)",
+      "5x1 + 3x2 ≥ 92 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Newsletter-Kampagne generiert 12 Leads",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Influencer-Kooperation generiert 15 Leads",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Newsletter-Kampagne verbraucht 3 Euro Werbebudget",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Influencer-Kooperation verbraucht 1 Euro Werbebudget",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 1651 Euro Werbebudget",
+            "bedeutung": "≤ 1651"
+          }
+        ],
+        [
+          {
+            "text": "Newsletter-Kampagne erzielt 5 Personen Reichweite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Influencer-Kooperation erzielt 3 Personen Reichweite",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 92 Personen Reichweite",
+            "bedeutung": "≥ 92"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung Print und Online XV",
+    "beschreibung": "Eine Verlag plant eine Kampagne mit Print-Anzeigen und Online-Banner. Jede Print-Anzeige generiert 5 Impressionen und jede Online-Banner generiert 4 Impressionen. Das Werbebudget beträgt höchstens 1714 Euro Werbebudget. Jede Print-Anzeige verbraucht 4 Euro Werbebudget und jede Online-Banner verbraucht 2 Euro Werbebudget. Die Kampagne muss mindestens 710 Personen Reichweite erreichen. Jede Print-Anzeige erzielt 2 Personen Reichweite und jede Online-Banner erzielt 6 Personen Reichweite. Die Gesamtzahl der Impressionen soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Print-Anzeigen",
+      "x2 = Einheiten Online-Banner"
+    ],
+    "zielfunktion": "Z = 5x1 + 4x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 1714 (Werbebudget in Euro)",
+      "2x1 + 6x2 ≥ 710 (Mindestreichweite in Personen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: 1 Obergrenze(n) mit ≤ und 1 Mindestanforderung(en) mit ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Print-Anzeige generiert 5 Impressionen",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Online-Banner generiert 4 Impressionen",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Print-Anzeige verbraucht 4 Euro Werbebudget",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Online-Banner verbraucht 2 Euro Werbebudget",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 1714 Euro Werbebudget",
+            "bedeutung": "≤ 1714"
+          }
+        ],
+        [
+          {
+            "text": "Print-Anzeige erzielt 2 Personen Reichweite",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Online-Banner erzielt 6 Personen Reichweite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 710 Personen Reichweite",
+            "bedeutung": "≥ 710"
+          }
+        ]
+      ]
+    }
+  }
+]

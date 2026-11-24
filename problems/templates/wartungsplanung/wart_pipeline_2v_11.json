@@ -1,0 +1,43 @@
+{
+  "id": "wart_pipeline_2v_11",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Korrosionsprüfungen", "x2 = Anzahl Leckreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestintegrität", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Inspektorenstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Korrosionsprüfung (Tsd. €)"},
+    "c2":  {"min": 8, "max": 22,  "label": "Kosten Leckreparatur (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Integrität Prüfung (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Integrität Reparatur (%)"},
+    "b1":  {"min": 40, "max": 130, "label": "Mindestintegrität (%)"},
+    "a21": {"min": 2, "max": 6,   "label": "Stunden Prüfung (h)"},
+    "a22": {"min": 5, "max": 12,  "label": "Stunden Reparatur (h)"},
+    "b2":  {"min": 25, "max": 100, "label": "Max. Inspektorenstunden (h)"}
+  },
+  "titel": "Pipeline – Leitungsinspektion",
+  "beschreibung": "Ein Pipelinebetreiber plant die Wartung seiner Leitungen. Eine Korrosionsprüfung kostet {c1} Tsd. €, eine Leckreparatur kostet {c2} Tsd. €. Eine Korrosionsprüfung verbessert die Integrität um {a11} %, eine Leckreparatur um {a12} %. Die Mindestintegrität beträgt {b1} %. Eine Prüfung benötigt {a21} Inspektorenstunden, eine Reparatur benötigt {a22} Inspektorenstunden. Maximal {b2} Inspektorenstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Integrität und Inspektorenkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Korrosionsprüfung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Leckreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Inspektorenstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Inspektorenstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Inspektorenstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

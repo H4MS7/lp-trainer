@@ -1,0 +1,43 @@
+{
+  "id": "qual_lebensmittel_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Laboranalysen", "x2 = Anzahl Sensorikprüfungen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Kontaminationserkennung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Tageskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Laboranalyse (€/Prüfung)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Sensorikprüfung (€/Prüfung)"},
+    "a11": {"min": 4, "max": 10,  "label": "Kontaminationserkennung Labor (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Kontaminationserkennung Sensorik (%)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Kontaminationserkennung (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Zeitbedarf Laboranalyse (Stunden)"},
+    "a22": {"min": 1, "max": 3,   "label": "Zeitbedarf Sensorikprüfung (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Tageskapazität (Stunden)"}
+  },
+  "titel": "Lebensmittelkontrolle – Hygieneprüfung",
+  "beschreibung": "Ein Lebensmittelbetrieb setzt Laboranalysen und Sensorikprüfungen zur Qualitätskontrolle ein. Eine Laboranalyse kostet {c1} €, eine Sensorikprüfung kostet {c2} €. Die Laboranalyse erkennt {a11} % der Kontaminationen, die Sensorikprüfung erkennt {a12} % der Kontaminationen. Die Mindest-Kontaminationserkennung beträgt {b1} %. Eine Laboranalyse dauert {a21} Stunden, eine Sensorikprüfung dauert {a22} Stunden. Die Tageskapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Kontaminationserkennung und begrenzter Tageskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Laboranalyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sensorikprüfung kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Kontaminationen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % der Kontaminationen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

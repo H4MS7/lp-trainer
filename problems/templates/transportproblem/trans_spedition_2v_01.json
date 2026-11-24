@@ -1,0 +1,39 @@
+{
+  "id": "trans_spedition_2v_01",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Route A", "x2 = Fahrten Route B"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Fahrzeugkapazität", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestlieferung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Route A (EUR/Fahrt)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Route B (EUR/Fahrt)"},
+    "a11": {"min": 1, "max": 6,   "label": "Fahrzeuge pro Fahrt Route A"},
+    "a12": {"min": 1, "max": 5,   "label": "Fahrzeuge pro Fahrt Route B"},
+    "b1":  {"min": 30, "max": 120, "label": "Verfügbare Fahrzeuge"},
+    "a21": {"min": 2, "max": 8,   "label": "Liefermenge Route A (t/Fahrt)"},
+    "a22": {"min": 1, "max": 7,   "label": "Liefermenge Route B (t/Fahrt)"},
+    "b2":  {"min": 40, "max": 200, "label": "Mindestliefermenge (t)"}
+  },
+  "titel": "Spedition – Routenoptimierung",
+  "beschreibung": "Eine Spedition muss Güter über zwei Routen transportieren. Route A kostet {c1} EUR pro Fahrt, Route B kostet {c2} EUR pro Fahrt. Pro Fahrt auf Route A werden {a11} Fahrzeuge benötigt, auf Route B {a12} Fahrzeuge. Insgesamt stehen {b1} Fahrzeuge zur Verfügung. Route A transportiert {a21} Tonnen pro Fahrt, Route B transportiert {a22} Tonnen pro Fahrt. Mindestens {b2} Tonnen müssen geliefert werden.",
+  "hinweis": "Minimiere die Transportkosten bei begrenzter Fahrzeugkapazität und Mindestliefermenge.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Route A kostet {c1} EUR pro Fahrt", "bedeutung": "{c1} × x₁"},
+      {"text": "Route B kostet {c2} EUR pro Fahrt", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Fahrzeuge benötigt, auf Route B {a12} Fahrzeuge. Insgesamt stehen {b1} Fahrzeuge zur Verfügung", "bedeutung": "{a11}x₁ + {a12}x₂ ≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen pro Fahrt, Route B transportiert {a22} Tonnen pro Fahrt. Mindestens {b2} Tonnen müssen geliefert werden", "bedeutung": "{a21}x₁ + {a22}x₂ ≥ {b2}"}
+      ]
+    ]
+  }
+}

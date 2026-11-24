@@ -1,0 +1,60 @@
+{
+  "id": "flaeche_obst_gem_blumen_3v_18",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Hektar Obstanbau", "x2 = Hektar Gemüseanbau", "x3 = Hektar Blumenfeld"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Bewässerung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Düngerbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 14,  "label": "Ertrag Obst (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Gemüse (Tsd. €/ha)"},
+    "c3":  {"min": 6, "max": 16,  "label": "Ertrag Blumen (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Obst (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Gemüse (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Flächenbedarf Blumen (ha/ha)"},
+    "b1":  {"min": 20, "max": 120, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 8,   "label": "Bewässerung Obst (m³/ha)"},
+    "a22": {"min": 4, "max": 10,  "label": "Bewässerung Gemüse (m³/ha)"},
+    "a23": {"min": 2, "max": 6,   "label": "Bewässerung Blumen (m³/ha)"},
+    "b2":  {"min": 50, "max": 300, "label": "Bewässerungskapazität (m³)"},
+    "a31": {"min": 1, "max": 4,   "label": "Dünger Obst (t/ha)"},
+    "a32": {"min": 2, "max": 5,   "label": "Dünger Gemüse (t/ha)"},
+    "a33": {"min": 1, "max": 3,   "label": "Dünger Blumen (t/ha)"},
+    "b3":  {"min": 20, "max": 120, "label": "Düngerbudget (t)"}
+  },
+  "titel": "Gartenbau – Obst, Gemüse und Blumen",
+  "beschreibung": "Ein Gartenbaubetrieb teilt seine Fläche zwischen Obst, Gemüse und Blumen auf. Obst bringt {c1} Tsd. € pro Hektar, Gemüse bringt {c2} Tsd. € pro Hektar, Blumen bringen {c3} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} ha pro ha Obst, {a12} ha pro ha Gemüse und {a13} ha pro ha Blumen. Die Gesamtfläche beträgt {b1} Hektar. Die Bewässerung erfordert {a21} m³ pro ha Obst, {a22} m³ pro ha Gemüse und {a23} m³ pro ha Blumen. Die Bewässerungskapazität beträgt {b2} m³. Der Düngerverbrauch liegt bei {a31} Tonnen pro ha Obst, {a32} Tonnen pro ha Gemüse und {a33} Tonnen pro ha Blumen. Das Düngerbudget beträgt {b3} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Bewässerung und Dünger.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Obst bringt {c1} Tsd. € pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Gemüse bringt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"},
+      {"text": "Blumen bringen {c3} Tsd. € pro Hektar", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Obst", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Gemüse", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Blumen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Obst", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Gemüse", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Blumen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen pro ha Obst", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen pro ha Gemüse", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen pro ha Blumen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

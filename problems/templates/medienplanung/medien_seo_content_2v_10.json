@@ -1,0 +1,41 @@
+{
+  "id": "medien_seo_content_2v_10",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl SEO-Optimierungen", "x2 = Anzahl Content-Marketing-Artikel"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Redaktionskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,    "label": "Organischer Traffic SEO (Tsd./Monat)"},
+    "c2":  {"min": 1, "max": 5,     "label": "Organischer Traffic Content (Tsd./Monat)"},
+    "a11": {"min": 1, "max": 4,     "label": "Kosten SEO (Tsd. €)"},
+    "a12": {"min": 1, "max": 3,     "label": "Kosten Content (Tsd. €)"},
+    "b1":  {"min": 15, "max": 60,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Aufwand SEO (Stunden)"},
+    "a22": {"min": 4, "max": 12,    "label": "Aufwand Content (Stunden)"},
+    "b2":  {"min": 30, "max": 100,  "label": "Redaktionsstunden"}
+  },
+  "titel": "Inbound-Marketing – SEO und Content",
+  "beschreibung": "Ein Inbound-Marketing-Team plant den Einsatz von SEO-Optimierungen und Content-Marketing-Artikeln. Eine SEO-Optimierung generiert {c1} Tsd. organische Besucher pro Monat, ein Content-Marketing-Artikel generiert {c2} Tsd. organische Besucher pro Monat. Eine SEO-Optimierung kostet {a11} Tsd. €, ein Content-Marketing-Artikel kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Der Aufwand beträgt {a21} Stunden pro SEO-Optimierung und {a22} Stunden pro Content-Marketing-Artikel. Insgesamt stehen {b2} Redaktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere den organischen Gesamttraffic unter Beachtung von Budget und Redaktionskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "SEO-Optimierung generiert {c1} Tsd. organische Besucher pro Monat", "bedeutung": "{c1} × x₁"},
+      {"text": "Content-Marketing-Artikel generiert {c2} Tsd. organische Besucher pro Monat", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, ein Content-Marketing-Artikel kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro SEO-Optimierung und {a22} Stunden pro Content-Marketing-Artikel", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Redaktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "diaet_bodybuilder_3v_06",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Portionen Hüttenkäse", "x2 = Portionen Thunfisch", "x3 = Portionen Proteinpulver"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalorien", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Fett", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Hüttenkäse (€/Portion)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Kosten Thunfisch (€/Portion)"},
+    "c3":  {"min": 2, "max": 8,   "label": "Kosten Proteinpulver (€/Portion)"},
+    "a11": {"min": 5, "max": 12,  "label": "Protein Hüttenkäse (g/Portion)"},
+    "a12": {"min": 8, "max": 15,  "label": "Protein Thunfisch (g/Portion)"},
+    "a13": {"min": 10, "max": 15, "label": "Protein Proteinpulver (g/Portion)"},
+    "b1":  {"min": 80, "max": 180, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 80, "max": 150, "label": "Kalorien Hüttenkäse (kcal/Portion)"},
+    "a22": {"min": 100, "max": 200, "label": "Kalorien Thunfisch (kcal/Portion)"},
+    "a23": {"min": 100, "max": 180, "label": "Kalorien Proteinpulver (kcal/Portion)"},
+    "b2":  {"min": 1200, "max": 2500, "label": "Mindest-Kalorien (kcal)"},
+    "a31": {"min": 1, "max": 4,   "label": "Fett Hüttenkäse (g/Portion)"},
+    "a32": {"min": 1, "max": 3,   "label": "Fett Thunfisch (g/Portion)"},
+    "a33": {"min": 1, "max": 2,   "label": "Fett Proteinpulver (g/Portion)"},
+    "b3":  {"min": 30, "max": 60,  "label": "Maximal-Fett (g)"}
+  },
+  "titel": "Bodybuilder-Ernährung – Hüttenkäse, Thunfisch und Proteinpulver",
+  "beschreibung": "Ein Bodybuilder plant seine Ernährung kostengünstig aus Hüttenkäse, Thunfisch und Proteinpulver. Hüttenkäse kostet {c1} € pro Portion, Thunfisch kostet {c2} € pro Portion, Proteinpulver kostet {c3} € pro Portion. Hüttenkäse liefert {a11} g Protein, Thunfisch liefert {a12} g Protein, Proteinpulver liefert {a13} g Protein pro Portion. Mindestens {b1} g Protein sind täglich nötig. Hüttenkäse enthält {a21} kcal, Thunfisch enthält {a22} kcal, Proteinpulver enthält {a23} kcal pro Portion. Mindestens {b2} kcal werden benötigt. Hüttenkäse hat {a31} g Fett, Thunfisch hat {a32} g Fett, Proteinpulver hat {a33} g Fett pro Portion. Höchstens {b3} g Fett sind erlaubt.",
+  "hinweis": "Minimiere die Ernährungskosten bei Einhaltung der Protein- und Kalorienmindestmengen sowie der Fettobergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hüttenkäse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Thunfisch kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Proteinpulver kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g Protein pro Portion", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} g Protein sind täglich nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} kcal pro Portion", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} kcal werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} g Fett", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} g Fett", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} g Fett pro Portion", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} g Fett sind erlaubt", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

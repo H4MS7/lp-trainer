@@ -1,0 +1,184 @@
+[
+  {
+    "titel": "Forschungsinstitut – Drei Projektlinien",
+    "beschreibung": "Ein Forschungsinstitut verteilt seine begrenzten Ressourcen auf drei Projektlinien: Grundlagenforschung (A), angewandte Forschung (B) und Technologietransfer (C). Jede Einheit Grundlagenforschung erzielt einen wissenschaftlichen Ertragswert von 39 Punkten, jede Einheit angewandte Forschung einen Ertragswert von 45 Punkten und jede Einheit Technologietransfer einen Ertragswert von 33 Punkten. Die Zuteilung unterliegt folgenden Beschränkungen: Im Bereich Laborkapazität benötigt eine Einheit Grundlagenforschung 9 Laborstunden, eine Einheit angewandte Forschung 13 Laborstunden und eine Einheit Technologietransfer 7 Laborstunden. Insgesamt stehen 355 Laborstunden zur Verfügung. Beim Fachpersonal erfordert eine Einheit Grundlagenforschung 1 Mitarbeiter, eine Einheit angewandte Forschung 5 Mitarbeiter und eine Einheit Technologietransfer 14 Mitarbeiter. Es sind 335 Mitarbeitereinheiten verfügbar. Die Gerätekapazität wird ebenfalls beansprucht: 12 Geräteeinheiten pro Einheit Grundlagenforschung, 10 Geräteeinheiten pro Einheit angewandte Forschung und 15 Geräteeinheiten pro Einheit Technologietransfer, bei einem Gesamtbestand von 331 Geräteeinheiten. Zusätzlich ist das Budget begrenzt: 9 Budgeteinheiten pro Einheit Grundlagenforschung, 6 Budgeteinheiten pro Einheit angewandte Forschung und 10 Budgeteinheiten pro Einheit Technologietransfer, bei einem Gesamtbudget von 100 Einheiten. Das Institut möchte den wissenschaftlichen Gesamtertrag maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Grundlagenforschung (A)", "x2 = Einheiten angewandte Forschung (B)", "x3 = Einheiten Technologietransfer (C)"],
+    "zielfunktion": "Z = 39x1 + 45x2 + 33x3 (max)",
+    "nebenbedingungen": [
+      "9x1 + 13x2 + 7x3 ≤ 355 (Laborkapazität)",
+      "x1 + 5x2 + 14x3 ≤ 335 (Fachpersonal)",
+      "12x1 + 10x2 + 15x3 ≤ 331 (Gerätekapazität)",
+      "9x1 + 6x2 + 10x3 ≤ 100 (Budget)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die vier begrenzten Ressourcen (Labor, Personal, Geräte, Budget) und formuliere je eine Nebenbedingung. Achte besonders auf die Budgetrestriktion, die am engsten sein könnte.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Grundlagenforschung erzielt einen wissenschaftlichen Ertragswert von 39 Punkten", "bedeutung": "39 × x₁"},
+        {"text": "angewandte Forschung einen Ertragswert von 45 Punkten", "bedeutung": "45 × x₂"},
+        {"text": "Technologietransfer einen Ertragswert von 33 Punkten", "bedeutung": "33 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Grundlagenforschung 9 Laborstunden", "bedeutung": "9x₁"},
+          {"text": "angewandte Forschung 13 Laborstunden", "bedeutung": "+ 13x₂"},
+          {"text": "Technologietransfer 7 Laborstunden", "bedeutung": "+ 7x₃"},
+          {"text": "355 Laborstunden zur Verfügung", "bedeutung": "≤ 355"}
+        ],
+        [
+          {"text": "Grundlagenforschung 1 Mitarbeiter", "bedeutung": "x₁"},
+          {"text": "angewandte Forschung 5 Mitarbeiter", "bedeutung": "+ 5x₂"},
+          {"text": "Technologietransfer 14 Mitarbeiter", "bedeutung": "+ 14x₃"},
+          {"text": "335 Mitarbeitereinheiten verfügbar", "bedeutung": "≤ 335"}
+        ],
+        [
+          {"text": "12 Geräteeinheiten pro Einheit Grundlagenforschung", "bedeutung": "12x₁"},
+          {"text": "10 Geräteeinheiten pro Einheit angewandte Forschung", "bedeutung": "+ 10x₂"},
+          {"text": "15 Geräteeinheiten pro Einheit Technologietransfer", "bedeutung": "+ 15x₃"},
+          {"text": "331 Geräteeinheiten", "bedeutung": "≤ 331"}
+        ],
+        [
+          {"text": "9 Budgeteinheiten pro Einheit Grundlagenforschung", "bedeutung": "9x₁"},
+          {"text": "6 Budgeteinheiten pro Einheit angewandte Forschung", "bedeutung": "+ 6x₂"},
+          {"text": "10 Budgeteinheiten pro Einheit Technologietransfer", "bedeutung": "+ 10x₃"},
+          {"text": "Gesamtbudget von 100 Einheiten", "bedeutung": "≤ 100"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Marketingagentur – Drei Werbekanäle",
+    "beschreibung": "Eine Marketingagentur plant die optimale Verteilung ihres Etats auf drei Werbekanäle: Online-Werbung (A), Printwerbung (B) und Social-Media-Kampagnen (C). Jede investierte Einheit in Online-Werbung generiert einen Reichweitenertrag von 23 Punkten, jede Einheit Printwerbung einen Ertrag von 30 Punkten und jede Einheit Social-Media-Kampagnen einen Ertrag von 48 Punkten. Die Ressourcen sind jedoch begrenzt. Im Bereich Medieneinkauf benötigt eine Einheit Online-Werbung 4 Einkaufsstunden, eine Einheit Printwerbung 2 Einkaufsstunden und eine Einheit Social-Media-Kampagnen 12 Einkaufsstunden. Insgesamt stehen 321 Einkaufsstunden zur Verfügung. Beim Kreativteam erfordert eine Einheit Online-Werbung 13 Kreativstunden, eine Einheit Printwerbung 6 Kreativstunden und eine Einheit Social-Media-Kampagnen 6 Kreativstunden. Das Kreativteam kann maximal 24 Kreativstunden leisten. Für die Datenanalyse werden pro Einheit Online-Werbung 1 Analysestunde, pro Einheit Printwerbung 4 Analysestunden und pro Einheit Social-Media-Kampagnen 10 Analysestunden benötigt, bei einer Gesamtkapazität von 304 Analysestunden. Die Agentur möchte den Gesamtertrag maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Online-Werbung (A)", "x2 = Einheiten Printwerbung (B)", "x3 = Einheiten Social-Media-Kampagnen (C)"],
+    "zielfunktion": "Z = 23x1 + 30x2 + 48x3 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 + 12x3 ≤ 321 (Medieneinkauf)",
+      "13x1 + 6x2 + 6x3 ≤ 24 (Kreativteam)",
+      "x1 + 4x2 + 10x3 ≤ 304 (Datenanalyse)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass das Kreativteam mit nur 24 verfügbaren Stunden die engste Beschränkung darstellen könnte. Social Media hat den höchsten Ertrag, aber auch hohen Ressourcenverbrauch.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Online-Werbung generiert einen Reichweitenertrag von 23 Punkten", "bedeutung": "23 × x₁"},
+        {"text": "Printwerbung einen Ertrag von 30 Punkten", "bedeutung": "30 × x₂"},
+        {"text": "Social-Media-Kampagnen einen Ertrag von 48 Punkten", "bedeutung": "48 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Online-Werbung 4 Einkaufsstunden", "bedeutung": "4x₁"},
+          {"text": "Printwerbung 2 Einkaufsstunden", "bedeutung": "+ 2x₂"},
+          {"text": "Social-Media-Kampagnen 12 Einkaufsstunden", "bedeutung": "+ 12x₃"},
+          {"text": "321 Einkaufsstunden zur Verfügung", "bedeutung": "≤ 321"}
+        ],
+        [
+          {"text": "Online-Werbung 13 Kreativstunden", "bedeutung": "13x₁"},
+          {"text": "Printwerbung 6 Kreativstunden", "bedeutung": "+ 6x₂"},
+          {"text": "Social-Media-Kampagnen 6 Kreativstunden", "bedeutung": "+ 6x₃"},
+          {"text": "maximal 24 Kreativstunden", "bedeutung": "≤ 24"}
+        ],
+        [
+          {"text": "Online-Werbung 1 Analysestunde", "bedeutung": "x₁"},
+          {"text": "Printwerbung 4 Analysestunden", "bedeutung": "+ 4x₂"},
+          {"text": "Social-Media-Kampagnen 10 Analysestunden", "bedeutung": "+ 10x₃"},
+          {"text": "304 Analysestunden", "bedeutung": "≤ 304"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Produktionsverbund – Drei Fertigungslinien",
+    "beschreibung": "Ein Industrieunternehmen betreibt drei Produktionslinien: Linie Alpha, Linie Beta und Linie Gamma. Pro Einheit auf Linie Alpha wird ein Deckungsbeitrag von 34 Euro erzielt, pro Einheit auf Linie Beta ein Deckungsbeitrag von 38 Euro und pro Einheit auf Linie Gamma ein Deckungsbeitrag von 16 Euro. Die Produktion unterliegt vier Kapazitätsbeschränkungen. Beim Rohstoffeinsatz benötigt eine Einheit Linie Alpha 4 kg Rohstoff, eine Einheit Linie Beta 7 kg Rohstoff und eine Einheit Linie Gamma 1 kg Rohstoff. Insgesamt sind 398 kg Rohstoff verfügbar. Bei der Maschinenzeit erfordert eine Einheit Linie Alpha 6 Maschinenstunden, eine Einheit Linie Beta 6 Maschinenstunden und eine Einheit Linie Gamma 6 Maschinenstunden. Es stehen 216 Maschinenstunden zur Verfügung. Im Bereich Montagepersonal werden 15 Montageeinheiten pro Einheit Linie Alpha, 11 Montageeinheiten pro Einheit Linie Beta und 12 Montageeinheiten pro Einheit Linie Gamma eingesetzt, bei einer Gesamtkapazität von 389 Montageeinheiten. Außerdem ist die Lagerkapazität begrenzt: 7 Lagerplätze pro Einheit Linie Alpha, 6 Lagerplätze pro Einheit Linie Beta und 10 Lagerplätze pro Einheit Linie Gamma, bei insgesamt 110 verfügbaren Lagerplätzen. Das Unternehmen möchte den Gesamtdeckungsbeitrag maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Linie Alpha", "x2 = Einheiten Linie Beta", "x3 = Einheiten Linie Gamma"],
+    "zielfunktion": "Z = 34x1 + 38x2 + 16x3 (max)",
+    "nebenbedingungen": [
+      "4x1 + 7x2 + x3 ≤ 398 (Rohstoff)",
+      "6x1 + 6x2 + 6x3 ≤ 216 (Maschinenzeit)",
+      "15x1 + 11x2 + 12x3 ≤ 389 (Montagepersonal)",
+      "7x1 + 6x2 + 10x3 ≤ 110 (Lagerkapazität)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Alle drei Linien verbrauchen gleich viel Maschinenzeit (je 6 Stunden). Prüfe, welche Ressource den Engpass bildet, und beachte die unterschiedlichen Lageranforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Linie Alpha wird ein Deckungsbeitrag von 34 Euro erzielt", "bedeutung": "34 × x₁"},
+        {"text": "Linie Beta ein Deckungsbeitrag von 38 Euro", "bedeutung": "38 × x₂"},
+        {"text": "Linie Gamma ein Deckungsbeitrag von 16 Euro", "bedeutung": "16 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Linie Alpha 4 kg Rohstoff", "bedeutung": "4x₁"},
+          {"text": "Linie Beta 7 kg Rohstoff", "bedeutung": "+ 7x₂"},
+          {"text": "Linie Gamma 1 kg Rohstoff", "bedeutung": "+ x₃"},
+          {"text": "398 kg Rohstoff verfügbar", "bedeutung": "≤ 398"}
+        ],
+        [
+          {"text": "Linie Alpha 6 Maschinenstunden", "bedeutung": "6x₁"},
+          {"text": "Linie Beta 6 Maschinenstunden", "bedeutung": "+ 6x₂"},
+          {"text": "Linie Gamma 6 Maschinenstunden", "bedeutung": "+ 6x₃"},
+          {"text": "216 Maschinenstunden zur Verfügung", "bedeutung": "≤ 216"}
+        ],
+        [
+          {"text": "15 Montageeinheiten pro Einheit Linie Alpha", "bedeutung": "15x₁"},
+          {"text": "11 Montageeinheiten pro Einheit Linie Beta", "bedeutung": "+ 11x₂"},
+          {"text": "12 Montageeinheiten pro Einheit Linie Gamma", "bedeutung": "+ 12x₃"},
+          {"text": "389 Montageeinheiten", "bedeutung": "≤ 389"}
+        ],
+        [
+          {"text": "7 Lagerplätze pro Einheit Linie Alpha", "bedeutung": "7x₁"},
+          {"text": "6 Lagerplätze pro Einheit Linie Beta", "bedeutung": "+ 6x₂"},
+          {"text": "10 Lagerplätze pro Einheit Linie Gamma", "bedeutung": "+ 10x₃"},
+          {"text": "110 verfügbaren Lagerplätzen", "bedeutung": "≤ 110"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Standortverteilung – Drei Filialen",
+    "beschreibung": "Ein Handelsunternehmen plant die Ressourcenverteilung auf drei Filialstandorte: Standort Nord, Standort Süd und Standort West. Jede zugeteilte Einheit am Standort Nord erwirtschaftet einen Gewinn von 40 Euro, jede Einheit am Standort Süd einen Gewinn von 12 Euro und jede Einheit am Standort West einen Gewinn von 44 Euro. Die Zuteilung ist durch drei Ressourcen begrenzt. Beim Warentransport benötigt eine Einheit Standort Nord 5 Transportkapazitäten, eine Einheit Standort Süd 15 Transportkapazitäten und eine Einheit Standort West 11 Transportkapazitäten. Insgesamt stehen 476 Transportkapazitäten zur Verfügung. Beim Verkaufspersonal erfordert eine Einheit Standort Nord 2 Personaleinheiten, eine Einheit Standort Süd 7 Personaleinheiten und eine Einheit Standort West 4 Personaleinheiten. Es sind 54 Personaleinheiten verfügbar. Im Bereich Lagerfläche werden 13 Flächeneinheiten pro Einheit Standort Nord, 8 Flächeneinheiten pro Einheit Standort Süd und 1 Flächeneinheit pro Einheit Standort West benötigt, bei einer Gesamtkapazität von 365 Flächeneinheiten. Das Unternehmen möchte den Gesamtgewinn maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Standort Nord", "x2 = Einheiten Standort Süd", "x3 = Einheiten Standort West"],
+    "zielfunktion": "Z = 40x1 + 12x2 + 44x3 (max)",
+    "nebenbedingungen": [
+      "5x1 + 15x2 + 11x3 ≤ 476 (Transportkapazität)",
+      "2x1 + 7x2 + 4x3 ≤ 54 (Verkaufspersonal)",
+      "13x1 + 8x2 + x3 ≤ 365 (Lagerfläche)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Das Verkaufspersonal ist mit nur 54 Einheiten stark limitiert. Standort West hat den höchsten Gewinn pro Einheit, verbraucht aber auch erhebliche Ressourcen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Standort Nord erwirtschaftet einen Gewinn von 40 Euro", "bedeutung": "40 × x₁"},
+        {"text": "Standort Süd einen Gewinn von 12 Euro", "bedeutung": "12 × x₂"},
+        {"text": "Standort West einen Gewinn von 44 Euro", "bedeutung": "44 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Standort Nord 5 Transportkapazitäten", "bedeutung": "5x₁"},
+          {"text": "Standort Süd 15 Transportkapazitäten", "bedeutung": "+ 15x₂"},
+          {"text": "Standort West 11 Transportkapazitäten", "bedeutung": "+ 11x₃"},
+          {"text": "476 Transportkapazitäten zur Verfügung", "bedeutung": "≤ 476"}
+        ],
+        [
+          {"text": "Standort Nord 2 Personaleinheiten", "bedeutung": "2x₁"},
+          {"text": "Standort Süd 7 Personaleinheiten", "bedeutung": "+ 7x₂"},
+          {"text": "Standort West 4 Personaleinheiten", "bedeutung": "+ 4x₃"},
+          {"text": "54 Personaleinheiten verfügbar", "bedeutung": "≤ 54"}
+        ],
+        [
+          {"text": "13 Flächeneinheiten pro Einheit Standort Nord", "bedeutung": "13x₁"},
+          {"text": "8 Flächeneinheiten pro Einheit Standort Süd", "bedeutung": "+ 8x₂"},
+          {"text": "1 Flächeneinheit pro Einheit Standort West", "bedeutung": "+ x₃"},
+          {"text": "365 Flächeneinheiten", "bedeutung": "≤ 365"}
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "id": "kapa_monitoring_4v_05",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Metrik-Kollektoren", "x2 = Anzahl Log-Aggregatoren", "x3 = Anzahl Trace-Sammler", "x4 = Anzahl Alert-Manager"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Speicherplatz", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Metrik-Rate (Tsd./min)"},
+    "c2":  {"min": 5, "max": 30,    "label": "Log-Rate (Tsd. Zeilen/min)"},
+    "c3":  {"min": 1, "max": 10,    "label": "Trace-Rate (Tsd. Spans/min)"},
+    "c4":  {"min": 2, "max": 15,    "label": "Alert-Kapazität (Tsd. Regeln)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Metrik (Kerne)"},
+    "a12": {"min": 2, "max": 4,     "label": "CPU Log (Kerne)"},
+    "a13": {"min": 1, "max": 3,     "label": "CPU Trace (Kerne)"},
+    "a14": {"min": 1, "max": 2,     "label": "CPU Alert (Kerne)"},
+    "b1":  {"min": 16, "max": 64,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 2, "max": 4,     "label": "RAM Metrik (GB)"},
+    "a22": {"min": 4, "max": 8,     "label": "RAM Log (GB)"},
+    "a23": {"min": 2, "max": 8,     "label": "RAM Trace (GB)"},
+    "a24": {"min": 1, "max": 4,     "label": "RAM Alert (GB)"},
+    "b2":  {"min": 32, "max": 128,  "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 10, "max": 50,   "label": "Speicher Metrik (GB)"},
+    "a32": {"min": 50, "max": 200,  "label": "Speicher Log (GB)"},
+    "a33": {"min": 20, "max": 100,  "label": "Speicher Trace (GB)"},
+    "a34": {"min": 5, "max": 20,    "label": "Speicher Alert (GB)"},
+    "b3":  {"min": 200, "max": 1000, "label": "Verfügbarer Speicher (GB)"}
+  },
+  "titel": "Observability-Stack – Komponentenverteilung",
+  "beschreibung": "Ein SRE-Team plant den Observability-Stack. Metrik-Kollektoren erfassen {c1} Tsd. Metriken pro Minute, Log-Aggregatoren verarbeiten {c2} Tsd. Zeilen pro Minute, Trace-Sammler erfassen {c3} Tsd. Spans pro Minute und Alert-Manager verwalten {c4} Tsd. Regeln. Der CPU-Bedarf beträgt {a11} Kerne für Metrik, {a12} Kerne für Log, {a13} Kerne für Trace und {a14} Kerne für Alert. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Metrik, {a22} GB für Log, {a23} GB für Trace und {a24} GB für Alert. Das verfügbare RAM beträgt {b2} GB. Der Speicherbedarf beträgt {a31} GB für Metrik, {a32} GB für Log, {a33} GB für Trace und {a34} GB für Alert. Der verfügbare Speicher beträgt {b3} GB.",
+  "hinweis": "Maximiere die Gesamterfassungsrate unter Beachtung aller Ressourcenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Metrik-Kollektoren erfassen {c1} Tsd. Metriken pro Minute", "bedeutung": "{c1} × x₁"},
+      {"text": "Log-Aggregatoren verarbeiten {c2} Tsd. Zeilen pro Minute", "bedeutung": "{c2} × x₂"},
+      {"text": "Trace-Sammler erfassen {c3} Tsd. Spans pro Minute", "bedeutung": "{c3} × x₃"},
+      {"text": "Alert-Manager verwalten {c4} Tsd. Regeln", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kerne für Metrik, {a12} Kerne für Log, {a13} Kerne für Trace und {a14} Kerne für Alert", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Metrik, {a22} GB für Log, {a23} GB für Trace und {a24} GB für Alert", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} GB für Metrik, {a32} GB für Log, {a33} GB für Trace und {a34} GB für Alert", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} GB", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "wart_produktionslinie_4v_29",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Schmierungen", "x2 = Anzahl Filtertausch", "x3 = Anzahl Riemenersatz", "x4 = Anzahl Lagerwechsel"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestproduktivität", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Stillstandzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Wartungspersonal", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 3,   "label": "Kosten Schmierung (Tsd. €)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Kosten Filter (Tsd. €)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Riemen (Tsd. €)"},
+    "c4":  {"min": 5, "max": 14,  "label": "Kosten Lager (Tsd. €)"},
+    "a11": {"min": 1, "max": 3,   "label": "Produktivität Schmierung (%)"},
+    "a12": {"min": 2, "max": 5,   "label": "Produktivität Filter (%)"},
+    "a13": {"min": 3, "max": 7,   "label": "Produktivität Riemen (%)"},
+    "a14": {"min": 4, "max": 10,  "label": "Produktivität Lager (%)"},
+    "b1":  {"min": 40, "max": 140, "label": "Mindestproduktivität (%)"},
+    "a21": {"min": 1, "max": 2,   "label": "Stillstand Schmierung (h)"},
+    "a22": {"min": 1, "max": 3,   "label": "Stillstand Filter (h)"},
+    "a23": {"min": 2, "max": 4,   "label": "Stillstand Riemen (h)"},
+    "a24": {"min": 3, "max": 6,   "label": "Stillstand Lager (h)"},
+    "b2":  {"min": 10, "max": 40,  "label": "Max. Stillstandzeit (h)"},
+    "a31": {"min": 1, "max": 2,   "label": "Personal Schmierung (Personen)"},
+    "a32": {"min": 1, "max": 2,   "label": "Personal Filter (Personen)"},
+    "a33": {"min": 1, "max": 3,   "label": "Personal Riemen (Personen)"},
+    "a34": {"min": 2, "max": 4,   "label": "Personal Lager (Personen)"},
+    "b3":  {"min": 8, "max": 30,   "label": "Verfügbares Wartungspersonal (Personen)"}
+  },
+  "titel": "Fertigung – Produktionslinienwartung",
+  "beschreibung": "Ein Fertigungsbetrieb plant die Wartung seiner Produktionslinie in vier Stufen. Eine Schmierung kostet {c1} Tsd. €, ein Filtertausch kostet {c2} Tsd. €, ein Riemenersatz kostet {c3} Tsd. €, ein Lagerwechsel kostet {c4} Tsd. €. Eine Schmierung steigert die Produktivität um {a11} %, Filter um {a12} %, Riemen um {a13} %, Lager um {a14} %. Die Mindestproduktivität beträgt {b1} %. Die Stillstandzeit beträgt {a21} h pro Schmierung, {a22} h pro Filter, {a23} h pro Riemen und {a24} h pro Lager. Die maximale Stillstandzeit beträgt {b2} Stunden. Es werden {a31} Personen pro Schmierung, {a32} pro Filter, {a33} pro Riemen und {a34} pro Lager benötigt. Insgesamt stehen {b3} Wartungstechniker zur Verfügung.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Produktivität, Stillstandzeit und Personal.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Schmierung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Filtertausch kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Riemenersatz kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Lagerwechsel kostet {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Schmierung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Filter", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Riemen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro Lager", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Personen pro Schmierung", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Filter", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Riemen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} pro Lager", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Wartungstechniker zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

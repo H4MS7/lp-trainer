@@ -1,0 +1,43 @@
+{
+  "id": "wart_roboter_2v_16",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Kalibrierungen", "x2 = Anzahl Gelenkreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestpräzision", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Robotikerstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Kalibrierung (Tsd. €)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Gelenkreparatur (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Präzision Kalibrierung (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Präzision Gelenk (%)"},
+    "b1":  {"min": 35, "max": 120, "label": "Mindestpräzision (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Stunden Kalibrierung (h)"},
+    "a22": {"min": 4, "max": 10,  "label": "Stunden Gelenk (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Robotikerstunden (h)"}
+  },
+  "titel": "Fertigungslinie – Roboterkalibrierung",
+  "beschreibung": "Ein Automobilhersteller plant die Wartung seiner Fertigungsroboter. Eine Kalibrierung kostet {c1} Tsd. €, eine Gelenkreparatur kostet {c2} Tsd. €. Eine Kalibrierung verbessert die Präzision um {a11} %, eine Gelenkreparatur um {a12} %. Die Mindestpräzision beträgt {b1} %. Eine Kalibrierung benötigt {a21} Robotikerstunden, eine Gelenkreparatur benötigt {a22} Robotikerstunden. Maximal {b2} Robotikerstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Präzision und Personalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kalibrierung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Gelenkreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Robotikerstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Robotikerstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Robotikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_extruder_drei_3v_05",
+  "titel": "Extruder – Temperatur, Drehzahl und Gegendruck",
+  "variablen": [
+    "x1 = Zylindertemperatur (Stufen)",
+    "x2 = Schneckendrehzahl (Stufen)",
+    "x3 = Gegendruck (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Schneckenverschleiss",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Druckgrenze",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 9,
+      "label": "Schmelzqualitaet Temperatur"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Durchsatz Drehzahl"
+    },
+    "c3": {
+      "min": 2,
+      "max": 7,
+      "label": "Homogenitaet Gegendruck"
+    },
+    "a11": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie Temperatur"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Drehzahl"
+    },
+    "a13": {
+      "min": 1,
+      "max": 4,
+      "label": "Energie Gegendruck"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Energieverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 5,
+      "label": "Verschleiss Temperatur"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Verschleiss Drehzahl"
+    },
+    "a23": {
+      "min": 2,
+      "max": 6,
+      "label": "Verschleiss Gegendruck"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Schneckenverschleiss"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Druck Temperatur"
+    },
+    "a32": {
+      "min": 2,
+      "max": 5,
+      "label": "Druck Drehzahl"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Druck Gegendruck"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Druckgrenze"
+    }
+  },
+  "beschreibung": "Ein Extruder wird ueber drei Parameter gesteuert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet, die Schneckendrehzahl {c2} Punkte Durchsatz und der Gegendruck {c3} Punkte Homogenitaet. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Drehzahl und {a13} fuer Gegendruck bei maximal {b1} Energieeinheiten. Der Schneckenverschleiss liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Drehzahl und {a23} fuer Gegendruck bei maximal {b2} Verschleisseinheiten. Die Druckgrenze betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Drehzahl und {a33} fuer Gegendruck bei maximal {b3} Druckeinheiten.",
+  "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie, Verschleiss und Druckgrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schneckendrehzahl {c2} Punkte Durchsatz",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Gegendruck {c3} Punkte Homogenitaet",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Temperatur",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Drehzahl",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Gegendruck",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Temperatur",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Drehzahl",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Gegendruck",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Temperatur",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Drehzahl",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Gegendruck",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Druckeinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

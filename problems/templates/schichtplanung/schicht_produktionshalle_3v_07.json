@@ -1,0 +1,54 @@
+{
+  "id": "schicht_produktionshalle_3v_07",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten", "x3 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Maschinenbediener", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Qualitätskontrolle", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Logistik", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 120, "max": 220, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 130, "max": 240, "label": "Kosten Spätschicht (€)"},
+    "c3":  {"min": 170, "max": 300, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 4, "max": 10, "label": "Maschinenbediener pro Frühschicht"},
+    "a12": {"min": 3, "max": 8, "label": "Maschinenbediener pro Spätschicht"},
+    "a13": {"min": 2, "max": 6, "label": "Maschinenbediener pro Nachtschicht"},
+    "b1":  {"min": 20, "max": 60, "label": "Mindestbesetzung Maschinenbediener"},
+    "a21": {"min": 2, "max": 4, "label": "Qualitätsprüfer pro Frühschicht"},
+    "a22": {"min": 1, "max": 3, "label": "Qualitätsprüfer pro Spätschicht"},
+    "a23": {"min": 1, "max": 2, "label": "Qualitätsprüfer pro Nachtschicht"},
+    "b2":  {"min": 6, "max": 20, "label": "Mindestbesetzung Qualitätskontrolle"},
+    "a31": {"min": 2, "max": 5, "label": "Logistiker pro Frühschicht"},
+    "a32": {"min": 2, "max": 4, "label": "Logistiker pro Spätschicht"},
+    "a33": {"min": 1, "max": 3, "label": "Logistiker pro Nachtschicht"},
+    "b3":  {"min": 8, "max": 25, "label": "Mindestbesetzung Logistik"}
+  },
+  "titel": "Produktionshalle – Drei-Schicht-Planung",
+  "beschreibung": "Eine Produktionshalle plant die Besetzung über drei Schichten. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} € und eine Nachtschicht kostet {c3} €. Jede Frühschicht stellt {a11} Maschinenbediener bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}. Mindestens {b1} Maschinenbediener werden benötigt. Jede Frühschicht stellt {a21} Qualitätsprüfer bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}. Mindestens {b2} Qualitätsprüfer werden benötigt. Jede Frühschicht stellt {a31} Logistiker bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}. Mindestens {b3} Logistiker werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Maschinenbediener, Qualitätskontrolle und Logistik.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Maschinenbediener bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Maschinenbediener werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Qualitätsprüfer bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Qualitätsprüfer werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Logistiker bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Logistiker werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

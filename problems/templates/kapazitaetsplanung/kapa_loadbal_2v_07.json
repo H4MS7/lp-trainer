@@ -1,0 +1,41 @@
+{
+  "id": "kapa_loadbal_2v_07",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Layer-4-Balancer", "x2 = Anzahl Layer-7-Balancer"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Netzwerkports", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CPU-Ressourcen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,  "label": "Durchsatz L4 (Tsd. Conn/s)"},
+    "c2":  {"min": 5, "max": 25,   "label": "Durchsatz L7 (Tsd. Req/s)"},
+    "a11": {"min": 2, "max": 8,    "label": "Ports L4"},
+    "a12": {"min": 4, "max": 12,   "label": "Ports L7"},
+    "b1":  {"min": 40, "max": 120, "label": "Verfügbare Ports"},
+    "a21": {"min": 1, "max": 4,    "label": "CPU L4 (Kerne)"},
+    "a22": {"min": 2, "max": 8,    "label": "CPU L7 (Kerne)"},
+    "b2":  {"min": 24, "max": 96,  "label": "Verfügbare CPU-Kerne"}
+  },
+  "titel": "Load-Balancer – Instanzplanung",
+  "beschreibung": "Ein Netzwerkteam plant die Verteilung von Load-Balancer-Instanzen. Ein Layer-4-Balancer verarbeitet {c1} Tsd. Verbindungen pro Sekunde, ein Layer-7-Balancer verarbeitet {c2} Tsd. Anfragen pro Sekunde. Ein Layer-4-Balancer belegt {a11} Netzwerkports, ein Layer-7-Balancer belegt {a12} Netzwerkports. Es stehen {b1} Netzwerkports zur Verfügung. Der CPU-Bedarf beträgt {a21} Kerne pro Layer-4-Balancer und {a22} Kerne pro Layer-7-Balancer. Es stehen {b2} CPU-Kerne zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der Port- und CPU-Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Layer-4-Balancer verarbeitet {c1} Tsd. Verbindungen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Layer-7-Balancer verarbeitet {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Netzwerkports, ein Layer-7-Balancer belegt {a12} Netzwerkports", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Netzwerkports zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kerne pro Layer-4-Balancer und {a22} Kerne pro Layer-7-Balancer", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

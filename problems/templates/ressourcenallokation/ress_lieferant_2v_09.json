@@ -1,0 +1,43 @@
+{
+  "id": "ress_lieferant_2v_09",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Lieferant X (Tonnen)", "x2 = Bestellmenge Lieferant Y (Tonnen)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Lagerkapazitaet", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Einkaufsbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Qualitaetswert/t Lieferant X"},
+    "c2":  {"min": 3, "max": 12,    "label": "Qualitaetswert/t Lieferant Y"},
+    "a11": {"min": 1, "max": 3,     "label": "Lagerplatz/t Lieferant X"},
+    "a12": {"min": 1, "max": 2,     "label": "Lagerplatz/t Lieferant Y"},
+    "b1":  {"min": 20, "max": 100,  "label": "Lagerplaetze"},
+    "a21": {"min": 3, "max": 8,     "label": "Preis/t Lieferant X (1000 €)"},
+    "a22": {"min": 2, "max": 6,     "label": "Preis/t Lieferant Y (1000 €)"},
+    "b2":  {"min": 30, "max": 150,  "label": "Einkaufsbudget (1000 €)"}
+  },
+  "titel": "Lieferantenauswahl – Lieferant X und Y",
+  "beschreibung": "Ein Einkaufsleiter verteilt Bestellmengen auf Lieferant X und Lieferant Y. Jede Tonne von Lieferant X hat einen Qualitaetswert von {c1}, jede Tonne von Lieferant Y einen Wert von {c2}. Lieferant X benoetigt {a11} Lagerplaetze pro Tonne, Lieferant Y {a12} Lagerplaetze. Die Lagerkapazitaet umfasst {b1} Plaetze. Der Preis betraegt {a21} Tausend Euro pro Tonne bei Lieferant X und {a22} Tausend Euro bei Lieferant Y. Das Einkaufsbudget liegt bei {b2} Tausend Euro.",
+  "hinweis": "Maximiere den Qualitaetswert mit Lager- und Budgetbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lieferant X hat einen Qualitaetswert von {c1}", "bedeutung": "{c1} × x₁"},
+      {"text": "Lieferant Y einen Wert von {c2}", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Lieferant X benoetigt {a11} Lagerplaetze", "bedeutung": "{a11}x₁"},
+        {"text": "Lieferant Y {a12} Lagerplaetze", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Plaetze", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tausend Euro pro Tonne bei Lieferant X", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tausend Euro bei Lieferant Y", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tausend Euro", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

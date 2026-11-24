@@ -1,0 +1,41 @@
+{
+  "id": "flaeche_industrie_erholung_2v_10",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Industriefläche", "x2 = Hektar Erholungsgebiet"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindesterholungsfläche", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 12, "max": 30, "label": "Wert Industrie (Tsd. €/ha)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Wert Erholung (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Industrie (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Erholung (ha/ha)"},
+    "b1":  {"min": 50, "max": 300, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 0, "max": 0,   "label": "Erholungsanteil Industrie"},
+    "a22": {"min": 1, "max": 2,   "label": "Erholungsanteil pro Hektar Erholung"},
+    "b2":  {"min": 10, "max": 60,  "label": "Mindesterholungsfläche (ha)"}
+  },
+  "titel": "Stadtrand – Industrie und Erholungsgebiet",
+  "beschreibung": "Am Stadtrand wird eine Fläche für Industrie und Erholungsgebiet erschlossen. Industriefläche generiert {c1} Tsd. € Wertschöpfung pro Hektar, ein Erholungsgebiet generiert {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Industrie und {a12} Hektar pro Hektar Erholung. Die Gesamtfläche beträgt {b1} Hektar. Laut Vorschrift müssen mindestens {b2} Hektar als Erholungsgebiet ausgewiesen werden.",
+  "hinweis": "Maximiere die Gesamtwertschöpfung unter Beachtung der Fläche und Mindesterholungsfläche.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Industriefläche generiert {c1} Tsd. € Wertschöpfung pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Erholungsgebiet generiert {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Industrie", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Erholung", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "mindestens {b2} Hektar als Erholungsgebiet", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

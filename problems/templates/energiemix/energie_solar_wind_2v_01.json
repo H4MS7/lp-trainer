@@ -1,0 +1,43 @@
+{
+  "id": "energie_solar_wind_2v_01",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Solarenergie", "x2 = MWh Windenergie"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Netzkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 80, "label": "Kosten Solar (€/MWh)"},
+    "c2":  {"min": 25, "max": 70, "label": "Kosten Wind (€/MWh)"},
+    "a11": {"min": 1, "max": 5, "label": "Leistung Solar (MW/MWh)"},
+    "a12": {"min": 2, "max": 6, "label": "Leistung Wind (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 4, "label": "Netzlast Solar (MW/MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Netzlast Wind (MW/MWh)"},
+    "b2":  {"min": 80, "max": 300, "label": "Netzkapazität (MW)"}
+  },
+  "titel": "Energiemix – Solar und Wind",
+  "beschreibung": "Ein Energieversorger plant den Strommix aus Solar- und Windenergie. Solarenergie kostet {c1} € pro MWh, Windenergie kostet {c2} € pro MWh. Solarenergie liefert {a11} MW Leistung pro MWh, Windenergie liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Netzbelastung beträgt {a21} MW pro MWh Solar und {a22} MW pro MWh Wind. Die Netzkapazität ist auf {b2} MW begrenzt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Netzkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Solarenergie kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Windenergie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh Solar", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MW pro MWh Wind", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MW begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

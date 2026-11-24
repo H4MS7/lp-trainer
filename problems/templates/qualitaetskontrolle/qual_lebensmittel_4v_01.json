@@ -1,0 +1,68 @@
+{
+  "id": "qual_lebensmittel_4v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Laboranalysen", "x2 = Anzahl Sensorikprüfungen", "x3 = Anzahl Temperaturmessungen", "x4 = Anzahl Verpackungsprüfungen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Qualitätsindex", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Laborbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Laboranalyse (€)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Sensorik (€)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Kosten Temperatur (€)"},
+    "c4":  {"min": 2, "max": 6,   "label": "Kosten Verpackung (€)"},
+    "a11": {"min": 4, "max": 10,  "label": "Qualitätsindex Labor"},
+    "a12": {"min": 2, "max": 6,   "label": "Qualitätsindex Sensorik"},
+    "a13": {"min": 1, "max": 4,   "label": "Qualitätsindex Temperatur"},
+    "a14": {"min": 2, "max": 5,   "label": "Qualitätsindex Verpackung"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindest-Qualitätsindex"},
+    "a21": {"min": 2, "max": 5,   "label": "Personalzeit Labor (Stunden)"},
+    "a22": {"min": 1, "max": 3,   "label": "Personalzeit Sensorik (Stunden)"},
+    "a23": {"min": 1, "max": 2,   "label": "Personalzeit Temperatur (Stunden)"},
+    "a24": {"min": 1, "max": 2,   "label": "Personalzeit Verpackung (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Personalkapazität (Stunden)"},
+    "a31": {"min": 4, "max": 12,  "label": "Labormaterial Analyse (€)"},
+    "a32": {"min": 1, "max": 5,   "label": "Labormaterial Sensorik (€)"},
+    "a33": {"min": 1, "max": 3,   "label": "Labormaterial Temperatur (€)"},
+    "a34": {"min": 2, "max": 5,   "label": "Labormaterial Verpackung (€)"},
+    "b3":  {"min": 60, "max": 250, "label": "Laborbudget (€)"}
+  },
+  "titel": "Lebensmittelfabrik – Vier Prüfstationen",
+  "beschreibung": "Eine Lebensmittelfabrik betreibt vier Prüfstationen: Laboranalysen, Sensorikprüfungen, Temperaturmessungen und Verpackungsprüfungen. Eine Laboranalyse kostet {c1} €, eine Sensorikprüfung kostet {c2} €, eine Temperaturmessung kostet {c3} € und eine Verpackungsprüfung kostet {c4} €. Der Qualitätsindex beträgt {a11} pro Laboranalyse, {a12} pro Sensorikprüfung, {a13} pro Temperaturmessung und {a14} pro Verpackungsprüfung. Der Mindest-Qualitätsindex beträgt {b1} Punkte. Die Personalzeit beträgt {a21} Stunden pro Laboranalyse, {a22} Stunden pro Sensorikprüfung, {a23} Stunden pro Temperaturmessung und {a24} Stunden pro Verpackungsprüfung. Die Personalkapazität beträgt {b2} Stunden. Das Labormaterial kostet {a31} € pro Laboranalyse, {a32} € pro Sensorikprüfung, {a33} € pro Temperaturmessung und {a34} € pro Verpackungsprüfung. Das Laborbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichendem Qualitätsindex und begrenzter Personalkapazität und Laborbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Laboranalyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sensorikprüfung kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Temperaturmessung kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Verpackungsprüfung kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} pro Laboranalyse", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} pro Sensorikprüfung", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} pro Temperaturmessung", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} pro Verpackungsprüfung", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Laboranalyse", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Sensorikprüfung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden pro Temperaturmessung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Stunden pro Verpackungsprüfung", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Laboranalyse", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Sensorikprüfung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Temperaturmessung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Verpackungsprüfung", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

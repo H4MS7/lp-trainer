@@ -1,0 +1,41 @@
+{
+  "id": "kapa_serverless_2v_13",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Standard-Funktionen", "x2 = Anzahl Premium-Funktionen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gleichzeitige Ausführungen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Budget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Durchsatz Standard (Tsd. Aufrufe/min)"},
+    "c2":  {"min": 10, "max": 50,   "label": "Durchsatz Premium (Tsd. Aufrufe/min)"},
+    "a11": {"min": 10, "max": 50,   "label": "Parallelität Standard"},
+    "a12": {"min": 20, "max": 100,  "label": "Parallelität Premium"},
+    "b1":  {"min": 200, "max": 1000, "label": "Max. gleichzeitige Ausführungen"},
+    "a21": {"min": 1, "max": 5,     "label": "Kosten Standard (€/Tsd. Aufrufe)"},
+    "a22": {"min": 3, "max": 10,    "label": "Kosten Premium (€/Tsd. Aufrufe)"},
+    "b2":  {"min": 20, "max": 100,  "label": "Budget (€/min)"}
+  },
+  "titel": "Serverless-Plattform – Funktionsallokation",
+  "beschreibung": "Eine Serverless-Plattform wird mit Standard- und Premium-Funktionen betrieben. Eine Standard-Funktion verarbeitet {c1} Tsd. Aufrufe pro Minute, eine Premium-Funktion verarbeitet {c2} Tsd. Aufrufe pro Minute. Eine Standard-Funktion benötigt {a11} gleichzeitige Ausführungen, eine Premium-Funktion benötigt {a12} gleichzeitige Ausführungen. Das Limit beträgt {b1} gleichzeitige Ausführungen. Die Kosten betragen {a21} € pro Tsd. Aufrufe für Standard und {a22} € pro Tsd. Aufrufe für Premium. Das Budget beträgt {b2} € pro Minute.",
+  "hinweis": "Maximiere die Gesamtaufrufrate unter Beachtung der Parallelitäts- und Budgetgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Standard-Funktion verarbeitet {c1} Tsd. Aufrufe pro Minute", "bedeutung": "{c1} × x₁"},
+      {"text": "Premium-Funktion verarbeitet {c2} Tsd. Aufrufe pro Minute", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} gleichzeitige Ausführungen, eine Premium-Funktion benötigt {a12} gleichzeitige Ausführungen", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} gleichzeitige Ausführungen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} € pro Tsd. Aufrufe für Standard und {a22} € pro Tsd. Aufrufe für Premium", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} € pro Minute", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

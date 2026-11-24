@@ -1,0 +1,68 @@
+{
+  "id": "lager_tierbedarf_4v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Bestellmenge Hundefutter (Säcke)", "x2 = Bestellmenge Katzenfutter (Säcke)", "x3 = Bestellmenge Vogelfutter (Säcke)", "x4 = Bestellmenge Fischfutter (Dosen)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerplatz", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Beschaffungsbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Lagerkosten Hundefutter (€/Sack)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Lagerkosten Katzenfutter (€/Sack)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Lagerkosten Vogelfutter (€/Sack)"},
+    "c4":  {"min": 1, "max": 3,   "label": "Lagerkosten Fischfutter (€/Dose)"},
+    "a11": {"min": 5, "max": 12,  "label": "Portionen pro Sack Hundefutter"},
+    "a12": {"min": 6, "max": 15,  "label": "Portionen pro Sack Katzenfutter"},
+    "a13": {"min": 8, "max": 20,  "label": "Portionen pro Sack Vogelfutter"},
+    "a14": {"min": 10, "max": 25, "label": "Portionen pro Dose Fischfutter"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestsortiment (Portionen)"},
+    "a21": {"min": 2, "max": 4,   "label": "Lagerplatz Hundefutter (Regalplätze)"},
+    "a22": {"min": 2, "max": 3,   "label": "Lagerplatz Katzenfutter (Regalplätze)"},
+    "a23": {"min": 1, "max": 2,   "label": "Lagerplatz Vogelfutter (Regalplätze)"},
+    "a24": {"min": 1, "max": 2,   "label": "Lagerplatz Fischfutter (Regalplätze)"},
+    "b2":  {"min": 30, "max": 100, "label": "Lagerplatz (Regalplätze)"},
+    "a31": {"min": 5, "max": 15,  "label": "Einkaufspreis Hundefutter (€/Sack)"},
+    "a32": {"min": 4, "max": 12,  "label": "Einkaufspreis Katzenfutter (€/Sack)"},
+    "a33": {"min": 2, "max": 8,   "label": "Einkaufspreis Vogelfutter (€/Sack)"},
+    "a34": {"min": 3, "max": 9,   "label": "Einkaufspreis Fischfutter (€/Dose)"},
+    "b3":  {"min": 300, "max": 1200, "label": "Beschaffungsbudget (€)"}
+  },
+  "titel": "Zoofachhandel – Vier Futtersorten",
+  "beschreibung": "Ein Zoofachhandel lagert Hundefutter, Katzenfutter, Vogelfutter und Fischfutter. Die Lagerkosten betragen {c1} € pro Sack Hundefutter, {c2} € pro Sack Katzenfutter, {c3} € pro Sack Vogelfutter und {c4} € pro Dose Fischfutter. Hundefutter enthält {a11} Portionen pro Sack, Katzenfutter enthält {a12} Portionen pro Sack, Vogelfutter enthält {a13} Portionen pro Sack und Fischfutter enthält {a14} Portionen pro Dose. Das Mindestsortiment umfasst {b1} Portionen. Hundefutter belegt {a21} Regalplätze, Katzenfutter belegt {a22} Regalplätze, Vogelfutter belegt {a23} Regalplätze und Fischfutter belegt {a24} Regalplätze. Der Lagerplatz umfasst {b2} Regalplätze. Die Einkaufspreise betragen {a31} € pro Sack Hundefutter, {a32} € pro Sack Katzenfutter, {a33} € pro Sack Vogelfutter und {a34} € pro Dose Fischfutter. Das Beschaffungsbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments, des Lagerplatzes und des Budgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Sack Hundefutter", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Sack Katzenfutter", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Sack Vogelfutter", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Dose Fischfutter", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Portionen pro Sack", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Portionen pro Sack", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Portionen pro Sack", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Portionen pro Dose", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Portionen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalplätze", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalplätze", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Regalplätze", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Regalplätze", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Regalplätze", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Sack Hundefutter", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Sack Katzenfutter", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Sack Vogelfutter", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Dose Fischfutter", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

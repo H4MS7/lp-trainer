@@ -1,0 +1,43 @@
+{
+  "id": "energie_brennstoffzelle_netz_2v_10",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Brennstoffzelle", "x2 = MWh Stromnetz"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Netzbelastung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 120, "label": "Kosten Brennstoffzelle (€/MWh)"},
+    "c2":  {"min": 35, "max": 90, "label": "Kosten Stromnetz (€/MWh)"},
+    "a11": {"min": 2, "max": 6, "label": "Leistung Brennstoffzelle (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Leistung Stromnetz (MW/MWh)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 3, "label": "Netzbelastung Brennstoffzelle (MW/MWh)"},
+    "a22": {"min": 3, "max": 7, "label": "Netzbelastung Stromnetz (MW/MWh)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale Netzbelastung (MW)"}
+  },
+  "titel": "Energiemix – Brennstoffzelle und Stromnetz",
+  "beschreibung": "Ein Gewerbepark plant die Stromversorgung aus Brennstoffzellen und dem Stromnetz. Brennstoffzellen kosten {c1} € pro MWh, Netzbezug kostet {c2} € pro MWh. Brennstoffzellen liefern {a11} MW Leistung pro MWh, Netzbezug liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Netzbelastung beträgt {a21} MW pro MWh Brennstoffzelle und {a22} MW pro MWh Netzbezug. Die Netzbelastung darf {b2} MW nicht überschreiten.",
+  "hinweis": "Minimiere die Stromkosten bei Einhaltung der Mindestleistung und Netzbelastungsgrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Brennstoffzellen kosten {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Netzbezug kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh Brennstoffzelle", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MW pro MWh Netzbezug", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MW nicht überschreiten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

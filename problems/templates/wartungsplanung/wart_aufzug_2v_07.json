@@ -1,0 +1,43 @@
+{
+  "id": "wart_aufzug_2v_07",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Routinechecks", "x2 = Anzahl Notfalleingriffe"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsicherheit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Servicetechnikerstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Routinecheck (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Notfalleingriff (Tsd. €)"},
+    "a11": {"min": 3, "max": 9,   "label": "Sicherheit Routine (%)"},
+    "a12": {"min": 1, "max": 4,   "label": "Sicherheit Notfall (%)"},
+    "b1":  {"min": 30, "max": 110, "label": "Mindestsicherheit (%)"},
+    "a21": {"min": 1, "max": 4,   "label": "Stunden Routine (h)"},
+    "a22": {"min": 3, "max": 8,   "label": "Stunden Notfall (h)"},
+    "b2":  {"min": 15, "max": 60,  "label": "Max. Servicestunden (h)"}
+  },
+  "titel": "Hochhaus – Aufzugwartung",
+  "beschreibung": "Ein Immobilienverwalter plant die Wartung der Aufzüge. Ein Routinecheck kostet {c1} Tsd. €, ein Notfalleingriff kostet {c2} Tsd. €. Ein Routinecheck erhöht die Sicherheit um {a11} %, ein Notfalleingriff um {a12} %. Die Mindestsicherheit beträgt {b1} %. Ein Routinecheck benötigt {a21} Servicestunden, ein Notfalleingriff benötigt {a22} Servicestunden. Maximal {b2} Servicestunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Sicherheit und Servicekapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Routinecheck kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Notfalleingriff kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Servicestunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Servicestunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Servicestunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

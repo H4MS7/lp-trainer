@@ -1,0 +1,86 @@
+{
+  "id": "energie_stadtwerk_5v_01",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = MWh Solar", "x2 = MWh Wind", "x3 = MWh Biomasse", "x4 = MWh Wasserkraft", "x5 = MWh Erdgas"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestanteil erneuerbar", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Netzkapazität", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Maximale Fläche", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 28, "max": 70, "label": "Kosten Solar (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Wind (€/MWh)"},
+    "c3":  {"min": 38, "max": 85, "label": "Kosten Biomasse (€/MWh)"},
+    "c4":  {"min": 18, "max": 50, "label": "Kosten Wasser (€/MWh)"},
+    "c5":  {"min": 30, "max": 75, "label": "Kosten Erdgas (€/MWh)"},
+    "a11": {"min": 1, "max": 4, "label": "Leistung Solar"},
+    "a12": {"min": 2, "max": 6, "label": "Leistung Wind"},
+    "a13": {"min": 2, "max": 5, "label": "Leistung Biomasse"},
+    "a14": {"min": 3, "max": 7, "label": "Leistung Wasser"},
+    "a15": {"min": 3, "max": 6, "label": "Leistung Erdgas"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 1, "label": "CO2 Solar"},
+    "a22": {"min": 1, "max": 1, "label": "CO2 Wind"},
+    "a23": {"min": 2, "max": 5, "label": "CO2 Biomasse"},
+    "a24": {"min": 1, "max": 1, "label": "CO2 Wasser"},
+    "a25": {"min": 3, "max": 6, "label": "CO2 Erdgas"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale CO2-Emission (t)"},
+    "a31": {"min": 2, "max": 5, "label": "Erneuerbar Solar"},
+    "a32": {"min": 3, "max": 6, "label": "Erneuerbar Wind"},
+    "a33": {"min": 2, "max": 4, "label": "Erneuerbar Biomasse"},
+    "a34": {"min": 3, "max": 7, "label": "Erneuerbar Wasser"},
+    "a35": {"min": 1, "max": 1, "label": "Erneuerbar Erdgas"},
+    "b3":  {"min": 40, "max": 150, "label": "Mindestanteil erneuerbar (MW)"},
+    "a41": {"min": 2, "max": 4, "label": "Netzlast Solar"},
+    "a42": {"min": 2, "max": 5, "label": "Netzlast Wind"},
+    "a43": {"min": 1, "max": 3, "label": "Netzlast Biomasse"},
+    "a44": {"min": 1, "max": 3, "label": "Netzlast Wasser"},
+    "a45": {"min": 2, "max": 4, "label": "Netzlast Erdgas"},
+    "b4":  {"min": 80, "max": 300, "label": "Netzkapazität (MW)"},
+    "a51": {"min": 3, "max": 6, "label": "Fläche Solar"},
+    "a52": {"min": 2, "max": 4, "label": "Fläche Wind"},
+    "a53": {"min": 1, "max": 3, "label": "Fläche Biomasse"},
+    "a54": {"min": 1, "max": 2, "label": "Fläche Wasser"},
+    "a55": {"min": 1, "max": 2, "label": "Fläche Erdgas"},
+    "b5":  {"min": 40, "max": 180, "label": "Maximale Fläche (ha)"}
+  },
+  "titel": "Stadtwerk – Fünf-Quellen-Energiemix",
+  "beschreibung": "Ein Stadtwerk plant den Strommix aus fünf Quellen. Solar kostet {c1} € pro MWh, Wind kostet {c2} € pro MWh, Biomasse kostet {c3} € pro MWh, Wasser kostet {c4} € pro MWh und Erdgas kostet {c5} € pro MWh. Solar liefert {a11} MW, Wind {a12} MW, Biomasse {a13} MW, Wasser {a14} MW und Erdgas {a15} MW pro MWh. Mindestens {b1} MW müssen bereitgestellt werden. Die CO2-Emission beträgt {a21} t Solar, {a22} t Wind, {a23} t Biomasse, {a24} t Wasser und {a25} t Erdgas pro MWh. Maximal {b2} Tonnen CO2 sind zulässig. Der Erneuerbare-Beitrag beträgt {a31} MW Solar, {a32} MW Wind, {a33} MW Biomasse, {a34} MW Wasser und {a35} MW Erdgas pro MWh. Mindestens {b3} MW erneuerbare Leistung werden benötigt. Die Netzlast beträgt {a41} MW Solar, {a42} MW Wind, {a43} MW Biomasse, {a44} MW Wasser und {a45} MW Erdgas pro MWh. Die Netzkapazität ist auf {b4} MW begrenzt. Der Flächenbedarf beträgt {a51} ha Solar, {a52} ha Wind, {a53} ha Biomasse, {a54} ha Wasser und {a55} ha Erdgas pro MWh. Maximal {b5} ha stehen zur Verfügung.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller fünf Nebenbedingungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Solar kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wind kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Biomasse kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Wasser kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"},
+      {"text": "Erdgas kostet {c5} € pro MWh", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Wind {a12} MW, Biomasse {a13} MW, Wasser {a14} MW und Erdgas {a15} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} MW müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} t Solar, {a22} t Wind, {a23} t Biomasse, {a24} t Wasser und {a25} t Erdgas pro MWh", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MW Solar, {a32} MW Wind, {a33} MW Biomasse, {a34} MW Wasser und {a35} MW Erdgas pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} MW erneuerbare Leistung werden benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} MW Solar, {a42} MW Wind, {a43} MW Biomasse, {a44} MW Wasser und {a45} MW Erdgas pro MWh", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} MW begrenzt", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} ha Solar, {a52} ha Wind, {a53} ha Biomasse, {a54} ha Wasser und {a55} ha Erdgas pro MWh", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅"},
+        {"text": "{b5} ha stehen zur Verfügung", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "emiss_kraftwerk_2v_02",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Kohleblock", "x2 = Einheiten Gasturbinenblock"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Kohleblock (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Gasturbinenblock (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "CO₂ Kohleblock (t)"},
+    "a12": {"min": 2, "max": 6,   "label": "CO₂ Gasturbinenblock (t)"},
+    "b1":  {"min": 100, "max": 400, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 4, "max": 10,  "label": "Wasser Kohleblock (m³)"},
+    "a22": {"min": 1, "max": 5,   "label": "Wasser Gasturbinenblock (m³)"},
+    "b2":  {"min": 80, "max": 300, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Kraftwerk – Kohle- und Gasturbinenblöcke",
+  "beschreibung": "Ein Kraftwerk betreibt Kohleblöcke und Gasturbinenblöcke. Ein Kohleblock erwirtschaftet {c1} Tsd. € pro Einheit, ein Gasturbinenblock {c2} Tsd. €. Ein Kohleblock verursacht {a11} Tonnen CO₂ pro Einheit, ein Gasturbinenblock {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. Ein Kohleblock verbraucht {a21} m³ Wasser pro Einheit, ein Gasturbinenblock {a22} m³. Das Wasserbudget beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Wasserbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kohleblock erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Gasturbinenblock {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Wasser pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

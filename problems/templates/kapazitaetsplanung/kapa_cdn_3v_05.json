@@ -1,0 +1,54 @@
+{
+  "id": "kapa_cdn_3v_05",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Edge-PoPs", "x2 = Anzahl Regional-PoPs", "x3 = Anzahl Origin-PoPs"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Bandbreite", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Speicher", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Budget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,    "label": "Auslieferung Edge (Tsd. Req/s)"},
+    "c2":  {"min": 5, "max": 30,     "label": "Auslieferung Regional (Tsd. Req/s)"},
+    "c3":  {"min": 3, "max": 15,     "label": "Auslieferung Origin (Tsd. Req/s)"},
+    "a11": {"min": 1, "max": 5,      "label": "Bandbreite Edge (Gbit/s)"},
+    "a12": {"min": 2, "max": 10,     "label": "Bandbreite Regional (Gbit/s)"},
+    "a13": {"min": 5, "max": 20,     "label": "Bandbreite Origin (Gbit/s)"},
+    "b1":  {"min": 50, "max": 200,   "label": "Verfügbare Bandbreite (Gbit/s)"},
+    "a21": {"min": 100, "max": 500,  "label": "Speicher Edge (GB)"},
+    "a22": {"min": 200, "max": 1000, "label": "Speicher Regional (GB)"},
+    "a23": {"min": 500, "max": 2000, "label": "Speicher Origin (GB)"},
+    "b2":  {"min": 5000, "max": 20000, "label": "Verfügbarer Speicher (GB)"},
+    "a31": {"min": 2, "max": 8,      "label": "Kosten Edge (Tsd. €/Monat)"},
+    "a32": {"min": 5, "max": 15,     "label": "Kosten Regional (Tsd. €/Monat)"},
+    "a33": {"min": 10, "max": 30,    "label": "Kosten Origin (Tsd. €/Monat)"},
+    "b3":  {"min": 50, "max": 200,   "label": "Monatsbudget (Tsd. €)"}
+  },
+  "titel": "CDN – Dreistufige PoP-Verteilung",
+  "beschreibung": "Ein CDN-Betreiber plant eine dreistufige Architektur. Edge-PoPs liefern {c1} Tsd. Anfragen pro Sekunde, Regional-PoPs liefern {c2} Tsd. Anfragen pro Sekunde und Origin-PoPs liefern {c3} Tsd. Anfragen pro Sekunde. Ein Edge-PoP benötigt {a11} Gbit/s Bandbreite, ein Regional-PoP benötigt {a12} Gbit/s und ein Origin-PoP benötigt {a13} Gbit/s. Die verfügbare Bandbreite beträgt {b1} Gbit/s. Der Speicherbedarf beträgt {a21} GB für Edge, {a22} GB für Regional und {a23} GB für Origin. Der verfügbare Speicher beträgt {b2} GB. Die monatlichen Kosten betragen {a31} Tsd. € für Edge, {a32} Tsd. € für Regional und {a33} Tsd. € für Origin. Das Monatsbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Maximiere die Gesamtauslieferungsrate unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Edge-PoPs liefern {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Regional-PoPs liefern {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Origin-PoPs liefern {c3} Tsd. Anfragen pro Sekunde", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Gbit/s Bandbreite, ein Regional-PoP benötigt {a12} Gbit/s und ein Origin-PoP benötigt {a13} Gbit/s", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Gbit/s", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Edge, {a22} GB für Regional und {a23} GB für Origin", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € für Edge, {a32} Tsd. € für Regional und {a33} Tsd. € für Origin", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

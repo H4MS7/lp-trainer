@@ -1,0 +1,43 @@
+{
+  "id": "ress_vertrieb_2v_05",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Aussendienst-Tage Region Nord", "x2 = Aussendienst-Tage Region Sued"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Arbeitstage", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Reisebudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Umsatz/Tag Region Nord (1000 €)"},
+    "c2":  {"min": 4, "max": 12,    "label": "Umsatz/Tag Region Sued (1000 €)"},
+    "a11": {"min": 1, "max": 1,     "label": "Arbeitstage/Tag Nord"},
+    "a12": {"min": 1, "max": 1,     "label": "Arbeitstage/Tag Sued"},
+    "b1":  {"min": 20, "max": 60,   "label": "Verfuegbare Arbeitstage"},
+    "a21": {"min": 1, "max": 4,     "label": "Reisekosten/Tag Nord (100 €)"},
+    "a22": {"min": 2, "max": 6,     "label": "Reisekosten/Tag Sued (100 €)"},
+    "b2":  {"min": 30, "max": 120,  "label": "Reisebudget (100 €)"}
+  },
+  "titel": "Vertrieb – Region Nord und Sued",
+  "beschreibung": "Ein Vertriebsteam plant seine Aussendienst-Tage fuer Region Nord und Region Sued. Pro Tag in Region Nord werden {c1} Tausend Euro Umsatz erwartet, pro Tag in Region Sued {c2} Tausend Euro. Jeder Einsatztag Nord benoetigt {a11} Arbeitstag, jeder Einsatztag Sued {a12} Arbeitstag. Es stehen {b1} Arbeitstage zur Verfuegung. Die Reisekosten betragen {a21} Hundert Euro pro Tag Nord und {a22} Hundert Euro pro Tag Sued. Das Reisebudget belaeuft sich auf {b2} Hundert Euro.",
+  "hinweis": "Maximiere den Umsatz unter Beachtung der verfuegbaren Arbeitstage und des Reisebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Region Nord werden {c1} Tausend Euro Umsatz erwartet", "bedeutung": "{c1} × x₁"},
+      {"text": "Region Sued {c2} Tausend Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Einsatztag Nord benoetigt {a11} Arbeitstag", "bedeutung": "{a11}x₁"},
+        {"text": "Einsatztag Sued {a12} Arbeitstag", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Arbeitstage zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Hundert Euro pro Tag Nord", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Hundert Euro pro Tag Sued", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Hundert Euro", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

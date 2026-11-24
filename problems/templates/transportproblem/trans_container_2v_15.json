@@ -1,0 +1,39 @@
+{
+  "id": "trans_container_2v_15",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Transporte per LKW", "x2 = Transporte per Bahn"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Container", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Terminalkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 16,  "label": "Kosten LKW (EUR/Transport)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Bahn (EUR/Transport)"},
+    "a11": {"min": 1, "max": 4,   "label": "Container pro LKW-Transport"},
+    "a12": {"min": 3, "max": 10,  "label": "Container pro Bahn-Transport"},
+    "b1":  {"min": 30, "max": 150, "label": "Mindest-Container"},
+    "a21": {"min": 1, "max": 3,   "label": "Terminalplätze pro LKW"},
+    "a22": {"min": 2, "max": 6,   "label": "Terminalplätze pro Bahn"},
+    "b2":  {"min": 20, "max": 70, "label": "Max. Terminalkapazität"}
+  },
+  "titel": "Containerlogistik – LKW und Bahn",
+  "beschreibung": "Ein Logistikunternehmen transportiert Container mit zwei Verkehrsmitteln. Ein LKW-Transport kostet {c1} EUR, ein Bahn-Transport kostet {c2} EUR. Ein LKW-Transport befördert {a11} Container, ein Bahn-Transport befördert {a12} Container. Mindestens {b1} Container müssen transportiert werden. Ein LKW-Transport benötigt {a21} Terminalplätze, ein Bahn-Transport benötigt {a22} Terminalplätze. Die Terminalkapazität beträgt höchstens {b2} Plätze.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Containerzahl und begrenzter Terminalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "LKW-Transport kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Bahn-Transport kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Container, ein Bahn-Transport befördert {a12} Container. Mindestens {b1} Container müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Terminalplätze, ein Bahn-Transport benötigt {a22} Terminalplätze. Die Terminalkapazität beträgt höchstens {b2} Plätze", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

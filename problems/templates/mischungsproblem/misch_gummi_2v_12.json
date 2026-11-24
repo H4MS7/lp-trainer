@@ -1,0 +1,39 @@
+{
+  "id": "misch_gummi_2v_12",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Kautschuk A (kg)", "x2 = Menge Kautschuk B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Elastizität", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Abrieb", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Kautschuk A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 11,  "label": "Kosten Kautschuk B (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Elastizität von A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Elastizität von B (Einheiten/kg)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Elastizität (Einheiten)"},
+    "a21": {"min": 1, "max": 4,   "label": "Abrieb durch A (mm/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Abrieb durch B (mm/kg)"},
+    "b2":  {"min": 20, "max": 90, "label": "Max. Abrieb (mm)"}
+  },
+  "titel": "Gummimischung – Elastizität und Abrieb",
+  "beschreibung": "Ein Reifenhersteller mischt Gummi aus zwei Kautschuksorten. Kautschuk A kostet {c1} EUR pro kg, Kautschuk B kostet {c2} EUR pro kg. Kautschuk A liefert {a11} Elastizitäts-Einheiten pro kg, Kautschuk B liefert {a12} Elastizitäts-Einheiten pro kg. Die Mischung muss mindestens {b1} Elastizitäts-Einheiten erreichen. Kautschuk A verursacht {a21} mm Abrieb pro kg, Kautschuk B verursacht {a22} mm Abrieb pro kg. Der Abrieb darf höchstens {b2} mm betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Elastizität und begrenztem Abrieb.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kautschuk A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Kautschuk B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Elastizitäts-Einheiten pro kg, Kautschuk B liefert {a12} Elastizitäts-Einheiten pro kg. Die Mischung muss mindestens {b1} Elastizitäts-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mm Abrieb pro kg, Kautschuk B verursacht {a22} mm Abrieb pro kg. Der Abrieb darf höchstens {b2} mm betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

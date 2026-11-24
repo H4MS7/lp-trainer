@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_bildung_2v_14",
+  "titel": "Bildungsinvestment – Praesenz- und Onlinekurse",
+  "variablen": [
+    "x1 = Investment in Praesenzangebote (Tsd. EUR)",
+    "x2 = Investment in Onlineangebote (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Bildungsbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Dozentenkapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Lerneffekt Praesenz"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Lerneffekt Online"
+    },
+    "a11": {
+      "min": 2,
+      "max": 6,
+      "label": "Kosten Praesenz"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Online"
+    },
+    "b1": {
+      "min": 80,
+      "max": 300,
+      "label": "Bildungsbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Dozenten Praesenz"
+    },
+    "a22": {
+      "min": 1,
+      "max": 4,
+      "label": "Dozenten Online"
+    },
+    "b2": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Dozentenstunden"
+    }
+  },
+  "beschreibung": "Eine Hochschule investiert in Praesenz- und Onlinelehre. Praesenzangebote erzielen {c1} Punkte Lerneffekt, Onlineangebote {c2} Punkte. Die Kosten betragen {a11} Einheiten pro Praesenzeinheit und {a12} Einheiten pro Onlineeinheit. Das Bildungsbudget liegt bei {b1} Tausend Euro. Pro Praesenzeinheit werden {a21} Dozentenstunden benoetigt, pro Onlineeinheit {a22} Stunden bei maximal {b2} verfuegbaren Dozentenstunden.",
+  "hinweis": "Maximiere den Lerneffekt unter Beachtung von Budget und Dozentenkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Praesenzangebote erzielen {c1} Punkte Lerneffekt",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Onlineangebote {c2} Punkte",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Praesenzeinheit",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Onlineeinheit",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Dozentenstunden benoetigt",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "Onlineeinheit {a22} Stunden",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Dozentenstunden",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

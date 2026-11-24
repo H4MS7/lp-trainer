@@ -1,0 +1,60 @@
+{
+  "id": "ress_marketing3_3v_01",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Budget Social Media (1000 €)", "x2 = Budget TV-Werbung (1000 €)", "x3 = Budget Plakatwerbung (1000 €)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtbudget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Agenturstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Freigabeprozesse", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Reichweite/1000€ Social Media (1000)"},
+    "c2":  {"min": 8, "max": 25,    "label": "Reichweite/1000€ TV (1000)"},
+    "c3":  {"min": 2, "max": 8,     "label": "Reichweite/1000€ Plakat (1000)"},
+    "a11": {"min": 1, "max": 1,     "label": "Kosten Social Media (1000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kosten TV (1000€)"},
+    "a13": {"min": 1, "max": 1,     "label": "Kosten Plakat (1000€)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Gesamtbudget (1000 €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Agenturstunden/1000€ Social Media"},
+    "a22": {"min": 3, "max": 8,     "label": "Agenturstunden/1000€ TV"},
+    "a23": {"min": 1, "max": 3,     "label": "Agenturstunden/1000€ Plakat"},
+    "b2":  {"min": 30, "max": 150,  "label": "Agenturstunden gesamt"},
+    "a31": {"min": 1, "max": 2,     "label": "Freigaben/1000€ Social Media"},
+    "a32": {"min": 2, "max": 4,     "label": "Freigaben/1000€ TV"},
+    "a33": {"min": 1, "max": 2,     "label": "Freigaben/1000€ Plakat"},
+    "b3":  {"min": 10, "max": 50,   "label": "Freigabekapazitaet"}
+  },
+  "titel": "Marketingmix – Social Media, TV und Plakat",
+  "beschreibung": "Die Marketingabteilung verteilt Budget auf drei Kanaele: Social Media, TV-Werbung und Plakatwerbung. Pro 1000 Euro Social Media werden {c1} Tausend Kontakte erreicht, pro 1000 Euro TV {c2} Tausend und pro 1000 Euro Plakat {c3} Tausend Kontakte. Jeder Kanal kostet {a11} Tausend Euro pro Einheit Social Media, {a12} Tausend Euro pro Einheit TV und {a13} Tausend Euro pro Einheit Plakat. Das Gesamtbudget betraegt {b1} Tausend Euro. An Agenturstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit TV und {a23} pro Einheit Plakat benoetigt. Es stehen {b2} Agenturstunden bereit. Die Freigabe erfordert {a31} Prozesse pro Einheit Social Media, {a32} pro Einheit TV und {a33} pro Einheit Plakat bei {b3} Freigabekapazitaet.",
+  "hinweis": "Drei Kanaele mit Beschraenkungen bei Budget, Agenturstunden und Freigaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Social Media werden {c1} Tausend Kontakte erreicht", "bedeutung": "{c1} × x₁"},
+      {"text": "TV {c2} Tausend", "bedeutung": "{c2} × x₂"},
+      {"text": "Plakat {c3} Tausend Kontakte", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tausend Euro pro Einheit Social Media", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tausend Euro pro Einheit TV", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tausend Euro pro Einheit Plakat", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} pro Einheit Social Media", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} pro Einheit TV", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} pro Einheit Plakat", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Agenturstunden bereit", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Prozesse pro Einheit Social Media", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Einheit TV", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Einheit Plakat", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Freigabekapazitaet", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

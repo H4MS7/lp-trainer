@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_mais_wind_2v_02",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Mais", "x2 = Hektar Windpark"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Arbeitsstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,  "label": "Ertrag Mais (Tsd. €/ha)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Ertrag Windpark (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Mais (ha/ha)"},
+    "a12": {"min": 2, "max": 5,   "label": "Flächenbedarf Windpark (ha/ha)"},
+    "b1":  {"min": 80, "max": 400, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 8,   "label": "Arbeitsstunden Mais (h/ha)"},
+    "a22": {"min": 1, "max": 4,   "label": "Arbeitsstunden Windpark (h/ha)"},
+    "b2":  {"min": 100, "max": 600, "label": "Max. Arbeitsstunden (h)"}
+  },
+  "titel": "Agrarfläche – Mais und Windpark",
+  "beschreibung": "Ein Grundstücksbesitzer plant die Nutzung seiner Fläche für Maisanbau und einen Windpark. Mais erzielt {c1} Tsd. € Ertrag pro Hektar, der Windpark erzielt {c2} Tsd. € pro Hektar. Der Flächenbedarf liegt bei {a11} Hektar pro Hektar Mais und {a12} Hektar pro Hektar Windpark. Insgesamt stehen {b1} Hektar zur Verfügung. Der Maisanbau erfordert {a21} Arbeitsstunden pro Hektar, der Windpark erfordert {a22} Arbeitsstunden pro Hektar. Maximal {b2} Arbeitsstunden sind verfügbar.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Arbeitszeitbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Mais erzielt {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Windpark erzielt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Mais", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Windpark", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Arbeitsstunden pro Hektar", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Arbeitsstunden pro Hektar", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Arbeitsstunden sind verfügbar", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

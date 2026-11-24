@@ -1,0 +1,81 @@
+{
+  "id": "diaet_kreuzfahrt_4v_03",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Portionen Lachs", "x2 = Portionen Pasta", "x3 = Portionen Salat", "x4 = Portionen Dessert"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalorien", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Zucker", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": ">=", "label": "Ballaststoffe", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Lachs (€/Portion)"},
+    "c2":  {"min": 1, "max": 4,   "label": "Kosten Pasta (€/Portion)"},
+    "c3":  {"min": 1, "max": 3,   "label": "Kosten Salat (€/Portion)"},
+    "c4":  {"min": 2, "max": 5,   "label": "Kosten Dessert (€/Portion)"},
+    "a11": {"min": 8, "max": 15,  "label": "Protein Lachs (g/Portion)"},
+    "a12": {"min": 3, "max": 7,   "label": "Protein Pasta (g/Portion)"},
+    "a13": {"min": 1, "max": 3,   "label": "Protein Salat (g/Portion)"},
+    "a14": {"min": 1, "max": 4,   "label": "Protein Dessert (g/Portion)"},
+    "b1":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 120, "max": 250, "label": "Kalorien Lachs (kcal/Portion)"},
+    "a22": {"min": 150, "max": 280, "label": "Kalorien Pasta (kcal/Portion)"},
+    "a23": {"min": 30, "max": 80,   "label": "Kalorien Salat (kcal/Portion)"},
+    "a24": {"min": 100, "max": 200, "label": "Kalorien Dessert (kcal/Portion)"},
+    "b2":  {"min": 1000, "max": 2000, "label": "Mindest-Kalorien (kcal)"},
+    "a31": {"min": 1, "max": 2,   "label": "Zucker Lachs (g/Portion)"},
+    "a32": {"min": 1, "max": 3,   "label": "Zucker Pasta (g/Portion)"},
+    "a33": {"min": 1, "max": 2,   "label": "Zucker Salat (g/Portion)"},
+    "a34": {"min": 5, "max": 12,  "label": "Zucker Dessert (g/Portion)"},
+    "b3":  {"min": 40, "max": 80,  "label": "Maximal-Zucker (g)"},
+    "a41": {"min": 1, "max": 2,   "label": "Ballaststoffe Lachs (g/Portion)"},
+    "a42": {"min": 2, "max": 5,   "label": "Ballaststoffe Pasta (g/Portion)"},
+    "a43": {"min": 3, "max": 8,   "label": "Ballaststoffe Salat (g/Portion)"},
+    "a44": {"min": 1, "max": 2,   "label": "Ballaststoffe Dessert (g/Portion)"},
+    "b4":  {"min": 20, "max": 50,  "label": "Mindest-Ballaststoffe (g)"}
+  },
+  "titel": "Kreuzfahrtmenü – Lachs, Pasta, Salat und Dessert",
+  "beschreibung": "Eine Kreuzfahrtgesellschaft plant das Abendmenü aus Lachs, Pasta, Salat und Dessert. Lachs kostet {c1} €, Pasta kostet {c2} €, Salat kostet {c3} €, Dessert kostet {c4} € pro Portion. Lachs liefert {a11} g Protein, Pasta liefert {a12} g Protein, Salat liefert {a13} g Protein, Dessert liefert {a14} g Protein pro Portion. Mindestens {b1} g Protein sind nötig. Lachs enthält {a21} kcal, Pasta enthält {a22} kcal, Salat enthält {a23} kcal, Dessert enthält {a24} kcal pro Portion. Mindestens {b2} kcal müssen bereitgestellt werden. Lachs hat {a31} g Zucker, Pasta hat {a32} g Zucker, Salat hat {a33} g Zucker, Dessert hat {a34} g Zucker pro Portion. Höchstens {b3} g Zucker sind erlaubt. Lachs liefert {a41} g Ballaststoffe, Pasta liefert {a42} g Ballaststoffe, Salat liefert {a43} g Ballaststoffe, Dessert liefert {a44} g Ballaststoffe pro Portion. Mindestens {b4} g Ballaststoffe werden benötigt.",
+  "hinweis": "Minimiere die Menükosten bei Einhaltung aller Nährstoffanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lachs kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Pasta kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Salat kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Dessert kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g Protein", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} g Protein pro Portion", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} g Protein sind nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} kcal", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} kcal pro Portion", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} kcal müssen bereitgestellt werden", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} g Zucker", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} g Zucker", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} g Zucker", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} g Zucker pro Portion", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} g Zucker sind erlaubt", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} g Ballaststoffe", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} g Ballaststoffe", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} g Ballaststoffe", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} g Ballaststoffe pro Portion", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} g Ballaststoffe werden benötigt", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

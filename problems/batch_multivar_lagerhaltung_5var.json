@@ -1,0 +1,208 @@
+[
+  {
+    "titel": "Großapotheke-Fünfspartenbestand",
+    "beschreibung": "Eine Großapotheke mit angeschlossenem Versandhandel in Frankfurt optimiert die Bestellmengen für fünf Produktgruppen: Schmerzmittel, Erkältungspräparate, Vitaminpräparate, Salben und Diagnostika. Die Apothekenleiterin muss die gesetzlichen Vorratspflichten und die hohe Nachfragevielfalt berücksichtigen und dabei die Gesamtlagerkosten minimieren. Die Lagerkosten betragen 8€ pro Packung Schmerzmittel, 1€ pro Packung Erkältungspräparate, 1€ pro Packung Vitaminpräparate, 8€ pro Packung Salben und 4€ pro Packung Diagnostika. Um die pharmazeutische Grundversorgung sicherzustellen, muss ein Mindestbestand eingehalten werden: 7 Regalfächer pro Packung Schmerzmittel, 4 Regalfächer pro Packung Erkältungspräparate, 6 Regalfächer pro Packung Vitaminpräparate, 4 Regalfächer pro Packung Salben und 11 Regalfächer pro Packung Diagnostika ergeben zusammen mindestens 466 Regalfächer. Die Kühlschrankkapazität ist begrenzt: 2 Stellplätze pro Packung Schmerzmittel, 3 Stellplätze pro Packung Erkältungspräparate, 5 Stellplätze pro Packung Vitaminpräparate, 3 Stellplätze pro Packung Salben und 3 Stellplätze pro Packung Diagnostika dürfen zusammen höchstens 680 Stellplätze belegen. Auch das Hauptregal hat eine Obergrenze: 3 Lagerplätze pro Packung Schmerzmittel, 2 Lagerplätze pro Packung Erkältungspräparate, 11 Lagerplätze pro Packung Vitaminpräparate, 5 Lagerplätze pro Packung Salben und 12 Lagerplätze pro Packung Diagnostika dürfen zusammen höchstens 1222 Lagerplätze beanspruchen. Darüber hinaus erfordert die Notfallreserve einen weiteren Mindestbestand: 5 Fachbodenplätze pro Packung Schmerzmittel, 8 Fachbodenplätze pro Packung Erkältungspräparate, 7 Fachbodenplätze pro Packung Vitaminpräparate, 12 Fachbodenplätze pro Packung Salben und 8 Fachbodenplätze pro Packung Diagnostika müssen zusammen mindestens 416 Fachbodenplätze ausmachen. Die Versandkapazität ist ebenfalls begrenzt: 5 Versandplätze pro Packung Schmerzmittel, 1 Versandplatz pro Packung Erkältungspräparate, 2 Versandplätze pro Packung Vitaminpräparate, 10 Versandplätze pro Packung Salben und 11 Versandplätze pro Packung Diagnostika dürfen zusammen höchstens 366 Versandplätze belegen. Schließlich gilt eine Budgetgrenze: 12 Kostenstellen pro Packung Schmerzmittel, 12 Kostenstellen pro Packung Erkältungspräparate, 3 Kostenstellen pro Packung Vitaminpräparate, 1 Kostenstelle pro Packung Salben und 6 Kostenstellen pro Packung Diagnostika dürfen zusammen höchstens 597 Kostenstellen beanspruchen. Gesucht ist die kostenminimale Bestellstrategie, die alle sechs Restriktionen gleichzeitig erfüllt.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Schmerzmittel",
+      "x2 = Bestellmenge Erkältungspräparate",
+      "x3 = Bestellmenge Vitaminpräparate",
+      "x4 = Bestellmenge Salben",
+      "x5 = Bestellmenge Diagnostika"
+    ],
+    "zielfunktion": "Z = 8x1 + 1x2 + 1x3 + 8x4 + 4x5 (min)",
+    "nebenbedingungen": [
+      "7x1 + 4x2 + 6x3 + 4x4 + 11x5 ≥ 466 (Mindestbestand)",
+      "2x1 + 3x2 + 5x3 + 3x4 + 3x5 ≤ 680 (Kühlschrankkapazität)",
+      "3x1 + 2x2 + 11x3 + 5x4 + 12x5 ≤ 1222 (Hauptregal)",
+      "5x1 + 8x2 + 7x3 + 12x4 + 8x5 ≥ 416 (Notfallreserve)",
+      "5x1 + 1x2 + 2x3 + 10x4 + 11x5 ≤ 366 (Versandkapazität)",
+      "12x1 + 12x2 + 3x3 + 1x4 + 6x5 ≤ 597 (Budgetgrenze)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier fünf Produktgruppen gleichzeitig optimiert werden. Die sechs Nebenbedingungen enthalten sowohl Mindestbestände (≥) als auch Kapazitätsgrenzen (≤). Ordnen Sie die Koeffizienten sorgfältig den richtigen Variablen zu.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ pro Packung Schmerzmittel",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "1€ pro Packung Erkältungspräparate",
+          "bedeutung": "1 × x₂"
+        },
+        {
+          "text": "1€ pro Packung Vitaminpräparate",
+          "bedeutung": "1 × x₃"
+        },
+        {
+          "text": "8€ pro Packung Salben",
+          "bedeutung": "8 × x₄"
+        },
+        {
+          "text": "4€ pro Packung Diagnostika",
+          "bedeutung": "4 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "7 Regalfächer pro Packung Schmerzmittel",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "4 Regalfächer pro Packung Erkältungspräparate",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "6 Regalfächer pro Packung Vitaminpräparate",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "4 Regalfächer pro Packung Salben",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "11 Regalfächer pro Packung Diagnostika",
+            "bedeutung": "+ 11x₅"
+          },
+          {
+            "text": "mindestens 466 Regalfächer",
+            "bedeutung": "≥ 466"
+          }
+        ],
+        [
+          {
+            "text": "2 Stellplätze pro Packung Schmerzmittel",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Stellplätze pro Packung Erkältungspräparate",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "5 Stellplätze pro Packung Vitaminpräparate",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "3 Stellplätze pro Packung Salben",
+            "bedeutung": "+ 3x₄"
+          },
+          {
+            "text": "3 Stellplätze pro Packung Diagnostika",
+            "bedeutung": "+ 3x₅"
+          },
+          {
+            "text": "höchstens 680 Stellplätze",
+            "bedeutung": "≤ 680"
+          }
+        ],
+        [
+          {
+            "text": "3 Lagerplätze pro Packung Schmerzmittel",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Lagerplätze pro Packung Erkältungspräparate",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "11 Lagerplätze pro Packung Vitaminpräparate",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "5 Lagerplätze pro Packung Salben",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "12 Lagerplätze pro Packung Diagnostika",
+            "bedeutung": "+ 12x₅"
+          },
+          {
+            "text": "höchstens 1222 Lagerplätze",
+            "bedeutung": "≤ 1222"
+          }
+        ],
+        [
+          {
+            "text": "5 Fachbodenplätze pro Packung Schmerzmittel",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "8 Fachbodenplätze pro Packung Erkältungspräparate",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "7 Fachbodenplätze pro Packung Vitaminpräparate",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "12 Fachbodenplätze pro Packung Salben",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "8 Fachbodenplätze pro Packung Diagnostika",
+            "bedeutung": "+ 8x₅"
+          },
+          {
+            "text": "mindestens 416 Fachbodenplätze",
+            "bedeutung": "≥ 416"
+          }
+        ],
+        [
+          {
+            "text": "5 Versandplätze pro Packung Schmerzmittel",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "1 Versandplatz pro Packung Erkältungspräparate",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "2 Versandplätze pro Packung Vitaminpräparate",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "10 Versandplätze pro Packung Salben",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "11 Versandplätze pro Packung Diagnostika",
+            "bedeutung": "+ 11x₅"
+          },
+          {
+            "text": "höchstens 366 Versandplätze",
+            "bedeutung": "≤ 366"
+          }
+        ],
+        [
+          {
+            "text": "12 Kostenstellen pro Packung Schmerzmittel",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "12 Kostenstellen pro Packung Erkältungspräparate",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "3 Kostenstellen pro Packung Vitaminpräparate",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "1 Kostenstelle pro Packung Salben",
+            "bedeutung": "+ 1x₄"
+          },
+          {
+            "text": "6 Kostenstellen pro Packung Diagnostika",
+            "bedeutung": "+ 6x₅"
+          },
+          {
+            "text": "höchstens 597 Kostenstellen",
+            "bedeutung": "≤ 597"
+          }
+        ]
+      ]
+    }
+  }
+]

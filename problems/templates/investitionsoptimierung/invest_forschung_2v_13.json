@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_forschung_2v_13",
+  "titel": "F&E-Budget – Grundlagenforschung und Angewandte Forschung",
+  "variablen": [
+    "x1 = Budget Grundlagenforschung (Tsd. EUR)",
+    "x2 = Budget Angewandte Forschung (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gesamtbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Personalkapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 9,
+      "label": "Innovationsertrag Grundlagen"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Innovationsertrag Angewandt"
+    },
+    "a11": {
+      "min": 2,
+      "max": 5,
+      "label": "Mittelbedarf Grundlagen"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Mittelbedarf Angewandt"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "F&E-Gesamtbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Forscher Grundlagen"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Forscher Angewandt"
+    },
+    "b2": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Forscherpersonal"
+    }
+  },
+  "beschreibung": "Ein Unternehmen verteilt sein F&E-Budget auf Grundlagen- und angewandte Forschung. Grundlagenforschung bringt {c1} Innovationspunkte, angewandte Forschung {c2} Punkte. Der Mittelbedarf betraegt {a11} Einheiten pro Grundlagenprojekt und {a12} Einheiten pro Anwendungsprojekt. Das F&E-Gesamtbudget liegt bei {b1} Tausend Euro. Pro Grundlagenprojekt werden {a21} Forscher benoetigt, pro Anwendungsprojekt {a22} Forscher bei maximal {b2} verfuegbaren Forschern.",
+  "hinweis": "Maximiere die Innovationspunkte unter Beachtung von Budget und Personalkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Grundlagenforschung bringt {c1} Innovationspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "angewandte Forschung {c2} Punkte",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Grundlagenprojekt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Anwendungsprojekt",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Forscher benoetigt",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "Anwendungsprojekt {a22} Forscher",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Forschern",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

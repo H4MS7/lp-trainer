@@ -1,0 +1,72 @@
+[
+  {
+    "titel": "VM-Kapazitätsplanung Rechenzentrum",
+    "beschreibung": "Ein Rechenzentrum betreibt Standard-VMs und High-Performance-VMs. Jede Standard-VM bearbeitet 8 Anfragen pro Sekunde und jede High-Performance-VM bearbeitet 15 Anfragen pro Sekunde. An CPU-Kapazität stehen insgesamt 60 Kerne zur Verfügung. Jede Standard-VM benötigt 2 Kerne und jede High-Performance-VM benötigt 6 Kerne. An Arbeitsspeicher stehen insgesamt 128 GB zur Verfügung. Jede Standard-VM benötigt 4 GB RAM und jede High-Performance-VM benötigt 16 GB RAM. Die Gesamtzahl der bearbeiteten Anfragen soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Standard-VMs", "x2 = Anzahl High-Performance-VMs"],
+    "zielfunktion": "Z = 8x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 6x2 ≤ 60 (CPU)",
+      "4x1 + 16x2 ≤ 128 (RAM)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (CPU-Kerne und RAM) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Standard-VM bearbeitet 8 Anfragen pro Sekunde", "bedeutung": "8 × x₁"},
+        {"text": "High-Performance-VM bearbeitet 15 Anfragen pro Sekunde", "bedeutung": "15 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Standard-VM benötigt 2 Kerne", "bedeutung": "2x₁"},
+          {"text": "High-Performance-VM benötigt 6 Kerne", "bedeutung": "+ 6x₂"},
+          {"text": "60 Kerne zur Verfügung", "bedeutung": "≤ 60"}
+        ],
+        [
+          {"text": "Standard-VM benötigt 4 GB RAM", "bedeutung": "4x₁"},
+          {"text": "High-Performance-VM benötigt 16 GB RAM", "bedeutung": "+ 16x₂"},
+          {"text": "128 GB zur Verfügung", "bedeutung": "≤ 128"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Container-Pod-Planung",
+    "beschreibung": "Ein Cloud-Anbieter verwaltet Container-Pods in zwei Varianten: Basis-Pods und Premium-Pods. Jeder Basis-Pod verarbeitet 12 Transaktionen pro Sekunde und jeder Premium-Pod verarbeitet 20 Transaktionen pro Sekunde. An CPU-Kapazität stehen insgesamt 48 Kerne bereit. Jeder Basis-Pod belegt 3 Kerne und jeder Premium-Pod belegt 6 Kerne. An Arbeitsspeicher stehen insgesamt 96 GB bereit. Jeder Basis-Pod belegt 4 GB und jeder Premium-Pod belegt 12 GB. Das Budget für die Container beträgt höchstens 300€ pro Stunde. Jeder Basis-Pod kostet 10€ pro Stunde und jeder Premium-Pod kostet 25€ pro Stunde. Der Durchsatz soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Basis-Pods", "x2 = Anzahl Premium-Pods"],
+    "zielfunktion": "Z = 12x1 + 20x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≤ 48 (CPU)",
+      "4x1 + 12x2 ≤ 96 (RAM)",
+      "10x1 + 25x2 ≤ 300 (Budget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU, RAM und Budget. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Basis-Pod verarbeitet 12 Transaktionen pro Sekunde", "bedeutung": "12 × x₁"},
+        {"text": "Premium-Pod verarbeitet 20 Transaktionen pro Sekunde", "bedeutung": "20 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Basis-Pod belegt 3 Kerne", "bedeutung": "3x₁"},
+          {"text": "Premium-Pod belegt 6 Kerne", "bedeutung": "+ 6x₂"},
+          {"text": "48 Kerne bereit", "bedeutung": "≤ 48"}
+        ],
+        [
+          {"text": "Basis-Pod belegt 4 GB", "bedeutung": "4x₁"},
+          {"text": "Premium-Pod belegt 12 GB", "bedeutung": "+ 12x₂"},
+          {"text": "96 GB bereit", "bedeutung": "≤ 96"}
+        ],
+        [
+          {"text": "Basis-Pod kostet 10€ pro Stunde", "bedeutung": "10x₁"},
+          {"text": "Premium-Pod kostet 25€ pro Stunde", "bedeutung": "+ 25x₂"},
+          {"text": "höchstens 300€ pro Stunde", "bedeutung": "≤ 300"}
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,59 @@
+{
+  "id": "medien_b2b_4v_03",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Whitepaper", "x2 = Anzahl Webinare", "x3 = Anzahl Case-Studies", "x4 = Anzahl LinkedIn-Posts"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Redaktionszeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Fachexpertenzeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,     "label": "Downloads Whitepaper (Tsd.)"},
+    "c2":  {"min": 1, "max": 3,     "label": "Teilnehmer Webinar (Tsd.)"},
+    "c3":  {"min": 1, "max": 3,     "label": "Leser Case-Study (Tsd.)"},
+    "c4":  {"min": 2, "max": 10,    "label": "Impressionen LinkedIn (Tsd.)"},
+    "a11": {"min": 2, "max": 6,     "label": "Kosten Whitepaper (Tsd. €)"},
+    "a12": {"min": 1, "max": 4,     "label": "Kosten Webinar (Tsd. €)"},
+    "a13": {"min": 1, "max": 3,     "label": "Kosten Case-Study (Tsd. €)"},
+    "a14": {"min": 1, "max": 2,     "label": "Kosten LinkedIn (Tsd. €)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 10, "max": 25,   "label": "Redaktion Whitepaper (Stunden)"},
+    "a22": {"min": 5, "max": 12,    "label": "Redaktion Webinar (Stunden)"},
+    "a23": {"min": 8, "max": 20,    "label": "Redaktion Case-Study (Stunden)"},
+    "a24": {"min": 1, "max": 3,     "label": "Redaktion LinkedIn (Stunden)"},
+    "b2":  {"min": 40, "max": 120,  "label": "Redaktionsstunden"},
+    "a31": {"min": 4, "max": 10,    "label": "Experte Whitepaper (Stunden)"},
+    "a32": {"min": 2, "max": 5,     "label": "Experte Webinar (Stunden)"},
+    "a33": {"min": 3, "max": 8,     "label": "Experte Case-Study (Stunden)"},
+    "a34": {"min": 1, "max": 2,     "label": "Experte LinkedIn (Stunden)"},
+    "b3":  {"min": 15, "max": 50,   "label": "Expertenstunden"}
+  },
+  "titel": "B2B-Content-Marketing – Vier Formate",
+  "beschreibung": "Ein B2B-Marketing-Team plant Content in vier Formaten. Ein Whitepaper erzielt {c1} Tsd. Downloads, ein Webinar erzielt {c2} Tsd. Teilnehmer, eine Case-Study erzielt {c3} Tsd. Leser und ein LinkedIn-Post erzielt {c4} Tsd. Impressionen. Die Kosten betragen {a11} Tsd. € für Whitepaper, {a12} Tsd. € für Webinar, {a13} Tsd. € für Case-Study und {a14} Tsd. € für LinkedIn. Das Budget beträgt {b1} Tsd. €. Die Redaktionszeit beträgt {a21} Stunden für Whitepaper, {a22} Stunden für Webinar, {a23} Stunden für Case-Study und {a24} Stunden für LinkedIn. Es stehen {b2} Redaktionsstunden zur Verfügung. Die Fachexpertenzeit beträgt {a31} Stunden für Whitepaper, {a32} Stunden für Webinar, {a33} Stunden für Case-Study und {a34} Stunden für LinkedIn. Es stehen {b3} Expertenstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Whitepaper erzielt {c1} Tsd. Downloads", "bedeutung": "{c1} × x₁"},
+      {"text": "Webinar erzielt {c2} Tsd. Teilnehmer", "bedeutung": "{c2} × x₂"},
+      {"text": "Case-Study erzielt {c3} Tsd. Leser", "bedeutung": "{c3} × x₃"},
+      {"text": "LinkedIn-Post erzielt {c4} Tsd. Impressionen", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Whitepaper, {a12} Tsd. € für Webinar, {a13} Tsd. € für Case-Study und {a14} Tsd. € für LinkedIn", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Whitepaper, {a22} Stunden für Webinar, {a23} Stunden für Case-Study und {a24} Stunden für LinkedIn", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Redaktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für Whitepaper, {a32} Stunden für Webinar, {a33} Stunden für Case-Study und {a34} Stunden für LinkedIn", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Expertenstunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

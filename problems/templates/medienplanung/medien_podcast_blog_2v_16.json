@@ -1,0 +1,41 @@
+{
+  "id": "medien_podcast_blog_2v_16",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Podcast-Episoden", "x2 = Anzahl Blog-Artikel"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Produktionsbudget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Redaktionszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 10,    "label": "Downloads Podcast (Tsd.)"},
+    "c2":  {"min": 1, "max": 5,     "label": "Seitenaufrufe Blog (Tsd.)"},
+    "a11": {"min": 1, "max": 4,     "label": "Kosten Podcast (Tsd. €)"},
+    "a12": {"min": 1, "max": 2,     "label": "Kosten Blog (Tsd. €)"},
+    "b1":  {"min": 10, "max": 40,   "label": "Produktionsbudget (Tsd. €)"},
+    "a21": {"min": 4, "max": 10,    "label": "Produktion Podcast (Stunden)"},
+    "a22": {"min": 3, "max": 8,     "label": "Erstellung Blog (Stunden)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Redaktionsstunden"}
+  },
+  "titel": "Owned Media – Podcast und Blog",
+  "beschreibung": "Ein Content-Team plant die Erstellung von Podcast-Episoden und Blog-Artikeln. Eine Podcast-Episode erzielt {c1} Tsd. Downloads, ein Blog-Artikel erzielt {c2} Tsd. Seitenaufrufe. Eine Podcast-Episode kostet {a11} Tsd. €, ein Blog-Artikel kostet {a12} Tsd. €. Das Produktionsbudget beträgt {b1} Tsd. €. Die Produktionszeit beträgt {a21} Stunden pro Podcast-Episode und {a22} Stunden pro Blog-Artikel. Insgesamt stehen {b2} Redaktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Redaktionszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Podcast-Episode erzielt {c1} Tsd. Downloads", "bedeutung": "{c1} × x₁"},
+      {"text": "Blog-Artikel erzielt {c2} Tsd. Seitenaufrufe", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, ein Blog-Artikel kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Podcast-Episode und {a22} Stunden pro Blog-Artikel", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Redaktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

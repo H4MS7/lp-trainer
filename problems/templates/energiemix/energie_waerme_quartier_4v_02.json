@@ -1,0 +1,59 @@
+{
+  "id": "energie_waerme_quartier_4v_02",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = MWh Fernwärme", "x2 = MWh Wärmepumpe", "x3 = MWh Pelletheizung", "x4 = MWh Solarthermie"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Stromverbrauch", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 90, "label": "Kosten Fernwärme (€/MWh)"},
+    "c2":  {"min": 30, "max": 75, "label": "Kosten Wärmepumpe (€/MWh)"},
+    "c3":  {"min": 25, "max": 60, "label": "Kosten Pelletheizung (€/MWh)"},
+    "c4":  {"min": 15, "max": 40, "label": "Kosten Solarthermie (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärme Fernwärme (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Wärme Wärmepumpe (MW/MWh)"},
+    "a13": {"min": 3, "max": 6, "label": "Wärme Pellets (MW/MWh)"},
+    "a14": {"min": 1, "max": 3, "label": "Wärme Solarthermie (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 1, "max": 2, "label": "Strom Fernwärme (kW/MWh)"},
+    "a22": {"min": 3, "max": 7, "label": "Strom Wärmepumpe (kW/MWh)"},
+    "a23": {"min": 1, "max": 2, "label": "Strom Pellets (kW/MWh)"},
+    "a24": {"min": 1, "max": 2, "label": "Strom Solarthermie (kW/MWh)"},
+    "b2":  {"min": 30, "max": 120, "label": "Maximaler Stromverbrauch (kW)"},
+    "a31": {"min": 2, "max": 4, "label": "CO2 Fernwärme (t/MWh)"},
+    "a32": {"min": 1, "max": 2, "label": "CO2 Wärmepumpe (t/MWh)"},
+    "a33": {"min": 2, "max": 5, "label": "CO2 Pellets (t/MWh)"},
+    "a34": {"min": 1, "max": 1, "label": "CO2 Solarthermie (t/MWh)"},
+    "b3":  {"min": 25, "max": 100, "label": "Maximale CO2-Emission (t)"}
+  },
+  "titel": "Wärmemix – Quartierversorgung",
+  "beschreibung": "Ein Wohnquartier plant die Wärmeversorgung aus vier Quellen. Fernwärme kostet {c1} € pro MWh, Wärmepumpe kostet {c2} € pro MWh, Pelletheizung kostet {c3} € pro MWh und Solarthermie kostet {c4} € pro MWh. Fernwärme liefert {a11} MW, Wärmepumpe {a12} MW, Pellets {a13} MW und Solarthermie {a14} MW pro MWh. Mindestens {b1} MW Wärme müssen bereitgestellt werden. Der Stromverbrauch beträgt {a21} kW Fernwärme, {a22} kW Wärmepumpe, {a23} kW Pellets und {a24} kW Solarthermie pro MWh. Maximal {b2} kW Strom stehen zur Verfügung. Die CO2-Emission beträgt {a31} t Fernwärme, {a32} t Wärmepumpe, {a33} t Pellets und {a34} t Solarthermie pro MWh. Maximal {b3} Tonnen CO2 sind zulässig.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung von Mindestwärmeleistung, Strombegrenzung und CO2-Grenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Fernwärme kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wärmepumpe kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Pelletheizung kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Solarthermie kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Wärmepumpe {a12} MW, Pellets {a13} MW und Solarthermie {a14} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} MW Wärme müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kW Fernwärme, {a22} kW Wärmepumpe, {a23} kW Pellets und {a24} kW Solarthermie pro MWh", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} kW Strom stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} t Fernwärme, {a32} t Wärmepumpe, {a33} t Pellets und {a34} t Solarthermie pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

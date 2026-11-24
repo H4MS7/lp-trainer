@@ -1,0 +1,43 @@
+{
+  "id": "lager_tiefkuehl_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Tiefkühlpizza (Paletten)", "x2 = Bestellmenge Tiefkühlgemüse (Paletten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestliefermenge", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Tiefkühlkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 15,  "label": "Kühlkosten Pizza (€/Palette)"},
+    "c2":  {"min": 4, "max": 10,  "label": "Kühlkosten Gemüse (€/Palette)"},
+    "a11": {"min": 10, "max": 25, "label": "Packungen pro Palette Pizza"},
+    "a12": {"min": 15, "max": 30, "label": "Packungen pro Palette Gemüse"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestliefermenge (Packungen)"},
+    "a21": {"min": 2, "max": 4,   "label": "Kühlraumplatz Pizza (m³)"},
+    "a22": {"min": 1, "max": 3,   "label": "Kühlraumplatz Gemüse (m³)"},
+    "b2":  {"min": 30, "max": 100, "label": "Tiefkühlkapazität (m³)"}
+  },
+  "titel": "Tiefkühllager – Lebensmittelversorgung",
+  "beschreibung": "Ein Tiefkühllager verwaltet Tiefkühlpizza und Tiefkühlgemüse. Die Kühlkosten betragen {c1} € pro Palette Pizza und {c2} € pro Palette Gemüse. Jede Palette Pizza enthält {a11} Packungen, jede Palette Gemüse enthält {a12} Packungen. Die Mindestliefermenge beträgt {b1} Packungen. Pizza benötigt {a21} m³ Kühlraumplatz pro Palette, Gemüse benötigt {a22} m³ Kühlraumplatz pro Palette. Die Tiefkühlkapazität beträgt {b2} m³.",
+  "hinweis": "Minimiere die Kühlkosten bei Einhaltung der Mindestliefermenge und der Tiefkühlkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Pizza", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Gemüse", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Packungen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Packungen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Packungen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Kühlraumplatz pro Palette", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ Kühlraumplatz pro Palette", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

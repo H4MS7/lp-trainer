@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_3d_drucker_2v_03",
+  "titel": "3D-Drucker – Druckgeschwindigkeit und Schichthoehe",
+  "variablen": [
+    "x1 = Druckgeschwindigkeit (Stufen)",
+    "x2 = Schichthoehe (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Materialdurchsatz",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Waermeentwicklung",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Produktivitaet Geschwindigkeit"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Detailgenauigkeit Schichthoehe"
+    },
+    "a11": {
+      "min": 2,
+      "max": 7,
+      "label": "Materialverbrauch Geschwindigkeit"
+    },
+    "a12": {
+      "min": 3,
+      "max": 9,
+      "label": "Materialverbrauch Schichthoehe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Materialdurchsatz"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Waerme Geschwindigkeit"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Waerme Schichthoehe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Waermeeinheiten"
+    }
+  },
+  "beschreibung": "Ein 3D-Drucker wird ueber Geschwindigkeit und Schichthoehe parametriert. Die Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte. Der Materialverbrauch betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Schichthoehenstufe bei maximal {b1} Materialeinheiten. Die Waermeentwicklung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Schichthoehenstufe bei maximal {b2} Waermeeinheiten.",
+  "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Material und Waerme.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Druckgeschwindigkeit liefert {c1} Produktivitaetspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schichthoehe {c2} Detailpunkte",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Schichthoehenstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Materialeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Schichthoehenstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Waermeeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

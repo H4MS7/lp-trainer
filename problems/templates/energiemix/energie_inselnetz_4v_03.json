@@ -1,0 +1,59 @@
+{
+  "id": "energie_inselnetz_4v_03",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = MWh Dieselgenerator", "x2 = MWh Solaranlage", "x3 = MWh Windturbine", "x4 = MWh Batteriespeicher"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Dieselverbrauch", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestanteil erneuerbar", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 120, "label": "Kosten Diesel (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Solar (€/MWh)"},
+    "c3":  {"min": 30, "max": 75, "label": "Kosten Wind (€/MWh)"},
+    "c4":  {"min": 35, "max": 80, "label": "Kosten Batterie (€/MWh)"},
+    "a11": {"min": 3, "max": 8, "label": "Versorgung Diesel (MW/MWh)"},
+    "a12": {"min": 1, "max": 4, "label": "Versorgung Solar (MW/MWh)"},
+    "a13": {"min": 2, "max": 5, "label": "Versorgung Wind (MW/MWh)"},
+    "a14": {"min": 2, "max": 5, "label": "Versorgung Batterie (MW/MWh)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestversorgung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Diesel pro Diesel (l/MWh)"},
+    "a22": {"min": 1, "max": 1, "label": "Diesel pro Solar (l/MWh)"},
+    "a23": {"min": 1, "max": 1, "label": "Diesel pro Wind (l/MWh)"},
+    "a24": {"min": 1, "max": 1, "label": "Diesel pro Batterie (l/MWh)"},
+    "b2":  {"min": 20, "max": 80, "label": "Maximaler Dieselverbrauch (l)"},
+    "a31": {"min": 1, "max": 1, "label": "Erneuerbar Diesel (MW/MWh)"},
+    "a32": {"min": 2, "max": 5, "label": "Erneuerbar Solar (MW/MWh)"},
+    "a33": {"min": 2, "max": 6, "label": "Erneuerbar Wind (MW/MWh)"},
+    "a34": {"min": 2, "max": 4, "label": "Erneuerbar Batterie (MW/MWh)"},
+    "b3":  {"min": 15, "max": 60, "label": "Mindestanteil erneuerbar (MW)"}
+  },
+  "titel": "Inselnetz – Vier-Quellen-Energiemix",
+  "beschreibung": "Eine Inselgemeinde plant die Energieversorgung aus Diesel, Solar, Wind und Batterie. Diesel kostet {c1} € pro MWh, Solar kostet {c2} € pro MWh, Wind kostet {c3} € pro MWh und Batterie kostet {c4} € pro MWh. Diesel liefert {a11} MW, Solar {a12} MW, Wind {a13} MW und Batterie {a14} MW pro MWh. Mindestens {b1} MW Versorgung müssen bereitgestellt werden. Der Dieselverbrauch beträgt {a21} l pro MWh Diesel, {a22} l pro MWh Solar, {a23} l pro MWh Wind und {a24} l pro MWh Batterie. Maximal {b2} Liter Diesel stehen zur Verfügung. Der erneuerbare Beitrag beträgt {a31} MW pro MWh Diesel, {a32} MW pro MWh Solar, {a33} MW pro MWh Wind und {a34} MW pro MWh Batterie. Mindestens {b3} MW erneuerbare Leistung werden benötigt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestversorgung, Diesellimit und Erneuerbaren-Quote.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Diesel kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Solar kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Wind kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Batterie kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Solar {a12} MW, Wind {a13} MW und Batterie {a14} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} MW Versorgung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} l pro MWh Diesel, {a22} l pro MWh Solar, {a23} l pro MWh Wind und {a24} l pro MWh Batterie", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Liter Diesel stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MW pro MWh Diesel, {a32} MW pro MWh Solar, {a33} MW pro MWh Wind und {a34} MW pro MWh Batterie", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} MW erneuerbare Leistung werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

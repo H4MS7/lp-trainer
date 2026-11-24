@@ -1,0 +1,54 @@
+{
+  "id": "schicht_gaststaette_3v_08",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühstücksschichten", "x2 = Anzahl Mittagsschichten", "x3 = Anzahl Abendschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Köche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Kellner", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Spülkräfte", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 80, "label": "Kosten Frühstücksschicht (€)"},
+    "c2":  {"min": 60, "max": 120, "label": "Kosten Mittagsschicht (€)"},
+    "c3":  {"min": 70, "max": 140, "label": "Kosten Abendschicht (€)"},
+    "a11": {"min": 1, "max": 3, "label": "Köche pro Frühstücksschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Köche pro Mittagsschicht"},
+    "a13": {"min": 2, "max": 6, "label": "Köche pro Abendschicht"},
+    "b1":  {"min": 8, "max": 25, "label": "Mindestbesetzung Köche"},
+    "a21": {"min": 2, "max": 4, "label": "Kellner pro Frühstücksschicht"},
+    "a22": {"min": 3, "max": 6, "label": "Kellner pro Mittagsschicht"},
+    "a23": {"min": 3, "max": 7, "label": "Kellner pro Abendschicht"},
+    "b2":  {"min": 10, "max": 35, "label": "Mindestbesetzung Kellner"},
+    "a31": {"min": 1, "max": 2, "label": "Spülkräfte pro Frühstücksschicht"},
+    "a32": {"min": 1, "max": 3, "label": "Spülkräfte pro Mittagsschicht"},
+    "a33": {"min": 2, "max": 4, "label": "Spülkräfte pro Abendschicht"},
+    "b3":  {"min": 5, "max": 18, "label": "Mindestbesetzung Spülkräfte"}
+  },
+  "titel": "Gaststätte – Drei-Schicht-Planung",
+  "beschreibung": "Eine Gaststätte plant die Besetzung über drei Schichten. Eine Frühstücksschicht kostet {c1} €, eine Mittagsschicht kostet {c2} € und eine Abendschicht kostet {c3} €. Jede Frühstücksschicht stellt {a11} Köche bereit, jede Mittagsschicht {a12} und jede Abendschicht {a13}. Mindestens {b1} Köche werden benötigt. Jede Frühstücksschicht stellt {a21} Kellner bereit, jede Mittagsschicht {a22} und jede Abendschicht {a23}. Mindestens {b2} Kellner werden benötigt. Jede Frühstücksschicht stellt {a31} Spülkräfte bereit, jede Mittagsschicht {a32} und jede Abendschicht {a33}. Mindestens {b3} Spülkräfte werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Köche, Kellner und Spülkräfte.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühstücksschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Mittagsschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Abendschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Köche bereit, jede Mittagsschicht {a12} und jede Abendschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Köche werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kellner bereit, jede Mittagsschicht {a22} und jede Abendschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Kellner werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Spülkräfte bereit, jede Mittagsschicht {a32} und jede Abendschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Spülkräfte werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

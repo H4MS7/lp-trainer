@@ -1,0 +1,51 @@
+{
+  "id": "trans_apotheke_3v_08",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Lieferungen Zentrallager", "x2 = Lieferungen Regionallager", "x3 = Lieferungen Direktlieferung"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Medikamente", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Kühlkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Lieferfenster", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 16,  "label": "Kosten Zentrallager (EUR/Lieferung)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Regionallager (EUR/Lieferung)"},
+    "c3":  {"min": 7, "max": 22,  "label": "Kosten Direktlieferung (EUR/Lieferung)"},
+    "a11": {"min": 4, "max": 12,  "label": "Packungen ab Zentrallager"},
+    "a12": {"min": 2, "max": 8,   "label": "Packungen ab Regionallager"},
+    "a13": {"min": 1, "max": 5,   "label": "Packungen ab Direktlieferung"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Medikamentenpackungen"},
+    "a21": {"min": 2, "max": 6,   "label": "Kühleinheiten ab Zentrallager"},
+    "a22": {"min": 1, "max": 4,   "label": "Kühleinheiten ab Regionallager"},
+    "a23": {"min": 3, "max": 7,   "label": "Kühleinheiten ab Direktlieferung"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Kühlkapazität (Einheiten)"},
+    "a31": {"min": 2, "max": 5,   "label": "Stunden ab Zentrallager"},
+    "a32": {"min": 1, "max": 3,   "label": "Stunden ab Regionallager"},
+    "a33": {"min": 1, "max": 4,   "label": "Stunden ab Direktlieferung"},
+    "b3":  {"min": 20, "max": 80, "label": "Max. Lieferfenster (Stunden)"}
+  },
+  "titel": "Apothekenbelieferung – drei Lieferwege",
+  "beschreibung": "Ein Pharmagroßhändler beliefert Apotheken über drei Wege. Eine Lieferung vom Zentrallager kostet {c1} EUR, vom Regionallager kostet sie {c2} EUR und per Direktlieferung kostet sie {c3} EUR. Vom Zentrallager kommen {a11} Packungen pro Lieferung, vom Regionallager kommen {a12} und per Direktlieferung kommen {a13} Packungen. Mindestens {b1} Packungen müssen geliefert werden. Vom Zentrallager werden {a21} Kühleinheiten benötigt, vom Regionallager werden {a22} und per Direktlieferung werden {a23} Kühleinheiten benötigt. Die Kühlkapazität beträgt höchstens {b2} Einheiten. Eine Lieferung vom Zentrallager dauert {a31} Stunden, vom Regionallager dauert sie {a32} Stunden und per Direktlieferung dauert sie {a33} Stunden. Das Lieferfenster beträgt höchstens {b3} Stunden.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Packungen, begrenzter Kühlkapazität und Lieferzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zentrallager kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Regionallager kostet sie {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Direktlieferung kostet sie {c3} EUR", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Packungen pro Lieferung, vom Regionallager kommen {a12} und per Direktlieferung kommen {a13} Packungen. Mindestens {b1} Packungen müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kühleinheiten benötigt, vom Regionallager werden {a22} und per Direktlieferung werden {a23} Kühleinheiten benötigt. Die Kühlkapazität beträgt höchstens {b2} Einheiten", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden, vom Regionallager dauert sie {a32} Stunden und per Direktlieferung dauert sie {a33} Stunden. Das Lieferfenster beträgt höchstens {b3} Stunden", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

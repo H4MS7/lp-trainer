@@ -1,0 +1,60 @@
+{
+  "id": "emiss_pharma_3v_07",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Antibiotikum", "x2 = Einheiten Schmerzmittel", "x3 = Einheiten Impfstoff"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Chemikalienabfall", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Ertrag Antibiotikum (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Schmerzmittel (Tsd. €)"},
+    "c3":  {"min": 8, "max": 15,  "label": "Ertrag Impfstoff (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Chemieabfall Antibiotikum (t)"},
+    "a12": {"min": 1, "max": 4,   "label": "Chemieabfall Schmerzmittel (t)"},
+    "a13": {"min": 2, "max": 6,   "label": "Chemieabfall Impfstoff (t)"},
+    "b1":  {"min": 50, "max": 200, "label": "Chemieabfalllimit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Energie Antibiotikum (MWh)"},
+    "a22": {"min": 2, "max": 5,   "label": "Energie Schmerzmittel (MWh)"},
+    "a23": {"min": 4, "max": 10,  "label": "Energie Impfstoff (MWh)"},
+    "b2":  {"min": 60, "max": 300, "label": "Energiebudget (MWh)"},
+    "a31": {"min": 2, "max": 6,   "label": "Wasser Antibiotikum (m³)"},
+    "a32": {"min": 1, "max": 4,   "label": "Wasser Schmerzmittel (m³)"},
+    "a33": {"min": 3, "max": 8,   "label": "Wasser Impfstoff (m³)"},
+    "b3":  {"min": 50, "max": 250, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Pharmaunternehmen – Antibiotikum, Schmerzmittel und Impfstoff",
+  "beschreibung": "Ein Pharmaunternehmen produziert Antibiotikum, Schmerzmittel und Impfstoff. Antibiotikum erwirtschaftet {c1} Tsd. €, Schmerzmittel {c2} Tsd. €, Impfstoff {c3} Tsd. € pro Einheit. Antibiotikum erzeugt {a11} Tonnen Chemieabfall, Schmerzmittel {a12} Tonnen, Impfstoff {a13} Tonnen pro Einheit. Das Chemieabfalllimit beträgt {b1} Tonnen. Antibiotikum verbraucht {a21} MWh Energie, Schmerzmittel {a22} MWh, Impfstoff {a23} MWh pro Einheit. Das Energiebudget beträgt {b2} MWh. Antibiotikum benötigt {a31} m³ Wasser, Schmerzmittel {a32} m³, Impfstoff {a33} m³ pro Einheit. Das Wasserbudget liegt bei {b3} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Antibiotikum erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Schmerzmittel {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Impfstoff {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen Chemieabfall", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Energie", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} MWh pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} m³ Wasser", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} m³", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} m³ pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} m³", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "id": "trans_flotte_5v_01",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Fahrten Elektro-Kleinwagen", "x2 = Fahrten Diesel-Sprinter", "x3 = Fahrten Gas-LKW", "x4 = Fahrten Elektro-LKW", "x5 = Fahrten Diesel-Sattelzug"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fracht", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Fahrer", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "CO2-Emission", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Wartungskapazität", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Elektro-Kleinwagen (EUR/Fahrt)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Diesel-Sprinter (EUR/Fahrt)"},
+    "c3":  {"min": 5, "max": 16,  "label": "Kosten Gas-LKW (EUR/Fahrt)"},
+    "c4":  {"min": 6, "max": 18,  "label": "Kosten Elektro-LKW (EUR/Fahrt)"},
+    "c5":  {"min": 7, "max": 22,  "label": "Kosten Diesel-Sattelzug (EUR/Fahrt)"},
+    "a11": {"min": 1, "max": 3,   "label": "Fracht Elektro-Kleinwagen (t)"},
+    "a12": {"min": 2, "max": 6,   "label": "Fracht Diesel-Sprinter (t)"},
+    "a13": {"min": 3, "max": 9,   "label": "Fracht Gas-LKW (t)"},
+    "a14": {"min": 3, "max": 10,  "label": "Fracht Elektro-LKW (t)"},
+    "a15": {"min": 5, "max": 15,  "label": "Fracht Diesel-Sattelzug (t)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Frachtmenge (t)"},
+    "a21": {"min": 1, "max": 2,   "label": "Fahrer Elektro-Kleinwagen"},
+    "a22": {"min": 1, "max": 2,   "label": "Fahrer Diesel-Sprinter"},
+    "a23": {"min": 1, "max": 3,   "label": "Fahrer Gas-LKW"},
+    "a24": {"min": 1, "max": 3,   "label": "Fahrer Elektro-LKW"},
+    "a25": {"min": 2, "max": 4,   "label": "Fahrer Diesel-Sattelzug"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Fahrer"},
+    "a31": {"min": 1, "max": 2,   "label": "CO2 Elektro-Kleinwagen (kg)"},
+    "a32": {"min": 3, "max": 7,   "label": "CO2 Diesel-Sprinter (kg)"},
+    "a33": {"min": 2, "max": 5,   "label": "CO2 Gas-LKW (kg)"},
+    "a34": {"min": 1, "max": 3,   "label": "CO2 Elektro-LKW (kg)"},
+    "a35": {"min": 4, "max": 10,  "label": "CO2 Diesel-Sattelzug (kg)"},
+    "b3":  {"min": 40, "max": 150, "label": "Max. CO2-Emission (kg)"},
+    "a41": {"min": 1, "max": 3,   "label": "Wartung Elektro-Kleinwagen (h)"},
+    "a42": {"min": 2, "max": 4,   "label": "Wartung Diesel-Sprinter (h)"},
+    "a43": {"min": 2, "max": 5,   "label": "Wartung Gas-LKW (h)"},
+    "a44": {"min": 1, "max": 4,   "label": "Wartung Elektro-LKW (h)"},
+    "a45": {"min": 3, "max": 6,   "label": "Wartung Diesel-Sattelzug (h)"},
+    "b4":  {"min": 30, "max": 120, "label": "Max. Wartungskapazität (h)"}
+  },
+  "titel": "Gemischte Flotte – fünf Fahrzeugtypen",
+  "beschreibung": "Ein Logistikunternehmen setzt fünf Fahrzeugtypen ein. Der Elektro-Kleinwagen kostet {c1} EUR pro Fahrt, der Diesel-Sprinter {c2} EUR, der Gas-LKW {c3} EUR, der Elektro-LKW {c4} EUR und der Diesel-Sattelzug {c5} EUR pro Fahrt. Der Elektro-Kleinwagen transportiert {a11} Tonnen, der Sprinter {a12}, der Gas-LKW {a13}, der Elektro-LKW {a14} und der Sattelzug {a15} Tonnen pro Fahrt. Mindestens {b1} Tonnen müssen transportiert werden. Der Kleinwagen benötigt {a21} Fahrer, der Sprinter {a22}, der Gas-LKW {a23}, der Elektro-LKW {a24} und der Sattelzug {a25} Fahrer. Insgesamt stehen {b2} Fahrer zur Verfügung. Der Kleinwagen verursacht {a31} kg CO2, der Sprinter {a32} kg, der Gas-LKW {a33} kg, der Elektro-LKW {a34} kg und der Sattelzug {a35} kg pro Fahrt. Die CO2-Emission darf höchstens {b3} kg betragen. Der Kleinwagen braucht {a41} h Wartung, der Sprinter {a42} h, der Gas-LKW {a43} h, der Elektro-LKW {a44} h und der Sattelzug {a45} h. Die Wartungskapazität beträgt höchstens {b4} h.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Fracht, begrenzten Fahrern, CO2 und Wartungskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Elektro-Kleinwagen kostet {c1} EUR pro Fahrt", "bedeutung": "{c1} × x₁"},
+      {"text": "Diesel-Sprinter {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Gas-LKW {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "Elektro-LKW {c4} EUR", "bedeutung": "{c4} × x₄"},
+      {"text": "Diesel-Sattelzug {c5} EUR pro Fahrt", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen, der Sprinter {a12}, der Gas-LKW {a13}, der Elektro-LKW {a14} und der Sattelzug {a15} Tonnen pro Fahrt. Mindestens {b1} Tonnen müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrer, der Sprinter {a22}, der Gas-LKW {a23}, der Elektro-LKW {a24} und der Sattelzug {a25} Fahrer. Insgesamt stehen {b2} Fahrer zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kg CO2, der Sprinter {a32} kg, der Gas-LKW {a33} kg, der Elektro-LKW {a34} kg und der Sattelzug {a35} kg pro Fahrt. Die CO2-Emission darf höchstens {b3} kg betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} h Wartung, der Sprinter {a42} h, der Gas-LKW {a43} h, der Elektro-LKW {a44} h und der Sattelzug {a45} h. Die Wartungskapazität beträgt höchstens {b4} h", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≤ {b4}"}
+      ]
+    ]
+  }
+}

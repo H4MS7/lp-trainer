@@ -1,0 +1,68 @@
+[
+  {
+    "titel": "Halbleiter-Qualitätsprüfung",
+    "beschreibung": "Ein Halbleiterhersteller setzt zwei Prüfverfahren ein, um Chips auf Defekte zu untersuchen: optische Prüfung und elektrische Prüfung. Die optische Prüfung kostet 5€ pro Durchlauf und erkennt dabei 3 Defekttypen pro Durchlauf. Die elektrische Prüfung kostet 8€ pro Durchlauf und erkennt 7 Defekttypen pro Durchlauf. Pro Schicht müssen mindestens 84 Defekttypen abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 20 Prüfdurchläufe zur Verfügung, da jeder Durchlauf Maschinenzeit beansprucht. Der Qualitätsmanager möchte die Gesamtkosten der Prüfung minimieren und dabei sicherstellen, dass alle geforderten Defekttypen erkannt werden.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl optische Prüfdurchläufe", "x2 = Anzahl elektrische Prüfdurchläufe"],
+    "zielfunktion": "Z = 5x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 7x2 ≥ 84 (Defektabdeckung)",
+      "x1 + x2 ≤ 20 (Prüfdurchläufe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Defektabdeckung ist eine Mindestanforderung (≥), die Anzahl der Prüfdurchläufe eine Obergrenze (≤). Identifizieren Sie zuerst die Koeffizienten der Erkennungsraten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "optische Prüfung kostet 5€ pro Durchlauf", "bedeutung": "5 × x₁"},
+        {"text": "elektrische Prüfung kostet 8€ pro Durchlauf", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "erkennt dabei 3 Defekttypen pro Durchlauf", "bedeutung": "3x₁"},
+          {"text": "erkennt 7 Defekttypen pro Durchlauf", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 84 Defekttypen abgedeckt", "bedeutung": "≥ 84"}
+        ],
+        [
+          {"text": "höchstens 20 Prüfdurchläufe", "bedeutung": "x₁ + x₂ ≤ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lebensmittel-Qualitätskontrolle",
+    "beschreibung": "Ein Lebensmittellabor führt Qualitätskontrollen mit zwei Testverfahren durch: Schnelltest und Laboranalyse. Der Schnelltest kostet 4€ pro Test und erkennt 2 Kontaminationsarten pro Test. Die Laboranalyse kostet 12€ pro Test und erkennt 6 Kontaminationsarten pro Test. Um die Lebensmittelsicherheit zu garantieren, müssen pro Tag mindestens 60 Kontaminationsarten abgedeckt werden. Die verfügbare Arbeitszeit begrenzt die Testanzahl: Ein Schnelltest dauert 1 Stunde, eine Laboranalyse dauert 3 Stunden, und insgesamt stehen 36 Stunden Laborzeit zur Verfügung. Zudem können pro Tag höchstens 18 Tests durchgeführt werden, da nur begrenzt Testgeräte vorhanden sind. Der Laborleiter möchte die Gesamttestkosten minimieren.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Schnelltests", "x2 = Anzahl Laboranalysen"],
+    "zielfunktion": "Z = 4x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 6x2 ≥ 60 (Kontaminationsabdeckung)",
+      "x1 + 3x2 ≤ 36 (Laborzeit)",
+      "x1 + x2 ≤ 18 (Testgeräte)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Die Kontaminationsabdeckung ist eine Mindestanforderung (≥), Laborzeit und Testgeräte sind Obergrenzen (≤). Achten Sie auf die unterschiedlichen Koeffizienten für Kosten, Erkennungsrate und Zeitbedarf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schnelltest kostet 4€ pro Test", "bedeutung": "4 × x₁"},
+        {"text": "Laboranalyse kostet 12€ pro Test", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "erkennt 2 Kontaminationsarten pro Test", "bedeutung": "2x₁"},
+          {"text": "erkennt 6 Kontaminationsarten pro Test", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 60 Kontaminationsarten abgedeckt", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "Schnelltest dauert 1 Stunde", "bedeutung": "x₁"},
+          {"text": "Laboranalyse dauert 3 Stunden", "bedeutung": "+ 3x₂"},
+          {"text": "36 Stunden Laborzeit", "bedeutung": "≤ 36"}
+        ],
+        [
+          {"text": "höchstens 18 Tests durchgeführt", "bedeutung": "x₁ + x₂ ≤ 18"}
+        ]
+      ]
+    }
+  }
+]

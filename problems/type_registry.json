@@ -1,0 +1,366 @@
+{
+  "Produktionsproblem": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Ressource A"},
+      {"type": "<=", "category": "Ressource B"},
+      {"type": "<=", "category": "Kapazität"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 50], "lhs": [1, 15], "rhs": [20, 500]},
+    "scenarios": ["Möbelfabrik", "Elektronikfertigung", "Bäckerei", "Textilfabrik", "Metallwerkstatt"],
+    "variable_patterns": ["Anzahl Produkt A", "Anzahl Produkt B"],
+    "variable_patterns_3": ["Anzahl Produkt A", "Anzahl Produkt B", "Anzahl Produkt C"],
+    "variable_patterns_4": ["Anzahl Produkt A", "Anzahl Produkt B", "Anzahl Produkt C", "Anzahl Produkt D"],
+    "variable_patterns_5": ["Anzahl Produkt A", "Anzahl Produkt B", "Anzahl Produkt C", "Anzahl Produkt D", "Anzahl Produkt E"],
+    "vocabulary": ["Gewinn", "Deckungsbeitrag", "Kapazität", "Ressource"],
+    "target_count": 0,
+    "existing_count": 82,
+    "multivar_targets": {"3": 5, "4": 3, "5": 2},
+    "notes": "Already has 82 2-var problems. Multi-var generation for 3/4/5 variables."
+  },
+  "Ressourcenallokation": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Ressource"},
+      {"type": "<=", "category": "Budget"},
+      {"type": "<=", "category": "Kapazität"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 50], "lhs": [1, 15], "rhs": [20, 500]},
+    "scenarios": ["Forschungsprojekte", "Marketingkanäle", "Produktionslinien", "Standorte"],
+    "variable_patterns": ["Menge Aktivität A", "Menge Aktivität B"],
+    "variable_patterns_3": ["Menge Aktivität A", "Menge Aktivität B", "Menge Aktivität C"],
+    "variable_patterns_4": ["Menge Aktivität A", "Menge Aktivität B", "Menge Aktivität C", "Menge Aktivität D"],
+    "variable_patterns_5": ["Menge Aktivität A", "Menge Aktivität B", "Menge Aktivität C", "Menge Aktivität D", "Menge Aktivität E"],
+    "vocabulary": ["Zuteilung", "Budget", "Kapazität"],
+    "target_count": 0,
+    "existing_count": 35,
+    "multivar_targets": {"3": 4, "4": 3, "5": 1},
+    "notes": "Already has 35 2-var problems. Multi-var generation for 3/4/5 variables."
+  },
+  "Mischungsproblem": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindestanteil"},
+      {"type": "<=", "category": "Höchstanteil"},
+      {"type": "<=", "category": "Budget"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 50], "lhs": [1, 15], "rhs": [20, 500]},
+    "scenarios": ["Futtermischung", "Betonmischung", "Legierung", "Düngemittel", "Farben"],
+    "variable_patterns": ["Menge Zutat A", "Menge Zutat B"],
+    "variable_patterns_3": ["Menge Zutat A", "Menge Zutat B", "Menge Zutat C"],
+    "variable_patterns_4": ["Menge Zutat A", "Menge Zutat B", "Menge Zutat C", "Menge Zutat D"],
+    "variable_patterns_5": ["Menge Zutat A", "Menge Zutat B", "Menge Zutat C", "Menge Zutat D", "Menge Zutat E"],
+    "vocabulary": ["Mischung", "Anteil", "Zusammensetzung"],
+    "target_count": 0,
+    "existing_count": 23,
+    "multivar_targets": {"3": 4, "4": 3, "5": 1},
+    "notes": "Already has 23 2-var problems. Multi-var generation for 3/4/5 variables."
+  },
+  "Transportproblem": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Kapazität"},
+      {"type": ">=", "category": "Bedarf"},
+      {"type": "<=", "category": "Budget"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 50], "lhs": [1, 15], "rhs": [20, 500]},
+    "scenarios": ["Spedition", "Paketdienst", "Containerschifffahrt", "Bahnlogistik"],
+    "variable_patterns": ["Menge Route A", "Menge Route B"],
+    "variable_patterns_3": ["Menge Route A", "Menge Route B", "Menge Route C"],
+    "variable_patterns_4": ["Menge Route A", "Menge Route B", "Menge Route C", "Menge Route D"],
+    "variable_patterns_5": ["Menge Route A", "Menge Route B", "Menge Route C", "Menge Route D", "Menge Route E"],
+    "vocabulary": ["Transport", "Lieferung", "Route", "Fracht"],
+    "target_count": 0,
+    "existing_count": 20,
+    "multivar_targets": {"3": 3, "4": 2, "5": 1},
+    "notes": "Already has 20 2-var problems. Multi-var generation for 3/4/5 variables."
+  },
+  "Investitionsoptimierung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Gesamtkapital"},
+      {"type": "<=", "category": "Risikobudget"},
+      {"type": ">=", "category": "Mindestrendite"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [100, 5000]},
+    "scenarios": [
+      "Aktien und Anleihen",
+      "Immobilienfonds und ETF",
+      "Startup-Beteiligung und Festgeld",
+      "Kryptowährungen und Gold",
+      "Rohstoff-Futures und Staatsanleihen",
+      "Mietimmobilien und Dividendenaktien",
+      "Wagniskapital und Unternehmensanleihen",
+      "Photovoltaik-Anlage und Windpark-Beteiligung",
+      "Crowdfunding und Sparbrief",
+      "Private Equity und Geldmarktfonds"
+    ],
+    "variable_patterns": ["Betrag in Anlage A (in Tausend €)", "Betrag in Anlage B (in Tausend €)"],
+    "variable_patterns_3": ["Betrag in Anlage A (in Tausend €)", "Betrag in Anlage B (in Tausend €)", "Betrag in Anlage C (in Tausend €)"],
+    "variable_patterns_4": ["Betrag in Anlage A (in Tausend €)", "Betrag in Anlage B (in Tausend €)", "Betrag in Anlage C (in Tausend €)", "Betrag in Anlage D (in Tausend €)"],
+    "variable_patterns_5": ["Betrag in Anlage A (in Tausend €)", "Betrag in Anlage B (in Tausend €)", "Betrag in Anlage C (in Tausend €)", "Betrag in Anlage D (in Tausend €)", "Betrag in Anlage E (in Tausend €)"],
+    "vocabulary": ["Rendite", "Risiko", "Portfolio", "Diversifikation", "Kapital", "Ertrag", "Zinsen", "Laufzeit"],
+    "target_count": 20,
+    "multivar_targets": {"3": 4, "4": 2, "5": 1}
+  },
+  "Maschinenparametrierung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Leistung"},
+      {"type": "<=", "category": "Verschleiß"},
+      {"type": ">=", "category": "Mindestqualität"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 1000]},
+    "scenarios": [
+      "CNC-Fräse: Drehzahl und Vorschub",
+      "Laserschneider: Leistung und Geschwindigkeit",
+      "3D-Drucker: Druckgeschwindigkeit und Schichthöhe",
+      "Schweißroboter: Stromstärke und Vorschub",
+      "Extruder: Temperatur und Durchsatz",
+      "Spritzgussmaschine: Druck und Temperatur",
+      "Walzwerk: Walzdruck und Geschwindigkeit",
+      "Brennofen: Temperatur und Brenndauer"
+    ],
+    "variable_patterns": ["Parameter A (z.B. Drehzahl)", "Parameter B (z.B. Vorschub)"],
+    "vocabulary": ["Durchsatz", "Verschleiß", "Oberflächengüte", "Toleranz", "Werkzeug", "Präzision"],
+    "target_count": 15
+  },
+  "Diätproblem": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindest-Nährstoff A"},
+      {"type": ">=", "category": "Mindest-Nährstoff B"},
+      {"type": "<=", "category": "Höchstmenge"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 12], "lhs": [1, 15], "rhs": [50, 2000]},
+    "scenarios": [
+      "Reis und Linsen",
+      "Kartoffeln und Hühnchen",
+      "Haferflocken und Eier",
+      "Tofu und Quinoa",
+      "Brot und Käse",
+      "Nudeln und Gemüse",
+      "Astronautennahrung: Riegel und Shakes",
+      "Sportlerdiät: Proteinpulver und Müsli",
+      "Krankenhausessen: Schonkost A und B",
+      "Schulkantine: Menü A und Menü B"
+    ],
+    "variable_patterns": ["Portionen/kg Lebensmittel A", "Portionen/kg Lebensmittel B"],
+    "variable_patterns_3": ["Portionen Lebensmittel A", "Portionen Lebensmittel B", "Portionen Lebensmittel C"],
+    "variable_patterns_4": ["Portionen Lebensmittel A", "Portionen Lebensmittel B", "Portionen Lebensmittel C", "Portionen Lebensmittel D"],
+    "variable_patterns_5": ["Portionen Lebensmittel A", "Portionen Lebensmittel B", "Portionen Lebensmittel C", "Portionen Lebensmittel D", "Portionen Lebensmittel E"],
+    "vocabulary": ["Kalorien", "Protein", "Vitamine", "Ballaststoffe", "Nährstoff", "Tagesbedarf", "Ernährung"],
+    "target_count": 20,
+    "multivar_targets": {"3": 4, "4": 2, "5": 1}
+  },
+  "Emissionsoptimierung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "CO₂-Emissionen"},
+      {"type": "<=", "category": "Ressourcen"},
+      {"type": ">=", "category": "Mindestproduktion"}
+    ],
+    "constraint_count": [3, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 2000]},
+    "scenarios": [
+      "Stahlwerk: Hochofen und Elektrolichtbogen",
+      "Kraftwerk: Kohle- und Gasblock",
+      "Zementfabrik: Trocken- und Nassverfahren",
+      "Chemiefabrik: Verfahren A und B",
+      "Raffinerie: Destillation und Cracking",
+      "Brauerei mit Nachhaltigkeitsziel",
+      "Logistik: LKW und Bahntransport",
+      "Landwirtschaft: konventionell und bio"
+    ],
+    "variable_patterns": ["Menge Verfahren A", "Menge Verfahren B"],
+    "vocabulary": ["CO₂", "Emissionen", "Zertifikate", "Nachhaltigkeit", "Klimaschutz", "Grenzwert"],
+    "target_count": 20
+  },
+  "Schichtplanung": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindestbesetzung Zeitfenster A"},
+      {"type": ">=", "category": "Mindestbesetzung Zeitfenster B"},
+      {"type": "<=", "category": "Maximal verfügbar"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 10], "rhs": [10, 200]},
+    "scenarios": [
+      "Krankenhaus: Tag- und Nachtschicht",
+      "Callcenter: Früh- und Spätschicht",
+      "Fabrik: Morgen- und Abendschicht",
+      "Hotelrezeption: Früh- und Spätdienst",
+      "Supermarktkasse: Vormittag und Nachmittag",
+      "Feuerwehr: 12h- und 8h-Schicht",
+      "Polizeiwache: Streife und Innendienst",
+      "Gastronomie: Mittags- und Abendschicht"
+    ],
+    "variable_patterns": ["Anzahl Schicht A", "Anzahl Schicht B"],
+    "vocabulary": ["Personalkosten", "Besetzung", "Schicht", "Mindestbesetzung", "Abdeckung"],
+    "target_count": 15
+  },
+  "Energiemix": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindestleistung"},
+      {"type": "<=", "category": "Netzkapazität"},
+      {"type": "<=", "category": "Verfügbarkeit"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 2000]},
+    "scenarios": [
+      "Solar- und Windenergie",
+      "Biomasse und Wasserkraft",
+      "Geothermie und Photovoltaik",
+      "Blockheizkraftwerk und Wärmepumpe",
+      "Offshore- und Onshore-Windkraft",
+      "Batteriespeicher-Allokation"
+    ],
+    "variable_patterns": ["MWh/kW von Quelle A", "MWh/kW von Quelle B"],
+    "variable_patterns_3": ["MWh von Quelle A", "MWh von Quelle B", "MWh von Quelle C"],
+    "variable_patterns_4": ["MWh von Quelle A", "MWh von Quelle B", "MWh von Quelle C", "MWh von Quelle D"],
+    "variable_patterns_5": ["MWh von Quelle A", "MWh von Quelle B", "MWh von Quelle C", "MWh von Quelle D", "MWh von Quelle E"],
+    "vocabulary": ["Einspeisung", "Netzkapazität", "Verfügbarkeit", "erneuerbar", "Grundlast", "Spitzenlast"],
+    "target_count": 15,
+    "multivar_targets": {"3": 3, "4": 3, "5": 2}
+  },
+  "Kapazitätsplanung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "CPU"},
+      {"type": "<=", "category": "RAM"},
+      {"type": "<=", "category": "Budget"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 1000]},
+    "scenarios": [
+      "Cloud-VMs: Standard und High-Performance",
+      "Container-Pods: CPU-optimiert und RAM-optimiert",
+      "Datenbankinstanzen: Read und Write",
+      "CDN-Knoten: Edge und Origin",
+      "GPU-Cluster: Training und Inference",
+      "Kubernetes-Nodes: General und Compute",
+      "Load-Balancer: Layer-4 und Layer-7",
+      "Backup-Server: Hot und Cold"
+    ],
+    "variable_patterns": ["Anzahl Instanztyp A", "Anzahl Instanztyp B"],
+    "vocabulary": ["vCPUs", "GB RAM", "IOPS", "Durchsatz", "Latenz", "Skalierung", "Cloud"],
+    "target_count": 15
+  },
+  "Medienplanung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Budget"},
+      {"type": ">=", "category": "Mindestreichweite"},
+      {"type": "<=", "category": "Frequenz-Cap"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 2000]},
+    "scenarios": [
+      "TV-Werbung und Social-Media-Kampagne",
+      "Google-Ads und Instagram-Anzeigen",
+      "Plakatwerbung und Radiospots",
+      "Newsletter und Influencer-Kooperation",
+      "Print-Anzeigen und Online-Banner",
+      "Podcast-Werbung und YouTube-Ads",
+      "Messestand und Webinar"
+    ],
+    "variable_patterns": ["Einheiten/Budget Kanal A", "Einheiten/Budget Kanal B"],
+    "vocabulary": ["Reichweite", "Conversions", "Impressionen", "Klickrate", "Zielgruppe", "Kampagne"],
+    "target_count": 15
+  },
+  "Lagerhaltung": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindestbestand"},
+      {"type": "<=", "category": "Lagerkapazität"},
+      {"type": "<=", "category": "Budget"}
+    ],
+    "constraint_count": [2, 4],
+    "coeff_ranges": {"objective": [1, 12], "lhs": [1, 12], "rhs": [50, 2000]},
+    "scenarios": [
+      "Supermarkt: Frischware und Trockenware",
+      "Apotheke: Medikamente und Nahrungsergänzung",
+      "Ersatzteillager: Kleinteile und Großkomponenten",
+      "Baumateriallager: Zement und Stahl",
+      "Elektronikversand: Smartphones und Zubehör",
+      "Buchhandlung: Bestseller und Fachbücher"
+    ],
+    "variable_patterns": ["Bestellmenge Produkt A", "Bestellmenge Produkt B"],
+    "variable_patterns_3": ["Bestellmenge Produkt A", "Bestellmenge Produkt B", "Bestellmenge Produkt C"],
+    "variable_patterns_4": ["Bestellmenge Produkt A", "Bestellmenge Produkt B", "Bestellmenge Produkt C", "Bestellmenge Produkt D"],
+    "variable_patterns_5": ["Bestellmenge Produkt A", "Bestellmenge Produkt B", "Bestellmenge Produkt C", "Bestellmenge Produkt D", "Bestellmenge Produkt E"],
+    "vocabulary": ["Bestellkosten", "Lagerkosten", "Mindestbestand", "Nachbestellung", "Lieferzeit"],
+    "target_count": 15,
+    "multivar_targets": {"3": 3, "4": 2, "5": 1}
+  },
+  "Qualitätskontrolle": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Fehlererkennungsrate"},
+      {"type": "<=", "category": "Prüfzeit"},
+      {"type": "<=", "category": "Gerätekapazität"}
+    ],
+    "constraint_count": [2, 3],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 1000]},
+    "scenarios": [
+      "Halbleiterfertigung: optische und elektrische Prüfung",
+      "Lebensmittelkontrolle: Stichprobe und Labortest",
+      "Autoinspektion: Sichtprüfung und Messgerät",
+      "Medizinprodukte: Funktionstest und Steriltest",
+      "Softwaretesting: Unit-Tests und Integrationstests",
+      "Brückeninspektion: Sichtprüfung und Belastungstest"
+    ],
+    "variable_patterns": ["Anzahl Prüfungen Methode A", "Anzahl Prüfungen Methode B"],
+    "vocabulary": ["Prüfkosten", "Fehlererkennung", "Stichprobe", "Qualität", "Ausschuss"],
+    "target_count": 10
+  },
+  "Flächennutzung": {
+    "optimization": "maximieren",
+    "constraint_patterns": [
+      {"type": "<=", "category": "Gesamtfläche"},
+      {"type": ">=", "category": "Mindestnutzung"},
+      {"type": "<=", "category": "Wasserbudget"}
+    ],
+    "constraint_count": [3, 5],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 2000]},
+    "scenarios": [
+      "Weizen und Solaranlage",
+      "Mais und Windpark",
+      "Wald und Weide",
+      "Bio- und konventioneller Anbau",
+      "Wohnbau und Grünfläche"
+    ],
+    "variable_patterns": ["Hektar Nutzung A", "Hektar Nutzung B"],
+    "vocabulary": ["Ertrag", "Fläche", "Hektar", "Wasserverbrauch", "Eigenversorgung", "Nachhaltigkeit"],
+    "target_count": 10
+  },
+  "Wartungsplanung": {
+    "optimization": "minimieren",
+    "constraint_patterns": [
+      {"type": ">=", "category": "Mindestverfügbarkeit"},
+      {"type": "<=", "category": "Technikerstunden"},
+      {"type": "<=", "category": "Budget"}
+    ],
+    "constraint_count": [2, 3],
+    "coeff_ranges": {"objective": [2, 15], "lhs": [1, 12], "rhs": [50, 1000]},
+    "scenarios": [
+      "Maschinenpark: präventive und reaktive Wartung",
+      "Fuhrpark: Inspektion und Reparatur",
+      "IT-Infrastruktur: geplante und Notfall-Wartung",
+      "Gebäudetechnik: Routine und Sondereinsatz",
+      "Medizingeräte: Kalibrierung und Reparatur",
+      "Windkraftanlagen: Fernwartung und Vor-Ort-Service"
+    ],
+    "variable_patterns": ["Anzahl präventive Maßnahmen", "Anzahl reaktive Maßnahmen"],
+    "vocabulary": ["Verfügbarkeit", "Ausfallzeit", "Präventiv", "Reaktiv", "Wartungsintervall"],
+    "target_count": 10
+  }
+}

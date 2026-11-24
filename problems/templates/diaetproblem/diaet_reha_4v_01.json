@@ -1,0 +1,81 @@
+{
+  "id": "diaet_reha_4v_01",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Portionen Hühnerbrust", "x2 = Portionen Reis", "x3 = Portionen Brokkoli", "x4 = Portionen Milch"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalorien", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Kalzium", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Fett", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Hühnerbrust (€/Portion)"},
+    "c2":  {"min": 1, "max": 3,   "label": "Kosten Reis (€/Portion)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Kosten Brokkoli (€/Portion)"},
+    "c4":  {"min": 1, "max": 3,   "label": "Kosten Milch (€/Portion)"},
+    "a11": {"min": 8, "max": 15,  "label": "Protein Hühnerbrust (g/Portion)"},
+    "a12": {"min": 2, "max": 5,   "label": "Protein Reis (g/Portion)"},
+    "a13": {"min": 2, "max": 5,   "label": "Protein Brokkoli (g/Portion)"},
+    "a14": {"min": 3, "max": 7,   "label": "Protein Milch (g/Portion)"},
+    "b1":  {"min": 60, "max": 140, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 100, "max": 200, "label": "Kalorien Hühnerbrust (kcal/Portion)"},
+    "a22": {"min": 120, "max": 250, "label": "Kalorien Reis (kcal/Portion)"},
+    "a23": {"min": 30, "max": 80,   "label": "Kalorien Brokkoli (kcal/Portion)"},
+    "a24": {"min": 50, "max": 120,  "label": "Kalorien Milch (kcal/Portion)"},
+    "b2":  {"min": 1000, "max": 2000, "label": "Mindest-Kalorien (kcal)"},
+    "a31": {"min": 1, "max": 3,   "label": "Kalzium Hühnerbrust (mg/Portion)"},
+    "a32": {"min": 1, "max": 2,   "label": "Kalzium Reis (mg/Portion)"},
+    "a33": {"min": 3, "max": 8,   "label": "Kalzium Brokkoli (mg/Portion)"},
+    "a34": {"min": 5, "max": 12,  "label": "Kalzium Milch (mg/Portion)"},
+    "b3":  {"min": 40, "max": 100, "label": "Mindest-Kalzium (mg)"},
+    "a41": {"min": 2, "max": 5,   "label": "Fett Hühnerbrust (g/Portion)"},
+    "a42": {"min": 1, "max": 2,   "label": "Fett Reis (g/Portion)"},
+    "a43": {"min": 1, "max": 2,   "label": "Fett Brokkoli (g/Portion)"},
+    "a44": {"min": 2, "max": 5,   "label": "Fett Milch (g/Portion)"},
+    "b4":  {"min": 40, "max": 80,  "label": "Maximal-Fett (g)"}
+  },
+  "titel": "Reha-Klinik – Hühnerbrust, Reis, Brokkoli und Milch",
+  "beschreibung": "Eine Reha-Klinik plant die Patientenernährung aus Hühnerbrust, Reis, Brokkoli und Milch. Hühnerbrust kostet {c1} €, Reis kostet {c2} €, Brokkoli kostet {c3} €, Milch kostet {c4} € pro Portion. Hühnerbrust liefert {a11} g Protein, Reis liefert {a12} g Protein, Brokkoli liefert {a13} g Protein, Milch liefert {a14} g Protein pro Portion. Mindestens {b1} g Protein sind nötig. Hühnerbrust enthält {a21} kcal, Reis enthält {a22} kcal, Brokkoli enthält {a23} kcal, Milch enthält {a24} kcal pro Portion. Mindestens {b2} kcal werden benötigt. Hühnerbrust liefert {a31} mg Kalzium, Reis liefert {a32} mg Kalzium, Brokkoli liefert {a33} mg Kalzium, Milch liefert {a34} mg Kalzium pro Portion. Mindestens {b3} mg Kalzium sind erforderlich. Hühnerbrust hat {a41} g Fett, Reis hat {a42} g Fett, Brokkoli hat {a43} g Fett, Milch hat {a44} g Fett pro Portion. Höchstens {b4} g Fett sind erlaubt.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Nährstoff-Mindestmengen und der Fettobergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hühnerbrust kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Reis kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Brokkoli kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Milch kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g Protein", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} g Protein pro Portion", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} g Protein sind nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} kcal", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} kcal pro Portion", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} kcal werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Kalzium", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Kalzium", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Kalzium", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} mg Kalzium pro Portion", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} mg Kalzium sind erforderlich", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} g Fett", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} g Fett", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} g Fett", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} g Fett pro Portion", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} g Fett sind erlaubt", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

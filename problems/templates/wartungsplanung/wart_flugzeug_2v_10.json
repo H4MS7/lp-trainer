@@ -1,0 +1,43 @@
+{
+  "id": "wart_flugzeug_2v_10",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl A-Checks", "x2 = Anzahl Sonderinspektionen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestflugtauglichkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Hangarkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,  "label": "Kosten A-Check (Tsd. €)"},
+    "c2":  {"min": 15, "max": 40, "label": "Kosten Sonderinspektion (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "Tauglichkeit A-Check (%)"},
+    "a12": {"min": 2, "max": 8,   "label": "Tauglichkeit Sonder (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestflugtauglichkeit (%)"},
+    "a21": {"min": 4, "max": 10,  "label": "Hangarzeit A-Check (h)"},
+    "a22": {"min": 6, "max": 15,  "label": "Hangarzeit Sonder (h)"},
+    "b2":  {"min": 40, "max": 150, "label": "Hangarkapazität (h)"}
+  },
+  "titel": "Fluggesellschaft – Flugzeugwartung",
+  "beschreibung": "Eine Fluggesellschaft plant die Wartung ihrer Flotte. Ein A-Check kostet {c1} Tsd. €, eine Sonderinspektion kostet {c2} Tsd. €. Ein A-Check sichert {a11} % Flugtauglichkeit, eine Sonderinspektion sichert {a12} % Flugtauglichkeit. Die Mindestflugtauglichkeit beträgt {b1} %. Ein A-Check benötigt {a21} Hangarstunden, eine Sonderinspektion benötigt {a22} Hangarstunden. Die Hangarkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Flugtauglichkeit und Hangarkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "A-Check kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sonderinspektion kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Flugtauglichkeit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Flugtauglichkeit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Hangarstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Hangarstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

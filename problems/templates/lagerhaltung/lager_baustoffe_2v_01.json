@@ -1,0 +1,43 @@
+{
+  "id": "lager_baustoffe_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Zement (Tonnen)", "x2 = Bestellmenge Sand (Tonnen)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestvorrat Baustelle", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Silokapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Lagerkosten Zement (€/Tonne)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Lagerkosten Sand (€/Tonne)"},
+    "a11": {"min": 3, "max": 7,   "label": "Baueinheiten pro Tonne Zement"},
+    "a12": {"min": 1, "max": 4,   "label": "Baueinheiten pro Tonne Sand"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindestvorrat (Baueinheiten)"},
+    "a21": {"min": 2, "max": 5,   "label": "Siloraum Zement (m³/Tonne)"},
+    "a22": {"min": 1, "max": 3,   "label": "Siloraum Sand (m³/Tonne)"},
+    "b2":  {"min": 30, "max": 120, "label": "Silokapazität (m³)"}
+  },
+  "titel": "Baustofflager – Zement und Sand",
+  "beschreibung": "Ein Baustoffhändler lagert Zement und Sand für Baustellen. Die Lagerkosten betragen {c1} € pro Tonne Zement und {c2} € pro Tonne Sand. Jede Tonne Zement liefert {a11} Baueinheiten, jede Tonne Sand liefert {a12} Baueinheiten. Der Mindestvorrat für die Baustelle beträgt {b1} Baueinheiten. Zement benötigt {a21} m³ Siloraum pro Tonne, Sand benötigt {a22} m³ Siloraum pro Tonne. Die Silokapazität ist auf {b2} m³ begrenzt.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestvorrats und der Silokapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Tonne Zement", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Tonne Sand", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Baueinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Baueinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Baueinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Siloraum pro Tonne", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ Siloraum pro Tonne", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³ begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

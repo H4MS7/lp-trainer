@@ -1,0 +1,43 @@
+{
+  "id": "prod_autoteile_2v_10",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Bremsscheiben", "x2 = Anzahl Felgen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Aluminium", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CNC-Zeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 35,  "label": "Gewinn/Bremsscheibe (€)"},
+    "c2":  {"min": 30, "max": 90,  "label": "Gewinn/Felge (€)"},
+    "a11": {"min": 2, "max": 5,    "label": "Aluminium/Bremsscheibe (kg)"},
+    "a12": {"min": 4, "max": 12,   "label": "Aluminium/Felge (kg)"},
+    "b1":  {"min": 100, "max": 500, "label": "Aluminiumvorrat (kg)"},
+    "a21": {"min": 1, "max": 4,    "label": "CNC-Zeit/Bremsscheibe (h)"},
+    "a22": {"min": 2, "max": 6,    "label": "CNC-Zeit/Felge (h)"},
+    "b2":  {"min": 40, "max": 180, "label": "CNC-Kapazitaet (h)"}
+  },
+  "titel": "Autoteilefertigung – Bremsscheiben und Felgen",
+  "beschreibung": "Ein Autoteilehersteller produziert Bremsscheiben und Felgen. Jede Bremsscheibe bringt {c1} Euro Gewinn, jede Felge {c2} Euro. Eine Bremsscheibe verbraucht {a11} kg Aluminium, eine Felge {a12} kg. Es stehen {b1} kg Aluminium bereit. Die CNC-Bearbeitung einer Bremsscheibe dauert {a21} Stunden, die einer Felge {a22} Stunden. Insgesamt sind {b2} CNC-Stunden verfuegbar.",
+  "hinweis": "Formuliere die Gewinnmaximierung mit den Beschraenkungen fuer Aluminium und CNC-Zeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Bremsscheibe bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Felge {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg Aluminium, eine Felge", "bedeutung": "{a11}x₁"},
+        {"text": "Felge {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg Aluminium bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Bremsscheibe dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Felge {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} CNC-Stunden verfuegbar", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

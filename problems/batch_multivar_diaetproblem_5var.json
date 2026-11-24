@@ -1,0 +1,177 @@
+[
+  {
+    "titel": "Großküche mit fünf Lebensmittelgruppen",
+    "beschreibung": "Eine Großküche für ein Studentenwerk plant den wöchentlichen Speiseplan mit fünf Lebensmittelgruppen: Kartoffeln, Reis, Hähnchen, Tofu und Salat. Die Kosten pro Portion betragen 5 Euro für Kartoffeln, 6 Euro für Reis, 6 Euro für Hähnchen, 8 Euro für Tofu und 1 Euro für Salat. Der Proteinbedarf von mindestens 396 g muss gedeckt werden: eine Portion Kartoffeln liefert 12 g, Reis 1 g, Hähnchen 12 g, Tofu 8 g und Salat 5 g Protein. Der Eisenbedarf von mindestens 497 mg erfordert 12 mg je Portion Kartoffeln, 14 mg Reis, 1 mg Hähnchen, 11 mg Tofu und 7 mg Salat. Die Gesamtfettmenge darf 1025 g nicht überschreiten, wobei Kartoffeln 11 g, Reis 2 g, Hähnchen 12 g Fett, Tofu 3 g und Salat 2 g Fett pro Portion enthalten. Der Kalziumbedarf von mindestens 101 mg wird durch 12 mg Kalzium je Kartoffeln, 12 mg Reis, 14 mg Hähnchen, 8 mg Tofu und 5 mg Salat pro Portion gedeckt. Schließlich benötigen die Studierenden mindestens 635 mg Vitamin C, wobei Kartoffeln 4 mg, Reis 9 mg, Hähnchen 7 mg, Tofu 15 mg und Salat 2 mg Vitamin C pro Portion liefern. Die Großküche möchte die wöchentlichen Kosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Kartoffeln",
+      "x2 = Portionen Reis",
+      "x3 = Portionen Hähnchen",
+      "x4 = Portionen Tofu",
+      "x5 = Portionen Salat"
+    ],
+    "zielfunktion": "Z = 5x1 + 6x2 + 6x3 + 8x4 + x5 (min)",
+    "nebenbedingungen": [
+      "12x1 + x2 + 12x3 + 8x4 + 5x5 ≥ 396 (Protein)",
+      "12x1 + 14x2 + x3 + 11x4 + 7x5 ≥ 497 (Eisen)",
+      "11x1 + 2x2 + 12x3 + 3x4 + 2x5 ≤ 1025 (Fett)",
+      "12x1 + 12x2 + 14x3 + 8x4 + 5x5 ≥ 101 (Kalzium)",
+      "4x1 + 9x2 + 7x3 + 15x4 + 2x5 ≥ 635 (Vitamin C)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Vier Mindestbedarfe (Protein, Eisen, Kalzium, Vitamin C) ergeben ≥-Nebenbedingungen, nur die Fettbegrenzung ist eine ≤-Nebenbedingung. Bei fünf Variablen ist es wichtig, systematisch jedem Lebensmittel eine Variable zuzuordnen und alle Koeffizienten korrekt abzulesen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "5 Euro für Kartoffeln",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "6 Euro für Reis",
+          "bedeutung": "6 × x₂"
+        },
+        {
+          "text": "6 Euro für Hähnchen",
+          "bedeutung": "6 × x₃"
+        },
+        {
+          "text": "8 Euro für Tofu",
+          "bedeutung": "8 × x₄"
+        },
+        {
+          "text": "1 Euro für Salat",
+          "bedeutung": "1 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Kartoffeln liefert 12 g",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Reis 1 g",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Hähnchen 12 g, Tofu 8 g",
+            "bedeutung": "+ 12x₃ + 8x₄"
+          },
+          {
+            "text": "Salat 5 g Protein",
+            "bedeutung": "+ 5x₅"
+          },
+          {
+            "text": "mindestens 396 g",
+            "bedeutung": "≥ 396"
+          }
+        ],
+        [
+          {
+            "text": "12 mg je Portion Kartoffeln",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "14 mg Reis",
+            "bedeutung": "+ 14x₂"
+          },
+          {
+            "text": "1 mg Hähnchen",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "11 mg Tofu",
+            "bedeutung": "+ 11x₄"
+          },
+          {
+            "text": "7 mg Salat",
+            "bedeutung": "+ 7x₅"
+          },
+          {
+            "text": "mindestens 497 mg",
+            "bedeutung": "≥ 497"
+          }
+        ],
+        [
+          {
+            "text": "Kartoffeln 11 g",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Reis 2 g",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Hähnchen 12 g Fett",
+            "bedeutung": "+ 12x₃"
+          },
+          {
+            "text": "Tofu 3 g",
+            "bedeutung": "+ 3x₄"
+          },
+          {
+            "text": "Salat 2 g Fett",
+            "bedeutung": "+ 2x₅"
+          },
+          {
+            "text": "1025 g nicht überschreiten",
+            "bedeutung": "≤ 1025"
+          }
+        ],
+        [
+          {
+            "text": "12 mg Kalzium je Kartoffeln",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "12 mg Reis",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "14 mg Hähnchen",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "8 mg Tofu",
+            "bedeutung": "+ 8x₄"
+          },
+          {
+            "text": "5 mg Salat",
+            "bedeutung": "+ 5x₅"
+          },
+          {
+            "text": "mindestens 101 mg",
+            "bedeutung": "≥ 101"
+          }
+        ],
+        [
+          {
+            "text": "Kartoffeln 4 mg",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Reis 9 mg",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Hähnchen 7 mg",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "Tofu 15 mg",
+            "bedeutung": "+ 15x₄"
+          },
+          {
+            "text": "Salat 2 mg Vitamin C",
+            "bedeutung": "+ 2x₅"
+          },
+          {
+            "text": "mindestens 635 mg Vitamin C",
+            "bedeutung": "≥ 635"
+          }
+        ]
+      ]
+    }
+  }
+]

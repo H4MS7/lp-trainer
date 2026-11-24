@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_schweiss_drei_3v_04",
+  "titel": "Schweissroboter – Strom, Drahtvorschub und Schutzgas",
+  "variablen": [
+    "x1 = Stromstaerke (Stufen)",
+    "x2 = Drahtvorschub (Stufen)",
+    "x3 = Schutzgasmenge (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieaufnahme",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Materialkosten",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Waermeeinflusszone",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 12,
+      "label": "Nahtfestigkeit Strom"
+    },
+    "c2": {
+      "min": 3,
+      "max": 9,
+      "label": "Fuellgrad Draht"
+    },
+    "c3": {
+      "min": 2,
+      "max": 7,
+      "label": "Oxidationsschutz Gas"
+    },
+    "a11": {
+      "min": 3,
+      "max": 9,
+      "label": "Energie Strom"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Energie Draht"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Gas"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieaufnahme"
+    },
+    "a21": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Strom"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Kosten Draht"
+    },
+    "a23": {
+      "min": 2,
+      "max": 6,
+      "label": "Kosten Gas"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Materialkosten"
+    },
+    "a31": {
+      "min": 4,
+      "max": 10,
+      "label": "Waerme Strom"
+    },
+    "a32": {
+      "min": 1,
+      "max": 4,
+      "label": "Waerme Draht"
+    },
+    "a33": {
+      "min": 1,
+      "max": 3,
+      "label": "Waerme Gas"
+    },
+    "b3": {
+      "min": 50,
+      "max": 300,
+      "label": "Max. Waermeeinflusszone"
+    }
+  },
+  "beschreibung": "Ein Schweissroboter wird ueber drei Parameter optimiert. Die Stromstaerke liefert {c1} Punkte Nahtfestigkeit, der Drahtvorschub {c2} Punkte Fuellgrad und die Schutzgasmenge {c3} Punkte Oxidationsschutz. Die Energieaufnahme betraegt {a11} Einheiten fuer Strom, {a12} fuer Draht und {a13} fuer Gas bei maximal {b1} Energieeinheiten. Die Materialkosten liegen bei {a21} Einheiten fuer Strom, {a22} fuer Draht und {a23} fuer Gas bei maximal {b2} Kosteneinheiten. Die Waermeeinflusszone betraegt {a31} Einheiten fuer Strom, {a32} fuer Draht und {a33} fuer Gas bei maximal {b3} Waermeeinheiten.",
+  "hinweis": "Maximiere die Schweissqualitaet unter Beachtung von Energie, Kosten und Waerme.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Stromstaerke liefert {c1} Punkte Nahtfestigkeit",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Drahtvorschub {c2} Punkte Fuellgrad",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Schutzgasmenge {c3} Punkte Oxidationsschutz",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Strom",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Draht",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Gas",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Strom",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Draht",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Gas",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Kosteneinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Strom",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Draht",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Gas",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Waermeeinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

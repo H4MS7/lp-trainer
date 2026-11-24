@@ -1,0 +1,43 @@
+{
+  "id": "diaet_schule_2v_04",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Nudeln", "x2 = Portionen Salat"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kohlenhydrate", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Ballaststoffe", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Nudeln (€/Portion)"},
+    "c2":  {"min": 2, "max": 5,   "label": "Kosten Salat (€/Portion)"},
+    "a11": {"min": 8, "max": 15,  "label": "Kohlenhydrate Nudeln (g/Portion)"},
+    "a12": {"min": 2, "max": 6,   "label": "Kohlenhydrate Salat (g/Portion)"},
+    "b1":  {"min": 60, "max": 150, "label": "Mindest-Kohlenhydrate (g)"},
+    "a21": {"min": 1, "max": 4,   "label": "Ballaststoffe Nudeln (g/Portion)"},
+    "a22": {"min": 3, "max": 8,   "label": "Ballaststoffe Salat (g/Portion)"},
+    "b2":  {"min": 15, "max": 40,  "label": "Mindest-Ballaststoffe (g)"}
+  },
+  "titel": "Schulkantine – Nudeln und Salat",
+  "beschreibung": "Die Schulkantine möchte ein günstiges Mittagessen aus Nudeln und Salat zusammenstellen. Eine Portion Nudeln kostet {c1} €, eine Portion Salat kostet {c2} €. Nudeln liefern {a11} g Kohlenhydrate pro Portion, Salat liefert {a12} g Kohlenhydrate pro Portion. Mindestens {b1} g Kohlenhydrate sollen enthalten sein. Nudeln enthalten {a21} g Ballaststoffe pro Portion, Salat enthält {a22} g Ballaststoffe pro Portion. Der Mindestbedarf an Ballaststoffen beträgt {b2} g.",
+  "hinweis": "Minimiere die Kosten des Mittagessens bei Einhaltung der Mindestanforderungen an Kohlenhydrate und Ballaststoffe.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Nudeln kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Salat kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Kohlenhydrate pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Kohlenhydrate pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Kohlenhydrate sollen enthalten sein", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Ballaststoffe pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Ballaststoffe pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} g", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

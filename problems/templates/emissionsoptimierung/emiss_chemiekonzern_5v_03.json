@@ -1,0 +1,106 @@
+{
+  "id": "emiss_chemiekonzern_5v_03",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Einheiten Düngemittel", "x2 = Einheiten Kunststoff", "x3 = Einheiten Farbe", "x4 = Einheiten Waschmittel", "x5 = Einheiten Klebstoff"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Abwasser", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Giftmüll", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Lösemittel", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Düngemittel (Tsd. €)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Ertrag Kunststoff (Tsd. €)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Ertrag Farbe (Tsd. €)"},
+    "c4":  {"min": 2, "max": 8,   "label": "Ertrag Waschmittel (Tsd. €)"},
+    "c5":  {"min": 4, "max": 12,  "label": "Ertrag Klebstoff (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "CO₂ Düngemittel (t)"},
+    "a12": {"min": 3, "max": 8,   "label": "CO₂ Kunststoff (t)"},
+    "a13": {"min": 2, "max": 5,   "label": "CO₂ Farbe (t)"},
+    "a14": {"min": 1, "max": 4,   "label": "CO₂ Waschmittel (t)"},
+    "a15": {"min": 2, "max": 6,   "label": "CO₂ Klebstoff (t)"},
+    "b1":  {"min": 80, "max": 400, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Abwasser Düngemittel (m³)"},
+    "a22": {"min": 2, "max": 6,   "label": "Abwasser Kunststoff (m³)"},
+    "a23": {"min": 3, "max": 7,   "label": "Abwasser Farbe (m³)"},
+    "a24": {"min": 4, "max": 10,  "label": "Abwasser Waschmittel (m³)"},
+    "a25": {"min": 1, "max": 4,   "label": "Abwasser Klebstoff (m³)"},
+    "b2":  {"min": 60, "max": 300, "label": "Abwasserlimit (m³)"},
+    "a31": {"min": 1, "max": 3,   "label": "Giftmüll Düngemittel (t)"},
+    "a32": {"min": 2, "max": 5,   "label": "Giftmüll Kunststoff (t)"},
+    "a33": {"min": 2, "max": 6,   "label": "Giftmüll Farbe (t)"},
+    "a34": {"min": 1, "max": 3,   "label": "Giftmüll Waschmittel (t)"},
+    "a35": {"min": 2, "max": 5,   "label": "Giftmüll Klebstoff (t)"},
+    "b3":  {"min": 40, "max": 180, "label": "Giftmülllimit (t)"},
+    "a41": {"min": 2, "max": 5,   "label": "Energie Düngemittel (MWh)"},
+    "a42": {"min": 3, "max": 8,   "label": "Energie Kunststoff (MWh)"},
+    "a43": {"min": 1, "max": 4,   "label": "Energie Farbe (MWh)"},
+    "a44": {"min": 1, "max": 3,   "label": "Energie Waschmittel (MWh)"},
+    "a45": {"min": 2, "max": 6,   "label": "Energie Klebstoff (MWh)"},
+    "b4":  {"min": 60, "max": 300, "label": "Energiebudget (MWh)"},
+    "a51": {"min": 1, "max": 2,   "label": "Lösemittel Düngemittel (kg)"},
+    "a52": {"min": 2, "max": 5,   "label": "Lösemittel Kunststoff (kg)"},
+    "a53": {"min": 3, "max": 8,   "label": "Lösemittel Farbe (kg)"},
+    "a54": {"min": 1, "max": 3,   "label": "Lösemittel Waschmittel (kg)"},
+    "a55": {"min": 3, "max": 7,   "label": "Lösemittel Klebstoff (kg)"},
+    "b5":  {"min": 40, "max": 150, "label": "Lösemittellimit (kg)"}
+  },
+  "titel": "Chemiekonzern – Düngemittel, Kunststoff, Farbe, Waschmittel und Klebstoff",
+  "beschreibung": "Ein Chemiekonzern produziert Düngemittel, Kunststoff, Farbe, Waschmittel und Klebstoff. Düngemittel erwirtschaftet {c1} Tsd. €, Kunststoff {c2} Tsd. €, Farbe {c3} Tsd. €, Waschmittel {c4} Tsd. €, Klebstoff {c5} Tsd. € pro Einheit. Düngemittel verursacht {a11} Tonnen CO₂, Kunststoff {a12} Tonnen, Farbe {a13} Tonnen, Waschmittel {a14} Tonnen, Klebstoff {a15} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Düngemittel erzeugt {a21} m³ Abwasser, Kunststoff {a22} m³, Farbe {a23} m³, Waschmittel {a24} m³, Klebstoff {a25} m³ pro Einheit. Das Abwasserlimit beträgt {b2} m³. Düngemittel erzeugt {a31} Tonnen Giftmüll, Kunststoff {a32} Tonnen, Farbe {a33} Tonnen, Waschmittel {a34} Tonnen, Klebstoff {a35} Tonnen pro Einheit. Das Giftmülllimit liegt bei {b3} Tonnen. Düngemittel verbraucht {a41} MWh, Kunststoff {a42} MWh, Farbe {a43} MWh, Waschmittel {a44} MWh, Klebstoff {a45} MWh pro Einheit. Das Energiebudget beträgt {b4} MWh. Düngemittel benötigt {a51} kg Lösemittel, Kunststoff {a52} kg, Farbe {a53} kg, Waschmittel {a54} kg, Klebstoff {a55} kg pro Einheit. Das Lösemittellimit liegt bei {b5} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Düngemittel erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kunststoff {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Farbe {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Waschmittel {c4} Tsd. €", "bedeutung": "{c4} × x₄"},
+      {"text": "Klebstoff {c5} Tsd. €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Tonnen", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Tonnen pro Einheit", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Abwasser", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m³", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} m³ pro Einheit", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen Giftmüll", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Tonnen", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Tonnen pro Einheit", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} MWh", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} MWh", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} MWh", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} MWh", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} MWh pro Einheit", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} MWh", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} kg Lösemittel", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} kg", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} kg", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} kg", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} kg pro Einheit", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} kg", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

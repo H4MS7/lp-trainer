@@ -1,0 +1,39 @@
+{
+  "id": "trans_holz_2v_14",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Holztransporter", "x2 = Fahrten Sattelschlepper"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Holzmenge", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Waldweg-Belastung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Holztransporter (EUR/Fahrt)"},
+    "c2":  {"min": 7, "max": 22,  "label": "Kosten Sattelschlepper (EUR/Fahrt)"},
+    "a11": {"min": 3, "max": 9,   "label": "Holz pro Holztransporter (Festmeter)"},
+    "a12": {"min": 5, "max": 15,  "label": "Holz pro Sattelschlepper (Festmeter)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Holzmenge (Festmeter)"},
+    "a21": {"min": 2, "max": 6,   "label": "Belastung pro Holztransporter (Einheiten)"},
+    "a22": {"min": 3, "max": 8,   "label": "Belastung pro Sattelschlepper (Einheiten)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Waldweg-Belastung (Einheiten)"}
+  },
+  "titel": "Holztransport – Holztransporter und Sattelschlepper",
+  "beschreibung": "Ein Forstbetrieb transportiert Holz mit zwei Fahrzeugtypen. Eine Fahrt mit dem Holztransporter kostet {c1} EUR, eine Fahrt mit dem Sattelschlepper kostet {c2} EUR. Der Holztransporter transportiert {a11} Festmeter pro Fahrt, der Sattelschlepper transportiert {a12} Festmeter pro Fahrt. Mindestens {b1} Festmeter Holz müssen transportiert werden. Der Holztransporter verursacht {a21} Belastungs-Einheiten pro Fahrt, der Sattelschlepper verursacht {a22} Belastungs-Einheiten pro Fahrt. Die Waldweg-Belastung darf höchstens {b2} Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Holzmenge und begrenzter Waldweg-Belastung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Holztransporter kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Sattelschlepper kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Festmeter pro Fahrt, der Sattelschlepper transportiert {a12} Festmeter pro Fahrt. Mindestens {b1} Festmeter Holz müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Belastungs-Einheiten pro Fahrt, der Sattelschlepper verursacht {a22} Belastungs-Einheiten pro Fahrt. Die Waldweg-Belastung darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

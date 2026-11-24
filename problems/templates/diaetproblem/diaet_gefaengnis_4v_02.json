@@ -1,0 +1,68 @@
+{
+  "id": "diaet_gefaengnis_4v_02",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Portionen Brot", "x2 = Portionen Wurst", "x3 = Portionen Gemüse", "x4 = Portionen Kartoffeln"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Protein", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Vitamin C", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 2,   "label": "Kosten Brot (€/Portion)"},
+    "c2":  {"min": 2, "max": 5,   "label": "Kosten Wurst (€/Portion)"},
+    "c3":  {"min": 1, "max": 3,   "label": "Kosten Gemüse (€/Portion)"},
+    "c4":  {"min": 1, "max": 2,   "label": "Kosten Kartoffeln (€/Portion)"},
+    "a11": {"min": 100, "max": 180, "label": "Kalorien Brot (kcal/Portion)"},
+    "a12": {"min": 80, "max": 160,  "label": "Kalorien Wurst (kcal/Portion)"},
+    "a13": {"min": 30, "max": 70,   "label": "Kalorien Gemüse (kcal/Portion)"},
+    "a14": {"min": 80, "max": 150,  "label": "Kalorien Kartoffeln (kcal/Portion)"},
+    "b1":  {"min": 1200, "max": 2200, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 2, "max": 5,   "label": "Protein Brot (g/Portion)"},
+    "a22": {"min": 5, "max": 12,  "label": "Protein Wurst (g/Portion)"},
+    "a23": {"min": 1, "max": 4,   "label": "Protein Gemüse (g/Portion)"},
+    "a24": {"min": 1, "max": 3,   "label": "Protein Kartoffeln (g/Portion)"},
+    "b2":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"},
+    "a31": {"min": 1, "max": 2,   "label": "Vitamin C Brot (mg/Portion)"},
+    "a32": {"min": 1, "max": 2,   "label": "Vitamin C Wurst (mg/Portion)"},
+    "a33": {"min": 5, "max": 12,  "label": "Vitamin C Gemüse (mg/Portion)"},
+    "a34": {"min": 2, "max": 6,   "label": "Vitamin C Kartoffeln (mg/Portion)"},
+    "b3":  {"min": 30, "max": 80,  "label": "Mindest-Vitamin C (mg)"}
+  },
+  "titel": "Gefängnisverpflegung – Brot, Wurst, Gemüse und Kartoffeln",
+  "beschreibung": "Eine Justizvollzugsanstalt plant die tägliche Verpflegung aus Brot, Wurst, Gemüse und Kartoffeln. Brot kostet {c1} €, Wurst kostet {c2} €, Gemüse kostet {c3} €, Kartoffeln kosten {c4} € pro Portion. Brot liefert {a11} kcal, Wurst liefert {a12} kcal, Gemüse liefert {a13} kcal, Kartoffeln liefern {a14} kcal pro Portion. Mindestens {b1} kcal sind täglich erforderlich. Brot enthält {a21} g Protein, Wurst enthält {a22} g Protein, Gemüse enthält {a23} g Protein, Kartoffeln enthalten {a24} g Protein pro Portion. Mindestens {b2} g Protein werden benötigt. Brot liefert {a31} mg Vitamin C, Wurst liefert {a32} mg Vitamin C, Gemüse liefert {a33} mg Vitamin C, Kartoffeln liefern {a34} mg Vitamin C pro Portion. Der Mindestbedarf an Vitamin C beträgt {b3} mg.",
+  "hinweis": "Minimiere die Verpflegungskosten bei Einhaltung aller Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Brot kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Wurst kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Gemüse kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Kartoffeln kosten {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kcal", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} kcal pro Portion", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} kcal sind täglich erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Protein", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Protein", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g Protein", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} g Protein pro Portion", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} g Protein werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Vitamin C", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Vitamin C", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Vitamin C", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} mg Vitamin C pro Portion", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} mg", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_krypto_2v_12",
+  "titel": "Kryptoinvestment – Bitcoin und Ethereum",
+  "variablen": [
+    "x1 = Betrag in Bitcoin (Tsd. EUR)",
+    "x2 = Betrag in Ethereum (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Handelsbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Volatilitaetstoleranz",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 8,
+      "max": 15,
+      "label": "Erwartete Rendite Bitcoin (%)"
+    },
+    "c2": {
+      "min": 6,
+      "max": 14,
+      "label": "Erwartete Rendite Ethereum (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitaleinsatz Bitcoin"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitaleinsatz Ethereum"
+    },
+    "b1": {
+      "min": 50,
+      "max": 200,
+      "label": "Handelsbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 5,
+      "max": 12,
+      "label": "Volatilitaet Bitcoin"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Volatilitaet Ethereum"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Volatilitaetstoleranz"
+    }
+  },
+  "beschreibung": "Ein Krypto-Investor moechte in Bitcoin und Ethereum investieren. Bitcoin verspricht {c1} % Rendite, Ethereum {c2} %. Pro Einheit Bitcoin werden {a11} Kapitaleinheiten benoetigt, pro Einheit Ethereum {a12} Einheiten. Das Handelsbudget betraegt {b1} Tausend Euro. Die Volatilitaet liegt bei {a21} Punkten fuer Bitcoin und {a22} Punkten fuer Ethereum bei einer maximalen Volatilitaetstoleranz von {b2} Punkten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Handelsbudget und Volatilitaetstoleranz.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Bitcoin verspricht {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Ethereum {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten benoetigt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Ethereum {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkten fuer Bitcoin",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Punkten fuer Ethereum",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Punkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

@@ -1,0 +1,350 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "id": "masch_extruder_5v_03",
+  "titel": "Extruder – Temperatur, Drehzahl, Gegendruck, Kuehlzone und Dosierung",
+  "variablen": [
+    "x1 = Zylindertemperatur (Stufen)",
+    "x2 = Schneckendrehzahl (Stufen)",
+    "x3 = Gegendruck (Stufen)",
+    "x4 = Kuehlzonenleistung (Stufen)",
+    "x5 = Dosiermenge (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Schneckenverschleiss",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Druckgrenze",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34",
+        "a35"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Materialdurchsatz",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44",
+        "a45"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 8,
+      "label": "Schmelzqualitaet Temperatur"
+    },
+    "c2": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Drehzahl"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Homogenitaet Gegendruck"
+    },
+    "c4": {
+      "min": 2,
+      "max": 5,
+      "label": "Kristallinitaet Kuehlung"
+    },
+    "c5": {
+      "min": 3,
+      "max": 7,
+      "label": "Dosiergenauigkeit"
+    },
+    "a11": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie Temperatur"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Drehzahl"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Gegendruck"
+    },
+    "a14": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Kuehlung"
+    },
+    "a15": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Dosierung"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Energieverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 4,
+      "label": "Verschleiss Temperatur"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Verschleiss Drehzahl"
+    },
+    "a23": {
+      "min": 2,
+      "max": 5,
+      "label": "Verschleiss Gegendruck"
+    },
+    "a24": {
+      "min": 1,
+      "max": 2,
+      "label": "Verschleiss Kuehlung"
+    },
+    "a25": {
+      "min": 1,
+      "max": 3,
+      "label": "Verschleiss Dosierung"
+    },
+    "b2": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Schneckenverschleiss"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Druck Temperatur"
+    },
+    "a32": {
+      "min": 2,
+      "max": 5,
+      "label": "Druck Drehzahl"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Druck Gegendruck"
+    },
+    "a34": {
+      "min": 1,
+      "max": 2,
+      "label": "Druck Kuehlung"
+    },
+    "a35": {
+      "min": 1,
+      "max": 3,
+      "label": "Druck Dosierung"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Druckgrenze"
+    },
+    "a41": {
+      "min": 1,
+      "max": 2,
+      "label": "Durchsatz Temperatur"
+    },
+    "a42": {
+      "min": 2,
+      "max": 5,
+      "label": "Durchsatz Drehzahl"
+    },
+    "a43": {
+      "min": 1,
+      "max": 3,
+      "label": "Durchsatz Gegendruck"
+    },
+    "a44": {
+      "min": 1,
+      "max": 2,
+      "label": "Durchsatz Kuehlung"
+    },
+    "a45": {
+      "min": 3,
+      "max": 7,
+      "label": "Durchsatz Dosierung"
+    },
+    "b4": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Materialdurchsatz"
+    }
+  },
+  "beschreibung": "Ein Extruder wird ueber fuenf Parameter optimiert. Die Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet, die Schneckendrehzahl {c2} Durchsatzpunkte, der Gegendruck {c3} Homogenitaetspunkte, die Kuehlzonenleistung {c4} Kristallinitaetspunkte und die Dosiermenge {c5} Dosiergenauigkeitspunkte. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Drehzahl, {a13} fuer Gegendruck, {a14} fuer Kuehlung und {a15} fuer Dosierung bei maximal {b1} Energieeinheiten. Der Schneckenverschleiss liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Drehzahl, {a23} fuer Gegendruck, {a24} fuer Kuehlung und {a25} fuer Dosierung bei maximal {b2} Verschleisseinheiten. Die Druckgrenze betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Drehzahl, {a33} fuer Gegendruck, {a34} fuer Kuehlung und {a35} fuer Dosierung bei maximal {b3} Druckeinheiten. Der Materialdurchsatz liegt bei {a41} Einheiten fuer Temperatur, {a42} fuer Drehzahl, {a43} fuer Gegendruck, {a44} fuer Kuehlung und {a45} fuer Dosierung bei maximal {b4} Durchsatzeinheiten.",
+  "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie, Verschleiss, Druck und Durchsatz.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Zylindertemperatur liefert {c1} Punkte Schmelzqualitaet",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schneckendrehzahl {c2} Durchsatzpunkte",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Gegendruck {c3} Homogenitaetspunkte",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Kuehlzonenleistung {c4} Kristallinitaetspunkte",
+        "bedeutung": "{c4} × x₄"
+      },
+      {
+        "text": "Dosiermenge {c5} Dosiergenauigkeitspunkte",
+        "bedeutung": "{c5} × x₅"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Temperatur",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Drehzahl",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Gegendruck",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Kuehlung",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{a15} fuer Dosierung",
+          "bedeutung": "+ {a15}x₅"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Temperatur",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Drehzahl",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Gegendruck",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Kuehlung",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{a25} fuer Dosierung",
+          "bedeutung": "+ {a25}x₅"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Temperatur",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Drehzahl",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Gegendruck",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Kuehlung",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{a35} fuer Dosierung",
+          "bedeutung": "+ {a35}x₅"
+        },
+        {
+          "text": "{b3} Druckeinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Temperatur",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Drehzahl",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Gegendruck",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Kuehlung",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{a45} fuer Dosierung",
+          "bedeutung": "+ {a45}x₅"
+        },
+        {
+          "text": "{b4} Durchsatzeinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

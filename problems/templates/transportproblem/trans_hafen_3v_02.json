@@ -1,0 +1,51 @@
+{
+  "id": "trans_hafen_3v_02",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Schiffe Route Nord", "x2 = Schiffe Route Mitte", "x3 = Schiffe Route Süd"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fracht", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Kanalschleusen", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Treibstoff", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 25,  "label": "Kosten Route Nord (EUR/Schiff)"},
+    "c2":  {"min": 5, "max": 18,  "label": "Kosten Route Mitte (EUR/Schiff)"},
+    "c3":  {"min": 6, "max": 20,  "label": "Kosten Route Süd (EUR/Schiff)"},
+    "a11": {"min": 4, "max": 12,  "label": "Fracht Route Nord (t/Schiff)"},
+    "a12": {"min": 3, "max": 10,  "label": "Fracht Route Mitte (t/Schiff)"},
+    "a13": {"min": 5, "max": 14,  "label": "Fracht Route Süd (t/Schiff)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Frachtmenge (t)"},
+    "a21": {"min": 2, "max": 5,   "label": "Schleusen Route Nord"},
+    "a22": {"min": 1, "max": 4,   "label": "Schleusen Route Mitte"},
+    "a23": {"min": 2, "max": 6,   "label": "Schleusen Route Süd"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Schleusendurchfahrten"},
+    "a31": {"min": 3, "max": 9,   "label": "Treibstoff Route Nord (kl/Schiff)"},
+    "a32": {"min": 2, "max": 7,   "label": "Treibstoff Route Mitte (kl/Schiff)"},
+    "a33": {"min": 4, "max": 10,  "label": "Treibstoff Route Süd (kl/Schiff)"},
+    "b3":  {"min": 40, "max": 150, "label": "Max. Treibstoffvorrat (kl)"}
+  },
+  "titel": "Hafenlogistik – drei Schiffsrouten",
+  "beschreibung": "Eine Reederei transportiert Fracht auf drei Routen. Route Nord kostet {c1} EUR pro Schiff, Route Mitte kostet {c2} EUR und Route Süd kostet {c3} EUR pro Schiff. Route Nord transportiert {a11} Tonnen pro Schiff, Route Mitte transportiert {a12} Tonnen und Route Süd transportiert {a13} Tonnen pro Schiff. Mindestens {b1} Tonnen müssen transportiert werden. Route Nord benötigt {a21} Schleusendurchfahrten, Route Mitte benötigt {a22} und Route Süd benötigt {a23} Durchfahrten pro Schiff. Insgesamt stehen {b2} Schleusendurchfahrten zur Verfügung. Route Nord verbraucht {a31} kl Treibstoff pro Schiff, Route Mitte verbraucht {a32} kl und Route Süd verbraucht {a33} kl pro Schiff. Der Treibstoffvorrat beträgt höchstens {b3} kl.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Fracht, begrenzten Schleusen und Treibstoff.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Route Nord kostet {c1} EUR pro Schiff", "bedeutung": "{c1} × x₁"},
+      {"text": "Route Mitte kostet {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Route Süd kostet {c3} EUR pro Schiff", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen pro Schiff, Route Mitte transportiert {a12} Tonnen und Route Süd transportiert {a13} Tonnen pro Schiff. Mindestens {b1} Tonnen müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Schleusendurchfahrten, Route Mitte benötigt {a22} und Route Süd benötigt {a23} Durchfahrten pro Schiff. Insgesamt stehen {b2} Schleusendurchfahrten zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kl Treibstoff pro Schiff, Route Mitte verbraucht {a32} kl und Route Süd verbraucht {a33} kl pro Schiff. Der Treibstoffvorrat beträgt höchstens {b3} kl", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

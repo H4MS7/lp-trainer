@@ -1,0 +1,43 @@
+{
+  "id": "wart_eisenbahn_2v_09",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Revisionen", "x2 = Anzahl Schnellreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbetriebsbereitschaft", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Depotkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Revision (Tsd. €)"},
+    "c2":  {"min": 8, "max": 25,  "label": "Kosten Schnellreparatur (Tsd. €)"},
+    "a11": {"min": 4, "max": 12,  "label": "Bereitschaft Revision (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Bereitschaft Schnell (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestbetriebsbereitschaft (%)"},
+    "a21": {"min": 4, "max": 10,  "label": "Depotzeit Revision (h)"},
+    "a22": {"min": 2, "max": 6,   "label": "Depotzeit Schnell (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Depotkapazität (h)"}
+  },
+  "titel": "Bahnbetrieb – Zugwartung",
+  "beschreibung": "Ein Bahnbetreiber plant die Wartung seiner Züge. Eine Revision kostet {c1} Tsd. €, eine Schnellreparatur kostet {c2} Tsd. €. Eine Revision steigert die Betriebsbereitschaft um {a11} %, eine Schnellreparatur um {a12} %. Die Mindestbetriebsbereitschaft beträgt {b1} %. Eine Revision benötigt {a21} Depotstunden, eine Schnellreparatur benötigt {a22} Depotstunden. Die Depotkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Betriebsbereitschaft und Depotkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Revision kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Schnellreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Depotstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Depotstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "titel": "Reis und Linsen – Günstige Ernährung",
+    "beschreibung": "Ein Student möchte sich möglichst günstig ernähren und plant seinen täglichen Speiseplan mit zwei Grundnahrungsmitteln: Reis und Linsen. Eine Portion Reis kostet 1€ und enthält 3 g Protein sowie 250 Kalorien. Eine Portion Linsen kostet 2€ und enthält 9 g Protein sowie 200 Kalorien. Der Student benötigt täglich mindestens 54 g Protein und mindestens 2000 Kalorien. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Reis", "x2 = Anzahl Portionen Linsen"],
+    "zielfunktion": "Z = x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 9x2 ≥ 54 (Protein)",
+      "250x1 + 200x2 ≥ 2000 (Kalorien)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Reis ist billig aber proteinarm, Linsen sind teurer aber proteinreich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Reis kostet 1€", "bedeutung": "1 × x₁"},
+        {"text": "Linsen kostet 2€", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 g Protein", "bedeutung": "3x₁"},
+          {"text": "9 g Protein", "bedeutung": "+ 9x₂"},
+          {"text": "mindestens 54 g Protein", "bedeutung": "≥ 54"}
+        ],
+        [
+          {"text": "250 Kalorien", "bedeutung": "250x₁"},
+          {"text": "200 Kalorien", "bedeutung": "+ 200x₂"},
+          {"text": "mindestens 2000 Kalorien", "bedeutung": "≥ 2000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sportlerdiät – Optimale Nährstoffversorgung",
+    "beschreibung": "Eine Sportlerin stellt ihren Ernährungsplan aus zwei Mahlzeiten zusammen: Mahlzeit A und Mahlzeit B. Mahlzeit A kostet 3€ und liefert 10 g Protein, 400 Kalorien sowie 2 mg Vitamin C. Mahlzeit B kostet 5€ und liefert 25 g Protein, 300 Kalorien sowie 6 mg Vitamin C. Die Sportlerin benötigt pro Tag mindestens 80 g Protein, mindestens 2400 Kalorien und mindestens 24 mg Vitamin C. Die täglichen Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Mahlzeiten A", "x2 = Anzahl Mahlzeiten B"],
+    "zielfunktion": "Z = 3x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "10x1 + 25x2 ≥ 80 (Protein)",
+      "400x1 + 300x2 ≥ 2400 (Kalorien)",
+      "2x1 + 6x2 ≥ 24 (Vitamin C)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Alle drei Nebenbedingungen sind Mindestanforderungen (≥). Achte darauf, dass jede Nährstoffanforderung einzeln erfüllt sein muss.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Mahlzeit A kostet 3€", "bedeutung": "3 × x₁"},
+        {"text": "Mahlzeit B kostet 5€", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 g Protein", "bedeutung": "10x₁"},
+          {"text": "25 g Protein", "bedeutung": "+ 25x₂"},
+          {"text": "mindestens 80 g Protein", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "400 Kalorien", "bedeutung": "400x₁"},
+          {"text": "300 Kalorien", "bedeutung": "+ 300x₂"},
+          {"text": "mindestens 2400 Kalorien", "bedeutung": "≥ 2400"}
+        ],
+        [
+          {"text": "2 mg Vitamin C", "bedeutung": "2x₁"},
+          {"text": "6 mg Vitamin C", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 24 mg Vitamin C", "bedeutung": "≥ 24"}
+        ]
+      ]
+    }
+  }
+]

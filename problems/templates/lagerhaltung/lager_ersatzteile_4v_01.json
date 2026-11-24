@@ -1,0 +1,81 @@
+{
+  "id": "lager_ersatzteile_4v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Bestellmenge Bremsen (Kisten)", "x2 = Bestellmenge Filter (Kisten)", "x3 = Bestellmenge Zündkerzen (Kisten)", "x4 = Bestellmenge Riemen (Kisten)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Regalkapazität", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Lagerbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Lieferkapazität", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Lagerkosten Bremsen (€/Kiste)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Lagerkosten Filter (€/Kiste)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Lagerkosten Zündkerzen (€/Kiste)"},
+    "c4":  {"min": 2, "max": 7,   "label": "Lagerkosten Riemen (€/Kiste)"},
+    "a11": {"min": 2, "max": 5,   "label": "Teile pro Kiste Bremsen"},
+    "a12": {"min": 4, "max": 10,  "label": "Teile pro Kiste Filter"},
+    "a13": {"min": 6, "max": 15,  "label": "Teile pro Kiste Zündkerzen"},
+    "a14": {"min": 3, "max": 8,   "label": "Teile pro Kiste Riemen"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindestbestand (Teile)"},
+    "a21": {"min": 2, "max": 4,   "label": "Regalplatz Bremsen (Fächer)"},
+    "a22": {"min": 1, "max": 3,   "label": "Regalplatz Filter (Fächer)"},
+    "a23": {"min": 1, "max": 2,   "label": "Regalplatz Zündkerzen (Fächer)"},
+    "a24": {"min": 1, "max": 3,   "label": "Regalplatz Riemen (Fächer)"},
+    "b2":  {"min": 30, "max": 120, "label": "Regalkapazität (Fächer)"},
+    "a31": {"min": 8, "max": 20,  "label": "Einkaufspreis Bremsen (€/Kiste)"},
+    "a32": {"min": 3, "max": 10,  "label": "Einkaufspreis Filter (€/Kiste)"},
+    "a33": {"min": 2, "max": 6,   "label": "Einkaufspreis Zündkerzen (€/Kiste)"},
+    "a34": {"min": 4, "max": 12,  "label": "Einkaufspreis Riemen (€/Kiste)"},
+    "b3":  {"min": 300, "max": 1200, "label": "Lagerbudget (€)"},
+    "a41": {"min": 1, "max": 3,   "label": "Liefereinheiten Bremsen"},
+    "a42": {"min": 1, "max": 2,   "label": "Liefereinheiten Filter"},
+    "a43": {"min": 1, "max": 2,   "label": "Liefereinheiten Zündkerzen"},
+    "a44": {"min": 1, "max": 2,   "label": "Liefereinheiten Riemen"},
+    "b4":  {"min": 20, "max": 60,  "label": "Lieferkapazität (Einheiten)"}
+  },
+  "titel": "Kfz-Werkstatt – Vier Ersatzteilgruppen",
+  "beschreibung": "Eine Kfz-Werkstatt verwaltet ihr Ersatzteillager für Bremsen, Filter, Zündkerzen und Riemen. Die Lagerkosten betragen {c1} € pro Kiste Bremsen, {c2} € pro Kiste Filter, {c3} € pro Kiste Zündkerzen und {c4} € pro Kiste Riemen. Jede Kiste Bremsen enthält {a11} Teile, Filter enthalten {a12} Teile, Zündkerzen enthalten {a13} Teile und Riemen enthalten {a14} Teile. Der Mindestbestand beträgt {b1} Teile. Bremsen belegen {a21} Regalfächer, Filter belegen {a22} Regalfächer, Zündkerzen belegen {a23} Regalfächer und Riemen belegen {a24} Regalfächer pro Kiste. Die Regalkapazität beträgt {b2} Fächer. Die Einkaufspreise betragen {a31} € pro Kiste Bremsen, {a32} € pro Kiste Filter, {a33} € pro Kiste Zündkerzen und {a34} € pro Kiste Riemen. Das Lagerbudget beträgt {b3} €. Die Liefereinheiten betragen {a41} pro Kiste Bremsen, {a42} pro Kiste Filter, {a43} pro Kiste Zündkerzen und {a44} pro Kiste Riemen. Die Lieferkapazität beträgt {b4} Einheiten.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands, der Regal- und Lieferkapazität und des Budgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Kiste Bremsen", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Kiste Filter", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Kiste Zündkerzen", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Kiste Riemen", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Teile", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Teile", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Teile", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Teile", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Teile", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalfächer", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalfächer", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Regalfächer", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Regalfächer pro Kiste", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Kiste Bremsen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Kiste Filter", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Kiste Zündkerzen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Kiste Riemen", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} pro Kiste Bremsen", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} pro Kiste Filter", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} pro Kiste Zündkerzen", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} pro Kiste Riemen", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Einheiten", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

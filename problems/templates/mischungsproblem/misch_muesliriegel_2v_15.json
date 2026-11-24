@@ -1,0 +1,39 @@
+{
+  "id": "misch_muesliriegel_2v_15",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Zutat A (g)", "x2 = Menge Zutat B (g)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Ballaststoffe", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kalorien", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 6,   "label": "Kosten Zutat A (Cent/g)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Zutat B (Cent/g)"},
+    "a11": {"min": 2, "max": 8,   "label": "Ballaststoffe in A (mg/g)"},
+    "a12": {"min": 1, "max": 6,   "label": "Ballaststoffe in B (mg/g)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindest-Ballaststoffe (mg)"},
+    "a21": {"min": 2, "max": 7,   "label": "Kalorien in A (kcal/g)"},
+    "a22": {"min": 3, "max": 9,   "label": "Kalorien in B (kcal/g)"},
+    "b2":  {"min": 50, "max": 200, "label": "Max. Kalorien (kcal)"}
+  },
+  "titel": "Müsliriegel – Ballaststoffe und Kalorien",
+  "beschreibung": "Ein Lebensmittelhersteller mischt einen Müsliriegel aus zwei Zutaten. Zutat A kostet {c1} Cent pro g, Zutat B kostet {c2} Cent pro g. Zutat A enthält {a11} mg Ballaststoffe pro g, Zutat B enthält {a12} mg Ballaststoffe pro g. Der Riegel muss mindestens {b1} mg Ballaststoffe enthalten. Zutat A hat {a21} kcal pro g, Zutat B hat {a22} kcal pro g. Der Riegel darf höchstens {b2} kcal haben.",
+  "hinweis": "Minimiere die Kosten bei ausreichend Ballaststoffen und begrenzten Kalorien.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zutat A kostet {c1} Cent pro g", "bedeutung": "{c1} × x₁"},
+      {"text": "Zutat B kostet {c2} Cent pro g", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Ballaststoffe pro g, Zutat B enthält {a12} mg Ballaststoffe pro g. Der Riegel muss mindestens {b1} mg Ballaststoffe enthalten", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal pro g, Zutat B hat {a22} kcal pro g. Der Riegel darf höchstens {b2} kcal haben", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

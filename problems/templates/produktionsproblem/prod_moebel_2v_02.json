@@ -1,0 +1,43 @@
+{
+  "id": "prod_moebel_2v_02",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tische", "x2 = Anzahl Stuehle"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Holz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Arbeitszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 120, "label": "Gewinn/Tisch (€)"},
+    "c2":  {"min": 15, "max": 50,  "label": "Gewinn/Stuhl (€)"},
+    "a11": {"min": 3, "max": 10,   "label": "Holz/Tisch (m²)"},
+    "a12": {"min": 1, "max": 4,    "label": "Holz/Stuhl (m²)"},
+    "b1":  {"min": 80, "max": 300, "label": "Holzvorrat (m²)"},
+    "a21": {"min": 3, "max": 8,    "label": "Arbeitszeit/Tisch (h)"},
+    "a22": {"min": 1, "max": 4,    "label": "Arbeitszeit/Stuhl (h)"},
+    "b2":  {"min": 60, "max": 200, "label": "Arbeitsstunden"}
+  },
+  "titel": "Moebelfabrik – Tische und Stuehle",
+  "beschreibung": "Eine Moebelfabrik produziert Tische und Stuehle. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro. Fuer einen Tisch werden {a11} m² Holz verbraucht, fuer einen Stuhl {a12} m². Es stehen {b1} m² Holz zur Verfuegung. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden. Insgesamt sind {b2} Arbeitsstunden verfuegbar.",
+  "hinweis": "Bestimme den Gewinn pro Produkt und die Ressourcenbeschraenkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tisch werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Stuhl {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m² Holz verbraucht", "bedeutung": "{a11}x₁"},
+        {"text": "Stuhl {a12} m²", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m² Holz zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Tisches dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Stuhls {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Arbeitsstunden verfuegbar", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

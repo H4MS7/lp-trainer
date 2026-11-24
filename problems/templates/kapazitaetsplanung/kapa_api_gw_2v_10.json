@@ -1,0 +1,41 @@
+{
+  "id": "kapa_api_gw_2v_10",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl REST-Gateways", "x2 = Anzahl GraphQL-Gateways"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Verbindungslimit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 25,    "label": "Durchsatz REST (Tsd. Req/s)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Durchsatz GraphQL (Tsd. Req/s)"},
+    "a11": {"min": 2, "max": 6,     "label": "CPU REST (Kerne)"},
+    "a12": {"min": 3, "max": 8,     "label": "CPU GraphQL (Kerne)"},
+    "b1":  {"min": 24, "max": 96,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 5, "max": 20,    "label": "Verbindungen REST (Tsd.)"},
+    "a22": {"min": 3, "max": 15,    "label": "Verbindungen GraphQL (Tsd.)"},
+    "b2":  {"min": 50, "max": 200,  "label": "Max. Verbindungen (Tsd.)"}
+  },
+  "titel": "API-Gateway – Instanzplanung",
+  "beschreibung": "Ein Plattformteam plant die API-Gateway-Kapazität. Ein REST-Gateway verarbeitet {c1} Tsd. Anfragen pro Sekunde, ein GraphQL-Gateway verarbeitet {c2} Tsd. Anfragen pro Sekunde. Ein REST-Gateway benötigt {a21} Tsd. gleichzeitige Verbindungen, ein GraphQL-Gateway benötigt {a22} Tsd. gleichzeitige Verbindungen. Das Verbindungslimit beträgt {b2} Tsd. Ein REST-Gateway belegt {a11} CPU-Kerne, ein GraphQL-Gateway belegt {a12} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der CPU- und Verbindungslimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "REST-Gateway verarbeitet {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "GraphQL-Gateway verarbeitet {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein GraphQL-Gateway belegt {a12} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. gleichzeitige Verbindungen, ein GraphQL-Gateway benötigt {a22} Tsd. gleichzeitige Verbindungen", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Tsd.", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

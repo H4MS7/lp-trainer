@@ -1,0 +1,241 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "invest_digital_4v_05",
+  "titel": "Digitalisierungsbudget – ERP, Cloud, KI und Cybersicherheit",
+  "variablen": [
+    "x1 = Investment in ERP (Tsd. EUR)",
+    "x2 = Investment in Cloud (Tsd. EUR)",
+    "x3 = Investment in KI (Tsd. EUR)",
+    "x4 = Investment in Cybersicherheit (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "IT-Budget",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Implementierungszeit",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Schulungsaufwand",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 9,
+      "label": "Effizienzgewinn ERP"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Effizienzgewinn Cloud"
+    },
+    "c3": {
+      "min": 6,
+      "max": 14,
+      "label": "Effizienzgewinn KI"
+    },
+    "c4": {
+      "min": 2,
+      "max": 6,
+      "label": "Effizienzgewinn Cybersicherheit"
+    },
+    "a11": {
+      "min": 2,
+      "max": 5,
+      "label": "Kosten ERP"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Cloud"
+    },
+    "a13": {
+      "min": 2,
+      "max": 4,
+      "label": "Kosten KI"
+    },
+    "a14": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Cybersicherheit"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "IT-Budget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 4,
+      "max": 10,
+      "label": "Zeit ERP (Wochen)"
+    },
+    "a22": {
+      "min": 2,
+      "max": 5,
+      "label": "Zeit Cloud (Wochen)"
+    },
+    "a23": {
+      "min": 3,
+      "max": 7,
+      "label": "Zeit KI (Wochen)"
+    },
+    "a24": {
+      "min": 1,
+      "max": 4,
+      "label": "Zeit Cybersicherheit (Wochen)"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Implementierungswochen"
+    },
+    "a31": {
+      "min": 3,
+      "max": 8,
+      "label": "Schulung ERP (h)"
+    },
+    "a32": {
+      "min": 2,
+      "max": 5,
+      "label": "Schulung Cloud (h)"
+    },
+    "a33": {
+      "min": 4,
+      "max": 9,
+      "label": "Schulung KI (h)"
+    },
+    "a34": {
+      "min": 1,
+      "max": 3,
+      "label": "Schulung Cybersicherheit (h)"
+    },
+    "b3": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Schulungsstunden"
+    }
+  },
+  "beschreibung": "Ein Unternehmen plant Digitalisierungsinvestitionen. ERP bringt {c1} Effizienzpunkte, Cloud {c2}, KI {c3} und Cybersicherheit {c4}. Die Kosten betragen {a11} Einheiten fuer ERP, {a12} fuer Cloud, {a13} fuer KI und {a14} fuer Cybersicherheit bei einem IT-Budget von {b1} Tausend Euro. Die Implementierungszeit liegt bei {a21} Wochen fuer ERP, {a22} fuer Cloud, {a23} fuer KI und {a24} fuer Cybersicherheit bei maximal {b2} Implementierungswochen. Der Schulungsaufwand betraegt {a31} Stunden fuer ERP, {a32} fuer Cloud, {a33} fuer KI und {a34} fuer Cybersicherheit bei maximal {b3} Schulungsstunden.",
+  "hinweis": "Maximiere den Effizienzgewinn unter Beachtung von Budget, Implementierungszeit und Schulungsaufwand.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "ERP bringt {c1} Effizienzpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Cloud {c2}",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "KI {c3}",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Cybersicherheit {c4}",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer ERP",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Cloud",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer KI",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Cybersicherheit",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Wochen fuer ERP",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Cloud",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer KI",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Cybersicherheit",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Implementierungswochen",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Stunden fuer ERP",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Cloud",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer KI",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Cybersicherheit",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Schulungsstunden",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

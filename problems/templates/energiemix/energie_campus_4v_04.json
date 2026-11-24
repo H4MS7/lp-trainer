@@ -1,0 +1,69 @@
+{
+  "id": "energie_campus_4v_04",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = MWh PV-Dach", "x2 = MWh Mikro-BHKW", "x3 = MWh Netzbezug", "x4 = MWh Batteriespeicher"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Netzbelastung", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale Dachfläche", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindest-Eigenversorgung", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 18, "max": 45, "label": "Kosten PV-Dach (€/MWh)"},
+    "c2":  {"min": 40, "max": 90, "label": "Kosten BHKW (€/MWh)"},
+    "c3":  {"min": 35, "max": 85, "label": "Kosten Netzbezug (€/MWh)"},
+    "c4":  {"min": 25, "max": 60, "label": "Kosten Batterie (€/MWh)"},
+    "a11": {"min": 1, "max": 4, "label": "Versorgung PV (MW/MWh)"},
+    "a12": {"min": 3, "max": 6, "label": "Versorgung BHKW (MW/MWh)"},
+    "a13": {"min": 3, "max": 7, "label": "Versorgung Netz (MW/MWh)"},
+    "a14": {"min": 2, "max": 5, "label": "Versorgung Batterie (MW/MWh)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestversorgung (MW)"},
+    "a21": {"min": 1, "max": 2, "label": "Netzlast PV (MW/MWh)"},
+    "a22": {"min": 1, "max": 3, "label": "Netzlast BHKW (MW/MWh)"},
+    "a23": {"min": 3, "max": 7, "label": "Netzlast Netzbezug (MW/MWh)"},
+    "a24": {"min": 1, "max": 2, "label": "Netzlast Batterie (MW/MWh)"},
+    "b2":  {"min": 30, "max": 120, "label": "Maximale Netzbelastung (MW)"},
+    "a31": {"min": 3, "max": 6, "label": "Dachfläche PV (m²/MWh)"},
+    "a32": {"min": 1, "max": 2, "label": "Dachfläche BHKW (m²/MWh)"},
+    "a33": {"min": 1, "max": 1, "label": "Dachfläche Netz (m²/MWh)"},
+    "a34": {"min": 1, "max": 2, "label": "Dachfläche Batterie (m²/MWh)"},
+    "b3":  {"min": 25, "max": 100, "label": "Maximale Dachfläche (m²)"},
+    "a41": {"min": 2, "max": 5, "label": "Eigen PV (MW/MWh)"},
+    "a42": {"min": 3, "max": 6, "label": "Eigen BHKW (MW/MWh)"},
+    "a43": {"min": 1, "max": 1, "label": "Eigen Netz (MW/MWh)"},
+    "a44": {"min": 2, "max": 4, "label": "Eigen Batterie (MW/MWh)"},
+    "b4":  {"min": 20, "max": 80, "label": "Mindest-Eigenversorgung (MW)"}
+  },
+  "titel": "Campus-Energiemix – Vier Quellen",
+  "beschreibung": "Ein Universitätscampus plant die Energieversorgung aus PV-Dach, Mikro-BHKW, Netzbezug und Batterie. PV-Dach kostet {c1} € pro MWh, BHKW kostet {c2} € pro MWh, Netzbezug kostet {c3} € pro MWh und Batterie kostet {c4} € pro MWh. PV liefert {a11} MW, BHKW {a12} MW, Netz {a13} MW und Batterie {a14} MW pro MWh. Mindestens {b1} MW Versorgung müssen bereitgestellt werden. Die Netzbelastung beträgt {a21} MW PV, {a22} MW BHKW, {a23} MW Netz und {a24} MW Batterie pro MWh. Die Netzbelastung darf {b2} MW nicht überschreiten. Der Dachflächenbedarf beträgt {a31} m² PV, {a32} m² BHKW, {a33} m² Netz und {a34} m² Batterie pro MWh. Maximal {b3} m² Dachfläche stehen zur Verfügung. Die Eigenversorgung beträgt {a41} MW PV, {a42} MW BHKW, {a43} MW Netz und {a44} MW Batterie pro MWh. Mindestens {b4} MW Eigenversorgung werden benötigt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Versorgung, Netzlimit, Dachfläche und Eigenversorgung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "PV-Dach kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "BHKW kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Netzbezug kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Batterie kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, BHKW {a12} MW, Netz {a13} MW und Batterie {a14} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} MW Versorgung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW PV, {a22} MW BHKW, {a23} MW Netz und {a24} MW Batterie pro MWh", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} MW nicht überschreiten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} m² PV, {a32} m² BHKW, {a33} m² Netz und {a34} m² Batterie pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} m² Dachfläche stehen zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} MW PV, {a42} MW BHKW, {a43} MW Netz und {a44} MW Batterie pro MWh", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b4} MW Eigenversorgung werden benötigt", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

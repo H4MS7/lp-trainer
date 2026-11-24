@@ -1,0 +1,51 @@
+{
+  "id": "misch_bier_3v_06",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Malz A (kg)", "x2 = Menge Malz B (kg)", "x3 = Menge Malz C (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Stammwürze", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Trübung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Bitterkeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Malz A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Malz B (EUR/kg)"},
+    "c3":  {"min": 1, "max": 7,   "label": "Kosten Malz C (EUR/kg)"},
+    "a11": {"min": 3, "max": 10,  "label": "Stammwürze durch A (Grad/kg)"},
+    "a12": {"min": 2, "max": 8,   "label": "Stammwürze durch B (Grad/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Stammwürze durch C (Grad/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Stammwürze (Grad)"},
+    "a21": {"min": 1, "max": 4,   "label": "Trübung durch A (Einheiten/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Trübung durch B (Einheiten/kg)"},
+    "a23": {"min": 1, "max": 5,   "label": "Trübung durch C (Einheiten/kg)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Trübung (Einheiten)"},
+    "a31": {"min": 2, "max": 7,   "label": "Bitterkeit durch A (IBU/kg)"},
+    "a32": {"min": 1, "max": 5,   "label": "Bitterkeit durch B (IBU/kg)"},
+    "a33": {"min": 3, "max": 8,   "label": "Bitterkeit durch C (IBU/kg)"},
+    "b3":  {"min": 30, "max": 120, "label": "Max. Bitterkeit (IBU)"}
+  },
+  "titel": "Bierbrauen – Stammwürze, Trübung und Bitterkeit",
+  "beschreibung": "Eine Brauerei mischt eine Bierwürze aus drei Malzsorten. Malz A kostet {c1} EUR pro kg, Malz B kostet {c2} EUR pro kg und Malz C kostet {c3} EUR pro kg. Malz A liefert {a11} Grad Stammwürze pro kg, Malz B liefert {a12} Grad und Malz C liefert {a13} Grad pro kg. Die Würze muss mindestens {b1} Grad Stammwürze erreichen. Malz A verursacht {a21} Trübungs-Einheiten pro kg, Malz B verursacht {a22} und Malz C verursacht {a23} Einheiten pro kg. Die Trübung darf höchstens {b2} Einheiten betragen. Malz A liefert {a31} IBU Bitterkeit pro kg, Malz B liefert {a32} IBU und Malz C liefert {a33} IBU pro kg. Die Bitterkeit darf höchstens {b3} IBU betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Stammwürze sowie begrenzter Trübung und Bitterkeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Malz A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Malz B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Malz C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Grad Stammwürze pro kg, Malz B liefert {a12} Grad und Malz C liefert {a13} Grad pro kg. Die Würze muss mindestens {b1} Grad Stammwürze erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Trübungs-Einheiten pro kg, Malz B verursacht {a22} und Malz C verursacht {a23} Einheiten pro kg. Die Trübung darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} IBU Bitterkeit pro kg, Malz B liefert {a32} IBU und Malz C liefert {a33} IBU pro kg. Die Bitterkeit darf höchstens {b3} IBU betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

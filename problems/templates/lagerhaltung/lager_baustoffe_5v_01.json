@@ -1,0 +1,91 @@
+{
+  "id": "lager_baustoffe_5v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Bestellmenge Zement (Paletten)", "x2 = Bestellmenge Kies (Paletten)", "x3 = Bestellmenge Stahl (Paletten)", "x4 = Bestellmenge Holz (Paletten)", "x5 = Bestellmenge Ziegel (Paletten)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestvorrat Baustelle", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerfläche", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Tragfähigkeit", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Transportbudget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Lagerkosten Zement (€/Palette)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Lagerkosten Kies (€/Palette)"},
+    "c3":  {"min": 5, "max": 15,  "label": "Lagerkosten Stahl (€/Palette)"},
+    "c4":  {"min": 3, "max": 9,   "label": "Lagerkosten Holz (€/Palette)"},
+    "c5":  {"min": 2, "max": 7,   "label": "Lagerkosten Ziegel (€/Palette)"},
+    "a11": {"min": 3, "max": 8,   "label": "Baueinheiten Zement"},
+    "a12": {"min": 2, "max": 5,   "label": "Baueinheiten Kies"},
+    "a13": {"min": 4, "max": 10,  "label": "Baueinheiten Stahl"},
+    "a14": {"min": 3, "max": 7,   "label": "Baueinheiten Holz"},
+    "a15": {"min": 2, "max": 6,   "label": "Baueinheiten Ziegel"},
+    "b1":  {"min": 80, "max": 320, "label": "Mindestvorrat (Baueinheiten)"},
+    "a21": {"min": 2, "max": 4,   "label": "Lagerfläche Zement (m²)"},
+    "a22": {"min": 3, "max": 6,   "label": "Lagerfläche Kies (m²)"},
+    "a23": {"min": 1, "max": 3,   "label": "Lagerfläche Stahl (m²)"},
+    "a24": {"min": 3, "max": 6,   "label": "Lagerfläche Holz (m²)"},
+    "a25": {"min": 2, "max": 4,   "label": "Lagerfläche Ziegel (m²)"},
+    "b2":  {"min": 60, "max": 250, "label": "Lagerfläche (m²)"},
+    "a31": {"min": 3, "max": 8,   "label": "Gewicht Zement (Tonnen)"},
+    "a32": {"min": 4, "max": 10,  "label": "Gewicht Kies (Tonnen)"},
+    "a33": {"min": 5, "max": 12,  "label": "Gewicht Stahl (Tonnen)"},
+    "a34": {"min": 1, "max": 4,   "label": "Gewicht Holz (Tonnen)"},
+    "a35": {"min": 3, "max": 8,   "label": "Gewicht Ziegel (Tonnen)"},
+    "b3":  {"min": 80, "max": 300, "label": "Tragfähigkeit (Tonnen)"},
+    "a41": {"min": 5, "max": 12,  "label": "Transportkosten Zement (€)"},
+    "a42": {"min": 3, "max": 8,   "label": "Transportkosten Kies (€)"},
+    "a43": {"min": 6, "max": 15,  "label": "Transportkosten Stahl (€)"},
+    "a44": {"min": 4, "max": 10,  "label": "Transportkosten Holz (€)"},
+    "a45": {"min": 3, "max": 9,   "label": "Transportkosten Ziegel (€)"},
+    "b4":  {"min": 300, "max": 1200, "label": "Transportbudget (€)"}
+  },
+  "titel": "Baustoffgroßhandel – Fünf Materialgruppen",
+  "beschreibung": "Ein Baustoffgroßhandel lagert Zement, Kies, Stahl, Holz und Ziegel. Die Lagerkosten betragen {c1} € pro Palette Zement, {c2} € pro Palette Kies, {c3} € pro Palette Stahl, {c4} € pro Palette Holz und {c5} € pro Palette Ziegel. Zement liefert {a11} Baueinheiten, Kies liefert {a12} Baueinheiten, Stahl liefert {a13} Baueinheiten, Holz liefert {a14} Baueinheiten und Ziegel liefern {a15} Baueinheiten. Der Mindestvorrat für die Baustelle beträgt {b1} Baueinheiten. Zement benötigt {a21} m² Lagerfläche, Kies benötigt {a22} m², Stahl benötigt {a23} m², Holz benötigt {a24} m² und Ziegel benötigen {a25} m². Die Lagerfläche beträgt {b2} m². Das Gewicht beträgt {a31} Tonnen pro Palette Zement, {a32} Tonnen pro Palette Kies, {a33} Tonnen pro Palette Stahl, {a34} Tonnen pro Palette Holz und {a35} Tonnen pro Palette Ziegel. Die Tragfähigkeit beträgt {b3} Tonnen. Die Transportkosten betragen {a41} € pro Palette Zement, {a42} € pro Palette Kies, {a43} € pro Palette Stahl, {a44} € pro Palette Holz und {a45} € pro Palette Ziegel. Das Transportbudget beträgt {b4} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestvorrats, der Lagerfläche, Tragfähigkeit und des Transportbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Zement", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Kies", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Palette Stahl", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Palette Holz", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} € pro Palette Ziegel", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Baueinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Baueinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Baueinheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Baueinheiten", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Baueinheiten", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Baueinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² Lagerfläche", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m²", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m²", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m²", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} m²", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen pro Palette Zement", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen pro Palette Kies", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen pro Palette Stahl", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Tonnen pro Palette Holz", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Tonnen pro Palette Ziegel", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} € pro Palette Zement", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} € pro Palette Kies", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} € pro Palette Stahl", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} € pro Palette Holz", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} € pro Palette Ziegel", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "id": "kapa_microservice_5v_01",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Auth-Services", "x2 = Anzahl API-Services", "x3 = Anzahl Worker-Services", "x4 = Anzahl Cache-Services", "x5 = Anzahl DB-Proxies"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Netzwerkbandbreite", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Budget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Durchsatz Auth (Tsd. Req/s)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Durchsatz API (Tsd. Req/s)"},
+    "c3":  {"min": 2, "max": 10,    "label": "Durchsatz Worker (Jobs/min)"},
+    "c4":  {"min": 20, "max": 100,  "label": "Durchsatz Cache (Tsd. Ops/s)"},
+    "c5":  {"min": 5, "max": 25,    "label": "Durchsatz DB-Proxy (Tsd. Queries/s)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Auth (Kerne)"},
+    "a12": {"min": 2, "max": 4,     "label": "CPU API (Kerne)"},
+    "a13": {"min": 1, "max": 3,     "label": "CPU Worker (Kerne)"},
+    "a14": {"min": 1, "max": 2,     "label": "CPU Cache (Kerne)"},
+    "a15": {"min": 1, "max": 2,     "label": "CPU DB-Proxy (Kerne)"},
+    "b1":  {"min": 32, "max": 128,  "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 2,     "label": "RAM Auth (GB)"},
+    "a22": {"min": 2, "max": 4,     "label": "RAM API (GB)"},
+    "a23": {"min": 1, "max": 4,     "label": "RAM Worker (GB)"},
+    "a24": {"min": 4, "max": 8,     "label": "RAM Cache (GB)"},
+    "a25": {"min": 2, "max": 4,     "label": "RAM DB-Proxy (GB)"},
+    "b2":  {"min": 64, "max": 256,  "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 1, "max": 3,     "label": "Bandbreite Auth (Mbit/s)"},
+    "a32": {"min": 2, "max": 5,     "label": "Bandbreite API (Mbit/s)"},
+    "a33": {"min": 1, "max": 2,     "label": "Bandbreite Worker (Mbit/s)"},
+    "a34": {"min": 1, "max": 3,     "label": "Bandbreite Cache (Mbit/s)"},
+    "a35": {"min": 2, "max": 5,     "label": "Bandbreite DB-Proxy (Mbit/s)"},
+    "b3":  {"min": 50, "max": 200,  "label": "Verfügbare Bandbreite (Mbit/s)"},
+    "a41": {"min": 1, "max": 3,     "label": "Kosten Auth (€/h)"},
+    "a42": {"min": 2, "max": 5,     "label": "Kosten API (€/h)"},
+    "a43": {"min": 1, "max": 4,     "label": "Kosten Worker (€/h)"},
+    "a44": {"min": 2, "max": 5,     "label": "Kosten Cache (€/h)"},
+    "a45": {"min": 1, "max": 3,     "label": "Kosten DB-Proxy (€/h)"},
+    "b4":  {"min": 30, "max": 150,  "label": "Stündliches Budget (€)"}
+  },
+  "titel": "Microservice-Plattform – Fünf Services",
+  "beschreibung": "Eine Microservice-Plattform betreibt fünf Service-Typen. Auth-Services verarbeiten {c1} Tsd. Anfragen pro Sekunde, API-Services verarbeiten {c2} Tsd. Anfragen pro Sekunde, Worker-Services verarbeiten {c3} Jobs pro Minute, Cache-Services verarbeiten {c4} Tsd. Operationen pro Sekunde und DB-Proxies verarbeiten {c5} Tsd. Abfragen pro Sekunde. Der CPU-Bedarf beträgt {a11} Kerne für Auth, {a12} Kerne für API, {a13} Kerne für Worker, {a14} Kerne für Cache und {a15} Kerne für DB-Proxy. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Auth, {a22} GB für API, {a23} GB für Worker, {a24} GB für Cache und {a25} GB für DB-Proxy. Das verfügbare RAM beträgt {b2} GB. Die Bandbreite beträgt {a31} Mbit/s für Auth, {a32} Mbit/s für API, {a33} Mbit/s für Worker, {a34} Mbit/s für Cache und {a35} Mbit/s für DB-Proxy. Die verfügbare Bandbreite beträgt {b3} Mbit/s. Die Kosten betragen {a41} € pro Stunde für Auth, {a42} € pro Stunde für API, {a43} € pro Stunde für Worker, {a44} € pro Stunde für Cache und {a45} € pro Stunde für DB-Proxy. Das stündliche Budget beträgt {b4} €.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Auth-Services verarbeiten {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "API-Services verarbeiten {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Worker-Services verarbeiten {c3} Jobs pro Minute", "bedeutung": "{c3} × x₃"},
+      {"text": "Cache-Services verarbeiten {c4} Tsd. Operationen pro Sekunde", "bedeutung": "{c4} × x₄"},
+      {"text": "DB-Proxies verarbeiten {c5} Tsd. Abfragen pro Sekunde", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kerne für Auth, {a12} Kerne für API, {a13} Kerne für Worker, {a14} Kerne für Cache und {a15} Kerne für DB-Proxy", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Auth, {a22} GB für API, {a23} GB für Worker, {a24} GB für Cache und {a25} GB für DB-Proxy", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Mbit/s für Auth, {a32} Mbit/s für API, {a33} Mbit/s für Worker, {a34} Mbit/s für Cache und {a35} Mbit/s für DB-Proxy", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Mbit/s", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} € pro Stunde für Auth, {a42} € pro Stunde für API, {a43} € pro Stunde für Worker, {a44} € pro Stunde für Cache und {a45} € pro Stunde für DB-Proxy", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

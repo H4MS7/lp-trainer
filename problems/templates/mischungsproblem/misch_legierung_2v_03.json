@@ -1,0 +1,39 @@
+{
+  "id": "misch_legierung_2v_03",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Metall A (kg)", "x2 = Menge Metall B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Chromgehalt", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kohlenstoffgehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Metall A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Metall B (EUR/kg)"},
+    "a11": {"min": 2, "max": 8,   "label": "Chrom in A (g/kg)"},
+    "a12": {"min": 1, "max": 6,   "label": "Chrom in B (g/kg)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindest-Chromgehalt (g)"},
+    "a21": {"min": 1, "max": 4,   "label": "Kohlenstoff in A (g/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Kohlenstoff in B (g/kg)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Kohlenstoffgehalt (g)"}
+  },
+  "titel": "Stahllegierung – Chrom und Kohlenstoff",
+  "beschreibung": "Ein Stahlwerk mischt eine Legierung aus zwei Metallen. Metall A kostet {c1} EUR pro kg, Metall B kostet {c2} EUR pro kg. Metall A enthält {a11} g Chrom pro kg, Metall B enthält {a12} g Chrom pro kg. Die Legierung muss mindestens {b1} g Chrom enthalten. Der Kohlenstoffgehalt beträgt {a21} g pro kg bei Metall A und {a22} g pro kg bei Metall B. Der Kohlenstoffgehalt darf höchstens {b2} g betragen.",
+  "hinweis": "Minimiere die Materialkosten bei Einhaltung des Mindest-Chromgehalts und des maximalen Kohlenstoffgehalts.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Metall A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Metall B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Chrom pro kg, Metall B enthält {a12} g Chrom pro kg. Die Legierung muss mindestens {b1} g Chrom enthalten", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g pro kg bei Metall A und {a22} g pro kg bei Metall B. Der Kohlenstoffgehalt darf höchstens {b2} g betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

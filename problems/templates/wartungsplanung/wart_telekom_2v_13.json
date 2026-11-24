@@ -1,0 +1,43 @@
+{
+  "id": "wart_telekom_2v_13",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Antennenwartungen", "x2 = Anzahl Verstärkerreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsignalqualität", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Funktechnikerstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Antennenwartung (Tsd. €)"},
+    "c2":  {"min": 5, "max": 16,  "label": "Kosten Verstärkerreparatur (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Signal Antenne (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Signal Verstärker (%)"},
+    "b1":  {"min": 35, "max": 120, "label": "Mindestsignalqualität (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Stunden Antenne (h)"},
+    "a22": {"min": 3, "max": 8,   "label": "Stunden Verstärker (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Funktechnikerstunden (h)"}
+  },
+  "titel": "Mobilfunk – Sendemasten-Wartung",
+  "beschreibung": "Ein Mobilfunkanbieter plant die Wartung seiner Sendemasten. Eine Antennenwartung kostet {c1} Tsd. €, eine Verstärkerreparatur kostet {c2} Tsd. €. Eine Antennenwartung verbessert die Signalqualität um {a11} %, eine Verstärkerreparatur um {a12} %. Die Mindestsignalqualität beträgt {b1} %. Eine Antennenwartung benötigt {a21} Funktechnikerstunden, eine Verstärkerreparatur benötigt {a22} Funktechnikerstunden. Maximal {b2} Funktechnikerstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Signalqualität und Personalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Antennenwartung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Verstärkerreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Funktechnikerstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Funktechnikerstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Funktechnikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

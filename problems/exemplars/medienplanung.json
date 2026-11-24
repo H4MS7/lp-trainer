@@ -1,0 +1,68 @@
+[
+  {
+    "titel": "Online-Marketing Kampagne",
+    "beschreibung": "Eine Marketingagentur plant eine Kampagne mit Google-Ads und Instagram-Anzeigen. Jede Google-Ad erzielt 5 Conversions und jede Instagram-Anzeige erzielt 3 Conversions. Das Werbebudget beträgt höchstens 600€. Jede Google-Ad kostet 20€ und jede Instagram-Anzeige kostet 10€. Die Kampagne muss mindestens 4000 Personen erreichen. Jede Google-Ad erreicht 100 Personen und jede Instagram-Anzeige erreicht 200 Personen. Die Gesamtzahl der Conversions soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Google-Ads", "x2 = Anzahl Instagram-Anzeigen"],
+    "zielfunktion": "Z = 5x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 10x2 ≤ 600 (Budget)",
+      "100x1 + 200x2 ≥ 4000 (Reichweite)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen: Das Budget ist eine Obergrenze (≤), die Reichweite ist eine Mindestanforderung (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Google-Ad erzielt 5 Conversions", "bedeutung": "5 × x₁"},
+        {"text": "Instagram-Anzeige erzielt 3 Conversions", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Google-Ad kostet 20€", "bedeutung": "20x₁"},
+          {"text": "Instagram-Anzeige kostet 10€", "bedeutung": "+ 10x₂"},
+          {"text": "höchstens 600€", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "Google-Ad erreicht 100 Personen", "bedeutung": "100x₁"},
+          {"text": "Instagram-Anzeige erreicht 200 Personen", "bedeutung": "+ 200x₂"},
+          {"text": "mindestens 4000 Personen", "bedeutung": "≥ 4000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medienplanung TV und Social Media",
+    "beschreibung": "Ein Unternehmen plant eine Werbekampagne über TV-Spots und Social-Media-Anzeigen. Jeder TV-Spot generiert 40 Kontakte und jede Social-Media-Anzeige generiert 25 Kontakte. Das Werbebudget beträgt höchstens 5000€. Jeder TV-Spot kostet 500€ und jede Social-Media-Anzeige kostet 100€. Die Kampagne muss mindestens 600 Kontakte erzielen. Die Anzeigen müssen insgesamt mindestens 8 Mal geschaltet werden, um eine ausreichende Frequenz zu gewährleisten. Die Gesamtzahl der Kontakte soll maximiert werden.",
+    "typ": "Medienplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl TV-Spots", "x2 = Anzahl Social-Media-Anzeigen"],
+    "zielfunktion": "Z = 40x1 + 25x2 (max)",
+    "nebenbedingungen": [
+      "500x1 + 100x2 ≤ 5000 (Budget)",
+      "40x1 + 25x2 ≥ 600 (Reichweite)",
+      "x1 + x2 ≥ 8 (Frequenz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Zielfunktion und die Reichweiten-Nebenbedingung haben die gleichen Koeffizienten. Beachten Sie, dass Budget ≤ ist, während Reichweite und Frequenz ≥ sind.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "TV-Spot generiert 40 Kontakte", "bedeutung": "40 × x₁"},
+        {"text": "Social-Media-Anzeige generiert 25 Kontakte", "bedeutung": "25 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "TV-Spot kostet 500€", "bedeutung": "500x₁"},
+          {"text": "Social-Media-Anzeige kostet 100€", "bedeutung": "+ 100x₂"},
+          {"text": "höchstens 5000€", "bedeutung": "≤ 5000"}
+        ],
+        [
+          {"text": "mindestens 600 Kontakte", "bedeutung": "40x₁ + 25x₂ ≥ 600"}
+        ],
+        [
+          {"text": "mindestens 8 Mal geschaltet werden", "bedeutung": "x₁ + x₂ ≥ 8"}
+        ]
+      ]
+    }
+  }
+]

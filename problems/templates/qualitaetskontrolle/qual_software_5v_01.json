@@ -1,0 +1,106 @@
+{
+  "id": "qual_software_5v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Unit-Tests", "x2 = Anzahl Integrationstests", "x3 = Anzahl Systemtests", "x4 = Anzahl Lasttests", "x5 = Anzahl Sicherheitstests"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Codeabdeckung", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "CI-Pipeline-Zeit", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Entwicklerkapazität", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Serverbudget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Lizenzkosten", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 3,   "label": "Kosten Unit-Test (€)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Kosten Integrationstest (€)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Kosten Systemtest (€)"},
+    "c4":  {"min": 5, "max": 15,  "label": "Kosten Lasttest (€)"},
+    "c5":  {"min": 6, "max": 18,  "label": "Kosten Sicherheitstest (€)"},
+    "a11": {"min": 2, "max": 5,   "label": "Abdeckung Unit (%)"},
+    "a12": {"min": 3, "max": 7,   "label": "Abdeckung Integration (%)"},
+    "a13": {"min": 3, "max": 8,   "label": "Abdeckung System (%)"},
+    "a14": {"min": 1, "max": 4,   "label": "Abdeckung Last (%)"},
+    "a15": {"min": 2, "max": 6,   "label": "Abdeckung Sicherheit (%)"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindest-Codeabdeckung (%)"},
+    "a21": {"min": 1, "max": 2,   "label": "Pipeline Unit (min)"},
+    "a22": {"min": 2, "max": 4,   "label": "Pipeline Integration (min)"},
+    "a23": {"min": 3, "max": 6,   "label": "Pipeline System (min)"},
+    "a24": {"min": 4, "max": 8,   "label": "Pipeline Last (min)"},
+    "a25": {"min": 3, "max": 7,   "label": "Pipeline Sicherheit (min)"},
+    "b2":  {"min": 50, "max": 200, "label": "CI-Pipeline-Zeit (min)"},
+    "a31": {"min": 1, "max": 2,   "label": "Entwickler Unit (min)"},
+    "a32": {"min": 1, "max": 3,   "label": "Entwickler Integration (min)"},
+    "a33": {"min": 2, "max": 4,   "label": "Entwickler System (min)"},
+    "a34": {"min": 2, "max": 5,   "label": "Entwickler Last (min)"},
+    "a35": {"min": 3, "max": 6,   "label": "Entwickler Sicherheit (min)"},
+    "b3":  {"min": 40, "max": 150, "label": "Entwicklerkapazität (min)"},
+    "a41": {"min": 1, "max": 2,   "label": "Server Unit (€)"},
+    "a42": {"min": 1, "max": 3,   "label": "Server Integration (€)"},
+    "a43": {"min": 2, "max": 5,   "label": "Server System (€)"},
+    "a44": {"min": 3, "max": 8,   "label": "Server Last (€)"},
+    "a45": {"min": 2, "max": 5,   "label": "Server Sicherheit (€)"},
+    "b4":  {"min": 60, "max": 250, "label": "Serverbudget (€)"},
+    "a51": {"min": 1, "max": 2,   "label": "Lizenz Unit (€)"},
+    "a52": {"min": 1, "max": 3,   "label": "Lizenz Integration (€)"},
+    "a53": {"min": 2, "max": 4,   "label": "Lizenz System (€)"},
+    "a54": {"min": 2, "max": 5,   "label": "Lizenz Last (€)"},
+    "a55": {"min": 3, "max": 8,   "label": "Lizenz Sicherheit (€)"},
+    "b5":  {"min": 50, "max": 200, "label": "Lizenzkosten (€)"}
+  },
+  "titel": "Software-QA – Fünf Teststufen",
+  "beschreibung": "Ein Softwareunternehmen setzt fünf Teststufen ein: Unit-Tests, Integrationstests, Systemtests, Lasttests und Sicherheitstests. Ein Unit-Test kostet {c1} €, ein Integrationstest kostet {c2} €, ein Systemtest kostet {c3} €, ein Lasttest kostet {c4} € und ein Sicherheitstest kostet {c5} €. Die Abdeckung beträgt {a11} % Unit, {a12} % Integration, {a13} % System, {a14} % Last und {a15} % Sicherheit. Die Mindest-Codeabdeckung beträgt {b1} %. Die CI-Pipeline benötigt {a21} Minuten pro Unit-Test, {a22} Minuten pro Integrationstest, {a23} Minuten pro Systemtest, {a24} Minuten pro Lasttest und {a25} Minuten pro Sicherheitstest. Die CI-Pipeline-Zeit beträgt {b2} Minuten. Die Entwicklerkapazität beträgt {a31} Minuten pro Unit-Test, {a32} Minuten pro Integrationstest, {a33} Minuten pro Systemtest, {a34} Minuten pro Lasttest und {a35} Minuten pro Sicherheitstest. Die Entwicklerkapazität beträgt {b3} Minuten. Die Serverkosten betragen {a41} € pro Unit-Test, {a42} € pro Integrationstest, {a43} € pro Systemtest, {a44} € pro Lasttest und {a45} € pro Sicherheitstest. Das Serverbudget beträgt {b4} €. Die Lizenzkosten betragen {a51} € pro Unit-Test, {a52} € pro Integrationstest, {a53} € pro Systemtest, {a54} € pro Lasttest und {a55} € pro Sicherheitstest. Die Lizenzkosten betragen maximal {b5} €.",
+  "hinweis": "Minimiere die Testkosten bei ausreichender Codeabdeckung und Einhaltung aller Kapazitäts- und Budgetgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Unit-Test kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Integrationstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Systemtest kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Lasttest kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Sicherheitstest kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Unit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Integration", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % System", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} % Last", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} % Sicherheit", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten pro Unit-Test", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten pro Integrationstest", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten pro Systemtest", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Minuten pro Lasttest", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Minuten pro Sicherheitstest", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Minuten pro Unit-Test", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Minuten pro Integrationstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Minuten pro Systemtest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Minuten pro Lasttest", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Minuten pro Sicherheitstest", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Minuten", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} € pro Unit-Test", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} € pro Integrationstest", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} € pro Systemtest", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} € pro Lasttest", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} € pro Sicherheitstest", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} €", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} € pro Unit-Test", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} € pro Integrationstest", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} € pro Systemtest", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} € pro Lasttest", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} € pro Sicherheitstest", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} €", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

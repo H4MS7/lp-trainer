@@ -1,0 +1,287 @@
+[
+  {
+    "titel": "Klinikernährung mit vier Lebensmittelgruppen",
+    "beschreibung": "Eine Rehabilitationsklinik plant den Speiseplan mit vier Lebensmittelgruppen: Fleisch, Hülsenfrüchte, Joghurt und Vollkornbrot. Die täglichen Kosten pro Portion betragen 12 Euro für Fleisch, 6 Euro für Hülsenfrüchte, 1 Euro für Joghurt und 3 Euro für Vollkornbrot. Der Proteinbedarf von mindestens 634 mg wird gedeckt durch 14 mg pro Portion Fleisch, 7 mg pro Portion Hülsenfrüchte, 11 mg pro Portion Joghurt und 11 mg pro Portion Vollkornbrot. Der Eisenbedarf von mindestens 1916 mg erfordert 7 mg Fleisch, 10 mg Hülsenfrüchte, 5 mg Joghurt und 7 mg Vollkornbrot pro Portion. Die Gesamtfettaufnahme darf 1151 g nicht überschreiten: Fleisch enthält 13 g, Hülsenfrüchte 13 g, Joghurt 3 g und Vollkornbrot 15 g Fett pro Portion. Zudem benötigen die Patienten mindestens 1893 mg Kalzium, wobei Fleisch 15 mg, Hülsenfrüchte 15 mg, Joghurt 8 mg und Vollkornbrot 3 mg Kalzium pro Portion liefern. Schließlich muss der Vitaminbedarf von mindestens 1530 Einheiten erfüllt werden: Fleisch liefert 1 Einheit, Hülsenfrüchte 2 Einheiten, Joghurt 6 Einheiten und Vollkornbrot 10 Einheiten pro Portion. Die Klinik möchte die Gesamtkosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Portionen Fleisch",
+      "x2 = Portionen Hülsenfrüchte",
+      "x3 = Portionen Joghurt",
+      "x4 = Portionen Vollkornbrot"
+    ],
+    "zielfunktion": "Z = 12x1 + 6x2 + x3 + 3x4 (min)",
+    "nebenbedingungen": [
+      "14x1 + 7x2 + 11x3 + 11x4 ≥ 634 (Protein)",
+      "7x1 + 10x2 + 5x3 + 7x4 ≥ 1916 (Eisen)",
+      "13x1 + 13x2 + 3x3 + 15x4 ≤ 1151 (Fett)",
+      "15x1 + 15x2 + 8x3 + 3x4 ≥ 1893 (Kalzium)",
+      "x1 + 2x2 + 6x3 + 10x4 ≥ 1530 (Vitamine)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Vier Mindestbedarfe (Protein, Eisen, Kalzium, Vitamine) ergeben ≥-Nebenbedingungen, nur die Fettbegrenzung ist eine ≤-Nebenbedingung. Ordne jedem Lebensmittel eine Variable zu und achte auf die richtige Ungleichungsrichtung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "12 Euro für Fleisch",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "6 Euro für Hülsenfrüchte",
+          "bedeutung": "6 × x₂"
+        },
+        {
+          "text": "1 Euro für Joghurt",
+          "bedeutung": "1 × x₃"
+        },
+        {
+          "text": "3 Euro für Vollkornbrot",
+          "bedeutung": "3 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "14 mg pro Portion Fleisch",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "7 mg pro Portion Hülsenfrüchte",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "11 mg pro Portion Joghurt",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "11 mg pro Portion Vollkornbrot",
+            "bedeutung": "+ 11x₄"
+          },
+          {
+            "text": "mindestens 634 mg",
+            "bedeutung": "≥ 634"
+          }
+        ],
+        [
+          {
+            "text": "7 mg Fleisch",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "10 mg Hülsenfrüchte",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "5 mg Joghurt",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "7 mg Vollkornbrot",
+            "bedeutung": "+ 7x₄"
+          },
+          {
+            "text": "mindestens 1916 mg",
+            "bedeutung": "≥ 1916"
+          }
+        ],
+        [
+          {
+            "text": "Fleisch enthält 13 g",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "Hülsenfrüchte 13 g",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "Joghurt 3 g",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Vollkornbrot 15 g Fett",
+            "bedeutung": "+ 15x₄"
+          },
+          {
+            "text": "1151 g nicht überschreiten",
+            "bedeutung": "≤ 1151"
+          }
+        ],
+        [
+          {
+            "text": "Fleisch 15 mg",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "Hülsenfrüchte 15 mg",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "Joghurt 8 mg",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "Vollkornbrot 3 mg Kalzium",
+            "bedeutung": "+ 3x₄"
+          },
+          {
+            "text": "mindestens 1893 mg Kalzium",
+            "bedeutung": "≥ 1893"
+          }
+        ],
+        [
+          {
+            "text": "Fleisch liefert 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Hülsenfrüchte 2 Einheiten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Joghurt 6 Einheiten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Vollkornbrot 10 Einheiten",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "mindestens 1530 Einheiten",
+            "bedeutung": "≥ 1530"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Astronautennahrung mit vier Nährstoffquellen",
+    "beschreibung": "Für eine Weltraummission wird die Astronautennahrung aus vier Komponenten zusammengestellt: Riegel, Shakes, Paste und Kapseln. Die Kosten betragen 3 Euro pro Einheit Riegel, 9 Euro pro Einheit Shakes, 8 Euro pro Einheit Paste und 12 Euro pro Einheit Kapseln. Der Proteinbedarf von mindestens 952 mg erfordert 14 mg pro Einheit Riegel, 13 mg pro Einheit Shakes, 5 mg pro Einheit Paste und 3 mg pro Einheit Kapseln. Der Kohlenhydratbedarf von mindestens 350 mg wird durch 13 mg Riegel, 15 mg Shakes, 10 mg Paste und 9 mg Kapseln pro Einheit gedeckt. Die Gesamtfettmenge darf 1551 g nicht überschreiten: Riegel enthalten 3 g, Shakes 9 g, Paste 13 g und Kapseln 9 g Fett pro Einheit. Zudem benötigen die Astronauten mindestens 1457 mg Mineralstoffe, wobei Riegel 5 mg, Shakes 1 mg, Paste 3 mg und Kapseln 3 mg Mineralstoffe pro Einheit liefern. Die Missionsleitung möchte die Kosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Einheiten Riegel",
+      "x2 = Einheiten Shakes",
+      "x3 = Einheiten Paste",
+      "x4 = Einheiten Kapseln"
+    ],
+    "zielfunktion": "Z = 3x1 + 9x2 + 8x3 + 12x4 (min)",
+    "nebenbedingungen": [
+      "14x1 + 13x2 + 5x3 + 3x4 ≥ 952 (Protein)",
+      "13x1 + 15x2 + 10x3 + 9x4 ≥ 350 (Kohlenhydrate)",
+      "3x1 + 9x2 + 13x3 + 9x4 ≤ 1551 (Fett)",
+      "5x1 + x2 + 3x3 + 3x4 ≥ 1457 (Mineralstoffe)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Drei Mindestbedarfe (Protein, Kohlenhydrate, Mineralstoffe) sind ≥-Nebenbedingungen, die Fettbegrenzung ist eine ≤-Nebenbedingung. Riegel sind am günstigsten, liefern aber unterschiedliche Mengen der einzelnen Nährstoffe.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3 Euro pro Einheit Riegel",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "9 Euro pro Einheit Shakes",
+          "bedeutung": "9 × x₂"
+        },
+        {
+          "text": "8 Euro pro Einheit Paste",
+          "bedeutung": "8 × x₃"
+        },
+        {
+          "text": "12 Euro pro Einheit Kapseln",
+          "bedeutung": "12 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "14 mg pro Einheit Riegel",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "13 mg pro Einheit Shakes",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "5 mg pro Einheit Paste",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "3 mg pro Einheit Kapseln",
+            "bedeutung": "+ 3x₄"
+          },
+          {
+            "text": "mindestens 952 mg",
+            "bedeutung": "≥ 952"
+          }
+        ],
+        [
+          {
+            "text": "13 mg Riegel",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "15 mg Shakes",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "10 mg Paste",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "9 mg Kapseln",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "mindestens 350 mg",
+            "bedeutung": "≥ 350"
+          }
+        ],
+        [
+          {
+            "text": "Riegel enthalten 3 g",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Shakes 9 g",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Paste 13 g",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "Kapseln 9 g Fett",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "1551 g nicht überschreiten",
+            "bedeutung": "≤ 1551"
+          }
+        ],
+        [
+          {
+            "text": "Riegel 5 mg",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Shakes 1 mg",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Paste 3 mg",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Kapseln 3 mg Mineralstoffe",
+            "bedeutung": "+ 3x₄"
+          },
+          {
+            "text": "mindestens 1457 mg Mineralstoffe",
+            "bedeutung": "≥ 1457"
+          }
+        ]
+      ]
+    }
+  }
+]

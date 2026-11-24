@@ -1,0 +1,464 @@
+[
+  {
+    "titel": "Elektronikwerk mit vier Produkten",
+    "beschreibung": "Ein Elektronikwerk produziert vier Geräte: Radios, Fernseher, Kopfhörer und Spielkonsolen. Der Gewinn beträgt 35 Euro pro Radio, 8 Euro pro Fernseher, 13 Euro pro Kopfhörer und 48 Euro pro Spielkonsole. Fünf Produktionsbereiche begrenzen die Fertigung. In der Platinenfertigung benötigt jedes Radio 4 Stunden, jeder Fernseher 8 Stunden, jeder Kopfhörer 5 Stunden und jede Spielkonsole 10 Stunden. Die Platinenfertigung hat eine Kapazität von 180 Stunden. In der Montage werden pro Radio 13 Stunden, pro Fernseher 14 Stunden, pro Kopfhörer 15 Stunden und pro Spielkonsole 12 Stunden benötigt. Die Montagekapazität liegt bei 345 Stunden. Im Softwaretest erfordert jedes Radio 3 Stunden, jeder Fernseher 2 Stunden, jeder Kopfhörer 10 Stunden und jede Spielkonsole 5 Stunden. Für den Softwaretest stehen 190 Stunden zur Verfügung. Bei der Kalibrierung beansprucht jedes Radio 8 Stunden, jeder Fernseher 9 Stunden, jeder Kopfhörer 3 Stunden und jede Spielkonsole 2 Stunden. Die Kalibrierungskapazität beträgt 30 Stunden. In der Verpackung benötigt jedes Radio 12 Stunden, jeder Fernseher 5 Stunden, ein Kopfhörer 10 Stunden Verpackungszeit und jede Spielkonsole 6 Stunden bei einer Verpackungskapazität von 387 Stunden. Das Unternehmen möchte den Gesamtgewinn maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Radios",
+      "x2 = Anzahl Fernseher",
+      "x3 = Anzahl Kopfhörer",
+      "x4 = Anzahl Spielkonsolen"
+    ],
+    "zielfunktion": "Z = 35x1 + 8x2 + 13x3 + 48x4 (max)",
+    "nebenbedingungen": [
+      "4x1 + 8x2 + 5x3 + 10x4 ≤ 180 (Platinenfertigung)",
+      "13x1 + 14x2 + 15x3 + 12x4 ≤ 345 (Montage)",
+      "3x1 + 2x2 + 10x3 + 5x4 ≤ 190 (Softwaretest)",
+      "8x1 + 9x2 + 3x3 + 2x4 ≤ 30 (Kalibrierung)",
+      "12x1 + 5x2 + 10x3 + 6x4 ≤ 387 (Verpackung)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Fünf verschiedene Produktionsbereiche begrenzen die Fertigung. Ordne jedem Produkt eine Variable zu und stelle für jeden Bereich eine eigene Nebenbedingung auf. Achte besonders auf die knappe Kalibrierungskapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35 Euro pro Radio",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "8 Euro pro Fernseher",
+          "bedeutung": "8 × x₂"
+        },
+        {
+          "text": "13 Euro pro Kopfhörer",
+          "bedeutung": "13 × x₃"
+        },
+        {
+          "text": "48 Euro pro Spielkonsole",
+          "bedeutung": "48 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jedes Radio 4 Stunden",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "jeder Fernseher 8 Stunden",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "jeder Kopfhörer 5 Stunden",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "jede Spielkonsole 10 Stunden",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "Kapazität von 180 Stunden",
+            "bedeutung": "≤ 180"
+          }
+        ],
+        [
+          {
+            "text": "pro Radio 13 Stunden",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "pro Fernseher 14 Stunden",
+            "bedeutung": "+ 14x₂"
+          },
+          {
+            "text": "pro Kopfhörer 15 Stunden",
+            "bedeutung": "+ 15x₃"
+          },
+          {
+            "text": "pro Spielkonsole 12 Stunden",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Montagekapazität liegt bei 345 Stunden",
+            "bedeutung": "≤ 345"
+          }
+        ],
+        [
+          {
+            "text": "jedes Radio 3 Stunden",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "jeder Fernseher 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "jeder Kopfhörer 10 Stunden",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "jede Spielkonsole 5 Stunden",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "190 Stunden zur Verfügung",
+            "bedeutung": "≤ 190"
+          }
+        ],
+        [
+          {
+            "text": "jedes Radio 8 Stunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "jeder Fernseher 9 Stunden",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "jeder Kopfhörer 3 Stunden",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "jede Spielkonsole 2 Stunden",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Kalibrierungskapazität beträgt 30 Stunden",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "jedes Radio 12 Stunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "jeder Fernseher 5 Stunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "ein Kopfhörer 10 Stunden Verpackungszeit",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "jede Spielkonsole 6 Stunden",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "Verpackungskapazität von 387 Stunden",
+            "bedeutung": "≤ 387"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bäckerei mit vier Gebäcksorten",
+    "beschreibung": "Eine Großbäckerei stellt vier Gebäcksorten her: Brezeln, Croissants, Baguettes und Muffins. Der Deckungsbeitrag beträgt 29 Euro pro Brezel, 9 Euro pro Croissant, 26 Euro pro Baguette und 5 Euro pro Muffin. Die Produktion ist durch fünf Kapazitätsgrenzen eingeschränkt. Beim Teigmischen benötigt jede Brezel 12 Minuten, jedes Croissant 8 Minuten, jedes Baguette 7 Minuten und jeder Muffin 2 Minuten. Die Teigmischkapazität beträgt 299 Minuten. Beim Formen werden pro Brezel 13 Minuten, pro Croissant 11 Minuten, pro Baguette 5 Minuten und pro Muffin 4 Minuten benötigt. Für das Formen stehen 344 Minuten zur Verfügung. In der Gärung beansprucht jede Brezel 7 Minuten, jedes Croissant 5 Minuten, jedes Baguette 3 Minuten und ein Muffin 2 Minuten Gärzeit. Die Gäranlage hat eine Kapazität von 413 Minuten. Im Backofen erfordert jede Brezel 5 Minuten, jedes Croissant 1 Minute, jedes Baguette 13 Minuten und jeder Muffin 12 Minuten. Die Ofenkapazität liegt bei 30 Minuten. Bei der Glasur werden pro Brezel 15 Minuten, pro Croissant 7 Minuten, pro Baguette 11 Minuten und pro Muffin 9 Minuten benötigt. Die Glasurkapazität beträgt 257 Minuten. Die Bäckerei möchte den Gesamtdeckungsbeitrag maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Brezeln",
+      "x2 = Anzahl Croissants",
+      "x3 = Anzahl Baguettes",
+      "x4 = Anzahl Muffins"
+    ],
+    "zielfunktion": "Z = 29x1 + 9x2 + 26x3 + 5x4 (max)",
+    "nebenbedingungen": [
+      "12x1 + 8x2 + 7x3 + 2x4 ≤ 299 (Teigmischen)",
+      "13x1 + 11x2 + 5x3 + 4x4 ≤ 344 (Formen)",
+      "7x1 + 5x2 + 3x3 + 2x4 ≤ 413 (Gärung)",
+      "5x1 + x2 + 13x3 + 12x4 ≤ 30 (Backofen)",
+      "15x1 + 7x2 + 11x3 + 9x4 ≤ 257 (Glasur)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Fünf Produktionsschritte (Teigmischen, Formen, Gärung, Backofen, Glasur) begrenzen die Herstellung aller vier Sorten. Der Backofen mit nur 30 Minuten ist der Engpass.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "29 Euro pro Brezel",
+          "bedeutung": "29 × x₁"
+        },
+        {
+          "text": "9 Euro pro Croissant",
+          "bedeutung": "9 × x₂"
+        },
+        {
+          "text": "26 Euro pro Baguette",
+          "bedeutung": "26 × x₃"
+        },
+        {
+          "text": "5 Euro pro Muffin",
+          "bedeutung": "5 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jede Brezel 12 Minuten",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "jedes Croissant 8 Minuten",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "jedes Baguette 7 Minuten",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "jeder Muffin 2 Minuten",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Teigmischkapazität beträgt 299 Minuten",
+            "bedeutung": "≤ 299"
+          }
+        ],
+        [
+          {
+            "text": "pro Brezel 13 Minuten",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "pro Croissant 11 Minuten",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "pro Baguette 5 Minuten",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "pro Muffin 4 Minuten",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "344 Minuten zur Verfügung",
+            "bedeutung": "≤ 344"
+          }
+        ],
+        [
+          {
+            "text": "jede Brezel 7 Minuten",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "jedes Croissant 5 Minuten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "jedes Baguette 3 Minuten",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "ein Muffin 2 Minuten Gärzeit",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Kapazität von 413 Minuten",
+            "bedeutung": "≤ 413"
+          }
+        ],
+        [
+          {
+            "text": "jede Brezel 5 Minuten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "jedes Croissant 1 Minute",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "jedes Baguette 13 Minuten",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "jeder Muffin 12 Minuten",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Ofenkapazität liegt bei 30 Minuten",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "pro Brezel 15 Minuten",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "pro Croissant 7 Minuten",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "pro Baguette 11 Minuten",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "pro Muffin 9 Minuten",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "Glasurkapazität beträgt 257 Minuten",
+            "bedeutung": "≤ 257"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbelmanufaktur mit vier Serien",
+    "beschreibung": "Eine Möbelmanufaktur fertigt vier Produktserien: Schreibtische, Vitrinen, Sideboards und Hocker. Pro Schreibtisch wird ein Gewinn von 43 Euro erzielt, pro Vitrine 15 Euro, pro Sideboard 21 Euro und pro Hocker 3 Euro. Die Fertigung unterliegt fünf Kapazitätsgrenzen. Im Holzzuschnitt benötigt jeder Schreibtisch 6 Stunden, jede Vitrine 15 Stunden, jedes Sideboard 12 Stunden und jeder Hocker 5 Stunden. Die Zuschnittkapazität liegt bei 60 Stunden. In der Schreinerei erfordert jeder Schreibtisch 14 Stunden, jede Vitrine 4 Stunden, jedes Sideboard 4 Stunden und jeder Hocker 12 Stunden. Die Schreinereikapazität beträgt 306 Stunden. Bei der Oberflächenbehandlung werden pro Schreibtisch 15 Stunden, pro Vitrine 10 Stunden, pro Sideboard 12 Stunden und pro Hocker 12 Stunden benötigt. Für die Oberflächenbehandlung stehen insgesamt 306 Stunden zur Verfügung. In der Beschlagmontage beansprucht ein Schreibtisch 6 Stunden Montagezeit, jede Vitrine 6 Stunden, jedes Sideboard 11 Stunden und jeder Hocker 9 Stunden. Die Beschlagmontage hat eine Kapazität von 395 Stunden. Beim Polstern werden pro Schreibtisch 8 Stunden, je Vitrine 10 Stunden Polsterarbeit, pro Sideboard 4 Stunden und pro Hocker 13 Stunden benötigt. Die Polsterkapazität beträgt 295 Stunden. Die Manufaktur möchte den Gesamtgewinn maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Schreibtische",
+      "x2 = Anzahl Vitrinen",
+      "x3 = Anzahl Sideboards",
+      "x4 = Anzahl Hocker"
+    ],
+    "zielfunktion": "Z = 43x1 + 15x2 + 21x3 + 3x4 (max)",
+    "nebenbedingungen": [
+      "6x1 + 15x2 + 12x3 + 5x4 ≤ 60 (Holzzuschnitt)",
+      "14x1 + 4x2 + 4x3 + 12x4 ≤ 306 (Schreinerei)",
+      "15x1 + 10x2 + 12x3 + 12x4 ≤ 306 (Oberflächenbehandlung)",
+      "6x1 + 6x2 + 11x3 + 9x4 ≤ 395 (Beschlagmontage)",
+      "8x1 + 10x2 + 4x3 + 13x4 ≤ 295 (Polstern)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Fünf Fertigungsschritte begrenzen die Produktion aller vier Möbelserien. Der Holzzuschnitt mit nur 60 Stunden ist der stärkste Engpass und bestimmt maßgeblich den optimalen Produktionsplan.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 43 Euro",
+          "bedeutung": "43 × x₁"
+        },
+        {
+          "text": "pro Vitrine 15 Euro",
+          "bedeutung": "15 × x₂"
+        },
+        {
+          "text": "pro Sideboard 21 Euro",
+          "bedeutung": "21 × x₃"
+        },
+        {
+          "text": "pro Hocker 3 Euro",
+          "bedeutung": "3 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jeder Schreibtisch 6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "jede Vitrine 15 Stunden",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "jedes Sideboard 12 Stunden",
+            "bedeutung": "+ 12x₃"
+          },
+          {
+            "text": "jeder Hocker 5 Stunden",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "Zuschnittkapazität liegt bei 60 Stunden",
+            "bedeutung": "≤ 60"
+          }
+        ],
+        [
+          {
+            "text": "jeder Schreibtisch 14 Stunden",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "jede Vitrine 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "jedes Sideboard 4 Stunden",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "jeder Hocker 12 Stunden",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Schreinereikapazität beträgt 306 Stunden",
+            "bedeutung": "≤ 306"
+          }
+        ],
+        [
+          {
+            "text": "pro Schreibtisch 15 Stunden",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "pro Vitrine 10 Stunden",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "pro Sideboard 12 Stunden",
+            "bedeutung": "+ 12x₃"
+          },
+          {
+            "text": "pro Hocker 12 Stunden",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "insgesamt 306 Stunden zur Verfügung",
+            "bedeutung": "≤ 306"
+          }
+        ],
+        [
+          {
+            "text": "ein Schreibtisch 6 Stunden Montagezeit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "jede Vitrine 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "jedes Sideboard 11 Stunden",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "jeder Hocker 9 Stunden",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "Kapazität von 395 Stunden",
+            "bedeutung": "≤ 395"
+          }
+        ],
+        [
+          {
+            "text": "pro Schreibtisch 8 Stunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "je Vitrine 10 Stunden Polsterarbeit",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "pro Sideboard 4 Stunden",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "pro Hocker 13 Stunden",
+            "bedeutung": "+ 13x₄"
+          },
+          {
+            "text": "Polsterkapazität beträgt 295 Stunden",
+            "bedeutung": "≤ 295"
+          }
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,54 @@
+{
+  "id": "kapa_loadbal_3v_07",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl HTTP-Balancer", "x2 = Anzahl TCP-Balancer", "x3 = Anzahl gRPC-Balancer"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Netzwerkports", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "RAM", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Durchsatz HTTP (Tsd. Req/s)"},
+    "c2":  {"min": 10, "max": 50,   "label": "Durchsatz TCP (Tsd. Conn/s)"},
+    "c3":  {"min": 8, "max": 30,    "label": "Durchsatz gRPC (Tsd. Req/s)"},
+    "a11": {"min": 2, "max": 6,     "label": "CPU HTTP (Kerne)"},
+    "a12": {"min": 1, "max": 4,     "label": "CPU TCP (Kerne)"},
+    "a13": {"min": 2, "max": 8,     "label": "CPU gRPC (Kerne)"},
+    "b1":  {"min": 24, "max": 96,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 4, "max": 12,    "label": "Ports HTTP"},
+    "a22": {"min": 2, "max": 8,     "label": "Ports TCP"},
+    "a23": {"min": 4, "max": 10,    "label": "Ports gRPC"},
+    "b2":  {"min": 40, "max": 120,  "label": "Verfügbare Ports"},
+    "a31": {"min": 2, "max": 8,     "label": "RAM HTTP (GB)"},
+    "a32": {"min": 1, "max": 4,     "label": "RAM TCP (GB)"},
+    "a33": {"min": 2, "max": 8,     "label": "RAM gRPC (GB)"},
+    "b3":  {"min": 16, "max": 64,   "label": "Verfügbares RAM (GB)"}
+  },
+  "titel": "Load-Balancer – Protokoll-Balancer-Mix",
+  "beschreibung": "Ein Infrastrukturteam plant den Einsatz von Load-Balancern für verschiedene Protokolle. Ein HTTP-Balancer verarbeitet {c1} Tsd. Anfragen pro Sekunde, ein TCP-Balancer verarbeitet {c2} Tsd. Verbindungen pro Sekunde und ein gRPC-Balancer verarbeitet {c3} Tsd. Anfragen pro Sekunde. Ein HTTP-Balancer benötigt {a11} CPU-Kerne, ein TCP-Balancer benötigt {a12} CPU-Kerne und ein gRPC-Balancer benötigt {a13} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung. Der Portbedarf beträgt {a21} für HTTP, {a22} für TCP und {a23} für gRPC. Es stehen {b2} Ports zur Verfügung. Der RAM-Bedarf beträgt {a31} GB für HTTP, {a32} GB für TCP und {a33} GB für gRPC. Das verfügbare RAM beträgt {b3} GB.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "HTTP-Balancer verarbeitet {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "TCP-Balancer verarbeitet {c2} Tsd. Verbindungen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "gRPC-Balancer verarbeitet {c3} Tsd. Anfragen pro Sekunde", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein TCP-Balancer benötigt {a12} CPU-Kerne und ein gRPC-Balancer benötigt {a13} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} für HTTP, {a22} für TCP und {a23} für gRPC", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Ports zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} GB für HTTP, {a32} GB für TCP und {a33} GB für gRPC", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} GB", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

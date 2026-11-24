@@ -1,0 +1,1361 @@
+[
+  {
+    "c": [
+      6,
+      14
+    ],
+    "A": [
+      [
+        2,
+        3
+      ],
+      [
+        11,
+        11
+      ]
+    ],
+    "b": [
+      276,
+      1558
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 828,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      9
+    ],
+    "A": [
+      [
+        5,
+        1
+      ],
+      [
+        7,
+        4
+      ],
+      [
+        4,
+        10
+      ],
+      [
+        3,
+        3
+      ]
+    ],
+    "b": [
+      523,
+      1550,
+      780,
+      243
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 313.8,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      8,
+      5
+    ],
+    "A": [
+      [
+        5,
+        3
+      ],
+      [
+        8,
+        2
+      ],
+      [
+        3,
+        8
+      ]
+    ],
+    "b": [
+      642,
+      1721,
+      1196
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1027.2,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      5,
+      4
+    ],
+    "A": [
+      [
+        5,
+        4
+      ],
+      [
+        11,
+        6
+      ],
+      [
+        9,
+        11
+      ]
+    ],
+    "b": [
+      198,
+      455,
+      1617
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 198,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      8,
+      8
+    ],
+    "A": [
+      [
+        2,
+        5
+      ],
+      [
+        8,
+        5
+      ]
+    ],
+    "b": [
+      233,
+      1847
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 372.8,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      9,
+      14
+    ],
+    "A": [
+      [
+        6,
+        7
+      ],
+      [
+        3,
+        4
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "b": [
+      77,
+      115,
+      1511
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 115.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      7,
+      14
+    ],
+    "A": [
+      [
+        5,
+        1
+      ],
+      [
+        1,
+        5
+      ]
+    ],
+    "b": [
+      1369,
+      1045
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1916.6,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      4,
+      10
+    ],
+    "A": [
+      [
+        6,
+        1
+      ],
+      [
+        7,
+        12
+      ],
+      [
+        2,
+        12
+      ],
+      [
+        10,
+        8
+      ]
+    ],
+    "b": [
+      874,
+      1793,
+      475,
+      795
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 582.6666666666666,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      8,
+      2
+    ],
+    "A": [
+      [
+        3,
+        6
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "b": [
+      1586,
+      1991
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 528.6666666666666,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      12
+    ],
+    "A": [
+      [
+        4,
+        7
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "b": [
+      415,
+      1422
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 311.25,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      2,
+      11
+    ],
+    "A": [
+      [
+        5,
+        7
+      ],
+      [
+        3,
+        12
+      ]
+    ],
+    "b": [
+      1196,
+      1193
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 478.4,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      4
+    ],
+    "A": [
+      [
+        1,
+        4
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        12,
+        8
+      ]
+    ],
+    "b": [
+      362,
+      1199,
+      979
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 362,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      14
+    ],
+    "A": [
+      [
+        2,
+        6
+      ],
+      [
+        6,
+        10
+      ],
+      [
+        4,
+        2
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "b": [
+      68,
+      929,
+      490,
+      95
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 102,
+    "pivot_count": 2
+  },
+  {
+    "c": [
+      13,
+      2
+    ],
+    "A": [
+      [
+        2,
+        5
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        5,
+        7
+      ]
+    ],
+    "b": [
+      535,
+      159,
+      1685,
+      219
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 214,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      12,
+      11
+    ],
+    "A": [
+      [
+        2,
+        5
+      ],
+      [
+        11,
+        11
+      ],
+      [
+        10,
+        11
+      ]
+    ],
+    "b": [
+      372,
+      1240,
+      994
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 818.4,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      5,
+      11
+    ],
+    "A": [
+      [
+        4,
+        1
+      ],
+      [
+        1,
+        12
+      ]
+    ],
+    "b": [
+      676,
+      1185
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 845,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      9,
+      2
+    ],
+    "A": [
+      [
+        10,
+        4
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "b": [
+      1380,
+      1855
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 690,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      12,
+      12
+    ],
+    "A": [
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        5
+      ]
+    ],
+    "b": [
+      492,
+      567
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 984,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      7,
+      3
+    ],
+    "A": [
+      [
+        6,
+        4
+      ],
+      [
+        3,
+        2
+      ]
+    ],
+    "b": [
+      430,
+      1007
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 322.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      7,
+      3
+    ],
+    "A": [
+      [
+        2,
+        3
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        11,
+        9
+      ],
+      [
+        5,
+        4
+      ]
+    ],
+    "b": [
+      382,
+      577,
+      1563,
+      61
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 382,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      14,
+      13
+    ],
+    "A": [
+      [
+        3,
+        4
+      ],
+      [
+        11,
+        10
+      ]
+    ],
+    "b": [
+      318,
+      1260
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1033.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      9,
+      11
+    ],
+    "A": [
+      [
+        1,
+        6
+      ],
+      [
+        7,
+        1
+      ]
+    ],
+    "b": [
+      723,
+      277
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1325.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      15,
+      8
+    ],
+    "A": [
+      [
+        5,
+        2
+      ],
+      [
+        1,
+        12
+      ]
+    ],
+    "b": [
+      1570,
+      1654
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 4710,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      13
+    ],
+    "A": [
+      [
+        9,
+        11
+      ],
+      [
+        2,
+        10
+      ],
+      [
+        3,
+        6
+      ],
+      [
+        6,
+        5
+      ]
+    ],
+    "b": [
+      421,
+      650,
+      650,
+      904
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 452,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      8,
+      2
+    ],
+    "A": [
+      [
+        1,
+        4
+      ],
+      [
+        7,
+        5
+      ],
+      [
+        9,
+        6
+      ]
+    ],
+    "b": [
+      480,
+      1363,
+      1031
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 240,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      6,
+      4
+    ],
+    "A": [
+      [
+        5,
+        4
+      ],
+      [
+        7,
+        10
+      ]
+    ],
+    "b": [
+      305,
+      1606
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 305,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      11,
+      14
+    ],
+    "A": [
+      [
+        5,
+        2
+      ],
+      [
+        4,
+        12
+      ],
+      [
+        7,
+        8
+      ],
+      [
+        4,
+        3
+      ]
+    ],
+    "b": [
+      319,
+      1373,
+      1839,
+      230
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<=",
+      ">="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 701.8,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      4,
+      2
+    ],
+    "A": [
+      [
+        6,
+        3
+      ],
+      [
+        4,
+        2
+      ]
+    ],
+    "b": [
+      1070,
+      1923
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 713.3333333333334,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      10,
+      4
+    ],
+    "A": [
+      [
+        10,
+        5
+      ],
+      [
+        11,
+        10
+      ]
+    ],
+    "b": [
+      474,
+      1606
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 379.2,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      14,
+      12
+    ],
+    "A": [
+      [
+        4,
+        3
+      ],
+      [
+        7,
+        1
+      ]
+    ],
+    "b": [
+      135,
+      1845
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 472.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      4,
+      10
+    ],
+    "A": [
+      [
+        6,
+        3
+      ],
+      [
+        6,
+        2
+      ]
+    ],
+    "b": [
+      291,
+      1421
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 194,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      15,
+      4
+    ],
+    "A": [
+      [
+        11,
+        6
+      ],
+      [
+        1,
+        9
+      ]
+    ],
+    "b": [
+      50,
+      1692
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 33.333333333333336,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      4,
+      13
+    ],
+    "A": [
+      [
+        1,
+        1
+      ],
+      [
+        7,
+        7
+      ]
+    ],
+    "b": [
+      167,
+      1575
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 668,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      9,
+      12
+    ],
+    "A": [
+      [
+        6,
+        3
+      ],
+      [
+        3,
+        12
+      ],
+      [
+        3,
+        12
+      ]
+    ],
+    "b": [
+      102,
+      1915,
+      1227
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 153,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      2,
+      6
+    ],
+    "A": [
+      [
+        6,
+        4
+      ],
+      [
+        1,
+        8
+      ],
+      [
+        10,
+        9
+      ]
+    ],
+    "b": [
+      373,
+      1212,
+      637
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 124.33333333333333,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      12,
+      6
+    ],
+    "A": [
+      [
+        5,
+        6
+      ],
+      [
+        3,
+        3
+      ]
+    ],
+    "b": [
+      974,
+      1209
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 974,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      4,
+      8
+    ],
+    "A": [
+      [
+        6,
+        1
+      ],
+      [
+        2,
+        8
+      ]
+    ],
+    "b": [
+      684,
+      754
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 456,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      14,
+      8
+    ],
+    "A": [
+      [
+        7,
+        6
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "b": [
+      1284,
+      698
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1712,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      5,
+      3
+    ],
+    "A": [
+      [
+        6,
+        1
+      ],
+      [
+        10,
+        5
+      ]
+    ],
+    "b": [
+      684,
+      1434
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 570,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      5,
+      8
+    ],
+    "A": [
+      [
+        6,
+        5
+      ],
+      [
+        3,
+        2
+      ],
+      [
+        4,
+        9
+      ]
+    ],
+    "b": [
+      1654,
+      1877,
+      1152
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 1378.3333333333333,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      7,
+      12
+    ],
+    "A": [
+      [
+        2,
+        6
+      ],
+      [
+        2,
+        3
+      ],
+      [
+        12,
+        5
+      ]
+    ],
+    "b": [
+      1512,
+      1493,
+      1816
+    ],
+    "constraint_types": [
+      ">=",
+      "<=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 3024,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      2,
+      6
+    ],
+    "A": [
+      [
+        5,
+        4
+      ],
+      [
+        4,
+        8
+      ]
+    ],
+    "b": [
+      861,
+      1410
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 344.4,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      8,
+      15
+    ],
+    "A": [
+      [
+        5,
+        5
+      ],
+      [
+        8,
+        12
+      ]
+    ],
+    "b": [
+      271,
+      1643
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 433.6,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      3,
+      8
+    ],
+    "A": [
+      [
+        2,
+        1
+      ],
+      [
+        4,
+        7
+      ]
+    ],
+    "b": [
+      567,
+      1518
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 850.5,
+    "pivot_count": 1
+  },
+  {
+    "c": [
+      7,
+      7
+    ],
+    "A": [
+      [
+        4,
+        2
+      ],
+      [
+        7,
+        4
+      ]
+    ],
+    "b": [
+      435,
+      1139
+    ],
+    "constraint_types": [
+      ">=",
+      "<="
+    ],
+    "optimization": "minimieren",
+    "solution_z": 761.25,
+    "pivot_count": 1
+  }
+]

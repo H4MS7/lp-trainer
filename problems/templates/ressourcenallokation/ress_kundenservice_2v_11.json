@@ -1,0 +1,43 @@
+{
+  "id": "ress_kundenservice_2v_11",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Stunden Telefonsupport", "x2 = Stunden Chat-Support"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Mitarbeiterstunden", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Softwarelizenzen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Kundenzufriedenheit/h Telefon"},
+    "c2":  {"min": 2, "max": 8,     "label": "Kundenzufriedenheit/h Chat"},
+    "a11": {"min": 1, "max": 2,     "label": "Mitarbeiter/h Telefon"},
+    "a12": {"min": 1, "max": 1,     "label": "Mitarbeiter/h Chat"},
+    "b1":  {"min": 40, "max": 160,  "label": "Mitarbeiterstunden gesamt"},
+    "a21": {"min": 1, "max": 2,     "label": "Lizenzen/h Telefon"},
+    "a22": {"min": 1, "max": 3,     "label": "Lizenzen/h Chat"},
+    "b2":  {"min": 30, "max": 120,  "label": "Softwarelizenzen"}
+  },
+  "titel": "Kundenservice – Telefon und Chat",
+  "beschreibung": "Die Kundenservice-Abteilung verteilt Kapazitaeten auf Telefonsupport und Chat-Support. Jede Stunde Telefonsupport erzeugt {c1} Zufriedenheitspunkte, jede Stunde Chat-Support {c2} Punkte. Telefonsupport benoetigt {a11} Mitarbeiterstunden pro Stunde, Chat-Support {a12} Mitarbeiterstunde. Es stehen {b1} Mitarbeiterstunden bereit. An Softwarelizenzen werden {a21} pro Stunde Telefon und {a22} pro Stunde Chat benoetigt. Es gibt {b2} Lizenzen.",
+  "hinweis": "Maximiere die Kundenzufriedenheit mit Mitarbeiter- und Lizenzbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Telefonsupport erzeugt {c1} Zufriedenheitspunkte", "bedeutung": "{c1} × x₁"},
+      {"text": "Chat-Support {c2} Punkte", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Telefonsupport benoetigt {a11} Mitarbeiterstunden", "bedeutung": "{a11}x₁"},
+        {"text": "Chat-Support {a12} Mitarbeiterstunde", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Mitarbeiterstunden bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} pro Stunde Telefon", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} pro Stunde Chat", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Lizenzen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

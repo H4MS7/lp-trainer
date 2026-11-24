@@ -1,0 +1,60 @@
+{
+  "id": "diaet_flugzeug_3v_08",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Portionen Sandwich", "x2 = Portionen Obstteller", "x3 = Portionen Nussmischung"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Protein", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Natrium", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Sandwich (€/Portion)"},
+    "c2":  {"min": 1, "max": 4,   "label": "Kosten Obstteller (€/Portion)"},
+    "c3":  {"min": 2, "max": 5,   "label": "Kosten Nussmischung (€/Portion)"},
+    "a11": {"min": 150, "max": 280, "label": "Kalorien Sandwich (kcal/Portion)"},
+    "a12": {"min": 50, "max": 120,  "label": "Kalorien Obstteller (kcal/Portion)"},
+    "a13": {"min": 100, "max": 200, "label": "Kalorien Nussmischung (kcal/Portion)"},
+    "b1":  {"min": 600, "max": 1400, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 4, "max": 10,  "label": "Protein Sandwich (g/Portion)"},
+    "a22": {"min": 1, "max": 3,   "label": "Protein Obstteller (g/Portion)"},
+    "a23": {"min": 3, "max": 8,   "label": "Protein Nussmischung (g/Portion)"},
+    "b2":  {"min": 30, "max": 70,  "label": "Mindest-Protein (g)"},
+    "a31": {"min": 3, "max": 8,   "label": "Natrium Sandwich (mg/Portion)"},
+    "a32": {"min": 1, "max": 2,   "label": "Natrium Obstteller (mg/Portion)"},
+    "a33": {"min": 2, "max": 6,   "label": "Natrium Nussmischung (mg/Portion)"},
+    "b3":  {"min": 40, "max": 80,  "label": "Maximal-Natrium (mg)"}
+  },
+  "titel": "Flugzeugverpflegung – Sandwich, Obst und Nüsse",
+  "beschreibung": "Eine Fluggesellschaft plant die Bordverpflegung möglichst kostengünstig aus Sandwich, Obstteller und Nussmischung. Ein Sandwich kostet {c1} € pro Portion, ein Obstteller kostet {c2} € pro Portion, eine Nussmischung kostet {c3} € pro Portion. Ein Sandwich liefert {a11} kcal, ein Obstteller liefert {a12} kcal, eine Nussmischung liefert {a13} kcal pro Portion. Mindestens {b1} kcal müssen bereitgestellt werden. Ein Sandwich enthält {a21} g Protein, ein Obstteller enthält {a22} g Protein, eine Nussmischung enthält {a23} g Protein pro Portion. Mindestens {b2} g Protein sind erforderlich. Ein Sandwich hat {a31} mg Natrium, ein Obstteller hat {a32} mg Natrium, eine Nussmischung hat {a33} mg Natrium pro Portion. Höchstens {b3} mg Natrium sind erlaubt.",
+  "hinweis": "Minimiere die Verpflegungskosten bei Einhaltung der Mindestmengen für Kalorien und Protein sowie der Natriumobergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sandwich kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Obstteller kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nussmischung kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kcal pro Portion", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} kcal müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Protein", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Protein", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g Protein pro Portion", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} g Protein sind erforderlich", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Natrium", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Natrium", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Natrium pro Portion", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} mg Natrium sind erlaubt", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

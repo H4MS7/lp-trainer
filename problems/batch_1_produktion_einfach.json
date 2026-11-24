@@ -1,0 +1,642 @@
+[
+  {
+    "titel": "Bäckerei – Brote und Kuchen",
+    "beschreibung": "Eine Bäckerei stellt Brote und Kuchen her. Jedes Brot bringt einen Gewinn von 3€, jeder Kuchen einen Gewinn von 5€. Für ein Brot werden 2 kg Mehl benötigt, für einen Kuchen 4 kg Mehl. Insgesamt stehen 120 kg Mehl zur Verfügung. Außerdem braucht ein Brot 3 Arbeitsstunden und ein Kuchen 2 Arbeitsstunden. Es sind höchstens 90 Arbeitsstunden verfügbar.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Brote", "x2 = Anzahl Kuchen"],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 120 (Mehl)",
+      "3x1 + 2x2 ≤ 90 (Arbeitsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme zuerst die Restriktionen für Mehl und Arbeitsstunden, dann den Gewinn pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 3€", "bedeutung": "3 × x₁"},
+        {"text": "Gewinn von 5€", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 kg Mehl benötigt", "bedeutung": "2x₁"},
+          {"text": "4 kg Mehl", "bedeutung": "+ 4x₂"},
+          {"text": "120 kg Mehl zur Verfügung", "bedeutung": "≤ 120"}
+        ],
+        [
+          {"text": "3 Arbeitsstunden", "bedeutung": "3x₁"},
+          {"text": "2 Arbeitsstunden", "bedeutung": "+ 2x₂"},
+          {"text": "90 Arbeitsstunden verfügbar", "bedeutung": "≤ 90"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauerei – Helles und Weizen",
+    "beschreibung": "Eine Brauerei produziert Helles und Weizenbier. Pro Hektoliter Helles erzielt sie einen Deckungsbeitrag von 45€, pro Hektoliter Weizen 60€. Für einen Hektoliter Helles werden 4 Stunden Brauzeit benötigt, für einen Hektoliter Weizen 6 Stunden. Die Brauanlage steht wöchentlich 240 Stunden zur Verfügung. An Rohstoffen verbraucht ein Hektoliter Helles 50 kg Malz und ein Hektoliter Weizen 35 kg Malz. Der wöchentliche Malzvorrat beträgt 2100 kg.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektoliter Helles", "x2 = Hektoliter Weizen"],
+    "zielfunktion": "Z = 45x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 6x2 ≤ 240 (Brauzeit)",
+      "50x1 + 35x2 ≤ 2100 (Malz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die unterschiedlichen Einheiten: Stunden für Brauzeit und Kilogramm für Malz.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 45€", "bedeutung": "45 × x₁"},
+        {"text": "60€", "bedeutung": "60 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Stunden Brauzeit", "bedeutung": "4x₁"},
+          {"text": "6 Stunden", "bedeutung": "+ 6x₂"},
+          {"text": "240 Stunden zur Verfügung", "bedeutung": "≤ 240"}
+        ],
+        [
+          {"text": "50 kg Malz", "bedeutung": "50x₁"},
+          {"text": "35 kg Malz", "bedeutung": "+ 35x₂"},
+          {"text": "2100 kg", "bedeutung": "≤ 2100"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schreinerei – Regale und Kommoden",
+    "beschreibung": "Eine Schreinerei fertigt Regale und Kommoden. Pro Regal beträgt der Gewinn 80€, pro Kommode 130€. Ein Regal erfordert 6 Stunden Arbeitszeit, eine Kommode 8 Stunden. Pro Woche stehen 240 Arbeitsstunden zur Verfügung. Für ein Regal werden 4 m² Holz verbraucht, für eine Kommode 3 m² Holz. Der wöchentliche Holzvorrat beträgt 120 m².",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Regale", "x2 = Anzahl Kommoden"],
+    "zielfunktion": "Z = 80x1 + 130x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 8x2 ≤ 240 (Arbeitszeit)",
+      "4x1 + 3x2 ≤ 120 (Holz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Stelle die Nebenbedingungen für Arbeitszeit und Holz getrennt auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn 80€", "bedeutung": "80 × x₁"},
+        {"text": "130€", "bedeutung": "130 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Stunden Arbeitszeit", "bedeutung": "6x₁"},
+          {"text": "8 Stunden", "bedeutung": "+ 8x₂"},
+          {"text": "240 Arbeitsstunden", "bedeutung": "≤ 240"}
+        ],
+        [
+          {"text": "4 m² Holz", "bedeutung": "4x₁"},
+          {"text": "3 m² Holz", "bedeutung": "+ 3x₂"},
+          {"text": "120 m²", "bedeutung": "≤ 120"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textilfabrik – T-Shirts und Jacken",
+    "beschreibung": "Eine Textilfabrik produziert T-Shirts und Jacken. Ein T-Shirt bringt 12€ Gewinn, eine Jacke 35€ Gewinn. Pro T-Shirt werden 2 m Stoff benötigt, pro Jacke 3 m Stoff. Insgesamt sind 600 m Stoff vorhanden. Ein T-Shirt erfordert 1 Stunde Nähzeit, eine Jacke 4 Stunden Nähzeit. Die Nähkapazität beträgt 480 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl T-Shirts", "x2 = Anzahl Jacken"],
+    "zielfunktion": "Z = 12x1 + 35x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 600 (Stoff)",
+      "x1 + 4x2 ≤ 480 (Nähzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass Jacken mehr Nähzeit relativ zum Stoff erfordern als T-Shirts.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "12€ Gewinn", "bedeutung": "12 × x₁"},
+        {"text": "35€ Gewinn", "bedeutung": "35 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 m Stoff benötigt", "bedeutung": "2x₁"},
+          {"text": "3 m Stoff", "bedeutung": "+ 3x₂"},
+          {"text": "600 m Stoff vorhanden", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "1 Stunde Nähzeit", "bedeutung": "x₁"},
+          {"text": "4 Stunden Nähzeit", "bedeutung": "+ 4x₂"},
+          {"text": "480 Stunden pro Woche", "bedeutung": "≤ 480"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Druckerei – Flyer und Poster",
+    "beschreibung": "Eine Druckerei druckt Flyer und Poster. Ein Flyer bringt 0,80€ Gewinn, ein Poster 2,50€ Gewinn. Für 1 Flyer werden 3 Blatt Spezialpapier benötigt, für 1 Poster 5 Blatt. Es stehen 3000 Blatt Spezialpapier zur Verfügung. Die Druckmaschine benötigt 1 Minute pro Flyer und 4 Minuten pro Poster. Die wöchentliche Maschinenzeit beträgt 1600 Minuten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Flyer", "x2 = Anzahl Poster"],
+    "zielfunktion": "Z = 0,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 3000 (Spezialpapier)",
+      "x1 + 4x2 ≤ 1600 (Maschinenzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gewinnkoeffizienten sind Dezimalzahlen. Achte auf die richtigen Papier- und Zeitverbräuche.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "0,80€ Gewinn", "bedeutung": "0,8 × x₁"},
+        {"text": "2,50€ Gewinn", "bedeutung": "2,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Blatt Spezialpapier benötigt", "bedeutung": "3x₁"},
+          {"text": "5 Blatt", "bedeutung": "+ 5x₂"},
+          {"text": "3000 Blatt Spezialpapier zur Verfügung", "bedeutung": "≤ 3000"}
+        ],
+        [
+          {"text": "1 Minute pro Flyer", "bedeutung": "x₁"},
+          {"text": "4 Minuten pro Poster", "bedeutung": "+ 4x₂"},
+          {"text": "1600 Minuten", "bedeutung": "≤ 1600"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Töpferei – Teller und Vasen",
+    "beschreibung": "Eine Töpferei stellt Teller und Vasen her. Ein Teller bringt 8€ Gewinn, eine Vase 15€ Gewinn. Für einen Teller werden 0,8 kg Ton benötigt, für eine Vase 1,2 kg Ton. Der wöchentliche Tonvorrat beträgt 96 kg. Ein Teller benötigt 15 Minuten Brennzeit im Ofen, eine Vase 40 Minuten Brennzeit. Die Ofenkapazität liegt bei 2400 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Teller", "x2 = Anzahl Vasen"],
+    "zielfunktion": "Z = 8x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "0,8x1 + 1,2x2 ≤ 96 (Ton)",
+      "15x1 + 40x2 ≤ 2400 (Brennzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Wandle die Tonmengen und Brennzeiten in die passenden Nebenbedingungen um.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "8€ Gewinn", "bedeutung": "8 × x₁"},
+        {"text": "15€ Gewinn", "bedeutung": "15 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,8 kg Ton benötigt", "bedeutung": "0,8x₁"},
+          {"text": "1,2 kg Ton", "bedeutung": "+ 1,2x₂"},
+          {"text": "96 kg", "bedeutung": "≤ 96"}
+        ],
+        [
+          {"text": "15 Minuten Brennzeit", "bedeutung": "15x₁"},
+          {"text": "40 Minuten Brennzeit", "bedeutung": "+ 40x₂"},
+          {"text": "2400 Minuten pro Woche", "bedeutung": "≤ 2400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kerzenhersteller – Stumpenkerzen und Teelichter",
+    "beschreibung": "Ein Kerzenhersteller produziert Stumpenkerzen und Teelichter. Eine Stumpenkerze bringt 4€ Gewinn, ein Teelicht 1,20€ Gewinn. Für eine Stumpenkerze werden 250 g Wachs benötigt, für ein Teelicht 30 g Wachs. Pro Woche stehen 15000 g Wachs zur Verfügung. Eine Stumpenkerze benötigt 6 Minuten Herstellungszeit, ein Teelicht 1 Minute Herstellungszeit. Die verfügbare Herstellungszeit beträgt 480 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Stumpenkerzen", "x2 = Anzahl Teelichter"],
+    "zielfunktion": "Z = 4x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "250x1 + 30x2 ≤ 15000 (Wachs)",
+      "6x1 + x2 ≤ 480 (Herstellungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die stark unterschiedlichen Wachsmengen: 250 g gegenüber 30 g.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "4€ Gewinn", "bedeutung": "4 × x₁"},
+        {"text": "1,20€ Gewinn", "bedeutung": "1,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "250 g Wachs benötigt", "bedeutung": "250x₁"},
+          {"text": "30 g Wachs", "bedeutung": "+ 30x₂"},
+          {"text": "15000 g Wachs zur Verfügung", "bedeutung": "≤ 15000"}
+        ],
+        [
+          {"text": "6 Minuten Herstellungszeit", "bedeutung": "6x₁"},
+          {"text": "1 Minute Herstellungszeit", "bedeutung": "+ x₂"},
+          {"text": "480 Minuten pro Woche", "bedeutung": "≤ 480"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Seifenmanufaktur – Lavendel- und Zitronenseife",
+    "beschreibung": "Eine Seifenmanufaktur stellt Lavendelseife und Zitronenseife her. Ein Stück Lavendelseife bringt 6€ Gewinn, ein Stück Zitronenseife 4,50€ Gewinn. Für eine Lavendelseife werden 150 g Seifenbasis benötigt, für eine Zitronenseife 100 g Seifenbasis. Insgesamt stehen 6000 g Seifenbasis zur Verfügung. Die Herstellung einer Lavendelseife dauert 8 Minuten, die einer Zitronenseife 12 Minuten. Die verfügbare Produktionszeit beträgt 600 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Stück Lavendelseife", "x2 = Stück Zitronenseife"],
+    "zielfunktion": "Z = 6x1 + 4,5x2 (max)",
+    "nebenbedingungen": [
+      "150x1 + 100x2 ≤ 6000 (Seifenbasis)",
+      "8x1 + 12x2 ≤ 600 (Produktionszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Lavendelseife braucht mehr Seifenbasis, Zitronenseife mehr Produktionszeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "6€ Gewinn", "bedeutung": "6 × x₁"},
+        {"text": "4,50€ Gewinn", "bedeutung": "4,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "150 g Seifenbasis benötigt", "bedeutung": "150x₁"},
+          {"text": "100 g Seifenbasis", "bedeutung": "+ 100x₂"},
+          {"text": "6000 g Seifenbasis zur Verfügung", "bedeutung": "≤ 6000"}
+        ],
+        [
+          {"text": "8 Minuten", "bedeutung": "8x₁"},
+          {"text": "12 Minuten", "bedeutung": "+ 12x₂"},
+          {"text": "600 Minuten pro Woche", "bedeutung": "≤ 600"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eiscafé – Becher und Waffeln",
+    "beschreibung": "Ein Eiscafé verkauft Eisbecher und Eiswaffeln. Ein Eisbecher bringt 3,50€ Gewinn, eine Eiswaffel 2€ Gewinn. Für einen Eisbecher werden 3 Kugeln Eis verwendet, für eine Eiswaffel 2 Kugeln Eis. Pro Tag stehen maximal 360 Kugeln zur Verfügung. Die Zubereitung eines Eisbechers dauert 4 Minuten, die einer Eiswaffel 1 Minute. Die tägliche Zubereitungszeit ist auf 300 Minuten begrenzt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Eisbecher", "x2 = Anzahl Eiswaffeln"],
+    "zielfunktion": "Z = 3,5x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 360 (Eiskugeln)",
+      "4x1 + x2 ≤ 300 (Zubereitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Eisbecher ist aufwendiger (mehr Kugeln und mehr Zubereitungszeit), bringt aber auch mehr Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "3,50€ Gewinn", "bedeutung": "3,5 × x₁"},
+        {"text": "2€ Gewinn", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Kugeln Eis", "bedeutung": "3x₁"},
+          {"text": "2 Kugeln Eis", "bedeutung": "+ 2x₂"},
+          {"text": "360 Kugeln zur Verfügung", "bedeutung": "≤ 360"}
+        ],
+        [
+          {"text": "4 Minuten", "bedeutung": "4x₁"},
+          {"text": "1 Minute", "bedeutung": "+ x₂"},
+          {"text": "300 Minuten begrenzt", "bedeutung": "≤ 300"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schmuckwerkstatt – Ringe und Ketten",
+    "beschreibung": "Eine Schmuckwerkstatt fertigt Ringe und Ketten. Ein Ring bringt 25€ Gewinn, eine Kette 40€ Gewinn. Für einen Ring werden 5 g Silber benötigt, für eine Kette 12 g Silber. Pro Woche stehen 480 g Silber zur Verfügung. Die Herstellung eines Rings dauert 2 Stunden, die einer Kette 3 Stunden. Die wöchentliche Arbeitszeit beträgt 150 Stunden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Ringe", "x2 = Anzahl Ketten"],
+    "zielfunktion": "Z = 25x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 12x2 ≤ 480 (Silber)",
+      "2x1 + 3x2 ≤ 150 (Arbeitszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Ketten verbrauchen mehr als doppelt so viel Silber wie Ringe, bringen aber auch mehr Gewinn.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "25€ Gewinn", "bedeutung": "25 × x₁"},
+        {"text": "40€ Gewinn", "bedeutung": "40 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 g Silber benötigt", "bedeutung": "5x₁"},
+          {"text": "12 g Silber", "bedeutung": "+ 12x₂"},
+          {"text": "480 g Silber zur Verfügung", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "2 Stunden", "bedeutung": "2x₁"},
+          {"text": "3 Stunden", "bedeutung": "+ 3x₂"},
+          {"text": "150 Stunden", "bedeutung": "≤ 150"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Papierfabrik – Kopierpapier und Karton",
+    "beschreibung": "Eine Papierfabrik stellt Kopierpapier und Karton her. Eine Palette Kopierpapier bringt 70€ Gewinn, eine Palette Karton 110€ Gewinn. Für eine Palette Kopierpapier werden 8 Stunden Maschinenzeit benötigt, für eine Palette Karton 10 Stunden Maschinenzeit. Die Maschinen stehen wöchentlich 400 Stunden zur Verfügung. Außerdem verbraucht eine Palette Kopierpapier 3 m³ Lagerplatz und eine Palette Karton 5 m³ Lagerplatz. Es sind insgesamt 180 m³ Lagerplatz vorhanden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Paletten Kopierpapier", "x2 = Paletten Karton"],
+    "zielfunktion": "Z = 70x1 + 110x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 10x2 ≤ 400 (Maschinenzeit)",
+      "3x1 + 5x2 ≤ 180 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte beide Beschränkungen: Maschinenzeit und Lagerplatz begrenzen die Produktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "70€ Gewinn", "bedeutung": "70 × x₁"},
+        {"text": "110€ Gewinn", "bedeutung": "110 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Stunden Maschinenzeit benötigt", "bedeutung": "8x₁"},
+          {"text": "10 Stunden Maschinenzeit", "bedeutung": "+ 10x₂"},
+          {"text": "400 Stunden zur Verfügung", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "3 m³ Lagerplatz", "bedeutung": "3x₁"},
+          {"text": "5 m³ Lagerplatz", "bedeutung": "+ 5x₂"},
+          {"text": "180 m³ Lagerplatz vorhanden", "bedeutung": "≤ 180"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Glasmanufaktur – Trinkgläser und Windlichter",
+    "beschreibung": "Eine Glasmanufaktur produziert Trinkgläser und Windlichter. Ein Trinkglas bringt 7€ Gewinn, ein Windlicht 11€ Gewinn. Für ein Trinkglas werden 300 g Glasmasse benötigt, für ein Windlicht 200 g Glasmasse. Die wöchentliche Glasmasse beträgt 12000 g. Die Formung eines Trinkglases dauert 10 Minuten, die eines Windlichts 25 Minuten. Die Formanlage steht 1250 Minuten pro Woche zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Trinkgläser", "x2 = Anzahl Windlichter"],
+    "zielfunktion": "Z = 7x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "300x1 + 200x2 ≤ 12000 (Glasmasse)",
+      "10x1 + 25x2 ≤ 1250 (Formzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Trinkgläser brauchen mehr Glasmasse, Windlichter mehr Formzeit. Die Engpässe wirken gegenläufig.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "7€ Gewinn", "bedeutung": "7 × x₁"},
+        {"text": "11€ Gewinn", "bedeutung": "11 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "300 g Glasmasse benötigt", "bedeutung": "300x₁"},
+          {"text": "200 g Glasmasse", "bedeutung": "+ 200x₂"},
+          {"text": "12000 g", "bedeutung": "≤ 12000"}
+        ],
+        [
+          {"text": "10 Minuten", "bedeutung": "10x₁"},
+          {"text": "25 Minuten", "bedeutung": "+ 25x₂"},
+          {"text": "1250 Minuten pro Woche", "bedeutung": "≤ 1250"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schuhfabrik – Sneaker und Stiefel",
+    "beschreibung": "Eine Schuhfabrik produziert Sneaker und Stiefel. Ein Paar Sneaker bringt 22€ Gewinn, ein Paar Stiefel 38€ Gewinn. Für ein Paar Sneaker werden 3 m² Leder benötigt, für ein Paar Stiefel 2 m² Leder. Es stehen wöchentlich 180 m² Leder zur Verfügung. Die Fertigung eines Paars Sneaker dauert 1 Stunde, die eines Paars Stiefel 4 Stunden. Die Produktionskapazität beträgt 200 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Paar Sneaker", "x2 = Paar Stiefel"],
+    "zielfunktion": "Z = 22x1 + 38x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 180 (Leder)",
+      "x1 + 4x2 ≤ 200 (Fertigungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Sneaker brauchen mehr Leder, Stiefel mehr Fertigungszeit. Finde den optimalen Produktionsmix.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "22€ Gewinn", "bedeutung": "22 × x₁"},
+        {"text": "38€ Gewinn", "bedeutung": "38 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 m² Leder benötigt", "bedeutung": "3x₁"},
+          {"text": "2 m² Leder", "bedeutung": "+ 2x₂"},
+          {"text": "180 m² Leder", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "1 Stunde", "bedeutung": "x₁"},
+          {"text": "4 Stunden", "bedeutung": "+ 4x₂"},
+          {"text": "200 Stunden pro Woche", "bedeutung": "≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spielzeugwerkstatt – Holzautos und Puzzles",
+    "beschreibung": "Eine Spielzeugwerkstatt stellt Holzautos und Puzzles her. Ein Holzauto bringt 9€ Gewinn, ein Puzzle 14€ Gewinn. Für ein Holzauto werden 0,4 kg Holz verbraucht, für ein Puzzle 0,3 kg Holz. Der wöchentliche Holzvorrat beträgt 36 kg. Die Bearbeitung eines Holzautos dauert 20 Minuten, die eines Puzzles 45 Minuten. Die Werkstatt steht 2700 Minuten pro Woche zur Verfügung.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Holzautos", "x2 = Anzahl Puzzles"],
+    "zielfunktion": "Z = 9x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,3x2 ≤ 36 (Holz)",
+      "20x1 + 45x2 ≤ 2700 (Bearbeitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Holzautos brauchen mehr Holz, Puzzles mehr Bearbeitungszeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "9€ Gewinn", "bedeutung": "9 × x₁"},
+        {"text": "14€ Gewinn", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,4 kg Holz", "bedeutung": "0,4x₁"},
+          {"text": "0,3 kg Holz", "bedeutung": "+ 0,3x₂"},
+          {"text": "36 kg", "bedeutung": "≤ 36"}
+        ],
+        [
+          {"text": "20 Minuten", "bedeutung": "20x₁"},
+          {"text": "45 Minuten", "bedeutung": "+ 45x₂"},
+          {"text": "2700 Minuten pro Woche", "bedeutung": "≤ 2700"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Käserei – Gouda und Camembert",
+    "beschreibung": "Eine Käserei produziert Gouda und Camembert. Ein Laib Gouda bringt 18€ Gewinn, ein Laib Camembert 24€ Gewinn. Für einen Laib Gouda werden 10 Liter Milch benötigt, für einen Laib Camembert 8 Liter Milch. Wöchentlich stehen 960 Liter Milch zur Verfügung. Die Reifezeit für einen Gouda beträgt 6 Stunden Betreuung, für einen Camembert 9 Stunden Betreuung. Die Betreuungskapazität liegt bei 630 Stunden pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Laibe Gouda", "x2 = Laibe Camembert"],
+    "zielfunktion": "Z = 18x1 + 24x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 8x2 ≤ 960 (Milch)",
+      "6x1 + 9x2 ≤ 630 (Betreuungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gouda braucht mehr Milch, Camembert mehr Betreuungszeit. Finde den besten Kompromiss.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "18€ Gewinn", "bedeutung": "18 × x₁"},
+        {"text": "24€ Gewinn", "bedeutung": "24 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 Liter Milch benötigt", "bedeutung": "10x₁"},
+          {"text": "8 Liter Milch", "bedeutung": "+ 8x₂"},
+          {"text": "960 Liter Milch zur Verfügung", "bedeutung": "≤ 960"}
+        ],
+        [
+          {"text": "6 Stunden Betreuung", "bedeutung": "6x₁"},
+          {"text": "9 Stunden Betreuung", "bedeutung": "+ 9x₂"},
+          {"text": "630 Stunden pro Woche", "bedeutung": "≤ 630"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Weinbauer – Rot- und Weißwein",
+    "beschreibung": "Ein Weinbauer produziert Rotwein und Weißwein. Eine Flasche Rotwein bringt 8€ Gewinn, eine Flasche Weißwein 6€ Gewinn. Für eine Flasche Rotwein werden 1,5 kg Trauben benötigt, für eine Flasche Weißwein 1 kg Trauben. Insgesamt stehen 900 kg Trauben zur Verfügung. Die Abfüllung einer Flasche Rotwein dauert 3 Minuten, die einer Flasche Weißwein 5 Minuten. Die Abfüllanlage steht 2400 Minuten pro Saison bereit.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Flaschen Rotwein", "x2 = Flaschen Weißwein"],
+    "zielfunktion": "Z = 8x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "1,5x1 + x2 ≤ 900 (Trauben)",
+      "3x1 + 5x2 ≤ 2400 (Abfüllzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Rotwein braucht mehr Trauben, Weißwein mehr Abfüllzeit. Die Optimierung erfordert einen guten Mix.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "8€ Gewinn", "bedeutung": "8 × x₁"},
+        {"text": "6€ Gewinn", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1,5 kg Trauben benötigt", "bedeutung": "1,5x₁"},
+          {"text": "1 kg Trauben", "bedeutung": "+ x₂"},
+          {"text": "900 kg Trauben zur Verfügung", "bedeutung": "≤ 900"}
+        ],
+        [
+          {"text": "3 Minuten", "bedeutung": "3x₁"},
+          {"text": "5 Minuten", "bedeutung": "+ 5x₂"},
+          {"text": "2400 Minuten pro Saison", "bedeutung": "≤ 2400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gärtnerei – Rosen und Tulpen",
+    "beschreibung": "Eine Gärtnerei züchtet Rosen und Tulpen für den Verkauf. Ein Rosenstrauß bringt 15€ Gewinn, ein Tulpenstrauß 10€ Gewinn. Für einen Rosenstrauß werden 0,6 m² Beetfläche benötigt, für einen Tulpenstrauß 0,8 m² Beetfläche. Die Gärtnerei hat 200 m² Beetfläche. Pro Rosenstrauß fallen 30 Minuten Pflegezeit an, pro Tulpenstrauß 15 Minuten Pflegezeit. Die verfügbare Pflegezeit beträgt 4500 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Rosensträuße", "x2 = Anzahl Tulpensträuße"],
+    "zielfunktion": "Z = 15x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "0,6x1 + 0,8x2 ≤ 200 (Beetfläche)",
+      "30x1 + 15x2 ≤ 4500 (Pflegezeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Rosen brauchen weniger Fläche, aber mehr Pflege als Tulpen. Achte auf die unterschiedlichen Verhältnisse.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "15€ Gewinn", "bedeutung": "15 × x₁"},
+        {"text": "10€ Gewinn", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,6 m² Beetfläche benötigt", "bedeutung": "0,6x₁"},
+          {"text": "0,8 m² Beetfläche", "bedeutung": "+ 0,8x₂"},
+          {"text": "200 m² Beetfläche", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "30 Minuten Pflegezeit", "bedeutung": "30x₁"},
+          {"text": "15 Minuten Pflegezeit", "bedeutung": "+ 15x₂"},
+          {"text": "4500 Minuten pro Woche", "bedeutung": "≤ 4500"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hutmacher – Filzhüte und Strohhüte",
+    "beschreibung": "Ein Hutmacher fertigt Filzhüte und Strohhüte. Ein Filzhut bringt 28€ Gewinn, ein Strohhut 16€ Gewinn. Für einen Filzhut werden 3 Stunden Arbeitszeit benötigt, für einen Strohhut 2 Stunden Arbeitszeit. Die wöchentliche Arbeitskapazität liegt bei 90 Stunden. Außerdem verbraucht ein Filzhut 100 g Hutband und ein Strohhut 200 g Hutband. Der Vorrat an Hutband beträgt 5000 g pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Filzhüte", "x2 = Anzahl Strohhüte"],
+    "zielfunktion": "Z = 28x1 + 16x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 90 (Arbeitszeit)",
+      "100x1 + 200x2 ≤ 5000 (Hutband)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Filzhüte brauchen mehr Arbeitszeit, Strohhüte mehr Hutband. Die Engpässe wirken gegenläufig.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "28€ Gewinn", "bedeutung": "28 × x₁"},
+        {"text": "16€ Gewinn", "bedeutung": "16 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Stunden Arbeitszeit benötigt", "bedeutung": "3x₁"},
+          {"text": "2 Stunden Arbeitszeit", "bedeutung": "+ 2x₂"},
+          {"text": "90 Stunden", "bedeutung": "≤ 90"}
+        ],
+        [
+          {"text": "100 g Hutband", "bedeutung": "100x₁"},
+          {"text": "200 g Hutband", "bedeutung": "+ 200x₂"},
+          {"text": "5000 g pro Woche", "bedeutung": "≤ 5000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nudelfabrik – Spaghetti und Penne",
+    "beschreibung": "Eine Nudelfabrik produziert Spaghetti und Penne. Eine Packung Spaghetti bringt 1,80€ Gewinn, eine Packung Penne 2,20€ Gewinn. Für eine Packung Spaghetti werden 0,5 kg Hartweizengrieß benötigt, für eine Packung Penne 0,8 kg Hartweizengrieß. Insgesamt stehen 480 kg Hartweizengrieß zur Verfügung. Die Nudelpresse schafft eine Packung Spaghetti in 3 Minuten und eine Packung Penne in 2 Minuten. Die Presskapazität beträgt 1800 Minuten pro Woche.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Packungen Spaghetti", "x2 = Packungen Penne"],
+    "zielfunktion": "Z = 1,8x1 + 2,2x2 (max)",
+    "nebenbedingungen": [
+      "0,5x1 + 0,8x2 ≤ 480 (Hartweizengrieß)",
+      "3x1 + 2x2 ≤ 1800 (Presszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Spaghetti brauchen mehr Presszeit, Penne dagegen mehr Grieß pro Packung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "1,80€ Gewinn", "bedeutung": "1,8 × x₁"},
+        {"text": "2,20€ Gewinn", "bedeutung": "2,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,5 kg Hartweizengrieß benötigt", "bedeutung": "0,5x₁"},
+          {"text": "0,8 kg Hartweizengrieß", "bedeutung": "+ 0,8x₂"},
+          {"text": "480 kg Hartweizengrieß zur Verfügung", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "3 Minuten", "bedeutung": "3x₁"},
+          {"text": "2 Minuten", "bedeutung": "+ 2x₂"},
+          {"text": "1800 Minuten pro Woche", "bedeutung": "≤ 1800"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fahrradwerkstatt – Citybikes und Mountainbikes",
+    "beschreibung": "Eine Fahrradwerkstatt montiert Citybikes und Mountainbikes. Ein Citybike bringt 55€ Gewinn, ein Mountainbike 85€ Gewinn. Für ein Citybike werden 5 Stunden Montagezeit benötigt, für ein Mountainbike 7 Stunden Montagezeit. Pro Woche stehen 350 Montagestunden zur Verfügung. Außerdem belegt ein Citybike 3 m² Lagerfläche und ein Mountainbike 2 m² Lagerfläche. Die Lagerfläche ist auf 120 m² begrenzt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Citybikes", "x2 = Anzahl Mountainbikes"],
+    "zielfunktion": "Z = 55x1 + 85x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 7x2 ≤ 350 (Montagezeit)",
+      "3x1 + 2x2 ≤ 120 (Lagerfläche)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Citybikes brauchen mehr Lagerfläche, Mountainbikes mehr Montagezeit pro Stück.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "55€ Gewinn", "bedeutung": "55 × x₁"},
+        {"text": "85€ Gewinn", "bedeutung": "85 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Stunden Montagezeit benötigt", "bedeutung": "5x₁"},
+          {"text": "7 Stunden Montagezeit", "bedeutung": "+ 7x₂"},
+          {"text": "350 Montagestunden zur Verfügung", "bedeutung": "≤ 350"}
+        ],
+        [
+          {"text": "3 m² Lagerfläche", "bedeutung": "3x₁"},
+          {"text": "2 m² Lagerfläche", "bedeutung": "+ 2x₂"},
+          {"text": "120 m² begrenzt", "bedeutung": "≤ 120"}
+        ]
+      ]
+    }
+  }
+]

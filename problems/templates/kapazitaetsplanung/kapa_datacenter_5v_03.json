@@ -1,0 +1,75 @@
+{
+  "id": "kapa_datacenter_5v_03",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Blade-Server", "x2 = Anzahl Tower-Server", "x3 = Anzahl Rack-Server", "x4 = Anzahl Storage-Nodes", "x5 = Anzahl Network-Nodes"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Rack-Einheiten", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Kühlkapazität", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Netzwerkports", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Leistung Blade (Tsd. IOPS)"},
+    "c2":  {"min": 3, "max": 10,    "label": "Leistung Tower (Tsd. IOPS)"},
+    "c3":  {"min": 8, "max": 25,    "label": "Leistung Rack (Tsd. IOPS)"},
+    "c4":  {"min": 10, "max": 50,   "label": "Leistung Storage (TB/h)"},
+    "c5":  {"min": 20, "max": 100,  "label": "Leistung Network (Gbit/s)"},
+    "a11": {"min": 1, "max": 2,     "label": "Rack Blade (HE)"},
+    "a12": {"min": 4, "max": 8,     "label": "Rack Tower (HE)"},
+    "a13": {"min": 2, "max": 4,     "label": "Rack Rack-Server (HE)"},
+    "a14": {"min": 2, "max": 4,     "label": "Rack Storage (HE)"},
+    "a15": {"min": 1, "max": 2,     "label": "Rack Network (HE)"},
+    "b1":  {"min": 42, "max": 168,  "label": "Verfügbare Rack-Einheiten (HE)"},
+    "a21": {"min": 1, "max": 2,     "label": "Strom Blade (kW)"},
+    "a22": {"min": 1, "max": 3,     "label": "Strom Tower (kW)"},
+    "a23": {"min": 1, "max": 2,     "label": "Strom Rack-Server (kW)"},
+    "a24": {"min": 1, "max": 2,     "label": "Strom Storage (kW)"},
+    "a25": {"min": 1, "max": 2,     "label": "Strom Network (kW)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Strombudget (kW)"},
+    "a31": {"min": 1, "max": 2,     "label": "Kühlung Blade (kW)"},
+    "a32": {"min": 1, "max": 3,     "label": "Kühlung Tower (kW)"},
+    "a33": {"min": 1, "max": 2,     "label": "Kühlung Rack-Server (kW)"},
+    "a34": {"min": 1, "max": 2,     "label": "Kühlung Storage (kW)"},
+    "a35": {"min": 1, "max": 2,     "label": "Kühlung Network (kW)"},
+    "b3":  {"min": 15, "max": 60,   "label": "Kühlkapazität (kW)"},
+    "a41": {"min": 2, "max": 4,     "label": "Ports Blade"},
+    "a42": {"min": 2, "max": 4,     "label": "Ports Tower"},
+    "a43": {"min": 2, "max": 4,     "label": "Ports Rack-Server"},
+    "a44": {"min": 4, "max": 8,     "label": "Ports Storage"},
+    "a45": {"min": 8, "max": 24,    "label": "Ports Network"},
+    "b4":  {"min": 100, "max": 500, "label": "Verfügbare Ports"}
+  },
+  "titel": "Rechenzentrum – Fünf Hardwaretypen",
+  "beschreibung": "Ein Rechenzentrum plant den optimalen Mix aus fünf Hardwaretypen. Blade-Server liefern {c1} Tsd. IOPS, Tower-Server liefern {c2} Tsd. IOPS, Rack-Server liefern {c3} Tsd. IOPS, Storage-Nodes liefern {c4} TB pro Stunde und Network-Nodes liefern {c5} Gbit/s. Der Rack-Bedarf beträgt {a11} HE für Blade, {a12} HE für Tower, {a13} HE für Rack-Server, {a14} HE für Storage und {a15} HE für Network. Es stehen {b1} HE zur Verfügung. Der Stromverbrauch beträgt {a21} kW für Blade, {a22} kW für Tower, {a23} kW für Rack-Server, {a24} kW für Storage und {a25} kW für Network. Das Strombudget beträgt {b2} kW. Die Kühlleistung beträgt {a31} kW für Blade, {a32} kW für Tower, {a33} kW für Rack-Server, {a34} kW für Storage und {a35} kW für Network. Die Kühlkapazität beträgt {b3} kW. Der Portbedarf beträgt {a41} für Blade, {a42} für Tower, {a43} für Rack-Server, {a44} für Storage und {a45} für Network. Es stehen {b4} Ports zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung aller vier Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Blade-Server liefern {c1} Tsd. IOPS", "bedeutung": "{c1} × x₁"},
+      {"text": "Tower-Server liefern {c2} Tsd. IOPS", "bedeutung": "{c2} × x₂"},
+      {"text": "Rack-Server liefern {c3} Tsd. IOPS", "bedeutung": "{c3} × x₃"},
+      {"text": "Storage-Nodes liefern {c4} TB pro Stunde", "bedeutung": "{c4} × x₄"},
+      {"text": "Network-Nodes liefern {c5} Gbit/s", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} HE für Blade, {a12} HE für Tower, {a13} HE für Rack-Server, {a14} HE für Storage und {a15} HE für Network", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} HE zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kW für Blade, {a22} kW für Tower, {a23} kW für Rack-Server, {a24} kW für Storage und {a25} kW für Network", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} kW", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kW für Blade, {a32} kW für Tower, {a33} kW für Rack-Server, {a34} kW für Storage und {a35} kW für Network", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} kW", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} für Blade, {a42} für Tower, {a43} für Rack-Server, {a44} für Storage und {a45} für Network", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Ports zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

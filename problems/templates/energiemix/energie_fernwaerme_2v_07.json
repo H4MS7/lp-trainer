@@ -1,0 +1,43 @@
+{
+  "id": "energie_fernwaerme_2v_07",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Fernwärme aus Müllverbrennung", "x2 = MWh Fernwärme aus Erdgas"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmelieferung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Emissionen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 25, "max": 65, "label": "Kosten Müllverbrennung (€/MWh)"},
+    "c2":  {"min": 35, "max": 85, "label": "Kosten Erdgas (€/MWh)"},
+    "a11": {"min": 2, "max": 5, "label": "Wärme Müllverbrennung (MW/MWh)"},
+    "a12": {"min": 3, "max": 7, "label": "Wärme Erdgas (MW/MWh)"},
+    "b1":  {"min": 60, "max": 220, "label": "Mindestwärmelieferung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Emissionen Müllverbrennung (t/MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Emissionen Erdgas (t/MWh)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale Emissionen (t)"}
+  },
+  "titel": "Fernwärme – Müllverbrennung und Erdgas",
+  "beschreibung": "Ein Fernwärmeversorger plant den Wärmemix aus Müllverbrennung und Erdgas. Müllverbrennung kostet {c1} € pro MWh, Erdgas kostet {c2} € pro MWh. Müllverbrennung liefert {a11} MW Wärme pro MWh, Erdgas liefert {a12} MW Wärme pro MWh. Mindestens {b1} MW Wärme müssen geliefert werden. Die Emissionen betragen {a21} Tonnen pro MWh Müllverbrennung und {a22} Tonnen pro MWh Erdgas. Maximal {b2} Tonnen Emissionen sind zulässig.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung der Mindestwärmelieferung und Emissionsgrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Müllverbrennung kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Erdgas kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Wärme pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Wärme pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Wärme müssen geliefert werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen pro MWh Müllverbrennung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen pro MWh Erdgas", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen Emissionen sind zulässig", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "misch_seife_2v_14",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Öl A (Liter)", "x2 = Menge Öl B (Liter)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Schaumbildung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Hautreizung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Öl A (EUR/Liter)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Öl B (EUR/Liter)"},
+    "a11": {"min": 2, "max": 8,   "label": "Schaum durch A (Einheiten/Liter)"},
+    "a12": {"min": 3, "max": 9,   "label": "Schaum durch B (Einheiten/Liter)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Schaumbildung (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Reizung durch A (Einheiten/Liter)"},
+    "a22": {"min": 2, "max": 7,   "label": "Reizung durch B (Einheiten/Liter)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Hautreizung (Einheiten)"}
+  },
+  "titel": "Seifenmischung – Schaum und Hautverträglichkeit",
+  "beschreibung": "Ein Seifenhersteller mischt eine Seife aus zwei Ölen. Öl A kostet {c1} EUR pro Liter, Öl B kostet {c2} EUR pro Liter. Öl A erzeugt {a11} Schaum-Einheiten pro Liter, Öl B erzeugt {a12} Schaum-Einheiten pro Liter. Die Mischung muss mindestens {b1} Schaum-Einheiten erreichen. Öl A verursacht {a21} Reizungs-Einheiten pro Liter, Öl B verursacht {a22} Reizungs-Einheiten pro Liter. Die Hautreizung darf höchstens {b2} Reizungs-Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Schaumbildung und begrenzter Hautreizung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Öl A kostet {c1} EUR pro Liter", "bedeutung": "{c1} × x₁"},
+      {"text": "Öl B kostet {c2} EUR pro Liter", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Schaum-Einheiten pro Liter, Öl B erzeugt {a12} Schaum-Einheiten pro Liter. Die Mischung muss mindestens {b1} Schaum-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Reizungs-Einheiten pro Liter, Öl B verursacht {a22} Reizungs-Einheiten pro Liter. Die Hautreizung darf höchstens {b2} Reizungs-Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

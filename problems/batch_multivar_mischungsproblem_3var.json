@@ -1,0 +1,186 @@
+[
+  {
+    "titel": "Futtermischung mit drei Getreidesorten",
+    "beschreibung": "Ein Agrarbetrieb stellt eine Futtermischung aus drei Getreidesorten her: Hafer, Gerste und Roggen. Jede Getreideart hat unterschiedliche Nährstoffprofile und Preise, die bei der Zusammenstellung berücksichtigt werden müssen. Die Kosten betragen 26 Euro pro Einheit Hafer, 10 Euro pro Einheit Gerste und 35 Euro pro Einheit Roggen. Die Mischung muss bestimmte Nährstoffanforderungen erfüllen, um als Qualitätsfutter zugelassen zu werden. Für den Mineralstoffgehalt gilt eine Mindestanforderung von 79 Punkten, wobei eine Einheit Hafer 7 Punkte, eine Einheit Gerste 4 Punkte und eine Einheit Roggen 13 Punkte liefert. Der Feuchtigkeitsgehalt darf höchstens 426 Einheiten betragen, wobei eine Einheit Hafer 13 Einheiten, eine Einheit Gerste 7 Einheiten und eine Einheit Roggen 3 Einheiten Feuchtigkeit beisteuert. Außerdem ist die Gesamtbelastung durch Rohfaser auf maximal 362 Einheiten begrenzt, wobei eine Einheit Hafer 15 Einheiten, eine Einheit Gerste 10 Einheiten und eine Einheit Roggen 7 Einheiten Rohfaser enthält. Eine zu hohe Rohfaserbelastung würde die Verdaulichkeit des Futters beeinträchtigen. Der Agrarbetrieb möchte die Gesamtkosten der Futtermischung minimieren und sucht die optimale Zusammensetzung der drei Getreidesorten.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Einheiten Hafer",
+      "x2 = Einheiten Gerste",
+      "x3 = Einheiten Roggen"
+    ],
+    "zielfunktion": "Z = 26x1 + 10x2 + 35x3 (min)",
+    "nebenbedingungen": [
+      "7x1 + 4x2 + 13x3 ≥ 79 (Mineralstoffgehalt)",
+      "13x1 + 7x2 + 3x3 ≤ 426 (Feuchtigkeitsgehalt)",
+      "15x1 + 10x2 + 7x3 ≤ 362 (Rohfaserbelastung)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Mindestanforderung an Mineralstoffe ergibt eine ≥-Nebenbedingung. Die Obergrenzen für Feuchtigkeit und Rohfaser ergeben jeweils eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "26 Euro pro Einheit Hafer", "bedeutung": "26 × x₁"},
+        {"text": "10 Euro pro Einheit Gerste", "bedeutung": "10 × x₂"},
+        {"text": "35 Euro pro Einheit Roggen", "bedeutung": "35 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "eine Einheit Hafer 7 Punkte", "bedeutung": "7x₁"},
+          {"text": "eine Einheit Gerste 4 Punkte", "bedeutung": "+ 4x₂"},
+          {"text": "eine Einheit Roggen 13 Punkte", "bedeutung": "+ 13x₃"},
+          {"text": "Mindestanforderung von 79 Punkten", "bedeutung": "≥ 79"}
+        ],
+        [
+          {"text": "eine Einheit Hafer 13 Einheiten", "bedeutung": "13x₁"},
+          {"text": "eine Einheit Gerste 7 Einheiten", "bedeutung": "+ 7x₂"},
+          {"text": "eine Einheit Roggen 3 Einheiten Feuchtigkeit", "bedeutung": "+ 3x₃"},
+          {"text": "höchstens 426 Einheiten", "bedeutung": "≤ 426"}
+        ],
+        [
+          {"text": "eine Einheit Hafer 15 Einheiten", "bedeutung": "15x₁"},
+          {"text": "eine Einheit Gerste 10 Einheiten", "bedeutung": "+ 10x₂"},
+          {"text": "eine Einheit Roggen 7 Einheiten Rohfaser", "bedeutung": "+ 7x₃"},
+          {"text": "maximal 362 Einheiten begrenzt", "bedeutung": "≤ 362"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonmischung mit drei Zuschlagstoffen",
+    "beschreibung": "Ein Betonwerk mischt drei Zuschlagstoffe: Zement, Sand und Kies. Die drei Komponenten unterscheiden sich erheblich in ihren Kosten und technischen Eigenschaften. Die Kosten betragen 28 Euro pro Tonne Zement, 1 Euro pro Tonne Sand und 47 Euro pro Tonne Kies. Die Mischung muss bestimmte Qualitätsanforderungen erfüllen, um den Bauvorschriften zu entsprechen. Für die Druckfestigkeit gilt eine Mindestanforderung von 63 Punkten, wobei eine Tonne Zement 14 Punkte, eine Tonne Sand 5 Punkte und eine Tonne Kies 5 Punkte zur Festigkeit beiträgt. Der Wasseranteil in der Mischung darf höchstens 245 Einheiten betragen: eine Tonne Zement bindet 8 Einheiten, eine Tonne Sand 14 Einheiten und eine Tonne Kies 8 Einheiten Wasser. Ein zu hoher Wasseranteil würde die Aushärtezeit verlängern und die Qualität mindern. Zudem ist die Gesamtbelastung durch Schadstoffe auf maximal 411 Einheiten begrenzt, wobei eine Tonne Zement 8 Einheiten, eine Tonne Sand 15 Einheiten und eine Tonne Kies 14 Einheiten Schadstoffe enthält. Das Betonwerk möchte die Gesamtkosten der Mischung minimieren und sucht die kostenoptimale Zusammensetzung.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Zement",
+      "x2 = Tonnen Sand",
+      "x3 = Tonnen Kies"
+    ],
+    "zielfunktion": "Z = 28x1 + x2 + 47x3 (min)",
+    "nebenbedingungen": [
+      "14x1 + 5x2 + 5x3 ≥ 63 (Druckfestigkeit)",
+      "8x1 + 14x2 + 8x3 ≤ 245 (Wasseranteil)",
+      "8x1 + 15x2 + 14x3 ≤ 411 (Schadstoffbelastung)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Mindestanforderung an die Druckfestigkeit ergibt eine ≥-Nebenbedingung. Die Obergrenzen für Wasseranteil und Schadstoffbelastung ergeben jeweils eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "28 Euro pro Tonne Zement", "bedeutung": "28 × x₁"},
+        {"text": "1 Euro pro Tonne Sand", "bedeutung": "1 × x₂"},
+        {"text": "47 Euro pro Tonne Kies", "bedeutung": "47 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "eine Tonne Zement 14 Punkte", "bedeutung": "14x₁"},
+          {"text": "eine Tonne Sand 5 Punkte", "bedeutung": "+ 5x₂"},
+          {"text": "eine Tonne Kies 5 Punkte", "bedeutung": "+ 5x₃"},
+          {"text": "Mindestanforderung von 63 Punkten", "bedeutung": "≥ 63"}
+        ],
+        [
+          {"text": "eine Tonne Zement bindet 8 Einheiten", "bedeutung": "8x₁"},
+          {"text": "eine Tonne Sand 14 Einheiten", "bedeutung": "+ 14x₂"},
+          {"text": "eine Tonne Kies 8 Einheiten Wasser", "bedeutung": "+ 8x₃"},
+          {"text": "höchstens 245 Einheiten", "bedeutung": "≤ 245"}
+        ],
+        [
+          {"text": "eine Tonne Zement 8 Einheiten", "bedeutung": "8x₁"},
+          {"text": "eine Tonne Sand 15 Einheiten", "bedeutung": "+ 15x₂"},
+          {"text": "eine Tonne Kies 14 Einheiten Schadstoffe", "bedeutung": "+ 14x₃"},
+          {"text": "maximal 411 Einheiten begrenzt", "bedeutung": "≤ 411"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Legierung aus drei Metallen",
+    "beschreibung": "Eine Gießerei stellt eine Speziallegierung aus drei Metallen her: Aluminium, Kupfer und Zinn. Die Legierung wird für den Maschinenbau eingesetzt und muss strenge technische Vorgaben einhalten. Die Kosten betragen 2 Euro pro kg Aluminium, 44 Euro pro kg Kupfer und 15 Euro pro kg Zinn. Die Legierung muss bestimmte Qualitätskriterien erfüllen. Für die Zugfestigkeit gilt eine Mindestanforderung von 127 Punkten, wobei ein kg Aluminium 5 Punkte, ein kg Kupfer 13 Punkte und ein kg Zinn 6 Punkte zur Festigkeit beiträgt. Die Wärmeleitfähigkeit darf höchstens 339 Einheiten betragen: ein kg Aluminium liefert 6 Einheiten, ein kg Kupfer 3 Einheiten und ein kg Zinn 9 Einheiten Wärmeleitfähigkeit. Eine zu hohe Wärmeleitfähigkeit wäre für den vorgesehenen Einsatzzweck problematisch. Zudem ist die Korrosionsanfälligkeit auf maximal 282 Einheiten begrenzt, wobei ein kg Aluminium 11 Einheiten, ein kg Kupfer 6 Einheiten und ein kg Zinn 6 Einheiten zur Korrosionsanfälligkeit beiträgt. Die Gießerei möchte die Gesamtkosten der Legierung minimieren und sucht die günstigste Metallkombination.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = kg Aluminium",
+      "x2 = kg Kupfer",
+      "x3 = kg Zinn"
+    ],
+    "zielfunktion": "Z = 2x1 + 44x2 + 15x3 (min)",
+    "nebenbedingungen": [
+      "5x1 + 13x2 + 6x3 ≥ 127 (Zugfestigkeit)",
+      "6x1 + 3x2 + 9x3 ≤ 339 (Wärmeleitfähigkeit)",
+      "11x1 + 6x2 + 6x3 ≤ 282 (Korrosionsanfälligkeit)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Mindestanforderung an die Zugfestigkeit ergibt eine ≥-Nebenbedingung. Die Obergrenzen für Wärmeleitfähigkeit und Korrosionsanfälligkeit ergeben jeweils eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "2 Euro pro kg Aluminium", "bedeutung": "2 × x₁"},
+        {"text": "44 Euro pro kg Kupfer", "bedeutung": "44 × x₂"},
+        {"text": "15 Euro pro kg Zinn", "bedeutung": "15 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "ein kg Aluminium 5 Punkte", "bedeutung": "5x₁"},
+          {"text": "ein kg Kupfer 13 Punkte", "bedeutung": "+ 13x₂"},
+          {"text": "ein kg Zinn 6 Punkte", "bedeutung": "+ 6x₃"},
+          {"text": "Mindestanforderung von 127 Punkten", "bedeutung": "≥ 127"}
+        ],
+        [
+          {"text": "ein kg Aluminium liefert 6 Einheiten", "bedeutung": "6x₁"},
+          {"text": "ein kg Kupfer 3 Einheiten", "bedeutung": "+ 3x₂"},
+          {"text": "ein kg Zinn 9 Einheiten Wärmeleitfähigkeit", "bedeutung": "+ 9x₃"},
+          {"text": "höchstens 339 Einheiten", "bedeutung": "≤ 339"}
+        ],
+        [
+          {"text": "ein kg Aluminium 11 Einheiten", "bedeutung": "11x₁"},
+          {"text": "ein kg Kupfer 6 Einheiten", "bedeutung": "+ 6x₂"},
+          {"text": "ein kg Zinn 6 Einheiten zur Korrosionsanfälligkeit", "bedeutung": "+ 6x₃"},
+          {"text": "maximal 282 Einheiten begrenzt", "bedeutung": "≤ 282"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Düngemittelmischung mit drei Komponenten",
+    "beschreibung": "Ein Gartenbauunternehmen mischt Dünger aus drei Komponenten: Stickstoffdünger, Kaliumdünger und Phosphordünger. Die verschiedenen Düngertypen haben unterschiedliche Nährstoffkonzentrationen und Auswirkungen auf den Boden. Die Kosten betragen 24 Euro pro Sack Stickstoffdünger, 24 Euro pro Sack Kaliumdünger und 43 Euro pro Sack Phosphordünger. Die Mischung muss bestimmte Nährstoffanforderungen erfüllen, damit ein ausgewogenes Pflanzenwachstum gewährleistet wird. Für den Gesamtnährstoffgehalt gilt eine Mindestanforderung von 422 Punkten, wobei ein Sack Stickstoffdünger 5 Punkte, ein Sack Kaliumdünger 1 Punkt und ein Sack Phosphordünger 5 Punkte zum Nährstoffgehalt beiträgt. Der Salzgehalt darf höchstens 318 Einheiten betragen: ein Sack Stickstoffdünger liefert 2 Einheiten, ein Sack Kaliumdünger 9 Einheiten und ein Sack Phosphordünger 9 Einheiten Salzgehalt. Ein zu hoher Salzgehalt würde die Pflanzenwurzeln schädigen. Außerdem ist der pH-Belastungswert auf maximal 365 Einheiten begrenzt, wobei ein Sack Stickstoffdünger 3 Einheiten, ein Sack Kaliumdünger 5 Einheiten und ein Sack Phosphordünger 10 Einheiten zum pH-Belastungswert beiträgt. Das Unternehmen möchte die Gesamtkosten der Düngemittelmischung minimieren und gleichzeitig alle Qualitätsvorgaben einhalten.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Säcke Stickstoffdünger",
+      "x2 = Säcke Kaliumdünger",
+      "x3 = Säcke Phosphordünger"
+    ],
+    "zielfunktion": "Z = 24x1 + 24x2 + 43x3 (min)",
+    "nebenbedingungen": [
+      "5x1 + x2 + 5x3 ≥ 422 (Gesamtnährstoffgehalt)",
+      "2x1 + 9x2 + 9x3 ≤ 318 (Salzgehalt)",
+      "3x1 + 5x2 + 10x3 ≤ 365 (pH-Belastungswert)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Mindestanforderung an den Gesamtnährstoffgehalt ergibt eine ≥-Nebenbedingung. Die Obergrenzen für Salzgehalt und pH-Belastung ergeben jeweils eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "24 Euro pro Sack Stickstoffdünger", "bedeutung": "24 × x₁"},
+        {"text": "24 Euro pro Sack Kaliumdünger", "bedeutung": "24 × x₂"},
+        {"text": "43 Euro pro Sack Phosphordünger", "bedeutung": "43 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "ein Sack Stickstoffdünger 5 Punkte", "bedeutung": "5x₁"},
+          {"text": "ein Sack Kaliumdünger 1 Punkt", "bedeutung": "+ x₂"},
+          {"text": "ein Sack Phosphordünger 5 Punkte", "bedeutung": "+ 5x₃"},
+          {"text": "Mindestanforderung von 422 Punkten", "bedeutung": "≥ 422"}
+        ],
+        [
+          {"text": "ein Sack Stickstoffdünger liefert 2 Einheiten", "bedeutung": "2x₁"},
+          {"text": "ein Sack Kaliumdünger 9 Einheiten", "bedeutung": "+ 9x₂"},
+          {"text": "ein Sack Phosphordünger 9 Einheiten Salzgehalt", "bedeutung": "+ 9x₃"},
+          {"text": "höchstens 318 Einheiten", "bedeutung": "≤ 318"}
+        ],
+        [
+          {"text": "ein Sack Stickstoffdünger 3 Einheiten", "bedeutung": "3x₁"},
+          {"text": "ein Sack Kaliumdünger 5 Einheiten", "bedeutung": "+ 5x₂"},
+          {"text": "ein Sack Phosphordünger 10 Einheiten", "bedeutung": "+ 10x₃"},
+          {"text": "maximal 365 Einheiten begrenzt", "bedeutung": "≤ 365"}
+        ]
+      ]
+    }
+  }
+]

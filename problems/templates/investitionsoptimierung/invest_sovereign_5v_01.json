@@ -1,0 +1,350 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "id": "invest_sovereign_5v_01",
+  "titel": "Staatsfonds – Aktien, Anleihen, Immobilien, Rohstoffe und Infrastruktur",
+  "variablen": [
+    "x1 = Betrag in Aktien (Tsd. EUR)",
+    "x2 = Betrag in Anleihen (Tsd. EUR)",
+    "x3 = Betrag in Immobilien (Tsd. EUR)",
+    "x4 = Betrag in Rohstoffe (Tsd. EUR)",
+    "x5 = Betrag in Infrastruktur (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Fondsvolumen",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Gesamtrisiko",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Illiquiditaet",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34",
+        "a35"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Verwaltungsaufwand",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44",
+        "a45"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 10,
+      "label": "Rendite Aktien (%)"
+    },
+    "c2": {
+      "min": 2,
+      "max": 5,
+      "label": "Rendite Anleihen (%)"
+    },
+    "c3": {
+      "min": 4,
+      "max": 8,
+      "label": "Rendite Immobilien (%)"
+    },
+    "c4": {
+      "min": 3,
+      "max": 7,
+      "label": "Rendite Rohstoffe (%)"
+    },
+    "c5": {
+      "min": 4,
+      "max": 9,
+      "label": "Rendite Infrastruktur (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapital Aktien"
+    },
+    "a12": {
+      "min": 1,
+      "max": 2,
+      "label": "Kapital Anleihen"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapital Immobilien"
+    },
+    "a14": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapital Rohstoffe"
+    },
+    "a15": {
+      "min": 2,
+      "max": 4,
+      "label": "Kapital Infrastruktur"
+    },
+    "b1": {
+      "min": 150,
+      "max": 500,
+      "label": "Fondsvolumen (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 4,
+      "max": 9,
+      "label": "Risiko Aktien"
+    },
+    "a22": {
+      "min": 1,
+      "max": 3,
+      "label": "Risiko Anleihen"
+    },
+    "a23": {
+      "min": 2,
+      "max": 5,
+      "label": "Risiko Immobilien"
+    },
+    "a24": {
+      "min": 3,
+      "max": 8,
+      "label": "Risiko Rohstoffe"
+    },
+    "a25": {
+      "min": 2,
+      "max": 4,
+      "label": "Risiko Infrastruktur"
+    },
+    "b2": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Gesamtrisiko"
+    },
+    "a31": {
+      "min": 2,
+      "max": 4,
+      "label": "Illiquiditaet Aktien"
+    },
+    "a32": {
+      "min": 1,
+      "max": 2,
+      "label": "Illiquiditaet Anleihen"
+    },
+    "a33": {
+      "min": 5,
+      "max": 10,
+      "label": "Illiquiditaet Immobilien"
+    },
+    "a34": {
+      "min": 2,
+      "max": 5,
+      "label": "Illiquiditaet Rohstoffe"
+    },
+    "a35": {
+      "min": 6,
+      "max": 12,
+      "label": "Illiquiditaet Infrastruktur"
+    },
+    "b3": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Illiquiditaet"
+    },
+    "a41": {
+      "min": 1,
+      "max": 3,
+      "label": "Verwaltung Aktien"
+    },
+    "a42": {
+      "min": 1,
+      "max": 2,
+      "label": "Verwaltung Anleihen"
+    },
+    "a43": {
+      "min": 2,
+      "max": 5,
+      "label": "Verwaltung Immobilien"
+    },
+    "a44": {
+      "min": 1,
+      "max": 3,
+      "label": "Verwaltung Rohstoffe"
+    },
+    "a45": {
+      "min": 3,
+      "max": 6,
+      "label": "Verwaltung Infrastruktur"
+    },
+    "b4": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Verwaltungseinheiten"
+    }
+  },
+  "beschreibung": "Ein Staatsfonds verteilt sein Kapital auf fuenf Anlageklassen. Aktien bringen {c1} % Rendite, Anleihen {c2} %, Immobilien {c3} %, Rohstoffe {c4} % und Infrastruktur {c5} %. Die Kapitalbindung betraegt {a11} Einheiten fuer Aktien, {a12} fuer Anleihen, {a13} fuer Immobilien, {a14} fuer Rohstoffe und {a15} fuer Infrastruktur bei einem Fondsvolumen von {b1} Tausend Euro. Das Risiko liegt bei {a21} Punkten fuer Aktien, {a22} fuer Anleihen, {a23} fuer Immobilien, {a24} fuer Rohstoffe und {a25} fuer Infrastruktur bei maximal {b2} Risikopunkten. Die Illiquiditaet betraegt {a31} Einheiten fuer Aktien, {a32} fuer Anleihen, {a33} fuer Immobilien, {a34} fuer Rohstoffe und {a35} fuer Infrastruktur bei maximal {b3} Illiquiditaetseinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Aktien, {a42} fuer Anleihen, {a43} fuer Immobilien, {a44} fuer Rohstoffe und {a45} fuer Infrastruktur bei maximal {b4} Verwaltungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Risiko, Liquiditaet und Verwaltung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Aktien bringen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Anleihen {c2} %",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Immobilien {c3} %",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Rohstoffe {c4} %",
+        "bedeutung": "{c4} × x₄"
+      },
+      {
+        "text": "Infrastruktur {c5} %",
+        "bedeutung": "{c5} × x₅"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Aktien",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Anleihen",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Immobilien",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Rohstoffe",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{a15} fuer Infrastruktur",
+          "bedeutung": "+ {a15}x₅"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkten fuer Aktien",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Anleihen",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Immobilien",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Rohstoffe",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{a25} fuer Infrastruktur",
+          "bedeutung": "+ {a25}x₅"
+        },
+        {
+          "text": "{b2} Risikopunkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Aktien",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Anleihen",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Immobilien",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Rohstoffe",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{a35} fuer Infrastruktur",
+          "bedeutung": "+ {a35}x₅"
+        },
+        {
+          "text": "{b3} Illiquiditaetseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Aktien",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Anleihen",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Immobilien",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Rohstoffe",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{a45} fuer Infrastruktur",
+          "bedeutung": "+ {a45}x₅"
+        },
+        {
+          "text": "{b4} Verwaltungseinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

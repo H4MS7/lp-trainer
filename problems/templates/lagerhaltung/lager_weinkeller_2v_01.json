@@ -1,0 +1,43 @@
+{
+  "id": "lager_weinkeller_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Rotwein (Kisten)", "x2 = Bestellmenge Weißwein (Kisten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand Sortiment", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kellerkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Lagerkosten Rotwein (€/Kiste)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Lagerkosten Weißwein (€/Kiste)"},
+    "a11": {"min": 6, "max": 12,  "label": "Flaschen pro Kiste Rotwein"},
+    "a12": {"min": 6, "max": 12,  "label": "Flaschen pro Kiste Weißwein"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindestbestand (Flaschen)"},
+    "a21": {"min": 1, "max": 3,   "label": "Kellerplatz Rotwein (Fächer)"},
+    "a22": {"min": 1, "max": 3,   "label": "Kellerplatz Weißwein (Fächer)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Kellerkapazität (Fächer)"}
+  },
+  "titel": "Weinkeller – Sortimentslagerung",
+  "beschreibung": "Ein Weinhandel lagert Rotwein und Weißwein in einem klimatisierten Keller. Die Lagerkosten betragen {c1} € pro Kiste Rotwein und {c2} € pro Kiste Weißwein. Jede Kiste Rotwein enthält {a11} Flaschen, jede Kiste Weißwein enthält {a12} Flaschen. Der Mindestbestand umfasst {b1} Flaschen. Rotwein belegt {a21} Kellerfächer pro Kiste, Weißwein belegt {a22} Kellerfächer pro Kiste. Die Kellerkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands und der Kellerkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Kiste Rotwein", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Kiste Weißwein", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Flaschen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Flaschen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Flaschen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kellerfächer pro Kiste", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Kellerfächer pro Kiste", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

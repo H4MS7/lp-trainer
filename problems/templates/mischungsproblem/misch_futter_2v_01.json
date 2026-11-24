@@ -1,0 +1,39 @@
+{
+  "id": "misch_futter_2v_01",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Futtersorte A (kg)", "x2 = Menge Futtersorte B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Fettgehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Sorte A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Sorte B (EUR/kg)"},
+    "a11": {"min": 2, "max": 8,   "label": "Protein in A (g/kg)"},
+    "a12": {"min": 1, "max": 6,   "label": "Protein in B (g/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 1, "max": 5,   "label": "Fett in A (g/kg)"},
+    "a22": {"min": 2, "max": 7,   "label": "Fett in B (g/kg)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Fettgehalt (g)"}
+  },
+  "titel": "Futtermischung – Protein und Fett",
+  "beschreibung": "Ein Landwirt stellt eine Futtermischung aus zwei Sorten her. Sorte A kostet {c1} EUR pro kg, Sorte B kostet {c2} EUR pro kg. Sorte A enthält {a11} g Protein pro kg, Sorte B enthält {a12} g Protein pro kg. Mindestens {b1} g Protein müssen enthalten sein. Der Fettgehalt beträgt {a21} g pro kg bei Sorte A und {a22} g pro kg bei Sorte B. Der Fettgehalt darf höchstens {b2} g betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung der Protein-Mindestanforderung und der Fett-Obergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sorte A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Sorte B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein pro kg, Sorte B enthält {a12} g Protein pro kg. Mindestens {b1} g Protein müssen enthalten sein", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g pro kg bei Sorte A und {a22} g pro kg bei Sorte B. Der Fettgehalt darf höchstens {b2} g betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

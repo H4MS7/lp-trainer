@@ -1,0 +1,68 @@
+{
+  "id": "flaeche_olive_mandel_feige_wein_4v_29",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Hektar Olivenbäume", "x2 = Hektar Mandelbäume", "x3 = Hektar Feigenbäume", "x4 = Hektar Weinreben"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Bewässerung", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Erntearbeiter", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Oliven (Tsd. €/ha)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Ertrag Mandeln (Tsd. €/ha)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Ertrag Feigen (Tsd. €/ha)"},
+    "c4":  {"min": 6, "max": 18,  "label": "Ertrag Wein (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Oliven (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Mandeln (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Feigen (ha/ha)"},
+    "a14": {"min": 1, "max": 2,   "label": "Fläche Wein (ha/ha)"},
+    "b1":  {"min": 20, "max": 120, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 6,   "label": "Bewässerung Oliven (m³/ha)"},
+    "a22": {"min": 3, "max": 7,   "label": "Bewässerung Mandeln (m³/ha)"},
+    "a23": {"min": 2, "max": 5,   "label": "Bewässerung Feigen (m³/ha)"},
+    "a24": {"min": 4, "max": 9,   "label": "Bewässerung Wein (m³/ha)"},
+    "b2":  {"min": 50, "max": 300, "label": "Bewässerungskapazität (m³)"},
+    "a31": {"min": 2, "max": 5,   "label": "Erntearbeiter Oliven (Personen/ha)"},
+    "a32": {"min": 3, "max": 6,   "label": "Erntearbeiter Mandeln (Personen/ha)"},
+    "a33": {"min": 2, "max": 4,   "label": "Erntearbeiter Feigen (Personen/ha)"},
+    "a34": {"min": 4, "max": 8,   "label": "Erntearbeiter Wein (Personen/ha)"},
+    "b3":  {"min": 20, "max": 100, "label": "Verfügbare Erntearbeiter (Personen)"}
+  },
+  "titel": "Mittelmeer-Plantage – Oliven, Mandeln, Feigen und Wein",
+  "beschreibung": "Ein Plantagenbesitzer baut Oliven, Mandeln, Feigen und Weinreben an. Oliven bringen {c1} Tsd. € pro ha, Mandeln bringen {c2} Tsd. € pro ha, Feigen bringen {c3} Tsd. € pro ha, Wein bringt {c4} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Oliven, {a12} ha pro ha Mandeln, {a13} ha pro ha Feigen und {a14} ha pro ha Wein. Die Gesamtfläche beträgt {b1} Hektar. Die Bewässerung erfordert {a21} m³ pro ha Oliven, {a22} m³ pro ha Mandeln, {a23} m³ pro ha Feigen und {a24} m³ pro ha Wein. Die Bewässerungskapazität beträgt {b2} m³. Die Ernte benötigt {a31} Personen pro ha Oliven, {a32} Personen pro ha Mandeln, {a33} Personen pro ha Feigen und {a34} Personen pro ha Wein. Insgesamt stehen {b3} Erntearbeiter zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Bewässerung und Arbeitskräften.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Oliven bringen {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Mandeln bringen {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Feigen bringen {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Wein bringt {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Oliven", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Mandeln", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Feigen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Wein", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Oliven", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Mandeln", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Feigen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m³ pro ha Wein", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Personen pro ha Oliven", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Personen pro ha Mandeln", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Personen pro ha Feigen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Personen pro ha Wein", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Erntearbeiter zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

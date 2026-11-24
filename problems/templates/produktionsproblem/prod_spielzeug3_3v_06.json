@@ -1,0 +1,60 @@
+{
+  "id": "prod_spielzeug3_3v_06",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Puppen", "x2 = Anzahl Baukaesten", "x3 = Anzahl Brettspiele"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Kunststoff", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Bemalungszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Verpackungszeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 18,    "label": "Gewinn/Puppe (€)"},
+    "c2":  {"min": 8, "max": 25,    "label": "Gewinn/Baukasten (€)"},
+    "c3":  {"min": 6, "max": 20,    "label": "Gewinn/Brettspiel (€)"},
+    "a11": {"min": 1, "max": 3,     "label": "Kunststoff/Puppe (kg)"},
+    "a12": {"min": 2, "max": 5,     "label": "Kunststoff/Baukasten (kg)"},
+    "a13": {"min": 1, "max": 2,     "label": "Kunststoff/Brettspiel (kg)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Kunststoffvorrat (kg)"},
+    "a21": {"min": 2, "max": 6,     "label": "Bemalungszeit/Puppe (min)"},
+    "a22": {"min": 1, "max": 3,     "label": "Bemalungszeit/Baukasten (min)"},
+    "a23": {"min": 3, "max": 8,     "label": "Bemalungszeit/Brettspiel (min)"},
+    "b2":  {"min": 80, "max": 300,  "label": "Bemalungsminuten"},
+    "a31": {"min": 1, "max": 3,     "label": "Verpackungszeit/Puppe (min)"},
+    "a32": {"min": 2, "max": 5,     "label": "Verpackungszeit/Baukasten (min)"},
+    "a33": {"min": 1, "max": 4,     "label": "Verpackungszeit/Brettspiel (min)"},
+    "b3":  {"min": 60, "max": 240,  "label": "Verpackungsminuten"}
+  },
+  "titel": "Spielzeughersteller – Puppen, Baukaesten und Brettspiele",
+  "beschreibung": "Ein Spielzeughersteller produziert Puppen, Baukaesten und Brettspiele. Jede Puppe bringt {c1} Euro Gewinn, jeder Baukasten {c2} Euro und jedes Brettspiel {c3} Euro. Eine Puppe benoetigt {a11} kg Kunststoff, ein Baukasten {a12} kg und ein Brettspiel {a13} kg. Der Kunststoffvorrat betraegt {b1} kg. Die Bemalung einer Puppe dauert {a21} Minuten, eines Baukastens {a22} Minuten und eines Brettspiels {a23} Minuten. Insgesamt stehen {b2} Bemalungsminuten bereit. Die Verpackung benoetigt {a31} Minuten pro Puppe, {a32} Minuten pro Baukasten und {a33} Minuten pro Brettspiel bei einer Kapazitaet von {b3} Minuten.",
+  "hinweis": "Drei Produkte mit Beschraenkungen bei Kunststoff, Bemalung und Verpackung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Puppe bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Baukasten {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Brettspiel {c3} Euro", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Puppe benoetigt {a11} kg Kunststoff", "bedeutung": "{a11}x₁"},
+        {"text": "Baukasten {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "Brettspiel {a13} kg", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Puppe dauert {a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "Baukastens {a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "Brettspiels {a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Bemalungsminuten bereit", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Minuten pro Puppe", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Minuten pro Baukasten", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Minuten pro Brettspiel", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Minuten", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

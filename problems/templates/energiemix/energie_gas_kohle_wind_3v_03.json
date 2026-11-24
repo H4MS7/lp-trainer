@@ -1,0 +1,54 @@
+{
+  "id": "energie_gas_kohle_wind_3v_03",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Gaskraftwerk", "x2 = MWh Kohlekraftwerk", "x3 = MWh Windkraft"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestanteil erneuerbar", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 35, "max": 80, "label": "Kosten Gas (€/MWh)"},
+    "c2":  {"min": 20, "max": 50, "label": "Kosten Kohle (€/MWh)"},
+    "c3":  {"min": 30, "max": 75, "label": "Kosten Wind (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Leistung Gas (MW/MWh)"},
+    "a12": {"min": 3, "max": 8, "label": "Leistung Kohle (MW/MWh)"},
+    "a13": {"min": 2, "max": 5, "label": "Leistung Wind (MW/MWh)"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 5, "label": "CO2 Gas (t/MWh)"},
+    "a22": {"min": 4, "max": 9, "label": "CO2 Kohle (t/MWh)"},
+    "a23": {"min": 1, "max": 2, "label": "CO2 Wind (t/MWh)"},
+    "b2":  {"min": 60, "max": 250, "label": "Maximale CO2-Emission (t)"},
+    "a31": {"min": 1, "max": 2, "label": "Erneuerbar Gas (MW/MWh)"},
+    "a32": {"min": 1, "max": 1, "label": "Erneuerbar Kohle (MW/MWh)"},
+    "a33": {"min": 3, "max": 7, "label": "Erneuerbar Wind (MW/MWh)"},
+    "b3":  {"min": 20, "max": 80, "label": "Mindestanteil erneuerbar (MW)"}
+  },
+  "titel": "Energiemix – Gas, Kohle und Wind",
+  "beschreibung": "Ein Stromversorger plant den Energiemix aus Gas-, Kohle- und Windkraft. Gas kostet {c1} € pro MWh, Kohle kostet {c2} € pro MWh und Wind kostet {c3} € pro MWh. Gas liefert {a11} MW pro MWh, Kohle liefert {a12} MW pro MWh und Wind liefert {a13} MW pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die CO2-Emission beträgt {a21} t pro MWh Gas, {a22} t pro MWh Kohle und {a23} t pro MWh Wind. Maximal {b2} Tonnen CO2 sind zulässig. Der Beitrag zu erneuerbarer Energie beträgt {a31} MW pro MWh Gas, {a32} MW pro MWh Kohle und {a33} MW pro MWh Wind. Mindestens {b3} MW erneuerbare Leistung werden benötigt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestleistung, CO2-Grenze und Erneuerbaren-Quote.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Gas kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Kohle kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Wind kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW pro MWh, Kohle liefert {a12} MW pro MWh und Wind liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} t pro MWh Gas, {a22} t pro MWh Kohle und {a23} t pro MWh Wind", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MW pro MWh Gas, {a32} MW pro MWh Kohle und {a33} MW pro MWh Wind", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} MW erneuerbare Leistung werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

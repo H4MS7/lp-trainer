@@ -1,0 +1,51 @@
+{
+  "id": "misch_kompost_3v_08",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Kompost A (kg)", "x2 = Menge Kompost B (kg)", "x3 = Menge Kompost C (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Humusgehalt", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Kaliumgehalt", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Schwermetalle", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 6,   "label": "Kosten Kompost A (EUR/kg)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Kompost B (EUR/kg)"},
+    "c3":  {"min": 1, "max": 5,   "label": "Kosten Kompost C (EUR/kg)"},
+    "a11": {"min": 2, "max": 8,   "label": "Humus in A (g/kg)"},
+    "a12": {"min": 3, "max": 10,  "label": "Humus in B (g/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Humus in C (g/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Humusgehalt (g)"},
+    "a21": {"min": 1, "max": 5,   "label": "Kalium in A (mg/kg)"},
+    "a22": {"min": 2, "max": 7,   "label": "Kalium in B (mg/kg)"},
+    "a23": {"min": 3, "max": 9,   "label": "Kalium in C (mg/kg)"},
+    "b2":  {"min": 30, "max": 120, "label": "Mindest-Kalium (mg)"},
+    "a31": {"min": 1, "max": 4,   "label": "Schwermetalle in A (mg/kg)"},
+    "a32": {"min": 2, "max": 6,   "label": "Schwermetalle in B (mg/kg)"},
+    "a33": {"min": 1, "max": 5,   "label": "Schwermetalle in C (mg/kg)"},
+    "b3":  {"min": 20, "max": 80, "label": "Max. Schwermetalle (mg)"}
+  },
+  "titel": "Kompostmischung – Humus, Kalium und Schwermetalle",
+  "beschreibung": "Ein Kompostwerk mischt einen Kompost aus drei Ausgangsstoffen. Kompost A kostet {c1} EUR pro kg, Kompost B kostet {c2} EUR pro kg und Kompost C kostet {c3} EUR pro kg. Kompost A enthält {a11} g Humus pro kg, Kompost B enthält {a12} g und Kompost C enthält {a13} g pro kg. Es werden mindestens {b1} g Humus benötigt. Kompost A enthält {a21} mg Kalium pro kg, Kompost B enthält {a22} mg und Kompost C enthält {a23} mg pro kg. Es werden mindestens {b2} mg Kalium benötigt. Kompost A enthält {a31} mg Schwermetalle pro kg, Kompost B enthält {a32} mg und Kompost C enthält {a33} mg pro kg. Der Schwermetallgehalt darf höchstens {b3} mg betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Humus- und Kaliumgehalt sowie begrenzten Schwermetallen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kompost A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Kompost B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Kompost C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Humus pro kg, Kompost B enthält {a12} g und Kompost C enthält {a13} g pro kg. Es werden mindestens {b1} g Humus benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Kalium pro kg, Kompost B enthält {a22} mg und Kompost C enthält {a23} mg pro kg. Es werden mindestens {b2} mg Kalium benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Schwermetalle pro kg, Kompost B enthält {a32} mg und Kompost C enthält {a33} mg pro kg. Der Schwermetallgehalt darf höchstens {b3} mg betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

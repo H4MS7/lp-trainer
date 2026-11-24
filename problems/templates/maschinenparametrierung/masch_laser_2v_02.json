@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_laser_2v_02",
+  "titel": "Laserschneider – Leistung und Geschwindigkeit",
+  "variablen": [
+    "x1 = Laserleistung (Stufen)",
+    "x2 = Schnittgeschwindigkeit (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Kuehlung",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Gasverbrauch",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 11,
+      "label": "Schnittqualitaet Leistung"
+    },
+    "c2": {
+      "min": 3,
+      "max": 9,
+      "label": "Durchsatz Geschwindigkeit"
+    },
+    "a11": {
+      "min": 3,
+      "max": 10,
+      "label": "Kuehlbedarf Leistung"
+    },
+    "a12": {
+      "min": 1,
+      "max": 5,
+      "label": "Kuehlbedarf Geschwindigkeit"
+    },
+    "b1": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Kuehlkapazitaet"
+    },
+    "a21": {
+      "min": 2,
+      "max": 7,
+      "label": "Gas pro Leistungsstufe"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Gas pro Geschwindigkeitsstufe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Gasverbrauch"
+    }
+  },
+  "beschreibung": "Ein Laserschneider wird ueber Leistung und Geschwindigkeit eingestellt. Die Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei, die Geschwindigkeit {c2} Punkte zum Durchsatz. Der Kuehlbedarf liegt bei {a11} Einheiten pro Leistungsstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Kuehleinheiten. Der Gasverbrauch betraegt {a21} Einheiten pro Leistungsstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Gaseinheiten.",
+  "hinweis": "Maximiere den Gesamtoutput unter Beachtung von Kuehlung und Gasverbrauch.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Laserleistung traegt {c1} Punkte zur Schnittqualitaet bei",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Geschwindigkeit {c2} Punkte zum Durchsatz",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Leistungsstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Kuehleinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Leistungsstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Gaseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

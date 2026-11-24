@@ -1,0 +1,60 @@
+{
+  "id": "ress_schulung3_3v_03",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Teilnehmer Excel-Kurs", "x2 = Teilnehmer Kommunikationstraining", "x3 = Teilnehmer Projektmanagement"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Schulungsbudget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Raumkapazitaet", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Dozentenstunden", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Kompetenzgewinn/Teilnehmer Excel"},
+    "c2":  {"min": 4, "max": 12,    "label": "Kompetenzgewinn/Teilnehmer Kommunikation"},
+    "c3":  {"min": 5, "max": 15,    "label": "Kompetenzgewinn/Teilnehmer Projektmgmt"},
+    "a11": {"min": 1, "max": 3,     "label": "Kosten/Teilnehmer Excel (100 €)"},
+    "a12": {"min": 2, "max": 5,     "label": "Kosten/Teilnehmer Kommunikation (100 €)"},
+    "a13": {"min": 3, "max": 7,     "label": "Kosten/Teilnehmer Projektmgmt (100 €)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Schulungsbudget (100 €)"},
+    "a21": {"min": 1, "max": 1,     "label": "Platz/Teilnehmer Excel"},
+    "a22": {"min": 1, "max": 1,     "label": "Platz/Teilnehmer Kommunikation"},
+    "a23": {"min": 1, "max": 1,     "label": "Platz/Teilnehmer Projektmgmt"},
+    "b2":  {"min": 10, "max": 40,   "label": "Raumplaetze gesamt"},
+    "a31": {"min": 1, "max": 3,     "label": "Dozentenstunden/Teilnehmer Excel"},
+    "a32": {"min": 2, "max": 4,     "label": "Dozentenstunden/Teilnehmer Kommunikation"},
+    "a33": {"min": 2, "max": 5,     "label": "Dozentenstunden/Teilnehmer Projektmgmt"},
+    "b3":  {"min": 20, "max": 80,   "label": "Dozentenstunden gesamt"}
+  },
+  "titel": "Schulungsprogramm – Excel, Kommunikation und Projektmanagement",
+  "beschreibung": "Die Personalabteilung plant drei Schulungsarten: Excel-Kurs, Kommunikationstraining und Projektmanagement. Pro Teilnehmer im Excel-Kurs werden {c1} Kompetenzpunkte erzielt, im Kommunikationstraining {c2} und im Projektmanagement {c3} Punkte. Die Kosten betragen {a11} Hundert Euro pro Teilnehmer Excel, {a12} Hundert Euro Kommunikation und {a13} Hundert Euro Projektmanagement. Das Budget belaeuft sich auf {b1} Hundert Euro. Jeder Teilnehmer benoetigt {a21} Sitzplatz bei Excel, {a22} bei Kommunikation und {a23} bei Projektmanagement. Es gibt {b2} Raumplaetze. An Dozentenstunden werden {a31} pro Teilnehmer Excel, {a32} pro Teilnehmer Kommunikation und {a33} pro Teilnehmer Projektmanagement benoetigt bei {b3} verfuegbaren Dozentenstunden.",
+  "hinweis": "Drei Schulungen mit Budget-, Raum- und Dozentenbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Excel-Kurs werden {c1} Kompetenzpunkte erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Kommunikationstraining {c2}", "bedeutung": "{c2} × x₂"},
+      {"text": "Projektmanagement {c3} Punkte", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hundert Euro pro Teilnehmer Excel", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hundert Euro Kommunikation", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Hundert Euro Projektmanagement", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Hundert Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Sitzplatz bei Excel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} bei Kommunikation", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} bei Projektmanagement", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Raumplaetze", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} pro Teilnehmer Excel", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Teilnehmer Kommunikation", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Teilnehmer Projektmanagement", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} verfuegbaren Dozentenstunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

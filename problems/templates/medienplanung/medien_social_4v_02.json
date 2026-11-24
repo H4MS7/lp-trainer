@@ -1,0 +1,69 @@
+{
+  "id": "medien_social_4v_02",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Facebook-Kampagnen", "x2 = Anzahl Instagram-Kampagnen", "x3 = Anzahl TikTok-Kampagnen", "x4 = Anzahl LinkedIn-Kampagnen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Content-Erstellung", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Community-Management", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Reporting", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Reichweite Facebook (Tsd.)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Reichweite Instagram (Tsd.)"},
+    "c3":  {"min": 10, "max": 50,   "label": "Reichweite TikTok (Tsd.)"},
+    "c4":  {"min": 2, "max": 8,     "label": "Reichweite LinkedIn (Tsd.)"},
+    "a11": {"min": 1, "max": 5,     "label": "Kosten Facebook (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten Instagram (Tsd. €)"},
+    "a13": {"min": 1, "max": 4,     "label": "Kosten TikTok (Tsd. €)"},
+    "a14": {"min": 2, "max": 8,     "label": "Kosten LinkedIn (Tsd. €)"},
+    "b1":  {"min": 20, "max": 100,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 6,     "label": "Content Facebook (Stunden)"},
+    "a22": {"min": 4, "max": 8,     "label": "Content Instagram (Stunden)"},
+    "a23": {"min": 3, "max": 8,     "label": "Content TikTok (Stunden)"},
+    "a24": {"min": 2, "max": 5,     "label": "Content LinkedIn (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Content-Stunden"},
+    "a31": {"min": 2, "max": 4,     "label": "Community Facebook (Stunden)"},
+    "a32": {"min": 2, "max": 5,     "label": "Community Instagram (Stunden)"},
+    "a33": {"min": 1, "max": 3,     "label": "Community TikTok (Stunden)"},
+    "a34": {"min": 1, "max": 3,     "label": "Community LinkedIn (Stunden)"},
+    "b3":  {"min": 10, "max": 40,   "label": "Community-Stunden"},
+    "a41": {"min": 1, "max": 2,     "label": "Reporting Facebook (Stunden)"},
+    "a42": {"min": 1, "max": 2,     "label": "Reporting Instagram (Stunden)"},
+    "a43": {"min": 1, "max": 2,     "label": "Reporting TikTok (Stunden)"},
+    "a44": {"min": 1, "max": 2,     "label": "Reporting LinkedIn (Stunden)"},
+    "b4":  {"min": 5, "max": 20,    "label": "Reportingstunden"}
+  },
+  "titel": "Social-Media-Strategie – Vier Plattformen",
+  "beschreibung": "Ein Social-Media-Team plant Kampagnen auf vier Plattformen. Facebook-Kampagnen erreichen {c1} Tsd. Personen, Instagram-Kampagnen erreichen {c2} Tsd. Personen, TikTok-Kampagnen erreichen {c3} Tsd. Personen und LinkedIn-Kampagnen erreichen {c4} Tsd. Personen. Die Kosten betragen {a11} Tsd. € für Facebook, {a12} Tsd. € für Instagram, {a13} Tsd. € für TikTok und {a14} Tsd. € für LinkedIn. Das Budget beträgt {b1} Tsd. €. Die Content-Erstellung beträgt {a21} Stunden für Facebook, {a22} Stunden für Instagram, {a23} Stunden für TikTok und {a24} Stunden für LinkedIn. Es stehen {b2} Content-Stunden zur Verfügung. Das Community-Management beträgt {a31} Stunden für Facebook, {a32} Stunden für Instagram, {a33} Stunden für TikTok und {a34} Stunden für LinkedIn. Es stehen {b3} Community-Stunden zur Verfügung. Das Reporting beträgt {a41} Stunden für Facebook, {a42} Stunden für Instagram, {a43} Stunden für TikTok und {a44} Stunden für LinkedIn. Es stehen {b4} Reportingstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Facebook-Kampagnen erreichen {c1} Tsd. Personen", "bedeutung": "{c1} × x₁"},
+      {"text": "Instagram-Kampagnen erreichen {c2} Tsd. Personen", "bedeutung": "{c2} × x₂"},
+      {"text": "TikTok-Kampagnen erreichen {c3} Tsd. Personen", "bedeutung": "{c3} × x₃"},
+      {"text": "LinkedIn-Kampagnen erreichen {c4} Tsd. Personen", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Facebook, {a12} Tsd. € für Instagram, {a13} Tsd. € für TikTok und {a14} Tsd. € für LinkedIn", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Facebook, {a22} Stunden für Instagram, {a23} Stunden für TikTok und {a24} Stunden für LinkedIn", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Content-Stunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für Facebook, {a32} Stunden für Instagram, {a33} Stunden für TikTok und {a34} Stunden für LinkedIn", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Community-Stunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden für Facebook, {a42} Stunden für Instagram, {a43} Stunden für TikTok und {a44} Stunden für LinkedIn", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b4} Reportingstunden zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

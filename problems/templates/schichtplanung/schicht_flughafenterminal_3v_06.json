@@ -1,0 +1,54 @@
+{
+  "id": "schicht_flughafenterminal_3v_06",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Mittagsschichten", "x3 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Check-in", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Gepäckabfertigung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Gate-Service", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 200, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 110, "max": 210, "label": "Kosten Mittagsschicht (€)"},
+    "c3":  {"min": 140, "max": 260, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 4, "max": 9, "label": "Check-in pro Frühschicht"},
+    "a12": {"min": 3, "max": 7, "label": "Check-in pro Mittagsschicht"},
+    "a13": {"min": 1, "max": 4, "label": "Check-in pro Nachtschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Check-in"},
+    "a21": {"min": 3, "max": 7, "label": "Gepäck pro Frühschicht"},
+    "a22": {"min": 3, "max": 6, "label": "Gepäck pro Mittagsschicht"},
+    "a23": {"min": 2, "max": 5, "label": "Gepäck pro Nachtschicht"},
+    "b2":  {"min": 12, "max": 40, "label": "Mindestbesetzung Gepäckabfertigung"},
+    "a31": {"min": 2, "max": 5, "label": "Gate-Service pro Frühschicht"},
+    "a32": {"min": 2, "max": 5, "label": "Gate-Service pro Mittagsschicht"},
+    "a33": {"min": 1, "max": 3, "label": "Gate-Service pro Nachtschicht"},
+    "b3":  {"min": 8, "max": 30, "label": "Mindestbesetzung Gate-Service"}
+  },
+  "titel": "Flughafenterminal – Drei-Schicht-Planung",
+  "beschreibung": "Ein Flughafenterminal plant die Besetzung über drei Schichten. Eine Frühschicht kostet {c1} €, eine Mittagsschicht kostet {c2} € und eine Nachtschicht kostet {c3} €. Jede Frühschicht stellt {a11} Check-in-Mitarbeiter bereit, jede Mittagsschicht {a12} und jede Nachtschicht {a13}. Mindestens {b1} Check-in-Mitarbeiter werden benötigt. Jede Frühschicht stellt {a21} Gepäckabfertiger bereit, jede Mittagsschicht {a22} und jede Nachtschicht {a23}. Mindestens {b2} Gepäckabfertiger werden benötigt. Jede Frühschicht stellt {a31} Gate-Service-Kräfte bereit, jede Mittagsschicht {a32} und jede Nachtschicht {a33}. Mindestens {b3} Gate-Service-Kräfte werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Check-in, Gepäckabfertigung und Gate-Service.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Mittagsschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Check-in-Mitarbeiter bereit, jede Mittagsschicht {a12} und jede Nachtschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Check-in-Mitarbeiter werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Gepäckabfertiger bereit, jede Mittagsschicht {a22} und jede Nachtschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Gepäckabfertiger werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Gate-Service-Kräfte bereit, jede Mittagsschicht {a32} und jede Nachtschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Gate-Service-Kräfte werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

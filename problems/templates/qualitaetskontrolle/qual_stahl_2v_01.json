@@ -1,0 +1,43 @@
+{
+  "id": "qual_stahl_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Härteprüfungen", "x2 = Anzahl Zugversuche"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Prüfabdeckung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüfmaschinenzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Härteprüfung (€/Prüfung)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Zugversuch (€/Versuch)"},
+    "a11": {"min": 2, "max": 6,   "label": "Prüfabdeckung Härte (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Prüfabdeckung Zugversuch (%)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Prüfabdeckung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Maschinenzeit Härte (min)"},
+    "a22": {"min": 3, "max": 7,   "label": "Maschinenzeit Zugversuch (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Prüfmaschinenzeit (min)"}
+  },
+  "titel": "Stahlwerk – Materialprüfung",
+  "beschreibung": "Ein Stahlwerk prüft die Materialqualität mit Härteprüfungen und Zugversuchen. Eine Härteprüfung kostet {c1} €, ein Zugversuch kostet {c2} €. Die Härteprüfung erreicht {a11} % Prüfabdeckung, der Zugversuch erreicht {a12} % Prüfabdeckung. Die Mindest-Prüfabdeckung beträgt {b1} %. Eine Härteprüfung benötigt {a21} Minuten Maschinenzeit, ein Zugversuch benötigt {a22} Minuten Maschinenzeit. Die Prüfmaschinenzeit beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Prüfabdeckung und begrenzter Maschinenzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Härteprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Zugversuch kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Prüfabdeckung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Prüfabdeckung", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Maschinenzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten Maschinenzeit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

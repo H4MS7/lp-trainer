@@ -1,0 +1,43 @@
+{
+  "id": "wart_solar_2v_14",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Reinigungen", "x2 = Anzahl Modulreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Servicebudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Reinigung (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Modulreparatur (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Leistung Reinigung (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Leistung Reparatur (%)"},
+    "b1":  {"min": 25, "max": 90,  "label": "Mindestleistung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Servicekosten Reinigung (Tsd. €)"},
+    "a22": {"min": 3, "max": 8,   "label": "Servicekosten Reparatur (Tsd. €)"},
+    "b2":  {"min": 10, "max": 50,  "label": "Servicebudget (Tsd. €)"}
+  },
+  "titel": "Solarpark – Modulpflege",
+  "beschreibung": "Ein Solarparkbetreiber plant die Pflege seiner Module. Eine Reinigung kostet {c1} Tsd. €, eine Modulreparatur kostet {c2} Tsd. €. Eine Reinigung steigert die Leistung um {a11} %, eine Reparatur um {a12} %. Die Mindestleistung beträgt {b1} %. Die Servicekosten betragen {a21} Tsd. € pro Reinigung und {a22} Tsd. € pro Reparatur. Das Servicebudget beträgt {b2} Tsd. €.",
+  "hinweis": "Minimiere die Arbeitskosten bei Einhaltung der Leistung und des Servicebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Reinigung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Modulreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Reinigung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro Reparatur", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

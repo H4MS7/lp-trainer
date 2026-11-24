@@ -1,0 +1,41 @@
+{
+  "id": "medien_podcast_youtube_2v_06",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Podcast-Sponsorings", "x2 = Anzahl YouTube-Ads"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Koordinationszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 15,    "label": "Hörer Podcast (Tsd.)"},
+    "c2":  {"min": 5, "max": 25,    "label": "Views YouTube (Tsd.)"},
+    "a11": {"min": 2, "max": 8,     "label": "Kosten Podcast (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten YouTube (Tsd. €)"},
+    "b1":  {"min": 20, "max": 100,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Koordination Podcast (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Koordination YouTube (Stunden)"},
+    "b2":  {"min": 15, "max": 60,   "label": "Koordinationsstunden"}
+  },
+  "titel": "Audio-Video-Werbung – Podcast und YouTube",
+  "beschreibung": "Ein Unternehmen plant Werbung über Podcast-Sponsorings und YouTube-Ads. Ein Podcast-Sponsoring erreicht {c1} Tsd. Hörer, eine YouTube-Ad erreicht {c2} Tsd. Views. Ein Podcast-Sponsoring kostet {a11} Tsd. €, eine YouTube-Ad kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Koordinationszeit beträgt {a21} Stunden pro Podcast-Sponsoring und {a22} Stunden pro YouTube-Ad. Insgesamt stehen {b2} Koordinationsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Koordinationszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Podcast-Sponsoring erreicht {c1} Tsd. Hörer", "bedeutung": "{c1} × x₁"},
+      {"text": "YouTube-Ad erreicht {c2} Tsd. Views", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine YouTube-Ad kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Podcast-Sponsoring und {a22} Stunden pro YouTube-Ad", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Koordinationsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

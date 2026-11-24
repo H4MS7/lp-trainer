@@ -1,0 +1,41 @@
+{
+  "id": "medien_directmail_email_2v_13",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Postwurfsendungen", "x2 = Anzahl E-Mail-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Vorbereitungszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,     "label": "Rücklaufquote Post (Tsd.)"},
+    "c2":  {"min": 2, "max": 10,    "label": "Klickrate E-Mail (Tsd.)"},
+    "a11": {"min": 2, "max": 8,     "label": "Kosten Post (Tsd. €)"},
+    "a12": {"min": 1, "max": 3,     "label": "Kosten E-Mail (Tsd. €)"},
+    "b1":  {"min": 15, "max": 60,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 5, "max": 12,    "label": "Vorbereitung Post (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Vorbereitung E-Mail (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Vorbereitungsstunden"}
+  },
+  "titel": "Direktmarketing – Post und E-Mail",
+  "beschreibung": "Ein Direktmarketing-Team plant Kampagnen mit Postwurfsendungen und E-Mail-Kampagnen. Eine Postwurfsendung erzielt {c1} Tsd. Rückläufer, eine E-Mail-Kampagne erzielt {c2} Tsd. Klicks. Eine Postwurfsendung kostet {a11} Tsd. €, eine E-Mail-Kampagne kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Vorbereitungszeit beträgt {a21} Stunden pro Postwurfsendung und {a22} Stunden pro E-Mail-Kampagne. Insgesamt stehen {b2} Vorbereitungsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtresponse unter Beachtung von Budget und Vorbereitungszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Postwurfsendung erzielt {c1} Tsd. Rückläufer", "bedeutung": "{c1} × x₁"},
+      {"text": "E-Mail-Kampagne erzielt {c2} Tsd. Klicks", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine E-Mail-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Postwurfsendung und {a22} Stunden pro E-Mail-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Vorbereitungsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

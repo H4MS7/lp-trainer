@@ -1,0 +1,43 @@
+{
+  "id": "schicht_feuerwehr_2v_06",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl 12-Stunden-Schichten", "x2 = Anzahl 24-Stunden-Schichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Einsatzkräfte", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Fahrzeugführer", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 150, "max": 300, "label": "Kosten 12h-Schicht (€)"},
+    "c2":  {"min": 250, "max": 500, "label": "Kosten 24h-Schicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Einsatzkräfte pro 12h-Schicht"},
+    "a12": {"min": 4, "max": 10, "label": "Einsatzkräfte pro 24h-Schicht"},
+    "b1":  {"min": 20, "max": 60, "label": "Mindestbesetzung Einsatzkräfte"},
+    "a21": {"min": 1, "max": 3, "label": "Fahrzeugführer pro 12h-Schicht"},
+    "a22": {"min": 2, "max": 5, "label": "Fahrzeugführer pro 24h-Schicht"},
+    "b2":  {"min": 8, "max": 25, "label": "Mindestbesetzung Fahrzeugführer"}
+  },
+  "titel": "Feuerwehr – Schichtplanung",
+  "beschreibung": "Eine Feuerwache plant die Schichtbesetzung. Eine 12-Stunden-Schicht kostet {c1} €, eine 24-Stunden-Schicht kostet {c2} €. Jede 12-Stunden-Schicht stellt {a11} Einsatzkräfte bereit, jede 24-Stunden-Schicht stellt {a12} Einsatzkräfte bereit. Mindestens {b1} Einsatzkräfte werden benötigt. Jede 12-Stunden-Schicht stellt {a21} Fahrzeugführer bereit, jede 24-Stunden-Schicht stellt {a22} Fahrzeugführer bereit. Mindestens {b2} Fahrzeugführer werden benötigt.",
+  "hinweis": "Minimiere die Schichtkosten bei Einhaltung der Mindestbesetzung für Einsatzkräfte und Fahrzeugführer.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "12-Stunden-Schicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "24-Stunden-Schicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Einsatzkräfte bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Einsatzkräfte bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Einsatzkräfte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrzeugführer bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Fahrzeugführer bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fahrzeugführer werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

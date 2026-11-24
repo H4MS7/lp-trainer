@@ -1,0 +1,91 @@
+{
+  "id": "prod_druckerei5_5v_01",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Flyer", "x2 = Anzahl Plakate", "x3 = Anzahl Broschueren", "x4 = Anzahl Visitenkarten (100er)", "x5 = Anzahl Kalender"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Papier", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Druckzeit", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Tinte", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Schneidezeit", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,     "label": "Gewinn/Flyer (€)"},
+    "c2":  {"min": 3, "max": 10,    "label": "Gewinn/Plakat (€)"},
+    "c3":  {"min": 5, "max": 15,    "label": "Gewinn/Broschuere (€)"},
+    "c4":  {"min": 2, "max": 8,     "label": "Gewinn/100 Visitenkarten (€)"},
+    "c5":  {"min": 4, "max": 12,    "label": "Gewinn/Kalender (€)"},
+    "a11": {"min": 1, "max": 2,     "label": "Papier/Flyer (Bogen)"},
+    "a12": {"min": 1, "max": 3,     "label": "Papier/Plakat (Bogen)"},
+    "a13": {"min": 3, "max": 8,     "label": "Papier/Broschuere (Bogen)"},
+    "a14": {"min": 1, "max": 2,     "label": "Papier/100 Visitenkarten (Bogen)"},
+    "a15": {"min": 4, "max": 10,    "label": "Papier/Kalender (Bogen)"},
+    "b1":  {"min": 200, "max": 800, "label": "Papiervorrat (Bogen)"},
+    "a21": {"min": 1, "max": 2,     "label": "Druckzeit/Flyer (min)"},
+    "a22": {"min": 2, "max": 5,     "label": "Druckzeit/Plakat (min)"},
+    "a23": {"min": 3, "max": 8,     "label": "Druckzeit/Broschuere (min)"},
+    "a24": {"min": 1, "max": 3,     "label": "Druckzeit/100 Visitenkarten (min)"},
+    "a25": {"min": 4, "max": 10,    "label": "Druckzeit/Kalender (min)"},
+    "b2":  {"min": 100, "max": 500, "label": "Druckminuten"},
+    "a31": {"min": 1, "max": 2,     "label": "Tinte/Flyer (ml)"},
+    "a32": {"min": 2, "max": 5,     "label": "Tinte/Plakat (ml)"},
+    "a33": {"min": 3, "max": 6,     "label": "Tinte/Broschuere (ml)"},
+    "a34": {"min": 1, "max": 2,     "label": "Tinte/100 Visitenkarten (ml)"},
+    "a35": {"min": 3, "max": 8,     "label": "Tinte/Kalender (ml)"},
+    "b3":  {"min": 60, "max": 300,  "label": "Tintenvorrat (ml)"},
+    "a41": {"min": 1, "max": 2,     "label": "Schneidezeit/Flyer (min)"},
+    "a42": {"min": 1, "max": 2,     "label": "Schneidezeit/Plakat (min)"},
+    "a43": {"min": 1, "max": 3,     "label": "Schneidezeit/Broschuere (min)"},
+    "a44": {"min": 1, "max": 2,     "label": "Schneidezeit/100 Visitenkarten (min)"},
+    "a45": {"min": 2, "max": 5,     "label": "Schneidezeit/Kalender (min)"},
+    "b4":  {"min": 40, "max": 200,  "label": "Schneideminuten"}
+  },
+  "titel": "Druckerei – Flyer, Plakate, Broschueren, Visitenkarten und Kalender",
+  "beschreibung": "Eine Druckerei stellt fuenf Produkte her. Pro Flyer betraegt der Gewinn {c1} Euro, pro Plakat {c2} Euro, pro Broschuere {c3} Euro, pro 100 Visitenkarten {c4} Euro und pro Kalender {c5} Euro. Der Papierverbrauch liegt bei {a11} Bogen pro Flyer, {a12} Bogen pro Plakat, {a13} Bogen pro Broschuere, {a14} Bogen pro 100 Visitenkarten und {a15} Bogen pro Kalender. Es sind {b1} Bogen Papier vorhanden. Die Druckzeit betraegt {a21} Minuten pro Flyer, {a22} Minuten pro Plakat, {a23} Minuten pro Broschuere, {a24} Minuten pro 100 Visitenkarten und {a25} Minuten pro Kalender bei {b2} verfuegbaren Druckminuten. Der Tintenverbrauch belaeuft sich auf {a31} ml pro Flyer, {a32} ml pro Plakat, {a33} ml pro Broschuere, {a34} ml pro 100 Visitenkarten und {a35} ml pro Kalender. Der Tintenvorrat umfasst {b3} ml. Das Schneiden erfordert {a41} Minuten pro Flyer, {a42} Minuten pro Plakat, {a43} Minuten pro Broschuere, {a44} Minuten pro 100 Visitenkarten und {a45} Minuten pro Kalender bei {b4} Schneideminuten.",
+  "hinweis": "Fuenf Druckprodukte mit vier Beschraenkungen: Papier, Druckzeit, Tinte und Schneidezeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Flyer betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Plakat {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Broschuere {c3} Euro", "bedeutung": "{c3} × x₃"},
+      {"text": "100 Visitenkarten {c4} Euro", "bedeutung": "{c4} × x₄"},
+      {"text": "Kalender {c5} Euro", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Bogen pro Flyer", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Bogen pro Plakat", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Bogen pro Broschuere", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Bogen pro 100 Visitenkarten", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Bogen pro Kalender", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Bogen Papier vorhanden", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten pro Flyer", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten pro Plakat", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten pro Broschuere", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Minuten pro 100 Visitenkarten", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Minuten pro Kalender", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} verfuegbaren Druckminuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} ml pro Flyer", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} ml pro Plakat", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} ml pro Broschuere", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} ml pro 100 Visitenkarten", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} ml pro Kalender", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} ml", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Minuten pro Flyer", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Minuten pro Plakat", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Minuten pro Broschuere", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Minuten pro 100 Visitenkarten", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Minuten pro Kalender", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Schneideminuten", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

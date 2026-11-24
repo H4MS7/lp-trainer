@@ -1,0 +1,60 @@
+{
+  "id": "lager_weinkeller_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Rotwein (Kisten)", "x2 = Bestellmenge Weißwein (Kisten)", "x3 = Bestellmenge Sekt (Kisten)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Kellerkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Kühlleistung", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Lagerkosten Rotwein (€/Kiste)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Weißwein (€/Kiste)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Lagerkosten Sekt (€/Kiste)"},
+    "a11": {"min": 6, "max": 12,  "label": "Flaschen pro Kiste Rotwein"},
+    "a12": {"min": 6, "max": 12,  "label": "Flaschen pro Kiste Weißwein"},
+    "a13": {"min": 3, "max": 6,   "label": "Flaschen pro Kiste Sekt"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindestsortiment (Flaschen)"},
+    "a21": {"min": 1, "max": 3,   "label": "Kellerplatz Rotwein (Fächer)"},
+    "a22": {"min": 1, "max": 3,   "label": "Kellerplatz Weißwein (Fächer)"},
+    "a23": {"min": 2, "max": 4,   "label": "Kellerplatz Sekt (Fächer)"},
+    "b2":  {"min": 30, "max": 100, "label": "Kellerkapazität (Fächer)"},
+    "a31": {"min": 1, "max": 2,   "label": "Kühlbedarf Rotwein (kWh)"},
+    "a32": {"min": 2, "max": 4,   "label": "Kühlbedarf Weißwein (kWh)"},
+    "a33": {"min": 3, "max": 5,   "label": "Kühlbedarf Sekt (kWh)"},
+    "b3":  {"min": 30, "max": 100, "label": "Kühlleistung (kWh)"}
+  },
+  "titel": "Weinkeller – Drei Getränkearten",
+  "beschreibung": "Ein Weinhandel lagert Rotwein, Weißwein und Sekt in einem klimatisierten Keller. Die Lagerkosten betragen {c1} € pro Kiste Rotwein, {c2} € pro Kiste Weißwein und {c3} € pro Kiste Sekt. Jede Kiste Rotwein enthält {a11} Flaschen, Weißwein enthält {a12} Flaschen und Sekt enthält {a13} Flaschen. Das Mindestsortiment umfasst {b1} Flaschen. Rotwein belegt {a21} Kellerfächer, Weißwein belegt {a22} Kellerfächer und Sekt belegt {a23} Kellerfächer pro Kiste. Die Kellerkapazität beträgt {b2} Fächer. Der Kühlbedarf beträgt {a31} kWh pro Kiste Rotwein, {a32} kWh pro Kiste Weißwein und {a33} kWh pro Kiste Sekt. Die Kühlleistung ist auf {b3} kWh begrenzt.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments, der Kellerkapazität und der Kühlleistung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Kiste Rotwein", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Kiste Weißwein", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Kiste Sekt", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Flaschen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Flaschen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Flaschen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Flaschen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kellerfächer", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Kellerfächer", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Kellerfächer pro Kiste", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kWh pro Kiste Rotwein", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} kWh pro Kiste Weißwein", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} kWh pro Kiste Sekt", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} kWh begrenzt", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

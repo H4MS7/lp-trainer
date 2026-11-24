@@ -1,0 +1,59 @@
+{
+  "id": "energie_industrie_4v_05",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = MWh Erdgas", "x2 = MWh Abwärme", "x3 = MWh Strom-Netz", "x4 = MWh Eigenstromerzeugung"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Prozesswärme", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Emissionen", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximaler Gasanschluss", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 35, "max": 80, "label": "Kosten Erdgas (€/MWh)"},
+    "c2":  {"min": 10, "max": 30, "label": "Kosten Abwärme (€/MWh)"},
+    "c3":  {"min": 40, "max": 95, "label": "Kosten Strom-Netz (€/MWh)"},
+    "c4":  {"min": 45, "max": 100, "label": "Kosten Eigenstrom (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärme Erdgas (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Wärme Abwärme (MW/MWh)"},
+    "a13": {"min": 1, "max": 3, "label": "Wärme Strom (MW/MWh)"},
+    "a14": {"min": 2, "max": 5, "label": "Wärme Eigenstrom (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Prozesswärme (MW)"},
+    "a21": {"min": 3, "max": 6, "label": "Emissionen Erdgas (t/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Emissionen Abwärme (t/MWh)"},
+    "a23": {"min": 2, "max": 4, "label": "Emissionen Strom (t/MWh)"},
+    "a24": {"min": 2, "max": 4, "label": "Emissionen Eigenstrom (t/MWh)"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale Emissionen (t)"},
+    "a31": {"min": 3, "max": 6, "label": "Gas Erdgas (m³/MWh)"},
+    "a32": {"min": 1, "max": 1, "label": "Gas Abwärme (m³/MWh)"},
+    "a33": {"min": 1, "max": 1, "label": "Gas Strom (m³/MWh)"},
+    "a34": {"min": 1, "max": 3, "label": "Gas Eigenstrom (m³/MWh)"},
+    "b3":  {"min": 25, "max": 100, "label": "Maximaler Gasanschluss (m³)"}
+  },
+  "titel": "Industriebetrieb – Vier-Quellen-Energiemix",
+  "beschreibung": "Ein Industriebetrieb plant die Prozesswärmeversorgung aus Erdgas, Abwärme, Strom-Netz und Eigenstromerzeugung. Erdgas kostet {c1} € pro MWh, Abwärme kostet {c2} € pro MWh, Strom-Netz kostet {c3} € pro MWh und Eigenstrom kostet {c4} € pro MWh. Erdgas liefert {a11} MW, Abwärme {a12} MW, Strom {a13} MW und Eigenstrom {a14} MW pro MWh. Mindestens {b1} MW Prozesswärme müssen bereitgestellt werden. Die Emissionen betragen {a21} t Erdgas, {a22} t Abwärme, {a23} t Strom und {a24} t Eigenstrom pro MWh. Maximal {b2} Tonnen Emissionen sind zulässig. Der Gasverbrauch beträgt {a31} m³ Erdgas, {a32} m³ Abwärme, {a33} m³ Strom und {a34} m³ Eigenstrom pro MWh. Der Gasanschluss ist auf {b3} m³ begrenzt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Prozesswärmebedarf, Emissionsgrenze und Gasanschluss.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Erdgas kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Abwärme kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Strom-Netz kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Eigenstrom kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Abwärme {a12} MW, Strom {a13} MW und Eigenstrom {a14} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} MW Prozesswärme müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} t Erdgas, {a22} t Abwärme, {a23} t Strom und {a24} t Eigenstrom pro MWh", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Tonnen Emissionen sind zulässig", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} m³ Erdgas, {a32} m³ Abwärme, {a33} m³ Strom und {a34} m³ Eigenstrom pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} m³ begrenzt", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

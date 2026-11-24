@@ -1,0 +1,39 @@
+{
+  "id": "trans_paket_2v_02",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Lieferwagen", "x2 = Fahrten Transporter"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Pakete", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Fahrerstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Lieferwagen (EUR/Fahrt)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Transporter (EUR/Fahrt)"},
+    "a11": {"min": 3, "max": 10,  "label": "Pakete pro Lieferwagen-Fahrt"},
+    "a12": {"min": 5, "max": 15,  "label": "Pakete pro Transporter-Fahrt"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Pakete"},
+    "a21": {"min": 1, "max": 4,   "label": "Stunden pro Lieferwagen-Fahrt"},
+    "a22": {"min": 2, "max": 6,   "label": "Stunden pro Transporter-Fahrt"},
+    "b2":  {"min": 30, "max": 120, "label": "Verfügbare Fahrerstunden"}
+  },
+  "titel": "Paketdienst – Lieferwagen und Transporter",
+  "beschreibung": "Ein Paketdienst muss Pakete mit zwei Fahrzeugtypen ausliefern. Eine Fahrt mit dem Lieferwagen kostet {c1} EUR, eine Fahrt mit dem Transporter kostet {c2} EUR. Der Lieferwagen transportiert {a11} Pakete pro Fahrt, der Transporter transportiert {a12} Pakete pro Fahrt. Mindestens {b1} Pakete müssen ausgeliefert werden. Eine Lieferwagen-Fahrt dauert {a21} Stunden, eine Transporter-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Fahrerstunden zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindestliefermenge und begrenzten Fahrerstunden.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lieferwagen kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Transporter kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Pakete pro Fahrt, der Transporter transportiert {a12} Pakete pro Fahrt. Mindestens {b1} Pakete müssen ausgeliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden, eine Transporter-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Fahrerstunden zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

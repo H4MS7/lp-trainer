@@ -1,0 +1,41 @@
+{
+  "id": "flaeche_wohn_gruen_2v_05",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Wohngebiet", "x2 = Hektar Grünfläche"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestgrünfläche", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 25, "label": "Wert Wohngebiet (Tsd. €/ha)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Wert Grünfläche (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Wohngebiet (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Grünfläche (ha/ha)"},
+    "b1":  {"min": 30, "max": 200, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 0, "max": 0,   "label": "Grünanteil Wohngebiet"},
+    "a22": {"min": 1, "max": 2,   "label": "Grünanteil Grünfläche (ha/ha)"},
+    "b2":  {"min": 5, "max": 40,   "label": "Mindestgrünfläche (ha)"}
+  },
+  "titel": "Stadtplanung – Wohngebiet und Grünfläche",
+  "beschreibung": "Eine Stadtverwaltung plant ein neues Areal mit Wohngebiet und Grünfläche. Ein Hektar Wohngebiet erzeugt {c1} Tsd. € Wertzuwachs, ein Hektar Grünfläche erzeugt {c2} Tsd. € Wertzuwachs. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Wohngebiet und {a12} Hektar pro Hektar Grünfläche. Die Gesamtfläche beträgt {b1} Hektar. Laut Bebauungsplan müssen mindestens {b2} Hektar als Grünfläche ausgewiesen werden.",
+  "hinweis": "Maximiere den Gesamtwertzuwachs unter Beachtung der Fläche und Mindestgrünfläche.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wohngebiet erzeugt {c1} Tsd. € Wertzuwachs", "bedeutung": "{c1} × x₁"},
+      {"text": "Grünfläche erzeugt {c2} Tsd. € Wertzuwachs", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Wohngebiet", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Grünfläche", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "mindestens {b2} Hektar als Grünfläche", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

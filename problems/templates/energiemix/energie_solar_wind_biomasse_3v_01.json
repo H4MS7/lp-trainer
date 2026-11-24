@@ -1,0 +1,54 @@
+{
+  "id": "energie_solar_wind_biomasse_3v_01",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Solarenergie", "x2 = MWh Windenergie", "x3 = MWh Biomasse"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Netzkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 80, "label": "Kosten Solar (€/MWh)"},
+    "c2":  {"min": 25, "max": 70, "label": "Kosten Wind (€/MWh)"},
+    "c3":  {"min": 40, "max": 90, "label": "Kosten Biomasse (€/MWh)"},
+    "a11": {"min": 1, "max": 4, "label": "Leistung Solar (MW/MWh)"},
+    "a12": {"min": 2, "max": 6, "label": "Leistung Wind (MW/MWh)"},
+    "a13": {"min": 2, "max": 5, "label": "Leistung Biomasse (MW/MWh)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 4, "label": "Netzlast Solar (MW/MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Netzlast Wind (MW/MWh)"},
+    "a23": {"min": 1, "max": 3, "label": "Netzlast Biomasse (MW/MWh)"},
+    "b2":  {"min": 80, "max": 300, "label": "Netzkapazität (MW)"},
+    "a31": {"min": 1, "max": 2, "label": "CO2 Solar (t/MWh)"},
+    "a32": {"min": 1, "max": 2, "label": "CO2 Wind (t/MWh)"},
+    "a33": {"min": 2, "max": 6, "label": "CO2 Biomasse (t/MWh)"},
+    "b3":  {"min": 40, "max": 150, "label": "Maximale CO2-Emission (t)"}
+  },
+  "titel": "Energiemix – Solar, Wind und Biomasse",
+  "beschreibung": "Ein regionaler Energieversorger plant den Strommix aus Solar, Wind und Biomasse. Solar kostet {c1} € pro MWh, Wind kostet {c2} € pro MWh und Biomasse kostet {c3} € pro MWh. Solar liefert {a11} MW pro MWh, Wind liefert {a12} MW pro MWh und Biomasse liefert {a13} MW pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Netzlast beträgt {a21} MW pro MWh Solar, {a22} MW pro MWh Wind und {a23} MW pro MWh Biomasse. Die Netzkapazität ist auf {b2} MW begrenzt. Die CO2-Emission beträgt {a31} t pro MWh Solar, {a32} t pro MWh Wind und {a33} t pro MWh Biomasse. Maximal {b3} Tonnen CO2 sind zulässig.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestleistung, Netzkapazität und CO2-Grenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Solar kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wind kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Biomasse kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW pro MWh, Wind liefert {a12} MW pro MWh und Biomasse liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh Solar, {a22} MW pro MWh Wind und {a23} MW pro MWh Biomasse", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} MW begrenzt", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} t pro MWh Solar, {a32} t pro MWh Wind und {a33} t pro MWh Biomasse", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

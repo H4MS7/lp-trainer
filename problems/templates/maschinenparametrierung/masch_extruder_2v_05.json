@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_extruder_2v_05",
+  "titel": "Extruder – Temperatur und Schneckendrehzahl",
+  "variablen": [
+    "x1 = Temperatur (Stufen)",
+    "x2 = Schneckendrehzahl (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Materialbelastung",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 9,
+      "label": "Homogenitaet Temperatur"
+    },
+    "c2": {
+      "min": 5,
+      "max": 13,
+      "label": "Durchsatz Drehzahl"
+    },
+    "a11": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie pro Temperaturstufe"
+    },
+    "a12": {
+      "min": 2,
+      "max": 6,
+      "label": "Energie pro Drehzahlstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 7,
+      "label": "Belastung pro Temperaturstufe"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Belastung pro Drehzahlstufe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Materialbelastung"
+    }
+  },
+  "beschreibung": "Ein Kunststoff-Extruder wird ueber Temperatur und Schneckendrehzahl gesteuert. Die Temperatur traegt {c1} Punkte zur Homogenitaet bei, die Schneckendrehzahl {c2} Punkte zum Durchsatz. Der Energieverbrauch liegt bei {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Drehzahlstufe bei maximal {b1} Energieeinheiten. Die Materialbelastung betraegt {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Drehzahlstufe bei maximal {b2} Belastungseinheiten.",
+  "hinweis": "Maximiere die Produktqualitaet unter Beachtung von Energie und Materialbelastung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Temperatur traegt {c1} Punkte zur Homogenitaet bei",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schneckendrehzahl {c2} Punkte zum Durchsatz",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Temperaturstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Drehzahlstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Temperaturstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Drehzahlstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Belastungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

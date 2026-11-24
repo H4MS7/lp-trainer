@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_brennofen_2v_08",
+  "titel": "Brennofen – Temperatur und Brenndauer",
+  "variablen": [
+    "x1 = Temperatur (Stufen)",
+    "x2 = Brenndauer (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gasverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Ofenbelastung",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Haertung Temperatur"
+    },
+    "c2": {
+      "min": 3,
+      "max": 9,
+      "label": "Gleichmaessigkeit Dauer"
+    },
+    "a11": {
+      "min": 3,
+      "max": 10,
+      "label": "Gas pro Temperaturstufe"
+    },
+    "a12": {
+      "min": 2,
+      "max": 6,
+      "label": "Gas pro Dauerstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Gasverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 7,
+      "label": "Belastung Temperatur"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Belastung Dauer"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Ofenbelastung"
+    }
+  },
+  "beschreibung": "Ein industrieller Brennofen wird ueber Temperatur und Brenndauer gesteuert. Die Temperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit. Der Gasverbrauch betraegt {a11} Einheiten pro Temperaturstufe und {a12} Einheiten pro Dauerstufe bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten pro Temperaturstufe und {a22} Einheiten pro Dauerstufe bei maximal {b2} Belastungseinheiten.",
+  "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gasverbrauch und Ofenbelastung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Temperatur liefert {c1} Punkte Haertung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Temperaturstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Dauerstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Gaseinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Temperaturstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Dauerstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Belastungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

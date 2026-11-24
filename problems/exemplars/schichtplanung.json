@@ -1,0 +1,70 @@
+[
+  {
+    "titel": "Schichtplanung Krankenhaus",
+    "beschreibung": "Ein Krankenhaus plant die Personalbesetzung auf der Notaufnahme. Es werden Frühschichten und Spätschichten vergeben. Jede Frühschicht kostet 8€ pro Schicht und jede Spätschicht kostet 10€ pro Schicht. Am Vormittag müssen mindestens 24 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 3 Pflegestunden am Vormittag und jede Spätschicht leistet 1 Pflegestunde am Vormittag. Am Abend müssen mindestens 20 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 1 Pflegestunde am Abend und jede Spätschicht leistet 4 Pflegestunden am Abend. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+    "zielfunktion": "Z = 8x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≥ 24 (Vormittag)",
+      "x1 + 4x2 ≥ 20 (Abend)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Pflegestunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Frühschicht kostet 8€ pro Schicht", "bedeutung": "8 × x₁"},
+        {"text": "Spätschicht kostet 10€ pro Schicht", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Pflegestunden am Vormittag", "bedeutung": "3x₁"},
+          {"text": "1 Pflegestunde am Vormittag", "bedeutung": "+ x₂"},
+          {"text": "mindestens 24 Pflegestunden", "bedeutung": "≥ 24"}
+        ],
+        [
+          {"text": "1 Pflegestunde am Abend", "bedeutung": "x₁"},
+          {"text": "4 Pflegestunden am Abend", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 20 Pflegestunden", "bedeutung": "≥ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Callcenter",
+    "beschreibung": "Ein Callcenter plant den Einsatz von Tagschichten und Nachtschichten. Jede Tagschicht kostet 12€ und jede Nachtschicht kostet 18€. Am Morgen müssen mindestens 30 Anrufe pro Stunde bearbeitet werden. Jede Tagschicht bearbeitet 5 Anrufe am Morgen und jede Nachtschicht bearbeitet 2 Anrufe am Morgen. Am Nachmittag müssen mindestens 36 Anrufe pro Stunde bearbeitet werden. Jede Tagschicht bearbeitet 4 Anrufe am Nachmittag und jede Nachtschicht bearbeitet 3 Anrufe am Nachmittag. Aus arbeitsrechtlichen Gründen dürfen insgesamt höchstens 15 Schichten vergeben werden. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+    "zielfunktion": "Z = 12x1 + 18x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≥ 30 (Morgen)",
+      "4x1 + 3x2 ≥ 36 (Nachmittag)",
+      "x1 + x2 ≤ 15 (Schichtlimit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch eine ≤-Nebenbedingung (Obergrenze für Schichten).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Tagschicht kostet 12€", "bedeutung": "12 × x₁"},
+        {"text": "Nachtschicht kostet 18€", "bedeutung": "18 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Anrufe am Morgen", "bedeutung": "5x₁"},
+          {"text": "2 Anrufe am Morgen", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 30 Anrufe", "bedeutung": "≥ 30"}
+        ],
+        [
+          {"text": "4 Anrufe am Nachmittag", "bedeutung": "4x₁"},
+          {"text": "3 Anrufe am Nachmittag", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 36 Anrufe", "bedeutung": "≥ 36"}
+        ],
+        [
+          {"text": "höchstens 15 Schichten", "bedeutung": "x₁ + x₂ ≤ 15"}
+        ]
+      ]
+    }
+  }
+]

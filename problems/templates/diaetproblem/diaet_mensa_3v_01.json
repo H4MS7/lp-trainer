@@ -1,0 +1,60 @@
+{
+  "id": "diaet_mensa_3v_01",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Portionen Schnitzel", "x2 = Portionen Kartoffeln", "x3 = Portionen Salat"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalorien", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Vitamin C", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 8,   "label": "Kosten Schnitzel (€/Portion)"},
+    "c2":  {"min": 1, "max": 3,   "label": "Kosten Kartoffeln (€/Portion)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Kosten Salat (€/Portion)"},
+    "a11": {"min": 8, "max": 15,  "label": "Protein Schnitzel (g/Portion)"},
+    "a12": {"min": 1, "max": 4,   "label": "Protein Kartoffeln (g/Portion)"},
+    "a13": {"min": 1, "max": 3,   "label": "Protein Salat (g/Portion)"},
+    "b1":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 150, "max": 300, "label": "Kalorien Schnitzel (kcal/Portion)"},
+    "a22": {"min": 80, "max": 180,  "label": "Kalorien Kartoffeln (kcal/Portion)"},
+    "a23": {"min": 20, "max": 60,   "label": "Kalorien Salat (kcal/Portion)"},
+    "b2":  {"min": 800, "max": 1800, "label": "Mindest-Kalorien (kcal)"},
+    "a31": {"min": 1, "max": 3,   "label": "Vitamin C Schnitzel (mg/Portion)"},
+    "a32": {"min": 3, "max": 8,   "label": "Vitamin C Kartoffeln (mg/Portion)"},
+    "a33": {"min": 5, "max": 12,  "label": "Vitamin C Salat (mg/Portion)"},
+    "b3":  {"min": 30, "max": 80,  "label": "Mindest-Vitamin C (mg)"}
+  },
+  "titel": "Uni-Mensa – Schnitzel, Kartoffeln und Salat",
+  "beschreibung": "Die Uni-Mensa plant ein günstiges Mittagsmenü aus Schnitzel, Kartoffeln und Salat. Schnitzel kostet {c1} € pro Portion, Kartoffeln kosten {c2} € pro Portion, Salat kostet {c3} € pro Portion. Schnitzel liefert {a11} g Protein, Kartoffeln liefern {a12} g Protein, Salat liefert {a13} g Protein pro Portion. Mindestens {b1} g Protein sind erforderlich. Schnitzel enthält {a21} kcal, Kartoffeln enthalten {a22} kcal, Salat enthält {a23} kcal pro Portion. Mindestens {b2} kcal müssen bereitgestellt werden. Schnitzel liefert {a31} mg Vitamin C, Kartoffeln liefern {a32} mg Vitamin C, Salat liefert {a33} mg Vitamin C pro Portion. Der Mindestbedarf an Vitamin C beträgt {b3} mg.",
+  "hinweis": "Minimiere die Menükosten bei Einhaltung der Mindestanforderungen an Protein, Kalorien und Vitamin C.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Schnitzel kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kartoffeln kosten {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Salat kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g Protein pro Portion", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} g Protein sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} kcal pro Portion", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} kcal müssen bereitgestellt werden", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Vitamin C", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Vitamin C", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Vitamin C pro Portion", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} mg", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

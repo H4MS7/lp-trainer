@@ -1,0 +1,43 @@
+{
+  "id": "ress_filialen_2v_08",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Flaeche Filiale Zentrum (m²)", "x2 = Flaeche Filiale Vorstadt (m²)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtflaeche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Ausstattungsbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Umsatz/m² Zentrum (100 €)"},
+    "c2":  {"min": 3, "max": 10,    "label": "Umsatz/m² Vorstadt (100 €)"},
+    "a11": {"min": 1, "max": 1,     "label": "Flaeche/m² Zentrum"},
+    "a12": {"min": 1, "max": 1,     "label": "Flaeche/m² Vorstadt"},
+    "b1":  {"min": 100, "max": 500, "label": "Verfuegbare Gesamtflaeche (m²)"},
+    "a21": {"min": 2, "max": 6,     "label": "Ausstattungskosten/m² Zentrum (100 €)"},
+    "a22": {"min": 1, "max": 4,     "label": "Ausstattungskosten/m² Vorstadt (100 €)"},
+    "b2":  {"min": 100, "max": 500, "label": "Ausstattungsbudget (100 €)"}
+  },
+  "titel": "Filialnetz – Zentrum und Vorstadt",
+  "beschreibung": "Ein Einzelhaendler verteilt Verkaufsflaeche auf eine Filiale im Zentrum und eine in der Vorstadt. Pro Quadratmeter im Zentrum wird ein Umsatz von {c1} Hundert Euro erzielt, in der Vorstadt {c2} Hundert Euro. Jeder Quadratmeter Zentrum benoetigt {a11} Quadratmeter Flaeche, Vorstadt {a12} Quadratmeter. Die Gesamtflaeche betraegt {b1} Quadratmeter. Die Ausstattung kostet {a21} Hundert Euro pro Quadratmeter Zentrum und {a22} Hundert Euro pro Quadratmeter Vorstadt. Das Ausstattungsbudget belaeuft sich auf {b2} Hundert Euro.",
+  "hinweis": "Maximiere den Umsatz mit Flaechen- und Budgetbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zentrum wird ein Umsatz von {c1} Hundert Euro erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Vorstadt {c2} Hundert Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Zentrum benoetigt {a11} Quadratmeter", "bedeutung": "{a11}x₁"},
+        {"text": "Vorstadt {a12} Quadratmeter", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Quadratmeter", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Hundert Euro pro Quadratmeter Zentrum", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Hundert Euro pro Quadratmeter Vorstadt", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Hundert Euro", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

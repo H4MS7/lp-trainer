@@ -1,0 +1,43 @@
+{
+  "id": "diaet_vegan_2v_10",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Kichererbsen", "x2 = Portionen Quinoa"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Eisen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Kichererbsen (€/Portion)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Kosten Quinoa (€/Portion)"},
+    "a11": {"min": 5, "max": 12,  "label": "Protein Kichererbsen (g/Portion)"},
+    "a12": {"min": 4, "max": 10,  "label": "Protein Quinoa (g/Portion)"},
+    "b1":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 2, "max": 6,   "label": "Eisen Kichererbsen (mg/Portion)"},
+    "a22": {"min": 1, "max": 4,   "label": "Eisen Quinoa (mg/Portion)"},
+    "b2":  {"min": 12, "max": 30,  "label": "Mindest-Eisen (mg)"}
+  },
+  "titel": "Veganer Ernährungsplan – Kichererbsen und Quinoa",
+  "beschreibung": "Ein veganer Ernährungsplan soll möglichst kostengünstig sein. Eine Portion Kichererbsen kostet {c1} €, eine Portion Quinoa kostet {c2} €. Kichererbsen liefern {a11} g Protein pro Portion, Quinoa liefert {a12} g Protein pro Portion. Mindestens {b1} g Protein werden täglich benötigt. Kichererbsen enthalten {a21} mg Eisen pro Portion, Quinoa enthält {a22} mg Eisen pro Portion. Der Mindestbedarf an Eisen beträgt {b2} mg.",
+  "hinweis": "Minimiere die täglichen Kosten des veganen Ernährungsplans bei Einhaltung der Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kichererbsen kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Quinoa kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Protein werden täglich benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Eisen pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} mg Eisen pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} mg", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

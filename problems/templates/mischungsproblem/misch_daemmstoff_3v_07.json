@@ -1,0 +1,51 @@
+{
+  "id": "misch_daemmstoff_3v_07",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Material A (kg)", "x2 = Menge Material B (kg)", "x3 = Menge Material C (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Wärmedämmung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Schalldämmung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Gewicht", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Material A (EUR/kg)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Material B (EUR/kg)"},
+    "c3":  {"min": 4, "max": 14,  "label": "Kosten Material C (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Wärmedämmung A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Wärmedämmung B (Einheiten/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Wärmedämmung C (Einheiten/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Wärmedämmung (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Schalldämmung A (dB/kg)"},
+    "a22": {"min": 3, "max": 9,   "label": "Schalldämmung B (dB/kg)"},
+    "a23": {"min": 2, "max": 7,   "label": "Schalldämmung C (dB/kg)"},
+    "b2":  {"min": 30, "max": 120, "label": "Mindest-Schalldämmung (dB)"},
+    "a31": {"min": 2, "max": 6,   "label": "Gewicht durch A (kg/kg)"},
+    "a32": {"min": 1, "max": 4,   "label": "Gewicht durch B (kg/kg)"},
+    "a33": {"min": 3, "max": 8,   "label": "Gewicht durch C (kg/kg)"},
+    "b3":  {"min": 40, "max": 150, "label": "Max. Gesamtgewicht (kg)"}
+  },
+  "titel": "Dämmstoff – Wärme, Schall und Gewicht",
+  "beschreibung": "Ein Baustoffhersteller mischt einen Dämmstoff aus drei Materialien. Material A kostet {c1} EUR pro kg, Material B kostet {c2} EUR pro kg und Material C kostet {c3} EUR pro kg. Material A liefert {a11} Wärmedämmungs-Einheiten pro kg, Material B liefert {a12} und Material C liefert {a13} Einheiten pro kg. Die Wärmedämmung muss mindestens {b1} Einheiten erreichen. Material A liefert {a21} dB Schalldämmung pro kg, Material B liefert {a22} dB und Material C liefert {a23} dB pro kg. Die Schalldämmung muss mindestens {b2} dB erreichen. Material A wiegt {a31} kg pro kg Einsatz, Material B wiegt {a32} kg und Material C wiegt {a33} kg pro kg Einsatz. Das Gesamtgewicht darf höchstens {b3} kg betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Wärme- und Schalldämmung sowie begrenztem Gewicht.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Material A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Material B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Material C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Wärmedämmungs-Einheiten pro kg, Material B liefert {a12} und Material C liefert {a13} Einheiten pro kg. Die Wärmedämmung muss mindestens {b1} Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} dB Schalldämmung pro kg, Material B liefert {a22} dB und Material C liefert {a23} dB pro kg. Die Schalldämmung muss mindestens {b2} dB erreichen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} kg pro kg Einsatz, Material B wiegt {a32} kg und Material C wiegt {a33} kg pro kg Einsatz. Das Gesamtgewicht darf höchstens {b3} kg betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

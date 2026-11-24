@@ -1,0 +1,43 @@
+{
+  "id": "lager_buero_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Druckerpapier (Kartons)", "x2 = Bestellmenge Toner (Kartons)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestvorrat Büro", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Schrankkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Lagerkosten Papier (€/Karton)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Lagerkosten Toner (€/Karton)"},
+    "a11": {"min": 5, "max": 15,  "label": "Druckeinheiten pro Karton Papier"},
+    "a12": {"min": 3, "max": 8,   "label": "Druckeinheiten pro Karton Toner"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestvorrat (Druckeinheiten)"},
+    "a21": {"min": 2, "max": 4,   "label": "Schrankplatz Papier (Fächer)"},
+    "a22": {"min": 1, "max": 3,   "label": "Schrankplatz Toner (Fächer)"},
+    "b2":  {"min": 20, "max": 60,  "label": "Schrankkapazität (Fächer)"}
+  },
+  "titel": "Bürobedarf – Druckmaterial",
+  "beschreibung": "Ein Unternehmen optimiert die Lagerung von Druckerpapier und Toner. Die Lagerkosten betragen {c1} € pro Karton Papier und {c2} € pro Karton Toner. Jeder Karton Papier liefert {a11} Druckeinheiten, jeder Karton Toner liefert {a12} Druckeinheiten. Der Mindestvorrat für das Büro beträgt {b1} Druckeinheiten. Papier belegt {a21} Schrankfächer pro Karton, Toner belegt {a22} Schrankfächer pro Karton. Die Schrankkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestvorrats und der Schrankkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Papier", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Toner", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Druckeinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Druckeinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Druckeinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Schrankfächer pro Karton", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Schrankfächer pro Karton", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "lager_apotheke_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge rezeptpflichtige Medikamente (Packungen)", "x2 = Bestellmenge freiverkäufliche Medikamente (Packungen)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kühlschrankkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Lagerkosten rezeptpflichtig (€/Packung)"},
+    "c2":  {"min": 1, "max": 6,   "label": "Lagerkosten freiverkäuflich (€/Packung)"},
+    "a11": {"min": 2, "max": 8,   "label": "Versorgungseinheiten rezeptpflichtig"},
+    "a12": {"min": 1, "max": 5,   "label": "Versorgungseinheiten freiverkäuflich"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestversorgung (Einheiten)"},
+    "a21": {"min": 2, "max": 5,   "label": "Kühlplatz rezeptpflichtig (Fächer)"},
+    "a22": {"min": 1, "max": 3,   "label": "Kühlplatz freiverkäuflich (Fächer)"},
+    "b2":  {"min": 30, "max": 120, "label": "Kühlschrankkapazität (Fächer)"}
+  },
+  "titel": "Apotheke – Medikamentenbestellung",
+  "beschreibung": "Eine Apotheke plant die Bestellung von rezeptpflichtigen und freiverkäuflichen Medikamenten. Die Lagerkosten betragen {c1} € pro Packung rezeptpflichtiger Medikamente und {c2} € pro Packung freiverkäuflicher Medikamente. Jede Packung rezeptpflichtiger Medikamente deckt {a11} Versorgungseinheiten, jede Packung freiverkäuflicher Medikamente deckt {a12} Versorgungseinheiten. Die Mindestversorgung liegt bei {b1} Einheiten. Rezeptpflichtige Medikamente benötigen {a21} Kühlfächer pro Packung, freiverkäufliche Medikamente benötigen {a22} Kühlfächer pro Packung. Die Kühlschrankkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung der Mindestversorgung und der Kühlschrankkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Packung rezeptpflichtiger Medikamente", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Packung freiverkäuflicher Medikamente", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Versorgungseinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Versorgungseinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Einheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kühlfächer pro Packung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Kühlfächer pro Packung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

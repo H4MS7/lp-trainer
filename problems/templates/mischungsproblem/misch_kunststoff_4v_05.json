@@ -1,0 +1,65 @@
+{
+  "id": "misch_kunststoff_4v_05",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Menge Granulat A (kg)", "x2 = Menge Granulat B (kg)", "x3 = Menge Granulat C (kg)", "x4 = Menge Granulat D (kg)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Zugfestigkeit", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Schmelzpunkt", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "UV-Beständigkeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Gewicht", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Granulat A (EUR/kg)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Granulat B (EUR/kg)"},
+    "c3":  {"min": 2, "max": 10,  "label": "Kosten Granulat C (EUR/kg)"},
+    "c4":  {"min": 5, "max": 16,  "label": "Kosten Granulat D (EUR/kg)"},
+    "a11": {"min": 2, "max": 8,   "label": "Zugfestigkeit A (MPa/kg)"},
+    "a12": {"min": 3, "max": 9,   "label": "Zugfestigkeit B (MPa/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Zugfestigkeit C (MPa/kg)"},
+    "a14": {"min": 2, "max": 7,   "label": "Zugfestigkeit D (MPa/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Zugfestigkeit (MPa)"},
+    "a21": {"min": 2, "max": 6,   "label": "Schmelzpunkt A (Grad/kg)"},
+    "a22": {"min": 1, "max": 5,   "label": "Schmelzpunkt B (Grad/kg)"},
+    "a23": {"min": 3, "max": 8,   "label": "Schmelzpunkt C (Grad/kg)"},
+    "a24": {"min": 1, "max": 4,   "label": "Schmelzpunkt D (Grad/kg)"},
+    "b2":  {"min": 40, "max": 130, "label": "Max. Schmelzpunkt (Grad)"},
+    "a31": {"min": 1, "max": 5,   "label": "UV-Beständigkeit A (Einheiten/kg)"},
+    "a32": {"min": 2, "max": 7,   "label": "UV-Beständigkeit B (Einheiten/kg)"},
+    "a33": {"min": 3, "max": 9,   "label": "UV-Beständigkeit C (Einheiten/kg)"},
+    "a34": {"min": 1, "max": 6,   "label": "UV-Beständigkeit D (Einheiten/kg)"},
+    "b3":  {"min": 30, "max": 120, "label": "Mindest-UV-Beständigkeit (Einheiten)"},
+    "a41": {"min": 1, "max": 4,   "label": "Gewicht A (g/kg)"},
+    "a42": {"min": 2, "max": 5,   "label": "Gewicht B (g/kg)"},
+    "a43": {"min": 1, "max": 3,   "label": "Gewicht C (g/kg)"},
+    "a44": {"min": 2, "max": 6,   "label": "Gewicht D (g/kg)"},
+    "b4":  {"min": 30, "max": 100, "label": "Max. Gewicht (g)"}
+  },
+  "titel": "Kunststoff – Festigkeit, Schmelzpunkt, UV-Schutz und Gewicht",
+  "beschreibung": "Ein Kunststoffhersteller mischt ein Produkt aus vier Granulaten. Granulat A kostet {c1} EUR pro kg, B kostet {c2} EUR pro kg, C kostet {c3} EUR pro kg und D kostet {c4} EUR pro kg. Granulat A liefert {a11} MPa Zugfestigkeit pro kg, B liefert {a12}, C liefert {a13} und D liefert {a14} MPa pro kg. Die Zugfestigkeit muss mindestens {b1} MPa erreichen. Granulat A erhöht den Schmelzpunkt um {a21} Grad pro kg, B um {a22}, C um {a23} und D um {a24} Grad pro kg. Der Schmelzpunkt darf höchstens {b2} Grad betragen. Granulat A liefert {a31} UV-Einheiten pro kg, B liefert {a32}, C liefert {a33} und D liefert {a34} Einheiten pro kg. Die UV-Beständigkeit muss mindestens {b3} Einheiten erreichen. Granulat A wiegt {a41} g pro kg, B wiegt {a42}, C wiegt {a43} und D wiegt {a44} g pro kg. Das Gewicht darf höchstens {b4} g betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Materialanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Granulat A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet {c4} EUR pro kg", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MPa Zugfestigkeit pro kg, B liefert {a12}, C liefert {a13} und D liefert {a14} MPa pro kg. Die Zugfestigkeit muss mindestens {b1} MPa erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Grad pro kg, B um {a22}, C um {a23} und D um {a24} Grad pro kg. Der Schmelzpunkt darf höchstens {b2} Grad betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} UV-Einheiten pro kg, B liefert {a32}, C liefert {a33} und D liefert {a34} Einheiten pro kg. Die UV-Beständigkeit muss mindestens {b3} Einheiten erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} g pro kg, B wiegt {a42}, C wiegt {a43} und D wiegt {a44} g pro kg. Das Gewicht darf höchstens {b4} g betragen", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ ≤ {b4}"}
+      ]
+    ]
+  }
+}

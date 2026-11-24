@@ -1,0 +1,60 @@
+{
+  "id": "wart_server_3v_18",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Firmware-Updates", "x2 = Anzahl Festplattenwechsel", "x3 = Anzahl Komplettmigrationen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Administratorstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Ausfallzeitbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Firmware (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Festplatte (Tsd. €)"},
+    "c3":  {"min": 10, "max": 25, "label": "Kosten Migration (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Verfügbarkeit Firmware (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Verfügbarkeit Festplatte (%)"},
+    "a13": {"min": 5, "max": 14,  "label": "Verfügbarkeit Migration (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Adminstunden Firmware (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Adminstunden Festplatte (h)"},
+    "a23": {"min": 5, "max": 12,  "label": "Adminstunden Migration (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Administratorstunden (h)"},
+    "a31": {"min": 1, "max": 2,   "label": "Ausfallzeit Firmware (h)"},
+    "a32": {"min": 2, "max": 4,   "label": "Ausfallzeit Festplatte (h)"},
+    "a33": {"min": 3, "max": 8,   "label": "Ausfallzeit Migration (h)"},
+    "b3":  {"min": 10, "max": 40,  "label": "Max. Ausfallzeit (h)"}
+  },
+  "titel": "Rechenzentrum – Serverwartung",
+  "beschreibung": "Ein Rechenzentrum plant die Serverwartung auf drei Ebenen. Ein Firmware-Update kostet {c1} Tsd. €, ein Festplattenwechsel kostet {c2} Tsd. €, eine Komplettmigration kostet {c3} Tsd. €. Ein Firmware-Update steigert die Verfügbarkeit um {a11} %, Festplattenwechsel um {a12} %, Migration um {a13} %. Die Mindestverfügbarkeit beträgt {b1} %. Der Zeitbedarf beträgt {a21} Adminstunden pro Firmware-Update, {a22} Adminstunden pro Festplattenwechsel und {a23} Adminstunden pro Migration. Maximal {b2} Administratorstunden stehen zur Verfügung. Die Ausfallzeit beträgt {a31} h pro Firmware-Update, {a32} h pro Festplattenwechsel und {a33} h pro Migration. Die maximale Ausfallzeit beträgt {b3} Stunden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Verfügbarkeit, Personal und Ausfallzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Firmware-Update kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Festplattenwechsel kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Komplettmigration kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Adminstunden pro Firmware-Update", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Adminstunden pro Festplattenwechsel", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Adminstunden pro Migration", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Administratorstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro Firmware-Update", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro Festplattenwechsel", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro Migration", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "emiss_molkerei_2v_14",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Butter", "x2 = Einheiten Käse"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Methan-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Ertrag Butter (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Käse (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Methan Butter (t)"},
+    "a12": {"min": 3, "max": 10,  "label": "Methan Käse (t)"},
+    "b1":  {"min": 60, "max": 250, "label": "Methanlimit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Wasser Butter (m³)"},
+    "a22": {"min": 4, "max": 10,  "label": "Wasser Käse (m³)"},
+    "b2":  {"min": 80, "max": 300, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Molkerei – Butter und Käse",
+  "beschreibung": "Eine Molkerei produziert Butter und Käse. Butter erwirtschaftet {c1} Tsd. € pro Einheit, Käse {c2} Tsd. €. Butter verursacht {a11} Tonnen Methan pro Einheit, Käse {a12} Tonnen. Das Methanlimit beträgt {b1} Tonnen. Butter verbraucht {a21} m³ Wasser pro Einheit, Käse {a22} m³. Das Wasserbudget beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des Methanlimits und des Wasserbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Butter erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Käse {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen Methan pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Wasser pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "invest_erneuerbar_3v_04",
+  "titel": "Erneuerbare Energien – Solar, Wind und Wasserkraft",
+  "variablen": [
+    "x1 = Investment in Solar (Tsd. EUR)",
+    "x2 = Investment in Wind (Tsd. EUR)",
+    "x3 = Investment in Wasserkraft (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Investitionsbudget",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Flaechenbedarf",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Genehmigungsaufwand",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 9,
+      "label": "Rendite Solar (%)"
+    },
+    "c2": {
+      "min": 5,
+      "max": 11,
+      "label": "Rendite Wind (%)"
+    },
+    "c3": {
+      "min": 3,
+      "max": 7,
+      "label": "Rendite Wasserkraft (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapital Solar"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Kapital Wind"
+    },
+    "a13": {
+      "min": 2,
+      "max": 6,
+      "label": "Kapital Wasserkraft"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Investitionsbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Flaeche Solar"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Flaeche Wind"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Flaeche Wasserkraft"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Flaeche (ha)"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Genehmigung Solar"
+    },
+    "a32": {
+      "min": 3,
+      "max": 8,
+      "label": "Genehmigung Wind"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Genehmigung Wasserkraft"
+    },
+    "b3": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Genehmigungseinheiten"
+    }
+  },
+  "beschreibung": "Ein Energiekonzern investiert in drei erneuerbare Energiequellen. Solar bringt {c1} % Rendite, Wind {c2} % und Wasserkraft {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Solar, {a12} fuer Wind und {a13} fuer Wasserkraft bei einem Budget von {b1} Tausend Euro. Der Flaechenbedarf liegt bei {a21} Einheiten fuer Solar, {a22} fuer Wind und {a23} fuer Wasserkraft bei maximal {b2} Flaecheneinheiten. Der Genehmigungsaufwand betraegt {a31} Einheiten fuer Solar, {a32} fuer Wind und {a33} fuer Wasserkraft bei maximal {b3} Genehmigungseinheiten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Budget, Flaeche und Genehmigungen.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Solar bringt {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Wind {c2} %",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Wasserkraft {c3} %",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Solar",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Wind",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Wasserkraft",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Solar",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Wind",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Wasserkraft",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Flaecheneinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Solar",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Wind",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Wasserkraft",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Genehmigungseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

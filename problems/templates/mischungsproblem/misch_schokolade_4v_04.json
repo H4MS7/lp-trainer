@@ -1,0 +1,56 @@
+{
+  "id": "misch_schokolade_4v_04",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Menge Kakao A (g)", "x2 = Menge Kakao B (g)", "x3 = Menge Milchpulver (g)", "x4 = Menge Zucker (g)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Kakaogehalt", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Zuckeranteil", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Cremigkeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 16,  "label": "Kosten Kakao A (Cent/g)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Kakao B (Cent/g)"},
+    "c3":  {"min": 1, "max": 6,   "label": "Kosten Milchpulver (Cent/g)"},
+    "c4":  {"min": 1, "max": 4,   "label": "Kosten Zucker (Cent/g)"},
+    "a11": {"min": 4, "max": 10,  "label": "Kakao durch A (Einheiten/g)"},
+    "a12": {"min": 3, "max": 9,   "label": "Kakao durch B (Einheiten/g)"},
+    "a13": {"min": 1, "max": 3,   "label": "Kakao durch Milchpulver (Einheiten/g)"},
+    "a14": {"min": 1, "max": 2,   "label": "Kakao durch Zucker (Einheiten/g)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Kakaogehalt (Einheiten)"},
+    "a21": {"min": 1, "max": 3,   "label": "Zuckeranteil A (Einheiten/g)"},
+    "a22": {"min": 1, "max": 4,   "label": "Zuckeranteil B (Einheiten/g)"},
+    "a23": {"min": 2, "max": 5,   "label": "Zuckeranteil Milchpulver (Einheiten/g)"},
+    "a24": {"min": 4, "max": 10,  "label": "Zuckeranteil Zucker (Einheiten/g)"},
+    "b2":  {"min": 50, "max": 160, "label": "Max. Zuckeranteil (Einheiten)"},
+    "a31": {"min": 1, "max": 4,   "label": "Cremigkeit durch A (Einheiten/g)"},
+    "a32": {"min": 2, "max": 6,   "label": "Cremigkeit durch B (Einheiten/g)"},
+    "a33": {"min": 3, "max": 9,   "label": "Cremigkeit durch Milchpulver (Einheiten/g)"},
+    "a34": {"min": 1, "max": 3,   "label": "Cremigkeit durch Zucker (Einheiten/g)"},
+    "b3":  {"min": 40, "max": 140, "label": "Mindest-Cremigkeit (Einheiten)"}
+  },
+  "titel": "Schokolade – Kakao, Zucker und Cremigkeit",
+  "beschreibung": "Ein Schokoladenhersteller mischt Schokolade aus vier Zutaten. Kakao A kostet {c1} Cent pro g, Kakao B kostet {c2} Cent pro g, Milchpulver kostet {c3} Cent pro g und Zucker kostet {c4} Cent pro g. Kakao A liefert {a11} Kakao-Einheiten pro g, B liefert {a12}, Milchpulver liefert {a13} und Zucker liefert {a14} Einheiten pro g. Die Schokolade muss mindestens {b1} Kakao-Einheiten erreichen. Kakao A hat {a21} Zucker-Einheiten pro g, B hat {a22}, Milchpulver hat {a23} und Zucker hat {a24} Einheiten pro g. Der Zuckeranteil darf höchstens {b2} Einheiten betragen. Kakao A liefert {a31} Cremigkeits-Einheiten pro g, B liefert {a32}, Milchpulver liefert {a33} und Zucker liefert {a34} Einheiten pro g. Die Cremigkeit muss mindestens {b3} Einheiten erreichen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Kakaogehalt und Cremigkeit sowie begrenztem Zuckeranteil.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kakao A kostet {c1} Cent pro g", "bedeutung": "{c1} × x₁"},
+      {"text": "Kakao B kostet {c2} Cent pro g", "bedeutung": "{c2} × x₂"},
+      {"text": "Milchpulver kostet {c3} Cent pro g", "bedeutung": "{c3} × x₃"},
+      {"text": "Zucker kostet {c4} Cent pro g", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kakao-Einheiten pro g, B liefert {a12}, Milchpulver liefert {a13} und Zucker liefert {a14} Einheiten pro g. Die Schokolade muss mindestens {b1} Kakao-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Zucker-Einheiten pro g, B hat {a22}, Milchpulver hat {a23} und Zucker hat {a24} Einheiten pro g. Der Zuckeranteil darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Cremigkeits-Einheiten pro g, B liefert {a32}, Milchpulver liefert {a33} und Zucker liefert {a34} Einheiten pro g. Die Cremigkeit muss mindestens {b3} Einheiten erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≥ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "kapa_cloud_vm_2v_01",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Standard-VMs", "x2 = Anzahl High-Performance-VMs"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Durchsatz Standard (Req/s)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Durchsatz High-Perf (Req/s)"},
+    "a11": {"min": 1, "max": 4,   "label": "CPU Standard (Kerne)"},
+    "a12": {"min": 2, "max": 8,   "label": "CPU High-Perf (Kerne)"},
+    "b1":  {"min": 40, "max": 200, "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 2, "max": 8,   "label": "RAM Standard (GB)"},
+    "a22": {"min": 4, "max": 16,  "label": "RAM High-Perf (GB)"},
+    "b2":  {"min": 60, "max": 300, "label": "Verfügbares RAM (GB)"}
+  },
+  "titel": "Cloud-Infrastruktur – VM-Allokation",
+  "beschreibung": "Ein Cloud-Anbieter plant die Allokation virtueller Maschinen. Standard-VMs verarbeiten {c1} Anfragen pro Sekunde, High-Performance-VMs verarbeiten {c2} Anfragen pro Sekunde. Eine Standard-VM benötigt {a11} CPU-Kerne, eine High-Performance-VM benötigt {a12} CPU-Kerne. Insgesamt stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB pro Standard-VM und {a22} GB pro High-Performance-VM. Das verfügbare RAM beträgt {b2} GB.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der CPU- und RAM-Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Standard-VMs verarbeiten {c1} Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "High-Performance-VMs verarbeiten {c2} Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, eine High-Performance-VM benötigt {a12} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB pro Standard-VM und {a22} GB pro High-Performance-VM", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "flaeche_wald_weide_2v_03",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Wald", "x2 = Hektar Weidefläche"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbewaldung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Ertrag Wald (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Weide (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Wald (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Weide (ha/ha)"},
+    "b1":  {"min": 60, "max": 350, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 1, "max": 3,   "label": "Waldanteil pro Hektar Wald"},
+    "a22": {"min": 0, "max": 0,   "label": "Waldanteil pro Hektar Weide"},
+    "b2":  {"min": 10, "max": 50,  "label": "Mindestbewaldung (ha)"}
+  },
+  "titel": "Grundstück – Wald und Weidefläche",
+  "beschreibung": "Ein Landbesitzer möchte sein Grundstück zwischen Wald und Weidefläche aufteilen. Wald erwirtschaftet {c1} Tsd. € pro Hektar, Weidefläche erwirtschaftet {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Wald und {a12} Hektar pro Hektar Weide. Die Gesamtfläche beträgt {b1} Hektar. Gemäß Vorschrift müssen mindestens {b2} Hektar bewaldet bleiben.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Fläche und der Mindestbewaldung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wald erwirtschaftet {c1} Tsd. € pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Weidefläche erwirtschaftet {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Wald", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Weide", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "mindestens {b2} Hektar bewaldet", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

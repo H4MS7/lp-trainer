@@ -1,0 +1,43 @@
+{
+  "id": "wart_stromnetz_2v_12",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Transformatorprüfungen", "x2 = Anzahl Leitungsreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgungssicherheit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Elektrikerkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten Trafoprüfung (Tsd. €)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Leitungsreparatur (Tsd. €)"},
+    "a11": {"min": 3, "max": 9,   "label": "Sicherheit Trafo (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Sicherheit Leitung (%)"},
+    "b1":  {"min": 40, "max": 120, "label": "Mindestversorgungssicherheit (%)"},
+    "a21": {"min": 3, "max": 7,   "label": "Stunden Trafo (h)"},
+    "a22": {"min": 4, "max": 10,  "label": "Stunden Leitung (h)"},
+    "b2":  {"min": 30, "max": 100, "label": "Elektrikerkapazität (h)"}
+  },
+  "titel": "Stromversorger – Netzwartung",
+  "beschreibung": "Ein Stromversorger plant die Wartung seines Netzes. Eine Transformatorprüfung kostet {c1} Tsd. €, eine Leitungsreparatur kostet {c2} Tsd. €. Eine Trafoprüfung erhöht die Versorgungssicherheit um {a11} %, eine Leitungsreparatur um {a12} %. Die Mindestversorgungssicherheit beträgt {b1} %. Eine Trafoprüfung benötigt {a21} Elektrikerstunden, eine Leitungsreparatur benötigt {a22} Elektrikerstunden. Die Elektrikerkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Versorgungssicherheit und Personalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Transformatorprüfung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Leitungsreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Elektrikerstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Elektrikerstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

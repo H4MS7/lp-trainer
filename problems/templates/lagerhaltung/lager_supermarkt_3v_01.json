@@ -1,0 +1,60 @@
+{
+  "id": "lager_supermarkt_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Milchprodukte (Paletten)", "x2 = Bestellmenge Getränke (Paletten)", "x3 = Bestellmenge Konserven (Paletten)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Kühlraumkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Gesamtlagerbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Lagerkosten Milchprodukte (€/Palette)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Lagerkosten Getränke (€/Palette)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Lagerkosten Konserven (€/Palette)"},
+    "a11": {"min": 3, "max": 8,   "label": "Bestandseinheiten Milchprodukte"},
+    "a12": {"min": 2, "max": 6,   "label": "Bestandseinheiten Getränke"},
+    "a13": {"min": 4, "max": 10,  "label": "Bestandseinheiten Konserven"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindestbestand (Einheiten)"},
+    "a21": {"min": 3, "max": 6,   "label": "Kühlraum Milchprodukte (m³)"},
+    "a22": {"min": 1, "max": 3,   "label": "Kühlraum Getränke (m³)"},
+    "a23": {"min": 1, "max": 2,   "label": "Kühlraum Konserven (m³)"},
+    "b2":  {"min": 40, "max": 150, "label": "Kühlraumkapazität (m³)"},
+    "a31": {"min": 8, "max": 20,  "label": "Einkaufskosten Milchprodukte (€/Palette)"},
+    "a32": {"min": 5, "max": 15,  "label": "Einkaufskosten Getränke (€/Palette)"},
+    "a33": {"min": 3, "max": 10,  "label": "Einkaufskosten Konserven (€/Palette)"},
+    "b3":  {"min": 200, "max": 800, "label": "Gesamtlagerbudget (€)"}
+  },
+  "titel": "Supermarkt – Drei-Warengruppen-Lager",
+  "beschreibung": "Ein Supermarkt optimiert die Lagerung von Milchprodukten, Getränken und Konserven. Die Lagerkosten betragen {c1} € pro Palette Milchprodukte, {c2} € pro Palette Getränke und {c3} € pro Palette Konserven. Milchprodukte liefern {a11} Bestandseinheiten pro Palette, Getränke liefern {a12} Bestandseinheiten und Konserven liefern {a13} Bestandseinheiten. Der Mindestbestand beträgt {b1} Einheiten. Milchprodukte benötigen {a21} m³ Kühlraum, Getränke benötigen {a22} m³ und Konserven benötigen {a23} m³ pro Palette. Die Kühlraumkapazität beträgt {b2} m³. Die Einkaufskosten betragen {a31} € pro Palette Milchprodukte, {a32} € pro Palette Getränke und {a33} € pro Palette Konserven. Das Gesamtlagerbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands, der Kühlraumkapazität und des Budgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Milchprodukte", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Getränke", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Palette Konserven", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Bestandseinheiten pro Palette", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Bestandseinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Bestandseinheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Einheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Kühlraum", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro Palette", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Palette Milchprodukte", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Palette Getränke", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Palette Konserven", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

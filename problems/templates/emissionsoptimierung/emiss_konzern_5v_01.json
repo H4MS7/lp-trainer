@@ -1,0 +1,91 @@
+{
+  "id": "emiss_konzern_5v_01",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Einheiten Stahl", "x2 = Einheiten Aluminium", "x3 = Einheiten Kupfer", "x4 = Einheiten Zink", "x5 = Einheiten Blei"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Abfallmenge", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Stahl (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Aluminium (Tsd. €)"},
+    "c3":  {"min": 6, "max": 15,  "label": "Ertrag Kupfer (Tsd. €)"},
+    "c4":  {"min": 3, "max": 10,  "label": "Ertrag Zink (Tsd. €)"},
+    "c5":  {"min": 2, "max": 8,   "label": "Ertrag Blei (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "CO₂ Stahl (t)"},
+    "a12": {"min": 4, "max": 10,  "label": "CO₂ Aluminium (t)"},
+    "a13": {"min": 2, "max": 6,   "label": "CO₂ Kupfer (t)"},
+    "a14": {"min": 2, "max": 5,   "label": "CO₂ Zink (t)"},
+    "a15": {"min": 3, "max": 7,   "label": "CO₂ Blei (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Energie Stahl (MWh)"},
+    "a22": {"min": 5, "max": 12,  "label": "Energie Aluminium (MWh)"},
+    "a23": {"min": 2, "max": 6,   "label": "Energie Kupfer (MWh)"},
+    "a24": {"min": 2, "max": 5,   "label": "Energie Zink (MWh)"},
+    "a25": {"min": 1, "max": 4,   "label": "Energie Blei (MWh)"},
+    "b2":  {"min": 80, "max": 400, "label": "Energiebudget (MWh)"},
+    "a31": {"min": 2, "max": 5,   "label": "Wasser Stahl (m³)"},
+    "a32": {"min": 1, "max": 4,   "label": "Wasser Aluminium (m³)"},
+    "a33": {"min": 3, "max": 8,   "label": "Wasser Kupfer (m³)"},
+    "a34": {"min": 2, "max": 5,   "label": "Wasser Zink (m³)"},
+    "a35": {"min": 1, "max": 3,   "label": "Wasser Blei (m³)"},
+    "b3":  {"min": 60, "max": 300, "label": "Wasserbudget (m³)"},
+    "a41": {"min": 2, "max": 5,   "label": "Abfall Stahl (t)"},
+    "a42": {"min": 1, "max": 3,   "label": "Abfall Aluminium (t)"},
+    "a43": {"min": 2, "max": 4,   "label": "Abfall Kupfer (t)"},
+    "a44": {"min": 1, "max": 3,   "label": "Abfall Zink (t)"},
+    "a45": {"min": 2, "max": 5,   "label": "Abfall Blei (t)"},
+    "b4":  {"min": 50, "max": 200, "label": "Abfalllimit (t)"}
+  },
+  "titel": "Metallkonzern – Stahl, Aluminium, Kupfer, Zink und Blei",
+  "beschreibung": "Ein Metallkonzern produziert Stahl, Aluminium, Kupfer, Zink und Blei. Stahl erwirtschaftet {c1} Tsd. €, Aluminium {c2} Tsd. €, Kupfer {c3} Tsd. €, Zink {c4} Tsd. €, Blei {c5} Tsd. € pro Einheit. Stahl verursacht {a11} Tonnen CO₂, Aluminium {a12} Tonnen, Kupfer {a13} Tonnen, Zink {a14} Tonnen, Blei {a15} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Stahl verbraucht {a21} MWh, Aluminium {a22} MWh, Kupfer {a23} MWh, Zink {a24} MWh, Blei {a25} MWh pro Einheit. Das Energiebudget beträgt {b2} MWh. Stahl benötigt {a31} m³ Wasser, Aluminium {a32} m³, Kupfer {a33} m³, Zink {a34} m³, Blei {a35} m³ pro Einheit. Das Wasserbudget beträgt {b3} m³. Stahl erzeugt {a41} Tonnen Abfall, Aluminium {a42} Tonnen, Kupfer {a43} Tonnen, Zink {a44} Tonnen, Blei {a45} Tonnen pro Einheit. Das Abfalllimit liegt bei {b4} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Stahl erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Aluminium {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Kupfer {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Zink {c4} Tsd. €", "bedeutung": "{c4} × x₄"},
+      {"text": "Blei {c5} Tsd. €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Tonnen", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Tonnen pro Einheit", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} MWh", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} MWh", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} MWh pro Einheit", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} m³ Wasser", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} m³", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} m³", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} m³", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} m³ pro Einheit", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} m³", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tonnen Abfall", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tonnen", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tonnen", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tonnen", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Tonnen pro Einheit", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Tonnen", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "emiss_chemiepark_3v_02",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Düngemittel", "x2 = Einheiten Farbe", "x3 = Einheiten Klebstoff"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Abwasser", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Giftmüll", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Düngemittel (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Farbe (Tsd. €)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Ertrag Klebstoff (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Abwasser Düngemittel (m³)"},
+    "a12": {"min": 4, "max": 10,  "label": "Abwasser Farbe (m³)"},
+    "a13": {"min": 2, "max": 6,   "label": "Abwasser Klebstoff (m³)"},
+    "b1":  {"min": 80, "max": 350, "label": "Abwasserlimit (m³)"},
+    "a21": {"min": 2, "max": 6,   "label": "CO₂ Düngemittel (t)"},
+    "a22": {"min": 3, "max": 8,   "label": "CO₂ Farbe (t)"},
+    "a23": {"min": 1, "max": 5,   "label": "CO₂ Klebstoff (t)"},
+    "b2":  {"min": 60, "max": 300, "label": "CO₂-Limit (t)"},
+    "a31": {"min": 1, "max": 4,   "label": "Giftmüll Düngemittel (t)"},
+    "a32": {"min": 2, "max": 6,   "label": "Giftmüll Farbe (t)"},
+    "a33": {"min": 2, "max": 5,   "label": "Giftmüll Klebstoff (t)"},
+    "b3":  {"min": 40, "max": 150, "label": "Giftmülllimit (t)"}
+  },
+  "titel": "Chemiepark – Düngemittel, Farbe und Klebstoff",
+  "beschreibung": "Ein Chemiepark produziert Düngemittel, Farbe und Klebstoff. Düngemittel erwirtschaftet {c1} Tsd. €, Farbe {c2} Tsd. €, Klebstoff {c3} Tsd. € pro Einheit. Düngemittel erzeugt {a11} m³ Abwasser, Farbe {a12} m³, Klebstoff {a13} m³ pro Einheit. Das Abwasserlimit beträgt {b1} m³. Düngemittel verursacht {a21} Tonnen CO₂, Farbe {a22} Tonnen, Klebstoff {a23} Tonnen pro Einheit. Das CO₂-Limit liegt bei {b2} Tonnen. Düngemittel erzeugt {a31} Tonnen Giftmüll, Farbe {a32} Tonnen, Klebstoff {a33} Tonnen pro Einheit. Das Giftmülllimit beträgt {b3} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Düngemittel erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Farbe {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Klebstoff {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ Abwasser", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} m³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} m³ pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} m³", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen CO₂", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tonnen pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen Giftmüll", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

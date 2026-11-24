@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_immobilien_2v_02",
+  "titel": "Immobilieninvestment – Wohn- und Gewerbeimmobilien",
+  "variablen": [
+    "x1 = Betrag in Wohnimmobilien (Tsd. EUR)",
+    "x2 = Betrag in Gewerbeimmobilien (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gesamtbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Verwaltungsaufwand",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 8,
+      "label": "Mietrendite Wohnung (%)"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Mietrendite Gewerbe (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 4,
+      "label": "Kapitaleinsatz Wohnung"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitaleinsatz Gewerbe"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "Investitionsbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 2,
+      "max": 6,
+      "label": "Verwaltung Wohnung (h)"
+    },
+    "a22": {
+      "min": 3,
+      "max": 9,
+      "label": "Verwaltung Gewerbe (h)"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Verwaltungsstunden"
+    }
+  },
+  "beschreibung": "Ein Investor plant Immobilieninvestitionen. Wohnimmobilien erzielen {c1} % Mietrendite, Gewerbeimmobilien {c2} %. Pro Einheit Wohnimmobilie werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Gewerbe {a12} Einheiten. Das Investitionsbudget betraegt {b1} Tausend Euro. Die Verwaltung erfordert {a21} Stunden pro Wohneinheit und {a22} Stunden pro Gewerbeeinheit bei maximal {b2} verfuegbaren Verwaltungsstunden.",
+  "hinweis": "Maximiere die Gesamtmietrendite unter Beachtung von Budget und Verwaltungskapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Wohnimmobilien erzielen {c1} % Mietrendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Gewerbeimmobilien {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten eingesetzt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "pro Einheit Gewerbe {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Stunden pro Wohneinheit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Stunden pro Gewerbeeinheit",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Verwaltungsstunden",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

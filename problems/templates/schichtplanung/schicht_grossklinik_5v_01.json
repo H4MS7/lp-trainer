@@ -1,0 +1,85 @@
+{
+  "id": "schicht_grossklinik_5v_01",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Frühschichten Ärzte", "x2 = Anzahl Spätschichten Ärzte", "x3 = Anzahl Nachtschichten Ärzte", "x4 = Anzahl Frühschichten Pflege", "x5 = Anzahl Nachtschichten Pflege"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Intensivstation", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Normalstation", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung OP-Bereich", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindestbesetzung Ambulanz", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Maximale Schichten gesamt", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 300, "max": 550, "label": "Kosten Frühschicht Ärzte (€)"},
+    "c2":  {"min": 320, "max": 580, "label": "Kosten Spätschicht Ärzte (€)"},
+    "c3":  {"min": 400, "max": 700, "label": "Kosten Nachtschicht Ärzte (€)"},
+    "c4":  {"min": 100, "max": 200, "label": "Kosten Frühschicht Pflege (€)"},
+    "c5":  {"min": 140, "max": 260, "label": "Kosten Nachtschicht Pflege (€)"},
+    "a11": {"min": 2, "max": 5, "label": "Intensiv pro Früh Ärzte"},
+    "a12": {"min": 2, "max": 4, "label": "Intensiv pro Spät Ärzte"},
+    "a13": {"min": 1, "max": 3, "label": "Intensiv pro Nacht Ärzte"},
+    "a14": {"min": 2, "max": 5, "label": "Intensiv pro Früh Pflege"},
+    "a15": {"min": 2, "max": 4, "label": "Intensiv pro Nacht Pflege"},
+    "b1":  {"min": 15, "max": 40, "label": "Mindestbesetzung Intensivstation"},
+    "a21": {"min": 1, "max": 3, "label": "Normal pro Früh Ärzte"},
+    "a22": {"min": 1, "max": 3, "label": "Normal pro Spät Ärzte"},
+    "a23": {"min": 1, "max": 2, "label": "Normal pro Nacht Ärzte"},
+    "a24": {"min": 3, "max": 7, "label": "Normal pro Früh Pflege"},
+    "a25": {"min": 2, "max": 5, "label": "Normal pro Nacht Pflege"},
+    "b2":  {"min": 12, "max": 35, "label": "Mindestbesetzung Normalstation"},
+    "a31": {"min": 3, "max": 6, "label": "OP pro Früh Ärzte"},
+    "a32": {"min": 2, "max": 4, "label": "OP pro Spät Ärzte"},
+    "a33": {"min": 1, "max": 2, "label": "OP pro Nacht Ärzte"},
+    "a34": {"min": 2, "max": 4, "label": "OP pro Früh Pflege"},
+    "a35": {"min": 1, "max": 2, "label": "OP pro Nacht Pflege"},
+    "b3":  {"min": 10, "max": 30, "label": "Mindestbesetzung OP-Bereich"},
+    "a41": {"min": 2, "max": 4, "label": "Ambulanz pro Früh Ärzte"},
+    "a42": {"min": 2, "max": 4, "label": "Ambulanz pro Spät Ärzte"},
+    "a43": {"min": 1, "max": 2, "label": "Ambulanz pro Nacht Ärzte"},
+    "a44": {"min": 1, "max": 3, "label": "Ambulanz pro Früh Pflege"},
+    "a45": {"min": 1, "max": 2, "label": "Ambulanz pro Nacht Pflege"},
+    "b4":  {"min": 8, "max": 25, "label": "Mindestbesetzung Ambulanz"},
+    "a51": {"min": 1, "max": 1, "label": "Schichtfaktor Früh Ärzte"},
+    "a52": {"min": 1, "max": 1, "label": "Schichtfaktor Spät Ärzte"},
+    "a53": {"min": 1, "max": 1, "label": "Schichtfaktor Nacht Ärzte"},
+    "a54": {"min": 1, "max": 1, "label": "Schichtfaktor Früh Pflege"},
+    "a55": {"min": 1, "max": 1, "label": "Schichtfaktor Nacht Pflege"},
+    "b5":  {"min": 25, "max": 60, "label": "Maximale Schichten gesamt"}
+  },
+  "titel": "Großklinik – Fünf-Schicht-Planung",
+  "beschreibung": "Eine Großklinik plant die Besetzung mit fünf Schichttypen. Eine Frühschicht Ärzte kostet {c1} €, eine Spätschicht Ärzte kostet {c2} €, eine Nachtschicht Ärzte kostet {c3} €, eine Frühschicht Pflege kostet {c4} € und eine Nachtschicht Pflege kostet {c5} €. Für die Intensivstation stellt jede Frühschicht Ärzte {a11} Kräfte bereit, jede Spätschicht Ärzte {a12}, jede Nachtschicht Ärzte {a13}, jede Frühschicht Pflege {a14} und jede Nachtschicht Pflege {a15}. Mindestens {b1} Kräfte für die Intensivstation werden benötigt. Für die Normalstation stellt jede Frühschicht Ärzte {a21} Kräfte bereit, jede Spätschicht Ärzte {a22}, jede Nachtschicht Ärzte {a23}, jede Frühschicht Pflege {a24} und jede Nachtschicht Pflege {a25}. Mindestens {b2} Kräfte für die Normalstation werden benötigt. Für den OP-Bereich stellt jede Frühschicht Ärzte {a31} Kräfte bereit, jede Spätschicht Ärzte {a32}, jede Nachtschicht Ärzte {a33}, jede Frühschicht Pflege {a34} und jede Nachtschicht Pflege {a35}. Mindestens {b3} Kräfte für den OP-Bereich werden benötigt. Für die Ambulanz stellt jede Frühschicht Ärzte {a41} Kräfte bereit, jede Spätschicht Ärzte {a42}, jede Nachtschicht Ärzte {a43}, jede Frühschicht Pflege {a44} und jede Nachtschicht Pflege {a45}. Mindestens {b4} Kräfte für die Ambulanz werden benötigt. Insgesamt dürfen höchstens {b5} Schichten eingeplant werden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Mindestbesetzungen und des Schichtlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht Ärzte kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht Ärzte kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht Ärzte kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Frühschicht Pflege kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Nachtschicht Pflege kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kräfte bereit, jede Spätschicht Ärzte {a12}, jede Nachtschicht Ärzte {a13}, jede Frühschicht Pflege {a14} und jede Nachtschicht Pflege {a15}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Kräfte für die Intensivstation werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kräfte bereit, jede Spätschicht Ärzte {a22}, jede Nachtschicht Ärzte {a23}, jede Frühschicht Pflege {a24} und jede Nachtschicht Pflege {a25}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Kräfte für die Normalstation werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Kräfte bereit, jede Spätschicht Ärzte {a32}, jede Nachtschicht Ärzte {a33}, jede Frühschicht Pflege {a34} und jede Nachtschicht Pflege {a35}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Kräfte für den OP-Bereich werden benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} Kräfte bereit, jede Spätschicht Ärzte {a42}, jede Nachtschicht Ärzte {a43}, jede Frühschicht Pflege {a44} und jede Nachtschicht Pflege {a45}", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Kräfte für die Ambulanz werden benötigt", "bedeutung": "≥ {b4}"}
+      ],
+      [
+        {"text": "höchstens {b5} Schichten eingeplant werden", "bedeutung": "x₁ + x₂ + x₃ + x₄ + x₅ ≤ {b5}"}
+      ]
+    ]
+  }
+}

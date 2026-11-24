@@ -1,0 +1,69 @@
+{
+  "id": "energie_solar_wind_bio_geo_4v_01",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = MWh Solar", "x2 = MWh Wind", "x3 = MWh Biomasse", "x4 = MWh Geothermie"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Netzkapazität", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Maximale Fläche", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 28, "max": 70, "label": "Kosten Solar (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Wind (€/MWh)"},
+    "c3":  {"min": 38, "max": 85, "label": "Kosten Biomasse (€/MWh)"},
+    "c4":  {"min": 45, "max": 110, "label": "Kosten Geothermie (€/MWh)"},
+    "a11": {"min": 1, "max": 4, "label": "Leistung Solar (MW/MWh)"},
+    "a12": {"min": 2, "max": 6, "label": "Leistung Wind (MW/MWh)"},
+    "a13": {"min": 2, "max": 5, "label": "Leistung Biomasse (MW/MWh)"},
+    "a14": {"min": 3, "max": 7, "label": "Leistung Geothermie (MW/MWh)"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 4, "label": "Netzlast Solar (MW/MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Netzlast Wind (MW/MWh)"},
+    "a23": {"min": 1, "max": 3, "label": "Netzlast Biomasse (MW/MWh)"},
+    "a24": {"min": 1, "max": 3, "label": "Netzlast Geothermie (MW/MWh)"},
+    "b2":  {"min": 80, "max": 300, "label": "Netzkapazität (MW)"},
+    "a31": {"min": 1, "max": 2, "label": "CO2 Solar (t/MWh)"},
+    "a32": {"min": 1, "max": 2, "label": "CO2 Wind (t/MWh)"},
+    "a33": {"min": 2, "max": 5, "label": "CO2 Biomasse (t/MWh)"},
+    "a34": {"min": 1, "max": 2, "label": "CO2 Geothermie (t/MWh)"},
+    "b3":  {"min": 30, "max": 120, "label": "Maximale CO2-Emission (t)"},
+    "a41": {"min": 3, "max": 6, "label": "Fläche Solar (ha/MWh)"},
+    "a42": {"min": 2, "max": 5, "label": "Fläche Wind (ha/MWh)"},
+    "a43": {"min": 1, "max": 3, "label": "Fläche Biomasse (ha/MWh)"},
+    "a44": {"min": 1, "max": 2, "label": "Fläche Geothermie (ha/MWh)"},
+    "b4":  {"min": 40, "max": 180, "label": "Maximale Fläche (ha)"}
+  },
+  "titel": "Energiemix – Solar, Wind, Biomasse und Geothermie",
+  "beschreibung": "Ein Bundesland plant den Energiemix aus vier Quellen. Solar kostet {c1} € pro MWh, Wind kostet {c2} € pro MWh, Biomasse kostet {c3} € pro MWh und Geothermie kostet {c4} € pro MWh. Solar liefert {a11} MW, Wind {a12} MW, Biomasse {a13} MW und Geothermie {a14} MW pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Netzlast beträgt {a21} MW pro MWh Solar, {a22} MW Wind, {a23} MW Biomasse und {a24} MW Geothermie. Die Netzkapazität ist auf {b2} MW begrenzt. Die CO2-Emission beträgt {a31} t Solar, {a32} t Wind, {a33} t Biomasse und {a34} t Geothermie pro MWh. Maximal {b3} Tonnen CO2 sind zulässig. Der Flächenbedarf beträgt {a41} ha Solar, {a42} ha Wind, {a43} ha Biomasse und {a44} ha Geothermie pro MWh. Maximal {b4} ha stehen zur Verfügung.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestleistung, Netzkapazität, CO2-Grenze und Fläche.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Solar kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wind kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Biomasse kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Geothermie kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Wind {a12} MW, Biomasse {a13} MW und Geothermie {a14} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh Solar, {a22} MW Wind, {a23} MW Biomasse und {a24} MW Geothermie", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} MW begrenzt", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} t Solar, {a32} t Wind, {a33} t Biomasse und {a34} t Geothermie pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} ha Solar, {a42} ha Wind, {a43} ha Biomasse und {a44} ha Geothermie pro MWh", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b4} ha stehen zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

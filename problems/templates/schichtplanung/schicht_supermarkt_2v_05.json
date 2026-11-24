@@ -1,0 +1,43 @@
+{
+  "id": "schicht_supermarkt_2v_05",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Kasse", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Regalservice", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 90, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 45, "max": 100, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 2, "max": 6, "label": "Kassierer pro Frühschicht"},
+    "a12": {"min": 1, "max": 3, "label": "Kassierer pro Spätschicht"},
+    "b1":  {"min": 10, "max": 40, "label": "Mindestbesetzung Kasse"},
+    "a21": {"min": 2, "max": 5, "label": "Regalservice pro Frühschicht"},
+    "a22": {"min": 1, "max": 4, "label": "Regalservice pro Spätschicht"},
+    "b2":  {"min": 8, "max": 30, "label": "Mindestbesetzung Regalservice"}
+  },
+  "titel": "Supermarkt – Schichtplanung",
+  "beschreibung": "Ein Supermarkt plant die Schichtbesetzung für Kasse und Regalservice. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Kassierer bereit, jede Spätschicht stellt {a12} Kassierer bereit. Mindestens {b1} Kassierer werden benötigt. Jede Frühschicht stellt {a21} Regalservice-Mitarbeiter bereit, jede Spätschicht stellt {a22} Regalservice-Mitarbeiter bereit. Mindestens {b2} Regalservice-Mitarbeiter werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Kasse und Regalservice.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kassierer bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Kassierer bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Kassierer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalservice-Mitarbeiter bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalservice-Mitarbeiter bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Regalservice-Mitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

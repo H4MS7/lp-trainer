@@ -1,0 +1,181 @@
+[
+  {
+    "titel": "Fünf-Klassen-Anlagestrategie eines Versicherungskonzerns",
+    "beschreibung": "Ein Versicherungskonzern plant die strategische Aufteilung seines Anlagekapitals auf fünf Anlageklassen: Staatsanleihen, Unternehmensanleihen, Aktien-ETFs, Immobilien-REITs und Infrastrukturfonds. Die erwarteten Renditen betragen pro Einheit Staatsanleihen 15 Tausend €, pro Einheit Unternehmensanleihen 4 Tausend €, pro Einheit Aktien-ETFs 8 Tausend €, pro Einheit Immobilien-REITs 2 Tausend € und pro Einheit Infrastrukturfonds 15 Tausend € jährlich. Das Gesamtbudget beträgt höchstens 1809 Kapitaleinheiten. Dabei erfordert jede Einheit Staatsanleihen 5 Kapitaleinheiten, jede Einheit Unternehmensanleihen 11 Kapitaleinheiten, jede Einheit Aktien-ETFs 4 Kapitaleinheiten, jede Einheit Immobilien-REITs 8 Kapitaleinheiten und jede Einheit Infrastrukturfonds 11 Kapitaleinheiten. Das Risikobudget ist auf maximal 4593 Risikopunkte begrenzt: Jede Einheit Staatsanleihen verursacht 8 Risikopunkte, jede Einheit Unternehmensanleihen 6 Risikopunkte, jede Einheit Aktien-ETFs 11 Risikopunkte, jede Einheit Immobilien-REITs 6 Risikopunkte und jede Einheit Infrastrukturfonds 1 Risikopunkt. Die gewichtete Mindestrendite muss mindestens 539 Renditeeinheiten betragen. Dabei erbringt jede Einheit Staatsanleihen 2 Renditeeinheiten, jede Einheit Unternehmensanleihen 5 Renditeeinheiten, jede Einheit Aktien-ETFs 8 Renditeeinheiten, jede Einheit Immobilien-REITs 4 Renditeeinheiten und jede Einheit Infrastrukturfonds 4 Renditeeinheiten. Die Liquiditätsreserve darf höchstens 3613 Liquiditätseinheiten binden: Jede Einheit Staatsanleihen bindet 3 Liquiditätseinheiten, jede Einheit Unternehmensanleihen 12 Liquiditätseinheiten, jede Einheit Aktien-ETFs 1 Liquiditätseinheit, jede Einheit Immobilien-REITs 9 Liquiditätseinheiten und jede Einheit Infrastrukturfonds 7 Liquiditätseinheiten. Das Compliance-Budget ist auf höchstens 3319 Compliance-Punkte begrenzt: Jede Einheit Staatsanleihen verbraucht 6 Compliance-Punkte, jede Einheit Unternehmensanleihen 9 Compliance-Punkte, jede Einheit Aktien-ETFs 9 Compliance-Punkte, jede Einheit Immobilien-REITs 2 Compliance-Punkte und jede Einheit Infrastrukturfonds 1 Compliance-Punkt. Der Versicherungskonzern möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Staatsanleihen",
+      "x2 = Einheiten Unternehmensanleihen",
+      "x3 = Einheiten Aktien-ETFs",
+      "x4 = Einheiten Immobilien-REITs",
+      "x5 = Einheiten Infrastrukturfonds"
+    ],
+    "zielfunktion": "Z = 15x1 + 4x2 + 8x3 + 2x4 + 15x5 (max)",
+    "nebenbedingungen": [
+      "5x1 + 11x2 + 4x3 + 8x4 + 11x5 ≤ 1809 (Gesamtbudget)",
+      "8x1 + 6x2 + 11x3 + 6x4 + x5 ≤ 4593 (Risikobudget)",
+      "2x1 + 5x2 + 8x3 + 4x4 + 4x5 ≥ 539 (Mindestrendite)",
+      "3x1 + 12x2 + x3 + 9x4 + 7x5 ≤ 3613 (Liquiditätsreserve)",
+      "6x1 + 9x2 + 9x3 + 2x4 + x5 ≤ 3319 (Compliance-Budget)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Fünf Anlageformen mit vier Obergrenzen (Budget, Risiko, Liquidität, Compliance) und einer Mindestanforderung (Rendite). Staatsanleihen und Infrastrukturfonds haben die gleiche Rendite, unterscheiden sich aber in den Kosten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Staatsanleihen 15 Tausend €",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Unternehmensanleihen 4 Tausend €",
+          "bedeutung": "4 × x₂"
+        },
+        {
+          "text": "Aktien-ETFs 8 Tausend €",
+          "bedeutung": "8 × x₃"
+        },
+        {
+          "text": "Immobilien-REITs 2 Tausend €",
+          "bedeutung": "2 × x₄"
+        },
+        {
+          "text": "Infrastrukturfonds 15 Tausend €",
+          "bedeutung": "15 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Staatsanleihen 5 Kapitaleinheiten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 11 Kapitaleinheiten",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "Aktien-ETFs 4 Kapitaleinheiten",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "Immobilien-REITs 8 Kapitaleinheiten",
+            "bedeutung": "+ 8x₄"
+          },
+          {
+            "text": "Infrastrukturfonds 11 Kapitaleinheiten",
+            "bedeutung": "+ 11x₅"
+          },
+          {
+            "text": "höchstens 1809 Kapitaleinheiten",
+            "bedeutung": "≤ 1809"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen verursacht 8 Risikopunkte",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 6 Risikopunkte",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Aktien-ETFs 11 Risikopunkte",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "Immobilien-REITs 6 Risikopunkte",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "Infrastrukturfonds 1 Risikopunkt",
+            "bedeutung": "+ x₅"
+          },
+          {
+            "text": "maximal 4593 Risikopunkte",
+            "bedeutung": "≤ 4593"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen 2 Renditeeinheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 5 Renditeeinheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "Aktien-ETFs 8 Renditeeinheiten",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "Immobilien-REITs 4 Renditeeinheiten",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "Infrastrukturfonds 4 Renditeeinheiten",
+            "bedeutung": "+ 4x₅"
+          },
+          {
+            "text": "mindestens 539 Renditeeinheiten",
+            "bedeutung": "≥ 539"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen bindet 3 Liquiditätseinheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 12 Liquiditätseinheiten",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "Aktien-ETFs 1 Liquiditätseinheit",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "Immobilien-REITs 9 Liquiditätseinheiten",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "Infrastrukturfonds 7 Liquiditätseinheiten",
+            "bedeutung": "+ 7x₅"
+          },
+          {
+            "text": "höchstens 3613 Liquiditätseinheiten",
+            "bedeutung": "≤ 3613"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen verbraucht 6 Compliance-Punkte",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 9 Compliance-Punkte",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Aktien-ETFs 9 Compliance-Punkte",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "Immobilien-REITs 2 Compliance-Punkte",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Infrastrukturfonds 1 Compliance-Punkt",
+            "bedeutung": "+ x₅"
+          },
+          {
+            "text": "höchstens 3319 Compliance-Punkte",
+            "bedeutung": "≤ 3319"
+          }
+        ]
+      ]
+    }
+  }
+]

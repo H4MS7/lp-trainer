@@ -1,0 +1,43 @@
+{
+  "id": "qual_pharma_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Reinheitsprüfungen", "x2 = Anzahl Wirksamkeitstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Zulassungswert", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Gerätekapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Reinheitsprüfung (€/Test)"},
+    "c2":  {"min": 8, "max": 20,  "label": "Kosten Wirksamkeitstest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Zulassungspunkte Reinheit"},
+    "a12": {"min": 4, "max": 10,  "label": "Zulassungspunkte Wirksamkeit"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Zulassungswert (Punkte)"},
+    "a21": {"min": 2, "max": 5,   "label": "Gerätezeit Reinheit (Stunden)"},
+    "a22": {"min": 3, "max": 7,   "label": "Gerätezeit Wirksamkeit (Stunden)"},
+    "b2":  {"min": 30, "max": 100, "label": "Gerätekapazität (Stunden)"}
+  },
+  "titel": "Pharmaprüfung – Medikamentenzulassung",
+  "beschreibung": "Ein Pharmaunternehmen führt Reinheitsprüfungen und Wirksamkeitstests für die Medikamentenzulassung durch. Eine Reinheitsprüfung kostet {c1} €, ein Wirksamkeitstest kostet {c2} €. Die Reinheitsprüfung liefert {a11} Zulassungspunkte, der Wirksamkeitstest liefert {a12} Zulassungspunkte. Der Mindest-Zulassungswert beträgt {b1} Punkte. Die Reinheitsprüfung benötigt {a21} Stunden Gerätezeit, der Wirksamkeitstest benötigt {a22} Stunden Gerätezeit. Die Gerätekapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichendem Zulassungswert und begrenzter Gerätekapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Reinheitsprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Wirksamkeitstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Zulassungspunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Zulassungspunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden Gerätezeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden Gerätezeit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

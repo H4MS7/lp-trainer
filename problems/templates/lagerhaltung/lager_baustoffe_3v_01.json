@@ -1,0 +1,60 @@
+{
+  "id": "lager_baustoffe_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Holz (Bündel)", "x2 = Bestellmenge Stahl (Bündel)", "x3 = Bestellmenge Dämmmaterial (Bündel)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestvorrat", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Hallenfläche", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Tragfähigkeit Boden", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 9,   "label": "Lagerkosten Holz (€/Bündel)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Lagerkosten Stahl (€/Bündel)"},
+    "c3":  {"min": 2, "max": 6,   "label": "Lagerkosten Dämmmaterial (€/Bündel)"},
+    "a11": {"min": 4, "max": 10,  "label": "Materialeinheiten Holz"},
+    "a12": {"min": 3, "max": 8,   "label": "Materialeinheiten Stahl"},
+    "a13": {"min": 2, "max": 6,   "label": "Materialeinheiten Dämmmaterial"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestvorrat (Materialeinheiten)"},
+    "a21": {"min": 3, "max": 6,   "label": "Hallenfläche Holz (m²)"},
+    "a22": {"min": 2, "max": 4,   "label": "Hallenfläche Stahl (m²)"},
+    "a23": {"min": 4, "max": 8,   "label": "Hallenfläche Dämmmaterial (m²)"},
+    "b2":  {"min": 60, "max": 200, "label": "Hallenfläche (m²)"},
+    "a31": {"min": 2, "max": 5,   "label": "Gewicht Holz (Tonnen/Bündel)"},
+    "a32": {"min": 4, "max": 10,  "label": "Gewicht Stahl (Tonnen/Bündel)"},
+    "a33": {"min": 1, "max": 3,   "label": "Gewicht Dämmmaterial (Tonnen/Bündel)"},
+    "b3":  {"min": 40, "max": 150, "label": "Tragfähigkeit (Tonnen)"}
+  },
+  "titel": "Baustofflager – Drei Materialgruppen",
+  "beschreibung": "Ein Baustoffhändler lagert Holz, Stahl und Dämmmaterial. Die Lagerkosten betragen {c1} € pro Bündel Holz, {c2} € pro Bündel Stahl und {c3} € pro Bündel Dämmmaterial. Jedes Bündel Holz liefert {a11} Materialeinheiten, Stahl liefert {a12} Materialeinheiten und Dämmmaterial liefert {a13} Materialeinheiten. Der Mindestvorrat beträgt {b1} Materialeinheiten. Holz benötigt {a21} m² Hallenfläche, Stahl benötigt {a22} m² und Dämmmaterial benötigt {a23} m² pro Bündel. Die Hallenfläche beträgt {b2} m². Das Gewicht beträgt {a31} Tonnen pro Bündel Holz, {a32} Tonnen pro Bündel Stahl und {a33} Tonnen pro Bündel Dämmmaterial. Die Tragfähigkeit des Bodens beträgt {b3} Tonnen.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestvorrats, der Hallenfläche und der Tragfähigkeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Bündel Holz", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Bündel Stahl", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Bündel Dämmmaterial", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Materialeinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Materialeinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Materialeinheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Materialeinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² Hallenfläche", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m²", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m² pro Bündel", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen pro Bündel Holz", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen pro Bündel Stahl", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen pro Bündel Dämmmaterial", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

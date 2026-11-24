@@ -1,0 +1,60 @@
+{
+  "id": "wart_windpark_3v_20",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Blattinspektionen", "x2 = Anzahl Getriebeservice", "x3 = Anzahl Generatorüberholungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Monteurskapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Kranbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Blattinspektion (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Getriebe (Tsd. €)"},
+    "c3":  {"min": 10, "max": 30, "label": "Kosten Generator (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Leistung Blatt (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Leistung Getriebe (%)"},
+    "a13": {"min": 5, "max": 12,  "label": "Leistung Generator (%)"},
+    "b1":  {"min": 50, "max": 150, "label": "Mindestleistung (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Monteurszeit Blatt (h)"},
+    "a22": {"min": 3, "max": 7,   "label": "Monteurszeit Getriebe (h)"},
+    "a23": {"min": 5, "max": 12,  "label": "Monteurszeit Generator (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Monteurskapazität (h)"},
+    "a31": {"min": 1, "max": 3,   "label": "Kraneinsatz Blatt (h)"},
+    "a32": {"min": 2, "max": 5,   "label": "Kraneinsatz Getriebe (h)"},
+    "a33": {"min": 3, "max": 8,   "label": "Kraneinsatz Generator (h)"},
+    "b3":  {"min": 15, "max": 60,  "label": "Kranbudget (h)"}
+  },
+  "titel": "Windpark – Turbinenwartung dreistufig",
+  "beschreibung": "Ein Windpark plant die Turbinenwartung auf drei Stufen. Eine Blattinspektion kostet {c1} Tsd. €, ein Getriebeservice kostet {c2} Tsd. €, eine Generatorüberholung kostet {c3} Tsd. €. Eine Blattinspektion sichert {a11} % Leistung, Getriebeservice sichert {a12} %, Generatorüberholung sichert {a13} %. Die Mindestleistung beträgt {b1} %. Der Monteursaufwand beträgt {a21} h pro Blattinspektion, {a22} h pro Getriebeservice und {a23} h pro Generatorüberholung. Die Monteurskapazität beträgt {b2} Stunden. Der Kraneinsatz beträgt {a31} h pro Blattinspektion, {a32} h pro Getriebeservice und {a33} h pro Generatorüberholung. Das Kranbudget beträgt {b3} Stunden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Leistung, Monteurszeit und Kranbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Blattinspektion kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Getriebeservice kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Generatorüberholung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Leistung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Blattinspektion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Getriebeservice", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Generatorüberholung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro Blattinspektion", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro Getriebeservice", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro Generatorüberholung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "wart_rechenzentrum_4v_28",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Netzwerkprüfungen", "x2 = Anzahl Speicherupgrades", "x3 = Anzahl Kühlungswartungen", "x4 = Anzahl USV-Tests"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Administratorstunden", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Ausfallzeitbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Hardwarebudget", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Netzwerk (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Speicher (Tsd. €)"},
+    "c3":  {"min": 2, "max": 8,   "label": "Kosten Kühlung (Tsd. €)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Kosten USV (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Verfügbarkeit Netzwerk (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Verfügbarkeit Speicher (%)"},
+    "a13": {"min": 2, "max": 5,   "label": "Verfügbarkeit Kühlung (%)"},
+    "a14": {"min": 3, "max": 7,   "label": "Verfügbarkeit USV (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 2, "max": 4,   "label": "Adminstunden Netzwerk (h)"},
+    "a22": {"min": 3, "max": 6,   "label": "Adminstunden Speicher (h)"},
+    "a23": {"min": 1, "max": 3,   "label": "Adminstunden Kühlung (h)"},
+    "a24": {"min": 2, "max": 5,   "label": "Adminstunden USV (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Administratorstunden (h)"},
+    "a31": {"min": 1, "max": 2,   "label": "Ausfallzeit Netzwerk (h)"},
+    "a32": {"min": 1, "max": 3,   "label": "Ausfallzeit Speicher (h)"},
+    "a33": {"min": 1, "max": 2,   "label": "Ausfallzeit Kühlung (h)"},
+    "a34": {"min": 1, "max": 2,   "label": "Ausfallzeit USV (h)"},
+    "b3":  {"min": 5, "max": 20,   "label": "Max. Ausfallzeit (h)"},
+    "a41": {"min": 2, "max": 6,   "label": "Hardware Netzwerk (Tsd. €)"},
+    "a42": {"min": 4, "max": 10,  "label": "Hardware Speicher (Tsd. €)"},
+    "a43": {"min": 1, "max": 4,   "label": "Hardware Kühlung (Tsd. €)"},
+    "a44": {"min": 3, "max": 8,   "label": "Hardware USV (Tsd. €)"},
+    "b4":  {"min": 20, "max": 80,  "label": "Hardwarebudget (Tsd. €)"}
+  },
+  "titel": "Rechenzentrum – Vierstufige Infrastrukturwartung",
+  "beschreibung": "Ein Rechenzentrum plant die Wartung in vier Bereichen. Eine Netzwerkprüfung kostet {c1} Tsd. €, ein Speicherupgrade kostet {c2} Tsd. €, eine Kühlungswartung kostet {c3} Tsd. €, ein USV-Test kostet {c4} Tsd. €. Netzwerkprüfung erhöht die Verfügbarkeit um {a11} %, Speicher um {a12} %, Kühlung um {a13} %, USV um {a14} %. Die Mindestverfügbarkeit beträgt {b1} %. Der Personalaufwand beträgt {a21} h pro Netzwerk, {a22} h pro Speicher, {a23} h pro Kühlung und {a24} h pro USV. Maximal {b2} Administratorstunden stehen zur Verfügung. Die Ausfallzeit beträgt {a31} h pro Netzwerk, {a32} h pro Speicher, {a33} h pro Kühlung und {a34} h pro USV. Die maximale Ausfallzeit beträgt {b3} Stunden. Die Hardwarekosten betragen {a41} Tsd. € pro Netzwerk, {a42} Tsd. € pro Speicher, {a43} Tsd. € pro Kühlung und {a44} Tsd. € pro USV. Das Hardwarebudget beträgt {b4} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Verfügbarkeits- und Ressourcenvorgaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Netzwerkprüfung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Speicherupgrade kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Kühlungswartung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "USV-Test kostet {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Netzwerk", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Speicher", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Kühlung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro USV", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Administratorstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro Netzwerk", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro Speicher", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro Kühlung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} h pro USV", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tsd. € pro Netzwerk", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tsd. € pro Speicher", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tsd. € pro Kühlung", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tsd. € pro USV", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Tsd. €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

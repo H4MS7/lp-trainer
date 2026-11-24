@@ -1,0 +1,43 @@
+{
+  "id": "energie_bhkw_waermepumpe_2v_04",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Blockheizkraftwerk", "x2 = MWh Wärmepumpe"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Gasverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 45, "max": 100, "label": "Kosten BHKW (€/MWh)"},
+    "c2":  {"min": 30, "max": 75, "label": "Kosten Wärmepumpe (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärmeleistung BHKW (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Wärmeleistung Wärmepumpe (MW/MWh)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 2, "max": 6, "label": "Gasverbrauch BHKW (m³/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Gasverbrauch Wärmepumpe (m³/MWh)"},
+    "b2":  {"min": 30, "max": 120, "label": "Maximaler Gasverbrauch (m³)"}
+  },
+  "titel": "Energiemix – BHKW und Wärmepumpe",
+  "beschreibung": "Ein Wohnquartier plant die Wärmeversorgung aus Blockheizkraftwerk und Wärmepumpe. Das BHKW kostet {c1} € pro MWh, die Wärmepumpe kostet {c2} € pro MWh. Das BHKW liefert {a11} MW Wärmeleistung pro MWh, die Wärmepumpe liefert {a12} MW Wärmeleistung pro MWh. Mindestens {b1} MW Wärmeleistung müssen bereitgestellt werden. Der Gasverbrauch beträgt {a21} m³ pro MWh BHKW und {a22} m³ pro MWh Wärmepumpe. Maximal {b2} m³ Gas stehen zur Verfügung.",
+  "hinweis": "Minimiere die Heizkosten bei Einhaltung der Mindestwärmeleistung und Gasbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "BHKW kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wärmepumpe kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Wärmeleistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Wärmeleistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Wärmeleistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro MWh BHKW", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro MWh Wärmepumpe", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³ Gas stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

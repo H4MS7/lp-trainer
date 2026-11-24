@@ -1,0 +1,39 @@
+{
+  "id": "misch_waschmittel_2v_16",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Tensid A (kg)", "x2 = Menge Tensid B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Waschkraft", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Umweltbelastung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Tensid A (EUR/kg)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Tensid B (EUR/kg)"},
+    "a11": {"min": 3, "max": 10,  "label": "Waschkraft A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 8,   "label": "Waschkraft B (Einheiten/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Waschkraft (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Belastung durch A (Einheiten/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Belastung durch B (Einheiten/kg)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Umweltbelastung (Einheiten)"}
+  },
+  "titel": "Waschmittel – Waschkraft und Umwelt",
+  "beschreibung": "Ein Waschmittelhersteller mischt ein Produkt aus zwei Tensiden. Tensid A kostet {c1} EUR pro kg, Tensid B kostet {c2} EUR pro kg. Tensid A liefert {a11} Waschkraft-Einheiten pro kg, Tensid B liefert {a12} Waschkraft-Einheiten pro kg. Das Produkt muss mindestens {b1} Waschkraft-Einheiten erreichen. Tensid A verursacht {a21} Belastungs-Einheiten pro kg, Tensid B verursacht {a22} Belastungs-Einheiten pro kg. Die Umweltbelastung darf höchstens {b2} Belastungs-Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Waschkraft und begrenzter Umweltbelastung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tensid A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Tensid B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Waschkraft-Einheiten pro kg, Tensid B liefert {a12} Waschkraft-Einheiten pro kg. Das Produkt muss mindestens {b1} Waschkraft-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Belastungs-Einheiten pro kg, Tensid B verursacht {a22} Belastungs-Einheiten pro kg. Die Umweltbelastung darf höchstens {b2} Belastungs-Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_startup_2v_04",
+  "titel": "Startup-Finanzierung – Software und Biotech",
+  "variablen": [
+    "x1 = Investment in Software-Startup (Tsd. EUR)",
+    "x2 = Investment in Biotech-Startup (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Fondskapital",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Due-Diligence-Kapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 8,
+      "max": 15,
+      "label": "Erwarteter Gewinn Software (%)"
+    },
+    "c2": {
+      "min": 6,
+      "max": 14,
+      "label": "Erwarteter Gewinn Biotech (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Software"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Kapitalbedarf Biotech"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Verfuegbares Fondskapital (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 2,
+      "max": 6,
+      "label": "Due-Diligence Software (Tage)"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Due-Diligence Biotech (Tage)"
+    },
+    "b2": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Due-Diligence-Tage"
+    }
+  },
+  "beschreibung": "Ein Risikokapitalgeber moechte in zwei Startups investieren. Das Software-Startup verspricht {c1} % Gewinn, das Biotech-Startup {c2} %. Pro Einheit Software werden {a11} Kapitaleinheiten benoetigt, pro Einheit Biotech {a12} Einheiten. Das Fondskapital betraegt {b1} Tausend Euro. Die Due-Diligence-Pruefung erfordert {a21} Tage pro Software-Einheit und {a22} Tage pro Biotech-Einheit bei maximal {b2} verfuegbaren Prueftagen.",
+  "hinweis": "Maximiere den erwarteten Gesamtgewinn unter Beachtung von Kapital und Pruefkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Software-Startup verspricht {c1} % Gewinn",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Biotech-Startup {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten benoetigt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Biotech {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Tage pro Software-Einheit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Tage pro Biotech-Einheit",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Prueftagen",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

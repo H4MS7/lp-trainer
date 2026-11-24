@@ -1,0 +1,54 @@
+{
+  "id": "kapa_container_3v_02",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frontend-Pods", "x2 = Anzahl Backend-Pods", "x3 = Anzahl Worker-Pods"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Netzwerkbandbreite", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Durchsatz Frontend (Tsd. Req/s)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Durchsatz Backend (Tsd. Req/s)"},
+    "c3":  {"min": 2, "max": 10,    "label": "Durchsatz Worker (Jobs/min)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Frontend (Kerne)"},
+    "a12": {"min": 2, "max": 4,     "label": "CPU Backend (Kerne)"},
+    "a13": {"min": 1, "max": 3,     "label": "CPU Worker (Kerne)"},
+    "b1":  {"min": 20, "max": 64,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 2,     "label": "RAM Frontend (GB)"},
+    "a22": {"min": 2, "max": 8,     "label": "RAM Backend (GB)"},
+    "a23": {"min": 1, "max": 4,     "label": "RAM Worker (GB)"},
+    "b2":  {"min": 32, "max": 128,  "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 1, "max": 5,     "label": "Bandbreite Frontend (Mbit/s)"},
+    "a32": {"min": 2, "max": 8,     "label": "Bandbreite Backend (Mbit/s)"},
+    "a33": {"min": 1, "max": 3,     "label": "Bandbreite Worker (Mbit/s)"},
+    "b3":  {"min": 50, "max": 200,  "label": "Verfügbare Bandbreite (Mbit/s)"}
+  },
+  "titel": "Container-Plattform – Dreischichtige Architektur",
+  "beschreibung": "Eine Container-Plattform betreibt drei Pod-Typen. Frontend-Pods verarbeiten {c1} Tsd. Anfragen pro Sekunde, Backend-Pods verarbeiten {c2} Tsd. Anfragen pro Sekunde und Worker-Pods verarbeiten {c3} Jobs pro Minute. Ein Frontend-Pod benötigt {a11} CPU-Kerne, ein Backend-Pod benötigt {a12} CPU-Kerne und ein Worker-Pod benötigt {a13} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Frontend, {a22} GB für Backend und {a23} GB für Worker. Das verfügbare RAM beträgt {b2} GB. Die Netzwerkbandbreite beträgt {a31} Mbit/s für Frontend, {a32} Mbit/s für Backend und {a33} Mbit/s für Worker. Die verfügbare Bandbreite beträgt {b3} Mbit/s.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Ressourcenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frontend-Pods verarbeiten {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Backend-Pods verarbeiten {c2} Tsd. Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Worker-Pods verarbeiten {c3} Jobs pro Minute", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein Backend-Pod benötigt {a12} CPU-Kerne und ein Worker-Pod benötigt {a13} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Frontend, {a22} GB für Backend und {a23} GB für Worker", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Mbit/s für Frontend, {a32} Mbit/s für Backend und {a33} Mbit/s für Worker", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Mbit/s", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

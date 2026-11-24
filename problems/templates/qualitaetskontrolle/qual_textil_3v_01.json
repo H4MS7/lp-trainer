@@ -1,0 +1,60 @@
+{
+  "id": "qual_textil_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Zugfestigkeitstests", "x2 = Anzahl Waschechtheitstest", "x3 = Anzahl Pillingtests"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Qualitätsindex", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüflaborzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Stoffprobenbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Zugfestigkeit (€/Test)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Waschechtheit (€/Test)"},
+    "c3":  {"min": 2, "max": 8,   "label": "Kosten Pillingtest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Qualitätsindex Zugfestigkeit"},
+    "a12": {"min": 2, "max": 6,   "label": "Qualitätsindex Waschechtheit"},
+    "a13": {"min": 2, "max": 5,   "label": "Qualitätsindex Pilling"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Qualitätsindex"},
+    "a21": {"min": 2, "max": 5,   "label": "Laborzeit Zugfestigkeit (min)"},
+    "a22": {"min": 3, "max": 7,   "label": "Laborzeit Waschechtheit (min)"},
+    "a23": {"min": 1, "max": 4,   "label": "Laborzeit Pilling (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Prüflaborzeit (min)"},
+    "a31": {"min": 2, "max": 5,   "label": "Stoffprobe Zugfestigkeit (€)"},
+    "a32": {"min": 3, "max": 8,   "label": "Stoffprobe Waschechtheit (€)"},
+    "a33": {"min": 1, "max": 4,   "label": "Stoffprobe Pilling (€)"},
+    "b3":  {"min": 40, "max": 160, "label": "Stoffprobenbudget (€)"}
+  },
+  "titel": "Textilprüfung – Drei Qualitätsmerkmale",
+  "beschreibung": "Ein Textillabor prüft Stoffe mit Zugfestigkeitstests, Waschechtheitstest und Pillingtests. Ein Zugfestigkeitstest kostet {c1} €, ein Waschechtheitstest kostet {c2} € und ein Pillingtest kostet {c3} €. Zugfestigkeitstests liefern {a11} Qualitätsindexpunkte, Waschechtheitstest liefern {a12} und Pillingtests liefern {a13} Qualitätsindexpunkte. Der Mindest-Qualitätsindex beträgt {b1} Punkte. Zugfestigkeitstests dauern {a21} Minuten, Waschechtheitstest dauern {a22} Minuten und Pillingtests dauern {a23} Minuten. Die Prüflaborzeit beträgt {b2} Minuten. Die Stoffproben kosten {a31} € pro Zugfestigkeitstest, {a32} € pro Waschechtheitstest und {a33} € pro Pillingtest. Das Stoffprobenbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichendem Qualitätsindex, begrenzter Laborzeit und Stoffprobenbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zugfestigkeitstest kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Waschechtheitstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Pillingtest kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Qualitätsindexpunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12}", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Qualitätsindexpunkte", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Zugfestigkeitstest", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Waschechtheitstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Pillingtest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

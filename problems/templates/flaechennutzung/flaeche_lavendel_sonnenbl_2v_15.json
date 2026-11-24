@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_lavendel_sonnenbl_2v_15",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Lavendel", "x2 = Hektar Sonnenblumen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Saatgutbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 18,  "label": "Ertrag Lavendel (Tsd. €/ha)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Sonnenblumen (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Lavendel (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Sonnenblumen (ha/ha)"},
+    "b1":  {"min": 20, "max": 150, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 6,   "label": "Saatgutkosten Lavendel (Tsd. €/ha)"},
+    "a22": {"min": 1, "max": 4,   "label": "Saatgutkosten Sonnenblumen (Tsd. €/ha)"},
+    "b2":  {"min": 20, "max": 150, "label": "Saatgutbudget (Tsd. €)"}
+  },
+  "titel": "Blumenfeld – Lavendel und Sonnenblumen",
+  "beschreibung": "Ein Blumenbauer nutzt seine Felder für Lavendel und Sonnenblumen. Lavendel bringt {c1} Tsd. € Ertrag pro Hektar, Sonnenblumen bringen {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Lavendel und {a12} Hektar pro Hektar Sonnenblumen. Die Gesamtfläche beträgt {b1} Hektar. Die Saatgutkosten betragen {a21} Tsd. € pro Hektar Lavendel und {a22} Tsd. € pro Hektar Sonnenblumen. Das Saatgutbudget beträgt {b2} Tsd. €.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Saatgutbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lavendel bringt {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Sonnenblumen bringen {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Lavendel", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Sonnenblumen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Hektar Lavendel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro Hektar Sonnenblumen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

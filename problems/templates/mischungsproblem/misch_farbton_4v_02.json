@@ -1,0 +1,56 @@
+{
+  "id": "misch_farbton_4v_02",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Menge Pigment Rot (g)", "x2 = Menge Pigment Blau (g)", "x3 = Menge Pigment Gelb (g)", "x4 = Menge Pigment Weiß (g)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Farbintensität", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Giftigkeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Deckkraft", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 18,  "label": "Kosten Pigment Rot (EUR/g)"},
+    "c2":  {"min": 4, "max": 15,  "label": "Kosten Pigment Blau (EUR/g)"},
+    "c3":  {"min": 3, "max": 12,  "label": "Kosten Pigment Gelb (EUR/g)"},
+    "c4":  {"min": 1, "max": 6,   "label": "Kosten Pigment Weiß (EUR/g)"},
+    "a11": {"min": 3, "max": 9,   "label": "Intensität Rot (Einheiten/g)"},
+    "a12": {"min": 2, "max": 8,   "label": "Intensität Blau (Einheiten/g)"},
+    "a13": {"min": 3, "max": 10,  "label": "Intensität Gelb (Einheiten/g)"},
+    "a14": {"min": 1, "max": 4,   "label": "Intensität Weiß (Einheiten/g)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Farbintensität (Einheiten)"},
+    "a21": {"min": 2, "max": 6,   "label": "Giftigkeit Rot (Einheiten/g)"},
+    "a22": {"min": 1, "max": 5,   "label": "Giftigkeit Blau (Einheiten/g)"},
+    "a23": {"min": 2, "max": 7,   "label": "Giftigkeit Gelb (Einheiten/g)"},
+    "a24": {"min": 1, "max": 3,   "label": "Giftigkeit Weiß (Einheiten/g)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Giftigkeit (Einheiten)"},
+    "a31": {"min": 2, "max": 7,   "label": "Deckkraft Rot (Einheiten/g)"},
+    "a32": {"min": 1, "max": 5,   "label": "Deckkraft Blau (Einheiten/g)"},
+    "a33": {"min": 2, "max": 6,   "label": "Deckkraft Gelb (Einheiten/g)"},
+    "a34": {"min": 3, "max": 9,   "label": "Deckkraft Weiß (Einheiten/g)"},
+    "b3":  {"min": 40, "max": 140, "label": "Mindest-Deckkraft (Einheiten)"}
+  },
+  "titel": "Farbmischung – Intensität, Giftigkeit und Deckkraft",
+  "beschreibung": "Ein Farbenhersteller mischt einen Farbton aus vier Pigmenten. Pigment Rot kostet {c1} EUR pro g, Blau kostet {c2} EUR pro g, Gelb kostet {c3} EUR pro g und Weiß kostet {c4} EUR pro g. Rot liefert {a11} Intensitäts-Einheiten pro g, Blau liefert {a12}, Gelb liefert {a13} und Weiß liefert {a14} Einheiten pro g. Die Farbe muss mindestens {b1} Intensitäts-Einheiten erreichen. Rot hat {a21} Giftigkeits-Einheiten pro g, Blau hat {a22}, Gelb hat {a23} und Weiß hat {a24} Einheiten pro g. Die Giftigkeit darf höchstens {b2} Einheiten betragen. Rot liefert {a31} Deckkraft-Einheiten pro g, Blau liefert {a32}, Gelb liefert {a33} und Weiß liefert {a34} Einheiten pro g. Die Deckkraft muss mindestens {b3} Einheiten erreichen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Intensität und Deckkraft sowie begrenzter Giftigkeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pigment Rot kostet {c1} EUR pro g", "bedeutung": "{c1} × x₁"},
+      {"text": "Blau kostet {c2} EUR pro g", "bedeutung": "{c2} × x₂"},
+      {"text": "Gelb kostet {c3} EUR pro g", "bedeutung": "{c3} × x₃"},
+      {"text": "Weiß kostet {c4} EUR pro g", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Intensitäts-Einheiten pro g, Blau liefert {a12}, Gelb liefert {a13} und Weiß liefert {a14} Einheiten pro g. Die Farbe muss mindestens {b1} Intensitäts-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Giftigkeits-Einheiten pro g, Blau hat {a22}, Gelb hat {a23} und Weiß hat {a24} Einheiten pro g. Die Giftigkeit darf höchstens {b2} Einheiten betragen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Deckkraft-Einheiten pro g, Blau liefert {a32}, Gelb liefert {a33} und Weiß liefert {a34} Einheiten pro g. Die Deckkraft muss mindestens {b3} Einheiten erreichen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≥ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "energie_batterie_netz_2v_06",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Batteriespeicher", "x2 = MWh Netzbezug"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Speicherkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 20, "max": 60, "label": "Kosten Batterie (€/MWh)"},
+    "c2":  {"min": 40, "max": 100, "label": "Kosten Netzbezug (€/MWh)"},
+    "a11": {"min": 2, "max": 6, "label": "Versorgung Batterie (MW/MWh)"},
+    "a12": {"min": 3, "max": 8, "label": "Versorgung Netz (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestversorgung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Speicherbedarf Batterie (kWh/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Speicherbedarf Netz (kWh/MWh)"},
+    "b2":  {"min": 40, "max": 180, "label": "Maximale Speicherkapazität (kWh)"}
+  },
+  "titel": "Energiemix – Batteriespeicher und Netzbezug",
+  "beschreibung": "Ein Industriebetrieb plant die Energieversorgung aus Batteriespeicher und Netzbezug. Batteriespeicher kostet {c1} € pro MWh, Netzbezug kostet {c2} € pro MWh. Batteriespeicher liefert {a11} MW Versorgung pro MWh, Netzbezug liefert {a12} MW Versorgung pro MWh. Mindestens {b1} MW Versorgung müssen bereitgestellt werden. Der Speicherbedarf beträgt {a21} kWh pro MWh Batterie und {a22} kWh pro MWh Netz. Die Speicherkapazität ist auf {b2} kWh begrenzt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestversorgung und Speicherkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Batteriespeicher kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Netzbezug kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Versorgung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Versorgung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Versorgung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kWh pro MWh Batterie", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kWh pro MWh Netz", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kWh begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

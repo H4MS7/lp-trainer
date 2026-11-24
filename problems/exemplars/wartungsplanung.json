@@ -1,0 +1,70 @@
+[
+  {
+    "titel": "Maschinenpark-Wartung",
+    "beschreibung": "Ein Produktionsbetrieb plant die Wartung seines Maschinenparks mit zwei Maßnahmentypen: präventive Wartung und reaktive Reparatur. Die präventive Wartung kostet 4€ pro Einsatz und erhöht die Maschinenverfügbarkeit um 3 Stunden pro Einsatz. Die reaktive Reparatur kostet 10€ pro Einsatz und erhöht die Verfügbarkeit um 5 Stunden pro Einsatz. Um den Produktionsbetrieb aufrechtzuerhalten, muss die Gesamtverfügbarkeit mindestens 60 Stunden pro Woche betragen. Gleichzeitig stehen pro Woche höchstens 30 Technikerstunden für Wartungsarbeiten zur Verfügung, wobei eine präventive Wartung 1 Technikerstunde und eine reaktive Reparatur 2 Technikerstunden beansprucht. Der Betriebsleiter möchte die Gesamtkosten für die Instandhaltung minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl präventive Wartungseinsätze", "x2 = Anzahl reaktive Reparatureinsätze"],
+    "zielfunktion": "Z = 4x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≥ 60 (Mindestverfügbarkeit)",
+      "x1 + 2x2 ≤ 30 (Technikerstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindestverfügbarkeit ist eine Untergrenze (≥), die Technikerstunden eine Obergrenze (≤). Suchen Sie die Verfügbarkeitskoeffizienten und die Zeitkoeffizienten getrennt in der Beschreibung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "präventive Wartung kostet 4€ pro Einsatz", "bedeutung": "4 × x₁"},
+        {"text": "reaktive Reparatur kostet 10€ pro Einsatz", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Maschinenverfügbarkeit um 3 Stunden pro Einsatz", "bedeutung": "3x₁"},
+          {"text": "Verfügbarkeit um 5 Stunden pro Einsatz", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 60 Stunden pro Woche", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "präventive Wartung 1 Technikerstunde", "bedeutung": "x₁"},
+          {"text": "reaktive Reparatur 2 Technikerstunden", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 30 Technikerstunden", "bedeutung": "≤ 30"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fuhrpark-Instandhaltung",
+    "beschreibung": "Ein Logistikunternehmen plant die Instandhaltung seines Fuhrparks mit zwei Strategien: Inspektionen und Generalüberholungen. Eine Inspektion kostet 6€ und verbessert die Einsatzbereitschaft um 2 Fahrzeugstunden. Eine Generalüberholung kostet 15€ und verbessert die Einsatzbereitschaft um 8 Fahrzeugstunden. Die Einsatzbereitschaft der Flotte muss mindestens 80 Fahrzeugstunden pro Monat betragen. Für die Durchführung stehen pro Monat höchstens 24 Werkstattstunden zur Verfügung, wobei eine Inspektion 1 Werkstattstunde und eine Generalüberholung 3 Werkstattstunden dauert. Zusätzlich ist das monatliche Wartungsbudget auf 180€ begrenzt. Der Fuhrparkmanager möchte die Gesamtkosten für die Instandhaltung minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Inspektionen", "x2 = Anzahl Generalüberholungen"],
+    "zielfunktion": "Z = 6x1 + 15x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 8x2 ≥ 80 (Mindesteinsatzbereitschaft)",
+      "x1 + 3x2 ≤ 24 (Werkstattstunden)",
+      "6x1 + 15x2 ≤ 180 (Wartungsbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Die Einsatzbereitschaft ist eine Mindestanforderung (≥), Werkstattstunden und Budget sind Obergrenzen (≤). Beachten Sie, dass die Budgetbeschränkung dieselben Koeffizienten wie die Zielfunktion hat.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Inspektion kostet 6€", "bedeutung": "6 × x₁"},
+        {"text": "Generalüberholung kostet 15€", "bedeutung": "15 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Einsatzbereitschaft um 2 Fahrzeugstunden", "bedeutung": "2x₁"},
+          {"text": "Einsatzbereitschaft um 8 Fahrzeugstunden", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 80 Fahrzeugstunden", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "Inspektion 1 Werkstattstunde", "bedeutung": "x₁"},
+          {"text": "Generalüberholung 3 Werkstattstunden", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 24 Werkstattstunden", "bedeutung": "≤ 24"}
+        ],
+        [
+          {"text": "Wartungsbudget auf 180€ begrenzt", "bedeutung": "6x₁ + 15x₂ ≤ 180"}
+        ]
+      ]
+    }
+  }
+]

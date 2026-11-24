@@ -1,0 +1,43 @@
+{
+  "id": "energie_kleinwasser_bioenergie_2v_15",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Kleinwasserkraft", "x2 = MWh Bioenergie"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Wasserverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 25, "max": 60, "label": "Kosten Kleinwasserkraft (€/MWh)"},
+    "c2":  {"min": 40, "max": 95, "label": "Kosten Bioenergie (€/MWh)"},
+    "a11": {"min": 2, "max": 6, "label": "Leistung Kleinwasserkraft (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Leistung Bioenergie (MW/MWh)"},
+    "b1":  {"min": 30, "max": 140, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 3, "max": 8, "label": "Wasserverbrauch Kleinwasser (m³/MWh)"},
+    "a22": {"min": 1, "max": 3, "label": "Wasserverbrauch Bioenergie (m³/MWh)"},
+    "b2":  {"min": 40, "max": 150, "label": "Maximaler Wasserverbrauch (m³)"}
+  },
+  "titel": "Energiemix – Kleinwasserkraft und Bioenergie",
+  "beschreibung": "Eine Gemeinde plant den Strommix aus Kleinwasserkraft und Bioenergie. Kleinwasserkraft kostet {c1} € pro MWh, Bioenergie kostet {c2} € pro MWh. Kleinwasserkraft liefert {a11} MW Leistung pro MWh, Bioenergie liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Der Wasserverbrauch beträgt {a21} m³ pro MWh Kleinwasserkraft und {a22} m³ pro MWh Bioenergie. Maximal {b2} m³ Wasser stehen zur Verfügung.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Wasserverbrauchsgrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kleinwasserkraft kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Bioenergie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro MWh Kleinwasserkraft", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro MWh Bioenergie", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³ Wasser stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,793 @@
+[
+  {
+    "titel": "Automobilzulieferer – Bremsscheiben und Kupplungen",
+    "beschreibung": "Ein Automobilzulieferer fertigt Bremsscheiben und Kupplungen. Der Deckungsbeitrag beträgt 45€ pro Bremsscheibe und 60€ pro Kupplung. Jede Bremsscheibe benötigt 3 Stunden Maschinenzeit, jede Kupplung 5 Stunden Maschinenzeit. Insgesamt stehen 1500 Stunden Maschinenzeit pro Monat zur Verfügung. An Arbeitsstunden werden 2 Stunden pro Bremsscheibe und 4 Stunden pro Kupplung benötigt, wobei maximal 1200 Arbeitsstunden verfügbar sind. Der Stahlverbrauch liegt bei 8 kg pro Bremsscheibe und 6 kg pro Kupplung, mit einem Vorrat von 3200 kg Stahl. Aus Qualitätssicherungsgründen darf die Produktion von Kupplungen nicht mehr als das Doppelte der Bremsscheibenproduktion betragen, also gilt x2 ≤ 2x1. Wie lässt sich der Deckungsbeitrag maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Bremsscheiben", "x2 = Anzahl Kupplungen"],
+    "zielfunktion": "Z = 45x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 1500 (Maschinenzeit)",
+      "2x1 + 4x2 ≤ 1200 (Arbeitsstunden)",
+      "8x1 + 6x2 ≤ 3200 (Stahl)",
+      "x2 ≤ 2x1 (Verhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x2 ≤ 2x1 kann umgeschrieben werden zu -2x1 + x2 ≤ 0. Zeichne diese Gerade und beachte, welche Seite zulässig ist.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "45€ pro Bremsscheibe", "bedeutung": "45 × x₁"},
+        {"text": "60€ pro Kupplung", "bedeutung": "60 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Stunden Maschinenzeit, jede Kupplung 5 Stunden Maschinenzeit", "bedeutung": "3x₁ + 5x₂"},
+          {"text": "1500 Stunden Maschinenzeit pro Monat", "bedeutung": "≤ 1500"}
+        ],
+        [
+          {"text": "2 Stunden pro Bremsscheibe und 4 Stunden pro Kupplung", "bedeutung": "2x₁ + 4x₂"},
+          {"text": "1200 Arbeitsstunden", "bedeutung": "≤ 1200"}
+        ],
+        [
+          {"text": "8 kg pro Bremsscheibe und 6 kg pro Kupplung", "bedeutung": "8x₁ + 6x₂"},
+          {"text": "3200 kg Stahl", "bedeutung": "≤ 3200"}
+        ],
+        [
+          {"text": "x2 ≤ 2x1", "bedeutung": "x₂ ≤ 2x₁"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Pharma-Unternehmen – Tabletten und Kapseln",
+    "beschreibung": "Ein Pharma-Unternehmen produziert Tabletten und Kapseln eines Vitaminpräparats. Der Gewinn beträgt 0,80€ pro Tablette und 1,20€ pro Kapsel. Für die Herstellung einer Tablette werden 0,5 Minuten Presszeit benötigt, für eine Kapsel 1 Minute Presszeit. Die Pressmaschine ist maximal 500 Minuten pro Schicht verfügbar. Die Qualitätskontrolle dauert 0,3 Minuten pro Tablette und 0,6 Minuten pro Kapsel, insgesamt stehen 360 Minuten für Qualitätskontrolle bereit. Der Verpackungsautomat schafft maximal 800 Einheiten pro Schicht, wobei Tabletten und Kapseln gleich gezählt werden. Aufgrund der Nachfrage dürfen höchstens 600 Tabletten pro Schicht produziert werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Tabletten pro Schicht", "x2 = Anzahl Kapseln pro Schicht"],
+    "zielfunktion": "Z = 0,8x1 + 1,2x2 (max)",
+    "nebenbedingungen": [
+      "0,5x1 + x2 ≤ 500 (Presszeit)",
+      "0,3x1 + 0,6x2 ≤ 360 (Qualitätskontrolle)",
+      "x1 + x2 ≤ 800 (Verpackung)",
+      "x1 ≤ 600 (Nachfrage Tabletten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die individuelle Nachfragegrenze für Tabletten. Die Presszeit-Beschränkung enthält den Koeffizienten 1 bei x2, was direkt aus der Angabe '1 Minute Presszeit' folgt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "0,80€ pro Tablette", "bedeutung": "0,8 × x₁"},
+        {"text": "1,20€ pro Kapsel", "bedeutung": "1,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,5 Minuten Presszeit", "bedeutung": "0,5x₁"},
+          {"text": "für eine Kapsel 1 Minute Presszeit", "bedeutung": "+ x₂"},
+          {"text": "500 Minuten pro Schicht", "bedeutung": "≤ 500"}
+        ],
+        [
+          {"text": "0,3 Minuten pro Tablette und 0,6 Minuten pro Kapsel", "bedeutung": "0,3x₁ + 0,6x₂"},
+          {"text": "360 Minuten für Qualitätskontrolle", "bedeutung": "≤ 360"}
+        ],
+        [
+          {"text": "800 Einheiten pro Schicht", "bedeutung": "x₁ + x₂ ≤ 800"}
+        ],
+        [
+          {"text": "600 Tabletten pro Schicht", "bedeutung": "x₁ ≤ 600"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Metallverarbeitung – Stahlträger und Rohre",
+    "beschreibung": "Ein Metallverarbeitungsbetrieb stellt Stahlträger und Rohre her. Der Deckungsbeitrag beträgt 120€ pro Stahlträger und 85€ pro Rohr. Für einen Stahlträger werden 6 Stunden an der Walzstraße und für ein Rohr 3 Stunden an der Walzstraße benötigt. Die Walzstraße ist 1800 Stunden pro Monat verfügbar. Jeder Stahlträger verbraucht 50 kg Rohstahl und jedes Rohr 30 kg Rohstahl, bei einer monatlichen Liefermenge von 12000 kg Rohstahl. Der Energieverbrauch liegt bei 15 kWh pro Stahlträger und 10 kWh pro Rohr, wobei das Werk maximal 5000 kWh Energie pro Monat beziehen kann. Außerdem dürfen aufgrund von Lagerkapazitäten höchstens 250 Stahlträger und höchstens 350 Rohre pro Monat gefertigt werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Stahlträger pro Monat", "x2 = Anzahl Rohre pro Monat"],
+    "zielfunktion": "Z = 120x1 + 85x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 1800 (Walzstraße)",
+      "50x1 + 30x2 ≤ 12000 (Rohstahl)",
+      "15x1 + 10x2 ≤ 5000 (Energie)",
+      "x1 ≤ 250 (Lager Stahlträger)",
+      "x2 ≤ 350 (Lager Rohre)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es 5 Nebenbedingungen plus Nichtnegativität. Prüfe alle Schnittpunkte sorgfältig, insbesondere wo die Lagergrenzen die anderen Beschränkungen schneiden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "120€ pro Stahlträger", "bedeutung": "120 × x₁"},
+        {"text": "85€ pro Rohr", "bedeutung": "85 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Stunden an der Walzstraße und für ein Rohr 3 Stunden an der Walzstraße", "bedeutung": "6x₁ + 3x₂"},
+          {"text": "1800 Stunden pro Monat", "bedeutung": "≤ 1800"}
+        ],
+        [
+          {"text": "50 kg Rohstahl und jedes Rohr 30 kg Rohstahl", "bedeutung": "50x₁ + 30x₂"},
+          {"text": "12000 kg Rohstahl", "bedeutung": "≤ 12000"}
+        ],
+        [
+          {"text": "15 kWh pro Stahlträger und 10 kWh pro Rohr", "bedeutung": "15x₁ + 10x₂"},
+          {"text": "5000 kWh Energie", "bedeutung": "≤ 5000"}
+        ],
+        [
+          {"text": "250 Stahlträger", "bedeutung": "x₁ ≤ 250"}
+        ],
+        [
+          {"text": "350 Rohre", "bedeutung": "x₂ ≤ 350"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kunststoffwerk – Gehäuse und Abdeckungen",
+    "beschreibung": "Ein Kunststoffwerk produziert Gehäuse und Abdeckungen im Spritzgussverfahren. Der Deckungsbeitrag beträgt 9€ pro Gehäuse und 6€ pro Abdeckung. Jedes Gehäuse benötigt 4 Minuten Spritzgusszeit und jede Abdeckung 2 Minuten Spritzgusszeit. Pro Tag stehen 960 Minuten Spritzgusszeit zur Verfügung. Der Kunststoffgranulat-Verbrauch beträgt 0,5 kg pro Gehäuse und 0,3 kg pro Abdeckung, bei einem Tagesvorrat von 120 kg Granulat. Für die Nachbearbeitung werden 3 Minuten pro Gehäuse und 1 Minute pro Abdeckung benötigt, maximal 600 Minuten Nachbearbeitung pro Tag. Aus vertraglichen Gründen muss die Anzahl der Gehäuse mindestens halb so groß sein wie die Anzahl der Abdeckungen, also x1 ≥ 0,5x2. Wie wird der Tagesgewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Gehäuse pro Tag", "x2 = Anzahl Abdeckungen pro Tag"],
+    "zielfunktion": "Z = 9x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 960 (Spritzgusszeit)",
+      "0,5x1 + 0,3x2 ≤ 120 (Granulat)",
+      "3x1 + x2 ≤ 600 (Nachbearbeitung)",
+      "x1 ≥ 0,5x2 (Vertragsverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Vertragsbedingung x1 ≥ 0,5x2 kann umgeformt werden zu -x1 + 0,5x2 ≤ 0 oder äquivalent -2x1 + x2 ≤ 0. Achte auf die richtige Halbebene beim Zeichnen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "9€ pro Gehäuse", "bedeutung": "9 × x₁"},
+        {"text": "6€ pro Abdeckung", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Minuten Spritzgusszeit und jede Abdeckung 2 Minuten Spritzgusszeit", "bedeutung": "4x₁ + 2x₂"},
+          {"text": "960 Minuten Spritzgusszeit", "bedeutung": "≤ 960"}
+        ],
+        [
+          {"text": "0,5 kg pro Gehäuse und 0,3 kg pro Abdeckung", "bedeutung": "0,5x₁ + 0,3x₂"},
+          {"text": "120 kg Granulat", "bedeutung": "≤ 120"}
+        ],
+        [
+          {"text": "3 Minuten pro Gehäuse und 1 Minute pro Abdeckung", "bedeutung": "3x₁ + x₂"},
+          {"text": "600 Minuten Nachbearbeitung", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "x1 ≥ 0,5x2", "bedeutung": "x₁ ≥ 0,5x₂"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chipfabrik – Prozessoren und Speicherchips",
+    "beschreibung": "Eine Chipfabrik produziert Prozessoren und Speicherchips. Der Gewinn beträgt 25€ pro Prozessor und 10€ pro Speicherchip. Die Belichtung dauert 8 Minuten pro Prozessor und 3 Minuten pro Speicherchip, bei einer verfügbaren Belichtungszeit von 2400 Minuten pro Schicht. Die Ätzanlage benötigt 5 Minuten pro Prozessor und 4 Minuten pro Speicherchip, mit einer Kapazität von 2000 Minuten pro Schicht. Für die Endprüfung werden 2 Minuten pro Prozessor und 1 Minute pro Speicherchip aufgewendet, insgesamt maximal 700 Minuten Endprüfung pro Schicht. Zudem können aufgrund von Wafer-Lieferungen maximal 200 Prozessoren pro Schicht gefertigt werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Prozessoren pro Schicht", "x2 = Anzahl Speicherchips pro Schicht"],
+    "zielfunktion": "Z = 25x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 3x2 ≤ 2400 (Belichtung)",
+      "5x1 + 4x2 ≤ 2000 (Ätzanlage)",
+      "2x1 + x2 ≤ 700 (Endprüfung)",
+      "x1 ≤ 200 (Wafer-Lieferung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die individuelle Beschränkung auf 200 Prozessoren ist eine vertikale Linie im Diagramm. Teste alle Eckpunkte der zulässigen Menge.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "25€ pro Prozessor", "bedeutung": "25 × x₁"},
+        {"text": "10€ pro Speicherchip", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Minuten pro Prozessor und 3 Minuten pro Speicherchip", "bedeutung": "8x₁ + 3x₂"},
+          {"text": "2400 Minuten pro Schicht", "bedeutung": "≤ 2400"}
+        ],
+        [
+          {"text": "5 Minuten pro Prozessor und 4 Minuten pro Speicherchip", "bedeutung": "5x₁ + 4x₂"},
+          {"text": "2000 Minuten pro Schicht", "bedeutung": "≤ 2000"}
+        ],
+        [
+          {"text": "2 Minuten pro Prozessor und 1 Minute pro Speicherchip", "bedeutung": "2x₁ + x₂"},
+          {"text": "700 Minuten Endprüfung", "bedeutung": "≤ 700"}
+        ],
+        [
+          {"text": "200 Prozessoren pro Schicht", "bedeutung": "x₁ ≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbeldesign – Schreibtische und Bücherregale",
+    "beschreibung": "Ein Möbeldesign-Unternehmen fertigt Schreibtische und Bücherregale. Der Deckungsbeitrag beträgt 150€ pro Schreibtisch und 100€ pro Bücherregal. In der Schreinerei dauert ein Schreibtisch 5 Stunden und ein Bücherregal 4 Stunden. Die Schreinerei hat eine Kapazität von 200 Stunden pro Woche. Die Lackiererei benötigt 2 Stunden pro Schreibtisch und 3 Stunden pro Bücherregal, bei maximal 150 Stunden Lackiererei pro Woche. An Holz werden 12 Bretter pro Schreibtisch und 8 Bretter pro Bücherregal gebraucht, wobei 480 Bretter pro Woche verfügbar sind. Die Lagerfläche reicht für insgesamt 45 Möbelstücke pro Woche. Was ist die gewinnmaximale Produktion?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Schreibtische pro Woche", "x2 = Anzahl Bücherregale pro Woche"],
+    "zielfunktion": "Z = 150x1 + 100x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≤ 200 (Schreinerei)",
+      "2x1 + 3x2 ≤ 150 (Lackiererei)",
+      "12x1 + 8x2 ≤ 480 (Holz)",
+      "x1 + x2 ≤ 45 (Lagerfläche)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität ergeben ein Polygon mit mehreren Eckpunkten. Berechne alle Schnittpunkte und prüfe deren Zulässigkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "150€ pro Schreibtisch", "bedeutung": "150 × x₁"},
+        {"text": "100€ pro Bücherregal", "bedeutung": "100 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Stunden und ein Bücherregal 4 Stunden", "bedeutung": "5x₁ + 4x₂"},
+          {"text": "200 Stunden pro Woche", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "2 Stunden pro Schreibtisch und 3 Stunden pro Bücherregal", "bedeutung": "2x₁ + 3x₂"},
+          {"text": "150 Stunden Lackiererei", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "12 Bretter pro Schreibtisch und 8 Bretter pro Bücherregal", "bedeutung": "12x₁ + 8x₂"},
+          {"text": "480 Bretter pro Woche", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "45 Möbelstücke pro Woche", "bedeutung": "x₁ + x₂ ≤ 45"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sportartikelhersteller – Tennisschläger und Badmintonschläger",
+    "beschreibung": "Ein Sportartikelhersteller produziert Tennisschläger und Badmintonschläger. Der Gewinn beträgt 35€ pro Tennisschläger und 20€ pro Badmintonschläger. Für einen Tennisschläger werden 2 Stunden Arbeitszeit und für einen Badmintonschläger 1,5 Stunden Arbeitszeit benötigt. Insgesamt stehen 900 Stunden Arbeitszeit pro Monat zur Verfügung. Die Bespannungsmaschine benötigt 30 Minuten pro Tennisschläger und 20 Minuten pro Badmintonschläger, wobei die Maschine maximal 12000 Minuten pro Monat läuft. Der Kohlefaserverbrauch liegt bei 0,4 kg pro Tennisschläger und 0,25 kg pro Badmintonschläger, mit einem Vorrat von 160 kg Kohlefaser pro Monat. Aufgrund der Marktnachfrage können höchstens 350 Tennisschläger pro Monat abgesetzt werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Tennisschläger pro Monat", "x2 = Anzahl Badmintonschläger pro Monat"],
+    "zielfunktion": "Z = 35x1 + 20x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 1,5x2 ≤ 900 (Arbeitszeit)",
+      "30x1 + 20x2 ≤ 12000 (Bespannung)",
+      "0,4x1 + 0,25x2 ≤ 160 (Kohlefaser)",
+      "x1 ≤ 350 (Nachfrage Tennisschläger)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfragegrenze für Tennisschläger ist eine einfache vertikale Beschränkung. Achte darauf, dass die Bespannungsbedingung und die Arbeitszeitbedingung ähnliche Steigungen haben können.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "35€ pro Tennisschläger", "bedeutung": "35 × x₁"},
+        {"text": "20€ pro Badmintonschläger", "bedeutung": "20 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Stunden Arbeitszeit und für einen Badmintonschläger 1,5 Stunden Arbeitszeit", "bedeutung": "2x₁ + 1,5x₂"},
+          {"text": "900 Stunden Arbeitszeit pro Monat", "bedeutung": "≤ 900"}
+        ],
+        [
+          {"text": "30 Minuten pro Tennisschläger und 20 Minuten pro Badmintonschläger", "bedeutung": "30x₁ + 20x₂"},
+          {"text": "12000 Minuten pro Monat", "bedeutung": "≤ 12000"}
+        ],
+        [
+          {"text": "0,4 kg pro Tennisschläger und 0,25 kg pro Badmintonschläger", "bedeutung": "0,4x₁ + 0,25x₂"},
+          {"text": "160 kg Kohlefaser", "bedeutung": "≤ 160"}
+        ],
+        [
+          {"text": "350 Tennisschläger pro Monat", "bedeutung": "x₁ ≤ 350"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Verpackungshersteller – Kartons und Tüten",
+    "beschreibung": "Ein Verpackungshersteller produziert Kartons und Tüten. Der Gewinn beträgt 0,50€ pro Karton und 0,30€ pro Tüte. Die Stanzmaschine benötigt 0,2 Minuten pro Karton und 0,1 Minuten pro Tüte. Die Stanzmaschine kann maximal 480 Minuten pro Tag laufen. Beim Kleben werden 0,15 Minuten pro Karton und 0,05 Minuten pro Tüte benötigt, wobei die Klebestation 300 Minuten pro Tag verfügbar ist. An Pappe werden 0,08 m² pro Karton und 0,04 m² pro Tüte verbraucht, bei einem Tagesvorrat von 200 m² Pappe. Die Gesamtstückzahl aus Kartons und Tüten darf 3000 Stück pro Tag nicht überschreiten. Welche Produktion maximiert den Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Kartons pro Tag", "x2 = Anzahl Tüten pro Tag"],
+    "zielfunktion": "Z = 0,5x1 + 0,3x2 (max)",
+    "nebenbedingungen": [
+      "0,2x1 + 0,1x2 ≤ 480 (Stanzmaschine)",
+      "0,15x1 + 0,05x2 ≤ 300 (Klebestation)",
+      "0,08x1 + 0,04x2 ≤ 200 (Pappe)",
+      "x1 + x2 ≤ 3000 (Gesamtstückzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Alle Koeffizienten sind relativ klein, da es sich um Massenproduktion handelt. Rechne sorgfältig mit den Dezimalzahlen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "0,50€ pro Karton", "bedeutung": "0,5 × x₁"},
+        {"text": "0,30€ pro Tüte", "bedeutung": "0,3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,2 Minuten pro Karton und 0,1 Minuten pro Tüte", "bedeutung": "0,2x₁ + 0,1x₂"},
+          {"text": "480 Minuten pro Tag", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "0,15 Minuten pro Karton und 0,05 Minuten pro Tüte", "bedeutung": "0,15x₁ + 0,05x₂"},
+          {"text": "300 Minuten pro Tag", "bedeutung": "≤ 300"}
+        ],
+        [
+          {"text": "0,08 m² pro Karton und 0,04 m² pro Tüte", "bedeutung": "0,08x₁ + 0,04x₂"},
+          {"text": "200 m² Pappe", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "3000 Stück pro Tag", "bedeutung": "x₁ + x₂ ≤ 3000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ziegelei – Mauerziegel und Pflastersteine",
+    "beschreibung": "Eine Ziegelei stellt Mauerziegel und Pflastersteine her. Der Deckungsbeitrag beträgt 0,40€ pro Mauerziegel und 0,70€ pro Pflasterstein. Das Formen dauert 0,1 Minuten pro Mauerziegel und 0,2 Minuten pro Pflasterstein, bei einer Formkapazität von 600 Minuten pro Tag. Im Brennofen werden 0,3 Minuten pro Mauerziegel und 0,5 Minuten pro Pflasterstein benötigt, wobei der Brennofen 1500 Minuten pro Tag verfügbar ist. Der Tonverbrauch liegt bei 2 kg pro Mauerziegel und 3 kg pro Pflasterstein, mit einem Tagesvorrat von 9000 kg Ton. Die Trocknungsanlage ist auf insgesamt 4000 Stück pro Tag begrenzt. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Mauerziegel pro Tag", "x2 = Anzahl Pflastersteine pro Tag"],
+    "zielfunktion": "Z = 0,4x1 + 0,7x2 (max)",
+    "nebenbedingungen": [
+      "0,1x1 + 0,2x2 ≤ 600 (Formen)",
+      "0,3x1 + 0,5x2 ≤ 1500 (Brennofen)",
+      "2x1 + 3x2 ≤ 9000 (Ton)",
+      "x1 + x2 ≤ 4000 (Trocknungsanlage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte darauf, dass die Formkapazität und der Brennofen unterschiedliche Engpässe darstellen. Die Tonbeschränkung hat ganzzahlige Koeffizienten, was das Rechnen erleichtert.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "0,40€ pro Mauerziegel", "bedeutung": "0,4 × x₁"},
+        {"text": "0,70€ pro Pflasterstein", "bedeutung": "0,7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,1 Minuten pro Mauerziegel und 0,2 Minuten pro Pflasterstein", "bedeutung": "0,1x₁ + 0,2x₂"},
+          {"text": "600 Minuten pro Tag", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "0,3 Minuten pro Mauerziegel und 0,5 Minuten pro Pflasterstein", "bedeutung": "0,3x₁ + 0,5x₂"},
+          {"text": "1500 Minuten pro Tag", "bedeutung": "≤ 1500"}
+        ],
+        [
+          {"text": "2 kg pro Mauerziegel und 3 kg pro Pflasterstein", "bedeutung": "2x₁ + 3x₂"},
+          {"text": "9000 kg Ton", "bedeutung": "≤ 9000"}
+        ],
+        [
+          {"text": "4000 Stück pro Tag", "bedeutung": "x₁ + x₂ ≤ 4000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lederwerkstatt – Taschen und Gürtel",
+    "beschreibung": "Eine Lederwerkstatt fertigt Taschen und Gürtel. Der Gewinn beträgt 70€ pro Tasche und 25€ pro Gürtel. Eine Tasche benötigt 4 Stunden Handarbeit und ein Gürtel 1 Stunde Handarbeit. Pro Woche stehen 160 Stunden Handarbeit zur Verfügung. Der Lederverbrauch liegt bei 1,5 m² pro Tasche und 0,5 m² pro Gürtel, bei einem Wochenvorrat von 75 m² Leder. Für Metallbeschläge werden 5 Stück pro Tasche und 2 Stück pro Gürtel benötigt, wobei 250 Beschläge pro Woche vorrätig sind. Die Nachfrage nach Gürteln ist auf höchstens 80 Stück pro Woche begrenzt. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Taschen pro Woche", "x2 = Anzahl Gürtel pro Woche"],
+    "zielfunktion": "Z = 70x1 + 25x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + x2 ≤ 160 (Handarbeit)",
+      "1,5x1 + 0,5x2 ≤ 75 (Leder)",
+      "5x1 + 2x2 ≤ 250 (Beschläge)",
+      "x2 ≤ 80 (Nachfrage Gürtel)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfragegrenze für Gürtel ist eine horizontale Linie bei x2 = 80. Prüfe, ob diese Grenze tatsächlich bindend wird.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "70€ pro Tasche", "bedeutung": "70 × x₁"},
+        {"text": "25€ pro Gürtel", "bedeutung": "25 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Stunden Handarbeit und ein Gürtel 1 Stunde Handarbeit", "bedeutung": "4x₁ + x₂"},
+          {"text": "160 Stunden Handarbeit", "bedeutung": "≤ 160"}
+        ],
+        [
+          {"text": "1,5 m² pro Tasche und 0,5 m² pro Gürtel", "bedeutung": "1,5x₁ + 0,5x₂"},
+          {"text": "75 m² Leder", "bedeutung": "≤ 75"}
+        ],
+        [
+          {"text": "5 Stück pro Tasche und 2 Stück pro Gürtel", "bedeutung": "5x₁ + 2x₂"},
+          {"text": "250 Beschläge pro Woche", "bedeutung": "≤ 250"}
+        ],
+        [
+          {"text": "80 Stück pro Woche", "bedeutung": "x₂ ≤ 80"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fensterbauer – Holzfenster und Kunststofffenster",
+    "beschreibung": "Ein Fensterbauer produziert Holzfenster und Kunststofffenster. Der Deckungsbeitrag beträgt 200€ pro Holzfenster und 140€ pro Kunststofffenster. Die Fertigung dauert 6 Stunden pro Holzfenster und 3 Stunden pro Kunststofffenster. Die Werkstatt hat 360 Stunden Fertigungskapazität pro Monat. Für die Verglasung werden 1,5 Stunden pro Holzfenster und 1 Stunde pro Kunststofffenster benötigt, bei maximal 100 Stunden Verglasungskapazität pro Monat. Die Montageabteilung benötigt 2 Stunden pro Holzfenster und 2 Stunden pro Kunststofffenster, wobei 160 Stunden Montagezeit pro Monat verfügbar sind. Aufgrund einer Vereinbarung mit dem Lieferanten muss das Verhältnis Holzfenster zu Kunststofffenster mindestens 1 zu 3 betragen, also x1 ≥ x2 / 3, umgeformt: x2 ≤ 3x1. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Holzfenster pro Monat", "x2 = Anzahl Kunststofffenster pro Monat"],
+    "zielfunktion": "Z = 200x1 + 140x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 360 (Fertigung)",
+      "1,5x1 + x2 ≤ 100 (Verglasung)",
+      "2x1 + 2x2 ≤ 160 (Montage)",
+      "x2 ≤ 3x1 (Lieferantenverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x2 ≤ 3x1 entspricht -3x1 + x2 ≤ 0. Diese Gerade verläuft durch den Ursprung. Achte auf die korrekte Halbebene.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "200€ pro Holzfenster", "bedeutung": "200 × x₁"},
+        {"text": "140€ pro Kunststofffenster", "bedeutung": "140 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Stunden pro Holzfenster und 3 Stunden pro Kunststofffenster", "bedeutung": "6x₁ + 3x₂"},
+          {"text": "360 Stunden Fertigungskapazität", "bedeutung": "≤ 360"}
+        ],
+        [
+          {"text": "1,5 Stunden pro Holzfenster und 1 Stunde pro Kunststofffenster", "bedeutung": "1,5x₁ + x₂"},
+          {"text": "100 Stunden Verglasungskapazität", "bedeutung": "≤ 100"}
+        ],
+        [
+          {"text": "2 Stunden pro Holzfenster und 2 Stunden pro Kunststofffenster", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "160 Stunden Montagezeit", "bedeutung": "≤ 160"}
+        ],
+        [
+          {"text": "x2 ≤ 3x1", "bedeutung": "x₂ ≤ 3x₁"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bootswerft – Ruderboote und Kanus",
+    "beschreibung": "Eine Bootswerft baut Ruderboote und Kanus. Der Deckungsbeitrag beträgt 800€ pro Ruderboot und 500€ pro Kanu. Der Holzbau benötigt 20 Stunden pro Ruderboot und 12 Stunden pro Kanu, bei insgesamt 480 Stunden Holzbau pro Monat. Die Lackierung dauert 8 Stunden pro Ruderboot und 5 Stunden pro Kanu, mit maximal 200 Stunden Lackierung pro Monat. Für die Endmontage werden 6 Stunden pro Ruderboot und 4 Stunden pro Kanu benötigt, wobei 150 Stunden Endmontage pro Monat zur Verfügung stehen. Der Lagerplatz reicht für maximal 30 Boote insgesamt pro Monat. Wie lässt sich der Deckungsbeitrag maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Ruderboote pro Monat", "x2 = Anzahl Kanus pro Monat"],
+    "zielfunktion": "Z = 800x1 + 500x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 12x2 ≤ 480 (Holzbau)",
+      "8x1 + 5x2 ≤ 200 (Lackierung)",
+      "6x1 + 4x2 ≤ 150 (Endmontage)",
+      "x1 + x2 ≤ 30 (Lagerplatz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass der Holzbau die stärkste Einschränkung sein könnte. Berechne die Eckpunkte systematisch.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "800€ pro Ruderboot", "bedeutung": "800 × x₁"},
+        {"text": "500€ pro Kanu", "bedeutung": "500 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "20 Stunden pro Ruderboot und 12 Stunden pro Kanu", "bedeutung": "20x₁ + 12x₂"},
+          {"text": "480 Stunden Holzbau", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "8 Stunden pro Ruderboot und 5 Stunden pro Kanu", "bedeutung": "8x₁ + 5x₂"},
+          {"text": "200 Stunden Lackierung", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "6 Stunden pro Ruderboot und 4 Stunden pro Kanu", "bedeutung": "6x₁ + 4x₂"},
+          {"text": "150 Stunden Endmontage", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "30 Boote insgesamt", "bedeutung": "x₁ + x₂ ≤ 30"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textildruck – Poster und Leinwände",
+    "beschreibung": "Ein Textildruckbetrieb fertigt bedruckte Poster und Leinwände. Der Gewinn beträgt 18€ pro Poster und 40€ pro Leinwand. Die Druckmaschine benötigt 5 Minuten pro Poster und 15 Minuten pro Leinwand. Pro Tag stehen 900 Minuten Druckzeit zur Verfügung. Für den Zuschnitt werden 2 Minuten pro Poster und 6 Minuten pro Leinwand benötigt, bei maximal 420 Minuten Zuschnitt pro Tag. Der Farbverbrauch beträgt 0,1 Liter pro Poster und 0,4 Liter pro Leinwand, mit einem Tagesvorrat von 24 Liter Farbe. Die Qualitätskontrolle dauert 1 Minute pro Poster und 3 Minuten pro Leinwand, wobei 180 Minuten Qualitätskontrolle pro Tag eingeplant sind. Welche Produktion maximiert den Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Poster pro Tag", "x2 = Anzahl Leinwände pro Tag"],
+    "zielfunktion": "Z = 18x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 15x2 ≤ 900 (Druckzeit)",
+      "2x1 + 6x2 ≤ 420 (Zuschnitt)",
+      "0,1x1 + 0,4x2 ≤ 24 (Farbe)",
+      "x1 + 3x2 ≤ 180 (Qualitätskontrolle)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Einige Nebenbedingungen haben proportionale Koeffizienten. Prüfe, ob manche Bedingungen redundant sind, also von anderen dominiert werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "18€ pro Poster", "bedeutung": "18 × x₁"},
+        {"text": "40€ pro Leinwand", "bedeutung": "40 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Minuten pro Poster und 15 Minuten pro Leinwand", "bedeutung": "5x₁ + 15x₂"},
+          {"text": "900 Minuten Druckzeit", "bedeutung": "≤ 900"}
+        ],
+        [
+          {"text": "2 Minuten pro Poster und 6 Minuten pro Leinwand", "bedeutung": "2x₁ + 6x₂"},
+          {"text": "420 Minuten Zuschnitt", "bedeutung": "≤ 420"}
+        ],
+        [
+          {"text": "0,1 Liter pro Poster und 0,4 Liter pro Leinwand", "bedeutung": "0,1x₁ + 0,4x₂"},
+          {"text": "24 Liter Farbe", "bedeutung": "≤ 24"}
+        ],
+        [
+          {"text": "1 Minute pro Poster und 3 Minuten pro Leinwand", "bedeutung": "x₁ + 3x₂"},
+          {"text": "180 Minuten Qualitätskontrolle", "bedeutung": "≤ 180"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiewerk – Reinigungsmittel und Poliermittel",
+    "beschreibung": "Ein Chemiewerk produziert Reinigungsmittel und Poliermittel. Der Gewinn beträgt 3€ pro Flasche Reinigungsmittel und 5€ pro Flasche Poliermittel. Die Mischanlage benötigt 0,4 Minuten pro Flasche Reinigungsmittel und 0,8 Minuten pro Flasche Poliermittel, bei einer Kapazität von 320 Minuten pro Schicht. Die Abfüllanlage benötigt 0,2 Minuten pro Flasche Reinigungsmittel und 0,3 Minuten pro Flasche Poliermittel, wobei maximal 180 Minuten pro Schicht verfügbar sind. Der Chemikalienverbrauch liegt bei 0,15 kg pro Flasche Reinigungsmittel und 0,25 kg pro Flasche Poliermittel, mit einem Vorrat von 125 kg Chemikalien pro Schicht. Die Etikettierung erlaubt höchstens 700 Flaschen Reinigungsmittel und höchstens 400 Flaschen Poliermittel pro Schicht. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Flaschen Reinigungsmittel pro Schicht", "x2 = Flaschen Poliermittel pro Schicht"],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "0,4x1 + 0,8x2 ≤ 320 (Mischanlage)",
+      "0,2x1 + 0,3x2 ≤ 180 (Abfüllanlage)",
+      "0,15x1 + 0,25x2 ≤ 125 (Chemikalien)",
+      "x1 ≤ 700 (Etikettierung Reinigungsmittel)",
+      "x2 ≤ 400 (Etikettierung Poliermittel)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es 5 echte Nebenbedingungen. Beachte die beiden individuellen Obergrenzen und wie sie den zulässigen Bereich einschränken.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "3€ pro Flasche Reinigungsmittel", "bedeutung": "3 × x₁"},
+        {"text": "5€ pro Flasche Poliermittel", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,4 Minuten pro Flasche Reinigungsmittel und 0,8 Minuten pro Flasche Poliermittel", "bedeutung": "0,4x₁ + 0,8x₂"},
+          {"text": "320 Minuten pro Schicht", "bedeutung": "≤ 320"}
+        ],
+        [
+          {"text": "0,2 Minuten pro Flasche Reinigungsmittel und 0,3 Minuten pro Flasche Poliermittel", "bedeutung": "0,2x₁ + 0,3x₂"},
+          {"text": "180 Minuten pro Schicht", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "0,15 kg pro Flasche Reinigungsmittel und 0,25 kg pro Flasche Poliermittel", "bedeutung": "0,15x₁ + 0,25x₂"},
+          {"text": "125 kg Chemikalien", "bedeutung": "≤ 125"}
+        ],
+        [
+          {"text": "700 Flaschen Reinigungsmittel", "bedeutung": "x₁ ≤ 700"}
+        ],
+        [
+          {"text": "400 Flaschen Poliermittel", "bedeutung": "x₂ ≤ 400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Batteriefabrik – AA-Batterien und Knopfzellen",
+    "beschreibung": "Eine Batteriefabrik stellt AA-Batterien und Knopfzellen her. Der Gewinn beträgt 0,15€ pro AA-Batterie und 0,35€ pro Knopfzelle. Die Elektrodenfertigung dauert 0,02 Minuten pro AA-Batterie und 0,05 Minuten pro Knopfzelle, bei einer Kapazität von 400 Minuten pro Schicht. Die Befüllung mit Elektrolyt benötigt 0,01 Minuten pro AA-Batterie und 0,03 Minuten pro Knopfzelle, wobei maximal 240 Minuten pro Schicht verfügbar sind. Das Versiegeln dauert 0,008 Minuten pro AA-Batterie und 0,02 Minuten pro Knopfzelle, bei maximal 160 Minuten pro Schicht. Die Zink-Menge ist auf insgesamt 500 kg begrenzt, wobei 0,025 kg pro AA-Batterie und 0,015 kg pro Knopfzelle verbraucht werden. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl AA-Batterien pro Schicht", "x2 = Anzahl Knopfzellen pro Schicht"],
+    "zielfunktion": "Z = 0,15x1 + 0,35x2 (max)",
+    "nebenbedingungen": [
+      "0,02x1 + 0,05x2 ≤ 400 (Elektrodenfertigung)",
+      "0,01x1 + 0,03x2 ≤ 240 (Elektrolyt)",
+      "0,008x1 + 0,02x2 ≤ 160 (Versiegelung)",
+      "0,025x1 + 0,015x2 ≤ 500 (Zink)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die sehr kleinen Koeffizienten lassen sich vereinfachen, indem man alle Terme mit einem gemeinsamen Faktor multipliziert, z. B. ×1000. Achte auf die Genauigkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "0,15€ pro AA-Batterie", "bedeutung": "0,15 × x₁"},
+        {"text": "0,35€ pro Knopfzelle", "bedeutung": "0,35 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "0,02 Minuten pro AA-Batterie und 0,05 Minuten pro Knopfzelle", "bedeutung": "0,02x₁ + 0,05x₂"},
+          {"text": "400 Minuten pro Schicht", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "0,01 Minuten pro AA-Batterie und 0,03 Minuten pro Knopfzelle", "bedeutung": "0,01x₁ + 0,03x₂"},
+          {"text": "240 Minuten pro Schicht", "bedeutung": "≤ 240"}
+        ],
+        [
+          {"text": "0,008 Minuten pro AA-Batterie und 0,02 Minuten pro Knopfzelle", "bedeutung": "0,008x₁ + 0,02x₂"},
+          {"text": "160 Minuten pro Schicht", "bedeutung": "≤ 160"}
+        ],
+        [
+          {"text": "0,025 kg pro AA-Batterie und 0,015 kg pro Knopfzelle", "bedeutung": "0,025x₁ + 0,015x₂"},
+          {"text": "500 kg", "bedeutung": "≤ 500"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Optiker-Werkstatt – Brillenfassungen und Kontaktlinsen",
+    "beschreibung": "Eine Optiker-Werkstatt fertigt Brillenfassungen und Kontaktlinsen. Der Deckungsbeitrag beträgt 55€ pro Brillenfassung und 12€ pro Kontaktlinse. Die Formgebung dauert 3 Stunden pro Brillenfassung und 0,5 Stunden pro Kontaktlinse, bei maximal 180 Stunden pro Monat. Die Politur benötigt 1 Stunde pro Brillenfassung und 0,4 Stunden pro Kontaktlinse, wobei 100 Stunden pro Monat verfügbar sind. Für die Qualitätsmessung werden 0,5 Stunden pro Brillenfassung und 0,2 Stunden pro Kontaktlinse aufgewendet, insgesamt maximal 50 Stunden Qualitätsmessung pro Monat. Wegen begrenzter Spezialmaschinen können höchstens 40 Brillenfassungen pro Monat gefertigt werden. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Brillenfassungen pro Monat", "x2 = Anzahl Kontaktlinsen pro Monat"],
+    "zielfunktion": "Z = 55x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 0,5x2 ≤ 180 (Formgebung)",
+      "x1 + 0,4x2 ≤ 100 (Politur)",
+      "0,5x1 + 0,2x2 ≤ 50 (Qualitätsmessung)",
+      "x1 ≤ 40 (Spezialmaschinen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die individuelle Obergrenze für Brillenfassungen bei 40 kann zusammen mit der Formgebungsbedingung den zulässigen Bereich stark einschränken. Achte auf den Koeffizienten 1 bei x1 in der Politur.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "55€ pro Brillenfassung", "bedeutung": "55 × x₁"},
+        {"text": "12€ pro Kontaktlinse", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Stunden pro Brillenfassung und 0,5 Stunden pro Kontaktlinse", "bedeutung": "3x₁ + 0,5x₂"},
+          {"text": "180 Stunden pro Monat", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "1 Stunde pro Brillenfassung und 0,4 Stunden pro Kontaktlinse", "bedeutung": "x₁ + 0,4x₂"},
+          {"text": "100 Stunden pro Monat", "bedeutung": "≤ 100"}
+        ],
+        [
+          {"text": "0,5 Stunden pro Brillenfassung und 0,2 Stunden pro Kontaktlinse", "bedeutung": "0,5x₁ + 0,2x₂"},
+          {"text": "50 Stunden Qualitätsmessung", "bedeutung": "≤ 50"}
+        ],
+        [
+          {"text": "40 Brillenfassungen pro Monat", "bedeutung": "x₁ ≤ 40"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Biotech-Labor – Testkit A und Testkit B",
+    "beschreibung": "Ein Biotech-Labor produziert Testkit A und Testkit B. Der Gewinn beträgt 30€ pro Testkit A und 22€ pro Testkit B. Die Reagenzienvorbereitung dauert 4 Minuten pro Testkit A und 3 Minuten pro Testkit B, mit einer Kapazität von 600 Minuten pro Tag. Die Sterilisation benötigt 2 Minuten pro Testkit A und 2 Minuten pro Testkit B, wobei maximal 400 Minuten pro Tag zur Verfügung stehen. Die Verpackung dauert 1 Minute pro Testkit A und 1,5 Minuten pro Testkit B, bei maximal 250 Minuten pro Tag. Aus regulatorischen Gründen darf die Anzahl von Testkit A das Dreifache von Testkit B nicht übersteigen, also x1 ≤ 3x2. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Testkit A pro Tag", "x2 = Anzahl Testkit B pro Tag"],
+    "zielfunktion": "Z = 30x1 + 22x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≤ 600 (Reagenzien)",
+      "2x1 + 2x2 ≤ 400 (Sterilisation)",
+      "x1 + 1,5x2 ≤ 250 (Verpackung)",
+      "x1 ≤ 3x2 (Regulierung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung x1 ≤ 3x2 kann umgeschrieben werden zu x1 - 3x2 ≤ 0. Diese Gerade verläuft durch den Ursprung mit Steigung 1/3.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "30€ pro Testkit A", "bedeutung": "30 × x₁"},
+        {"text": "22€ pro Testkit B", "bedeutung": "22 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Minuten pro Testkit A und 3 Minuten pro Testkit B", "bedeutung": "4x₁ + 3x₂"},
+          {"text": "600 Minuten pro Tag", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "2 Minuten pro Testkit A und 2 Minuten pro Testkit B", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "400 Minuten pro Tag", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "1 Minute pro Testkit A und 1,5 Minuten pro Testkit B", "bedeutung": "x₁ + 1,5x₂"},
+          {"text": "250 Minuten pro Tag", "bedeutung": "≤ 250"}
+        ],
+        [
+          {"text": "x1 ≤ 3x2", "bedeutung": "x₁ ≤ 3x₂"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Solarpanel-Produktion – Monokristallin und Polykristallin",
+    "beschreibung": "Ein Solarpanel-Hersteller produziert monokristalline und polykristalline Panels. Der Deckungsbeitrag beträgt 180€ pro monokristallines Panel und 110€ pro polykristallines Panel. Die Zellenfertigung dauert 5 Stunden pro monokristallines Panel und 3 Stunden pro polykristallines Panel, bei einer Kapazität von 450 Stunden pro Woche. Die Laminierung benötigt 2 Stunden pro monokristallines Panel und 2 Stunden pro polykristallines Panel, wobei maximal 200 Stunden pro Woche verfügbar sind. Der Siliziumverbrauch beträgt 4 kg pro monokristallines Panel und 3 kg pro polykristallines Panel, mit einem Wochenvorrat von 360 kg Silizium. Für die Elektroprüfung werden 1,5 Stunden pro monokristallines Panel und 1 Stunde pro polykristallines Panel benötigt, bei maximal 120 Stunden Elektroprüfung pro Woche. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl monokristalline Panels pro Woche", "x2 = Anzahl polykristalline Panels pro Woche"],
+    "zielfunktion": "Z = 180x1 + 110x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 450 (Zellenfertigung)",
+      "2x1 + 2x2 ≤ 200 (Laminierung)",
+      "4x1 + 3x2 ≤ 360 (Silizium)",
+      "1,5x1 + x2 ≤ 120 (Elektroprüfung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vergleiche die Steigungen der Nebenbedingungen. Die Laminierung hat gleiche Koeffizienten, was zu einer Geraden mit Steigung -1 führt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "180€ pro monokristallines Panel", "bedeutung": "180 × x₁"},
+        {"text": "110€ pro polykristallines Panel", "bedeutung": "110 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Stunden pro monokristallines Panel und 3 Stunden pro polykristallines Panel", "bedeutung": "5x₁ + 3x₂"},
+          {"text": "450 Stunden pro Woche", "bedeutung": "≤ 450"}
+        ],
+        [
+          {"text": "2 Stunden pro monokristallines Panel und 2 Stunden pro polykristallines Panel", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "200 Stunden pro Woche", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "4 kg pro monokristallines Panel und 3 kg pro polykristallines Panel", "bedeutung": "4x₁ + 3x₂"},
+          {"text": "360 kg Silizium", "bedeutung": "≤ 360"}
+        ],
+        [
+          {"text": "1,5 Stunden pro monokristallines Panel und 1 Stunde pro polykristallines Panel", "bedeutung": "1,5x₁ + x₂"},
+          {"text": "120 Stunden Elektroprüfung", "bedeutung": "≤ 120"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonwerk – Fertigteile und Pflanzsteine",
+    "beschreibung": "Ein Betonwerk produziert Fertigteile und Pflanzsteine. Der Deckungsbeitrag beträgt 35€ pro Fertigteil und 8€ pro Pflanzstein. Die Betonmischanlage benötigt 10 Minuten pro Fertigteil und 3 Minuten pro Pflanzstein, bei einer Kapazität von 1800 Minuten pro Tag. Die Formanlage benötigt 8 Minuten pro Fertigteil und 2 Minuten pro Pflanzstein, wobei maximal 1200 Minuten pro Tag verfügbar sind. Der Zementverbrauch beträgt 25 kg pro Fertigteil und 5 kg pro Pflanzstein, mit einem Tagesvorrat von 4000 kg Zement. Es können maximal 500 Pflanzsteine pro Tag gelagert werden. Wie wird der Deckungsbeitrag maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Fertigteile pro Tag", "x2 = Anzahl Pflanzsteine pro Tag"],
+    "zielfunktion": "Z = 35x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 3x2 ≤ 1800 (Betonmischanlage)",
+      "8x1 + 2x2 ≤ 1200 (Formanlage)",
+      "25x1 + 5x2 ≤ 4000 (Zement)",
+      "x2 ≤ 500 (Lager Pflanzsteine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Lagerbeschränkung für Pflanzsteine ist eine horizontale Linie. Prüfe, ob der optimale Punkt auf dieser Grenze oder auf einer anderen liegt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "35€ pro Fertigteil", "bedeutung": "35 × x₁"},
+        {"text": "8€ pro Pflanzstein", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 Minuten pro Fertigteil und 3 Minuten pro Pflanzstein", "bedeutung": "10x₁ + 3x₂"},
+          {"text": "1800 Minuten pro Tag", "bedeutung": "≤ 1800"}
+        ],
+        [
+          {"text": "8 Minuten pro Fertigteil und 2 Minuten pro Pflanzstein", "bedeutung": "8x₁ + 2x₂"},
+          {"text": "1200 Minuten pro Tag", "bedeutung": "≤ 1200"}
+        ],
+        [
+          {"text": "25 kg pro Fertigteil und 5 kg pro Pflanzstein", "bedeutung": "25x₁ + 5x₂"},
+          {"text": "4000 kg Zement", "bedeutung": "≤ 4000"}
+        ],
+        [
+          {"text": "500 Pflanzsteine pro Tag", "bedeutung": "x₂ ≤ 500"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waffelfabrik – Belgische und Lütticher Waffeln",
+    "beschreibung": "Eine Waffelfabrik produziert Belgische Waffeln und Lütticher Waffeln. Der Gewinn beträgt 1,80€ pro Belgische Waffel und 2,50€ pro Lütticher Waffel. Jedes Waffeleisen braucht 2 Minuten pro Belgische Waffel und 3 Minuten pro Lütticher Waffel. Die Waffeleisen stehen insgesamt 600 Minuten pro Schicht zur Verfügung. Der Teigverbrauch liegt bei 0,15 kg pro Belgische Waffel und 0,2 kg pro Lütticher Waffel, bei einem Vorrat von 50 kg Teig pro Schicht. Für die Verzierung werden 1 Minute pro Belgische Waffel und 2 Minuten pro Lütticher Waffel benötigt, wobei maximal 400 Minuten Verzierungszeit pro Schicht verfügbar sind. Die Verpackungsanlage schafft insgesamt höchstens 250 Waffeln pro Schicht. Wie wird der Gewinn maximiert?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Belgische Waffeln pro Schicht", "x2 = Anzahl Lütticher Waffeln pro Schicht"],
+    "zielfunktion": "Z = 1,8x1 + 2,5x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 600 (Waffeleisen)",
+      "0,15x1 + 0,2x2 ≤ 50 (Teig)",
+      "x1 + 2x2 ≤ 400 (Verzierung)",
+      "x1 + x2 ≤ 250 (Verpackung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen mit relativ einfachen Koeffizienten. Die Verpackungsbeschränkung hat gleiche Koeffizienten, was eine Gerade mit Steigung -1 ergibt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "1,80€ pro Belgische Waffel", "bedeutung": "1,8 × x₁"},
+        {"text": "2,50€ pro Lütticher Waffel", "bedeutung": "2,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Minuten pro Belgische Waffel und 3 Minuten pro Lütticher Waffel", "bedeutung": "2x₁ + 3x₂"},
+          {"text": "600 Minuten pro Schicht", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "0,15 kg pro Belgische Waffel und 0,2 kg pro Lütticher Waffel", "bedeutung": "0,15x₁ + 0,2x₂"},
+          {"text": "50 kg Teig", "bedeutung": "≤ 50"}
+        ],
+        [
+          {"text": "1 Minute pro Belgische Waffel und 2 Minuten pro Lütticher Waffel", "bedeutung": "x₁ + 2x₂"},
+          {"text": "400 Minuten Verzierungszeit", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "250 Waffeln pro Schicht", "bedeutung": "x₁ + x₂ ≤ 250"}
+        ]
+      ]
+    }
+  }
+]

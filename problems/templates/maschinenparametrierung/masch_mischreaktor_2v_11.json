@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_mischreaktor_2v_11",
+  "titel": "Mischreaktor – Ruehrer-Drehzahl und Temperatur",
+  "variablen": [
+    "x1 = Ruehrer-Drehzahl (Stufen)",
+    "x2 = Reaktortemperatur (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Antriebsleistung",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Kuehlkapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Mischguete Drehzahl"
+    },
+    "c2": {
+      "min": 4,
+      "max": 12,
+      "label": "Reaktionsrate Temperatur"
+    },
+    "a11": {
+      "min": 3,
+      "max": 9,
+      "label": "Antrieb pro Drehzahlstufe"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Antrieb pro Temperaturstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Antriebsleistung"
+    },
+    "a21": {
+      "min": 1,
+      "max": 5,
+      "label": "Kuehlung Drehzahl"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Kuehlung Temperatur"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Kuehlkapazitaet"
+    }
+  },
+  "beschreibung": "Ein Mischreaktor wird ueber Ruehrer-Drehzahl und Temperatur parametriert. Die Drehzahl liefert {c1} Punkte Mischguete, die Temperatur {c2} Punkte Reaktionsrate. Die Antriebsleistung betraegt {a11} Einheiten pro Drehzahlstufe und {a12} Einheiten pro Temperaturstufe bei maximal {b1} Antriebseinheiten. Die Kuehlkapazitaet erfordert {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Temperaturstufe bei maximal {b2} Kuehleinheiten.",
+  "hinweis": "Maximiere die Prozessqualitaet unter Beachtung von Antrieb und Kuehlung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Drehzahl liefert {c1} Punkte Mischguete",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Temperatur {c2} Punkte Reaktionsrate",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Drehzahlstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Temperaturstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Antriebseinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Drehzahlstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Temperaturstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Kuehleinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

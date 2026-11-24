@@ -1,0 +1,43 @@
+{
+  "id": "ress_forschung_2v_02",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Stunden fuer Projekt Alpha", "x2 = Stunden fuer Projekt Beta"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Forschungsstunden", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborkapazitaet", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,    "label": "Innovationswert/h Projekt Alpha"},
+    "c2":  {"min": 5, "max": 15,    "label": "Innovationswert/h Projekt Beta"},
+    "a11": {"min": 1, "max": 1,     "label": "Forschungsstunden Alpha"},
+    "a12": {"min": 1, "max": 1,     "label": "Forschungsstunden Beta"},
+    "b1":  {"min": 40, "max": 160,  "label": "Gesamte Forschungsstunden"},
+    "a21": {"min": 1, "max": 3,     "label": "Laborstunden/h Alpha"},
+    "a22": {"min": 2, "max": 5,     "label": "Laborstunden/h Beta"},
+    "b2":  {"min": 30, "max": 120,  "label": "Laborkapazitaet (h)"}
+  },
+  "titel": "Forschungsabteilung – Projekt Alpha und Beta",
+  "beschreibung": "Eine Forschungsabteilung verteilt Ressourcen auf Projekt Alpha und Projekt Beta. Pro Stunde in Projekt Alpha wird ein Innovationswert von {c1} erzielt, pro Stunde in Projekt Beta {c2}. Projekt Alpha benoetigt {a11} Forschungsstunde pro Stunde Einsatz, Projekt Beta {a12} Forschungsstunde. Insgesamt stehen {b1} Forschungsstunden bereit. Im Labor beansprucht Alpha {a21} Stunden pro eingesetzter Stunde, Beta {a22} Stunden. Die Laborkapazitaet umfasst {b2} Stunden.",
+  "hinweis": "Maximiere den Innovationswert mit Beschraenkungen bei Forschungsstunden und Labor.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Projekt Alpha wird ein Innovationswert von {c1} erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Projekt Beta {c2}", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Alpha benoetigt {a11} Forschungsstunde", "bedeutung": "{a11}x₁"},
+        {"text": "Beta {a12} Forschungsstunde", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Forschungsstunden bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Alpha {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Beta {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

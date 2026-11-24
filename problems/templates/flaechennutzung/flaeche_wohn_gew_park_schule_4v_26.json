@@ -1,0 +1,73 @@
+{
+  "id": "flaeche_wohn_gew_park_schule_4v_26",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Hektar Wohngebiet", "x2 = Hektar Gewerbe", "x3 = Hektar Park", "x4 = Hektar Schulgelände"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Erschließungsbudget", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestgrünfläche", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindestschulfläche", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,  "label": "Wert Wohnen (Tsd. €/ha)"},
+    "c2":  {"min": 12, "max": 28, "label": "Wert Gewerbe (Tsd. €/ha)"},
+    "c3":  {"min": 2, "max": 6,   "label": "Wert Park (Tsd. €/ha)"},
+    "c4":  {"min": 4, "max": 10,  "label": "Wert Schule (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Wohnen (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Gewerbe (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Park (ha/ha)"},
+    "a14": {"min": 1, "max": 2,   "label": "Fläche Schule (ha/ha)"},
+    "b1":  {"min": 30, "max": 200, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 6, "max": 15,  "label": "Erschließung Wohnen (Tsd. €/ha)"},
+    "a22": {"min": 8, "max": 18,  "label": "Erschließung Gewerbe (Tsd. €/ha)"},
+    "a23": {"min": 2, "max": 5,   "label": "Erschließung Park (Tsd. €/ha)"},
+    "a24": {"min": 5, "max": 12,  "label": "Erschließung Schule (Tsd. €/ha)"},
+    "b2":  {"min": 80, "max": 500, "label": "Erschließungsbudget (Tsd. €)"},
+    "a31": {"min": 0, "max": 0,   "label": "Grünanteil Wohnen"},
+    "a32": {"min": 0, "max": 0,   "label": "Grünanteil Gewerbe"},
+    "a33": {"min": 1, "max": 2,   "label": "Grünanteil Park (ha/ha)"},
+    "a34": {"min": 0, "max": 0,   "label": "Grünanteil Schule"},
+    "b3":  {"min": 3, "max": 25,   "label": "Mindestgrünfläche (ha)"},
+    "a41": {"min": 0, "max": 0,   "label": "Schulanteil Wohnen"},
+    "a42": {"min": 0, "max": 0,   "label": "Schulanteil Gewerbe"},
+    "a43": {"min": 0, "max": 0,   "label": "Schulanteil Park"},
+    "a44": {"min": 1, "max": 2,   "label": "Schulanteil Schule (ha/ha)"},
+    "b4":  {"min": 2, "max": 15,   "label": "Mindestschulfläche (ha)"}
+  },
+  "titel": "Stadtviertel – Wohnen, Gewerbe, Park und Schule",
+  "beschreibung": "Ein neues Stadtviertel wird geplant mit Wohn-, Gewerbe-, Park- und Schulflächen. Wohngebiet bringt {c1} Tsd. € pro ha, Gewerbe bringt {c2} Tsd. € pro ha, Park bringt {c3} Tsd. € pro ha, Schulgelände bringt {c4} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Wohnen, {a12} ha pro ha Gewerbe, {a13} ha pro ha Park und {a14} ha pro ha Schule. Die Gesamtfläche beträgt {b1} Hektar. Die Erschließung kostet {a21} Tsd. € pro ha Wohnen, {a22} Tsd. € pro ha Gewerbe, {a23} Tsd. € pro ha Park und {a24} Tsd. € pro ha Schule. Das Erschließungsbudget beträgt {b2} Tsd. €. Laut Vorschrift müssen mindestens {b3} Hektar Park und mindestens {b4} Hektar Schulgelände eingeplant werden.",
+  "hinweis": "Maximiere den Gesamtwert unter Beachtung von Fläche, Budget und Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wohngebiet bringt {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Gewerbe bringt {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Park bringt {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Schulgelände bringt {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Wohnen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Gewerbe", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Park", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Schule", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro ha Wohnen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro ha Gewerbe", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tsd. € pro ha Park", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Tsd. € pro ha Schule", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "mindestens {b3} Hektar Park", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "mindestens {b4} Hektar Schulgelände", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

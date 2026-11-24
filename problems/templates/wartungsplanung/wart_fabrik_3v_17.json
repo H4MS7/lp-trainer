@@ -1,0 +1,60 @@
+{
+  "id": "wart_fabrik_3v_17",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Ölwechsel", "x2 = Anzahl Verschleißteilersatz", "x3 = Anzahl Generalüberholungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Technikerstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Ersatzteilbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Ölwechsel (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Verschleißteil (Tsd. €)"},
+    "c3":  {"min": 8, "max": 20,  "label": "Kosten Generalüberholung (Tsd. €)"},
+    "a11": {"min": 1, "max": 4,   "label": "Verfügbarkeit Öl (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Verfügbarkeit Verschleiß (%)"},
+    "a13": {"min": 5, "max": 12,  "label": "Verfügbarkeit General (%)"},
+    "b1":  {"min": 40, "max": 140, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Stunden Öl (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Stunden Verschleiß (h)"},
+    "a23": {"min": 5, "max": 12,  "label": "Stunden General (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Technikerstunden (h)"},
+    "a31": {"min": 1, "max": 3,   "label": "Ersatzteile Öl (Tsd. €)"},
+    "a32": {"min": 2, "max": 6,   "label": "Ersatzteile Verschleiß (Tsd. €)"},
+    "a33": {"min": 4, "max": 12,  "label": "Ersatzteile General (Tsd. €)"},
+    "b3":  {"min": 20, "max": 100, "label": "Ersatzteilbudget (Tsd. €)"}
+  },
+  "titel": "Fabrik – Drei Wartungsstufen",
+  "beschreibung": "Eine Fabrik plant die Maschinenwartung auf drei Stufen. Ein Ölwechsel kostet {c1} Tsd. €, ein Verschleißteilersatz kostet {c2} Tsd. €, eine Generalüberholung kostet {c3} Tsd. €. Ein Ölwechsel steigert die Verfügbarkeit um {a11} %, Verschleißteilersatz um {a12} %, Generalüberholung um {a13} %. Die Mindestverfügbarkeit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Ölwechsel, {a22} h pro Verschleißteilersatz und {a23} h pro Generalüberholung. Maximal {b2} Technikerstunden stehen zur Verfügung. Die Ersatzteilkosten betragen {a31} Tsd. € pro Ölwechsel, {a32} Tsd. € pro Verschleißteilersatz und {a33} Tsd. € pro Generalüberholung. Das Ersatzteilbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Verfügbarkeit, Personalzeit und des Ersatzteilbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Ölwechsel kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Verschleißteilersatz kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Generalüberholung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Ölwechsel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Verschleißteilersatz", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Generalüberholung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Technikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Ölwechsel", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Verschleißteilersatz", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Generalüberholung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

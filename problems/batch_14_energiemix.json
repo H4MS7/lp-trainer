@@ -1,0 +1,1082 @@
+[
+  {
+    "titel": "Energiemix Solar und Wind",
+    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windkraftanlagen. Jede Solaranlage kostet 6€ pro MWh und jede Windkraftanlage kostet 14€ pro MWh. Das Unternehmen muss mindestens 276 MWh Leistung bereitstellen. Jede Solaranlage liefert 2 MWh Leistung und jede Windkraftanlage liefert 3 MWh Leistung. Die Netzkapazität begrenzt die Netzeinspeisung auf höchstens 1558 MWh. Jede Solaranlage beansprucht 11 MWh Netzeinspeisung und jede Windkraftanlage beansprucht 11 MWh Netzeinspeisung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windkraftanlagen"
+    ],
+    "zielfunktion": "Z = 6x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≥ 276 (Mindest-Leistung)",
+      "11x1 + 11x2 ≤ 1558 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Solaranlage kostet 6€ pro MWh",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Windkraftanlage kostet 14€ pro MWh",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solaranlage liefert 2 MWh Leistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windkraftanlage liefert 3 MWh Leistung",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 276 MWh Leistung",
+            "bedeutung": "≥ 276"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage beansprucht 11 MWh Netzeinspeisung",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Windkraftanlage beansprucht 11 MWh Netzeinspeisung",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 1558 MWh",
+            "bedeutung": "≤ 1558"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Biomasse und Wasserkraft",
+    "beschreibung": "Ein Stadtwerk plant die Energieerzeugung mit Biomasseanlagen und Wasserkraftwerken. Jede Biomasseanlage kostet 3€ pro MWh und jedes Wasserkraftwerk kostet 9€ pro MWh. Das Stadtwerk muss mindestens 523 MWh Stromerzeugung erzeugen. Jede Biomasseanlage liefert 5 MWh Stromerzeugung und jedes Wasserkraftwerk liefert 1 MWh Stromerzeugung. Die Netzkapazität für Wärmeleistung beträgt höchstens 1550 MWh. Jede Biomasseanlage beansprucht 7 MWh Wärmeleistung und jedes Wasserkraftwerk beansprucht 4 MWh Wärmeleistung. Die Netzkapazität für Netzeinspeisung beträgt höchstens 780 MWh. Jede Biomasseanlage beansprucht 4 MWh Netzeinspeisung und jedes Wasserkraftwerk beansprucht 10 MWh Netzeinspeisung. Das Stadtwerk muss mindestens 243 MWh Grundlast erzeugen. Jede Biomasseanlage liefert 3 MWh Grundlast und jedes Wasserkraftwerk liefert 3 MWh Grundlast. Die Betriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Biomasseanlagen",
+      "x2 = MWh aus Wasserkraftwerken"
+    ],
+    "zielfunktion": "Z = 3x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + x2 ≥ 523 (Mindest-Stromerzeugung)",
+      "7x1 + 4x2 ≤ 1550 (Max-Wärmeleistung)",
+      "4x1 + 10x2 ≤ 780 (Max-Netzeinspeisung)",
+      "3x1 + 3x2 ≥ 243 (Mindest-Grundlast)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Biomasseanlage kostet 3€ pro MWh",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Wasserkraftwerk kostet 9€ pro MWh",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Biomasseanlage liefert 5 MWh Stromerzeugung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 1 MWh Stromerzeugung",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 523 MWh Stromerzeugung",
+            "bedeutung": "≥ 523"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 7 MWh Wärmeleistung",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 4 MWh Wärmeleistung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 1550 MWh",
+            "bedeutung": "≤ 1550"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 4 MWh Netzeinspeisung",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 10 MWh Netzeinspeisung",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 780 MWh",
+            "bedeutung": "≤ 780"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage liefert 3 MWh Grundlast",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 3 MWh Grundlast",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 243 MWh Grundlast",
+            "bedeutung": "≥ 243"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Geothermie und Photovoltaik",
+    "beschreibung": "Ein Energieversorger plant den Einsatz von Geothermieanlagen und Photovoltaikanlagen. Jede Geothermieanlage kostet 8€ pro MWh und jede Photovoltaikanlage kostet 5€ pro MWh. Für die Grundlastversorgung müssen mindestens 642 MWh bereitgestellt werden. Jede Geothermieanlage liefert 5 MWh Grundlastversorgung und jede Photovoltaikanlage liefert 3 MWh Grundlastversorgung. Die Spitzenlast darf höchstens 1721 MWh betragen. Jede Geothermieanlage benötigt 8 MWh Spitzenlast und jede Photovoltaikanlage benötigt 2 MWh Spitzenlast. Die Wärmeversorgung darf höchstens 1196 MWh betragen. Jede Geothermieanlage benötigt 3 MWh Wärmeversorgung und jede Photovoltaikanlage benötigt 8 MWh Wärmeversorgung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Geothermieanlagen",
+      "x2 = MWh aus Photovoltaikanlagen"
+    ],
+    "zielfunktion": "Z = 8x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≥ 642 (Mindest-Grundlastversorgung)",
+      "8x1 + 2x2 ≤ 1721 (Max-Spitzenlast)",
+      "3x1 + 8x2 ≤ 1196 (Max-Wärmeversorgung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Geothermieanlage kostet 8€ pro MWh",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Photovoltaikanlage kostet 5€ pro MWh",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Geothermieanlage liefert 5 MWh Grundlastversorgung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Photovoltaikanlage liefert 3 MWh Grundlastversorgung",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 642 MWh",
+            "bedeutung": "≥ 642"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 8 MWh Spitzenlast",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 2 MWh Spitzenlast",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 1721 MWh",
+            "bedeutung": "≤ 1721"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 3 MWh Wärmeversorgung",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 8 MWh Wärmeversorgung",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 1196 MWh",
+            "bedeutung": "≤ 1196"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix BHKW und Wärmepumpe",
+    "beschreibung": "Ein Wohnquartier plant die Energieversorgung mit Blockheizkraftwerken und Wärmepumpen. Jedes BHKW kostet 5€ pro kW und jede Wärmepumpe kostet 4€ pro kW. Für die Stromversorgung müssen mindestens 198 kW bereitgestellt werden. Jedes BHKW liefert 5 kW Stromversorgung und jede Wärmepumpe liefert 4 kW Stromversorgung. Die Wärmeversorgung darf höchstens 455 kW betragen. Jedes BHKW beansprucht 11 kW Wärmeversorgung und jede Wärmepumpe beansprucht 6 kW Wärmeversorgung. Die Netzeinspeisung darf höchstens 1617 kW betragen. Jedes BHKW beansprucht 9 kW Netzeinspeisung und jede Wärmepumpe beansprucht 11 kW Netzeinspeisung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = kW aus Blockheizkraftwerken",
+      "x2 = kW aus Wärmepumpen"
+    ],
+    "zielfunktion": "Z = 5x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≥ 198 (Mindest-Stromversorgung)",
+      "11x1 + 6x2 ≤ 455 (Max-Wärmeversorgung)",
+      "9x1 + 11x2 ≤ 1617 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "BHKW kostet 5€ pro kW",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Wärmepumpe kostet 4€ pro kW",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "BHKW liefert 5 kW Stromversorgung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Wärmepumpe liefert 4 kW Stromversorgung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 198 kW",
+            "bedeutung": "≥ 198"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 11 kW Wärmeversorgung",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 6 kW Wärmeversorgung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 455 kW",
+            "bedeutung": "≤ 455"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 9 kW Netzeinspeisung",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 11 kW Netzeinspeisung",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 1617 kW",
+            "bedeutung": "≤ 1617"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Solar und Wind (Variante 2)",
+    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windkraftanlagen. Jede Solaranlage kostet 8€ pro MWh und jede Windkraftanlage kostet 8€ pro MWh. Das Unternehmen muss mindestens 233 MWh Leistung bereitstellen. Jede Solaranlage liefert 2 MWh Leistung und jede Windkraftanlage liefert 5 MWh Leistung. Die Netzkapazität begrenzt die Netzeinspeisung auf höchstens 1847 MWh. Jede Solaranlage beansprucht 8 MWh Netzeinspeisung und jede Windkraftanlage beansprucht 5 MWh Netzeinspeisung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windkraftanlagen"
+    ],
+    "zielfunktion": "Z = 8x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≥ 233 (Mindest-Leistung)",
+      "8x1 + 5x2 ≤ 1847 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Solaranlage kostet 8€ pro MWh",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Windkraftanlage kostet 8€ pro MWh",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solaranlage liefert 2 MWh Leistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windkraftanlage liefert 5 MWh Leistung",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 233 MWh Leistung",
+            "bedeutung": "≥ 233"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage beansprucht 8 MWh Netzeinspeisung",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Windkraftanlage beansprucht 5 MWh Netzeinspeisung",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1847 MWh",
+            "bedeutung": "≤ 1847"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Biomasse und Wasserkraft (Variante 2)",
+    "beschreibung": "Ein Stadtwerk plant die Energieerzeugung mit Biomasseanlagen und Wasserkraftwerken. Jede Biomasseanlage kostet 9€ pro MWh und jedes Wasserkraftwerk kostet 14€ pro MWh. Das Stadtwerk muss mindestens 77 MWh Stromerzeugung erzeugen. Jede Biomasseanlage liefert 6 MWh Stromerzeugung und jedes Wasserkraftwerk liefert 7 MWh Stromerzeugung. Die Netzkapazität für Wärmeleistung beträgt höchstens 115 MWh. Jede Biomasseanlage beansprucht 3 MWh Wärmeleistung und jedes Wasserkraftwerk beansprucht 4 MWh Wärmeleistung. Die Netzkapazität für Netzeinspeisung beträgt höchstens 1511 MWh. Jede Biomasseanlage beansprucht 1 MWh Netzeinspeisung und jedes Wasserkraftwerk beansprucht 9 MWh Netzeinspeisung. Die Betriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Biomasseanlagen",
+      "x2 = MWh aus Wasserkraftwerken"
+    ],
+    "zielfunktion": "Z = 9x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 7x2 ≥ 77 (Mindest-Stromerzeugung)",
+      "3x1 + 4x2 ≤ 115 (Max-Wärmeleistung)",
+      "x1 + 9x2 ≤ 1511 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Biomasseanlage kostet 9€ pro MWh",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "Wasserkraftwerk kostet 14€ pro MWh",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Biomasseanlage liefert 6 MWh Stromerzeugung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 7 MWh Stromerzeugung",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 77 MWh Stromerzeugung",
+            "bedeutung": "≥ 77"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 3 MWh Wärmeleistung",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 4 MWh Wärmeleistung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 115 MWh",
+            "bedeutung": "≤ 115"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 1 MWh Netzeinspeisung",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 9 MWh Netzeinspeisung",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 1511 MWh",
+            "bedeutung": "≤ 1511"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Geothermie und Photovoltaik (Variante 2)",
+    "beschreibung": "Ein Energieversorger plant den Einsatz von Geothermieanlagen und Photovoltaikanlagen. Jede Geothermieanlage kostet 7€ pro MWh und jede Photovoltaikanlage kostet 14€ pro MWh. Für die Grundlastversorgung müssen mindestens 1369 MWh bereitgestellt werden. Jede Geothermieanlage liefert 5 MWh Grundlastversorgung und jede Photovoltaikanlage liefert 1 MWh Grundlastversorgung. Die Spitzenlast darf höchstens 1045 MWh betragen. Jede Geothermieanlage benötigt 1 MWh Spitzenlast und jede Photovoltaikanlage benötigt 5 MWh Spitzenlast. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Geothermieanlagen",
+      "x2 = MWh aus Photovoltaikanlagen"
+    ],
+    "zielfunktion": "Z = 7x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + x2 ≥ 1369 (Mindest-Grundlastversorgung)",
+      "x1 + 5x2 ≤ 1045 (Max-Spitzenlast)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Geothermieanlage kostet 7€ pro MWh",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "Photovoltaikanlage kostet 14€ pro MWh",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Geothermieanlage liefert 5 MWh Grundlastversorgung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Photovoltaikanlage liefert 1 MWh Grundlastversorgung",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 1369 MWh",
+            "bedeutung": "≥ 1369"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 1 MWh Spitzenlast",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 5 MWh Spitzenlast",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1045 MWh",
+            "bedeutung": "≤ 1045"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix BHKW und Wärmepumpe (Variante 2)",
+    "beschreibung": "Ein Wohnquartier plant die Energieversorgung mit Blockheizkraftwerken und Wärmepumpen. Jedes BHKW kostet 4€ pro kW und jede Wärmepumpe kostet 10€ pro kW. Für die Stromversorgung müssen mindestens 874 kW bereitgestellt werden. Jedes BHKW liefert 6 kW Stromversorgung und jede Wärmepumpe liefert 1 kW Stromversorgung. Die Wärmeversorgung darf höchstens 1793 kW betragen. Jedes BHKW beansprucht 7 kW Wärmeversorgung und jede Wärmepumpe beansprucht 12 kW Wärmeversorgung. Die Netzeinspeisung darf höchstens 475 kW betragen. Jedes BHKW beansprucht 2 kW Netzeinspeisung und jede Wärmepumpe beansprucht 12 kW Netzeinspeisung. Für die Grundlast müssen mindestens 795 kW bereitgestellt werden. Jedes BHKW liefert 10 kW Grundlast und jede Wärmepumpe liefert 8 kW Grundlast. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = kW aus Blockheizkraftwerken",
+      "x2 = kW aus Wärmepumpen"
+    ],
+    "zielfunktion": "Z = 4x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + x2 ≥ 874 (Mindest-Stromversorgung)",
+      "7x1 + 12x2 ≤ 1793 (Max-Wärmeversorgung)",
+      "2x1 + 12x2 ≤ 475 (Max-Netzeinspeisung)",
+      "10x1 + 8x2 ≥ 795 (Mindest-Grundlast)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "BHKW kostet 4€ pro kW",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Wärmepumpe kostet 10€ pro kW",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "BHKW liefert 6 kW Stromversorgung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Wärmepumpe liefert 1 kW Stromversorgung",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 874 kW",
+            "bedeutung": "≥ 874"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 7 kW Wärmeversorgung",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 12 kW Wärmeversorgung",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "höchstens 1793 kW",
+            "bedeutung": "≤ 1793"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 2 kW Netzeinspeisung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 12 kW Netzeinspeisung",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "höchstens 475 kW",
+            "bedeutung": "≤ 475"
+          }
+        ],
+        [
+          {
+            "text": "BHKW liefert 10 kW Grundlast",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Wärmepumpe liefert 8 kW Grundlast",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 795 kW",
+            "bedeutung": "≥ 795"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Solar und Wind (Variante 3)",
+    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windkraftanlagen. Jede Solaranlage kostet 8€ pro MWh und jede Windkraftanlage kostet 2€ pro MWh. Das Unternehmen muss mindestens 1586 MWh Leistung bereitstellen. Jede Solaranlage liefert 3 MWh Leistung und jede Windkraftanlage liefert 6 MWh Leistung. Die Netzkapazität begrenzt die Netzeinspeisung auf höchstens 1991 MWh. Jede Solaranlage beansprucht 5 MWh Netzeinspeisung und jede Windkraftanlage beansprucht 5 MWh Netzeinspeisung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windkraftanlagen"
+    ],
+    "zielfunktion": "Z = 8x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≥ 1586 (Mindest-Leistung)",
+      "5x1 + 5x2 ≤ 1991 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Solaranlage kostet 8€ pro MWh",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Windkraftanlage kostet 2€ pro MWh",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solaranlage liefert 3 MWh Leistung",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Windkraftanlage liefert 6 MWh Leistung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 1586 MWh Leistung",
+            "bedeutung": "≥ 1586"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage beansprucht 5 MWh Netzeinspeisung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Windkraftanlage beansprucht 5 MWh Netzeinspeisung",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 1991 MWh",
+            "bedeutung": "≤ 1991"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Biomasse und Wasserkraft (Variante 3)",
+    "beschreibung": "Ein Stadtwerk plant die Energieerzeugung mit Biomasseanlagen und Wasserkraftwerken. Jede Biomasseanlage kostet 3€ pro MWh und jedes Wasserkraftwerk kostet 12€ pro MWh. Das Stadtwerk muss mindestens 415 MWh Stromerzeugung erzeugen. Jede Biomasseanlage liefert 4 MWh Stromerzeugung und jedes Wasserkraftwerk liefert 7 MWh Stromerzeugung. Die Netzkapazität für Wärmeleistung beträgt höchstens 1422 MWh. Jede Biomasseanlage beansprucht 4 MWh Wärmeleistung und jedes Wasserkraftwerk beansprucht 6 MWh Wärmeleistung. Die Betriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Biomasseanlagen",
+      "x2 = MWh aus Wasserkraftwerken"
+    ],
+    "zielfunktion": "Z = 3x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 7x2 ≥ 415 (Mindest-Stromerzeugung)",
+      "4x1 + 6x2 ≤ 1422 (Max-Wärmeleistung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Biomasseanlage kostet 3€ pro MWh",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Wasserkraftwerk kostet 12€ pro MWh",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Biomasseanlage liefert 4 MWh Stromerzeugung",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 7 MWh Stromerzeugung",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 415 MWh Stromerzeugung",
+            "bedeutung": "≥ 415"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 4 MWh Wärmeleistung",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 6 MWh Wärmeleistung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 1422 MWh",
+            "bedeutung": "≤ 1422"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Geothermie und Photovoltaik (Variante 3)",
+    "beschreibung": "Ein Energieversorger plant den Einsatz von Geothermieanlagen und Photovoltaikanlagen. Jede Geothermieanlage kostet 2€ pro MWh und jede Photovoltaikanlage kostet 11€ pro MWh. Für die Grundlastversorgung müssen mindestens 1196 MWh bereitgestellt werden. Jede Geothermieanlage liefert 5 MWh Grundlastversorgung und jede Photovoltaikanlage liefert 7 MWh Grundlastversorgung. Die Spitzenlast darf höchstens 1193 MWh betragen. Jede Geothermieanlage benötigt 3 MWh Spitzenlast und jede Photovoltaikanlage benötigt 12 MWh Spitzenlast. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Geothermieanlagen",
+      "x2 = MWh aus Photovoltaikanlagen"
+    ],
+    "zielfunktion": "Z = 2x1 + 11x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 7x2 ≥ 1196 (Mindest-Grundlastversorgung)",
+      "3x1 + 12x2 ≤ 1193 (Max-Spitzenlast)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Geothermieanlage kostet 2€ pro MWh",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Photovoltaikanlage kostet 11€ pro MWh",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Geothermieanlage liefert 5 MWh Grundlastversorgung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Photovoltaikanlage liefert 7 MWh Grundlastversorgung",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 1196 MWh",
+            "bedeutung": "≥ 1196"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 3 MWh Spitzenlast",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 12 MWh Spitzenlast",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "höchstens 1193 MWh",
+            "bedeutung": "≤ 1193"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix BHKW und Wärmepumpe (Variante 3)",
+    "beschreibung": "Ein Wohnquartier plant die Energieversorgung mit Blockheizkraftwerken und Wärmepumpen. Jedes BHKW kostet 3€ pro kW und jede Wärmepumpe kostet 4€ pro kW. Für die Stromversorgung müssen mindestens 362 kW bereitgestellt werden. Jedes BHKW liefert 1 kW Stromversorgung und jede Wärmepumpe liefert 4 kW Stromversorgung. Die Wärmeversorgung darf höchstens 1199 kW betragen. Jedes BHKW beansprucht 2 kW Wärmeversorgung und jede Wärmepumpe beansprucht 10 kW Wärmeversorgung. Die Netzeinspeisung darf höchstens 979 kW betragen. Jedes BHKW beansprucht 12 kW Netzeinspeisung und jede Wärmepumpe beansprucht 8 kW Netzeinspeisung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = kW aus Blockheizkraftwerken",
+      "x2 = kW aus Wärmepumpen"
+    ],
+    "zielfunktion": "Z = 3x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + 4x2 ≥ 362 (Mindest-Stromversorgung)",
+      "2x1 + 10x2 ≤ 1199 (Max-Wärmeversorgung)",
+      "12x1 + 8x2 ≤ 979 (Max-Netzeinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "BHKW kostet 3€ pro kW",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Wärmepumpe kostet 4€ pro kW",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "BHKW liefert 1 kW Stromversorgung",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Wärmepumpe liefert 4 kW Stromversorgung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 362 kW",
+            "bedeutung": "≥ 362"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 2 kW Wärmeversorgung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 10 kW Wärmeversorgung",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 1199 kW",
+            "bedeutung": "≤ 1199"
+          }
+        ],
+        [
+          {
+            "text": "BHKW beansprucht 12 kW Netzeinspeisung",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Wärmepumpe beansprucht 8 kW Netzeinspeisung",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 979 kW",
+            "bedeutung": "≤ 979"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Solar und Wind (Variante 4)",
+    "beschreibung": "Ein Energieversorger plant den Ausbau mit Solaranlagen und Windkraftanlagen. Jede Solaranlage kostet 3€ pro MWh und jede Windkraftanlage kostet 14€ pro MWh. Das Unternehmen muss mindestens 68 MWh Leistung bereitstellen. Jede Solaranlage liefert 2 MWh Leistung und jede Windkraftanlage liefert 6 MWh Leistung. Die Netzkapazität begrenzt die Netzeinspeisung auf höchstens 929 MWh. Jede Solaranlage beansprucht 6 MWh Netzeinspeisung und jede Windkraftanlage beansprucht 10 MWh Netzeinspeisung. Die Netzkapazität begrenzt die Speicherkapazität auf höchstens 490 MWh. Jede Solaranlage beansprucht 4 MWh Speicherkapazität und jede Windkraftanlage beansprucht 2 MWh Speicherkapazität. Das Unternehmen muss mindestens 95 MWh CO2-Einsparung bereitstellen. Jede Solaranlage liefert 5 MWh CO2-Einsparung und jede Windkraftanlage liefert 4 MWh CO2-Einsparung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windkraftanlagen"
+    ],
+    "zielfunktion": "Z = 3x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 6x2 ≥ 68 (Mindest-Leistung)",
+      "6x1 + 10x2 ≤ 929 (Max-Netzeinspeisung)",
+      "4x1 + 2x2 ≤ 490 (Max-Speicherkapazität)",
+      "5x1 + 4x2 ≥ 95 (Mindest-CO2-Einsparung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Solaranlage kostet 3€ pro MWh",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Windkraftanlage kostet 14€ pro MWh",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solaranlage liefert 2 MWh Leistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windkraftanlage liefert 6 MWh Leistung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 68 MWh Leistung",
+            "bedeutung": "≥ 68"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage beansprucht 6 MWh Netzeinspeisung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Windkraftanlage beansprucht 10 MWh Netzeinspeisung",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 929 MWh",
+            "bedeutung": "≤ 929"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage beansprucht 4 MWh Speicherkapazität",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Windkraftanlage beansprucht 2 MWh Speicherkapazität",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 490 MWh",
+            "bedeutung": "≤ 490"
+          }
+        ],
+        [
+          {
+            "text": "Solaranlage liefert 5 MWh CO2-Einsparung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Windkraftanlage liefert 4 MWh CO2-Einsparung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 95 MWh CO2-Einsparung",
+            "bedeutung": "≥ 95"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Biomasse und Wasserkraft (Variante 4)",
+    "beschreibung": "Ein Stadtwerk plant die Energieerzeugung mit Biomasseanlagen und Wasserkraftwerken. Jede Biomasseanlage kostet 13€ pro MWh und jedes Wasserkraftwerk kostet 2€ pro MWh. Das Stadtwerk muss mindestens 535 MWh Stromerzeugung erzeugen. Jede Biomasseanlage liefert 2 MWh Stromerzeugung und jedes Wasserkraftwerk liefert 5 MWh Stromerzeugung. Die Netzkapazität für Wärmeleistung beträgt höchstens 159 MWh. Jede Biomasseanlage beansprucht 2 MWh Wärmeleistung und jedes Wasserkraftwerk beansprucht 1 MWh Wärmeleistung. Die Netzkapazität für Netzeinspeisung beträgt höchstens 1685 MWh. Jede Biomasseanlage beansprucht 6 MWh Netzeinspeisung und jedes Wasserkraftwerk beansprucht 7 MWh Netzeinspeisung. Das Stadtwerk muss mindestens 219 MWh Grundlast erzeugen. Jede Biomasseanlage liefert 5 MWh Grundlast und jedes Wasserkraftwerk liefert 7 MWh Grundlast. Die Betriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Biomasseanlagen",
+      "x2 = MWh aus Wasserkraftwerken"
+    ],
+    "zielfunktion": "Z = 13x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≥ 535 (Mindest-Stromerzeugung)",
+      "2x1 + x2 ≤ 159 (Max-Wärmeleistung)",
+      "6x1 + 7x2 ≤ 1685 (Max-Netzeinspeisung)",
+      "5x1 + 7x2 ≥ 219 (Mindest-Grundlast)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Biomasseanlage kostet 13€ pro MWh",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Wasserkraftwerk kostet 2€ pro MWh",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Biomasseanlage liefert 2 MWh Stromerzeugung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 5 MWh Stromerzeugung",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 535 MWh Stromerzeugung",
+            "bedeutung": "≥ 535"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 2 MWh Wärmeleistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 1 MWh Wärmeleistung",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 159 MWh",
+            "bedeutung": "≤ 159"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage beansprucht 6 MWh Netzeinspeisung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Wasserkraftwerk beansprucht 7 MWh Netzeinspeisung",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 1685 MWh",
+            "bedeutung": "≤ 1685"
+          }
+        ],
+        [
+          {
+            "text": "Biomasseanlage liefert 5 MWh Grundlast",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Wasserkraftwerk liefert 7 MWh Grundlast",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "mindestens 219 MWh Grundlast",
+            "bedeutung": "≥ 219"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Geothermie und Photovoltaik (Variante 4)",
+    "beschreibung": "Ein Energieversorger plant den Einsatz von Geothermieanlagen und Photovoltaikanlagen. Jede Geothermieanlage kostet 12€ pro MWh und jede Photovoltaikanlage kostet 11€ pro MWh. Für die Grundlastversorgung müssen mindestens 372 MWh bereitgestellt werden. Jede Geothermieanlage liefert 2 MWh Grundlastversorgung und jede Photovoltaikanlage liefert 5 MWh Grundlastversorgung. Die Spitzenlast darf höchstens 1240 MWh betragen. Jede Geothermieanlage benötigt 11 MWh Spitzenlast und jede Photovoltaikanlage benötigt 11 MWh Spitzenlast. Die Wärmeversorgung darf höchstens 994 MWh betragen. Jede Geothermieanlage benötigt 10 MWh Wärmeversorgung und jede Photovoltaikanlage benötigt 11 MWh Wärmeversorgung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Geothermieanlagen",
+      "x2 = MWh aus Photovoltaikanlagen"
+    ],
+    "zielfunktion": "Z = 12x1 + 11x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≥ 372 (Mindest-Grundlastversorgung)",
+      "11x1 + 11x2 ≤ 1240 (Max-Spitzenlast)",
+      "10x1 + 11x2 ≤ 994 (Max-Wärmeversorgung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Mindestanforderungen erfordern ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Geothermieanlage kostet 12€ pro MWh",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Photovoltaikanlage kostet 11€ pro MWh",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Geothermieanlage liefert 2 MWh Grundlastversorgung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Photovoltaikanlage liefert 5 MWh Grundlastversorgung",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 372 MWh",
+            "bedeutung": "≥ 372"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 11 MWh Spitzenlast",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 11 MWh Spitzenlast",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 1240 MWh",
+            "bedeutung": "≤ 1240"
+          }
+        ],
+        [
+          {
+            "text": "Geothermieanlage benötigt 10 MWh Wärmeversorgung",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Photovoltaikanlage benötigt 11 MWh Wärmeversorgung",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 994 MWh",
+            "bedeutung": "≤ 994"
+          }
+        ]
+      ]
+    }
+  }
+]

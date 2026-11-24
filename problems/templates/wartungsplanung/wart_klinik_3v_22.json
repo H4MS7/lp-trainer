@@ -1,0 +1,60 @@
+{
+  "id": "wart_klinik_3v_22",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Softwareupdates", "x2 = Anzahl Sensorwechsel", "x3 = Anzahl Komplettkalibrierungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestgenauigkeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Medizintechnikerstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Geräteausfallzeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Software (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Sensor (Tsd. €)"},
+    "c3":  {"min": 8, "max": 22,  "label": "Kosten Kalibrierung (Tsd. €)"},
+    "a11": {"min": 2, "max": 5,   "label": "Genauigkeit Software (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Genauigkeit Sensor (%)"},
+    "a13": {"min": 5, "max": 12,  "label": "Genauigkeit Kalibrierung (%)"},
+    "b1":  {"min": 45, "max": 140, "label": "Mindestgenauigkeit (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Stunden Software (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Stunden Sensor (h)"},
+    "a23": {"min": 4, "max": 10,  "label": "Stunden Kalibrierung (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Max. Medizintechnikerstunden (h)"},
+    "a31": {"min": 1, "max": 2,   "label": "Ausfallzeit Software (h)"},
+    "a32": {"min": 1, "max": 3,   "label": "Ausfallzeit Sensor (h)"},
+    "a33": {"min": 2, "max": 6,   "label": "Ausfallzeit Kalibrierung (h)"},
+    "b3":  {"min": 8, "max": 30,   "label": "Max. Geräteausfallzeit (h)"}
+  },
+  "titel": "Klinik – Diagnosegeräte-Wartung",
+  "beschreibung": "Eine Klinik plant die Wartung ihrer Diagnosegeräte. Ein Softwareupdate kostet {c1} Tsd. €, ein Sensorwechsel kostet {c2} Tsd. €, eine Komplettkalibrierung kostet {c3} Tsd. €. Ein Softwareupdate verbessert die Genauigkeit um {a11} %, Sensorwechsel um {a12} %, Kalibrierung um {a13} %. Die Mindestgenauigkeit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Softwareupdate, {a22} h pro Sensorwechsel und {a23} h pro Kalibrierung. Maximal {b2} Medizintechnikerstunden stehen zur Verfügung. Die Ausfallzeit beträgt {a31} h pro Softwareupdate, {a32} h pro Sensorwechsel und {a33} h pro Kalibrierung. Die maximale Ausfallzeit beträgt {b3} Stunden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Genauigkeit, Personal und Ausfallzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Softwareupdate kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sensorwechsel kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Komplettkalibrierung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Softwareupdate", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Sensorwechsel", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Kalibrierung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Medizintechnikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro Softwareupdate", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro Sensorwechsel", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro Kalibrierung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

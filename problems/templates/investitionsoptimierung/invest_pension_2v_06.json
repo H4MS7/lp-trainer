@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_pension_2v_06",
+  "titel": "Pensionsfonds – Staatsanleihen und Unternehmensanleihen",
+  "variablen": [
+    "x1 = Betrag in Staatsanleihen (Tsd. EUR)",
+    "x2 = Betrag in Unternehmensanleihen (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Fondsvolumen",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Ausfallrisiko",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 2,
+      "max": 5,
+      "label": "Rendite Staatsanleihen (%)"
+    },
+    "c2": {
+      "min": 4,
+      "max": 10,
+      "label": "Rendite Unternehmensanleihen (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 2,
+      "label": "Kapitaleinsatz Staat"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitaleinsatz Unternehmen"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Verfuegbares Fondsvolumen (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 1,
+      "max": 3,
+      "label": "Ausfallrisiko Staat"
+    },
+    "a22": {
+      "min": 3,
+      "max": 9,
+      "label": "Ausfallrisiko Unternehmen"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Ausfallrisiko"
+    }
+  },
+  "beschreibung": "Ein Pensionsfonds investiert in Staats- und Unternehmensanleihen. Staatsanleihen bringen {c1} % Rendite, Unternehmensanleihen {c2} %. Pro Einheit Staatsanleihen werden {a11} Kapitaleinheiten eingesetzt, pro Einheit Unternehmensanleihen {a12} Einheiten. Das Fondsvolumen betraegt {b1} Tausend Euro. Das Ausfallrisiko liegt bei {a21} Punkten pro Staatsanleihe und {a22} Punkten pro Unternehmensanleihe bei maximal {b2} Risikopunkten.",
+  "hinweis": "Maximiere die Rendite unter Beachtung von Fondsvolumen und Ausfallrisiko.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Staatsanleihen bringen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Unternehmensanleihen {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten eingesetzt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Unternehmensanleihen {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkten pro Staatsanleihe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Punkten pro Unternehmensanleihe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Risikopunkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

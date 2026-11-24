@@ -1,0 +1,86 @@
+{
+  "id": "medien_digital_5v_02",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Google-Ads", "x2 = Anzahl Facebook-Ads", "x3 = Anzahl Instagram-Ads", "x4 = Anzahl YouTube-Ads", "x5 = Anzahl TikTok-Ads"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Content-Erstellung", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Kampagnenbetreuung", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Analyse-Kapazität", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Tool-Lizenzen", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Conversions Google (Tsd.)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Conversions Facebook (Tsd.)"},
+    "c3":  {"min": 2, "max": 12,    "label": "Conversions Instagram (Tsd.)"},
+    "c4":  {"min": 2, "max": 10,    "label": "Conversions YouTube (Tsd.)"},
+    "c5":  {"min": 3, "max": 15,    "label": "Conversions TikTok (Tsd.)"},
+    "a11": {"min": 2, "max": 8,     "label": "Kosten Google (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten Facebook (Tsd. €)"},
+    "a13": {"min": 1, "max": 5,     "label": "Kosten Instagram (Tsd. €)"},
+    "a14": {"min": 2, "max": 8,     "label": "Kosten YouTube (Tsd. €)"},
+    "a15": {"min": 1, "max": 4,     "label": "Kosten TikTok (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 1, "max": 3,     "label": "Content Google (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Content Facebook (Stunden)"},
+    "a23": {"min": 3, "max": 8,     "label": "Content Instagram (Stunden)"},
+    "a24": {"min": 4, "max": 10,    "label": "Content YouTube (Stunden)"},
+    "a25": {"min": 3, "max": 8,     "label": "Content TikTok (Stunden)"},
+    "b2":  {"min": 30, "max": 80,   "label": "Content-Stunden"},
+    "a31": {"min": 2, "max": 4,     "label": "Betreuung Google (Stunden)"},
+    "a32": {"min": 1, "max": 3,     "label": "Betreuung Facebook (Stunden)"},
+    "a33": {"min": 1, "max": 3,     "label": "Betreuung Instagram (Stunden)"},
+    "a34": {"min": 1, "max": 3,     "label": "Betreuung YouTube (Stunden)"},
+    "a35": {"min": 1, "max": 3,     "label": "Betreuung TikTok (Stunden)"},
+    "b3":  {"min": 15, "max": 40,   "label": "Betreuungsstunden"},
+    "a41": {"min": 1, "max": 2,     "label": "Analyse Google (Stunden)"},
+    "a42": {"min": 1, "max": 2,     "label": "Analyse Facebook (Stunden)"},
+    "a43": {"min": 1, "max": 2,     "label": "Analyse Instagram (Stunden)"},
+    "a44": {"min": 1, "max": 2,     "label": "Analyse YouTube (Stunden)"},
+    "a45": {"min": 1, "max": 2,     "label": "Analyse TikTok (Stunden)"},
+    "b4":  {"min": 5, "max": 20,    "label": "Analysestunden"},
+    "a51": {"min": 1, "max": 2,     "label": "Lizenzen Google"},
+    "a52": {"min": 1, "max": 2,     "label": "Lizenzen Facebook"},
+    "a53": {"min": 1, "max": 2,     "label": "Lizenzen Instagram"},
+    "a54": {"min": 1, "max": 2,     "label": "Lizenzen YouTube"},
+    "a55": {"min": 1, "max": 2,     "label": "Lizenzen TikTok"},
+    "b5":  {"min": 5, "max": 15,    "label": "Verfügbare Lizenzen"}
+  },
+  "titel": "Digital-Full-Funnel – Fünf Plattformen",
+  "beschreibung": "Ein Performance-Marketing-Team plant Kampagnen auf fünf Plattformen. Google-Ads erzielen {c1} Tsd. Conversions, Facebook-Ads erzielen {c2} Tsd. Conversions, Instagram-Ads erzielen {c3} Tsd. Conversions, YouTube-Ads erzielen {c4} Tsd. Conversions und TikTok-Ads erzielen {c5} Tsd. Conversions. Die Kosten betragen {a11} Tsd. € für Google, {a12} Tsd. € für Facebook, {a13} Tsd. € für Instagram, {a14} Tsd. € für YouTube und {a15} Tsd. € für TikTok. Das Budget beträgt {b1} Tsd. €. Die Content-Erstellung beträgt {a21} Stunden für Google, {a22} Stunden für Facebook, {a23} Stunden für Instagram, {a24} Stunden für YouTube und {a25} Stunden für TikTok. Es stehen {b2} Content-Stunden zur Verfügung. Die Kampagnenbetreuung beträgt {a31} Stunden für Google, {a32} Stunden für Facebook, {a33} Stunden für Instagram, {a34} Stunden für YouTube und {a35} Stunden für TikTok. Es stehen {b3} Betreuungsstunden zur Verfügung. Die Analyse beträgt {a41} Stunden für Google, {a42} Stunden für Facebook, {a43} Stunden für Instagram, {a44} Stunden für YouTube und {a45} Stunden für TikTok. Es stehen {b4} Analysestunden zur Verfügung. Die Lizenzen betragen {a51} für Google, {a52} für Facebook, {a53} für Instagram, {a54} für YouTube und {a55} für TikTok. Es stehen {b5} Lizenzen zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtconversions unter Beachtung aller fünf Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Google-Ads erzielen {c1} Tsd. Conversions", "bedeutung": "{c1} × x₁"},
+      {"text": "Facebook-Ads erzielen {c2} Tsd. Conversions", "bedeutung": "{c2} × x₂"},
+      {"text": "Instagram-Ads erzielen {c3} Tsd. Conversions", "bedeutung": "{c3} × x₃"},
+      {"text": "YouTube-Ads erzielen {c4} Tsd. Conversions", "bedeutung": "{c4} × x₄"},
+      {"text": "TikTok-Ads erzielen {c5} Tsd. Conversions", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Google, {a12} Tsd. € für Facebook, {a13} Tsd. € für Instagram, {a14} Tsd. € für YouTube und {a15} Tsd. € für TikTok", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Google, {a22} Stunden für Facebook, {a23} Stunden für Instagram, {a24} Stunden für YouTube und {a25} Stunden für TikTok", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Content-Stunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für Google, {a32} Stunden für Facebook, {a33} Stunden für Instagram, {a34} Stunden für YouTube und {a35} Stunden für TikTok", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Betreuungsstunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden für Google, {a42} Stunden für Facebook, {a43} Stunden für Instagram, {a44} Stunden für YouTube und {a45} Stunden für TikTok", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Analysestunden zur Verfügung", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} für Google, {a52} für Facebook, {a53} für Instagram, {a54} für YouTube und {a55} für TikTok", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅"},
+        {"text": "{b5} Lizenzen zur Verfügung", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

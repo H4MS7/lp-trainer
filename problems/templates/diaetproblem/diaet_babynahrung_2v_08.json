@@ -1,0 +1,43 @@
+{
+  "id": "diaet_babynahrung_2v_08",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Gläschen Gemüsebrei", "x2 = Gläschen Obstbrei"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Vitamin A", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Gemüsebrei (€/Gläschen)"},
+    "c2":  {"min": 1, "max": 5,   "label": "Kosten Obstbrei (€/Gläschen)"},
+    "a11": {"min": 60, "max": 150, "label": "Kalorien Gemüsebrei (kcal/Gläschen)"},
+    "a12": {"min": 80, "max": 180, "label": "Kalorien Obstbrei (kcal/Gläschen)"},
+    "b1":  {"min": 500, "max": 1000, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 2, "max": 8,   "label": "Vitamin A Gemüsebrei (µg/Gläschen)"},
+    "a22": {"min": 1, "max": 5,   "label": "Vitamin A Obstbrei (µg/Gläschen)"},
+    "b2":  {"min": 15, "max": 40,  "label": "Mindest-Vitamin A (µg)"}
+  },
+  "titel": "Babynahrung – Gemüse- und Obstbrei",
+  "beschreibung": "Eine Kindertagesstätte plant die Babynahrung möglichst kostengünstig. Ein Gläschen Gemüsebrei kostet {c1} €, ein Gläschen Obstbrei kostet {c2} €. Gemüsebrei liefert {a11} kcal pro Gläschen, Obstbrei liefert {a12} kcal pro Gläschen. Mindestens {b1} kcal pro Tag sind erforderlich. Gemüsebrei enthält {a21} µg Vitamin A pro Gläschen, Obstbrei enthält {a22} µg Vitamin A pro Gläschen. Der Mindestbedarf an Vitamin A beträgt {b2} µg.",
+  "hinweis": "Minimiere die täglichen Kosten der Babynahrung bei Einhaltung der Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Gemüsebrei kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Obstbrei kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal pro Gläschen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal pro Gläschen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kcal pro Tag sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} µg Vitamin A pro Gläschen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} µg Vitamin A pro Gläschen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} µg", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

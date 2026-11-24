@@ -1,0 +1,68 @@
+[
+  {
+    "titel": "Supermarkt-Lagerhaltung",
+    "beschreibung": "Ein Supermarkt optimiert die Bestellmengen für zwei Warengruppen: Frischware und Trockenware. Die Gesamtkosten pro Bestelleinheit betragen 3€ für Frischware und 2€ für Trockenware, bestehend aus Bestell- und Lagerkosten. Um die Versorgungssicherheit zu gewährleisten, muss ein Mindestbestand eingehalten werden: 4 Regalplätze pro Einheit Frischware und 6 Regalplätze pro Einheit Trockenware ergeben zusammen mindestens 120 Regalplätze, die belegt sein müssen. Gleichzeitig ist die Lagerkapazität begrenzt: Insgesamt können höchstens 50 Bestelleinheiten gelagert werden. Der Filialleiter möchte die Gesamtkosten für Bestellung und Lagerung minimieren und dabei sowohl den Mindestbestand sicherstellen als auch die Lagerkapazität nicht überschreiten.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Bestelleinheiten Frischware", "x2 = Bestelleinheiten Trockenware"],
+    "zielfunktion": "Z = 3x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 6x2 ≥ 120 (Mindestbestand)",
+      "x1 + x2 ≤ 50 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Der Mindestbestand ist eine Mindestanforderung (≥), die Lagerkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "3€ für Frischware", "bedeutung": "3 × x₁"},
+        {"text": "2€ für Trockenware", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Regalplätze pro Einheit Frischware", "bedeutung": "4x₁"},
+          {"text": "6 Regalplätze pro Einheit Trockenware", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 120 Regalplätze", "bedeutung": "≥ 120"}
+        ],
+        [
+          {"text": "höchstens 50 Bestelleinheiten gelagert", "bedeutung": "x₁ + x₂ ≤ 50"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Apotheken-Lagerverwaltung",
+    "beschreibung": "Eine Apotheke verwaltet den Bestand an zwei Medikamentengruppen: verschreibungspflichtige Medikamente und freiverkäufliche Produkte. Die Lagerkosten betragen 5€ pro Packung für verschreibungspflichtige Medikamente und 3€ pro Packung für freiverkäufliche Produkte. Aufgrund gesetzlicher Vorgaben müssen stets genügend Medikamente vorrätig sein: 2 Einheiten pro Packung verschreibungspflichtiger Medikamente und 3 Einheiten pro Packung freiverkäuflicher Produkte ergeben zusammen einen Mindestvorrat von 90 Einheiten. Das Kühlregal fasst insgesamt höchstens 60 Packungen. Außerdem darf das monatliche Lagerbudget von 240€ nicht überschritten werden, wobei verschreibungspflichtige Medikamente mit 6€ und freiverkäufliche Produkte mit 4€ pro Packung zu Buche schlagen. Die Apothekenleiterin möchte die Gesamtlagerkosten minimieren.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Packungen verschreibungspflichtige Medikamente", "x2 = Packungen freiverkäufliche Produkte"],
+    "zielfunktion": "Z = 5x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≥ 90 (Mindestvorrat)",
+      "x1 + x2 ≤ 60 (Kühlregalkapazität)",
+      "6x1 + 4x2 ≤ 240 (Lagerbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen mit unterschiedlichen Richtungen: Der Mindestvorrat erfordert ≥, Kapazität und Budget erfordern ≤. Suchen Sie die Koeffizienten in der Beschreibung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "5€ pro Packung für verschreibungspflichtige Medikamente", "bedeutung": "5 × x₁"},
+        {"text": "3€ pro Packung für freiverkäufliche Produkte", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Einheiten pro Packung verschreibungspflichtiger Medikamente", "bedeutung": "2x₁"},
+          {"text": "3 Einheiten pro Packung freiverkäuflicher Produkte", "bedeutung": "+ 3x₂"},
+          {"text": "Mindestvorrat von 90 Einheiten", "bedeutung": "≥ 90"}
+        ],
+        [
+          {"text": "höchstens 60 Packungen", "bedeutung": "x₁ + x₂ ≤ 60"}
+        ],
+        [
+          {"text": "verschreibungspflichtige Medikamente mit 6€", "bedeutung": "6x₁"},
+          {"text": "freiverkäufliche Produkte mit 4€", "bedeutung": "+ 4x₂"},
+          {"text": "Lagerbudget von 240€", "bedeutung": "≤ 240"}
+        ]
+      ]
+    }
+  }
+]

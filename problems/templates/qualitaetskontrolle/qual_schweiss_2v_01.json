@@ -1,0 +1,43 @@
+{
+  "id": "qual_schweiss_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Röntgenprüfungen", "x2 = Anzahl Biegeproben"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Nahtbewertung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüfkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Röntgenprüfung (€/Prüfung)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Biegeprobe (€/Probe)"},
+    "a11": {"min": 4, "max": 10,  "label": "Nahtbewertung Röntgen (Punkte)"},
+    "a12": {"min": 2, "max": 6,   "label": "Nahtbewertung Biegeprobe (Punkte)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Nahtbewertung (Punkte)"},
+    "a21": {"min": 2, "max": 5,   "label": "Prüfzeit Röntgen (min)"},
+    "a22": {"min": 1, "max": 4,   "label": "Prüfzeit Biegeprobe (min)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Prüfkapazität (min)"}
+  },
+  "titel": "Schweißtechnik – Nahtprüfung",
+  "beschreibung": "Ein Schweißbetrieb prüft Schweißnähte mit Röntgenprüfungen und Biegeproben. Eine Röntgenprüfung kostet {c1} €, eine Biegeprobe kostet {c2} €. Die Röntgenprüfung liefert {a11} Nahtbewertungspunkte, die Biegeprobe liefert {a12} Nahtbewertungspunkte. Die Mindest-Nahtbewertung beträgt {b1} Punkte. Eine Röntgenprüfung dauert {a21} Minuten, eine Biegeprobe dauert {a22} Minuten. Die Prüfkapazität beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Nahtbewertung und begrenzter Prüfkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Röntgenprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Biegeprobe kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Nahtbewertungspunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Nahtbewertungspunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,1266 @@
+[
+  {
+    "titel": "Foodtruck-Festival: Burger vs. Tacos",
+    "beschreibung": "Auf dem legendären Streetfood-Festival am Rheinufer betreibst du den beliebtesten Foodtruck der Stadt. Du verkaufst zwei Klassiker: saftige Smash-Burger mit einem Gewinn von 5€ pro Stück und knusprige Fish-Tacos mit einem Gewinn von 3€ pro Stück. Für einen Burger brauchst du 300g Fleisch, für einen Taco 100g Fisch – insgesamt hast du 24 kg Fleisch und Fisch zusammen, also 24000g verfügbar. Außerdem dauert die Zubereitung pro Burger 4 Minuten und pro Taco 3 Minuten, und dein Team schafft maximal 360 Minuten Zubereitungszeit am Tag. Wie viele Burger und Tacos solltest du verkaufen, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Burger",
+      "x2 = Anzahl Tacos"
+    ],
+    "zielfunktion": "Z = 5x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "300x1 + 100x2 ≤ 24000 (Zutaten)",
+      "4x1 + 3x2 ≤ 360 (Zubereitungszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die Einheiten: Fleisch/Fisch ist in Gramm angegeben (24000g = 24kg).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 5€ pro Stück",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Gewinn von 3€ pro Stück",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "300g Fleisch",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "100g Fisch",
+            "bedeutung": "+ 100x₂"
+          },
+          {
+            "text": "24000g verfügbar",
+            "bedeutung": "≤ 24000"
+          }
+        ],
+        [
+          {
+            "text": "pro Burger 4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "pro Taco 3 Minuten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "360 Minuten Zubereitungszeit",
+            "bedeutung": "≤ 360"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Escape Room: Grusel oder Rätsel?",
+    "beschreibung": "Du bist stolzer Betreiber zweier Escape Rooms in einer alten Fabrikhalle. Dein Grusel-Room »Keller des Grauens« bringt 180€ pro Durchgang ein, der Rätsel-Room »Da Vincis Geheimnis« bringt 120€ pro Durchgang. Für den Grusel-Room brauchst du 3 Schauspieler pro Durchgang, für den Rätsel-Room nur 1 Schauspieler. Du hast insgesamt 15 Schauspieler zur Verfügung. Jeder Durchgang belegt einen Raum für 2 Stunden beim Grusel-Room und 1 Stunde beim Rätsel-Room. Pro Tag stehen dir 12 Raumstunden zur Verfügung. Außerdem kannst du maximal 8 Durchgänge pro Tag insgesamt durchführen. Wie maximierst du deine Einnahmen?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Durchgänge Grusel-Room",
+      "x2 = Anzahl Durchgänge Rätsel-Room"
+    ],
+    "zielfunktion": "Z = 180x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 15 (Schauspieler)",
+      "2x1 + x2 ≤ 12 (Raumstunden)",
+      "x1 + x2 ≤ 8 (Durchgänge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Schauspieler, Raumstunden und Gesamtdurchgänge. Zeichne alle drei Geraden ein.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "180€ pro Durchgang",
+          "bedeutung": "180 × x₁"
+        },
+        {
+          "text": "120€ pro Durchgang",
+          "bedeutung": "120 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Schauspieler pro Durchgang",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1 Schauspieler",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "15 Schauspieler zur Verfügung",
+            "bedeutung": "≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden beim Grusel-Room",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "1 Stunde beim Rätsel-Room",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "12 Raumstunden",
+            "bedeutung": "≤ 12"
+          }
+        ],
+        [
+          {
+            "text": "8 Durchgänge pro Tag insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Tattoo-Studio: Kleine Motive, große Kunst",
+    "beschreibung": "In deinem Tattoo-Studio »Nadel & Faden« bietest du zwei Kategorien an: kleine Tattoos (z.B. Symbole, Schriftzüge) für 80€ pro Stück und große Tattoos (z.B. Sleeves, Rückenteile) für 350€ pro Stück. Ein kleines Tattoo dauert 1 Stunde, ein großes Tattoo 4 Stunden – du hast pro Woche 40 Stunden Arbeitszeit. An Tinte verbrauchst du 2 ml für ein kleines Tattoo und 8 ml für ein großes, und dein Vorrat beträgt 80 ml pro Woche. Außerdem kannst du wegen der Terminplanung maximal 15 kleine Tattoos pro Woche annehmen. Wie planst du die Woche, um den Umsatz zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl kleine Tattoos",
+      "x2 = Anzahl große Tattoos"
+    ],
+    "zielfunktion": "Z = 80x1 + 350x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 4x2 ≤ 40 (Arbeitszeit)",
+      "2x1 + 8x2 ≤ 80 (Tinte)",
+      "x1 ≤ 15 (Termine kleine Tattoos)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Tinten-Nebenbedingung ist ein Vielfaches der Arbeitszeit-NB – prüfe, ob sie wirklich eine zusätzliche Einschränkung darstellt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "80€ pro Stück",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "350€ pro Stück",
+          "bedeutung": "350 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "40 Stunden Arbeitszeit",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "2 ml für ein kleines Tattoo",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "8 ml für ein großes",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "80 ml pro Woche",
+            "bedeutung": "≤ 80"
+          }
+        ],
+        [
+          {
+            "text": "15 kleine Tattoos pro Woche",
+            "bedeutung": "x₁ ≤ 15"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Craft-Bier-Startup: IPA trifft Stout",
+    "beschreibung": "Dein Craft-Bier-Startup »Hopfenträume« braut zwei Biersorten: ein fruchtiges IPA und ein samtiges Stout. Pro Liter IPA verdienst du 6€, pro Liter Stout 8€. Für einen Liter IPA benötigst du 5g Hopfen und für einen Liter Stout 2g Hopfen – insgesamt stehen 400g Hopfen zur Verfügung. An Malz brauchst du 3g pro Liter IPA und 6g pro Liter Stout, wobei du 480g Malz auf Lager hast. Die Gärung dauert 2 Stunden pro Liter IPA und 3 Stunden pro Liter Stout, und du hast 240 Stunden Gärkapazität. Außerdem verlangt dein Vertriebspartner, dass du mindestens 20 Liter IPA produzierst. Wie viel braust du von jeder Sorte, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter IPA",
+      "x2 = Liter Stout"
+    ],
+    "zielfunktion": "Z = 6x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≤ 400 (Hopfen)",
+      "3x1 + 6x2 ≤ 480 (Malz)",
+      "2x1 + 3x2 ≤ 240 (Gärkapazität)",
+      "x1 ≥ 20 (Mindestmenge IPA)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achtung: Die Mindestmenge IPA ist eine ≥-Bedingung – das zulässige Gebiet beginnt erst bei x₁ = 20.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "6€",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "8€",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5g Hopfen",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "2g Hopfen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "400g Hopfen",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "3g pro Liter IPA",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "6g pro Liter Stout",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "480g Malz",
+            "bedeutung": "≤ 480"
+          }
+        ],
+        [
+          {
+            "text": "2 Stunden pro Liter IPA",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Stunden pro Liter Stout",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "240 Stunden Gärkapazität",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 20 Liter IPA",
+            "bedeutung": "x₁ ≥ 20"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Podcast-Produktion: Interview oder Solo?",
+    "beschreibung": "Du produzierst den True-Crime-Podcast »Mordakte Mittwoch« und planst die nächsten Wochen. Pro Interview-Episode erreichst du 8000 Hörer, pro Solo-Episode 5000 Hörer. Eine Interview-Folge benötigt 6 Stunden Produktionszeit, eine Solo-Folge 3 Stunden – du hast 36 Stunden pro Monat verfügbar. In der Nachbearbeitung kostet ein Interview 4 Stunden Schnitt und eine Solo-Folge 2 Stunden Schnitt, wobei dein Editor insgesamt 28 Stunden pro Monat arbeiten kann. Dein Sponsor verlangt außerdem mindestens 3 Solo-Episoden pro Monat. Wie viele Episoden jedes Typs produzierst du, um die Reichweite zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Interview-Episoden",
+      "x2 = Anzahl Solo-Episoden"
+    ],
+    "zielfunktion": "Z = 8000x1 + 5000x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 ≤ 36 (Produktionszeit)",
+      "4x1 + 2x2 ≤ 28 (Schnittzeit)",
+      "x2 ≥ 3 (Mindest-Solo-Episoden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Sponsor verlangt mindestens 3 Solo-Episoden – das ist eine ≥-Bedingung für x₂.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8000 Hörer",
+          "bedeutung": "8000 × x₁"
+        },
+        {
+          "text": "5000 Hörer",
+          "bedeutung": "5000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden Produktionszeit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "36 Stunden pro Monat verfügbar",
+            "bedeutung": "≤ 36"
+          }
+        ],
+        [
+          {
+            "text": "4 Stunden Schnitt",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Stunden Schnitt",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "28 Stunden pro Monat",
+            "bedeutung": "≤ 28"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Solo-Episoden",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "YouTuber: Tutorials vs. Vlogs",
+    "beschreibung": "Als erfolgreicher Tech-YouTuber »GadgetGuru« verdienst du durch Werbung 120€ pro Tutorial-Video und 75€ pro Vlog. Das Filmen eines Tutorials dauert 5 Stunden, ein Vlog braucht 2 Stunden – dir stehen 40 Stunden Filmzeit pro Monat zur Verfügung. Die Nachbearbeitung verschlingt 8 Stunden pro Tutorial und 3 Stunden pro Vlog, und dein Cutter hat 48 Stunden pro Monat. Da deine Community nach Abwechslung verlangt, willst du insgesamt höchstens 10 Videos im Monat veröffentlichen. Wie viele Tutorials und Vlogs drehst du, um die Werbeeinnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Tutorials",
+      "x2 = Anzahl Vlogs"
+    ],
+    "zielfunktion": "Z = 120x1 + 75x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≤ 40 (Filmzeit)",
+      "8x1 + 3x2 ≤ 48 (Nachbearbeitung)",
+      "x1 + x2 ≤ 10 (Videoanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Begrenzungen: Filmzeit, Schnittzeit und Gesamtanzahl Videos. Alle drei Geraden ergeben das zulässige Gebiet.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "120€ pro Tutorial-Video",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "75€ pro Vlog",
+          "bedeutung": "75 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "40 Stunden Filmzeit",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "8 Stunden pro Tutorial",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "3 Stunden pro Vlog",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "48 Stunden pro Monat",
+            "bedeutung": "≤ 48"
+          }
+        ],
+        [
+          {
+            "text": "10 Videos im Monat",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hundeschule: Einzel oder Gruppe?",
+    "beschreibung": "In deiner Hundeschule »Pfote drauf!« musst du diese Woche die Kosten im Griff behalten. Ein Einzeltraining kostet dich 40€ an Aufwand, ein Gruppenkurs kostet dich 60€ an Aufwand. Dein Vertrag mit der Gemeinde schreibt vor, dass du pro Woche mindestens 10 Trainingseinheiten insgesamt anbietest. Außerdem müssen mindestens 3 Gruppenkurse pro Woche stattfinden, da die Warteliste lang ist. Wie viele Trainings jeder Art bietest du an, um die Kosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Einzeltrainings",
+      "x2 = Anzahl Gruppenkurse"
+    ],
+    "zielfunktion": "Z = 40x1 + 60x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 10 (Mindesttrainings)",
+      "x2 ≥ 3 (Mindest-Gruppenkurse)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich beginnt bei x₂ = 3 und x₁ + x₂ = 10.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ an Aufwand",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "60€ an Aufwand",
+          "bedeutung": "60 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 10 Trainingseinheiten insgesamt",
+            "bedeutung": "x₁ + x₂ ≥ 10"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Gruppenkurse",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Imker: Blüten- oder Waldhonig?",
+    "beschreibung": "Als leidenschaftlicher Imker am Bodensee produzierst du zwei Honigsorten: feinen Blütenhonig mit einem Gewinn von 12€ pro Glas und kräftigen Waldhonig mit einem Gewinn von 15€ pro Glas. Für die Produktion eines Glases Blütenhonig brauchst du die Kapazität von 2 Bienenstöcken, für ein Glas Waldhonig 3 Bienenstöcke – du bewirtschaftest insgesamt 60 Bienenstöcke. Die Abfüllung dauert 10 Minuten pro Glas Blütenhonig und 15 Minuten pro Glas Waldhonig, wobei dir insgesamt 300 Minuten Abfüllzeit pro Tag zur Verfügung stehen. Wie viele Gläser jeder Sorte füllst du ab, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gläser Blütenhonig",
+      "x2 = Anzahl Gläser Waldhonig"
+    ],
+    "zielfunktion": "Z = 12x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 60 (Bienenstöcke)",
+      "10x1 + 15x2 ≤ 300 (Abfüllzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Prüfe, ob die zweite Nebenbedingung ein Vielfaches der ersten ist – das vereinfacht die Lösung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 12€ pro Glas",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Gewinn von 15€ pro Glas",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Bienenstöcken",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Bienenstöcke",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "60 Bienenstöcke",
+            "bedeutung": "≤ 60"
+          }
+        ],
+        [
+          {
+            "text": "10 Minuten pro Glas Blütenhonig",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "15 Minuten pro Glas Waldhonig",
+            "bedeutung": "+ 15x₂"
+          },
+          {
+            "text": "300 Minuten Abfüllzeit",
+            "bedeutung": "≤ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Surfschule: Anfänger und Profis",
+    "beschreibung": "Du betreibst die Surfschule »Wellenreiter« an der Nordsee. Ein Anfängerkurs bringt 60€ ein, ein Fortgeschrittenenkurs bringt 100€ ein. Pro Anfängerkurs brauchst du 4 Surfbretter, pro Fortgeschrittenenkurs 2 Surfbretter – du hast insgesamt 24 Surfbretter. Einen Anfängerkurs leitet 1 Instructor, einen Fortgeschrittenenkurs leiten 2 Instructors – dir stehen 10 Instructors zur Verfügung. Aus Sicherheitsgründen dürfen maximal 7 Kurse gleichzeitig stattfinden. Wie viele Kurse jeder Art bietest du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Anfängerkurse",
+      "x2 = Anzahl Fortgeschrittenenkurse"
+    ],
+    "zielfunktion": "Z = 60x1 + 100x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 24 (Surfbretter)",
+      "x1 + 2x2 ≤ 10 (Instructors)",
+      "x1 + x2 ≤ 7 (Kurse maximal)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Beschränkungen: Surfbretter, Instructors und Gesamtzahl der Kurse. Prüfe alle Eckpunkte.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "60€",
+          "bedeutung": "60 × x₁"
+        },
+        {
+          "text": "100€",
+          "bedeutung": "100 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Surfbretter",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Surfbretter",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "24 Surfbretter",
+            "bedeutung": "≤ 24"
+          }
+        ],
+        [
+          {
+            "text": "1 Instructor",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Instructors",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "10 Instructors",
+            "bedeutung": "≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "7 Kurse gleichzeitig",
+            "bedeutung": "x₁ + x₂ ≤ 7"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zaubershop: Kartentricks und Bühnenzauber",
+    "beschreibung": "In deinem Online-Zaubershop »Hokus Fokus« verkaufst du zwei Sets: ein Kartentricks-Set mit einem Gewinn von 15€ und ein Bühnenzauber-Set mit einem Gewinn von 40€. Für ein Kartentricks-Set benötigst du 2 Stunden Montage und für ein Bühnenzauber-Set 5 Stunden Montage – deine Werkstatt hat 50 Stunden Montagezeit pro Woche. An Materialkosten fallen 10€ pro Kartentricks-Set und 30€ pro Bühnenzauber-Set an, wobei das wöchentliche Materialbudget bei 300€ liegt. Außerdem kannst du maximal 12 Kartentricks-Sets pro Woche verpacken. Wie viele Sets jeder Art produzierst du für maximalen Gewinn?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Kartentricks-Sets",
+      "x2 = Anzahl Bühnenzauber-Sets"
+    ],
+    "zielfunktion": "Z = 15x1 + 40x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 50 (Montagezeit)",
+      "10x1 + 30x2 ≤ 300 (Materialbudget)",
+      "x1 ≤ 12 (Verpackung Kartentricks)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Prüfe zunächst, ob die Materialbudget-NB eine echte Einschränkung ist oder ob sie durch die Montagezeit-NB dominiert wird.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 15€",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Gewinn von 40€",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Montage",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "5 Stunden Montage",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "50 Stunden Montagezeit",
+            "bedeutung": "≤ 50"
+          }
+        ],
+        [
+          {
+            "text": "10€ pro Kartentricks-Set",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "30€ pro Bühnenzauber-Set",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "300€",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "12 Kartentricks-Sets pro Woche",
+            "bedeutung": "x₁ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bouldering-Halle: Tagespass vs. Monatskarte",
+    "beschreibung": "Deine Bouldering-Halle »Kraxelkönig« bietet Tagespässe und Monatskarten an. Du möchtest die Personalkosten minimieren. Ein Tagespass-Besucher verursacht Personalkosten von 3€, ein Monatskarten-Inhaber verursacht Personalkosten von 1€ pro Besuch. Du musst mindestens 50 Besucher pro Tag haben, um den Betrieb wirtschaftlich zu halten. Außerdem verlangt dein Franchisegeber mindestens 20 Tagespass-Besucher und mindestens 10 Monatskarten-Inhaber pro Tag. Wie sieht die kostenminimale Besuchermischung aus?",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagespass-Besucher",
+      "x2 = Anzahl Monatskarten-Inhaber"
+    ],
+    "zielfunktion": "Z = 3x1 + x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 50 (Mindestbesucher)",
+      "x1 ≥ 20 (Mindest-Tagespass)",
+      "x2 ≥ 10 (Mindest-Monatskarten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich ist nach rechts oben offen. Suche den Eckpunkt mit minimalen Kosten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Personalkosten von 3€",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Personalkosten von 1€",
+          "bedeutung": "1 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 50 Besucher",
+            "bedeutung": "x₁ + x₂ ≥ 50"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 20 Tagespass-Besucher",
+            "bedeutung": "x₁ ≥ 20"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 10 Monatskarten-Inhaber",
+            "bedeutung": "x₂ ≥ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Streetfood: Currywurst gegen Döner",
+    "beschreibung": "Am Wochenmarkt betreibst du den legendären Stand »Wurst & Würze«. Du planst den Einkauf für morgen und willst die Kosten minimieren. Eine Portion Currywurst kostet dich 2€ in der Herstellung, eine Portion Döner kostet dich 3€. Du musst mindestens 80 Portionen insgesamt vorbereiten, um die Standgebühr zu rechtfertigen. Außerdem hat dein Stammkunde eine Vorbestellung aufgegeben: Du brauchst mindestens 30 Portionen Currywurst. Wie viele Portionen bereitest du von jedem Gericht vor, um die Herstellungskosten zu minimieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Portionen Currywurst",
+      "x2 = Anzahl Portionen Döner"
+    ],
+    "zielfunktion": "Z = 2x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 80 (Mindestportionen)",
+      "x1 ≥ 30 (Mindest-Currywurst)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥-Bedingungen. Der zulässige Bereich ist nach rechts oben offen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ in der Herstellung",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "3€",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "mindestens 80 Portionen insgesamt",
+            "bedeutung": "x₁ + x₂ ≥ 80"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 30 Portionen Currywurst",
+            "bedeutung": "x₁ ≥ 30"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Vintage-Laden: Möbel und Klamotten",
+    "beschreibung": "Dein Vintage-Laden »Retro Paradies« in Berlin-Neukölln verkauft restaurierte Möbelstücke mit einem Gewinn von 200€ pro Stück und ausgewählte Vintage-Kleidung mit einem Gewinn von 30€ pro Stück. Ein Möbelstück benötigt 4 Quadratmeter Lagerfläche, ein Kleidungsstück nur 0,5 Quadratmeter – insgesamt stehen dir 40 Quadratmeter zur Verfügung. Die Restauration eines Möbelstücks dauert 6 Stunden, die Aufbereitung eines Kleidungsstücks 1 Stunde, und du hast 48 Stunden Arbeitszeit pro Woche. Dein Laden kann außerdem maximal 60 Artikel insgesamt ausstellen. Wie viele Möbelstücke und Kleidungsstücke bereitest du auf, um den Gewinn zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Möbelstücke",
+      "x2 = Anzahl Kleidungsstücke"
+    ],
+    "zielfunktion": "Z = 200x1 + 30x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 0,5x2 ≤ 40 (Lagerfläche)",
+      "6x1 + x2 ≤ 48 (Arbeitszeit)",
+      "x1 + x2 ≤ 60 (Ausstellungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte den Koeffizienten 0,5 bei der Lagerfläche. Du kannst die Nebenbedingung mit 2 multiplizieren, um ganzzahlige Koeffizienten zu erhalten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 200€ pro Stück",
+          "bedeutung": "200 × x₁"
+        },
+        {
+          "text": "Gewinn von 30€ pro Stück",
+          "bedeutung": "30 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Quadratmeter Lagerfläche",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "0,5 Quadratmeter",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "40 Quadratmeter",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "48 Stunden Arbeitszeit",
+            "bedeutung": "≤ 48"
+          }
+        ],
+        [
+          {
+            "text": "60 Artikel insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 60"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Musikschule: Gitarre oder Klavier?",
+    "beschreibung": "Deine Musikschule »Tonleiter« bietet Gitarrenunterricht für 35€ pro Stunde und Klavierunterricht für 45€ pro Stunde an. Pro Gitarrenstunde brauchst du 1 Lehrer, pro Klavierstunde ebenfalls 1 Lehrer – du hast 8 Lehrer insgesamt. An Übungsräumen benötigst du 1 Raum pro Unterrichtsstunde. Du verfügst über 10 Räume. Wie viele Stunden jedes Fachs bietest du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Gitarrenstunden",
+      "x2 = Anzahl Klavierstunden"
+    ],
+    "zielfunktion": "Z = 35x1 + 45x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 8 (Lehrer)",
+      "x1 + x2 ≤ 10 (Räume)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen mit gleichen Koeffizienten – welche ist die wirklich einschränkende?",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Stunde",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "45€ pro Stunde",
+          "bedeutung": "45 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Lehrer",
+            "bedeutung": "x₁ + x₂"
+          },
+          {
+            "text": "8 Lehrer insgesamt",
+            "bedeutung": "≤ 8"
+          }
+        ],
+        [
+          {
+            "text": "1 Raum pro Unterrichtsstunde",
+            "bedeutung": "x₁ + x₂"
+          },
+          {
+            "text": "10 Räume",
+            "bedeutung": "≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Drohnenpilot: Luftbilder und Inspektionen",
+    "beschreibung": "Als zertifizierter Drohnenpilot bietest du zwei Dienstleistungen an: Luftaufnahmen für Immobilienmakler zu 250€ pro Auftrag und technische Inspektionen von Windrädern zu 400€ pro Auftrag. Eine Luftaufnahme dauert 2 Flugstunden, eine Inspektion dauert 3 Flugstunden – pro Woche hast du 30 Flugstunden genehmigt. Pro Luftaufnahme verbrauchst du 3 Akkus, pro Inspektion 5 Akkus, und du besitzt 45 voll geladene Akkus pro Woche. Deine Versicherung erlaubt maximal 12 Aufträge pro Woche insgesamt. Wie viele Aufträge jeder Art nimmst du an, um den Umsatz zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Luftaufnahmen",
+      "x2 = Anzahl Inspektionen"
+    ],
+    "zielfunktion": "Z = 250x1 + 400x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 30 (Flugstunden)",
+      "3x1 + 5x2 ≤ 45 (Akkus)",
+      "x1 + x2 ≤ 12 (Aufträge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Aufträge. Bestimme die Eckpunkte des zulässigen Bereichs sorgfältig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "250€ pro Auftrag",
+          "bedeutung": "250 × x₁"
+        },
+        {
+          "text": "400€ pro Auftrag",
+          "bedeutung": "400 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Flugstunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Flugstunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "30 Flugstunden",
+            "bedeutung": "≤ 30"
+          }
+        ],
+        [
+          {
+            "text": "3 Akkus",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 Akkus",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "45 voll geladene Akkus",
+            "bedeutung": "≤ 45"
+          }
+        ],
+        [
+          {
+            "text": "12 Aufträge pro Woche",
+            "bedeutung": "x₁ + x₂ ≤ 12"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Freizeitpark: Achterbahn und Karussell",
+    "beschreibung": "Du bist Betriebsleiter des Freizeitparks »Adrenalina«. Die Achterbahn kostet 500€ pro Betriebsstunde und das Karussell kostet 200€ pro Betriebsstunde. Die Behörde verlangt, dass mindestens 1200 Besucher pro Tag befördert werden. Die Achterbahn befördert 300 Besucher pro Stunde und das Karussell 150 Besucher pro Stunde. Zusätzlich muss die Achterbahn mindestens 2 Stunden täglich laufen, und das Karussell muss mindestens 3 Stunden täglich laufen. Aus Sicherheitsgründen dürfen insgesamt höchstens 10 Betriebsstunden pro Tag stattfinden. Wie viele Stunden betreibst du jedes Fahrgeschäft, um die Betriebskosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Betriebsstunden Achterbahn",
+      "x2 = Betriebsstunden Karussell"
+    ],
+    "zielfunktion": "Z = 500x1 + 200x2 (min)",
+    "nebenbedingungen": [
+      "300x1 + 150x2 ≥ 1200 (Mindestbesucher)",
+      "x1 ≥ 2 (Mindestbetrieb Achterbahn)",
+      "x2 ≥ 3 (Mindestbetrieb Karussell)",
+      "x1 + x2 ≤ 10 (Maximale Betriebsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimierungsproblem mit ≥- und ≤-Bedingungen. Zeichne das zulässige Gebiet sorgfältig ein – es ist begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "500€ pro Betriebsstunde",
+          "bedeutung": "500 × x₁"
+        },
+        {
+          "text": "200€ pro Betriebsstunde",
+          "bedeutung": "200 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "300 Besucher pro Stunde",
+            "bedeutung": "300x₁"
+          },
+          {
+            "text": "150 Besucher pro Stunde",
+            "bedeutung": "+ 150x₂"
+          },
+          {
+            "text": "1200 Besucher pro Tag",
+            "bedeutung": "≥ 1200"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 2 Stunden",
+            "bedeutung": "x₁ ≥ 2"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Stunden",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ],
+        [
+          {
+            "text": "10 Betriebsstunden pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Theatertruppe: Komödie oder Drama?",
+    "beschreibung": "Deine freie Theatertruppe »Vorhang auf!« plant die neue Saison. Eine Komödie bringt 2000€ Einnahmen pro Aufführung, ein Drama bringt 1500€ Einnahmen pro Aufführung. Jede Komödie benötigt 20 Stunden Probezeit, jedes Drama benötigt 30 Stunden Probezeit – insgesamt stehen 240 Stunden Probezeit in der Saison zur Verfügung. Das Produktionsbudget erlaubt 800€ pro Komödie und 600€ pro Drama, wobei das Gesamtbudget bei 6000€ liegt. Die Bühne kann maximal 10 Produktionen in der Saison aufnehmen. Außerdem wünscht sich das Kulturamt mindestens 2 Dramen pro Saison. Wie planst du die Saison, um die Einnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Komödien",
+      "x2 = Anzahl Dramen"
+    ],
+    "zielfunktion": "Z = 2000x1 + 1500x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 30x2 ≤ 240 (Probezeit)",
+      "800x1 + 600x2 ≤ 6000 (Budget)",
+      "x1 + x2 ≤ 10 (Bühnenkapazität)",
+      "x2 ≥ 2 (Mindestdramen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität. Beachte die ≥-Bedingung für die Dramen – sie begrenzt das Gebiet von unten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2000€ Einnahmen pro Aufführung",
+          "bedeutung": "2000 × x₁"
+        },
+        {
+          "text": "1500€ Einnahmen pro Aufführung",
+          "bedeutung": "1500 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "20 Stunden Probezeit",
+            "bedeutung": "20x₁"
+          },
+          {
+            "text": "30 Stunden Probezeit",
+            "bedeutung": "+ 30x₂"
+          },
+          {
+            "text": "240 Stunden Probezeit in der Saison",
+            "bedeutung": "≤ 240"
+          }
+        ],
+        [
+          {
+            "text": "800€ pro Komödie",
+            "bedeutung": "800x₁"
+          },
+          {
+            "text": "600€ pro Drama",
+            "bedeutung": "+ 600x₂"
+          },
+          {
+            "text": "6000€",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "10 Produktionen in der Saison",
+            "bedeutung": "x₁ + x₂ ≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 2 Dramen",
+            "bedeutung": "x₂ ≥ 2"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eislaufschule: Pirouette für Anfänger und Profis",
+    "beschreibung": "In deiner Eislaufschule »Kufe & Kür« auf der größten Eisbahn der Stadt bietest du Anfängerkurse für 40€ pro Kurs und Fortgeschrittenenkurse für 70€ pro Kurs an. Für einen Anfängerkurs brauchst du 1 Trainer, für einen Fortgeschrittenenkurs 2 Trainer – insgesamt hast du 10 Trainer. Die Eiszeit pro Anfängerkurs beträgt 1 Stunde, pro Fortgeschrittenenkurs 2 Stunden, und die Eisbahn ist 14 Stunden am Tag verfügbar. Außerdem dürfen aus Platzgründen maximal 8 Kurse pro Tag stattfinden. Wie viele Kurse jeder Art bietest du an, um die Einnahmen zu maximieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Anfängerkurse",
+      "x2 = Anzahl Fortgeschrittenenkurse"
+    ],
+    "zielfunktion": "Z = 40x1 + 70x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 10 (Trainer)",
+      "x1 + 2x2 ≤ 14 (Eiszeit)",
+      "x1 + x2 ≤ 8 (Kursanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Trainer- und Eiszeit-NB haben die gleichen Koeffizienten – eine davon wird immer die engere Grenze sein.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ pro Kurs",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "70€ pro Kurs",
+          "bedeutung": "70 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Trainer",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Trainer",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "10 Trainer",
+            "bedeutung": "≤ 10"
+          }
+        ],
+        [
+          {
+            "text": "1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "14 Stunden am Tag",
+            "bedeutung": "≤ 14"
+          }
+        ],
+        [
+          {
+            "text": "8 Kurse pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 8"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Cannabis-Farm: Indica und Sativa",
+    "beschreibung": "Auf deiner lizenzierten Cannabis-Farm »Grüne Wiese« baust du zwei Sorten an: Indica mit einem Ertrag von 25€ pro Pflanze und Sativa mit einem Ertrag von 35€ pro Pflanze. Jede Indica-Pflanze benötigt 6 Stunden Beleuchtung pro Tag, jede Sativa-Pflanze 10 Stunden Beleuchtung – deine Lampen liefern insgesamt 600 Stunden Licht pro Tag. An Wasser verbraucht eine Indica-Pflanze 3 Liter pro Tag und eine Sativa-Pflanze 4 Liter pro Tag, wobei du 360 Liter Wasser am Tag zur Verfügung hast. Die Anbaufläche reicht für maximal 80 Pflanzen insgesamt. Außerdem schreibt die Lizenz vor, dass du mindestens 10 Indica-Pflanzen anbaust. Wie verteilst du die Pflanzen, um den Ertrag zu maximieren?",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Indica-Pflanzen",
+      "x2 = Anzahl Sativa-Pflanzen"
+    ],
+    "zielfunktion": "Z = 25x1 + 35x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 10x2 ≤ 600 (Beleuchtung)",
+      "3x1 + 4x2 ≤ 360 (Wasser)",
+      "x1 + x2 ≤ 80 (Anbaufläche)",
+      "x1 ≥ 10 (Mindest-Indica)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen plus Nichtnegativität. Beachte die Mindestmenge für Indica (≥-Bedingung).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 25€ pro Pflanze",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "Ertrag von 35€ pro Pflanze",
+          "bedeutung": "35 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Stunden Beleuchtung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "10 Stunden Beleuchtung",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "600 Stunden Licht",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "3 Liter pro Tag",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "4 Liter pro Tag",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "360 Liter Wasser",
+            "bedeutung": "≤ 360"
+          }
+        ],
+        [
+          {
+            "text": "80 Pflanzen insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 80"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 10 Indica-Pflanzen",
+            "bedeutung": "x₁ ≥ 10"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Weltraumtourismus: Orbit oder Suborbital?",
+    "beschreibung": "Als CEO des Weltraumtourismus-Startups »StellarTrips« planst du die erste Saison. Ein Orbitalflug kostet dich 50 Millionen Euro, ein Suborbitalflug kostet dich 8 Millionen Euro. Deine Investoren verlangen, dass du mindestens 200 Passagiere beförderst: Ein Orbitalflug nimmt 6 Passagiere mit, ein Suborbitalflug nimmt 20 Passagiere mit. Außerdem musst du mindestens 5 Tonnen wissenschaftliche Fracht transportieren – ein Orbitalflug nimmt 2 Tonnen Fracht mit, ein Suborbitalflug nimmt 0,5 Tonnen Fracht mit. Du hast maximal 15 Startfenster in der Saison, und dein Kontrollzentrum verlangt mindestens 3 Orbitalflüge. Wie viele Flüge jeder Art planst du, um die Kosten zu minimieren?",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Orbitalflüge",
+      "x2 = Anzahl Suborbitalflüge"
+    ],
+    "zielfunktion": "Z = 50x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 20x2 ≥ 200 (Mindestpassagiere)",
+      "2x1 + 0,5x2 ≥ 5 (Mindestfracht)",
+      "x1 + x2 ≤ 15 (Startfenster)",
+      "x1 ≥ 3 (Mindest-Orbitalflüge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Komplexes Minimierungsproblem mit ≥- und ≤-Bedingungen. Zeichne alle Geraden sorgfältig ein und identifiziere das begrenzte zulässige Gebiet.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50 Millionen Euro",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "8 Millionen Euro",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Passagiere",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "20 Passagiere",
+            "bedeutung": "+ 20x₂"
+          },
+          {
+            "text": "mindestens 200 Passagiere",
+            "bedeutung": "≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "2 Tonnen Fracht",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "0,5 Tonnen Fracht",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "mindestens 5 Tonnen",
+            "bedeutung": "≥ 5"
+          }
+        ],
+        [
+          {
+            "text": "15 Startfenster",
+            "bedeutung": "x₁ + x₂ ≤ 15"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 3 Orbitalflüge",
+            "bedeutung": "x₁ ≥ 3"
+          }
+        ]
+      ]
+    }
+  }
+]

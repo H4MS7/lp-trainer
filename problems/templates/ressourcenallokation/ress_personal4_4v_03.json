@@ -1,0 +1,68 @@
+{
+  "id": "ress_personal4_4v_03",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Stellen Entwicklung", "x2 = Stellen Vertrieb", "x3 = Stellen Support", "x4 = Stellen Marketing"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtstellen", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Gehaltsbudget", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Bueroplaetze", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,    "label": "Wertschoepfung/Stelle Entwicklung"},
+    "c2":  {"min": 10, "max": 25,   "label": "Wertschoepfung/Stelle Vertrieb"},
+    "c3":  {"min": 5, "max": 15,    "label": "Wertschoepfung/Stelle Support"},
+    "c4":  {"min": 6, "max": 18,    "label": "Wertschoepfung/Stelle Marketing"},
+    "a11": {"min": 1, "max": 1,     "label": "Stellen Entwicklung"},
+    "a12": {"min": 1, "max": 1,     "label": "Stellen Vertrieb"},
+    "a13": {"min": 1, "max": 1,     "label": "Stellen Support"},
+    "a14": {"min": 1, "max": 1,     "label": "Stellen Marketing"},
+    "b1":  {"min": 10, "max": 40,   "label": "Gesamtstellen"},
+    "a21": {"min": 4, "max": 8,     "label": "Gehalt/Stelle Entwicklung (1000 €)"},
+    "a22": {"min": 3, "max": 6,     "label": "Gehalt/Stelle Vertrieb (1000 €)"},
+    "a23": {"min": 2, "max": 5,     "label": "Gehalt/Stelle Support (1000 €)"},
+    "a24": {"min": 3, "max": 7,     "label": "Gehalt/Stelle Marketing (1000 €)"},
+    "b2":  {"min": 40, "max": 200,  "label": "Gehaltsbudget (1000 €)"},
+    "a31": {"min": 1, "max": 2,     "label": "Bueroplaetze/Stelle Entwicklung"},
+    "a32": {"min": 1, "max": 1,     "label": "Bueroplaetze/Stelle Vertrieb"},
+    "a33": {"min": 1, "max": 1,     "label": "Bueroplaetze/Stelle Support"},
+    "a34": {"min": 1, "max": 2,     "label": "Bueroplaetze/Stelle Marketing"},
+    "b3":  {"min": 10, "max": 50,   "label": "Bueroplaetze gesamt"}
+  },
+  "titel": "Personalallokation – Entwicklung, Vertrieb, Support und Marketing",
+  "beschreibung": "Die Geschaeftsfuehrung verteilt Stellen auf vier Abteilungen: Entwicklung, Vertrieb, Support und Marketing. Jede Stelle in der Entwicklung generiert {c1} Einheiten Wertschoepfung, im Vertrieb {c2}, im Support {c3} und im Marketing {c4} Einheiten. Pro Abteilung benoetigt Entwicklung {a11} Stellenslot, Vertrieb {a12}, Support {a13} und Marketing {a14}. Es stehen {b1} Stellen bereit. Das monatliche Gehalt betraegt {a21} Tausend Euro pro Stelle Entwicklung, {a22} Tausend Euro Vertrieb, {a23} Tausend Euro Support und {a24} Tausend Euro Marketing. Das Gehaltsbudget umfasst {b2} Tausend Euro. An Bueroplaetzen werden {a31} pro Entwicklerstelle, {a32} pro Vertriebsstelle, {a33} pro Supportstelle und {a34} pro Marketingstelle benoetigt bei {b3} verfuegbaren Bueroplaetzen.",
+  "hinweis": "Vier Abteilungen mit Stellen-, Gehalts- und Bueroflaechenbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Entwicklung generiert {c1} Einheiten Wertschoepfung", "bedeutung": "{c1} × x₁"},
+      {"text": "Vertrieb {c2}", "bedeutung": "{c2} × x₂"},
+      {"text": "Support {c3}", "bedeutung": "{c3} × x₃"},
+      {"text": "Marketing {c4} Einheiten", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Entwicklung {a11} Stellenslot", "bedeutung": "{a11}x₁"},
+        {"text": "Vertrieb {a12}", "bedeutung": "+ {a12}x₂"},
+        {"text": "Support {a13}", "bedeutung": "+ {a13}x₃"},
+        {"text": "Marketing {a14}", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Stellen bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tausend Euro pro Stelle Entwicklung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tausend Euro Vertrieb", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tausend Euro Support", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Tausend Euro Marketing", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Tausend Euro", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} pro Entwicklerstelle", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Vertriebsstelle", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Supportstelle", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} pro Marketingstelle", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} verfuegbaren Bueroplaetzen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

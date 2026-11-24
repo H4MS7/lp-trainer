@@ -1,0 +1,39 @@
+{
+  "id": "misch_kaffee_2v_11",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Kaffeesorte A (kg)", "x2 = Menge Kaffeesorte B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Aromagehalt", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Säuregehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 20,  "label": "Kosten Kaffee A (EUR/kg)"},
+    "c2":  {"min": 4, "max": 16,  "label": "Kosten Kaffee B (EUR/kg)"},
+    "a11": {"min": 3, "max": 10,  "label": "Aroma in A (Einheiten/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Aroma in B (Einheiten/kg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Aroma (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Säure in A (mg/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Säure in B (mg/kg)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Säuregehalt (mg)"}
+  },
+  "titel": "Kaffeemischung – Aroma und Säure",
+  "beschreibung": "Eine Kaffeerösterei mischt eine Kaffeemischung aus zwei Sorten. Kaffeesorte A kostet {c1} EUR pro kg, Kaffeesorte B kostet {c2} EUR pro kg. Kaffeesorte A hat {a11} Aroma-Einheiten pro kg, Kaffeesorte B hat {a12} Aroma-Einheiten pro kg. Die Mischung muss mindestens {b1} Aroma-Einheiten erreichen. Kaffeesorte A enthält {a21} mg Säure pro kg, Kaffeesorte B enthält {a22} mg Säure pro kg. Der Säuregehalt darf höchstens {b2} mg betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Aroma und begrenzter Säure.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kaffeesorte A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Kaffeesorte B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Aroma-Einheiten pro kg, Kaffeesorte B hat {a12} Aroma-Einheiten pro kg. Die Mischung muss mindestens {b1} Aroma-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Säure pro kg, Kaffeesorte B enthält {a22} mg Säure pro kg. Der Säuregehalt darf höchstens {b2} mg betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

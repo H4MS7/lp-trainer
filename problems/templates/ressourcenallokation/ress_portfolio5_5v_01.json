@@ -1,0 +1,91 @@
+{
+  "id": "ress_portfolio5_5v_01",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anteile Anleihen (10.000 €)", "x2 = Anteile Aktien (10.000 €)", "x3 = Anteile Immobilien (10.000 €)", "x4 = Anteile Rohstoffe (10.000 €)", "x5 = Anteile Krypto (10.000 €)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Anlagekapital", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Analyseaufwand", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Risikobudget", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Liquiditaetsreserve", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 5,     "label": "Rendite/Anteil Anleihen (%)"},
+    "c2":  {"min": 4, "max": 10,    "label": "Rendite/Anteil Aktien (%)"},
+    "c3":  {"min": 3, "max": 7,     "label": "Rendite/Anteil Immobilien (%)"},
+    "c4":  {"min": 3, "max": 8,     "label": "Rendite/Anteil Rohstoffe (%)"},
+    "c5":  {"min": 5, "max": 15,    "label": "Rendite/Anteil Krypto (%)"},
+    "a11": {"min": 1, "max": 1,     "label": "Kapital Anleihen (10.000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kapital Aktien (10.000€)"},
+    "a13": {"min": 1, "max": 1,     "label": "Kapital Immobilien (10.000€)"},
+    "a14": {"min": 1, "max": 1,     "label": "Kapital Rohstoffe (10.000€)"},
+    "a15": {"min": 1, "max": 1,     "label": "Kapital Krypto (10.000€)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Anlagekapital (10.000 €)"},
+    "a21": {"min": 1, "max": 2,     "label": "Analyse/Anteil Anleihen (h)"},
+    "a22": {"min": 2, "max": 4,     "label": "Analyse/Anteil Aktien (h)"},
+    "a23": {"min": 2, "max": 5,     "label": "Analyse/Anteil Immobilien (h)"},
+    "a24": {"min": 1, "max": 3,     "label": "Analyse/Anteil Rohstoffe (h)"},
+    "a25": {"min": 3, "max": 6,     "label": "Analyse/Anteil Krypto (h)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Analysestunden gesamt"},
+    "a31": {"min": 1, "max": 2,     "label": "Risiko/Anteil Anleihen"},
+    "a32": {"min": 2, "max": 5,     "label": "Risiko/Anteil Aktien"},
+    "a33": {"min": 2, "max": 4,     "label": "Risiko/Anteil Immobilien"},
+    "a34": {"min": 3, "max": 6,     "label": "Risiko/Anteil Rohstoffe"},
+    "a35": {"min": 4, "max": 8,     "label": "Risiko/Anteil Krypto"},
+    "b3":  {"min": 20, "max": 100,  "label": "Risikobudget (Punkte)"},
+    "a41": {"min": 1, "max": 1,     "label": "Bindung/Anteil Anleihen"},
+    "a42": {"min": 1, "max": 2,     "label": "Bindung/Anteil Aktien"},
+    "a43": {"min": 2, "max": 4,     "label": "Bindung/Anteil Immobilien"},
+    "a44": {"min": 1, "max": 2,     "label": "Bindung/Anteil Rohstoffe"},
+    "a45": {"min": 1, "max": 2,     "label": "Bindung/Anteil Krypto"},
+    "b4":  {"min": 15, "max": 60,   "label": "Bindungskapazitaet"}
+  },
+  "titel": "Fondsmanagement – Anleihen, Aktien, Immobilien, Rohstoffe und Krypto",
+  "beschreibung": "Ein Fondsmanager verteilt Kapital auf fuenf Anlageklassen: Anleihen, Aktien, Immobilien, Rohstoffe und Krypto. Die Renditeerwartung betraegt {c1} Prozent fuer Anleihen, {c2} Prozent fuer Aktien, {c3} Prozent fuer Immobilien, {c4} Prozent fuer Rohstoffe und {c5} Prozent fuer Krypto pro Anteil. Jeder Anteil kostet {a11} Zehntausend Euro Anleihen, {a12} Aktien, {a13} Immobilien, {a14} Rohstoffe und {a15} Krypto. Das Anlagekapital umfasst {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden Anleihen, {a22} Stunden Aktien, {a23} Stunden Immobilien, {a24} Stunden Rohstoffe und {a25} Stunden Krypto pro Anteil bei {b2} Analysestunden. Das Risiko betraegt {a31} Punkte Anleihen, {a32} Punkte Aktien, {a33} Punkte Immobilien, {a34} Punkte Rohstoffe und {a35} Punkte Krypto pro Anteil bei {b3} Risikobudget. Die Kapitalbindung belaeuft sich auf {a41} Einheit Anleihen, {a42} Einheiten Aktien, {a43} Einheiten Immobilien, {a44} Einheiten Rohstoffe und {a45} Einheiten Krypto pro Anteil bei {b4} Bindungskapazitaet.",
+  "hinweis": "Fuenf Anlageklassen mit Kapital-, Analyse-, Risiko- und Bindungsbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} Prozent fuer Anleihen", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} Prozent fuer Aktien", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} Prozent fuer Immobilien", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} Prozent fuer Rohstoffe", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} Prozent fuer Krypto", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Zehntausend Euro Anleihen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Aktien", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Immobilien", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Rohstoffe", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} Krypto", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden Anleihen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden Aktien", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden Immobilien", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Stunden Rohstoffe", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Stunden Krypto", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Analysestunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Punkte Anleihen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Punkte Aktien", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Punkte Immobilien", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Punkte Rohstoffe", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Punkte Krypto", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Risikobudget", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Einheit Anleihen", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Einheiten Aktien", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Einheiten Immobilien", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Einheiten Rohstoffe", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Einheiten Krypto", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Bindungskapazitaet", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

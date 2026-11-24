@@ -1,0 +1,75 @@
+{
+  "id": "medien_brandlaunch_5v_03",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl PR-Artikel", "x2 = Anzahl Influencer-Posts", "x3 = Anzahl Event-Auftritte", "x4 = Anzahl Podcast-Sponsorings", "x5 = Anzahl Display-Kampagnen"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Freigabekapazität", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Zeitslots", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Medienkontakte PR (Tsd.)"},
+    "c2":  {"min": 5, "max": 30,    "label": "Reichweite Influencer (Tsd.)"},
+    "c3":  {"min": 3, "max": 15,    "label": "Kontakte Event (Tsd.)"},
+    "c4":  {"min": 2, "max": 10,    "label": "Hörer Podcast (Tsd.)"},
+    "c5":  {"min": 10, "max": 50,   "label": "Impressionen Display (Tsd.)"},
+    "a11": {"min": 2, "max": 8,     "label": "Kosten PR (Tsd. €)"},
+    "a12": {"min": 3, "max": 12,    "label": "Kosten Influencer (Tsd. €)"},
+    "a13": {"min": 5, "max": 20,    "label": "Kosten Event (Tsd. €)"},
+    "a14": {"min": 2, "max": 6,     "label": "Kosten Podcast (Tsd. €)"},
+    "a15": {"min": 1, "max": 5,     "label": "Kosten Display (Tsd. €)"},
+    "b1":  {"min": 50, "max": 250,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 5, "max": 12,    "label": "Personal PR (Stunden)"},
+    "a22": {"min": 4, "max": 10,    "label": "Personal Influencer (Stunden)"},
+    "a23": {"min": 10, "max": 25,   "label": "Personal Event (Stunden)"},
+    "a24": {"min": 3, "max": 6,     "label": "Personal Podcast (Stunden)"},
+    "a25": {"min": 1, "max": 3,     "label": "Personal Display (Stunden)"},
+    "b2":  {"min": 40, "max": 120,  "label": "Personalstunden"},
+    "a31": {"min": 2, "max": 4,     "label": "Freigabe PR (Stunden)"},
+    "a32": {"min": 2, "max": 5,     "label": "Freigabe Influencer (Stunden)"},
+    "a33": {"min": 1, "max": 3,     "label": "Freigabe Event (Stunden)"},
+    "a34": {"min": 1, "max": 3,     "label": "Freigabe Podcast (Stunden)"},
+    "a35": {"min": 1, "max": 2,     "label": "Freigabe Display (Stunden)"},
+    "b3":  {"min": 10, "max": 40,   "label": "Freigabestunden"},
+    "a41": {"min": 1, "max": 2,     "label": "Zeitslots PR (Tage)"},
+    "a42": {"min": 1, "max": 2,     "label": "Zeitslots Influencer (Tage)"},
+    "a43": {"min": 2, "max": 4,     "label": "Zeitslots Event (Tage)"},
+    "a44": {"min": 1, "max": 2,     "label": "Zeitslots Podcast (Tage)"},
+    "a45": {"min": 1, "max": 2,     "label": "Zeitslots Display (Tage)"},
+    "b4":  {"min": 10, "max": 30,   "label": "Verfügbare Tage"}
+  },
+  "titel": "Markenlaunch – Fünf Kommunikationskanäle",
+  "beschreibung": "Ein Markenteam plant den Launch über fünf Kanäle. PR-Artikel erzielen {c1} Tsd. Medienkontakte, Influencer-Posts erzielen {c2} Tsd. Reichweite, Event-Auftritte erzielen {c3} Tsd. Kontakte, Podcast-Sponsorings erzielen {c4} Tsd. Hörer und Display-Kampagnen erzielen {c5} Tsd. Impressionen. Die Kosten betragen {a11} Tsd. € für PR, {a12} Tsd. € für Influencer, {a13} Tsd. € für Events, {a14} Tsd. € für Podcast und {a15} Tsd. € für Display. Das Budget beträgt {b1} Tsd. €. Der Personalbedarf beträgt {a21} Stunden für PR, {a22} Stunden für Influencer, {a23} Stunden für Events, {a24} Stunden für Podcast und {a25} Stunden für Display. Es stehen {b2} Personalstunden zur Verfügung. Die Freigabekapazität beträgt {a31} Stunden für PR, {a32} Stunden für Influencer, {a33} Stunden für Events, {a34} Stunden für Podcast und {a35} Stunden für Display. Es stehen {b3} Freigabestunden zur Verfügung. Die Zeitslots betragen {a41} Tage für PR, {a42} Tage für Influencer, {a43} Tage für Events, {a44} Tage für Podcast und {a45} Tage für Display. Es stehen {b4} Tage zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite des Markenlaunches unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "PR-Artikel erzielen {c1} Tsd. Medienkontakte", "bedeutung": "{c1} × x₁"},
+      {"text": "Influencer-Posts erzielen {c2} Tsd. Reichweite", "bedeutung": "{c2} × x₂"},
+      {"text": "Event-Auftritte erzielen {c3} Tsd. Kontakte", "bedeutung": "{c3} × x₃"},
+      {"text": "Podcast-Sponsorings erzielen {c4} Tsd. Hörer", "bedeutung": "{c4} × x₄"},
+      {"text": "Display-Kampagnen erzielen {c5} Tsd. Impressionen", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für PR, {a12} Tsd. € für Influencer, {a13} Tsd. € für Events, {a14} Tsd. € für Podcast und {a15} Tsd. € für Display", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für PR, {a22} Stunden für Influencer, {a23} Stunden für Events, {a24} Stunden für Podcast und {a25} Stunden für Display", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für PR, {a32} Stunden für Influencer, {a33} Stunden für Events, {a34} Stunden für Podcast und {a35} Stunden für Display", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Freigabestunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tage für PR, {a42} Tage für Influencer, {a43} Tage für Events, {a44} Tage für Podcast und {a45} Tage für Display", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Tage zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

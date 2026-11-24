@@ -1,0 +1,360 @@
+[
+  {
+    "titel": "Textilfabrik mit fünf Produktlinien",
+    "beschreibung": "Eine Textilfabrik produziert fünf Bekleidungsartikel: Mäntel, Pullover, Westen, Schals und Handschuhe. Der Gewinn beträgt 26 Euro pro Mantel, 17 Euro pro Pullover, 14 Euro pro Weste, 12 Euro pro Schal und 41 Euro pro Handschuhpaar. Fünf Produktionsabteilungen begrenzen die Fertigung. Im Zuschnitt benötigt jeder Mantel 15 Stunden, jeder Pullover 4 Stunden, jede Weste 2 Stunden, jeder Schal 13 Stunden und jedes Handschuhpaar 11 Stunden. Die Zuschnittkapazität beträgt 407 Stunden. An den Nähmaschinen werden pro Mantel 6 Stunden, pro Pullover 13 Stunden, pro Weste 14 Stunden, pro Schal 10 Stunden und pro Handschuhpaar 13 Stunden benötigt. Die Nähkapazität liegt bei 482 Stunden. Bei der Qualitätsprüfung erfordert jeder Mantel 7 Stunden, jeder Pullover 11 Stunden, jede Weste 13 Stunden, jeder Schal 11 Stunden und jedes Handschuhpaar 10 Stunden. Für die Qualitätsprüfung stehen 392 Stunden zur Verfügung. In der Dampfbügelei beansprucht jeder Mantel 14 Stunden, ein Pullover 4 Stunden Bügelzeit, jede Weste 10 Stunden, ein Schal 11 Stunden Bügelzeit und jedes Handschuhpaar 13 Stunden. Die Bügelkapazität beträgt 418 Stunden. Beim Verpacken werden pro Mantel 13 Stunden, pro Pullover 11 Stunden, pro Weste 13 Stunden, pro Schal 8 Stunden und pro Handschuhpaar 6 Stunden benötigt. Die Verpackungskapazität liegt bei 178 Stunden. Das Unternehmen möchte den Gesamtgewinn maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Mäntel",
+      "x2 = Anzahl Pullover",
+      "x3 = Anzahl Westen",
+      "x4 = Anzahl Schals",
+      "x5 = Anzahl Handschuhpaare"
+    ],
+    "zielfunktion": "Z = 26x1 + 17x2 + 14x3 + 12x4 + 41x5 (max)",
+    "nebenbedingungen": [
+      "15x1 + 4x2 + 2x3 + 13x4 + 11x5 ≤ 407 (Zuschnitt)",
+      "6x1 + 13x2 + 14x3 + 10x4 + 13x5 ≤ 482 (Nähmaschinen)",
+      "7x1 + 11x2 + 13x3 + 11x4 + 10x5 ≤ 392 (Qualitätsprüfung)",
+      "14x1 + 4x2 + 10x3 + 11x4 + 13x5 ≤ 418 (Dampfbügelei)",
+      "13x1 + 11x2 + 13x3 + 8x4 + 6x5 ≤ 178 (Verpacken)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Fünf Produkte und fünf Fertigungsbereiche ergeben ein umfangreiches Gleichungssystem. Ordne jedem Artikel eine Variable zu und beachte, dass die Verpackung mit nur 178 Stunden besonders knapp ist.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "26 Euro pro Mantel",
+          "bedeutung": "26 × x₁"
+        },
+        {
+          "text": "17 Euro pro Pullover",
+          "bedeutung": "17 × x₂"
+        },
+        {
+          "text": "14 Euro pro Weste",
+          "bedeutung": "14 × x₃"
+        },
+        {
+          "text": "12 Euro pro Schal",
+          "bedeutung": "12 × x₄"
+        },
+        {
+          "text": "41 Euro pro Handschuhpaar",
+          "bedeutung": "41 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jeder Mantel 15 Stunden",
+            "bedeutung": "15x₁"
+          },
+          {
+            "text": "jeder Pullover 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "jede Weste 2 Stunden",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "jeder Schal 13 Stunden",
+            "bedeutung": "+ 13x₄"
+          },
+          {
+            "text": "jedes Handschuhpaar 11 Stunden",
+            "bedeutung": "+ 11x₅"
+          },
+          {
+            "text": "Zuschnittkapazität beträgt 407 Stunden",
+            "bedeutung": "≤ 407"
+          }
+        ],
+        [
+          {
+            "text": "pro Mantel 6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "pro Pullover 13 Stunden",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "pro Weste 14 Stunden",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "pro Schal 10 Stunden",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "pro Handschuhpaar 13 Stunden",
+            "bedeutung": "+ 13x₅"
+          },
+          {
+            "text": "Nähkapazität liegt bei 482 Stunden",
+            "bedeutung": "≤ 482"
+          }
+        ],
+        [
+          {
+            "text": "jeder Mantel 7 Stunden",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "jeder Pullover 11 Stunden",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "jede Weste 13 Stunden",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "jeder Schal 11 Stunden",
+            "bedeutung": "+ 11x₄"
+          },
+          {
+            "text": "jedes Handschuhpaar 10 Stunden",
+            "bedeutung": "+ 10x₅"
+          },
+          {
+            "text": "392 Stunden zur Verfügung",
+            "bedeutung": "≤ 392"
+          }
+        ],
+        [
+          {
+            "text": "jeder Mantel 14 Stunden",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "ein Pullover 4 Stunden Bügelzeit",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "jede Weste 10 Stunden",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "ein Schal 11 Stunden Bügelzeit",
+            "bedeutung": "+ 11x₄"
+          },
+          {
+            "text": "jedes Handschuhpaar 13 Stunden",
+            "bedeutung": "+ 13x₅"
+          },
+          {
+            "text": "Bügelkapazität beträgt 418 Stunden",
+            "bedeutung": "≤ 418"
+          }
+        ],
+        [
+          {
+            "text": "pro Mantel 13 Stunden",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "pro Pullover 11 Stunden",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "pro Weste 13 Stunden",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "pro Schal 8 Stunden",
+            "bedeutung": "+ 8x₄"
+          },
+          {
+            "text": "pro Handschuhpaar 6 Stunden",
+            "bedeutung": "+ 6x₅"
+          },
+          {
+            "text": "Verpackungskapazität liegt bei 178 Stunden",
+            "bedeutung": "≤ 178"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbelwerkstatt mit fünf Einrichtungsgegenständen",
+    "beschreibung": "Eine Möbelwerkstatt fertigt fünf Einrichtungsgegenstände: Couchtische, Bücherregale, Kommoden, Nachttische und Garderoben. Pro Couchtisch wird ein Deckungsbeitrag von 16 Euro erzielt, pro Bücherregal 30 Euro, pro Kommode 21 Euro, pro Nachttisch 25 Euro und pro Garderobe 22 Euro. Die Fertigung wird durch fünf Ressourcen begrenzt. Im Holzzuschnitt benötigt jeder Couchtisch 14 Stunden, jedes Bücherregal 10 Stunden, jede Kommode 10 Stunden, jeder Nachttisch 10 Stunden und jede Garderobe 10 Stunden. Die Zuschnittkapazität beträgt 280 Stunden. An der Drechselbank werden pro Couchtisch 10 Stunden, pro Bücherregal 12 Stunden, pro Kommode 14 Stunden, pro Nachttisch 9 Stunden und pro Garderobe 6 Stunden benötigt. Die Drechselbankkapazität liegt bei 224 Stunden. Beim Schleifen erfordert jeder Couchtisch 10 Stunden, jedes Bücherregal 1 Stunde, jede Kommode 8 Stunden, jeder Nachttisch 9 Stunden und jede Garderobe 5 Stunden. Für das Schleifen stehen 342 Stunden zur Verfügung. In der Lackierung beansprucht jeder Couchtisch 8 Stunden, jedes Bücherregal 6 Stunden, jede Kommode 13 Stunden, jeder Nachttisch 2 Stunden und jede Garderobe 1 Stunde. Die Lackierkapazität beträgt 451 Stunden. Bei der Endmontage werden pro Couchtisch 5 Stunden, pro Bücherregal 6 Stunden, pro Kommode 7 Stunden, pro Nachttisch 13 Stunden und pro Garderobe 1 Stunde benötigt. Für die Endmontage stehen 25 Stunden zur Verfügung. Die Werkstatt möchte den Gesamtdeckungsbeitrag maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Couchtische",
+      "x2 = Anzahl Bücherregale",
+      "x3 = Anzahl Kommoden",
+      "x4 = Anzahl Nachttische",
+      "x5 = Anzahl Garderoben"
+    ],
+    "zielfunktion": "Z = 16x1 + 30x2 + 21x3 + 25x4 + 22x5 (max)",
+    "nebenbedingungen": [
+      "14x1 + 10x2 + 10x3 + 10x4 + 10x5 ≤ 280 (Holzzuschnitt)",
+      "10x1 + 12x2 + 14x3 + 9x4 + 6x5 ≤ 224 (Drechselbank)",
+      "10x1 + x2 + 8x3 + 9x4 + 5x5 ≤ 342 (Schleifen)",
+      "8x1 + 6x2 + 13x3 + 2x4 + x5 ≤ 451 (Lackierung)",
+      "5x1 + 6x2 + 7x3 + 13x4 + x5 ≤ 25 (Endmontage)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Fünf Möbelstücke und fünf Fertigungsschritte ergeben ein großes Optimierungsproblem. Achte besonders auf die extrem knappe Endmontagekapazität von nur 25 Stunden als stärksten Engpass.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 16 Euro",
+          "bedeutung": "16 × x₁"
+        },
+        {
+          "text": "pro Bücherregal 30 Euro",
+          "bedeutung": "30 × x₂"
+        },
+        {
+          "text": "pro Kommode 21 Euro",
+          "bedeutung": "21 × x₃"
+        },
+        {
+          "text": "pro Nachttisch 25 Euro",
+          "bedeutung": "25 × x₄"
+        },
+        {
+          "text": "pro Garderobe 22 Euro",
+          "bedeutung": "22 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jeder Couchtisch 14 Stunden",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "jedes Bücherregal 10 Stunden",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "jede Kommode 10 Stunden",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "jeder Nachttisch 10 Stunden",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "jede Garderobe 10 Stunden",
+            "bedeutung": "+ 10x₅"
+          },
+          {
+            "text": "Zuschnittkapazität beträgt 280 Stunden",
+            "bedeutung": "≤ 280"
+          }
+        ],
+        [
+          {
+            "text": "pro Couchtisch 10 Stunden",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "pro Bücherregal 12 Stunden",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "pro Kommode 14 Stunden",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "pro Nachttisch 9 Stunden",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "pro Garderobe 6 Stunden",
+            "bedeutung": "+ 6x₅"
+          },
+          {
+            "text": "Drechselbankkapazität liegt bei 224 Stunden",
+            "bedeutung": "≤ 224"
+          }
+        ],
+        [
+          {
+            "text": "jeder Couchtisch 10 Stunden",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "jedes Bücherregal 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "jede Kommode 8 Stunden",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "jeder Nachttisch 9 Stunden",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "jede Garderobe 5 Stunden",
+            "bedeutung": "+ 5x₅"
+          },
+          {
+            "text": "342 Stunden zur Verfügung",
+            "bedeutung": "≤ 342"
+          }
+        ],
+        [
+          {
+            "text": "jeder Couchtisch 8 Stunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "jedes Bücherregal 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "jede Kommode 13 Stunden",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "jeder Nachttisch 2 Stunden",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "jede Garderobe 1 Stunde",
+            "bedeutung": "+ x₅"
+          },
+          {
+            "text": "Lackierkapazität beträgt 451 Stunden",
+            "bedeutung": "≤ 451"
+          }
+        ],
+        [
+          {
+            "text": "pro Couchtisch 5 Stunden",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "pro Bücherregal 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "pro Kommode 7 Stunden",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "pro Nachttisch 13 Stunden",
+            "bedeutung": "+ 13x₄"
+          },
+          {
+            "text": "pro Garderobe 1 Stunde",
+            "bedeutung": "+ x₅"
+          },
+          {
+            "text": "25 Stunden zur Verfügung",
+            "bedeutung": "≤ 25"
+          }
+        ]
+      ]
+    }
+  }
+]

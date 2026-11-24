@@ -1,0 +1,299 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "masch_3d_vier_4v_02",
+  "titel": "3D-Drucker – Geschwindigkeit, Schichthoehe, Temperatur und Luefter",
+  "variablen": [
+    "x1 = Druckgeschwindigkeit (Stufen)",
+    "x2 = Schichthoehe (Stufen)",
+    "x3 = Duesentemperatur (Stufen)",
+    "x4 = Luefterleistung (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Filamentverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Waermeentwicklung",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Stromverbrauch",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Laermgrenze",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Produktivitaet Geschwindigkeit"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Detailgenauigkeit Schicht"
+    },
+    "c3": {
+      "min": 2,
+      "max": 7,
+      "label": "Haftung Temperatur"
+    },
+    "c4": {
+      "min": 2,
+      "max": 5,
+      "label": "Oberflaechenkuehlung Luefter"
+    },
+    "a11": {
+      "min": 2,
+      "max": 6,
+      "label": "Filament Geschwindigkeit"
+    },
+    "a12": {
+      "min": 3,
+      "max": 8,
+      "label": "Filament Schicht"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Filament Temperatur"
+    },
+    "a14": {
+      "min": 1,
+      "max": 2,
+      "label": "Filament Luefter"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Filamentverbrauch"
+    },
+    "a21": {
+      "min": 2,
+      "max": 4,
+      "label": "Waerme Geschwindigkeit"
+    },
+    "a22": {
+      "min": 1,
+      "max": 3,
+      "label": "Waerme Schicht"
+    },
+    "a23": {
+      "min": 4,
+      "max": 10,
+      "label": "Waerme Temperatur"
+    },
+    "a24": {
+      "min": 1,
+      "max": 2,
+      "label": "Waerme Luefter"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Waermeeinheiten"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Strom Geschwindigkeit"
+    },
+    "a32": {
+      "min": 1,
+      "max": 3,
+      "label": "Strom Schicht"
+    },
+    "a33": {
+      "min": 2,
+      "max": 5,
+      "label": "Strom Temperatur"
+    },
+    "a34": {
+      "min": 2,
+      "max": 6,
+      "label": "Strom Luefter"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Stromverbrauch"
+    },
+    "a41": {
+      "min": 2,
+      "max": 5,
+      "label": "Laerm Geschwindigkeit"
+    },
+    "a42": {
+      "min": 1,
+      "max": 2,
+      "label": "Laerm Schicht"
+    },
+    "a43": {
+      "min": 1,
+      "max": 2,
+      "label": "Laerm Temperatur"
+    },
+    "a44": {
+      "min": 3,
+      "max": 8,
+      "label": "Laerm Luefter"
+    },
+    "b4": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Laermgrenze"
+    }
+  },
+  "beschreibung": "Ein 3D-Drucker wird ueber vier Parameter optimiert. Die Geschwindigkeit liefert {c1} Produktivitaetspunkte, die Schichthoehe {c2} Detailpunkte, die Duesentemperatur {c3} Haftungspunkte und der Luefter {c4} Kuehlpunkte. Der Filamentverbrauch betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Schicht, {a13} fuer Temperatur und {a14} fuer Luefter bei maximal {b1} Filamenteinheiten. Die Waerme liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Schicht, {a23} fuer Temperatur und {a24} fuer Luefter bei maximal {b2} Waermeeinheiten. Der Stromverbrauch betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Schicht, {a33} fuer Temperatur und {a34} fuer Luefter bei maximal {b3} Stromeinheiten. Die Laermgrenze liegt bei {a41} Einheiten fuer Geschwindigkeit, {a42} fuer Schicht, {a43} fuer Temperatur und {a44} fuer Luefter bei maximal {b4} Laermeinheiten.",
+  "hinweis": "Maximiere die Druckqualitaet unter Beachtung von Filament, Waerme, Strom und Laerm.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Geschwindigkeit liefert {c1} Produktivitaetspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schichthoehe {c2} Detailpunkte",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Duesentemperatur {c3} Haftungspunkte",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Luefter {c4} Kuehlpunkte",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Schicht",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Temperatur",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Luefter",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Filamenteinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Schicht",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Temperatur",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Luefter",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Waermeeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Schicht",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Temperatur",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Luefter",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Stromeinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Schicht",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Temperatur",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Luefter",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{b4} Laermeinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

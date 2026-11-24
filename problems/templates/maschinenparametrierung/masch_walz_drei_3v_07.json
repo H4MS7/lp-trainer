@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_walz_drei_3v_07",
+  "titel": "Walzwerk – Geschwindigkeit, Anstellkraft und Walzentemperatur",
+  "variablen": [
+    "x1 = Walzgeschwindigkeit (Stufen)",
+    "x2 = Anstellkraft (Stufen)",
+    "x3 = Walzentemperatur (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Motorleistung",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Walzenverschleiss",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Kuehlwasserbedarf",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Geschwindigkeit"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Oberflaechenguete Kraft"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Umformbarkeit Temperatur"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Motor Geschwindigkeit"
+    },
+    "a12": {
+      "min": 2,
+      "max": 6,
+      "label": "Motor Kraft"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Motor Temperatur"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Motorleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 5,
+      "label": "Verschleiss Geschwindigkeit"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Verschleiss Kraft"
+    },
+    "a23": {
+      "min": 1,
+      "max": 4,
+      "label": "Verschleiss Temperatur"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Walzenverschleiss"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Kuehlwasser Geschwindigkeit"
+    },
+    "a32": {
+      "min": 1,
+      "max": 3,
+      "label": "Kuehlwasser Kraft"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Kuehlwasser Temperatur"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Kuehlwasserbedarf"
+    }
+  },
+  "beschreibung": "Ein Walzwerk wird ueber drei Parameter parametriert. Die Walzgeschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflaechenguete und die Walzentemperatur {c3} Punkte Umformbarkeit. Die Motorleistung betraegt {a11} Einheiten fuer Geschwindigkeit, {a12} fuer Kraft und {a13} fuer Temperatur bei maximal {b1} Motoreinheiten. Der Walzenverschleiss liegt bei {a21} Einheiten fuer Geschwindigkeit, {a22} fuer Kraft und {a23} fuer Temperatur bei maximal {b2} Verschleisseinheiten. Der Kuehlwasserbedarf betraegt {a31} Einheiten fuer Geschwindigkeit, {a32} fuer Kraft und {a33} fuer Temperatur bei maximal {b3} Kuehleinheiten.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor, Verschleiss und Kuehlwasser.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Walzgeschwindigkeit liefert {c1} Durchsatzpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Anstellkraft {c2} Punkte Oberflaechenguete",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Walzentemperatur {c3} Punkte Umformbarkeit",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Kraft",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Temperatur",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Motoreinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Kraft",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Temperatur",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Geschwindigkeit",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Kraft",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Temperatur",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Kuehleinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

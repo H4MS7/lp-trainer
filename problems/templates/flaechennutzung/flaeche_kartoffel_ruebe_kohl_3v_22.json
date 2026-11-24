@@ -1,0 +1,60 @@
+{
+  "id": "flaeche_kartoffel_ruebe_kohl_3v_22",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Hektar Kartoffeln", "x2 = Hektar Zuckerrüben", "x3 = Hektar Kohl"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Erntearbeitskräfte", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Kartoffeln (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Zuckerrüben (Tsd. €/ha)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Ertrag Kohl (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Kartoffeln (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Zuckerrüben (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Flächenbedarf Kohl (ha/ha)"},
+    "b1":  {"min": 40, "max": 250, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 8,   "label": "Wasser Kartoffeln (m³/ha)"},
+    "a22": {"min": 2, "max": 6,   "label": "Wasser Zuckerrüben (m³/ha)"},
+    "a23": {"min": 4, "max": 10,  "label": "Wasser Kohl (m³/ha)"},
+    "b2":  {"min": 80, "max": 400, "label": "Wasserbudget (m³)"},
+    "a31": {"min": 3, "max": 7,   "label": "Erntehelfer Kartoffeln (Personen/ha)"},
+    "a32": {"min": 2, "max": 5,   "label": "Erntehelfer Zuckerrüben (Personen/ha)"},
+    "a33": {"min": 4, "max": 8,   "label": "Erntehelfer Kohl (Personen/ha)"},
+    "b3":  {"min": 40, "max": 200, "label": "Verfügbare Erntehelfer (Personen)"}
+  },
+  "titel": "Gemüsebau – Kartoffeln, Zuckerrüben und Kohl",
+  "beschreibung": "Ein Gemüsebauer baut Kartoffeln, Zuckerrüben und Kohl an. Kartoffeln bringen {c1} Tsd. € pro Hektar, Zuckerrüben bringen {c2} Tsd. € pro Hektar, Kohl bringt {c3} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} ha pro ha Kartoffeln, {a12} ha pro ha Zuckerrüben und {a13} ha pro ha Kohl. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserbedarf liegt bei {a21} m³ pro ha Kartoffeln, {a22} m³ pro ha Zuckerrüben und {a23} m³ pro ha Kohl. Das Wasserbudget beträgt {b2} m³. Die Ernte erfordert {a31} Personen pro ha Kartoffeln, {a32} Personen pro ha Zuckerrüben und {a33} Personen pro ha Kohl. Insgesamt stehen {b3} Erntehelfer zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Wasser und Arbeitskräften.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kartoffeln bringen {c1} Tsd. € pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Zuckerrüben bringen {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"},
+      {"text": "Kohl bringt {c3} Tsd. € pro Hektar", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Kartoffeln", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Zuckerrüben", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Kohl", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Kartoffeln", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Zuckerrüben", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Kohl", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Personen pro ha Kartoffeln", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Personen pro ha Zuckerrüben", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Personen pro ha Kohl", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Erntehelfer zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

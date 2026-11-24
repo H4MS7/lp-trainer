@@ -1,0 +1,106 @@
+{
+  "id": "diaet_schifffahrt_5v_02",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Portionen Dosenfisch", "x2 = Portionen Zwieback", "x3 = Portionen Trockenfrüchte", "x4 = Portionen Kondensmilch", "x5 = Portionen Bohnenkonserve"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Protein", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Vitamin C", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Eisen", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Natrium", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Dosenfisch (€/Portion)"},
+    "c2":  {"min": 1, "max": 3,   "label": "Kosten Zwieback (€/Portion)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Kosten Trockenfrüchte (€/Portion)"},
+    "c4":  {"min": 1, "max": 3,   "label": "Kosten Kondensmilch (€/Portion)"},
+    "c5":  {"min": 1, "max": 3,   "label": "Kosten Bohnenkonserve (€/Portion)"},
+    "a11": {"min": 100, "max": 200, "label": "Kalorien Dosenfisch (kcal/Portion)"},
+    "a12": {"min": 80, "max": 160,  "label": "Kalorien Zwieback (kcal/Portion)"},
+    "a13": {"min": 60, "max": 140,  "label": "Kalorien Trockenfrüchte (kcal/Portion)"},
+    "a14": {"min": 50, "max": 120,  "label": "Kalorien Kondensmilch (kcal/Portion)"},
+    "a15": {"min": 80, "max": 160,  "label": "Kalorien Bohnenkonserve (kcal/Portion)"},
+    "b1":  {"min": 1200, "max": 2500, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 6, "max": 14,  "label": "Protein Dosenfisch (g/Portion)"},
+    "a22": {"min": 1, "max": 4,   "label": "Protein Zwieback (g/Portion)"},
+    "a23": {"min": 1, "max": 2,   "label": "Protein Trockenfrüchte (g/Portion)"},
+    "a24": {"min": 2, "max": 5,   "label": "Protein Kondensmilch (g/Portion)"},
+    "a25": {"min": 3, "max": 8,   "label": "Protein Bohnenkonserve (g/Portion)"},
+    "b2":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"},
+    "a31": {"min": 1, "max": 2,   "label": "Vitamin C Dosenfisch (mg/Portion)"},
+    "a32": {"min": 1, "max": 1,   "label": "Vitamin C Zwieback (mg/Portion)"},
+    "a33": {"min": 3, "max": 8,   "label": "Vitamin C Trockenfrüchte (mg/Portion)"},
+    "a34": {"min": 1, "max": 3,   "label": "Vitamin C Kondensmilch (mg/Portion)"},
+    "a35": {"min": 1, "max": 4,   "label": "Vitamin C Bohnenkonserve (mg/Portion)"},
+    "b3":  {"min": 20, "max": 60,  "label": "Mindest-Vitamin C (mg)"},
+    "a41": {"min": 1, "max": 4,   "label": "Eisen Dosenfisch (mg/Portion)"},
+    "a42": {"min": 1, "max": 2,   "label": "Eisen Zwieback (mg/Portion)"},
+    "a43": {"min": 1, "max": 3,   "label": "Eisen Trockenfrüchte (mg/Portion)"},
+    "a44": {"min": 1, "max": 1,   "label": "Eisen Kondensmilch (mg/Portion)"},
+    "a45": {"min": 2, "max": 5,   "label": "Eisen Bohnenkonserve (mg/Portion)"},
+    "b4":  {"min": 10, "max": 25,  "label": "Mindest-Eisen (mg)"},
+    "a51": {"min": 3, "max": 8,   "label": "Natrium Dosenfisch (mg/Portion)"},
+    "a52": {"min": 2, "max": 4,   "label": "Natrium Zwieback (mg/Portion)"},
+    "a53": {"min": 1, "max": 2,   "label": "Natrium Trockenfrüchte (mg/Portion)"},
+    "a54": {"min": 1, "max": 3,   "label": "Natrium Kondensmilch (mg/Portion)"},
+    "a55": {"min": 3, "max": 7,   "label": "Natrium Bohnenkonserve (mg/Portion)"},
+    "b5":  {"min": 50, "max": 100, "label": "Maximal-Natrium (mg)"}
+  },
+  "titel": "Schiffsproviant – Dosenfisch, Zwieback, Trockenfrüchte, Kondensmilch und Bohnen",
+  "beschreibung": "Ein Frachtschiff plant den Proviant aus Dosenfisch, Zwieback, Trockenfrüchten, Kondensmilch und Bohnenkonserve. Dosenfisch kostet {c1} €, Zwieback kostet {c2} €, Trockenfrüchte kosten {c3} €, Kondensmilch kostet {c4} €, Bohnenkonserve kostet {c5} € pro Portion. Dosenfisch liefert {a11} kcal, Zwieback liefert {a12} kcal, Trockenfrüchte liefern {a13} kcal, Kondensmilch liefert {a14} kcal, Bohnenkonserve liefert {a15} kcal pro Portion. Mindestens {b1} kcal sind täglich nötig. Dosenfisch enthält {a21} g Protein, Zwieback enthält {a22} g Protein, Trockenfrüchte enthalten {a23} g Protein, Kondensmilch enthält {a24} g Protein, Bohnenkonserve enthält {a25} g Protein pro Portion. Mindestens {b2} g Protein werden benötigt. Dosenfisch liefert {a31} mg Vitamin C, Zwieback liefert {a32} mg Vitamin C, Trockenfrüchte liefern {a33} mg Vitamin C, Kondensmilch liefert {a34} mg Vitamin C, Bohnenkonserve liefert {a35} mg Vitamin C pro Portion. Mindestens {b3} mg Vitamin C sind erforderlich. Dosenfisch enthält {a41} mg Eisen, Zwieback enthält {a42} mg Eisen, Trockenfrüchte enthalten {a43} mg Eisen, Kondensmilch enthält {a44} mg Eisen, Bohnenkonserve enthält {a45} mg Eisen pro Portion. Mindestens {b4} mg Eisen werden benötigt. Dosenfisch hat {a51} mg Natrium, Zwieback hat {a52} mg Natrium, Trockenfrüchte haben {a53} mg Natrium, Kondensmilch hat {a54} mg Natrium, Bohnenkonserve hat {a55} mg Natrium pro Portion. Höchstens {b5} mg Natrium sind erlaubt.",
+  "hinweis": "Minimiere die Proviantkosten bei Einhaltung aller Nährstoffanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Dosenfisch kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Zwieback kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Trockenfrüchte kosten {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Kondensmilch kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Bohnenkonserve kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} kcal", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} kcal", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} kcal pro Portion", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} kcal sind täglich nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Protein", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Protein", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g Protein", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} g Protein", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} g Protein pro Portion", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} g Protein werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Vitamin C", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Vitamin C", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Vitamin C", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} mg Vitamin C", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} mg Vitamin C pro Portion", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} mg Vitamin C sind erforderlich", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} mg Eisen", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} mg Eisen", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} mg Eisen", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} mg Eisen", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} mg Eisen pro Portion", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} mg Eisen werden benötigt", "bedeutung": "≥ {b4}"}
+      ],
+      [
+        {"text": "{a51} mg Natrium", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} mg Natrium", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} mg Natrium", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} mg Natrium", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} mg Natrium pro Portion", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} mg Natrium sind erlaubt", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

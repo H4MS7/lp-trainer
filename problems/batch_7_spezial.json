@@ -1,0 +1,1248 @@
+[
+  {
+    "titel": "Getränkeabfüllung",
+    "beschreibung": "Eine Getränkefabrik füllt zwei Sorten ab: Saft A und Saft B. Der Gewinn beträgt 3€ pro Liter für Saft A und 5€ pro Liter für Saft B. Die Abfüllanlage hat eine Kapazität von 8000 Litern pro Tag. An Rohstoffen stehen 6000 Einheiten Zucker zur Verfügung, wobei Saft A 2 Einheiten und Saft B 3 Einheiten pro Liter benötigt. Außerdem gilt die Vorgabe: Produkt B darf höchstens 3-mal so viel wie A produziert werden, also x2 ≤ 3x1.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter Saft A pro Tag",
+      "x2 = Liter Saft B pro Tag"
+    ],
+    "zielfunktion": "Z = 3x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 8000 (Abfüllkapazität)",
+      "2x1 + 3x2 ≤ 6000 (Zucker)",
+      "-3x1 + x2 ≤ 0 (Verhältnis B zu A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verhältnisbedingung 'B darf höchstens 3-mal so viel wie A' bedeutet x2 ≤ 3x1. Umgestellt ergibt das: -3x1 + x2 ≤ 0. Achten Sie darauf, welche Variable auf welcher Seite steht.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Liter für Saft A",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "5€ pro Liter für Saft B",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Kapazität von 8000 Litern pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 8000"
+          }
+        ],
+        [
+          {
+            "text": "Saft A 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Saft B 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "6000 Einheiten Zucker",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "Produkt B darf höchstens 3-mal so viel wie A",
+            "bedeutung": "-3x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bekleidungsfabrik",
+    "beschreibung": "Eine Bekleidungsfabrik produziert Hosen und Hemden. Der Deckungsbeitrag beträgt 25€ pro Hose und 18€ pro Hemd. Pro Hose werden 4 Meter Stoff benötigt, pro Hemd 2 Meter. Insgesamt stehen 2000 Meter Stoff zur Verfügung. Die Nähzeit beträgt 3 Stunden pro Hose und 2 Stunden pro Hemd bei einer Gesamtkapazität von 1500 Stunden. Laut Vertrag müssen mindestens doppelt so viele Hosen wie Hemden produziert werden, also x1 ≥ 2x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Hosen",
+      "x2 = Anzahl Hemden"
+    ],
+    "zielfunktion": "Z = 25x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 2000 (Stoff)",
+      "3x1 + 2x2 ≤ 1500 (Nähzeit)",
+      "x1 ≥ 2x2 (Vertragsverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens doppelt so viele Hosen wie Hemden' heißt x1 ≥ 2x2. Umgestellt: x1 - 2x2 ≥ 0. Das ist eine ≥-Nebenbedingung!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ pro Hose",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "18€ pro Hemd",
+          "bedeutung": "18 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Meter Stoff",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "pro Hemd 2 Meter",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "2000 Meter Stoff",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "3 Stunden pro Hose",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "2 Stunden pro Hemd",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 1500 Stunden",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "mindestens doppelt so viele Hosen wie Hemden",
+            "bedeutung": "x₁ ≥ 2x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Druckerei",
+    "beschreibung": "Eine Druckerei produziert Broschüren (Typ A) und Flyer (Typ B). Die Druckkosten betragen 2€ pro Broschüre und 1€ pro Flyer. Für jede Broschüre werden 3 Minuten Maschinenzeit benötigt, für jeden Flyer 1 Minute, bei einer Gesamtkapazität von 9000 Minuten. An Papier stehen 7000 Bogen zur Verfügung, wobei eine Broschüre 2 Bogen und ein Flyer 1 Bogen verbraucht. Die Gesamtauflage muss mindestens 5000 Stück betragen, also x1 + x2 ≥ 5000. Ziel ist die Minimierung der Kosten.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Broschüren",
+      "x2 = Anzahl Flyer"
+    ],
+    "zielfunktion": "Z = 2x1 + x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 9000 (Maschinenzeit)",
+      "2x1 + x2 ≤ 7000 (Papier)",
+      "x1 + x2 ≥ 5000 (Mindestauflage)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier wird minimiert! Die Mindestauflage x1 + x2 ≥ 5000 ist eine ≥-Bedingung. Bei Minimierung sucht man den kostenminimalen Punkt, der trotzdem alle Mindestanforderungen erfüllt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro Broschüre",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "1€ pro Flyer",
+          "bedeutung": "1 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Minuten Maschinenzeit",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "für jeden Flyer 1 Minute",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 9000 Minuten",
+            "bedeutung": "≤ 9000"
+          }
+        ],
+        [
+          {
+            "text": "eine Broschüre 2 Bogen",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "ein Flyer 1 Bogen",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "7000 Bogen",
+            "bedeutung": "≤ 7000"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtauflage muss mindestens 5000 Stück betragen",
+            "bedeutung": "x₁ + x₂ ≥ 5000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikladen",
+    "beschreibung": "Ein Elektronikladen bestellt Laptops und Tablets. Pro Laptop erzielt er einen Gewinn von 120€, pro Tablet 80€. Das Lager bietet Platz für maximal 300 Geräte. Das Budget beträgt 90000€, wobei ein Laptop 500€ und ein Tablet 250€ kostet. Das Verhältnis von Laptops zu Tablets soll genau 1 zu 2 sein, also 2x1 = x2. Ziel ist die Gewinnmaximierung.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Laptops",
+      "x2 = Anzahl Tablets"
+    ],
+    "zielfunktion": "Z = 120x1 + 80x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 300 (Lagerplatz)",
+      "500x1 + 250x2 ≤ 90000 (Budget)",
+      "2x1 = x2 (Verhältnis 1:2)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichungsnebenbedingung 2x1 = x2 bedeutet: Für jedes Laptop müssen genau 2 Tablets bestellt werden. Dies ist eine Gleichung (=), keine Ungleichung! Die zulässige Menge ist dadurch nur noch eine Linie statt einer Fläche.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 120€",
+          "bedeutung": "120 × x₁"
+        },
+        {
+          "text": "pro Tablet 80€",
+          "bedeutung": "80 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Platz für maximal 300 Geräte",
+            "bedeutung": "x₁ + x₂ ≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "ein Laptop 500€",
+            "bedeutung": "500x₁"
+          },
+          {
+            "text": "ein Tablet 250€",
+            "bedeutung": "+ 250x₂"
+          },
+          {
+            "text": "Budget beträgt 90000€",
+            "bedeutung": "≤ 90000"
+          }
+        ],
+        [
+          {
+            "text": "Verhältnis von Laptops zu Tablets soll genau 1 zu 2 sein",
+            "bedeutung": "2x₁ = x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zementwerk",
+    "beschreibung": "Ein Zementwerk stellt zwei Sorten her: Standardzement und Spezialzement. Die Produktionskosten betragen 40€ pro Tonne Standardzement und 65€ pro Tonne Spezialzement. Pro Tonne Standardzement werden 2 Stunden Brennofenzeit benötigt, pro Tonne Spezialzement 4 Stunden, bei maximal 1200 Stunden Brennofenzeit. An Energie stehen 800 Einheiten zur Verfügung, wobei Standardzement 1 Einheit und Spezialzement 3 Einheiten pro Tonne verbraucht. Der Kunde verlangt genau 500 Tonnen pro Tag, also x1 + x2 = 500. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Standardzement pro Tag",
+      "x2 = Tonnen Spezialzement pro Tag"
+    ],
+    "zielfunktion": "Z = 40x1 + 65x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 1200 (Brennofenzeit)",
+      "x1 + 3x2 ≤ 800 (Energie)",
+      "x1 + x2 = 500 (Tagesproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichungsnebenbedingung x1 + x2 = 500 bedeutet: Es müssen exakt 500 Tonnen produziert werden, nicht mehr und nicht weniger. Gleichungen schränken die Lösung stark ein. Zusammen mit Minimierung suchen wir die günstigste Mischung bei festem Gesamtoutput.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "40€ pro Tonne Standardzement",
+          "bedeutung": "40 × x₁"
+        },
+        {
+          "text": "65€ pro Tonne Spezialzement",
+          "bedeutung": "65 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Brennofenzeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Tonne Spezialzement 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "maximal 1200 Stunden Brennofenzeit",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "Standardzement 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Spezialzement 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "800 Einheiten",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "genau 500 Tonnen pro Tag",
+            "bedeutung": "x₁ + x₂ = 500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Obsthandel",
+    "beschreibung": "Ein Obsthändler verkauft Äpfel (Sorte A) und Birnen (Sorte B). Der Gewinn beträgt 4€ pro Kiste Äpfel und 6€ pro Kiste Birnen. Im Lager ist Platz für maximal 600 Kisten insgesamt. An Kühlkapazität stehen 400 Einheiten zur Verfügung, wobei Äpfel 1 Einheit und Birnen 2 Einheiten benötigen. Aufgrund bestehender Lieferverträge müssen mindestens 100 Kisten Äpfel und mindestens 50 Kisten Birnen vorrätig sein.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Kisten Äpfel",
+      "x2 = Kisten Birnen"
+    ],
+    "zielfunktion": "Z = 4x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 600 (Lagerplatz)",
+      "x1 + 2x2 ≤ 400 (Kühlung)",
+      "x1 ≥ 100 (Mindestmenge Äpfel)",
+      "x2 ≥ 50 (Mindestmenge Birnen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindestmengen x1 ≥ 100 und x2 ≥ 50 sind ≥-Nebenbedingungen, die den zulässigen Bereich nach unten begrenzen. Der optimale Punkt liegt dann in einem kleineren zulässigen Bereich.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "4€ pro Kiste Äpfel",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "6€ pro Kiste Birnen",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Platz für maximal 600 Kisten",
+            "bedeutung": "x₁ + x₂ ≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Äpfel 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Birnen 2 Einheiten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "400 Einheiten",
+            "bedeutung": "≤ 400"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 100 Kisten Äpfel",
+            "bedeutung": "x₁ ≥ 100"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 50 Kisten Birnen",
+            "bedeutung": "x₂ ≥ 50"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Stahlwerk",
+    "beschreibung": "Ein Stahlwerk produziert zwei Legierungen: Legierung A und Legierung B. Der Erlös beträgt 80€ pro Tonne Legierung A und 120€ pro Tonne Legierung B. Pro Tonne Legierung A werden 5 Stunden Schmelzzeit benötigt, pro Tonne Legierung B 3 Stunden, bei maximal 1500 Stunden. An Erz stehen 2000 Tonnen zur Verfügung, wobei Legierung A 4 Tonnen und Legierung B 2 Tonnen Erz pro Tonne benötigt. Legierung B braucht höchstens halb so viel wie Legierung A, also x2 ≤ 0,5x1.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Tonnen Legierung A",
+      "x2 = Tonnen Legierung B"
+    ],
+    "zielfunktion": "Z = 80x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 1500 (Schmelzzeit)",
+      "4x1 + 2x2 ≤ 2000 (Erz)",
+      "-0,5x1 + x2 ≤ 0 (Verhältnis B zu A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'Legierung B höchstens halb so viel wie A' heißt x2 ≤ 0,5x1. Umgestellt: -0,5x1 + x2 ≤ 0. Der Faktor 0,5 kommt von 'halb so viel'. Achten Sie auf die Richtung: B wird durch A begrenzt, nicht umgekehrt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "80€ pro Tonne Legierung A",
+          "bedeutung": "80 × x₁"
+        },
+        {
+          "text": "120€ pro Tonne Legierung B",
+          "bedeutung": "120 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Stunden Schmelzzeit",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "pro Tonne Legierung B 3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 1500 Stunden",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "Legierung A 4 Tonnen",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Legierung B 2 Tonnen",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "2000 Tonnen",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "Legierung B braucht höchstens halb so viel wie Legierung A",
+            "bedeutung": "-0,5x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werft",
+    "beschreibung": "Eine Werft baut Segelboote (Typ A) und Motorboote (Typ B). Der Gewinn beträgt 15000€ pro Segelboot und 22000€ pro Motorboot. Pro Segelboot werden 200 Arbeitsstunden benötigt, pro Motorboot 300 Arbeitsstunden. Die Werft hat eine Kapazität von maximal 6000 Arbeitsstunden. An Material stehen 4000 Einheiten zur Verfügung, wobei ein Segelboot 100 Einheiten und ein Motorboot 200 Einheiten verbraucht. Es gibt eine Mindestbestellung von 5 Segelbooten und 3 Motorbooten. Außerdem können höchstens 25 Boote insgesamt gebaut werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Segelboote",
+      "x2 = Anzahl Motorboote"
+    ],
+    "zielfunktion": "Z = 15000x1 + 22000x2 (max)",
+    "nebenbedingungen": [
+      "200x1 + 300x2 ≤ 6000 (Arbeitsstunden)",
+      "100x1 + 200x2 ≤ 4000 (Material)",
+      "x1 ≥ 5 (Mindestbestellung Segelboote)",
+      "x2 ≥ 3 (Mindestbestellung Motorboote)",
+      "x1 + x2 ≤ 25 (Gesamtkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem hat sowohl ≤-Bedingungen (Kapazitäten, Gesamtzahl) als auch ≥-Bedingungen (Mindestbestellungen). Der zulässige Bereich wird von beiden Seiten eingeschränkt. Prüfen Sie, ob der zulässige Bereich nicht leer ist!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "15000€ pro Segelboot",
+          "bedeutung": "15000 × x₁"
+        },
+        {
+          "text": "22000€ pro Motorboot",
+          "bedeutung": "22000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "200 Arbeitsstunden",
+            "bedeutung": "200x₁"
+          },
+          {
+            "text": "pro Motorboot 300 Arbeitsstunden",
+            "bedeutung": "+ 300x₂"
+          },
+          {
+            "text": "maximal 6000 Arbeitsstunden",
+            "bedeutung": "≤ 6000"
+          }
+        ],
+        [
+          {
+            "text": "ein Segelboot 100 Einheiten",
+            "bedeutung": "100x₁"
+          },
+          {
+            "text": "ein Motorboot 200 Einheiten",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "4000 Einheiten",
+            "bedeutung": "≤ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Mindestbestellung von 5 Segelbooten",
+            "bedeutung": "x₁ ≥ 5"
+          }
+        ],
+        [
+          {
+            "text": "3 Motorbooten",
+            "bedeutung": "x₂ ≥ 3"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 25 Boote insgesamt",
+            "bedeutung": "x₁ + x₂ ≤ 25"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiefabrik",
+    "beschreibung": "Eine Chemiefabrik stellt Chemikalie A und Chemikalie B her. Der Gewinn beträgt 10€ pro Liter Chemikalie A und 8€ pro Liter Chemikalie B. An Reaktorkapazität stehen 3000 Stunden zur Verfügung, wobei Chemikalie A 2 Stunden und Chemikalie B 1 Stunde pro Liter benötigt. Die Gesamtproduktion darf maximal 2000 Liter betragen. Es gilt die Vorschrift: Mindestens 30% des Gesamtoutputs muss Chemikalie A sein, also x1 ≥ 0,3(x1 + x2), was umgeformt 0,7x1 - 0,3x2 ≥ 0 ergibt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Liter Chemikalie A",
+      "x2 = Liter Chemikalie B"
+    ],
+    "zielfunktion": "Z = 10x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + x2 ≤ 3000 (Reaktorkapazität)",
+      "x1 + x2 ≤ 2000 (Gesamtproduktion)",
+      "0,7x1 - 0,3x2 ≥ 0 (Mindestanteil A)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Prozentbedingung 'mindestens 30% des Gesamtoutputs' wird so formuliert: x1 ≥ 0,3(x1 + x2). Ausmultiplizieren: x1 ≥ 0,3x1 + 0,3x2. Umstellen: 0,7x1 - 0,3x2 ≥ 0. Diese Umformung ist ein häufiger Stolperstein!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "10€ pro Liter Chemikalie A",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "8€ pro Liter Chemikalie B",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Chemikalie A 2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Chemikalie B 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "3000 Stunden",
+            "bedeutung": "≤ 3000"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtproduktion darf maximal 2000 Liter betragen",
+            "bedeutung": "x₁ + x₂ ≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "Mindestens 30% des Gesamtoutputs muss Chemikalie A sein",
+            "bedeutung": "0,7x₁ - 0,3x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbellager",
+    "beschreibung": "Ein Möbellager muss Tische und Stühle für eine Bestellung produzieren. Die Herstellungskosten betragen 50€ pro Tisch und 30€ pro Stuhl. Für die Montage stehen 800 Stunden zur Verfügung, wobei ein Tisch 4 Stunden und ein Stuhl 2 Stunden benötigt. Es müssen insgesamt mindestens 200 Möbelstücke geliefert werden. Außerdem sollen mindestens doppelt so viele Stühle wie Tische produziert werden, also x2 ≥ 2x1. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tische",
+      "x2 = Anzahl Stühle"
+    ],
+    "zielfunktion": "Z = 50x1 + 30x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 800 (Montage)",
+      "x1 + x2 ≥ 200 (Mindestlieferung)",
+      "-2x1 + x2 ≥ 0 (Verhältnis Stühle zu Tische)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens doppelt so viele Stühle wie Tische' bedeutet x2 ≥ 2x1, also -2x1 + x2 ≥ 0. Hier wird minimiert bei gleichzeitiger Mindestliefermenge (≥ 200) und Verhältnisbedingung. Der zulässige Bereich wird von ≥-Bedingungen nach unten und von ≤-Bedingung nach oben begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50€ pro Tisch",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "30€ pro Stuhl",
+          "bedeutung": "30 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "ein Tisch 4 Stunden",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "ein Stuhl 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "800 Stunden",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 200 Möbelstücke",
+            "bedeutung": "x₁ + x₂ ≥ 200"
+          }
+        ],
+        [
+          {
+            "text": "mindestens doppelt so viele Stühle wie Tische",
+            "bedeutung": "-2x₁ + x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Softwarefirma",
+    "beschreibung": "Eine Softwarefirma entwickelt Webapplikationen (Projekt A) und Mobile Apps (Projekt B). Der Gewinn beträgt 8000€ pro Webapplikation und 12000€ pro Mobile App. Das Budget ist auf 120000€ begrenzt, wobei eine Webapplikation 10000€ und eine Mobile App 15000€ kostet. An Entwicklerstunden stehen 2000 zur Verfügung, wobei Projekt A 100 Stunden und Projekt B 200 Stunden benötigt. Es müssen insgesamt mindestens 6 Projekte realisiert werden. Außerdem dürfen höchstens 3-mal so viele Mobile Apps wie Webapplikationen entwickelt werden, also x2 ≤ 3x1.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Webapplikationen",
+      "x2 = Anzahl Mobile Apps"
+    ],
+    "zielfunktion": "Z = 8000x1 + 12000x2 (max)",
+    "nebenbedingungen": [
+      "10000x1 + 15000x2 ≤ 120000 (Budget)",
+      "100x1 + 200x2 ≤ 2000 (Entwicklerstunden)",
+      "x1 + x2 ≥ 6 (Mindestprojekte)",
+      "-3x1 + x2 ≤ 0 (Verhältnis Apps zu Web)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei verschiedene Nebenbedingungstypen in einem Problem: Budget ≤ (Kapazität), Mindestprojekte ≥ (Untergrenze) und Verhältnis x2 ≤ 3x1 (umgestellt: -3x1 + x2 ≤ 0). Achten Sie bei jeder Bedingung auf die korrekte Richtung!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8000€ pro Webapplikation",
+          "bedeutung": "8000 × x₁"
+        },
+        {
+          "text": "12000€ pro Mobile App",
+          "bedeutung": "12000 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "eine Webapplikation 10000€",
+            "bedeutung": "10000x₁"
+          },
+          {
+            "text": "eine Mobile App 15000€",
+            "bedeutung": "+ 15000x₂"
+          },
+          {
+            "text": "Budget ist auf 120000€ begrenzt",
+            "bedeutung": "≤ 120000"
+          }
+        ],
+        [
+          {
+            "text": "Projekt A 100 Stunden",
+            "bedeutung": "100x₁"
+          },
+          {
+            "text": "Projekt B 200 Stunden",
+            "bedeutung": "+ 200x₂"
+          },
+          {
+            "text": "2000",
+            "bedeutung": "≤ 2000"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 6 Projekte",
+            "bedeutung": "x₁ + x₂ ≥ 6"
+          }
+        ],
+        [
+          {
+            "text": "höchstens 3-mal so viele Mobile Apps wie Webapplikationen",
+            "bedeutung": "-3x₁ + x₂ ≤ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Papiermühle",
+    "beschreibung": "Eine Papiermühle produziert Recyclingpapier (Sorte A) und Premiumpapier (Sorte B). Die Kosten betragen 3€ pro Tonne Recyclingpapier und 7€ pro Tonne Premiumpapier. Die Tagesproduktion muss genau 400 Tonnen betragen, also x1 + x2 = 400. Für die Qualitätskontrolle stehen 600 Stunden zur Verfügung, wobei Recyclingpapier 1 Stunde und Premiumpapier 2 Stunden pro Tonne benötigt. Außerdem muss der Qualitätsindex mindestens 300 Punkte erreichen, wobei Recyclingpapier 0,5 Punkte und Premiumpapier 1 Punkt pro Tonne beiträgt, also 0,5x1 + x2 ≥ 300. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Recyclingpapier",
+      "x2 = Tonnen Premiumpapier"
+    ],
+    "zielfunktion": "Z = 3x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 400 (Tagesproduktion)",
+      "x1 + 2x2 ≤ 600 (Qualitätskontrolle)",
+      "0,5x1 + x2 ≥ 300 (Qualitätsindex)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem kombiniert eine Gleichung (= 400) mit einer ≥-Bedingung (Qualitätsindex). Die Gleichung fixiert die Gesamtmenge, die ≥-Bedingung sichert die Mindestqualität. Bei Minimierung sucht man die billigste Mischung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "3€ pro Tonne Recyclingpapier",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "7€ pro Tonne Premiumpapier",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagesproduktion muss genau 400 Tonnen betragen",
+            "bedeutung": "x₁ + x₂ = 400"
+          }
+        ],
+        [
+          {
+            "text": "Recyclingpapier 1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Premiumpapier 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "600 Stunden",
+            "bedeutung": "≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Recyclingpapier 0,5 Punkte",
+            "bedeutung": "0,5x₁"
+          },
+          {
+            "text": "Premiumpapier 1 Punkt",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "mindestens 300 Punkte",
+            "bedeutung": "≥ 300"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Ölraffinerie",
+    "beschreibung": "Eine Ölraffinerie mischt Rohöl A und Rohöl B zu Benzin. Die Kosten betragen 50€ pro Barrel Rohöl A und 70€ pro Barrel Rohöl B. Es müssen genau 1000 Barrel Benzin produziert werden, also x1 + x2 = 1000. Die Oktanzahl von Rohöl A beträgt 85 und die von Rohöl B beträgt 95. Die Oktanzahl des Gemischs muss mindestens 88 betragen, also 85x1 + 95x2 ≥ 88000. Gleichzeitig darf die Oktanzahl höchstens 92 betragen, also 85x1 + 95x2 ≤ 92000. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Barrel Rohöl A",
+      "x2 = Barrel Rohöl B"
+    ],
+    "zielfunktion": "Z = 50x1 + 70x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "85x1 + 95x2 ≥ 88000 (Mindest-Oktanzahl)",
+      "85x1 + 95x2 ≤ 92000 (Maximal-Oktanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bei Mischungsproblemen mit Qualitätsgrenzen: Die Mindestoktanzahl 88 bei 1000 Barrel ergibt die ≥-Bedingung 85x1 + 95x2 ≥ 88 × 1000 = 88000. Die Maximaloktanzahl 92 ergibt analog 85x1 + 95x2 ≤ 92000. Beides zusammen bildet einen Korridor.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "50€ pro Barrel Rohöl A",
+          "bedeutung": "50 × x₁"
+        },
+        {
+          "text": "70€ pro Barrel Rohöl B",
+          "bedeutung": "70 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "genau 1000 Barrel Benzin",
+            "bedeutung": "x₁ + x₂ = 1000"
+          }
+        ],
+        [
+          {
+            "text": "Oktanzahl von Rohöl A beträgt 85",
+            "bedeutung": "85x₁"
+          },
+          {
+            "text": "Rohöl B beträgt 95",
+            "bedeutung": "+ 95x₂"
+          },
+          {
+            "text": "mindestens 88",
+            "bedeutung": "≥ 88000"
+          }
+        ],
+        [
+          {
+            "text": "Oktanzahl von Rohöl A beträgt 85",
+            "bedeutung": "85x₁"
+          },
+          {
+            "text": "Rohöl B beträgt 95",
+            "bedeutung": "+ 95x₂"
+          },
+          {
+            "text": "höchstens 92",
+            "bedeutung": "≤ 92000"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textilfärberei",
+    "beschreibung": "Eine Textilfärberei produziert Stoff in Farbe A und Farbe B. Der Erlös beträgt 15€ pro Meter Farbe A und 20€ pro Meter Farbe B. Pro Meter Farbe A werden 2 Stunden Färbezeit benötigt, pro Meter Farbe B 3 Stunden, bei maximal 1800 Stunden. An Farbstoff stehen 1000 Einheiten zur Verfügung, wobei Farbe A 1 Einheit und Farbe B 2 Einheiten verbraucht. Farbe B soll mindestens 40% der Gesamtproduktion ausmachen, also x2 ≥ 0,4(x1 + x2), was umgeformt -0,4x1 + 0,6x2 ≥ 0 ergibt.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Meter Stoff in Farbe A",
+      "x2 = Meter Stoff in Farbe B"
+    ],
+    "zielfunktion": "Z = 15x1 + 20x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 1800 (Färbezeit)",
+      "x1 + 2x2 ≤ 1000 (Farbstoff)",
+      "-0,4x1 + 0,6x2 ≥ 0 (Mindestanteil Farbe B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'mindestens 40% der Gesamtproduktion' heißt x2 ≥ 0,4(x1 + x2). Auflösen: x2 ≥ 0,4x1 + 0,4x2, also 0,6x2 ≥ 0,4x1, also -0,4x1 + 0,6x2 ≥ 0. Prozentbedingungen beziehen sich immer auf die Gesamtmenge!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "15€ pro Meter Farbe A",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "20€ pro Meter Farbe B",
+          "bedeutung": "20 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Färbezeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Meter Farbe B 3 Stunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 1800 Stunden",
+            "bedeutung": "≤ 1800"
+          }
+        ],
+        [
+          {
+            "text": "Farbe A 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Farbe B 2 Einheiten",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "1000 Einheiten",
+            "bedeutung": "≤ 1000"
+          }
+        ],
+        [
+          {
+            "text": "Farbe B soll mindestens 40% der Gesamtproduktion ausmachen",
+            "bedeutung": "-0,4x₁ + 0,6x₂ ≥ 0"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baumschule",
+    "beschreibung": "Eine Baumschule züchtet Obstbäume (Sorte A) und Zierbäume (Sorte B). Der Gewinn beträgt 35€ pro Obstbaum und 45€ pro Zierbaum. An Beetfläche stehen 1200 Quadratmeter zur Verfügung, wobei ein Obstbaum 3 Quadratmeter und ein Zierbaum 4 Quadratmeter benötigt. Die Bewässerungskapazität beträgt 800 Einheiten, wobei ein Obstbaum 2 Einheiten und ein Zierbaum 3 Einheiten braucht. Es darf nicht weniger von Sorte A als von Sorte B gezüchtet werden, also x1 ≥ x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Obstbäume",
+      "x2 = Anzahl Zierbäume"
+    ],
+    "zielfunktion": "Z = 35x1 + 45x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≤ 1200 (Beetfläche)",
+      "2x1 + 3x2 ≤ 800 (Bewässerung)",
+      "x1 ≥ x2 (Mindestens gleich viel A wie B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Bedingung 'nicht weniger von A als von B' heißt x1 ≥ x2, also x1 - x2 ≥ 0. Das ist eine einfache Vergleichsbedingung zwischen den beiden Variablen. Grafisch teilt diese Linie x1 = x2 den ersten Quadranten diagonal.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "35€ pro Obstbaum",
+          "bedeutung": "35 × x₁"
+        },
+        {
+          "text": "45€ pro Zierbaum",
+          "bedeutung": "45 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "ein Obstbaum 3 Quadratmeter",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "ein Zierbaum 4 Quadratmeter",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "1200 Quadratmeter",
+            "bedeutung": "≤ 1200"
+          }
+        ],
+        [
+          {
+            "text": "ein Obstbaum 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "ein Zierbaum 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "800 Einheiten",
+            "bedeutung": "≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "nicht weniger von Sorte A als von Sorte B",
+            "bedeutung": "x₁ ≥ x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Recyclinganlage",
+    "beschreibung": "Eine Recyclinganlage verarbeitet Kunststoff (Typ A) und Glas (Typ B). Die Verarbeitungskosten betragen 6€ pro Tonne Kunststoff und 4€ pro Tonne Glas. Die Anlage hat eine Kapazität von maximal 500 Tonnen pro Tag. Es müssen mindestens 150 Tonnen Kunststoff und mindestens 100 Tonnen Glas verarbeitet werden. Die Sortieranlage kann 300 Einheiten leisten, wobei Kunststoff 1 Einheit und Glas 0,5 Einheiten pro Tonne benötigt. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Tonnen Kunststoff pro Tag",
+      "x2 = Tonnen Glas pro Tag"
+    ],
+    "zielfunktion": "Z = 6x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 500 (Anlagenkapazität)",
+      "x1 + 0,5x2 ≤ 300 (Sortieranlage)",
+      "x1 ≥ 150 (Mindestmenge Kunststoff)",
+      "x2 ≥ 100 (Mindestmenge Glas)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bei Minimierung mit Mindestmengen muss der zulässige Bereich sowohl durch Obergrenzen (≤ Kapazitäten) als auch durch Untergrenzen (≥ Mindestmengen) begrenzt sein. Der kostenminimale Punkt erfüllt alle Bedingungen gleichzeitig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "6€ pro Tonne Kunststoff",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "4€ pro Tonne Glas",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Kapazität von maximal 500 Tonnen pro Tag",
+            "bedeutung": "x₁ + x₂ ≤ 500"
+          }
+        ],
+        [
+          {
+            "text": "Kunststoff 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Glas 0,5 Einheiten",
+            "bedeutung": "+ 0,5x₂"
+          },
+          {
+            "text": "300 Einheiten",
+            "bedeutung": "≤ 300"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 150 Tonnen Kunststoff",
+            "bedeutung": "x₁ ≥ 150"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 100 Tonnen Glas",
+            "bedeutung": "x₂ ≥ 100"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Konservenfabrik",
+    "beschreibung": "Eine Konservenfabrik produziert Dosentomaten (Typ A) und Dosenmais (Typ B). Der Gewinn beträgt 2€ pro Dose Tomaten und 3€ pro Dose Mais. Die Abfüllmaschine schafft pro Schicht 4000 Dosen, wobei Tomaten 1 Einheit und Mais 2 Einheiten Maschinenzeit kosten. An Rohmaterial stehen 3000 Einheiten zur Verfügung, wobei Tomaten 1 Einheit und Mais 1 Einheit pro Dose benötigen. Ein Großkunde bestellt mindestens 500 Dosen Tomaten und mindestens 800 Dosen Mais. Die Gesamtkapazität beträgt maximal 2500 Dosen.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Dosen Tomaten",
+      "x2 = Anzahl Dosen Mais"
+    ],
+    "zielfunktion": "Z = 2x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 4000 (Maschinenzeit)",
+      "x1 + x2 ≤ 3000 (Rohmaterial)",
+      "x1 ≥ 500 (Mindestbestellung Tomaten)",
+      "x2 ≥ 800 (Mindestbestellung Mais)",
+      "x1 + x2 ≤ 2500 (Gesamtkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem hat fünf Nebenbedingungen: zwei ≤-Kapazitäten, zwei ≥-Mindestbestellungen und eine ≤-Gesamtkapazität. Prüfen Sie, ob die Mindestbestellungen zusammen (500 + 800 = 1300) die Gesamtkapazität von 2500 nicht überschreiten.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro Dose Tomaten",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "3€ pro Dose Mais",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tomaten 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Mais 2 Einheiten Maschinenzeit",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "4000 Dosen",
+            "bedeutung": "≤ 4000"
+          }
+        ],
+        [
+          {
+            "text": "Tomaten 1 Einheit",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Mais 1 Einheit pro Dose",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "3000 Einheiten",
+            "bedeutung": "≤ 3000"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 500 Dosen Tomaten",
+            "bedeutung": "x₁ ≥ 500"
+          }
+        ],
+        [
+          {
+            "text": "mindestens 800 Dosen Mais",
+            "bedeutung": "x₂ ≥ 800"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtkapazität beträgt maximal 2500 Dosen",
+            "bedeutung": "x₁ + x₂ ≤ 2500"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauhaus",
+    "beschreibung": "Ein Brauhaus stellt Helles (Bier A) und Dunkles (Bier B) her. Der Gewinn beträgt 5€ pro Fass Helles und 7€ pro Fass Dunkles. Pro Fass Helles werden 2 Stunden Brauzeit benötigt, pro Fass Dunkles 4 Stunden, bei einer Gesamtkapazität von 2400 Stunden. An Lagertankkapazität stehen 800 Fässer zur Verfügung. Das Rezept verlangt: Es muss doppelt so viel Malz wie Hopfen verwendet werden, was sich in der Produktion so niederschlägt, dass genau doppelt so viel Helles wie Dunkles gebraut wird, also x1 = 2x2.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Fässer Helles",
+      "x2 = Fässer Dunkles"
+    ],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 2400 (Brauzeit)",
+      "x1 + x2 ≤ 800 (Lagertank)",
+      "x1 = 2x2 (Rezeptverhältnis)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gleichung x1 = 2x2 ist eine strikte Verhältnisbedingung: Für jedes Fass Dunkles müssen genau 2 Fässer Helles gebraut werden. Dies reduziert den zulässigen Bereich auf eine Linie. Das Optimum liegt auf dieser Linie am Schnittpunkt mit einer der anderen Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "5€ pro Fass Helles",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "7€ pro Fass Dunkles",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Stunden Brauzeit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Fass Dunkles 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "Gesamtkapazität von 2400 Stunden",
+            "bedeutung": "≤ 2400"
+          }
+        ],
+        [
+          {
+            "text": "800 Fässer",
+            "bedeutung": "x₁ + x₂ ≤ 800"
+          }
+        ],
+        [
+          {
+            "text": "genau doppelt so viel Helles wie Dunkles",
+            "bedeutung": "x₁ = 2x₂"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bioreaktor",
+    "beschreibung": "Ein Biotechnologieunternehmen betreibt einen Bioreaktor zur Herstellung von Enzym A und Enzym B. Die Herstellungskosten betragen 25€ pro Einheit Enzym A und 40€ pro Einheit Enzym B. Die Reaktorkapazität beträgt maximal 600 Einheiten. An Nährstoff stehen 1500 Einheiten zur Verfügung, wobei Enzym A 2 Einheiten und Enzym B 3 Einheiten Nährstoff benötigt. Das Verhältnis muss exakt 1 zu 3 sein, also x2 = 3x1. Der Gesamtertrag muss mindestens 400 Einheiten betragen, also x1 + x2 ≥ 400. Die Kosten sollen minimiert werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Einheiten Enzym A",
+      "x2 = Einheiten Enzym B"
+    ],
+    "zielfunktion": "Z = 25x1 + 40x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 600 (Reaktorkapazität)",
+      "2x1 + 3x2 ≤ 1500 (Nährstoff)",
+      "x2 = 3x1 (Verhältnis 1:3)",
+      "x1 + x2 ≥ 400 (Mindest-Gesamtertrag)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Dieses Problem kombiniert drei schwierige Nebenbedingungstypen: eine Gleichung (x2 = 3x1), eine ≥-Bedingung (Mindestertrag) und ≤-Bedingungen (Kapazitäten). Die Gleichung reduziert das Problem quasi auf eine Variable. Setzen Sie x2 = 3x1 in die anderen Bedingungen ein!",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "25€ pro Einheit Enzym A",
+          "bedeutung": "25 × x₁"
+        },
+        {
+          "text": "40€ pro Einheit Enzym B",
+          "bedeutung": "40 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Reaktorkapazität beträgt maximal 600 Einheiten",
+            "bedeutung": "x₁ + x₂ ≤ 600"
+          }
+        ],
+        [
+          {
+            "text": "Enzym A 2 Einheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Enzym B 3 Einheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "1500 Einheiten",
+            "bedeutung": "≤ 1500"
+          }
+        ],
+        [
+          {
+            "text": "Verhältnis muss exakt 1 zu 3 sein",
+            "bedeutung": "x₂ = 3x₁"
+          }
+        ],
+        [
+          {
+            "text": "Gesamtertrag muss mindestens 400 Einheiten betragen",
+            "bedeutung": "x₁ + x₂ ≥ 400"
+          }
+        ]
+      ]
+    }
+  }
+]

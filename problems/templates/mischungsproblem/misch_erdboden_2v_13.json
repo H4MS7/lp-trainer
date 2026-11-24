@@ -1,0 +1,39 @@
+{
+  "id": "misch_erdboden_2v_13",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Substrat A (kg)", "x2 = Menge Substrat B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Nährstoffgehalt", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Salzgehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 7,   "label": "Kosten Substrat A (EUR/kg)"},
+    "c2":  {"min": 2, "max": 9,   "label": "Kosten Substrat B (EUR/kg)"},
+    "a11": {"min": 2, "max": 8,   "label": "Nährstoffe in A (g/kg)"},
+    "a12": {"min": 3, "max": 10,  "label": "Nährstoffe in B (g/kg)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Nährstoffgehalt (g)"},
+    "a21": {"min": 1, "max": 4,   "label": "Salz in A (g/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Salz in B (g/kg)"},
+    "b2":  {"min": 25, "max": 90, "label": "Max. Salzgehalt (g)"}
+  },
+  "titel": "Pflanzsubstrat – Nährstoffe und Salz",
+  "beschreibung": "Eine Gärtnerei mischt Pflanzsubstrat aus zwei Komponenten. Substrat A kostet {c1} EUR pro kg, Substrat B kostet {c2} EUR pro kg. Substrat A enthält {a11} g Nährstoffe pro kg, Substrat B enthält {a12} g Nährstoffe pro kg. Die Mischung muss mindestens {b1} g Nährstoffe enthalten. Substrat A enthält {a21} g Salz pro kg, Substrat B enthält {a22} g Salz pro kg. Der Salzgehalt darf höchstens {b2} g betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Nährstoffgehalt und begrenztem Salzgehalt.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Substrat A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Substrat B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Nährstoffe pro kg, Substrat B enthält {a12} g Nährstoffe pro kg. Die Mischung muss mindestens {b1} g Nährstoffe enthalten", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Salz pro kg, Substrat B enthält {a22} g Salz pro kg. Der Salzgehalt darf höchstens {b2} g betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

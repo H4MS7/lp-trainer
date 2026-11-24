@@ -1,0 +1,637 @@
+[
+  {
+    "titel": "Halbleiter-Defektprüfung",
+    "beschreibung": "Ein Halbleiterhersteller setzt zwei Prüfverfahren ein: optische Prüfung und elektrische Prüfung. In der hochautomatisierten Chipfertigung müssen verschiedene Defekttypen zuverlässig identifiziert werden, bevor die Wafer die Produktion verlassen. Die optische Prüfung kostet 9€ pro Durchlauf und erkennt dabei 3 Defekttypen pro Durchlauf. Die elektrische Prüfung kostet 12€ pro Durchlauf und erkennt 3 Defekttypen pro Durchlauf. Pro Schicht müssen mindestens 310 Defekttypen abgedeckt werden. Die Prüfkapazität ist begrenzt: eine optische Prüfung benötigt 6 Stunden und eine elektrische Prüfung benötigt 4 Stunden, insgesamt stehen höchstens 985 Stunden zur Verfügung. Zudem dürfen maximal 887 Durchläufe durchgeführt werden, wobei eine optische Prüfung 2 Durchläufe und eine elektrische Prüfung 7 Durchläufe zählt. Der Qualitätsmanager sucht die kostenoptimale Kombination beider Prüfverfahren, die alle Anforderungen an die Defekterkennung erfüllt und die Kapazitätsgrenzen einhält.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Durchläufe optische Prüfung",
+      "x2 = Anzahl Durchläufe elektrische Prüfung"
+    ],
+    "zielfunktion": "Z = 9x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 3x2 ≥ 310 (Mindestabdeckung)",
+      "6x1 + 4x2 ≤ 985 (Zeitkapazität)",
+      "2x1 + 7x2 ≤ 887 (Prüfkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "optische Prüfung kostet 9€ pro Durchlauf",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "elektrische Prüfung kostet 12€ pro Durchlauf",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 3 Defekttypen pro Durchlauf",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "erkennt 3 Defekttypen pro Durchlauf",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 310 Defekttypen abgedeckt",
+            "bedeutung": "≥ 310"
+          }
+        ],
+        [
+          {
+            "text": "eine optische Prüfung benötigt 6 Stunden",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "eine elektrische Prüfung benötigt 4 Stunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 985 Stunden",
+            "bedeutung": "≤ 985"
+          }
+        ],
+        [
+          {
+            "text": "eine optische Prüfung 2 Durchläufe",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "eine elektrische Prüfung 7 Durchläufe",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "maximal 887 Durchläufe",
+            "bedeutung": "≤ 887"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lebensmittellabor-Kontaminationsprüfung",
+    "beschreibung": "Ein Lebensmittellabor setzt zwei Prüfverfahren ein: Schnelltest und Laboranalyse. Das Labor untersucht eingehende Lebensmittelproben auf verschiedene Kontaminationsarten und muss dabei strenge Sicherheitsstandards einhalten. Die Schnelltest kostet 9€ pro Test und erkennt dabei 7 Kontaminationsarten pro Test. Die Laboranalyse kostet 3€ pro Test und erkennt 5 Kontaminationsarten pro Test. Pro Schicht müssen mindestens 179 Kontaminationsarten abgedeckt werden. Die Testkapazität ist begrenzt: eine Schnelltest benötigt 5 Stunden und eine Laboranalyse benötigt 6 Stunden, insgesamt stehen höchstens 286 Stunden zur Verfügung. Zudem dürfen maximal 945 Tests durchgeführt werden, wobei eine Schnelltest 9 Tests und eine Laboranalyse 7 Tests zählt. Der Laborleiter möchte die Gesamttestkosten minimieren und gleichzeitig sicherstellen, dass alle vorgeschriebenen Kontaminationsarten abgedeckt werden.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tests Schnelltest",
+      "x2 = Anzahl Tests Laboranalyse"
+    ],
+    "zielfunktion": "Z = 9x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "7x1 + 5x2 ≥ 179 (Mindestabdeckung)",
+      "5x1 + 6x2 ≤ 286 (Zeitkapazität)",
+      "9x1 + 7x2 ≤ 945 (Testkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Schnelltest kostet 9€ pro Test",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "Laboranalyse kostet 3€ pro Test",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 7 Kontaminationsarten pro Test",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "erkennt 5 Kontaminationsarten pro Test",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 179 Kontaminationsarten abgedeckt",
+            "bedeutung": "≥ 179"
+          }
+        ],
+        [
+          {
+            "text": "eine Schnelltest benötigt 5 Stunden",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "eine Laboranalyse benötigt 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 286 Stunden",
+            "bedeutung": "≤ 286"
+          }
+        ],
+        [
+          {
+            "text": "eine Schnelltest 9 Tests",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "eine Laboranalyse 7 Tests",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "maximal 945 Tests",
+            "bedeutung": "≤ 945"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kfz-Inspektionsoptimierung",
+    "beschreibung": "Eine Kfz-Werkstatt setzt zwei Prüfverfahren ein: Sichtprüfung und Funktionsprüfung. Bei der Hauptuntersuchung müssen zahlreiche Prüfpunkte abgearbeitet werden, und die Werkstatt bietet zwei unterschiedlich gründliche Prüfmethoden an. Die Sichtprüfung kostet 13€ pro Prüfung und erkennt dabei 8 Prüfpunkte pro Prüfung. Die Funktionsprüfung kostet 6€ pro Prüfung und erkennt 6 Prüfpunkte pro Prüfung. Pro Schicht müssen mindestens 183 Prüfpunkte abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 167 Prüfungen zur Verfügung, wobei eine Sichtprüfung 8 Prüfungen und eine Funktionsprüfung 5 Prüfungen beansprucht. Das Ziel ist die Minimierung der Gesamtprüfkosten bei vollständiger Abdeckung aller vorgeschriebenen Prüfpunkte und Einhaltung der Kapazitätsgrenze.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Prüfungen Sichtprüfung",
+      "x2 = Anzahl Prüfungen Funktionsprüfung"
+    ],
+    "zielfunktion": "Z = 13x1 + 6x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 6x2 ≥ 183 (Mindestabdeckung)",
+      "8x1 + 5x2 ≤ 167 (Inspektionskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Sichtprüfung kostet 13€ pro Prüfung",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Funktionsprüfung kostet 6€ pro Prüfung",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 8 Prüfpunkte pro Prüfung",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "erkennt 6 Prüfpunkte pro Prüfung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 183 Prüfpunkte abgedeckt",
+            "bedeutung": "≥ 183"
+          }
+        ],
+        [
+          {
+            "text": "eine Sichtprüfung 8 Prüfungen",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "eine Funktionsprüfung 5 Prüfungen",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 167 Prüfungen",
+            "bedeutung": "≤ 167"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medizintechnik-Sterilisationskontrolle",
+    "beschreibung": "Ein Medizintechnikunternehmen setzt zwei Prüfverfahren ein: Sterilisationsprüfung und Funktionsprüfung. Medizinische Geräte müssen vor der Auslieferung umfassend auf Sterilität und einwandfreie Funktion geprüft werden, um Patientensicherheit zu gewährleisten. Die Sterilisationsprüfung kostet 14€ pro Prüfung und erkennt dabei 6 Qualitätsmerkmale pro Prüfung. Die Funktionsprüfung kostet 15€ pro Prüfung und erkennt 1 Qualitätsmerkmale pro Prüfung. Pro Schicht müssen mindestens 145 Qualitätsmerkmale abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 696 Prüfungen zur Verfügung, wobei eine Sterilisationsprüfung 11 Prüfungen und eine Funktionsprüfung 6 Prüfungen beansprucht. Der Prüfleiter sucht die kostengünstigste Prüfstrategie, die alle vorgeschriebenen Qualitätsmerkmale abdeckt und die verfügbare Prüfkapazität nicht überschreitet.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Prüfungen Sterilisationsprüfung",
+      "x2 = Anzahl Prüfungen Funktionsprüfung"
+    ],
+    "zielfunktion": "Z = 14x1 + 15x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 1x2 ≥ 145 (Mindestabdeckung)",
+      "11x1 + 6x2 ≤ 696 (Prüfkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Sterilisationsprüfung kostet 14€ pro Prüfung",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Funktionsprüfung kostet 15€ pro Prüfung",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 6 Qualitätsmerkmale pro Prüfung",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "erkennt 1 Qualitätsmerkmale pro Prüfung",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 145 Qualitätsmerkmale abgedeckt",
+            "bedeutung": "≥ 145"
+          }
+        ],
+        [
+          {
+            "text": "eine Sterilisationsprüfung 11 Prüfungen",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "eine Funktionsprüfung 6 Prüfungen",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 696 Prüfungen",
+            "bedeutung": "≤ 696"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Software-Fehleranalyse",
+    "beschreibung": "Ein Softwareunternehmen setzt zwei Prüfverfahren ein: automatisierter Test und manueller Test. Vor jedem Release muss die Software gründlich auf verschiedene Fehlerkategorien getestet werden, wobei automatisierte und manuelle Tests unterschiedliche Stärken haben. Die automatisierter Test kostet 7€ pro Testdurchlauf und erkennt dabei 2 Fehlerkategorien pro Testdurchlauf. Die manueller Test kostet 5€ pro Testdurchlauf und erkennt 1 Fehlerkategorien pro Testdurchlauf. Pro Schicht müssen mindestens 129 Fehlerkategorien abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 277 Testdurchläufe zur Verfügung, wobei eine automatisierter Test 9 Testdurchläufe und eine manueller Test 2 Testdurchläufe beansprucht. Der Testmanager möchte die Gesamttestkosten minimieren und dabei alle relevanten Fehlerkategorien abdecken sowie die Testkapazität einhalten.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Testdurchläufe automatisierter Test",
+      "x2 = Anzahl Testdurchläufe manueller Test"
+    ],
+    "zielfunktion": "Z = 7x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 1x2 ≥ 129 (Mindestabdeckung)",
+      "9x1 + 2x2 ≤ 277 (Testkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "automatisierter Test kostet 7€ pro Testdurchlauf",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "manueller Test kostet 5€ pro Testdurchlauf",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 2 Fehlerkategorien pro Testdurchlauf",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "erkennt 1 Fehlerkategorien pro Testdurchlauf",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 129 Fehlerkategorien abgedeckt",
+            "bedeutung": "≥ 129"
+          }
+        ],
+        [
+          {
+            "text": "eine automatisierter Test 9 Testdurchläufe",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "eine manueller Test 2 Testdurchläufe",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 277 Testdurchläufe",
+            "bedeutung": "≤ 277"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brückenbauwerk-Schadenserkennung",
+    "beschreibung": "Ein Ingenieurbüro setzt zwei Prüfverfahren ein: visuelle Inspektion und Ultraschallprüfung. Bei der regelmäßigen Brückeninspektion müssen verschiedene Schadensarten wie Risse, Korrosion und Materialermüdung erfasst werden. Die visuelle Inspektion kostet 12€ pro Inspektion und erkennt dabei 4 Schadensarten pro Inspektion. Die Ultraschallprüfung kostet 3€ pro Inspektion und erkennt 5 Schadensarten pro Inspektion. Pro Schicht müssen mindestens 130 Schadensarten abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 747 Inspektionen zur Verfügung, wobei eine visuelle Inspektion 10 Inspektionen und eine Ultraschallprüfung 7 Inspektionen beansprucht. Der Chefingenieur sucht die kostengünstigste Inspektionsstrategie, die alle vorgeschriebenen Schadensarten erfasst und die verfügbare Inspektionskapazität berücksichtigt.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Inspektionen visuelle Inspektion",
+      "x2 = Anzahl Inspektionen Ultraschallprüfung"
+    ],
+    "zielfunktion": "Z = 12x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 5x2 ≥ 130 (Mindestabdeckung)",
+      "10x1 + 7x2 ≤ 747 (Inspektionskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "visuelle Inspektion kostet 12€ pro Inspektion",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Ultraschallprüfung kostet 3€ pro Inspektion",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 4 Schadensarten pro Inspektion",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "erkennt 5 Schadensarten pro Inspektion",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 130 Schadensarten abgedeckt",
+            "bedeutung": "≥ 130"
+          }
+        ],
+        [
+          {
+            "text": "eine visuelle Inspektion 10 Inspektionen",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "eine Ultraschallprüfung 7 Inspektionen",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 747 Inspektionen",
+            "bedeutung": "≤ 747"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chipfertigung-Röntgenkontrolle",
+    "beschreibung": "Ein Chiphersteller setzt zwei Prüfverfahren ein: Röntgenprüfung und thermische Prüfung. In der fortgeschrittenen Halbleiterproduktion werden Röntgen- und Thermalanalysen eingesetzt, um verborgene Defekte in mehrlagigen Chipstrukturen aufzuspüren. Die Röntgenprüfung kostet 4€ pro Durchlauf und erkennt dabei 5 Fehlerarten pro Durchlauf. Die thermische Prüfung kostet 12€ pro Durchlauf und erkennt 4 Fehlerarten pro Durchlauf. Pro Schicht müssen mindestens 875 Fehlerarten abgedeckt werden. Die Testkapazität ist begrenzt: eine Röntgenprüfung benötigt 2 Stunden und eine thermische Prüfung benötigt 10 Stunden, insgesamt stehen höchstens 656 Stunden zur Verfügung. Zudem dürfen maximal 892 Durchläufe durchgeführt werden, wobei eine Röntgenprüfung 2 Durchläufe und eine thermische Prüfung 3 Durchläufe zählt. Die Qualitätsmanagerin sucht die kostenoptimale Kombination beider Prüfverfahren, die alle Fehlerarten abdeckt und die Kapazitäts- sowie Zeitgrenzen respektiert.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Durchläufe Röntgenprüfung",
+      "x2 = Anzahl Durchläufe thermische Prüfung"
+    ],
+    "zielfunktion": "Z = 4x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≥ 875 (Mindestabdeckung)",
+      "2x1 + 10x2 ≤ 656 (Zeitkapazität)",
+      "2x1 + 3x2 ≤ 892 (Testkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Röntgenprüfung kostet 4€ pro Durchlauf",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "thermische Prüfung kostet 12€ pro Durchlauf",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 5 Fehlerarten pro Durchlauf",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "erkennt 4 Fehlerarten pro Durchlauf",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 875 Fehlerarten abgedeckt",
+            "bedeutung": "≥ 875"
+          }
+        ],
+        [
+          {
+            "text": "eine Röntgenprüfung benötigt 2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "eine thermische Prüfung benötigt 10 Stunden",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "höchstens 656 Stunden",
+            "bedeutung": "≤ 656"
+          }
+        ],
+        [
+          {
+            "text": "eine Röntgenprüfung 2 Durchläufe",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "eine thermische Prüfung 3 Durchläufe",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 892 Durchläufe",
+            "bedeutung": "≤ 892"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lebensmittelbetrieb-Schadstoffanalyse",
+    "beschreibung": "Ein Lebensmittelbetrieb setzt zwei Prüfverfahren ein: Sensorprüfung und chemische Analyse. Der Betrieb muss regelmäßig Proben auf verschiedene Schadstoffarten untersuchen, um die Lebensmittelsicherheit zu garantieren und die Zulassung zu behalten. Die Sensorprüfung kostet 12€ pro Test und erkennt dabei 2 Schadstoffarten pro Test. Die chemische Analyse kostet 6€ pro Test und erkennt 4 Schadstoffarten pro Test. Pro Schicht müssen mindestens 639 Schadstoffarten abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 990 Tests zur Verfügung, wobei eine Sensorprüfung 7 Tests und eine chemische Analyse 4 Tests beansprucht. Die Laborleiterin möchte die Gesamttestkosten minimieren und dabei alle geforderten Schadstoffarten erfassen sowie die Testkapazität nicht überschreiten.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tests Sensorprüfung",
+      "x2 = Anzahl Tests chemische Analyse"
+    ],
+    "zielfunktion": "Z = 12x1 + 6x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≥ 639 (Mindestabdeckung)",
+      "7x1 + 4x2 ≤ 990 (Testkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Sensorprüfung kostet 12€ pro Test",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "chemische Analyse kostet 6€ pro Test",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 2 Schadstoffarten pro Test",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "erkennt 4 Schadstoffarten pro Test",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 639 Schadstoffarten abgedeckt",
+            "bedeutung": "≥ 639"
+          }
+        ],
+        [
+          {
+            "text": "eine Sensorprüfung 7 Tests",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "eine chemische Analyse 4 Tests",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 990 Tests",
+            "bedeutung": "≤ 990"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Autohaus-Diagnoseoptimierung",
+    "beschreibung": "Ein Autohaus setzt zwei Prüfverfahren ein: manuelle Prüfung und computergestützte Diagnose. Das Autohaus bietet umfassende Fahrzeugdiagnosen an, bei denen sowohl klassische Handarbeit als auch moderne Computerdiagnostik zum Einsatz kommen. Die manuelle Prüfung kostet 6€ pro Durchlauf und erkennt dabei 6 Fehlerarten pro Durchlauf. Die computergestützte Diagnose kostet 5€ pro Durchlauf und erkennt 1 Fehlerarten pro Durchlauf. Pro Schicht müssen mindestens 226 Fehlerarten abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 870 Durchläufe zur Verfügung, wobei eine manuelle Prüfung 2 Durchläufe und eine computergestützte Diagnose 7 Durchläufe beansprucht. Die Werkstattleiterin möchte die Diagnosekosten minimieren und dabei sicherstellen, dass alle relevanten Fehlerarten erkannt werden und die Diagnosekapazität eingehalten wird.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Durchläufe manuelle Prüfung",
+      "x2 = Anzahl Durchläufe computergestützte Diagnose"
+    ],
+    "zielfunktion": "Z = 6x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 1x2 ≥ 226 (Mindestabdeckung)",
+      "2x1 + 7x2 ≤ 870 (Diagnosekapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "manuelle Prüfung kostet 6€ pro Durchlauf",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "computergestützte Diagnose kostet 5€ pro Durchlauf",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 6 Fehlerarten pro Durchlauf",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "erkennt 1 Fehlerarten pro Durchlauf",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 226 Fehlerarten abgedeckt",
+            "bedeutung": "≥ 226"
+          }
+        ],
+        [
+          {
+            "text": "eine manuelle Prüfung 2 Durchläufe",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "eine computergestützte Diagnose 7 Durchläufe",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "höchstens 870 Durchläufe",
+            "bedeutung": "≤ 870"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Implantathersteller-Belastungstest",
+    "beschreibung": "Ein Implantathersteller setzt zwei Prüfverfahren ein: optische Kontrolle und mechanische Belastungsprüfung. Medizinische Implantate unterliegen strengsten Qualitätsanforderungen und müssen vor dem Einsatz am Patienten umfassend geprüft werden. Die optische Kontrolle kostet 9€ pro Prüfung und erkennt dabei 1 Defektkategorien pro Prüfung. Die mechanische Belastungsprüfung kostet 12€ pro Prüfung und erkennt 6 Defektkategorien pro Prüfung. Pro Schicht müssen mindestens 359 Defektkategorien abgedeckt werden, um die Qualitätsnorm zu erfüllen. Gleichzeitig stehen pro Schicht höchstens 817 Prüfungen zur Verfügung, wobei eine optische Kontrolle 9 Prüfungen und eine mechanische Belastungsprüfung 4 Prüfungen beansprucht. Die Prüfleiterin sucht die kostenminimale Prüfstrategie, die alle vorgeschriebenen Defektkategorien abdeckt und die verfügbare Prüfkapazität einhält.",
+    "typ": "Qualitätskontrolle",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Prüfungen optische Kontrolle",
+      "x2 = Anzahl Prüfungen mechanische Belastungsprüfung"
+    ],
+    "zielfunktion": "Z = 9x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "1x1 + 6x2 ≥ 359 (Mindestabdeckung)",
+      "9x1 + 4x2 ≤ 817 (Prüfkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die Richtung der Ungleichungen: Die Mindestabdeckung erfordert ≥, Kapazitätsgrenzen erfordern ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "optische Kontrolle kostet 9€ pro Prüfung",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "mechanische Belastungsprüfung kostet 12€ pro Prüfung",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "erkennt dabei 1 Defektkategorien pro Prüfung",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "erkennt 6 Defektkategorien pro Prüfung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 359 Defektkategorien abgedeckt",
+            "bedeutung": "≥ 359"
+          }
+        ],
+        [
+          {
+            "text": "eine optische Kontrolle 9 Prüfungen",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "eine mechanische Belastungsprüfung 4 Prüfungen",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 817 Prüfungen",
+            "bedeutung": "≤ 817"
+          }
+        ]
+      ]
+    }
+  }
+]

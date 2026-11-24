@@ -1,0 +1,43 @@
+{
+  "id": "schicht_sicherheit_2v_11",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Objektschutz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Empfang", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 70, "max": 140, "label": "Kosten Tagschicht (€)"},
+    "c2":  {"min": 90, "max": 180, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 2, "max": 6, "label": "Wachleute Objektschutz pro Tagschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Wachleute Objektschutz pro Nachtschicht"},
+    "b1":  {"min": 10, "max": 40, "label": "Mindestbesetzung Objektschutz"},
+    "a21": {"min": 1, "max": 3, "label": "Empfangskräfte pro Tagschicht"},
+    "a22": {"min": 1, "max": 2, "label": "Empfangskräfte pro Nachtschicht"},
+    "b2":  {"min": 5, "max": 20, "label": "Mindestbesetzung Empfang"}
+  },
+  "titel": "Sicherheitsfirma – Schichtplanung",
+  "beschreibung": "Eine Sicherheitsfirma plant die Schichtbesetzung für Objektschutz und Empfang. Eine Tagschicht kostet {c1} €, eine Nachtschicht kostet {c2} €. Jede Tagschicht stellt {a11} Wachleute für den Objektschutz bereit, jede Nachtschicht stellt {a12} Wachleute für den Objektschutz bereit. Mindestens {b1} Wachleute für den Objektschutz werden benötigt. Jede Tagschicht stellt {a21} Empfangskräfte bereit, jede Nachtschicht stellt {a22} Empfangskräfte bereit. Mindestens {b2} Empfangskräfte werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Objektschutz und Empfang.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tagschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nachtschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Wachleute für den Objektschutz bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Wachleute für den Objektschutz bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Wachleute für den Objektschutz werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Empfangskräfte bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Empfangskräfte bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Empfangskräfte werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

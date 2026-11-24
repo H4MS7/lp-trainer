@@ -1,0 +1,43 @@
+{
+  "id": "energie_wellen_gezeiten_2v_13",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Wellenkraftwerk", "x2 = MWh Gezeitenkraftwerk"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Wartungskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 70, "max": 160, "label": "Kosten Wellenkraft (€/MWh)"},
+    "c2":  {"min": 80, "max": 180, "label": "Kosten Gezeitenkraft (€/MWh)"},
+    "a11": {"min": 2, "max": 5, "label": "Leistung Wellenkraft (MW/MWh)"},
+    "a12": {"min": 3, "max": 7, "label": "Leistung Gezeitenkraft (MW/MWh)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 5, "label": "Wartung Wellenkraft (h/MWh)"},
+    "a22": {"min": 3, "max": 6, "label": "Wartung Gezeitenkraft (h/MWh)"},
+    "b2":  {"min": 40, "max": 150, "label": "Maximale Wartungskapazität (h)"}
+  },
+  "titel": "Energiemix – Wellen- und Gezeitenkraft",
+  "beschreibung": "Ein Küstenenergieunternehmen plant den Strommix aus Wellen- und Gezeitenkraftwerken. Wellenkraft kostet {c1} € pro MWh, Gezeitenkraft kostet {c2} € pro MWh. Wellenkraft liefert {a11} MW Leistung pro MWh, Gezeitenkraft liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Der Wartungsbedarf beträgt {a21} Stunden pro MWh Wellenkraft und {a22} Stunden pro MWh Gezeitenkraft. Maximal {b2} Wartungsstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Wartungskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wellenkraft kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Gezeitenkraft kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro MWh Wellenkraft", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro MWh Gezeitenkraft", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Wartungsstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

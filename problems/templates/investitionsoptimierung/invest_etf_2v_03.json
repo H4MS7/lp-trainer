@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_etf_2v_03",
+  "titel": "ETF-Portfolio – Technologie und Gesundheit",
+  "variablen": [
+    "x1 = Anteile Technologie-ETF (Tsd. EUR)",
+    "x2 = Anteile Gesundheits-ETF (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Anlagekapital",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Volatilitaetsbudget",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 6,
+      "max": 14,
+      "label": "Erwartete Rendite Tech (%)"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Erwartete Rendite Gesundheit (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 4,
+      "label": "Kapitalbedarf Tech"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Gesundheit"
+    },
+    "b1": {
+      "min": 60,
+      "max": 250,
+      "label": "Verfuegbares Anlagekapital (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 4,
+      "max": 10,
+      "label": "Volatilitaet Tech"
+    },
+    "a22": {
+      "min": 1,
+      "max": 4,
+      "label": "Volatilitaet Gesundheit"
+    },
+    "b2": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Volatilitaetsbudget"
+    }
+  },
+  "beschreibung": "Eine Anlegerin moechte in zwei ETFs investieren. Der Technologie-ETF verspricht {c1} % Rendite, der Gesundheits-ETF {c2} %. Pro Einheit Tech-ETF werden {a11} Kapitaleinheiten gebunden, pro Gesundheits-ETF {a12} Einheiten. Insgesamt stehen {b1} Tausend Euro Anlagekapital zur Verfuegung. Die Volatilitaet betraegt {a21} Punkte pro Tech-Einheit und {a22} Punkte pro Gesundheitseinheit bei einem maximalen Volatilitaetsbudget von {b2} Punkten.",
+  "hinweis": "Die Volatilitaet ist ein Mass fuer das Risiko. Maximiere die Rendite unter Beachtung von Kapital und Volatilitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Technologie-ETF verspricht {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Gesundheits-ETF {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten gebunden",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Gesundheits-ETF {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro Anlagekapital",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkte pro Tech-Einheit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Punkte pro Gesundheitseinheit",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Punkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

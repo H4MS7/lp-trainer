@@ -1,0 +1,140 @@
+[
+  {
+    "titel": "Spedition Nordtrans: Drei Lieferrouten optimieren",
+    "beschreibung": "Die Spedition Nordtrans bedient drei Lieferrouten von ihrem Zentrallager aus. Route A fuehrt ueber die Autobahn nach Hamburg und verursacht Kosten von 44 Euro pro Fahrt. Route B fuehrt ueber Landstrassen nach Bremen und kostet 13 Euro pro Fahrt. Route C ist eine kurze Nahverkehrsstrecke nach Lueneburg mit Kosten von nur 1 Euro pro Fahrt. Die Ladekapazitaet des Fuhrparks ist begrenzt: Auf Route A werden pro Fahrt 5 Tonnen Laderaum beansprucht, auf Route B 14 Tonnen und auf Route C 1 Tonne. Insgesamt stehen hoechstens 148 Tonnen Ladekapazitaet zur Verfuegung. Gleichzeitig muessen vertragliche Mindestlieferungen erfuellt werden: Route A erfordert 9 Zustellungen pro Lieferzyklus, Route B 11 Zustellungen und Route C 3 Zustellungen. Der Mindestbedarf betraegt insgesamt 43 Zustellungen. Fuer den Kraftstoffverbrauch gilt: Route A verbraucht 1 Tankfuellung pro Fahrt, Route B verbraucht 12 Tankfuellungen und Route C verbraucht 3 Tankfuellungen. Der Kraftstoffvorrat reicht fuer maximal 256 Tankfuellungen. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten auf Route A (Hamburg)",
+      "x2 = Anzahl Fahrten auf Route B (Bremen)",
+      "x3 = Anzahl Fahrten auf Route C (Lueneburg)"
+    ],
+    "zielfunktion": "Z = 44x1 + 13x2 + x3 (min)",
+    "nebenbedingungen": [
+      "5x1 + 14x2 + x3 ≤ 148 (Ladekapazitaet)",
+      "9x1 + 11x2 + 3x3 ≥ 43 (Mindestlieferungen)",
+      "x1 + 12x2 + 3x3 ≤ 256 (Kraftstoffvorrat)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass die erste und dritte Nebenbedingung Kapazitaetsgrenzen (hoechstens) darstellen, waehrend die zweite einen Mindestbedarf (mindestens) beschreibt. Stelle die Ungleichungszeichen entsprechend auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A fuehrt ueber die Autobahn nach Hamburg und verursacht Kosten von 44 Euro pro Fahrt", "bedeutung": "44 × x₁"},
+        {"text": "Route B fuehrt ueber Landstrassen nach Bremen und kostet 13 Euro pro Fahrt", "bedeutung": "13 × x₂"},
+        {"text": "Route C ist eine kurze Nahverkehrsstrecke nach Lueneburg mit Kosten von nur 1 Euro pro Fahrt", "bedeutung": "1 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A werden pro Fahrt 5 Tonnen Laderaum beansprucht", "bedeutung": "5x₁"},
+          {"text": "Route B 14 Tonnen", "bedeutung": "+ 14x₂"},
+          {"text": "Route C 1 Tonne", "bedeutung": "+ x₃"},
+          {"text": "hoechstens 148 Tonnen Ladekapazitaet", "bedeutung": "≤ 148"}
+        ],
+        [
+          {"text": "Route A erfordert 9 Zustellungen pro Lieferzyklus", "bedeutung": "9x₁"},
+          {"text": "Route B 11 Zustellungen", "bedeutung": "+ 11x₂"},
+          {"text": "Route C 3 Zustellungen", "bedeutung": "+ 3x₃"},
+          {"text": "Mindestbedarf betraegt insgesamt 43 Zustellungen", "bedeutung": "≥ 43"}
+        ],
+        [
+          {"text": "Route A verbraucht 1 Tankfuellung pro Fahrt", "bedeutung": "x₁"},
+          {"text": "Route B verbraucht 12 Tankfuellungen", "bedeutung": "+ 12x₂"},
+          {"text": "Route C verbraucht 3 Tankfuellungen", "bedeutung": "+ 3x₃"},
+          {"text": "maximal 256 Tankfuellungen", "bedeutung": "≤ 256"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Containerschifffahrt: Drei Seerouten planen",
+    "beschreibung": "Eine Reederei in der Containerschifffahrt betreibt drei Seerouten von Rotterdam aus. Route A fuehrt nach Singapur und kostet 49 Euro pro Container. Route B verbindet Rotterdam mit Shanghai und kostet ebenfalls 49 Euro pro Container. Route C geht nach Dubai und kostet 37 Euro pro Container. Der Hafenumschlag ist limitiert: Route A beansprucht 15 Kranstunden pro Container, Route B beansprucht 6 Kranstunden und Route C beansprucht 4 Kranstunden. Die Hafenanlage kann maximal 247 Kranstunden pro Woche bereitstellen. Fuer die Belieferung wichtiger Handelspartner muessen Mindestmengen transportiert werden: Route A erfordert mindestens 3 Container pro Woche, Route B mindestens 6 Container und Route C mindestens 6 Container. Insgesamt sind mindestens 80 Container pro Woche zu versenden. Schliesslich ist die Zollabfertigung begrenzt: Route A erfordert 2 Zollvorgaenge pro Container, Route B erfordert 3 Zollvorgaenge und Route C erfordert 4 Zollvorgaenge. Es koennen hoechstens 445 Zollvorgaenge pro Woche bearbeitet werden. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Container auf Route A (Singapur)",
+      "x2 = Anzahl Container auf Route B (Shanghai)",
+      "x3 = Anzahl Container auf Route C (Dubai)"
+    ],
+    "zielfunktion": "Z = 49x1 + 49x2 + 37x3 (min)",
+    "nebenbedingungen": [
+      "15x1 + 6x2 + 4x3 ≤ 247 (Hafenumschlag)",
+      "3x1 + 6x2 + 6x3 ≥ 80 (Mindestmengen)",
+      "2x1 + 3x2 + 4x3 ≤ 445 (Zollabfertigung)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Identifiziere zunaechst die Kostenfunktion und achte darauf, welche Nebenbedingungen Obergrenzen (hoechstens) und welche Mindestanforderungen (mindestens) beschreiben.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A fuehrt nach Singapur und kostet 49 Euro pro Container", "bedeutung": "49 × x₁"},
+        {"text": "Route B verbindet Rotterdam mit Shanghai und kostet ebenfalls 49 Euro pro Container", "bedeutung": "49 × x₂"},
+        {"text": "Route C geht nach Dubai und kostet 37 Euro pro Container", "bedeutung": "37 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A beansprucht 15 Kranstunden pro Container", "bedeutung": "15x₁"},
+          {"text": "Route B beansprucht 6 Kranstunden", "bedeutung": "+ 6x₂"},
+          {"text": "Route C beansprucht 4 Kranstunden", "bedeutung": "+ 4x₃"},
+          {"text": "maximal 247 Kranstunden pro Woche", "bedeutung": "≤ 247"}
+        ],
+        [
+          {"text": "Route A erfordert mindestens 3 Container pro Woche", "bedeutung": "3x₁"},
+          {"text": "Route B mindestens 6 Container", "bedeutung": "+ 6x₂"},
+          {"text": "Route C mindestens 6 Container", "bedeutung": "+ 6x₃"},
+          {"text": "mindestens 80 Container pro Woche zu versenden", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "Route A erfordert 2 Zollvorgaenge pro Container", "bedeutung": "2x₁"},
+          {"text": "Route B erfordert 3 Zollvorgaenge", "bedeutung": "+ 3x₂"},
+          {"text": "Route C erfordert 4 Zollvorgaenge", "bedeutung": "+ 4x₃"},
+          {"text": "hoechstens 445 Zollvorgaenge pro Woche", "bedeutung": "≤ 445"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bahnlogistik: Drei Gueterzugrouten koordinieren",
+    "beschreibung": "Ein Bahnlogistik-Unternehmen koordiniert den Gueterverkehr auf drei Strecken. Route A von Muenchen nach Berlin verursacht Frachtkosten von 8 Euro pro Waggon. Route B von Muenchen nach Koeln kostet 41 Euro pro Waggon. Route C von Muenchen nach Frankfurt kostet 42 Euro pro Waggon. Die Rangierkapazitaet im Muenchner Gueterbahnhof ist begrenzt: Route A belegt 2 Rangierspuren pro Waggon, Route B belegt 5 Rangierspuren und Route C belegt 12 Rangierspuren. Insgesamt stehen hoechstens 237 Rangierspuren zur Verfuegung. Gleichzeitig bestehen Lieferverpflichtungen gegenueber Grosskunden: Route A muss 3 Waggons pro Tag abfertigen, Route B muss 11 Waggons und Route C muss 8 Waggons abfertigen. Der Mindestumfang betraegt insgesamt 182 Waggons pro Tag. Zusaetzlich ist das Gleisangebot auf den Strecken beschraenkt: Route A beansprucht 1 Gleisslot pro Waggon, Route B beansprucht 7 Gleisslots und Route C beansprucht 12 Gleisslots. Es sind maximal 408 Gleisslots pro Tag verfuegbar. Die Gesamtfrachtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Waggons auf Route A (Berlin)",
+      "x2 = Anzahl Waggons auf Route B (Koeln)",
+      "x3 = Anzahl Waggons auf Route C (Frankfurt)"
+    ],
+    "zielfunktion": "Z = 8x1 + 41x2 + 42x3 (min)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 + 12x3 ≤ 237 (Rangierkapazitaet)",
+      "3x1 + 11x2 + 8x3 ≥ 182 (Lieferverpflichtungen)",
+      "x1 + 7x2 + 12x3 ≤ 408 (Gleisslots)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die guenstigste Route ist Route A. Pruefe aber, ob die Mindestliefermengen und Kapazitaetsgrenzen alle drei Routen erfordern.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A von Muenchen nach Berlin verursacht Frachtkosten von 8 Euro pro Waggon", "bedeutung": "8 × x₁"},
+        {"text": "Route B von Muenchen nach Koeln kostet 41 Euro pro Waggon", "bedeutung": "41 × x₂"},
+        {"text": "Route C von Muenchen nach Frankfurt kostet 42 Euro pro Waggon", "bedeutung": "42 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A belegt 2 Rangierspuren pro Waggon", "bedeutung": "2x₁"},
+          {"text": "Route B belegt 5 Rangierspuren", "bedeutung": "+ 5x₂"},
+          {"text": "Route C belegt 12 Rangierspuren", "bedeutung": "+ 12x₃"},
+          {"text": "hoechstens 237 Rangierspuren", "bedeutung": "≤ 237"}
+        ],
+        [
+          {"text": "Route A muss 3 Waggons pro Tag abfertigen", "bedeutung": "3x₁"},
+          {"text": "Route B muss 11 Waggons", "bedeutung": "+ 11x₂"},
+          {"text": "Route C muss 8 Waggons abfertigen", "bedeutung": "+ 8x₃"},
+          {"text": "Mindestumfang betraegt insgesamt 182 Waggons pro Tag", "bedeutung": "≥ 182"}
+        ],
+        [
+          {"text": "Route A beansprucht 1 Gleisslot pro Waggon", "bedeutung": "x₁"},
+          {"text": "Route B beansprucht 7 Gleisslots", "bedeutung": "+ 7x₂"},
+          {"text": "Route C beansprucht 12 Gleisslots", "bedeutung": "+ 12x₃"},
+          {"text": "maximal 408 Gleisslots pro Tag", "bedeutung": "≤ 408"}
+        ]
+      ]
+    }
+  }
+]

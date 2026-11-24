@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_schneidanlage_2v_14",
+  "titel": "Schneidanlage – Schnittgeschwindigkeit und Messerdruck",
+  "variablen": [
+    "x1 = Schnittgeschwindigkeit (Stufen)",
+    "x2 = Messerdruck (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Antriebsleistung",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Messerverschleiss",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Durchsatz Geschwindigkeit"
+    },
+    "c2": {
+      "min": 3,
+      "max": 10,
+      "label": "Schnittqualitaet Druck"
+    },
+    "a11": {
+      "min": 2,
+      "max": 7,
+      "label": "Antrieb Geschwindigkeit"
+    },
+    "a12": {
+      "min": 3,
+      "max": 8,
+      "label": "Antrieb Druck"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Antriebsleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 6,
+      "label": "Verschleiss Geschwindigkeit"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Verschleiss Druck"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Messerverschleiss"
+    }
+  },
+  "beschreibung": "Eine Schneidanlage wird ueber Schnittgeschwindigkeit und Messerdruck parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, der Messerdruck {c2} Punkte Schnittqualitaet. Die Antriebsleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Druckstufe bei maximal {b1} Antriebseinheiten. Der Messerverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Druckstufe bei maximal {b2} Verschleisseinheiten.",
+  "hinweis": "Maximiere die Schneidleistung unter Beachtung von Antrieb und Messerverschleiss.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Geschwindigkeit liefert {c1} Durchsatzpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Messerdruck {c2} Punkte Schnittqualitaet",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Druckstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Antriebseinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Druckstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

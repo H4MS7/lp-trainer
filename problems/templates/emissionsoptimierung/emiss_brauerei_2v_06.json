@@ -1,0 +1,43 @@
+{
+  "id": "emiss_brauerei_2v_06",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Pils", "x2 = Einheiten Weizen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Ertrag Pils (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Weizen (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Wasser Pils (m³)"},
+    "a12": {"min": 4, "max": 12,  "label": "Wasser Weizen (m³)"},
+    "b1":  {"min": 80, "max": 350, "label": "Wasserbudget (m³)"},
+    "a21": {"min": 2, "max": 6,   "label": "CO₂ Pils (t)"},
+    "a22": {"min": 1, "max": 5,   "label": "CO₂ Weizen (t)"},
+    "b2":  {"min": 50, "max": 200, "label": "CO₂-Limit (t)"}
+  },
+  "titel": "Brauerei – Pils und Weizen",
+  "beschreibung": "Eine Brauerei produziert Pils und Weizenbier. Pils erwirtschaftet {c1} Tsd. € pro Einheit, Weizenbier {c2} Tsd. €. Pils verbraucht {a11} m³ Wasser pro Einheit, Weizenbier {a12} m³. Das Wasserbudget beträgt {b1} m³. Pils verursacht {a21} Tonnen CO₂ pro Einheit, Weizenbier {a22} Tonnen. Das CO₂-Limit liegt bei {b2} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des Wasserbudgets und des CO₂-Limits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pils erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Weizenbier {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ Wasser pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} m³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m³", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen CO₂ pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

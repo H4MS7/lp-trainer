@@ -1,0 +1,70 @@
+[
+  {
+    "titel": "Stahlwerk – Produktionsoptimierung",
+    "beschreibung": "Ein Stahlwerk betreibt zwei Produktionslinien: Linie A und Linie B. Linie A erzeugt einen Ertrag von 10 Tausend € pro Schicht, Linie B einen Ertrag von 8 Tausend € pro Schicht. Linie A verursacht 5 Tonnen CO₂ pro Schicht und Linie B verursacht 3 Tonnen CO₂ pro Schicht. Die Emissionsgrenze liegt bei 150 Tonnen CO₂ pro Woche. Außerdem benötigt Linie A 4 Tonnen Eisenerz pro Schicht und Linie B 6 Tonnen Eisenerz pro Schicht. Der wöchentliche Vorrat beträgt 180 Tonnen Eisenerz. Das Stahlwerk möchte den Gesamtertrag maximieren.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Schichten Linie A", "x2 = Anzahl Schichten Linie B"],
+    "zielfunktion": "Z = 10x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 150 (CO₂-Emissionen)",
+      "4x1 + 6x2 ≤ 180 (Eisenerz)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Beschränkungen: die Emissionsgrenze für CO₂ und die verfügbare Menge an Eisenerz. Der Ertrag pro Schicht bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 10 Tausend €", "bedeutung": "10 × x₁"},
+        {"text": "Ertrag von 8 Tausend €", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Tonnen CO₂ pro Schicht", "bedeutung": "5x₁"},
+          {"text": "3 Tonnen CO₂ pro Schicht", "bedeutung": "+ 3x₂"},
+          {"text": "150 Tonnen CO₂ pro Woche", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "4 Tonnen Eisenerz pro Schicht", "bedeutung": "4x₁"},
+          {"text": "6 Tonnen Eisenerz pro Schicht", "bedeutung": "+ 6x₂"},
+          {"text": "180 Tonnen Eisenerz", "bedeutung": "≤ 180"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kraftwerk – Energieproduktion mit Emissionslimit",
+    "beschreibung": "Ein Energieversorger betreibt zwei Kraftwerksblöcke: Block A und Block B. Block A liefert einen Erlös von 7 Tausend € pro Betriebsstunde, Block B einen Erlös von 5 Tausend € pro Betriebsstunde. Block A stößt 4 Tonnen CO₂ pro Betriebsstunde aus und Block B stößt 2 Tonnen CO₂ pro Betriebsstunde aus. Die wöchentliche Emissionsobergrenze beträgt 200 Tonnen CO₂. An Brennstoff verbraucht Block A 3 Einheiten pro Betriebsstunde und Block B 5 Einheiten pro Betriebsstunde. Der wöchentliche Brennstoffvorrat umfasst 225 Einheiten. Die Geschäftsführung fordert zudem eine Mindestproduktion, sodass der Erlös aus beiden Blöcken zusammen mindestens 140 Tausend € pro Woche betragen muss, also 7 Betriebsstunden Block A plus 5 Betriebsstunden Block B ergeben zusammen mindestens 140 Tausend € Mindesterlös. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebsstunden Block A", "x2 = Betriebsstunden Block B"],
+    "zielfunktion": "Z = 7x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 200 (CO₂-Emissionen)",
+      "3x1 + 5x2 ≤ 225 (Brennstoff)",
+      "7x1 + 5x2 ≥ 140 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es zwei Obergrenzen (≤) für Emissionen und Brennstoff sowie eine Untergrenze (≥) für die Mindestproduktion. Achte auf die Richtung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 7 Tausend €", "bedeutung": "7 × x₁"},
+        {"text": "Erlös von 5 Tausend €", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Tonnen CO₂ pro Betriebsstunde", "bedeutung": "4x₁"},
+          {"text": "2 Tonnen CO₂ pro Betriebsstunde", "bedeutung": "+ 2x₂"},
+          {"text": "200 Tonnen CO₂", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "3 Einheiten pro Betriebsstunde", "bedeutung": "3x₁"},
+          {"text": "5 Einheiten pro Betriebsstunde", "bedeutung": "+ 5x₂"},
+          {"text": "225 Einheiten", "bedeutung": "≤ 225"}
+        ],
+        [
+          {"text": "mindestens 140 Tausend € Mindesterlös", "bedeutung": "7x₁ + 5x₂ ≥ 140"}
+        ]
+      ]
+    }
+  }
+]

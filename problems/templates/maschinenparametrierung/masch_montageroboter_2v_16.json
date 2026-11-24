@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_montageroboter_2v_16",
+  "titel": "Montageroboter – Greifkraft und Verfahrgeschwindigkeit",
+  "variablen": [
+    "x1 = Greifkraft (Stufen)",
+    "x2 = Verfahrgeschwindigkeit (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Stromverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Gelenkverschleiss",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Praezision Greifkraft"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Taktzeit Geschwindigkeit"
+    },
+    "a11": {
+      "min": 2,
+      "max": 7,
+      "label": "Strom Greifkraft"
+    },
+    "a12": {
+      "min": 3,
+      "max": 9,
+      "label": "Strom Geschwindigkeit"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Stromverbrauch"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Gelenk Greifkraft"
+    },
+    "a22": {
+      "min": 2,
+      "max": 7,
+      "label": "Gelenk Geschwindigkeit"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Gelenkverschleiss"
+    }
+  },
+  "beschreibung": "Ein Montageroboter wird ueber Greifkraft und Verfahrgeschwindigkeit eingestellt. Die Greifkraft liefert {c1} Punkte Praezision, die Verfahrgeschwindigkeit {c2} Punkte Taktzeit. Der Stromverbrauch betraegt {a11} Einheiten pro Greifkraftstufe und {a12} Einheiten pro Geschwindigkeitsstufe bei maximal {b1} Stromeinheiten. Der Gelenkverschleiss liegt bei {a21} Einheiten pro Greifkraftstufe und {a22} Einheiten pro Geschwindigkeitsstufe bei maximal {b2} Verschleisseinheiten.",
+  "hinweis": "Maximiere die Montageleistung unter Beachtung von Strom und Gelenkverschleiss.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Greifkraft liefert {c1} Punkte Praezision",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Verfahrgeschwindigkeit {c2} Punkte Taktzeit",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Greifkraftstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Stromeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Greifkraftstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "lager_buchhandlung_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Hardcover (Pakete)", "x2 = Bestellmenge Taschenbücher (Pakete)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Regalfläche", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Lagerkosten Hardcover (€/Paket)"},
+    "c2":  {"min": 1, "max": 5,   "label": "Lagerkosten Taschenbücher (€/Paket)"},
+    "a11": {"min": 4, "max": 10,  "label": "Titel pro Paket Hardcover"},
+    "a12": {"min": 6, "max": 15,  "label": "Titel pro Paket Taschenbücher"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestsortiment (Titel)"},
+    "a21": {"min": 2, "max": 5,   "label": "Regalplatz Hardcover (Regalbretter)"},
+    "a22": {"min": 1, "max": 3,   "label": "Regalplatz Taschenbücher (Regalbretter)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Regalfläche (Regalbretter)"}
+  },
+  "titel": "Buchhandlung – Sortimentsplanung",
+  "beschreibung": "Eine Buchhandlung plant die Bestellung von Hardcover-Büchern und Taschenbüchern. Die Lagerkosten betragen {c1} € pro Paket Hardcover und {c2} € pro Paket Taschenbücher. Jedes Paket Hardcover enthält {a11} Titel, jedes Paket Taschenbücher enthält {a12} Titel. Das Mindestsortiment umfasst {b1} Titel. Hardcover belegen {a21} Regalbretter pro Paket, Taschenbücher belegen {a22} Regalbretter pro Paket. Die verfügbare Regalfläche beträgt {b2} Regalbretter.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments und der verfügbaren Regalfläche.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Paket Hardcover", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Paket Taschenbücher", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Titel", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Titel", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Titel", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalbretter pro Paket", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalbretter pro Paket", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Regalbretter", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

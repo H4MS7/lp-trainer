@@ -1,0 +1,59 @@
+{
+  "id": "schicht_einkaufszentrum_4v_02",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Mittagsschichten", "x3 = Anzahl Abendschichten", "x4 = Anzahl Wochenendschichten"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Sicherheit", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Information", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Reinigung", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 120, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 65, "max": 130, "label": "Kosten Mittagsschicht (€)"},
+    "c3":  {"min": 70, "max": 140, "label": "Kosten Abendschicht (€)"},
+    "c4":  {"min": 90, "max": 180, "label": "Kosten Wochenendschicht (€)"},
+    "a11": {"min": 2, "max": 5, "label": "Sicherheit pro Frühschicht"},
+    "a12": {"min": 3, "max": 6, "label": "Sicherheit pro Mittagsschicht"},
+    "a13": {"min": 2, "max": 5, "label": "Sicherheit pro Abendschicht"},
+    "a14": {"min": 3, "max": 7, "label": "Sicherheit pro Wochenendschicht"},
+    "b1":  {"min": 15, "max": 45, "label": "Mindestbesetzung Sicherheit"},
+    "a21": {"min": 1, "max": 3, "label": "Information pro Frühschicht"},
+    "a22": {"min": 2, "max": 4, "label": "Information pro Mittagsschicht"},
+    "a23": {"min": 1, "max": 3, "label": "Information pro Abendschicht"},
+    "a24": {"min": 2, "max": 4, "label": "Information pro Wochenendschicht"},
+    "b2":  {"min": 8, "max": 25, "label": "Mindestbesetzung Information"},
+    "a31": {"min": 3, "max": 6, "label": "Reinigung pro Frühschicht"},
+    "a32": {"min": 2, "max": 5, "label": "Reinigung pro Mittagsschicht"},
+    "a33": {"min": 2, "max": 4, "label": "Reinigung pro Abendschicht"},
+    "a34": {"min": 3, "max": 7, "label": "Reinigung pro Wochenendschicht"},
+    "b3":  {"min": 12, "max": 40, "label": "Mindestbesetzung Reinigung"}
+  },
+  "titel": "Einkaufszentrum – Vier-Schicht-Planung",
+  "beschreibung": "Ein Einkaufszentrum plant die Besetzung mit vier Schichttypen. Eine Frühschicht kostet {c1} €, eine Mittagsschicht kostet {c2} €, eine Abendschicht kostet {c3} € und eine Wochenendschicht kostet {c4} €. Für die Sicherheit stellt jede Frühschicht {a11} Wachleute bereit, jede Mittagsschicht {a12}, jede Abendschicht {a13} und jede Wochenendschicht {a14}. Mindestens {b1} Wachleute werden benötigt. Für die Information stellt jede Frühschicht {a21} Mitarbeiter bereit, jede Mittagsschicht {a22}, jede Abendschicht {a23} und jede Wochenendschicht {a24}. Mindestens {b2} Informationsmitarbeiter werden benötigt. Für die Reinigung stellt jede Frühschicht {a31} Kräfte bereit, jede Mittagsschicht {a32}, jede Abendschicht {a33} und jede Wochenendschicht {a34}. Mindestens {b3} Reinigungskräfte werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Sicherheit, Information und Reinigung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Mittagsschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Abendschicht kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Wochenendschicht kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Wachleute bereit, jede Mittagsschicht {a12}, jede Abendschicht {a13} und jede Wochenendschicht {a14}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Wachleute werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Mitarbeiter bereit, jede Mittagsschicht {a22}, jede Abendschicht {a23} und jede Wochenendschicht {a24}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Informationsmitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Kräfte bereit, jede Mittagsschicht {a32}, jede Abendschicht {a33} und jede Wochenendschicht {a34}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Reinigungskräfte werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

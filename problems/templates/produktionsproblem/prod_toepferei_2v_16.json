@@ -1,0 +1,43 @@
+{
+  "id": "prod_toepferei_2v_16",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Teller", "x2 = Anzahl Tassen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Ton", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Brennofenplatz", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,    "label": "Gewinn/Teller (€)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Gewinn/Tasse (€)"},
+    "a11": {"min": 1, "max": 3,     "label": "Ton/Teller (kg)"},
+    "a12": {"min": 1, "max": 2,     "label": "Ton/Tasse (kg)"},
+    "b1":  {"min": 40, "max": 180,  "label": "Tonvorrat (kg)"},
+    "a21": {"min": 1, "max": 2,     "label": "Ofenplatz/Teller"},
+    "a22": {"min": 1, "max": 2,     "label": "Ofenplatz/Tasse"},
+    "b2":  {"min": 30, "max": 120,  "label": "Ofenplaetze"}
+  },
+  "titel": "Toepferei – Teller und Tassen",
+  "beschreibung": "Eine Toepferei stellt Teller und Tassen her. Pro Teller wird ein Gewinn von {c1} Euro erzielt, pro Tasse {c2} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg. Es stehen {b1} kg Ton zur Verfuegung. Jeder Teller belegt {a21} Ofenplaetze, jede Tasse {a22} Ofenplaetze. Insgesamt gibt es {b2} Ofenplaetze.",
+  "hinweis": "Stelle die Gewinnfunktion und die beiden Ressourcenbeschraenkungen auf.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Teller wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Tasse {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Teller benoetigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Tasse {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg Ton zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Teller belegt {a21} Ofenplaetze", "bedeutung": "{a21}x₁"},
+        {"text": "Tasse {a22} Ofenplaetze", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Ofenplaetze", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "diaet_abnehmen_2v_11",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Magerquark", "x2 = Portionen Vollkornbrot"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kalorien", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Magerquark (€/Portion)"},
+    "c2":  {"min": 1, "max": 3,   "label": "Kosten Vollkornbrot (€/Portion)"},
+    "a11": {"min": 6, "max": 14,  "label": "Protein Magerquark (g/Portion)"},
+    "a12": {"min": 3, "max": 8,   "label": "Protein Vollkornbrot (g/Portion)"},
+    "b1":  {"min": 60, "max": 120, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 60, "max": 120, "label": "Kalorien Magerquark (kcal/Portion)"},
+    "a22": {"min": 100, "max": 200, "label": "Kalorien Vollkornbrot (kcal/Portion)"},
+    "b2":  {"min": 800, "max": 1500, "label": "Maximal-Kalorien (kcal)"}
+  },
+  "titel": "Diätplan zum Abnehmen – Magerquark und Vollkornbrot",
+  "beschreibung": "Ein Diätplan zum Abnehmen soll die Kosten minimieren. Eine Portion Magerquark kostet {c1} €, eine Portion Vollkornbrot kostet {c2} €. Magerquark liefert {a11} g Protein pro Portion, Vollkornbrot liefert {a12} g Protein pro Portion. Mindestens {b1} g Protein sind täglich nötig. Magerquark enthält {a21} kcal pro Portion, Vollkornbrot enthält {a22} kcal pro Portion. Höchstens {b2} kcal dürfen am Tag aufgenommen werden.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung des Mindest-Proteins und der Kalorienobergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Magerquark kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Vollkornbrot kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Protein sind täglich nötig", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kcal dürfen am Tag aufgenommen werden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

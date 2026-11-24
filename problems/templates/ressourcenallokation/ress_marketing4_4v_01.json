@@ -1,0 +1,68 @@
+{
+  "id": "ress_marketing4_4v_01",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Budget Social Media (1000 €)", "x2 = Budget Suchmaschinen (1000 €)", "x3 = Budget Newsletter (1000 €)", "x4 = Budget Messen (1000 €)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtbudget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalstunden", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Contentproduktion", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Leads/1000€ Social Media"},
+    "c2":  {"min": 3, "max": 12,    "label": "Leads/1000€ Suchmaschinen"},
+    "c3":  {"min": 2, "max": 8,     "label": "Leads/1000€ Newsletter"},
+    "c4":  {"min": 8, "max": 20,    "label": "Leads/1000€ Messen"},
+    "a11": {"min": 1, "max": 1,     "label": "Kosten Social Media (1000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kosten Suchmaschinen (1000€)"},
+    "a13": {"min": 1, "max": 1,     "label": "Kosten Newsletter (1000€)"},
+    "a14": {"min": 1, "max": 1,     "label": "Kosten Messen (1000€)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Gesamtbudget (1000 €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Personalstunden/1000€ Social Media"},
+    "a22": {"min": 1, "max": 3,     "label": "Personalstunden/1000€ Suchmaschinen"},
+    "a23": {"min": 2, "max": 4,     "label": "Personalstunden/1000€ Newsletter"},
+    "a24": {"min": 3, "max": 8,     "label": "Personalstunden/1000€ Messen"},
+    "b2":  {"min": 30, "max": 150,  "label": "Personalstunden gesamt"},
+    "a31": {"min": 2, "max": 5,     "label": "Contentteile/1000€ Social Media"},
+    "a32": {"min": 1, "max": 3,     "label": "Contentteile/1000€ Suchmaschinen"},
+    "a33": {"min": 3, "max": 6,     "label": "Contentteile/1000€ Newsletter"},
+    "a34": {"min": 1, "max": 4,     "label": "Contentteile/1000€ Messen"},
+    "b3":  {"min": 20, "max": 80,   "label": "Contentkapazitaet (Teile)"}
+  },
+  "titel": "Marketingkanaele – Social Media, Suche, Newsletter und Messen",
+  "beschreibung": "Die Marketingleitung verteilt Budget auf vier Kanaele: Social Media, Suchmaschinen, Newsletter und Messen. Social Media generiert {c1} Leads pro 1000 Euro, Suchmaschinen {c2} Leads, Newsletter {c3} Leads und Messen {c4} Leads. Jeder Kanal kostet {a11} Tausend Euro Social Media, {a12} Tausend Euro Suchmaschinen, {a13} Tausend Euro Newsletter und {a14} Tausend Euro Messen pro Einheit. Das Gesamtbudget betraegt {b1} Tausend Euro. An Personalstunden werden {a21} pro Einheit Social Media, {a22} pro Einheit Suchmaschinen, {a23} pro Einheit Newsletter und {a24} pro Einheit Messen benoetigt bei {b2} verfuegbaren Stunden. Die Contentproduktion erfordert {a31} Teile pro Einheit Social Media, {a32} pro Einheit Suchmaschinen, {a33} pro Einheit Newsletter und {a34} pro Einheit Messen bei {b3} Contentkapazitaet.",
+  "hinweis": "Vier Marketingkanaele mit Budget-, Personal- und Contentbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Social Media generiert {c1} Leads", "bedeutung": "{c1} × x₁"},
+      {"text": "Suchmaschinen {c2} Leads", "bedeutung": "{c2} × x₂"},
+      {"text": "Newsletter {c3} Leads", "bedeutung": "{c3} × x₃"},
+      {"text": "Messen {c4} Leads", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tausend Euro Social Media", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tausend Euro Suchmaschinen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tausend Euro Newsletter", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Tausend Euro Messen", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Tausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} pro Einheit Social Media", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} pro Einheit Suchmaschinen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} pro Einheit Newsletter", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} pro Einheit Messen", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} verfuegbaren Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Teile pro Einheit Social Media", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Einheit Suchmaschinen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Einheit Newsletter", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} pro Einheit Messen", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Contentkapazitaet", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

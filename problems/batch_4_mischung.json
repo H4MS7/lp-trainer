@@ -1,0 +1,686 @@
+[
+  {
+    "titel": "Tierfutter-Mischung",
+    "beschreibung": "Ein Landwirt stellt eine Futtermischung aus Mais und Soja her. Mais kostet 0,40€ pro kg und enthält 10% Protein. Soja kostet 0,90€ pro kg und enthält 40% Protein. Es sollen insgesamt 1000 kg Futter gemischt werden. Der Proteingehalt der Mischung muss mindestens 20% betragen, also mindestens 200 kg Protein enthalten. Der Soja-Anteil darf höchstens 600 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Mais in kg", "x2 = Menge Soja in kg"],
+    "zielfunktion": "Z = 0,4x1 + 0,9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "0,1x1 + 0,4x2 ≥ 200 (Proteingehalt)",
+      "x2 ≤ 600 (Soja-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "20% von 1000 kg = 200 kg Protein als Mindestanforderung. Mais liefert 10% Protein (0,1 pro kg) und Soja 40% Protein (0,4 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Mais kostet 0,40€ pro kg", "bedeutung": "0,4 × x₁"},
+        {"text": "Soja kostet 0,90€ pro kg", "bedeutung": "0,9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 1000 kg Futter gemischt werden", "bedeutung": "x₁ + x₂ = 1000"}
+        ],
+        [
+          {"text": "enthält 10% Protein", "bedeutung": "0,1x₁"},
+          {"text": "enthält 40% Protein", "bedeutung": "+ 0,4x₂"},
+          {"text": "mindestens 200 kg Protein", "bedeutung": "≥ 200"}
+        ],
+        [
+          {"text": "Soja-Anteil darf höchstens 600 kg", "bedeutung": "x₂ ≤ 600"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Metalllegierung",
+    "beschreibung": "Eine Gießerei stellt eine Legierung aus Zink und Kupfer her. Zink kostet 3€ pro kg und hat einen Härtewert von 2 Einheiten pro kg. Kupfer kostet 5€ pro kg und hat einen Härtewert von 6 Einheiten pro kg. Es werden insgesamt 500 kg Legierung benötigt. Die Mindesthärte der Legierung muss 2000 Einheiten betragen. Der Zinkanteil muss mindestens 100 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Zink in kg", "x2 = Menge Kupfer in kg"],
+    "zielfunktion": "Z = 3x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "2x1 + 6x2 ≥ 2000 (Mindesthärte)",
+      "x1 ≥ 100 (Zink-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 500 kg. Die Härteanforderung von 2000 Einheiten ergibt sich aus dem gewünschten Härtegrad der Legierung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Zink kostet 3€ pro kg", "bedeutung": "3 × x₁"},
+        {"text": "Kupfer kostet 5€ pro kg", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 500 kg Legierung benötigt", "bedeutung": "x₁ + x₂ = 500"}
+        ],
+        [
+          {"text": "Härtewert von 2 Einheiten pro kg", "bedeutung": "2x₁"},
+          {"text": "Härtewert von 6 Einheiten pro kg", "bedeutung": "+ 6x₂"},
+          {"text": "Mindesthärte der Legierung muss 2000 Einheiten", "bedeutung": "≥ 2000"}
+        ],
+        [
+          {"text": "Zinkanteil muss mindestens 100 kg", "bedeutung": "x₁ ≥ 100"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Düngemittel-Mischung",
+    "beschreibung": "Ein Gartenbaubetrieb mischt Dünger aus Stickstoffdünger und Phosphordünger. Stickstoffdünger kostet 1,20€ pro kg und enthält 30% Stickstoff sowie 5% Phosphor. Phosphordünger kostet 1,80€ pro kg und enthält 10% Stickstoff sowie 25% Phosphor. Es werden mindestens 800 kg Düngemischung benötigt. Die Mischung muss mindestens 160 kg Stickstoff und mindestens 120 kg Phosphor enthalten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Stickstoffdünger in kg", "x2 = Menge Phosphordünger in kg"],
+    "zielfunktion": "Z = 1,2x1 + 1,8x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 800 (Mindestmenge)",
+      "0,3x1 + 0,1x2 ≥ 160 (Stickstoffbedarf)",
+      "0,05x1 + 0,25x2 ≥ 120 (Phosphorbedarf)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Stickstoffdünger enthält 30% Stickstoff (0,3 pro kg) und 5% Phosphor (0,05 pro kg). Phosphordünger enthält 10% Stickstoff (0,1 pro kg) und 25% Phosphor (0,25 pro kg). Die Mindestmengen 160 kg Stickstoff und 120 kg Phosphor ergeben sich aus dem Nährstoffbedarf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Stickstoffdünger kostet 1,20€ pro kg", "bedeutung": "1,2 × x₁"},
+        {"text": "Phosphordünger kostet 1,80€ pro kg", "bedeutung": "1,8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "mindestens 800 kg Düngemischung benötigt", "bedeutung": "x₁ + x₂ ≥ 800"}
+        ],
+        [
+          {"text": "enthält 30% Stickstoff", "bedeutung": "0,3x₁"},
+          {"text": "enthält 10% Stickstoff", "bedeutung": "+ 0,1x₂"},
+          {"text": "mindestens 160 kg Stickstoff", "bedeutung": "≥ 160"}
+        ],
+        [
+          {"text": "5% Phosphor", "bedeutung": "0,05x₁"},
+          {"text": "25% Phosphor", "bedeutung": "+ 0,25x₂"},
+          {"text": "mindestens 120 kg Phosphor", "bedeutung": "≥ 120"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonmischung",
+    "beschreibung": "Ein Bauunternehmen mischt Beton aus Zement und Sand. Zement kostet 0,15€ pro kg und liefert 8 Festigkeitseinheiten pro kg. Sand kostet 0,05€ pro kg und liefert 2 Festigkeitseinheiten pro kg. Es werden insgesamt 2000 kg Betonmischung benötigt. Die Mischung muss eine Mindestfestigkeit von 6000 Einheiten erreichen. Der Zementanteil muss mindestens 400 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Zement in kg", "x2 = Menge Sand in kg"],
+    "zielfunktion": "Z = 0,15x1 + 0,05x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "8x1 + 2x2 ≥ 6000 (Mindestfestigkeit)",
+      "x1 ≥ 400 (Zement-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 2000 kg. Die Festigkeitsanforderung von 6000 Einheiten ergibt sich aus dem Einsatzzweck des Betons.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Zement kostet 0,15€ pro kg", "bedeutung": "0,15 × x₁"},
+        {"text": "Sand kostet 0,05€ pro kg", "bedeutung": "0,05 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 2000 kg Betonmischung benötigt", "bedeutung": "x₁ + x₂ = 2000"}
+        ],
+        [
+          {"text": "8 Festigkeitseinheiten pro kg", "bedeutung": "8x₁"},
+          {"text": "2 Festigkeitseinheiten pro kg", "bedeutung": "+ 2x₂"},
+          {"text": "Mindestfestigkeit von 6000 Einheiten", "bedeutung": "≥ 6000"}
+        ],
+        [
+          {"text": "Zementanteil muss mindestens 400 kg", "bedeutung": "x₁ ≥ 400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Farbmischung",
+    "beschreibung": "Ein Farbenhersteller mischt Farbe aus Pigment A und Pigment B. Pigment A kostet 12€ pro Liter und hat eine Farbintensität von 3 Einheiten pro Liter. Pigment B kostet 8€ pro Liter und hat eine Farbintensität von 7 Einheiten pro Liter. Es sollen insgesamt 500 Liter Farbe hergestellt werden. Die Farbintensität der Mischung muss mindestens 2500 Einheiten betragen. Der Anteil von Pigment A darf höchstens 350 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Pigment A in Liter", "x2 = Menge Pigment B in Liter"],
+    "zielfunktion": "Z = 12x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "3x1 + 7x2 ≥ 2500 (Mindest-Farbintensität)",
+      "x1 ≤ 350 (Pigment-A-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist 500 Liter. Die Farbintensität von 2500 Einheiten ergibt sich aus dem Qualitätsanspruch der Mischung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Pigment A kostet 12€ pro Liter", "bedeutung": "12 × x₁"},
+        {"text": "Pigment B kostet 8€ pro Liter", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 500 Liter Farbe hergestellt werden", "bedeutung": "x₁ + x₂ = 500"}
+        ],
+        [
+          {"text": "Farbintensität von 3 Einheiten pro Liter", "bedeutung": "3x₁"},
+          {"text": "Farbintensität von 7 Einheiten pro Liter", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 2500 Einheiten", "bedeutung": "≥ 2500"}
+        ],
+        [
+          {"text": "Pigment A darf höchstens 350 Liter", "bedeutung": "x₁ ≤ 350"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Benzinmischung",
+    "beschreibung": "Eine Raffinerie mischt Benzin aus Super und Normal. Super kostet 1,60€ pro Liter und hat eine Oktanzahl von 98. Normal kostet 1,20€ pro Liter und hat eine Oktanzahl von 91. Es sollen insgesamt 10000 Liter Benzin gemischt werden. Die durchschnittliche Oktanzahl der Mischung muss mindestens 94 betragen, also eine Gesamt-Oktanleistung von mindestens 940000 erreichen. Der Anteil von Normal darf höchstens 6000 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Super in Liter", "x2 = Menge Normal in Liter"],
+    "zielfunktion": "Z = 1,6x1 + 1,2x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 10000 (Gesamtmenge)",
+      "98x1 + 91x2 ≥ 940000 (Mindest-Oktanzahl)",
+      "x2 ≤ 6000 (Normal-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindest-Oktanzahl von 94 bei 10000 Litern ergibt: 94 × 10000 = 940000 Gesamt-Oktanleistung. Super liefert 98 Oktaneinheiten pro Liter, Normal liefert 91.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Super kostet 1,60€ pro Liter", "bedeutung": "1,6 × x₁"},
+        {"text": "Normal kostet 1,20€ pro Liter", "bedeutung": "1,2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 10000 Liter Benzin gemischt werden", "bedeutung": "x₁ + x₂ = 10000"}
+        ],
+        [
+          {"text": "Oktanzahl von 98", "bedeutung": "98x₁"},
+          {"text": "Oktanzahl von 91", "bedeutung": "+ 91x₂"},
+          {"text": "Gesamt-Oktanleistung von mindestens 940000", "bedeutung": "≥ 940000"}
+        ],
+        [
+          {"text": "Normal darf höchstens 6000 Liter", "bedeutung": "x₂ ≤ 6000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Teemischung",
+    "beschreibung": "Ein Teehaus mischt Tee aus Assam und Darjeeling. Assam kostet 6€ pro kg und hat eine Aromastärke von 4 Einheiten pro kg. Darjeeling kostet 10€ pro kg und hat eine Aromastärke von 9 Einheiten pro kg. Es sollen insgesamt 200 kg Teemischung hergestellt werden. Die Gesamtaromastärke muss mindestens 1200 Einheiten betragen. Der Assam-Anteil muss mindestens 50 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Assam in kg", "x2 = Menge Darjeeling in kg"],
+    "zielfunktion": "Z = 6x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 200 (Gesamtmenge)",
+      "4x1 + 9x2 ≥ 1200 (Mindest-Aromastärke)",
+      "x1 ≥ 50 (Assam-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 200 kg. Die Aromastärke von 1200 Einheiten ergibt sich aus der gewünschten Qualität der Teemischung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Assam kostet 6€ pro kg", "bedeutung": "6 × x₁"},
+        {"text": "Darjeeling kostet 10€ pro kg", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 200 kg Teemischung hergestellt werden", "bedeutung": "x₁ + x₂ = 200"}
+        ],
+        [
+          {"text": "Aromastärke von 4 Einheiten pro kg", "bedeutung": "4x₁"},
+          {"text": "Aromastärke von 9 Einheiten pro kg", "bedeutung": "+ 9x₂"},
+          {"text": "mindestens 1200 Einheiten", "bedeutung": "≥ 1200"}
+        ],
+        [
+          {"text": "Assam-Anteil muss mindestens 50 kg", "bedeutung": "x₁ ≥ 50"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Müslimischung",
+    "beschreibung": "Ein Müslihersteller mischt Müsli aus Haferflocken und Nüssen. Haferflocken kosten 2€ pro kg und enthalten 12% Protein. Nüsse kosten 7€ pro kg und enthalten 20% Protein. Es sollen insgesamt 500 kg Müsli gemischt werden. Der Proteingehalt der Mischung muss mindestens 15% betragen, also mindestens 75 kg Protein enthalten. Der Nussanteil darf höchstens 250 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Haferflocken in kg", "x2 = Menge Nüsse in kg"],
+    "zielfunktion": "Z = 2x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "0,12x1 + 0,2x2 ≥ 75 (Proteingehalt)",
+      "x2 ≤ 250 (Nuss-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "15% von 500 kg = 75 kg Protein als Mindestanforderung. Haferflocken liefern 12% Protein (0,12 pro kg) und Nüsse 20% Protein (0,2 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Haferflocken kosten 2€ pro kg", "bedeutung": "2 × x₁"},
+        {"text": "Nüsse kosten 7€ pro kg", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 500 kg Müsli gemischt werden", "bedeutung": "x₁ + x₂ = 500"}
+        ],
+        [
+          {"text": "enthalten 12% Protein", "bedeutung": "0,12x₁"},
+          {"text": "enthalten 20% Protein", "bedeutung": "+ 0,2x₂"},
+          {"text": "mindestens 75 kg Protein", "bedeutung": "≥ 75"}
+        ],
+        [
+          {"text": "Nussanteil darf höchstens 250 kg", "bedeutung": "x₂ ≤ 250"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Smoothie-Bar Mischung",
+    "beschreibung": "Eine Smoothie-Bar mischt Getränke aus Obst und Gemüse. Obst kostet 3€ pro kg und enthält 5 Vitamineinheiten pro kg. Gemüse kostet 2€ pro kg und enthält 8 Vitamineinheiten pro kg. Es werden mindestens 300 kg Zutaten pro Woche benötigt. Die Mischung muss mindestens 2100 Vitamineinheiten enthalten. Der Obstanteil muss mindestens 100 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Obst in kg", "x2 = Menge Gemüse in kg"],
+    "zielfunktion": "Z = 3x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 300 (Mindestmenge)",
+      "5x1 + 8x2 ≥ 2100 (Vitamingehalt)",
+      "x1 ≥ 100 (Obst-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Mindestmenge von 300 kg und der Vitaminbedarf von 2100 Einheiten müssen gleichzeitig erfüllt werden. Obst liefert 5 Vitamineinheiten pro kg und Gemüse 8.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Obst kostet 3€ pro kg", "bedeutung": "3 × x₁"},
+        {"text": "Gemüse kostet 2€ pro kg", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "mindestens 300 kg Zutaten pro Woche benötigt", "bedeutung": "x₁ + x₂ ≥ 300"}
+        ],
+        [
+          {"text": "5 Vitamineinheiten pro kg", "bedeutung": "5x₁"},
+          {"text": "8 Vitamineinheiten pro kg", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 2100 Vitamineinheiten", "bedeutung": "≥ 2100"}
+        ],
+        [
+          {"text": "Obstanteil muss mindestens 100 kg", "bedeutung": "x₁ ≥ 100"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waschmittel-Mischung",
+    "beschreibung": "Ein Waschmittelhersteller mischt aus Tensid A und Tensid B. Tensid A kostet 4€ pro Liter und hat eine Reinigungskraft von 6 Einheiten pro Liter. Tensid B kostet 2,50€ pro Liter und hat eine Reinigungskraft von 3 Einheiten pro Liter. Es sollen insgesamt 1000 Liter Waschmittel hergestellt werden. Die Gesamt-Reinigungskraft muss mindestens 4500 Einheiten betragen. Der Anteil von Tensid B darf höchstens 700 Liter betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Tensid A in Liter", "x2 = Menge Tensid B in Liter"],
+    "zielfunktion": "Z = 4x1 + 2,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "6x1 + 3x2 ≥ 4500 (Mindest-Reinigungskraft)",
+      "x2 ≤ 700 (Tensid-B-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 1000 Litern. Die Reinigungskraft von 4500 Einheiten ergibt sich aus der gewünschten Wirksamkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Tensid A kostet 4€ pro Liter", "bedeutung": "4 × x₁"},
+        {"text": "Tensid B kostet 2,50€ pro Liter", "bedeutung": "2,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 1000 Liter Waschmittel hergestellt werden", "bedeutung": "x₁ + x₂ = 1000"}
+        ],
+        [
+          {"text": "Reinigungskraft von 6 Einheiten pro Liter", "bedeutung": "6x₁"},
+          {"text": "Reinigungskraft von 3 Einheiten pro Liter", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 4500 Einheiten", "bedeutung": "≥ 4500"}
+        ],
+        [
+          {"text": "Tensid B darf höchstens 700 Liter", "bedeutung": "x₂ ≤ 700"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schokoladenmischung",
+    "beschreibung": "Ein Schokoladenhersteller mischt aus Kakao und Milchpulver. Kakao kostet 8€ pro kg und enthält 85% Kakaoanteil. Milchpulver kostet 3€ pro kg und enthält 10% Kakaoanteil. Es sollen insgesamt 400 kg Schokoladenmasse hergestellt werden. Der Kakaoanteil der Mischung muss mindestens 40% betragen, also mindestens 160 kg reinen Kakao enthalten. Der Milchpulveranteil darf höchstens 300 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Kakao in kg", "x2 = Menge Milchpulver in kg"],
+    "zielfunktion": "Z = 8x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 400 (Gesamtmenge)",
+      "0,85x1 + 0,1x2 ≥ 160 (Kakaoanteil)",
+      "x2 ≤ 300 (Milchpulver-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "40% von 400 kg = 160 kg reinen Kakao als Mindestanforderung. Kakao enthält 85% Kakaoanteil (0,85 pro kg) und Milchpulver enthält 10% Kakaoanteil (0,1 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Kakao kostet 8€ pro kg", "bedeutung": "8 × x₁"},
+        {"text": "Milchpulver kostet 3€ pro kg", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 400 kg Schokoladenmasse hergestellt werden", "bedeutung": "x₁ + x₂ = 400"}
+        ],
+        [
+          {"text": "enthält 85% Kakaoanteil", "bedeutung": "0,85x₁"},
+          {"text": "enthält 10% Kakaoanteil", "bedeutung": "+ 0,1x₂"},
+          {"text": "mindestens 160 kg reinen Kakao", "bedeutung": "≥ 160"}
+        ],
+        [
+          {"text": "Milchpulveranteil darf höchstens 300 kg", "bedeutung": "x₂ ≤ 300"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brotmehlmischung",
+    "beschreibung": "Eine Bäckerei mischt Mehl aus Weizen und Roggen. Weizenmehl kostet 0,80€ pro kg und enthält 12% Gluten. Roggenmehl kostet 0,60€ pro kg und enthält 5% Gluten. Es werden insgesamt 1000 kg Mehl benötigt. Der Glutengehalt der Mischung muss mindestens 8% betragen, also mindestens 80 kg Gluten enthalten. Der Roggenanteil muss mindestens 200 kg betragen, um den typischen Geschmack zu erzielen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Weizenmehl in kg", "x2 = Menge Roggenmehl in kg"],
+    "zielfunktion": "Z = 0,8x1 + 0,6x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "0,12x1 + 0,05x2 ≥ 80 (Glutengehalt)",
+      "x2 ≥ 200 (Roggen-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "8% von 1000 kg = 80 kg Gluten als Mindestanforderung. Weizen liefert 12% Gluten (0,12 pro kg) und Roggen 5% Gluten (0,05 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Weizenmehl kostet 0,80€ pro kg", "bedeutung": "0,8 × x₁"},
+        {"text": "Roggenmehl kostet 0,60€ pro kg", "bedeutung": "0,6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 1000 kg Mehl benötigt", "bedeutung": "x₁ + x₂ = 1000"}
+        ],
+        [
+          {"text": "enthält 12% Gluten", "bedeutung": "0,12x₁"},
+          {"text": "enthält 5% Gluten", "bedeutung": "+ 0,05x₂"},
+          {"text": "mindestens 80 kg Gluten", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "Roggenanteil muss mindestens 200 kg", "bedeutung": "x₂ ≥ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Pflanzerde-Mischung",
+    "beschreibung": "Ein Gartencenter mischt Pflanzerde aus Torf und Kompost. Torf kostet 0,50€ pro kg und enthält 3 Nährstoffeinheiten pro kg. Kompost kostet 0,30€ pro kg und enthält 7 Nährstoffeinheiten pro kg. Es sollen insgesamt 2000 kg Pflanzerde hergestellt werden. Die Mischung muss mindestens 8000 Nährstoffeinheiten enthalten. Der Torfanteil muss mindestens 400 kg betragen, um die Struktur zu gewährleisten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Torf in kg", "x2 = Menge Kompost in kg"],
+    "zielfunktion": "Z = 0,5x1 + 0,3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "3x1 + 7x2 ≥ 8000 (Nährstoffgehalt)",
+      "x1 ≥ 400 (Torf-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 2000 kg. Die 8000 Nährstoffeinheiten müssen durch die Kombination von Torf (3 Einheiten/kg) und Kompost (7 Einheiten/kg) erreicht werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Torf kostet 0,50€ pro kg", "bedeutung": "0,5 × x₁"},
+        {"text": "Kompost kostet 0,30€ pro kg", "bedeutung": "0,3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 2000 kg Pflanzerde hergestellt werden", "bedeutung": "x₁ + x₂ = 2000"}
+        ],
+        [
+          {"text": "3 Nährstoffeinheiten pro kg", "bedeutung": "3x₁"},
+          {"text": "7 Nährstoffeinheiten pro kg", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 8000 Nährstoffeinheiten", "bedeutung": "≥ 8000"}
+        ],
+        [
+          {"text": "Torfanteil muss mindestens 400 kg", "bedeutung": "x₁ ≥ 400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Joghurt-Mischung",
+    "beschreibung": "Eine Molkerei mischt Joghurt aus Vollmilch und Magermilch. Vollmilch kostet 0,90€ pro Liter und enthält 3,5% Fett. Magermilch kostet 0,50€ pro Liter und enthält 0,5% Fett. Es sollen insgesamt 2000 Liter Joghurt hergestellt werden. Der Fettgehalt der Mischung muss mindestens 1,5% betragen, also mindestens 30 Liter Fett enthalten. Der Fettgehalt darf höchstens 2,5% betragen, also höchstens 50 Liter Fett enthalten. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Vollmilch in Liter", "x2 = Menge Magermilch in Liter"],
+    "zielfunktion": "Z = 0,9x1 + 0,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "0,035x1 + 0,005x2 ≥ 30 (Mindest-Fettgehalt)",
+      "0,035x1 + 0,005x2 ≤ 50 (Maximal-Fettgehalt)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "1,5% von 2000 Litern = 30 Liter Fett (Minimum) und 2,5% von 2000 Litern = 50 Liter Fett (Maximum). Vollmilch enthält 3,5% Fett (0,035 pro Liter) und Magermilch 0,5% Fett (0,005 pro Liter).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Vollmilch kostet 0,90€ pro Liter", "bedeutung": "0,9 × x₁"},
+        {"text": "Magermilch kostet 0,50€ pro Liter", "bedeutung": "0,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 2000 Liter Joghurt hergestellt werden", "bedeutung": "x₁ + x₂ = 2000"}
+        ],
+        [
+          {"text": "enthält 3,5% Fett", "bedeutung": "0,035x₁"},
+          {"text": "enthält 0,5% Fett", "bedeutung": "+ 0,005x₂"},
+          {"text": "mindestens 30 Liter Fett", "bedeutung": "≥ 30"}
+        ],
+        [
+          {"text": "enthält 3,5% Fett", "bedeutung": "0,035x₁"},
+          {"text": "enthält 0,5% Fett", "bedeutung": "+ 0,005x₂"},
+          {"text": "höchstens 50 Liter Fett", "bedeutung": "≤ 50"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kaffeeröstung",
+    "beschreibung": "Eine Kaffeerösterei mischt aus Arabica und Robusta. Arabica kostet 15€ pro kg und enthält 1,2% Koffein. Robusta kostet 9€ pro kg und enthält 2,4% Koffein. Es sollen insgesamt 500 kg Kaffeemischung hergestellt werden. Der Koffeingehalt der Mischung muss mindestens 1,6% betragen, also mindestens 8 kg Koffein enthalten. Der Robusta-Anteil darf höchstens 300 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Arabica in kg", "x2 = Menge Robusta in kg"],
+    "zielfunktion": "Z = 15x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 500 (Gesamtmenge)",
+      "0,012x1 + 0,024x2 ≥ 8 (Koffeingehalt)",
+      "x2 ≤ 300 (Robusta-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "1,6% von 500 kg = 8 kg Koffein als Mindestanforderung. Arabica enthält 1,2% Koffein (0,012 pro kg) und Robusta 2,4% Koffein (0,024 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Arabica kostet 15€ pro kg", "bedeutung": "15 × x₁"},
+        {"text": "Robusta kostet 9€ pro kg", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 500 kg Kaffeemischung hergestellt werden", "bedeutung": "x₁ + x₂ = 500"}
+        ],
+        [
+          {"text": "enthält 1,2% Koffein", "bedeutung": "0,012x₁"},
+          {"text": "enthält 2,4% Koffein", "bedeutung": "+ 0,024x₂"},
+          {"text": "mindestens 8 kg Koffein", "bedeutung": "≥ 8"}
+        ],
+        [
+          {"text": "Robusta-Anteil darf höchstens 300 kg", "bedeutung": "x₂ ≤ 300"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gummimischung",
+    "beschreibung": "Ein Reifenhersteller mischt aus Naturkautschuk und Synthesekautschuk. Naturkautschuk kostet 5€ pro kg und hat eine Elastizität von 9 Einheiten pro kg. Synthesekautschuk kostet 3€ pro kg und hat eine Elastizität von 4 Einheiten pro kg. Es sollen insgesamt 800 kg Gummimischung hergestellt werden. Die Gesamtelastizität muss mindestens 4800 Einheiten betragen. Der Anteil von Synthesekautschuk darf höchstens 500 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Naturkautschuk in kg", "x2 = Menge Synthesekautschuk in kg"],
+    "zielfunktion": "Z = 5x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 800 (Gesamtmenge)",
+      "9x1 + 4x2 ≥ 4800 (Mindest-Elastizität)",
+      "x2 ≤ 500 (Synthesekautschuk-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 800 kg. Die Elastizität von 4800 Einheiten ergibt sich aus den Anforderungen an die Gummimischung. Naturkautschuk liefert 9 Einheiten/kg, Synthesekautschuk nur 4.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Naturkautschuk kostet 5€ pro kg", "bedeutung": "5 × x₁"},
+        {"text": "Synthesekautschuk kostet 3€ pro kg", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 800 kg Gummimischung hergestellt werden", "bedeutung": "x₁ + x₂ = 800"}
+        ],
+        [
+          {"text": "Elastizität von 9 Einheiten pro kg", "bedeutung": "9x₁"},
+          {"text": "Elastizität von 4 Einheiten pro kg", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 4800 Einheiten", "bedeutung": "≥ 4800"}
+        ],
+        [
+          {"text": "Synthesekautschuk darf höchstens 500 kg", "bedeutung": "x₂ ≤ 500"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Salatdressing-Mischung",
+    "beschreibung": "Ein Feinkosthersteller mischt Salatdressing aus Öl und Essig. Öl kostet 4€ pro Liter und hat einen Säuregehalt von 0,5 Einheiten pro Liter. Essig kostet 1,50€ pro Liter und hat einen Säuregehalt von 6 Einheiten pro Liter. Es sollen insgesamt 600 Liter Dressing hergestellt werden. Der Gesamtsäuregehalt muss mindestens 1200 Einheiten betragen. Der Ölanteil muss mindestens 200 Liter betragen, damit das Dressing die richtige Konsistenz hat. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Öl in Liter", "x2 = Menge Essig in Liter"],
+    "zielfunktion": "Z = 4x1 + 1,5x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 600 (Gesamtmenge)",
+      "0,5x1 + 6x2 ≥ 1200 (Mindestsäuregehalt)",
+      "x1 ≥ 200 (Öl-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 600 Litern. Der Säuregehalt von 1200 Einheiten ergibt sich aus der gewünschten Geschmacksintensität. Öl liefert 0,5 Säureeinheiten/Liter, Essig 6.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Öl kostet 4€ pro Liter", "bedeutung": "4 × x₁"},
+        {"text": "Essig kostet 1,50€ pro Liter", "bedeutung": "1,5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 600 Liter Dressing hergestellt werden", "bedeutung": "x₁ + x₂ = 600"}
+        ],
+        [
+          {"text": "Säuregehalt von 0,5 Einheiten pro Liter", "bedeutung": "0,5x₁"},
+          {"text": "Säuregehalt von 6 Einheiten pro Liter", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 1200 Einheiten", "bedeutung": "≥ 1200"}
+        ],
+        [
+          {"text": "Ölanteil muss mindestens 200 Liter", "bedeutung": "x₁ ≥ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kosmetik-Creme Mischung",
+    "beschreibung": "Ein Kosmetikhersteller mischt Creme aus Basis A und Basis B. Basis A kostet 20€ pro kg und enthält 60% Feuchtigkeitsgehalt. Basis B kostet 12€ pro kg und enthält 25% Feuchtigkeitsgehalt. Es sollen insgesamt 300 kg Creme hergestellt werden. Der Feuchtigkeitsgehalt der Mischung muss mindestens 35% betragen, also mindestens 105 kg Feuchtigkeit enthalten. Der Anteil von Basis A darf höchstens 200 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Basis A in kg", "x2 = Menge Basis B in kg"],
+    "zielfunktion": "Z = 20x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 300 (Gesamtmenge)",
+      "0,6x1 + 0,25x2 ≥ 105 (Feuchtigkeitsgehalt)",
+      "x1 ≤ 200 (Basis-A-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "35% von 300 kg = 105 kg Feuchtigkeit als Mindestanforderung. Basis A enthält 60% Feuchtigkeit (0,6 pro kg) und Basis B 25% Feuchtigkeit (0,25 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Basis A kostet 20€ pro kg", "bedeutung": "20 × x₁"},
+        {"text": "Basis B kostet 12€ pro kg", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 300 kg Creme hergestellt werden", "bedeutung": "x₁ + x₂ = 300"}
+        ],
+        [
+          {"text": "enthält 60% Feuchtigkeitsgehalt", "bedeutung": "0,6x₁"},
+          {"text": "enthält 25% Feuchtigkeitsgehalt", "bedeutung": "+ 0,25x₂"},
+          {"text": "mindestens 105 kg Feuchtigkeit", "bedeutung": "≥ 105"}
+        ],
+        [
+          {"text": "Basis A darf höchstens 200 kg", "bedeutung": "x₁ ≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wein-Cuvee Mischung",
+    "beschreibung": "Ein Winzer mischt eine Cuvee aus Merlot und Cabernet. Merlot kostet 6€ pro Liter und hat einen Tanningehalt von 3 Einheiten pro Liter. Cabernet kostet 9€ pro Liter und hat einen Tanningehalt von 8 Einheiten pro Liter. Es sollen insgesamt 1000 Liter Cuvee hergestellt werden. Der Gesamttanningehalt muss mindestens 5000 Einheiten betragen. Der Merlot-Anteil muss mindestens 300 Liter betragen, um den typischen Charakter zu wahren. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Merlot in Liter", "x2 = Menge Cabernet in Liter"],
+    "zielfunktion": "Z = 6x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 1000 (Gesamtmenge)",
+      "3x1 + 8x2 ≥ 5000 (Mindest-Tanningehalt)",
+      "x1 ≥ 300 (Merlot-Minimum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Gesamtmenge ist fest bei 1000 Litern. Die 5000 Tannineinheiten ergeben sich aus der gewünschten Geschmacksintensität. Merlot liefert 3 Tannineinheiten/Liter, Cabernet 8.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Merlot kostet 6€ pro Liter", "bedeutung": "6 × x₁"},
+        {"text": "Cabernet kostet 9€ pro Liter", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 1000 Liter Cuvee hergestellt werden", "bedeutung": "x₁ + x₂ = 1000"}
+        ],
+        [
+          {"text": "Tanningehalt von 3 Einheiten pro Liter", "bedeutung": "3x₁"},
+          {"text": "Tanningehalt von 8 Einheiten pro Liter", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 5000 Einheiten", "bedeutung": "≥ 5000"}
+        ],
+        [
+          {"text": "Merlot-Anteil muss mindestens 300 Liter", "bedeutung": "x₁ ≥ 300"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kunststoffgranulat-Mischung",
+    "beschreibung": "Ein Kunststoffhersteller mischt Granulat aus Recyclingmaterial und Neuware. Recyclingmaterial kostet 1,50€ pro kg und hat einen Reinheitsgrad von 70%. Neuware kostet 4€ pro kg und hat einen Reinheitsgrad von 98%. Es sollen insgesamt 2000 kg Granulat hergestellt werden. Der Reinheitsgrad der Mischung muss mindestens 85% betragen, also mindestens 1700 kg reine Substanz enthalten. Der Recyclinganteil darf höchstens 1200 kg betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Menge Recyclingmaterial in kg", "x2 = Menge Neuware in kg"],
+    "zielfunktion": "Z = 1,5x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 = 2000 (Gesamtmenge)",
+      "0,7x1 + 0,98x2 ≥ 1700 (Reinheitsgrad)",
+      "x1 ≤ 1200 (Recycling-Maximum)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "85% von 2000 kg = 1700 kg reine Substanz als Mindestanforderung. Recyclingmaterial hat 70% Reinheit (0,7 pro kg) und Neuware 98% Reinheit (0,98 pro kg).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Recyclingmaterial kostet 1,50€ pro kg", "bedeutung": "1,5 × x₁"},
+        {"text": "Neuware kostet 4€ pro kg", "bedeutung": "4 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "insgesamt 2000 kg Granulat hergestellt werden", "bedeutung": "x₁ + x₂ = 2000"}
+        ],
+        [
+          {"text": "Reinheitsgrad von 70%", "bedeutung": "0,7x₁"},
+          {"text": "Reinheitsgrad von 98%", "bedeutung": "+ 0,98x₂"},
+          {"text": "mindestens 1700 kg reine Substanz", "bedeutung": "≥ 1700"}
+        ],
+        [
+          {"text": "Recyclinganteil darf höchstens 1200 kg", "bedeutung": "x₁ ≤ 1200"}
+        ]
+      ]
+    }
+  }
+]

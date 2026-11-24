@@ -1,0 +1,43 @@
+{
+  "id": "emiss_keramik_2v_13",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Fliesen", "x2 = Einheiten Sanitärkeramik"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Abfallmenge", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Ertrag Fliesen (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Sanitärkeramik (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "CO₂ Fliesen (t)"},
+    "a12": {"min": 4, "max": 10,  "label": "CO₂ Sanitärkeramik (t)"},
+    "b1":  {"min": 80, "max": 300, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 1, "max": 4,   "label": "Abfall Fliesen (t)"},
+    "a22": {"min": 2, "max": 6,   "label": "Abfall Sanitärkeramik (t)"},
+    "b2":  {"min": 40, "max": 150, "label": "Abfalllimit (t)"}
+  },
+  "titel": "Keramikfabrik – Fliesen und Sanitärkeramik",
+  "beschreibung": "Eine Keramikfabrik produziert Fliesen und Sanitärkeramik. Fliesen erwirtschaften {c1} Tsd. € pro Einheit, Sanitärkeramik {c2} Tsd. €. Fliesen verursachen {a11} Tonnen CO₂ pro Einheit, Sanitärkeramik {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. Fliesen erzeugen {a21} Tonnen Abfall pro Einheit, Sanitärkeramik {a22} Tonnen. Das Abfalllimit liegt bei {b2} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Abfalllimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Fliesen erwirtschaften {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sanitärkeramik {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen Abfall pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

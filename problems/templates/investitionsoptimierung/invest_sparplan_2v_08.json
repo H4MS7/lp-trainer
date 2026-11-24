@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_sparplan_2v_08",
+  "titel": "Sparplan – Festgeld und Tagesgeld",
+  "variablen": [
+    "x1 = Betrag in Festgeld (Tsd. EUR)",
+    "x2 = Betrag in Tagesgeld (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gesamtersparnisse",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Bindungsdauer",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 7,
+      "label": "Zinssatz Festgeld (%)"
+    },
+    "c2": {
+      "min": 1,
+      "max": 4,
+      "label": "Zinssatz Tagesgeld (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbindung Festgeld"
+    },
+    "a12": {
+      "min": 1,
+      "max": 2,
+      "label": "Kapitalbindung Tagesgeld"
+    },
+    "b1": {
+      "min": 50,
+      "max": 200,
+      "label": "Verfuegbare Ersparnisse (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Bindungsdauer Festgeld (Monate)"
+    },
+    "a22": {
+      "min": 1,
+      "max": 2,
+      "label": "Bindungsdauer Tagesgeld (Monate)"
+    },
+    "b2": {
+      "min": 50,
+      "max": 150,
+      "label": "Max. Bindungsmonate"
+    }
+  },
+  "beschreibung": "Ein Sparer moechte sein Geld auf Festgeld und Tagesgeld verteilen. Festgeld bringt {c1} % Zinsen, Tagesgeld {c2} %. Pro Einheit Festgeld werden {a11} Kapitaleinheiten gebunden, pro Einheit Tagesgeld {a12} Einheiten. Die Gesamtersparnisse betragen {b1} Tausend Euro. Die Bindungsdauer liegt bei {a21} Monaten pro Festgeldeinheit und {a22} Monaten pro Tagesgeldeinheit bei maximal {b2} Bindungsmonaten insgesamt.",
+  "hinweis": "Maximiere die Zinseinnahmen unter Beachtung von Ersparnissen und Bindungsdauer.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Festgeld bringt {c1} % Zinsen",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Tagesgeld {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten gebunden",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Tagesgeld {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Monaten pro Festgeldeinheit",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Monaten pro Tagesgeldeinheit",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Bindungsmonaten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

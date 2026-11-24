@@ -1,0 +1,43 @@
+{
+  "id": "prod_brauerei_2v_06",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektoliter Pils", "x2 = Hektoliter Weizen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Malz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Gaerkapazitaet", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 20, "max": 60,  "label": "Gewinn/hl Pils (€)"},
+    "c2":  {"min": 25, "max": 70,  "label": "Gewinn/hl Weizen (€)"},
+    "a11": {"min": 10, "max": 25,  "label": "Malz/hl Pils (kg)"},
+    "a12": {"min": 12, "max": 30,  "label": "Malz/hl Weizen (kg)"},
+    "b1":  {"min": 500, "max": 2000, "label": "Malzvorrat (kg)"},
+    "a21": {"min": 1, "max": 4,    "label": "Gaertankstunden/hl Pils"},
+    "a22": {"min": 2, "max": 6,    "label": "Gaertankstunden/hl Weizen"},
+    "b2":  {"min": 60, "max": 250, "label": "Gaerkapazitaet (h)"}
+  },
+  "titel": "Brauerei – Pils und Weizenbier",
+  "beschreibung": "Eine Brauerei braut Pils und Weizenbier. Pro Hektoliter Pils werden {c1} Euro Gewinn erzielt, pro Hektoliter Weizen {c2} Euro. Fuer einen Hektoliter Pils werden {a11} kg Malz benoetigt, fuer Weizen {a12} kg. Der Malzvorrat betraegt {b1} kg. Die Gaerung eines Hektoliters Pils dauert {a21} Stunden, die von Weizen {a22} Stunden. Die Gaerkapazitaet liegt bei {b2} Stunden.",
+  "hinweis": "Identifiziere den Gewinn pro Hektoliter und die Beschraenkungen durch Malz und Gaerkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pils werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Weizen {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Pils werden {a11} kg Malz benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Weizen {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Pils dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Weizen {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

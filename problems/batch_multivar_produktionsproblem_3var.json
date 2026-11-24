@@ -1,0 +1,495 @@
+[
+  {
+    "titel": "Möbelfabrik mit drei Produktlinien",
+    "beschreibung": "Eine Möbelfabrik stellt drei Produkte her: Esstische, Bücherregale und Kommoden. Pro Esstisch erzielt das Unternehmen einen Gewinn von 37 Euro, pro Bücherregal 21 Euro und pro Kommode 4 Euro. Die Produktion unterliegt drei Kapazitätsbeschränkungen in verschiedenen Abteilungen. In der Schreinerei benötigt jeder Esstisch 3 Stunden, jedes Bücherregal 6 Stunden und jede Kommode 8 Stunden. Insgesamt stehen 198 Schreinereistunden zur Verfügung. In der Lackiererei werden pro Esstisch 3 Stunden, pro Bücherregal 12 Stunden und pro Kommode 14 Stunden benötigt. Die Lackiererei hat eine Kapazität von 256 Stunden. Zusätzlich erfordert die Endmontage pro Esstisch 1 Stunde, pro Bücherregal 11 Stunden und pro Kommode 9 Stunden. Die Endmontage verfügt über 354 Stunden Kapazität. Die Geschäftsleitung möchte die Produktion so planen, dass der Gesamtgewinn maximiert wird. Alle Produktionsmengen können als nicht-negative reelle Zahlen angenommen werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Esstische",
+      "x2 = Anzahl Bücherregale",
+      "x3 = Anzahl Kommoden"
+    ],
+    "zielfunktion": "Z = 37x1 + 21x2 + 4x3 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 + 8x3 ≤ 198 (Schreinerei)",
+      "3x1 + 12x2 + 14x3 ≤ 256 (Lackiererei)",
+      "x1 + 11x2 + 9x3 ≤ 354 (Endmontage)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die drei Ressourcen (Schreinerei, Lackiererei, Endmontage) als separate Nebenbedingungen. Jede Ressource begrenzt die Produktion aller drei Produkte.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 37 Euro",
+          "bedeutung": "37 × x₁"
+        },
+        {
+          "text": "pro Bücherregal 21 Euro",
+          "bedeutung": "21 × x₂"
+        },
+        {
+          "text": "pro Kommode 4 Euro",
+          "bedeutung": "4 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jeder Esstisch 3 Stunden",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "jedes Bücherregal 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "jede Kommode 8 Stunden",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "198 Schreinereistunden",
+            "bedeutung": "≤ 198"
+          }
+        ],
+        [
+          {
+            "text": "pro Esstisch 3 Stunden",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "pro Bücherregal 12 Stunden",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "pro Kommode 14 Stunden",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "Kapazität von 256 Stunden",
+            "bedeutung": "≤ 256"
+          }
+        ],
+        [
+          {
+            "text": "pro Esstisch 1 Stunde",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "pro Bücherregal 11 Stunden",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "pro Kommode 9 Stunden",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "354 Stunden Kapazität",
+            "bedeutung": "≤ 354"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bäckerei mit drei Backwaren",
+    "beschreibung": "Eine Bäckerei produziert drei Sorten Backwaren: Brote, Kuchen und Brötchen. Jedes Brot bringt einen Deckungsbeitrag von 27 Euro, jeder Kuchen 2 Euro und jedes Brötchen 22 Euro. Für die Herstellung stehen drei begrenzte Ressourcen zur Verfügung. Beim Teigkneten benötigt jedes Brot 4 Minuten, jeder Kuchen 10 Minuten und jedes Brötchen 13 Minuten. Die Knetmaschine steht insgesamt 55 Minuten zur Verfügung. Im Backofen beansprucht ein Brot 4 Minuten Backzeit, jeder Kuchen 13 Minuten und jedes Brötchen 3 Minuten. Die Ofenkapazität beträgt 186 Minuten. Bei der Glasur und Dekoration werden pro Brot 1 Minute, pro Kuchen 4 Minuten und pro Brötchen 5 Minuten benötigt. Für Glasur und Dekoration stehen 41 Minuten zur Verfügung. Die Bäckerei möchte ihren Produktionsplan so optimieren, dass der Gesamtdeckungsbeitrag maximiert wird. Es dürfen beliebige nicht-negative Produktionsmengen gewählt werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Brote",
+      "x2 = Anzahl Kuchen",
+      "x3 = Anzahl Brötchen"
+    ],
+    "zielfunktion": "Z = 27x1 + 2x2 + 22x3 (max)",
+    "nebenbedingungen": [
+      "4x1 + 10x2 + 13x3 ≤ 55 (Teigkneten)",
+      "4x1 + 13x2 + 3x3 ≤ 186 (Backofen)",
+      "x1 + 4x2 + 5x3 ≤ 41 (Glasur/Dekoration)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Drei Produktionsschritte (Teigkneten, Backofen, Glasur/Dekoration) begrenzen die Herstellung. Stelle für jeden Schritt eine separate Ungleichung auf.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 27 Euro",
+          "bedeutung": "27 × x₁"
+        },
+        {
+          "text": "jeder Kuchen 2 Euro",
+          "bedeutung": "2 × x₂"
+        },
+        {
+          "text": "jedes Brötchen 22 Euro",
+          "bedeutung": "22 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jedes Brot 4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "jeder Kuchen 10 Minuten",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "jedes Brötchen 13 Minuten",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "insgesamt 55 Minuten",
+            "bedeutung": "≤ 55"
+          }
+        ],
+        [
+          {
+            "text": "ein Brot 4 Minuten Backzeit",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "jeder Kuchen 13 Minuten",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "jedes Brötchen 3 Minuten",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Ofenkapazität beträgt 186 Minuten",
+            "bedeutung": "≤ 186"
+          }
+        ],
+        [
+          {
+            "text": "pro Brot 1 Minute",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "pro Kuchen 4 Minuten",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "pro Brötchen 5 Minuten",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "41 Minuten zur Verfügung",
+            "bedeutung": "≤ 41"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Textilfabrik mit drei Bekleidungslinien",
+    "beschreibung": "Eine Textilfabrik produziert drei Bekleidungsartikel: Jacken, Hemden und Hosen. Der Gewinn beträgt 37 Euro pro Jacke, 43 Euro pro Hemd und 12 Euro pro Hose. Die Produktion wird durch vier verschiedene Ressourcen begrenzt. Im Zuschnitt benötigt jede Jacke 14 Stunden, jedes Hemd 2 Stunden und jede Hose 4 Stunden. Die Zuschnittkapazität liegt bei 390 Stunden. An den Nähmaschinen werden pro Jacke 7 Stunden, pro Hemd 2 Stunden und pro Hose 9 Stunden benötigt. Die Nähkapazität beträgt 49 Stunden. In der Qualitätskontrolle erfordert jede Jacke 8 Stunden, jedes Hemd 13 Stunden und jede Hose 14 Stunden. Für die Qualitätskontrolle stehen 425 Stunden zur Verfügung. Schließlich verbraucht die Verpackung pro Jacke 8 Stunden, pro Hemd 13 Stunden und pro Hose 3 Stunden bei einer Verpackungskapazität von 442 Stunden. Das Unternehmen möchte den Produktionsplan so gestalten, dass der Gesamtgewinn maximiert wird. Alle Stückzahlen können als nicht-negative reelle Werte angenommen werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Jacken",
+      "x2 = Anzahl Hemden",
+      "x3 = Anzahl Hosen"
+    ],
+    "zielfunktion": "Z = 37x1 + 43x2 + 12x3 (max)",
+    "nebenbedingungen": [
+      "14x1 + 2x2 + 4x3 ≤ 390 (Zuschnitt)",
+      "7x1 + 2x2 + 9x3 ≤ 49 (Nähmaschinen)",
+      "8x1 + 13x2 + 14x3 ≤ 425 (Qualitätskontrolle)",
+      "8x1 + 13x2 + 3x3 ≤ 442 (Verpackung)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Vier verschiedene Produktionsschritte (Zuschnitt, Nähen, Qualitätskontrolle, Verpackung) begrenzen die Fertigung. Beachte, dass jeder Schritt eine eigene Nebenbedingung ergibt.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "37 Euro pro Jacke",
+          "bedeutung": "37 × x₁"
+        },
+        {
+          "text": "43 Euro pro Hemd",
+          "bedeutung": "43 × x₂"
+        },
+        {
+          "text": "12 Euro pro Hose",
+          "bedeutung": "12 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jede Jacke 14 Stunden",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "jedes Hemd 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "jede Hose 4 Stunden",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "Zuschnittkapazität liegt bei 390 Stunden",
+            "bedeutung": "≤ 390"
+          }
+        ],
+        [
+          {
+            "text": "pro Jacke 7 Stunden",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "pro Hemd 2 Stunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "pro Hose 9 Stunden",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "Nähkapazität beträgt 49 Stunden",
+            "bedeutung": "≤ 49"
+          }
+        ],
+        [
+          {
+            "text": "jede Jacke 8 Stunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "jedes Hemd 13 Stunden",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "jede Hose 14 Stunden",
+            "bedeutung": "+ 14x₃"
+          },
+          {
+            "text": "425 Stunden zur Verfügung",
+            "bedeutung": "≤ 425"
+          }
+        ],
+        [
+          {
+            "text": "pro Jacke 8 Stunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "pro Hemd 13 Stunden",
+            "bedeutung": "+ 13x₂"
+          },
+          {
+            "text": "pro Hose 3 Stunden",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Verpackungskapazität von 442 Stunden",
+            "bedeutung": "≤ 442"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Metallwerkstatt mit drei Bauteilen",
+    "beschreibung": "Eine Metallwerkstatt fertigt drei Bauteile an: Zahnräder, Wellen und Gehäuse. Pro Zahnrad wird ein Gewinn von 12 Euro erzielt, pro Welle 18 Euro und pro Gehäuse 7 Euro. Die Fertigung ist durch vier Produktionsbereiche begrenzt. An der Drehbank benötigt jedes Zahnrad 4 Minuten, jede Welle 4 Minuten und jedes Gehäuse 10 Minuten. Die Drehbank ist insgesamt 74 Minuten verfügbar. An der Fräsmaschine werden pro Zahnrad 3 Minuten, pro Welle 5 Minuten und pro Gehäuse 13 Minuten benötigt. Die Fräsmaschinenkapazität beträgt 217 Minuten. Beim Schleifen erfordert jedes Zahnrad 13 Minuten, jede Welle 8 Minuten und jedes Gehäuse 9 Minuten. Für das Schleifen stehen 278 Minuten zur Verfügung. In der Härterei werden pro Zahnrad 12 Minuten, je Welle 5 Minuten und pro Gehäuse 6 Minuten benötigt. Die Härtereikapazität liegt bei 26 Minuten. Die Werkstatt möchte ihre Fertigung so planen, dass der Gesamtgewinn maximiert wird. Alle Produktionsmengen dürfen als nicht-negative reelle Zahlen angesetzt werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Zahnräder",
+      "x2 = Anzahl Wellen",
+      "x3 = Anzahl Gehäuse"
+    ],
+    "zielfunktion": "Z = 12x1 + 18x2 + 7x3 (max)",
+    "nebenbedingungen": [
+      "4x1 + 4x2 + 10x3 ≤ 74 (Drehbank)",
+      "3x1 + 5x2 + 13x3 ≤ 217 (Fräsmaschine)",
+      "13x1 + 8x2 + 9x3 ≤ 278 (Schleifen)",
+      "12x1 + 5x2 + 6x3 ≤ 26 (Härterei)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Vier Maschinengruppen (Drehbank, Fräsmaschine, Schleifen, Härterei) begrenzen die Fertigung. Achte besonders auf die sehr knappe Härtereikapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 12 Euro",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "pro Welle 18 Euro",
+          "bedeutung": "18 × x₂"
+        },
+        {
+          "text": "pro Gehäuse 7 Euro",
+          "bedeutung": "7 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jedes Zahnrad 4 Minuten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "jede Welle 4 Minuten",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "jedes Gehäuse 10 Minuten",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "insgesamt 74 Minuten",
+            "bedeutung": "≤ 74"
+          }
+        ],
+        [
+          {
+            "text": "pro Zahnrad 3 Minuten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "pro Welle 5 Minuten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "pro Gehäuse 13 Minuten",
+            "bedeutung": "+ 13x₃"
+          },
+          {
+            "text": "Fräsmaschinenkapazität beträgt 217 Minuten",
+            "bedeutung": "≤ 217"
+          }
+        ],
+        [
+          {
+            "text": "jedes Zahnrad 13 Minuten",
+            "bedeutung": "13x₁"
+          },
+          {
+            "text": "jede Welle 8 Minuten",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "jedes Gehäuse 9 Minuten",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "278 Minuten zur Verfügung",
+            "bedeutung": "≤ 278"
+          }
+        ],
+        [
+          {
+            "text": "pro Zahnrad 12 Minuten",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "je Welle 5 Minuten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "pro Gehäuse 6 Minuten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Härtereikapazität liegt bei 26 Minuten",
+            "bedeutung": "≤ 26"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikfertigung mit drei Geräten",
+    "beschreibung": "Ein Elektronikunternehmen fertigt drei Gerätetypen: Monitore, Tastaturen und Lautsprecher. Pro Monitor wird ein Deckungsbeitrag von 49 Euro erzielt, pro Tastatur 8 Euro und pro Lautsprecher 20 Euro. Drei Fertigungsbereiche begrenzen die Produktion. In der Bestückung benötigt jeder Monitor 11 Stunden, jede Tastatur 7 Stunden und jeder Lautsprecher 15 Stunden. Die Bestückungskapazität beträgt 447 Stunden. Im Funktionstest werden pro Monitor 2 Stunden, pro Tastatur 6 Stunden und pro Lautsprecher 12 Stunden benötigt. Für den Funktionstest stehen 29 Stunden zur Verfügung. In der Endkontrolle erfordert jeder Monitor 14 Stunden, jede Tastatur 5 Stunden und jeder Lautsprecher 1 Stunde. Die Endkontrolle hat eine Kapazität von 290 Stunden. Das Unternehmen möchte die Produktionsplanung so gestalten, dass der Gesamtdeckungsbeitrag maximiert wird. Alle Stückzahlen können als nicht-negative reelle Werte angenommen werden.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Monitore",
+      "x2 = Anzahl Tastaturen",
+      "x3 = Anzahl Lautsprecher"
+    ],
+    "zielfunktion": "Z = 49x1 + 8x2 + 20x3 (max)",
+    "nebenbedingungen": [
+      "11x1 + 7x2 + 15x3 ≤ 447 (Bestückung)",
+      "2x1 + 6x2 + 12x3 ≤ 29 (Funktionstest)",
+      "14x1 + 5x2 + x3 ≤ 290 (Endkontrolle)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Drei Fertigungsschritte (Bestückung, Funktionstest, Endkontrolle) begrenzen die Produktion. Der Funktionstest ist mit nur 29 Stunden besonders knapp bemessen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Deckungsbeitrag von 49 Euro",
+          "bedeutung": "49 × x₁"
+        },
+        {
+          "text": "pro Tastatur 8 Euro",
+          "bedeutung": "8 × x₂"
+        },
+        {
+          "text": "pro Lautsprecher 20 Euro",
+          "bedeutung": "20 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "jeder Monitor 11 Stunden",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "jede Tastatur 7 Stunden",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "jeder Lautsprecher 15 Stunden",
+            "bedeutung": "+ 15x₃"
+          },
+          {
+            "text": "Bestückungskapazität beträgt 447 Stunden",
+            "bedeutung": "≤ 447"
+          }
+        ],
+        [
+          {
+            "text": "pro Monitor 2 Stunden",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "pro Tastatur 6 Stunden",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "pro Lautsprecher 12 Stunden",
+            "bedeutung": "+ 12x₃"
+          },
+          {
+            "text": "29 Stunden zur Verfügung",
+            "bedeutung": "≤ 29"
+          }
+        ],
+        [
+          {
+            "text": "jeder Monitor 14 Stunden",
+            "bedeutung": "14x₁"
+          },
+          {
+            "text": "jede Tastatur 5 Stunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "jeder Lautsprecher 1 Stunde",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "Kapazität von 290 Stunden",
+            "bedeutung": "≤ 290"
+          }
+        ]
+      ]
+    }
+  }
+]

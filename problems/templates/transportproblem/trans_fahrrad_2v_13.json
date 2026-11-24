@@ -1,0 +1,39 @@
+{
+  "id": "trans_fahrrad_2v_13",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Touren Lastenrad", "x2 = Touren Lieferfahrrad"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Pakete", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Akkukapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Lastenrad (EUR/Tour)"},
+    "c2":  {"min": 1, "max": 5,   "label": "Kosten Lieferfahrrad (EUR/Tour)"},
+    "a11": {"min": 4, "max": 12,  "label": "Pakete pro Lastenrad-Tour"},
+    "a12": {"min": 2, "max": 6,   "label": "Pakete pro Lieferfahrrad-Tour"},
+    "b1":  {"min": 30, "max": 140, "label": "Mindest-Pakete"},
+    "a21": {"min": 2, "max": 6,   "label": "Akku pro Lastenrad-Tour (Einheiten)"},
+    "a22": {"min": 1, "max": 4,   "label": "Akku pro Lieferfahrrad-Tour (Einheiten)"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Akkukapazität (Einheiten)"}
+  },
+  "titel": "Fahrradkurier – Lastenrad und Lieferfahrrad",
+  "beschreibung": "Ein Fahrradkurierdienst liefert Pakete mit zwei Fahrradtypen. Eine Tour mit dem Lastenrad kostet {c1} EUR, eine Tour mit dem Lieferfahrrad kostet {c2} EUR. Das Lastenrad liefert {a11} Pakete pro Tour, das Lieferfahrrad liefert {a12} Pakete pro Tour. Mindestens {b1} Pakete müssen geliefert werden. Das Lastenrad verbraucht {a21} Akku-Einheiten pro Tour, das Lieferfahrrad verbraucht {a22} Akku-Einheiten pro Tour. Die Akkukapazität beträgt höchstens {b2} Einheiten.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Paketzahl und begrenzter Akkukapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lastenrad kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Lieferfahrrad kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Pakete pro Tour, das Lieferfahrrad liefert {a12} Pakete pro Tour. Mindestens {b1} Pakete müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Akku-Einheiten pro Tour, das Lieferfahrrad verbraucht {a22} Akku-Einheiten pro Tour. Die Akkukapazität beträgt höchstens {b2} Einheiten", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

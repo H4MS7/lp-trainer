@@ -1,0 +1,60 @@
+{
+  "id": "lager_elektronik_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Laptops (Kartons)", "x2 = Bestellmenge Monitore (Kartons)", "x3 = Bestellmenge Zubehör (Kartons)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerhallenkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Versicherungslimit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 18,  "label": "Lagerkosten Laptops (€/Karton)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Monitore (€/Karton)"},
+    "c3":  {"min": 1, "max": 5,   "label": "Lagerkosten Zubehör (€/Karton)"},
+    "a11": {"min": 2, "max": 5,   "label": "Produkteinheiten Laptops"},
+    "a12": {"min": 1, "max": 4,   "label": "Produkteinheiten Monitore"},
+    "a13": {"min": 5, "max": 12,  "label": "Produkteinheiten Zubehör"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestsortiment (Produkteinheiten)"},
+    "a21": {"min": 2, "max": 5,   "label": "Lagerfläche Laptops (m²)"},
+    "a22": {"min": 3, "max": 6,   "label": "Lagerfläche Monitore (m²)"},
+    "a23": {"min": 1, "max": 3,   "label": "Lagerfläche Zubehör (m²)"},
+    "b2":  {"min": 40, "max": 150, "label": "Lagerhallenkapazität (m²)"},
+    "a31": {"min": 10, "max": 25, "label": "Warenwert Laptops (100€/Karton)"},
+    "a32": {"min": 5, "max": 15,  "label": "Warenwert Monitore (100€/Karton)"},
+    "a33": {"min": 1, "max": 5,   "label": "Warenwert Zubehör (100€/Karton)"},
+    "b3":  {"min": 200, "max": 800, "label": "Versicherungslimit (100€)"}
+  },
+  "titel": "Elektroniklager – IT-Geräte",
+  "beschreibung": "Ein IT-Händler lagert Laptops, Monitore und Zubehör. Die Lagerkosten betragen {c1} € pro Karton Laptops, {c2} € pro Karton Monitore und {c3} € pro Karton Zubehör. Jeder Karton Laptops enthält {a11} Produkteinheiten, Monitore enthalten {a12} Produkteinheiten und Zubehör enthält {a13} Produkteinheiten. Das Mindestsortiment umfasst {b1} Produkteinheiten. Laptops belegen {a21} m² Lagerfläche, Monitore belegen {a22} m² und Zubehör belegt {a23} m² pro Karton. Die Lagerhallenkapazität beträgt {b2} m². Der Warenwert beträgt {a31} Hundert-Euro pro Karton Laptops, {a32} Hundert-Euro pro Karton Monitore und {a33} Hundert-Euro pro Karton Zubehör. Das Versicherungslimit beträgt {b3} Hundert-Euro.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments, der Hallenkapazität und des Versicherungslimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Laptops", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Monitore", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Karton Zubehör", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Produkteinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Produkteinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Produkteinheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Produkteinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² Lagerfläche", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m²", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m² pro Karton", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Hundert-Euro pro Karton Laptops", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Hundert-Euro pro Karton Monitore", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Hundert-Euro pro Karton Zubehör", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Hundert-Euro", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

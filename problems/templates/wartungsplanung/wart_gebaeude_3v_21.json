@@ -1,0 +1,60 @@
+{
+  "id": "wart_gebaeude_3v_21",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Heizungswartungen", "x2 = Anzahl Sanitärchecks", "x3 = Anzahl Elektroprüfungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbetriebssicherheit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Hausmeisterstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten Heizung (Tsd. €)"},
+    "c2":  {"min": 1, "max": 5,   "label": "Kosten Sanitär (Tsd. €)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Elektro (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Sicherheit Heizung (%)"},
+    "a12": {"min": 2, "max": 5,   "label": "Sicherheit Sanitär (%)"},
+    "a13": {"min": 3, "max": 8,   "label": "Sicherheit Elektro (%)"},
+    "b1":  {"min": 35, "max": 120, "label": "Mindestbetriebssicherheit (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Stunden Heizung (h)"},
+    "a22": {"min": 1, "max": 3,   "label": "Stunden Sanitär (h)"},
+    "a23": {"min": 2, "max": 6,   "label": "Stunden Elektro (h)"},
+    "b2":  {"min": 15, "max": 60,  "label": "Max. Hausmeisterstunden (h)"},
+    "a31": {"min": 1, "max": 4,   "label": "Material Heizung (Tsd. €)"},
+    "a32": {"min": 1, "max": 3,   "label": "Material Sanitär (Tsd. €)"},
+    "a33": {"min": 2, "max": 5,   "label": "Material Elektro (Tsd. €)"},
+    "b3":  {"min": 10, "max": 50,  "label": "Materialbudget (Tsd. €)"}
+  },
+  "titel": "Wohnanlage – Haustechnik dreistufig",
+  "beschreibung": "Eine Wohnanlage plant die Wartung von Heizung, Sanitär und Elektrik. Eine Heizungswartung kostet {c1} Tsd. €, ein Sanitärcheck kostet {c2} Tsd. €, eine Elektroprüfung kostet {c3} Tsd. €. Heizungswartung erhöht die Betriebssicherheit um {a11} %, Sanitär um {a12} %, Elektro um {a13} %. Die Mindestbetriebssicherheit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Heizungswartung, {a22} h pro Sanitärcheck und {a23} h pro Elektroprüfung. Maximal {b2} Hausmeisterstunden stehen zur Verfügung. Die Materialkosten betragen {a31} Tsd. € pro Heizungswartung, {a32} Tsd. € pro Sanitärcheck und {a33} Tsd. € pro Elektroprüfung. Das Materialbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Sicherheit, Personal und Materialbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Heizungswartung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sanitärcheck kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Elektroprüfung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Heizungswartung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Sanitärcheck", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Elektroprüfung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Hausmeisterstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Heizungswartung", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Sanitärcheck", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Elektroprüfung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

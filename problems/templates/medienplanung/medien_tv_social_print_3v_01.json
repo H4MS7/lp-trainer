@@ -1,0 +1,54 @@
+{
+  "id": "medien_tv_social_print_3v_01",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl TV-Spots", "x2 = Anzahl Social-Media-Kampagnen", "x3 = Anzahl Print-Anzeigen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Produktionszeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 40,   "label": "Reichweite TV (Tsd.)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Reichweite Social (Tsd.)"},
+    "c3":  {"min": 5, "max": 20,    "label": "Reichweite Print (Tsd.)"},
+    "a11": {"min": 5, "max": 15,    "label": "Kosten TV (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten Social (Tsd. €)"},
+    "a13": {"min": 2, "max": 8,     "label": "Kosten Print (Tsd. €)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Personal TV (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Personal Social (Stunden)"},
+    "a23": {"min": 1, "max": 4,     "label": "Personal Print (Stunden)"},
+    "b2":  {"min": 30, "max": 100,  "label": "Personalstunden"},
+    "a31": {"min": 5, "max": 15,    "label": "Produktion TV (Stunden)"},
+    "a32": {"min": 2, "max": 6,     "label": "Produktion Social (Stunden)"},
+    "a33": {"min": 3, "max": 10,    "label": "Produktion Print (Stunden)"},
+    "b3":  {"min": 30, "max": 100,  "label": "Produktionsstunden"}
+  },
+  "titel": "Crossmedia-Kampagne – TV, Social und Print",
+  "beschreibung": "Ein Marketingteam plant eine Crossmedia-Kampagne. Ein TV-Spot erreicht {c1} Tsd. Personen, eine Social-Media-Kampagne erreicht {c2} Tsd. Personen und eine Print-Anzeige erreicht {c3} Tsd. Personen. Die Kosten betragen {a11} Tsd. € für TV, {a12} Tsd. € für Social und {a13} Tsd. € für Print. Das Budget beträgt {b1} Tsd. €. Der Personalbedarf beträgt {a21} Stunden für TV, {a22} Stunden für Social und {a23} Stunden für Print. Es stehen {b2} Personalstunden zur Verfügung. Die Produktionszeit beträgt {a31} Stunden für TV, {a32} Stunden für Social und {a33} Stunden für Print. Es stehen {b3} Produktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "TV-Spot erreicht {c1} Tsd. Personen", "bedeutung": "{c1} × x₁"},
+      {"text": "Social-Media-Kampagne erreicht {c2} Tsd. Personen", "bedeutung": "{c2} × x₂"},
+      {"text": "Print-Anzeige erreicht {c3} Tsd. Personen", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für TV, {a12} Tsd. € für Social und {a13} Tsd. € für Print", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für TV, {a22} Stunden für Social und {a23} Stunden für Print", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für TV, {a32} Stunden für Social und {a33} Stunden für Print", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Produktionsstunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

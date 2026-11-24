@@ -1,0 +1,39 @@
+{
+  "id": "trans_moebelwagen_2v_08",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Kleinlaster", "x2 = Fahrten Großlaster"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Möbelstücke", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Parkplatzkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Kleinlaster (EUR/Fahrt)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Großlaster (EUR/Fahrt)"},
+    "a11": {"min": 2, "max": 8,   "label": "Möbelstücke pro Kleinlaster"},
+    "a12": {"min": 5, "max": 15,  "label": "Möbelstücke pro Großlaster"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Möbelstücke"},
+    "a21": {"min": 1, "max": 3,   "label": "Parkplätze pro Kleinlaster"},
+    "a22": {"min": 2, "max": 5,   "label": "Parkplätze pro Großlaster"},
+    "b2":  {"min": 15, "max": 60, "label": "Verfügbare Parkplätze"}
+  },
+  "titel": "Möbeltransport – Klein- und Großlaster",
+  "beschreibung": "Ein Umzugsunternehmen transportiert Möbel mit zwei Lastertypen. Eine Fahrt mit dem Kleinlaster kostet {c1} EUR, eine Fahrt mit dem Großlaster kostet {c2} EUR. Der Kleinlaster transportiert {a11} Möbelstücke pro Fahrt, der Großlaster transportiert {a12} Möbelstücke pro Fahrt. Mindestens {b1} Möbelstücke müssen transportiert werden. Der Kleinlaster braucht {a21} Parkplätze, der Großlaster braucht {a22} Parkplätze. Insgesamt stehen {b2} Parkplätze zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Transportmenge und begrenzten Parkplätzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kleinlaster kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Großlaster kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Möbelstücke pro Fahrt, der Großlaster transportiert {a12} Möbelstücke pro Fahrt. Mindestens {b1} Möbelstücke müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Parkplätze, der Großlaster braucht {a22} Parkplätze. Insgesamt stehen {b2} Parkplätze zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

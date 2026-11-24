@@ -1,0 +1,71 @@
+{
+  "id": "trans_versorgung_5v_03",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Lieferungen Standort A", "x2 = Lieferungen Standort B", "x3 = Lieferungen Standort C", "x4 = Lieferungen Standort D", "x5 = Lieferungen Standort E"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Waren", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "LKW-Flotte", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Lagerkapazität", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Lieferzeitfenster", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Standort A (EUR/Lieferung)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Standort B (EUR/Lieferung)"},
+    "c3":  {"min": 2, "max": 10,  "label": "Kosten Standort C (EUR/Lieferung)"},
+    "c4":  {"min": 5, "max": 16,  "label": "Kosten Standort D (EUR/Lieferung)"},
+    "c5":  {"min": 3, "max": 11,  "label": "Kosten Standort E (EUR/Lieferung)"},
+    "a11": {"min": 3, "max": 9,   "label": "Waren ab A (Paletten)"},
+    "a12": {"min": 2, "max": 7,   "label": "Waren ab B (Paletten)"},
+    "a13": {"min": 4, "max": 10,  "label": "Waren ab C (Paletten)"},
+    "a14": {"min": 2, "max": 8,   "label": "Waren ab D (Paletten)"},
+    "a15": {"min": 3, "max": 9,   "label": "Waren ab E (Paletten)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Paletten"},
+    "a21": {"min": 1, "max": 3,   "label": "LKW ab A"},
+    "a22": {"min": 1, "max": 3,   "label": "LKW ab B"},
+    "a23": {"min": 1, "max": 2,   "label": "LKW ab C"},
+    "a24": {"min": 2, "max": 4,   "label": "LKW ab D"},
+    "a25": {"min": 1, "max": 3,   "label": "LKW ab E"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare LKW"},
+    "a31": {"min": 2, "max": 5,   "label": "Lager ab A (Einheiten)"},
+    "a32": {"min": 1, "max": 4,   "label": "Lager ab B (Einheiten)"},
+    "a33": {"min": 2, "max": 6,   "label": "Lager ab C (Einheiten)"},
+    "a34": {"min": 1, "max": 3,   "label": "Lager ab D (Einheiten)"},
+    "a35": {"min": 2, "max": 5,   "label": "Lager ab E (Einheiten)"},
+    "b3":  {"min": 30, "max": 120, "label": "Max. Lagerkapazität (Einheiten)"},
+    "a41": {"min": 1, "max": 4,   "label": "Stunden ab A"},
+    "a42": {"min": 2, "max": 5,   "label": "Stunden ab B"},
+    "a43": {"min": 1, "max": 3,   "label": "Stunden ab C"},
+    "a44": {"min": 2, "max": 6,   "label": "Stunden ab D"},
+    "a45": {"min": 1, "max": 4,   "label": "Stunden ab E"},
+    "b4":  {"min": 25, "max": 100, "label": "Max. Lieferzeitfenster (Stunden)"}
+  },
+  "titel": "Filialversorgung – fünf Standorte",
+  "beschreibung": "Eine Einzelhandelskette beliefert Filialen von fünf Standorten. Standort A kostet {c1} EUR pro Lieferung, B kostet {c2} EUR, C kostet {c3} EUR, D kostet {c4} EUR und E kostet {c5} EUR pro Lieferung. Ab A werden {a11} Paletten geliefert, ab B {a12}, ab C {a13}, ab D {a14} und ab E {a15} Paletten pro Lieferung. Mindestens {b1} Paletten müssen geliefert werden. Ab A werden {a21} LKW benötigt, ab B {a22}, ab C {a23}, ab D {a24} und ab E {a25} LKW. Insgesamt stehen {b2} LKW zur Verfügung. Ab A werden {a31} Lager-Einheiten belegt, ab B {a32}, ab C {a33}, ab D {a34} und ab E {a35} Einheiten. Die Lagerkapazität beträgt höchstens {b3} Einheiten. Ab A dauert es {a41} Stunden, ab B {a42}, ab C {a43}, ab D {a44} und ab E {a45} Stunden. Das Lieferzeitfenster beträgt höchstens {b4} Stunden.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Paletten, begrenzten LKW, Lagerkapazität und Lieferzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Standort A kostet {c1} EUR pro Lieferung", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet {c4} EUR", "bedeutung": "{c4} × x₄"},
+      {"text": "E kostet {c5} EUR pro Lieferung", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Paletten geliefert, ab B {a12}, ab C {a13}, ab D {a14} und ab E {a15} Paletten pro Lieferung. Mindestens {b1} Paletten müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} LKW benötigt, ab B {a22}, ab C {a23}, ab D {a24} und ab E {a25} LKW. Insgesamt stehen {b2} LKW zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Lager-Einheiten belegt, ab B {a32}, ab C {a33}, ab D {a34} und ab E {a35} Einheiten. Die Lagerkapazität beträgt höchstens {b3} Einheiten", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden, ab B {a42}, ab C {a43}, ab D {a44} und ab E {a45} Stunden. Das Lieferzeitfenster beträgt höchstens {b4} Stunden", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≤ {b4}"}
+      ]
+    ]
+  }
+}

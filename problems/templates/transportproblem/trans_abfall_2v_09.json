@@ -1,0 +1,39 @@
+{
+  "id": "trans_abfall_2v_09",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Müllwagen A", "x2 = Fahrten Müllwagen B"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Abfallmenge", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Dieselverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 15,  "label": "Kosten Müllwagen A (EUR/Fahrt)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Müllwagen B (EUR/Fahrt)"},
+    "a11": {"min": 3, "max": 10,  "label": "Abfall pro Fahrt A (t)"},
+    "a12": {"min": 2, "max": 8,   "label": "Abfall pro Fahrt B (t)"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Abfallmenge (t)"},
+    "a21": {"min": 2, "max": 7,   "label": "Diesel pro Fahrt A (Liter)"},
+    "a22": {"min": 1, "max": 5,   "label": "Diesel pro Fahrt B (Liter)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Dieselverbrauch (Liter)"}
+  },
+  "titel": "Abfallentsorgung – zwei Müllwagen",
+  "beschreibung": "Ein Entsorgungsunternehmen sammelt Abfall mit zwei Müllwagen. Müllwagen A kostet {c1} EUR pro Fahrt, Müllwagen B kostet {c2} EUR pro Fahrt. Müllwagen A sammelt {a11} Tonnen Abfall pro Fahrt, Müllwagen B sammelt {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Abfall müssen gesammelt werden. Müllwagen A verbraucht {a21} Liter Diesel pro Fahrt, Müllwagen B verbraucht {a22} Liter pro Fahrt. Der Dieselverbrauch darf höchstens {b2} Liter betragen.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Abfallmenge und begrenztem Dieselverbrauch.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Müllwagen A kostet {c1} EUR pro Fahrt", "bedeutung": "{c1} × x₁"},
+      {"text": "Müllwagen B kostet {c2} EUR pro Fahrt", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen Abfall pro Fahrt, Müllwagen B sammelt {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Abfall müssen gesammelt werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Liter Diesel pro Fahrt, Müllwagen B verbraucht {a22} Liter pro Fahrt. Der Dieselverbrauch darf höchstens {b2} Liter betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

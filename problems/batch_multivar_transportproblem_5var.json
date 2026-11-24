@@ -1,0 +1,76 @@
+[
+  {
+    "titel": "Containerschifffahrt Hanseatica: Fuenf globale Handelsrouten",
+    "beschreibung": "Die Containerschifffahrt-Gesellschaft Hanseatica koordiniert fuenf globale Handelsrouten von Hamburg aus. Route A nach New York kostet 40 Euro pro Container. Route B nach Kapstadt kostet 48 Euro pro Container. Route C nach Mumbai kostet nur 4 Euro pro Container. Route D nach Yokohama kostet 45 Euro pro Container. Route E nach Santos kostet 16 Euro pro Container. Die Hafenlogistik begrenzt den taeglichen Umschlag: Route A belegt 9 Containerstellplaetze, Route B belegt 2 Containerstellplaetze, Route C belegt 7 Containerstellplaetze, Route D belegt 14 Containerstellplaetze und Route E belegt 3 Containerstellplaetze pro Container. Insgesamt stehen hoechstens 399 Containerstellplaetze zur Verfuegung. Es gelten Mindestversandmengen gemaess langfristiger Handelsvertraege: Route A erfordert 15 Verladungen, Route B erfordert 6 Verladungen, Route C erfordert 6 Verladungen, Route D erfordert 1 Verladung und Route E erfordert 1 Verladung pro Woche. Der vertragliche Mindestumfang betraegt 228 Verladungen insgesamt. Die Krankapazitaet im Hafen ist ebenfalls limitiert: Route A beansprucht 1 Kranstunde, Route B beansprucht 13 Kranstunden, Route C beansprucht 1 Kranstunde, Route D beansprucht 2 Kranstunden und Route E beansprucht 9 Kranstunden pro Container. Es stehen maximal 214 Kranstunden bereit. Die Zollabfertigung beschraenkt die Abwicklung weiter: Route A benoetigt 2 Zollvorgaenge, Route B benoetigt 14 Zollvorgaenge, Route C benoetigt 7 Zollvorgaenge, Route D benoetigt 6 Zollvorgaenge und Route E benoetigt 10 Zollvorgaenge pro Container. Hoechstens 410 Zollvorgaenge koennen pro Woche bearbeitet werden. Schliesslich muessen Reedereipartner mit Mindestfracht versorgt werden: Route A liefert 2 Frachteinheiten, Route B liefert 1 Frachteinheit, Route C liefert 8 Frachteinheiten, Route D liefert 5 Frachteinheiten und Route E liefert 4 Frachteinheiten pro Container. Mindestens 136 Frachteinheiten muessen woechentlich transportiert werden. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Container auf Route A (New York)",
+      "x2 = Anzahl Container auf Route B (Kapstadt)",
+      "x3 = Anzahl Container auf Route C (Mumbai)",
+      "x4 = Anzahl Container auf Route D (Yokohama)",
+      "x5 = Anzahl Container auf Route E (Santos)"
+    ],
+    "zielfunktion": "Z = 40x1 + 48x2 + 4x3 + 45x4 + 16x5 (min)",
+    "nebenbedingungen": [
+      "9x1 + 2x2 + 7x3 + 14x4 + 3x5 ≤ 399 (Hafenlogistik)",
+      "15x1 + 6x2 + 6x3 + x4 + x5 ≥ 228 (Handelsvertraege)",
+      "x1 + 13x2 + x3 + 2x4 + 9x5 ≤ 214 (Krankapazitaet)",
+      "2x1 + 14x2 + 7x3 + 6x4 + 10x5 ≤ 410 (Zollabfertigung)",
+      "2x1 + x2 + 8x3 + 5x4 + 4x5 ≥ 136 (Mindestfracht)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Bei fuenf Variablen wird das Problem deutlich komplexer. Achte besonders darauf, welche Nebenbedingungen Obergrenzen und welche Mindestanforderungen darstellen. Route C ist mit 4 Euro die guenstigste, aber ihre Koeffizienten in den Nebenbedingungen muessen genau beachtet werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A nach New York kostet 40 Euro pro Container", "bedeutung": "40 × x₁"},
+        {"text": "Route B nach Kapstadt kostet 48 Euro pro Container", "bedeutung": "48 × x₂"},
+        {"text": "Route C nach Mumbai kostet nur 4 Euro pro Container", "bedeutung": "4 × x₃"},
+        {"text": "Route D nach Yokohama kostet 45 Euro pro Container", "bedeutung": "45 × x₄"},
+        {"text": "Route E nach Santos kostet 16 Euro pro Container", "bedeutung": "16 × x₅"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A belegt 9 Containerstellplaetze", "bedeutung": "9x₁"},
+          {"text": "Route B belegt 2 Containerstellplaetze", "bedeutung": "+ 2x₂"},
+          {"text": "Route C belegt 7 Containerstellplaetze", "bedeutung": "+ 7x₃"},
+          {"text": "Route D belegt 14 Containerstellplaetze", "bedeutung": "+ 14x₄"},
+          {"text": "Route E belegt 3 Containerstellplaetze", "bedeutung": "+ 3x₅"},
+          {"text": "hoechstens 399 Containerstellplaetze", "bedeutung": "≤ 399"}
+        ],
+        [
+          {"text": "Route A erfordert 15 Verladungen", "bedeutung": "15x₁"},
+          {"text": "Route B erfordert 6 Verladungen", "bedeutung": "+ 6x₂"},
+          {"text": "Route C erfordert 6 Verladungen", "bedeutung": "+ 6x₃"},
+          {"text": "Route D erfordert 1 Verladung", "bedeutung": "+ x₄"},
+          {"text": "Route E erfordert 1 Verladung", "bedeutung": "+ x₅"},
+          {"text": "Mindestumfang betraegt 228 Verladungen", "bedeutung": "≥ 228"}
+        ],
+        [
+          {"text": "Route A beansprucht 1 Kranstunde", "bedeutung": "x₁"},
+          {"text": "Route B beansprucht 13 Kranstunden", "bedeutung": "+ 13x₂"},
+          {"text": "Route C beansprucht 1 Kranstunde", "bedeutung": "+ x₃"},
+          {"text": "Route D beansprucht 2 Kranstunden", "bedeutung": "+ 2x₄"},
+          {"text": "Route E beansprucht 9 Kranstunden", "bedeutung": "+ 9x₅"},
+          {"text": "maximal 214 Kranstunden", "bedeutung": "≤ 214"}
+        ],
+        [
+          {"text": "Route A benoetigt 2 Zollvorgaenge", "bedeutung": "2x₁"},
+          {"text": "Route B benoetigt 14 Zollvorgaenge", "bedeutung": "+ 14x₂"},
+          {"text": "Route C benoetigt 7 Zollvorgaenge", "bedeutung": "+ 7x₃"},
+          {"text": "Route D benoetigt 6 Zollvorgaenge", "bedeutung": "+ 6x₄"},
+          {"text": "Route E benoetigt 10 Zollvorgaenge", "bedeutung": "+ 10x₅"},
+          {"text": "Hoechstens 410 Zollvorgaenge", "bedeutung": "≤ 410"}
+        ],
+        [
+          {"text": "Route A liefert 2 Frachteinheiten", "bedeutung": "2x₁"},
+          {"text": "Route B liefert 1 Frachteinheit", "bedeutung": "+ x₂"},
+          {"text": "Route C liefert 8 Frachteinheiten", "bedeutung": "+ 8x₃"},
+          {"text": "Route D liefert 5 Frachteinheiten", "bedeutung": "+ 5x₄"},
+          {"text": "Route E liefert 4 Frachteinheiten", "bedeutung": "+ 4x₅"},
+          {"text": "Mindestens 136 Frachteinheiten", "bedeutung": "≥ 136"}
+        ]
+      ]
+    }
+  }
+]

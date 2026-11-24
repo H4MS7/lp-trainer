@@ -1,0 +1,54 @@
+{
+  "id": "energie_offshore_onshore_pv_3v_05",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Offshore-Wind", "x2 = MWh Onshore-Wind", "x3 = MWh Photovoltaik"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Anlagenzahl", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximale Wartungskosten", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 55, "max": 130, "label": "Kosten Offshore (€/MWh)"},
+    "c2":  {"min": 30, "max": 75, "label": "Kosten Onshore (€/MWh)"},
+    "c3":  {"min": 25, "max": 65, "label": "Kosten PV (€/MWh)"},
+    "a11": {"min": 4, "max": 9, "label": "Leistung Offshore (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Leistung Onshore (MW/MWh)"},
+    "a13": {"min": 1, "max": 4, "label": "Leistung PV (MW/MWh)"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 2, "label": "Anlagen Offshore (pro MWh)"},
+    "a22": {"min": 2, "max": 4, "label": "Anlagen Onshore (pro MWh)"},
+    "a23": {"min": 3, "max": 6, "label": "Anlagen PV (pro MWh)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale Anlagenzahl"},
+    "a31": {"min": 4, "max": 8, "label": "Wartung Offshore (€/MWh)"},
+    "a32": {"min": 2, "max": 5, "label": "Wartung Onshore (€/MWh)"},
+    "a33": {"min": 1, "max": 3, "label": "Wartung PV (€/MWh)"},
+    "b3":  {"min": 40, "max": 180, "label": "Maximale Wartungskosten (€)"}
+  },
+  "titel": "Energiemix – Offshore, Onshore und PV",
+  "beschreibung": "Ein Energiekonzern plant den Strommix aus Offshore-Wind, Onshore-Wind und Photovoltaik. Offshore kostet {c1} € pro MWh, Onshore kostet {c2} € pro MWh und PV kostet {c3} € pro MWh. Offshore liefert {a11} MW pro MWh, Onshore liefert {a12} MW pro MWh und PV liefert {a13} MW pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Pro MWh werden {a21} Offshore-Anlagen, {a22} Onshore-Anlagen und {a23} PV-Anlagen benötigt. Maximal {b2} Anlagen können errichtet werden. Die Wartungskosten betragen {a31} € pro MWh Offshore, {a32} € pro MWh Onshore und {a33} € pro MWh PV. Das Wartungsbudget ist auf {b3} € begrenzt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestleistung, Anlagenlimit und Wartungsbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Offshore kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Onshore kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "PV kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW pro MWh, Onshore liefert {a12} MW pro MWh und PV liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Offshore-Anlagen, {a22} Onshore-Anlagen und {a23} PV-Anlagen benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Anlagen können errichtet werden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro MWh Offshore, {a32} € pro MWh Onshore und {a33} € pro MWh PV", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} € begrenzt", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

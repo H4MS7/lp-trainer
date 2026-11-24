@@ -1,0 +1,43 @@
+{
+  "id": "diaet_astronaut_2v_05",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Rationen Proteinriegel", "x2 = Rationen Nährstoffpaste"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kalorien", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Protein", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Proteinriegel (€/Ration)"},
+    "c2":  {"min": 5, "max": 12,  "label": "Kosten Nährstoffpaste (€/Ration)"},
+    "a11": {"min": 150, "max": 300, "label": "Kalorien Proteinriegel (kcal/Ration)"},
+    "a12": {"min": 200, "max": 350, "label": "Kalorien Nährstoffpaste (kcal/Ration)"},
+    "b1":  {"min": 1500, "max": 2500, "label": "Mindest-Kalorien (kcal)"},
+    "a21": {"min": 5, "max": 12,  "label": "Protein Proteinriegel (g/Ration)"},
+    "a22": {"min": 3, "max": 8,   "label": "Protein Nährstoffpaste (g/Ration)"},
+    "b2":  {"min": 50, "max": 120, "label": "Mindest-Protein (g)"}
+  },
+  "titel": "Astronautennahrung – Proteinriegel und Nährstoffpaste",
+  "beschreibung": "Für eine Weltraummission wird die günstigste Verpflegung aus Proteinriegeln und Nährstoffpaste gesucht. Ein Proteinriegel kostet {c1} €, eine Ration Nährstoffpaste kostet {c2} €. Ein Proteinriegel liefert {a11} kcal, die Nährstoffpaste liefert {a12} kcal pro Ration. Mindestens {b1} kcal pro Tag sind erforderlich. Ein Proteinriegel enthält {a21} g Protein, die Nährstoffpaste enthält {a22} g Protein pro Ration. Der Mindestbedarf an Protein beträgt {b2} g.",
+  "hinweis": "Minimiere die Gesamtkosten der Tagesration unter Einhaltung der Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Proteinriegel kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nährstoffpaste kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kcal", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kcal pro Ration", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kcal pro Tag sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Protein", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Protein pro Ration", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} g", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

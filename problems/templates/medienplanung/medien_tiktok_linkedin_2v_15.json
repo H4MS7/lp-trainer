@@ -1,0 +1,41 @@
+{
+  "id": "medien_tiktok_linkedin_2v_15",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl TikTok-Kampagnen", "x2 = Anzahl LinkedIn-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Content-Erstellung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Views TikTok (Tsd.)"},
+    "c2":  {"min": 2, "max": 10,    "label": "Impressionen LinkedIn (Tsd.)"},
+    "a11": {"min": 1, "max": 5,     "label": "Kosten TikTok (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten LinkedIn (Tsd. €)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Content TikTok (Stunden)"},
+    "a22": {"min": 2, "max": 6,     "label": "Content LinkedIn (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Content-Stunden"}
+  },
+  "titel": "Social-Media-Mix – TikTok und LinkedIn",
+  "beschreibung": "Ein Social-Media-Team plant Kampagnen auf TikTok und LinkedIn. Eine TikTok-Kampagne erzielt {c1} Tsd. Views, eine LinkedIn-Kampagne erzielt {c2} Tsd. Impressionen. Eine TikTok-Kampagne kostet {a11} Tsd. €, eine LinkedIn-Kampagne kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Content-Erstellung beträgt {a21} Stunden pro TikTok-Kampagne und {a22} Stunden pro LinkedIn-Kampagne. Insgesamt stehen {b2} Content-Stunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Content-Kapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "TikTok-Kampagne erzielt {c1} Tsd. Views", "bedeutung": "{c1} × x₁"},
+      {"text": "LinkedIn-Kampagne erzielt {c2} Tsd. Impressionen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine LinkedIn-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro TikTok-Kampagne und {a22} Stunden pro LinkedIn-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Content-Stunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

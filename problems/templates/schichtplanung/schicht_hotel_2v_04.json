@@ -1,0 +1,43 @@
+{
+  "id": "schicht_hotel_2v_04",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Rezeption", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Zimmerservice", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 110, "label": "Kosten Tagschicht (€)"},
+    "c2":  {"min": 70, "max": 140, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 2, "max": 6, "label": "Rezeptionisten pro Tagschicht"},
+    "a12": {"min": 1, "max": 3, "label": "Rezeptionisten pro Nachtschicht"},
+    "b1":  {"min": 8, "max": 30, "label": "Mindestbesetzung Rezeption"},
+    "a21": {"min": 2, "max": 5, "label": "Zimmerservice pro Tagschicht"},
+    "a22": {"min": 1, "max": 3, "label": "Zimmerservice pro Nachtschicht"},
+    "b2":  {"min": 10, "max": 35, "label": "Mindestbesetzung Zimmerservice"}
+  },
+  "titel": "Hotel – Schichtplanung",
+  "beschreibung": "Ein Hotel plant die Schichtbesetzung für Rezeption und Zimmerservice. Eine Tagschicht kostet {c1} €, eine Nachtschicht kostet {c2} €. Jede Tagschicht stellt {a11} Rezeptionisten bereit, jede Nachtschicht stellt {a12} Rezeptionisten bereit. Mindestens {b1} Rezeptionisten werden benötigt. Jede Tagschicht stellt {a21} Zimmerservice-Mitarbeiter bereit, jede Nachtschicht stellt {a22} Zimmerservice-Mitarbeiter bereit. Mindestens {b2} Zimmerservice-Mitarbeiter werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Rezeption und Zimmerservice.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tagschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nachtschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Rezeptionisten bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Rezeptionisten bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Rezeptionisten werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Zimmerservice-Mitarbeiter bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Zimmerservice-Mitarbeiter bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Zimmerservice-Mitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

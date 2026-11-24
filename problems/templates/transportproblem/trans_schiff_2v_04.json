@@ -1,0 +1,39 @@
+{
+  "id": "trans_schiff_2v_04",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Frachtschiff", "x2 = Fahrten Binnenschiff"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fracht", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Hafenkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 25,  "label": "Kosten Frachtschiff (EUR/Fahrt)"},
+    "c2":  {"min": 4, "max": 15,  "label": "Kosten Binnenschiff (EUR/Fahrt)"},
+    "a11": {"min": 5, "max": 15,  "label": "Fracht pro Frachtschiff (t/Fahrt)"},
+    "a12": {"min": 2, "max": 8,   "label": "Fracht pro Binnenschiff (t/Fahrt)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Frachtmenge (t)"},
+    "a21": {"min": 2, "max": 6,   "label": "Hafenplätze pro Frachtschiff"},
+    "a22": {"min": 1, "max": 4,   "label": "Hafenplätze pro Binnenschiff"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Hafenplätze"}
+  },
+  "titel": "Schifffahrt – Fracht- und Binnenschiffe",
+  "beschreibung": "Eine Reederei transportiert Güter mit zwei Schiffstypen. Eine Fahrt mit dem Frachtschiff kostet {c1} EUR, eine Fahrt mit dem Binnenschiff kostet {c2} EUR. Das Frachtschiff transportiert {a11} Tonnen pro Fahrt, das Binnenschiff transportiert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen müssen transportiert werden. Das Frachtschiff belegt {a21} Hafenplätze, das Binnenschiff belegt {a22} Hafenplätze. Insgesamt stehen {b2} Hafenplätze zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Frachtmenge und begrenzten Hafenplätzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frachtschiff kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Binnenschiff kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen pro Fahrt, das Binnenschiff transportiert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Hafenplätze, das Binnenschiff belegt {a22} Hafenplätze. Insgesamt stehen {b2} Hafenplätze zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

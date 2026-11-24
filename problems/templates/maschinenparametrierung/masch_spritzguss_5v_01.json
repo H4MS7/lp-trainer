@@ -1,0 +1,350 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "id": "masch_spritzguss_5v_01",
+  "titel": "Spritzgussmaschine – Druck, Temperatur, Kuehlzeit, Nachdruck und Geschwindigkeit",
+  "variablen": [
+    "x1 = Einspritzdruck (Stufen)",
+    "x2 = Massetemperatur (Stufen)",
+    "x3 = Kuehlzeit (Stufen)",
+    "x4 = Nachdruckhoehe (Stufen)",
+    "x5 = Einspritzgeschwindigkeit (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Hydraulikleistung",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Zykluszeit",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34",
+        "a35"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Werkzeugbelastung",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44",
+        "a45"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Formfuellung Druck"
+    },
+    "c2": {
+      "min": 3,
+      "max": 7,
+      "label": "Fliessfaehigkeit Temperatur"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Masshaltigkeit Kuehlzeit"
+    },
+    "c4": {
+      "min": 3,
+      "max": 8,
+      "label": "Einfallstellen Nachdruck"
+    },
+    "c5": {
+      "min": 2,
+      "max": 5,
+      "label": "Zykluseffizienz Geschwindigkeit"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Hydraulik Druck"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Hydraulik Temperatur"
+    },
+    "a13": {
+      "min": 1,
+      "max": 2,
+      "label": "Hydraulik Kuehlzeit"
+    },
+    "a14": {
+      "min": 2,
+      "max": 5,
+      "label": "Hydraulik Nachdruck"
+    },
+    "a15": {
+      "min": 2,
+      "max": 6,
+      "label": "Hydraulik Geschwindigkeit"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Hydraulikleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 4,
+      "label": "Energie Druck"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Energie Temperatur"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Kuehlzeit"
+    },
+    "a24": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Nachdruck"
+    },
+    "a25": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Geschwindigkeit"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieverbrauch"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Zyklus Druck"
+    },
+    "a32": {
+      "min": 1,
+      "max": 2,
+      "label": "Zyklus Temperatur"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Zyklus Kuehlzeit"
+    },
+    "a34": {
+      "min": 2,
+      "max": 5,
+      "label": "Zyklus Nachdruck"
+    },
+    "a35": {
+      "min": 1,
+      "max": 3,
+      "label": "Zyklus Geschwindigkeit"
+    },
+    "b3": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Zykluszeit"
+    },
+    "a41": {
+      "min": 3,
+      "max": 7,
+      "label": "Werkzeug Druck"
+    },
+    "a42": {
+      "min": 1,
+      "max": 3,
+      "label": "Werkzeug Temperatur"
+    },
+    "a43": {
+      "min": 1,
+      "max": 2,
+      "label": "Werkzeug Kuehlzeit"
+    },
+    "a44": {
+      "min": 2,
+      "max": 5,
+      "label": "Werkzeug Nachdruck"
+    },
+    "a45": {
+      "min": 1,
+      "max": 4,
+      "label": "Werkzeug Geschwindigkeit"
+    },
+    "b4": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Werkzeugbelastung"
+    }
+  },
+  "beschreibung": "Eine Spritzgussmaschine wird ueber fuenf Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Massetemperatur {c2} Punkte Fliessfaehigkeit, die Kuehlzeit {c3} Punkte Masshaltigkeit, die Nachdruckhoehe {c4} Punkte gegen Einfallstellen und die Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz. Die Hydraulikleistung betraegt {a11} Einheiten fuer Druck, {a12} fuer Temperatur, {a13} fuer Kuehlzeit, {a14} fuer Nachdruck und {a15} fuer Geschwindigkeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Druck, {a22} fuer Temperatur, {a23} fuer Kuehlzeit, {a24} fuer Nachdruck und {a25} fuer Geschwindigkeit bei maximal {b2} Energieeinheiten. Die Zykluszeit betraegt {a31} Einheiten fuer Druck, {a32} fuer Temperatur, {a33} fuer Kuehlzeit, {a34} fuer Nachdruck und {a35} fuer Geschwindigkeit bei maximal {b3} Zeiteinheiten. Die Werkzeugbelastung liegt bei {a41} Einheiten fuer Druck, {a42} fuer Temperatur, {a43} fuer Kuehlzeit, {a44} fuer Nachdruck und {a45} fuer Geschwindigkeit bei maximal {b4} Werkzeugeinheiten.",
+  "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik, Energie, Zykluszeit und Werkzeug.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Massetemperatur {c2} Punkte Fliessfaehigkeit",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Kuehlzeit {c3} Punkte Masshaltigkeit",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Nachdruckhoehe {c4} Punkte gegen Einfallstellen",
+        "bedeutung": "{c4} × x₄"
+      },
+      {
+        "text": "Einspritzgeschwindigkeit {c5} Punkte Zykluseffizienz",
+        "bedeutung": "{c5} × x₅"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Druck",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Temperatur",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Kuehlzeit",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Nachdruck",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{a15} fuer Geschwindigkeit",
+          "bedeutung": "+ {a15}x₅"
+        },
+        {
+          "text": "{b1} Hydraulikeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Druck",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Temperatur",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Kuehlzeit",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Nachdruck",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{a25} fuer Geschwindigkeit",
+          "bedeutung": "+ {a25}x₅"
+        },
+        {
+          "text": "{b2} Energieeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Druck",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Temperatur",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Kuehlzeit",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Nachdruck",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{a35} fuer Geschwindigkeit",
+          "bedeutung": "+ {a35}x₅"
+        },
+        {
+          "text": "{b3} Zeiteinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Druck",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Temperatur",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Kuehlzeit",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Nachdruck",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{a45} fuer Geschwindigkeit",
+          "bedeutung": "+ {a45}x₅"
+        },
+        {
+          "text": "{b4} Werkzeugeinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

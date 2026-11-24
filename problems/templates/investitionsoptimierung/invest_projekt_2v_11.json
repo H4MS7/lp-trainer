@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_projekt_2v_11",
+  "titel": "Projektfinanzierung – Brueckenbau und Strassenbau",
+  "variablen": [
+    "x1 = Investment in Brueckenbau (Tsd. EUR)",
+    "x2 = Investment in Strassenbau (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Oeffentliches Budget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Ingenieurkapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Gesellschaftlicher Nutzen Bruecke"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Gesellschaftlicher Nutzen Strasse"
+    },
+    "a11": {
+      "min": 2,
+      "max": 6,
+      "label": "Kosten Brueckenbau"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Kosten Strassenbau"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "Oeffentliches Budget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Ingenieure Bruecke"
+    },
+    "a22": {
+      "min": 1,
+      "max": 4,
+      "label": "Ingenieure Strasse"
+    },
+    "b2": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Ingenieurkapazitaet"
+    }
+  },
+  "beschreibung": "Eine Kommune plant Infrastrukturinvestitionen. Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen, Strassenbau {c2} Einheiten. Die Kosten betragen {a11} Einheiten pro Brueckenprojekt und {a12} Einheiten pro Strassenprojekt. Das oeffentliche Budget liegt bei {b1} Tausend Euro. Pro Brueckenprojekt werden {a21} Ingenieure benoetigt, pro Strassenprojekt {a22} Ingenieure bei maximal {b2} verfuegbaren Ingenieuren.",
+  "hinweis": "Maximiere den gesellschaftlichen Nutzen unter Beachtung von Budget und Ingenieurkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Brueckenbau erzeugt {c1} Einheiten gesellschaftlichen Nutzen",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Strassenbau {c2} Einheiten",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Brueckenprojekt",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Strassenprojekt",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Ingenieure benoetigt",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "Strassenprojekt {a22} Ingenieure",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Ingenieuren",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

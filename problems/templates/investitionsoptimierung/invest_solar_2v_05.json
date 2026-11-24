@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_solar_2v_05",
+  "titel": "Erneuerbare Energien – Solar- und Windparks",
+  "variablen": [
+    "x1 = Investment in Solarpark (Tsd. EUR)",
+    "x2 = Investment in Windpark (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Investitionsbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Genehmigungskapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Rendite Solar (%)"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Rendite Wind (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbindung Solar"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Kapitalbindung Wind"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "Investitionsbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 1,
+      "max": 4,
+      "label": "Genehmigungsaufwand Solar"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Genehmigungsaufwand Wind"
+    },
+    "b2": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Genehmigungseinheiten"
+    }
+  },
+  "beschreibung": "Ein Energieunternehmen plant Investitionen in erneuerbare Energien. Solarparks bringen {c1} % Rendite, Windparks {c2} %. Pro Einheit Solar werden {a11} Kapitaleinheiten gebunden, pro Einheit Wind {a12} Einheiten. Das Investitionsbudget liegt bei {b1} Tausend Euro. Der Genehmigungsaufwand betraegt {a21} Einheiten pro Solaranlage und {a22} Einheiten pro Windanlage bei maximal {b2} Genehmigungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Budget und Genehmigungskapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Solarparks bringen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Windparks {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Kapitaleinheiten gebunden",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "Wind {a12} Einheiten",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Solaranlage",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Windanlage",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Genehmigungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

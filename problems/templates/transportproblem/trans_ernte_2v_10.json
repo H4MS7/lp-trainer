@@ -1,0 +1,39 @@
+{
+  "id": "trans_ernte_2v_10",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Traktor", "x2 = Fahrten Erntewagen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Ernte", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Arbeitszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Traktor (EUR/Fahrt)"},
+    "c2":  {"min": 5, "max": 16,  "label": "Kosten Erntewagen (EUR/Fahrt)"},
+    "a11": {"min": 2, "max": 7,   "label": "Ernte pro Traktor-Fahrt (t)"},
+    "a12": {"min": 4, "max": 12,  "label": "Ernte pro Erntewagen-Fahrt (t)"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Erntemenge (t)"},
+    "a21": {"min": 1, "max": 4,   "label": "Stunden pro Traktor-Fahrt"},
+    "a22": {"min": 2, "max": 6,   "label": "Stunden pro Erntewagen-Fahrt"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Arbeitsstunden"}
+  },
+  "titel": "Erntetransport – Traktor und Erntewagen",
+  "beschreibung": "Ein Landwirtschaftsbetrieb transportiert die Ernte mit zwei Fahrzeugtypen. Eine Fahrt mit dem Traktor kostet {c1} EUR, eine Fahrt mit dem Erntewagen kostet {c2} EUR. Der Traktor transportiert {a11} Tonnen pro Fahrt, der Erntewagen transportiert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Ernte müssen transportiert werden. Eine Traktor-Fahrt dauert {a21} Stunden, eine Erntewagen-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Arbeitsstunden zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Erntemenge und begrenzter Arbeitszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Traktor kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Erntewagen kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen pro Fahrt, der Erntewagen transportiert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Ernte müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden, eine Erntewagen-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Arbeitsstunden zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

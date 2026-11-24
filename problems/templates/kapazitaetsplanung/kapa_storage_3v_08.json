@@ -1,0 +1,54 @@
+{
+  "id": "kapa_storage_3v_08",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl NVMe-Pools", "x2 = Anzahl SSD-Pools", "x3 = Anzahl HDD-Pools"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Rack-Einheiten", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Budget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 500,  "label": "IOPS NVMe (Tsd.)"},
+    "c2":  {"min": 20, "max": 100,   "label": "IOPS SSD (Tsd.)"},
+    "c3":  {"min": 1, "max": 5,      "label": "IOPS HDD (Tsd.)"},
+    "a11": {"min": 1, "max": 2,      "label": "Rack NVMe (HE)"},
+    "a12": {"min": 2, "max": 4,      "label": "Rack SSD (HE)"},
+    "a13": {"min": 4, "max": 8,      "label": "Rack HDD (HE)"},
+    "b1":  {"min": 20, "max": 84,    "label": "Verfügbare Rack-Einheiten (HE)"},
+    "a21": {"min": 1, "max": 3,      "label": "Strom NVMe (kW)"},
+    "a22": {"min": 1, "max": 2,      "label": "Strom SSD (kW)"},
+    "a23": {"min": 2, "max": 5,      "label": "Strom HDD (kW)"},
+    "b2":  {"min": 10, "max": 40,    "label": "Strombudget (kW)"},
+    "a31": {"min": 5, "max": 15,     "label": "Kosten NVMe (Tsd. €)"},
+    "a32": {"min": 2, "max": 8,      "label": "Kosten SSD (Tsd. €)"},
+    "a33": {"min": 1, "max": 3,      "label": "Kosten HDD (Tsd. €)"},
+    "b3":  {"min": 30, "max": 120,   "label": "Budget (Tsd. €)"}
+  },
+  "titel": "Speicher-Tiering – Pool-Konfiguration",
+  "beschreibung": "Ein Storage-Team plant eine dreistufige Speicherarchitektur. Ein NVMe-Pool liefert {c1} Tsd. IOPS, ein SSD-Pool liefert {c2} Tsd. IOPS und ein HDD-Pool liefert {c3} Tsd. IOPS. Ein NVMe-Pool belegt {a11} Höheneinheiten, ein SSD-Pool belegt {a12} Höheneinheiten und ein HDD-Pool belegt {a13} Höheneinheiten. Es stehen {b1} Höheneinheiten zur Verfügung. Der Stromverbrauch beträgt {a21} kW für NVMe, {a22} kW für SSD und {a23} kW für HDD. Das Strombudget beträgt {b2} kW. Die Kosten betragen {a31} Tsd. € für NVMe, {a32} Tsd. € für SSD und {a33} Tsd. € für HDD. Das Budget beträgt {b3} Tsd. €.",
+  "hinweis": "Maximiere die Gesamt-IOPS unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "NVMe-Pool liefert {c1} Tsd. IOPS", "bedeutung": "{c1} × x₁"},
+      {"text": "SSD-Pool liefert {c2} Tsd. IOPS", "bedeutung": "{c2} × x₂"},
+      {"text": "HDD-Pool liefert {c3} Tsd. IOPS", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Höheneinheiten, ein SSD-Pool belegt {a12} Höheneinheiten und ein HDD-Pool belegt {a13} Höheneinheiten", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Höheneinheiten zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kW für NVMe, {a22} kW für SSD und {a23} kW für HDD", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} kW", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € für NVMe, {a32} Tsd. € für SSD und {a33} Tsd. € für HDD", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_druckpresse_2v_13",
+  "titel": "Druckpresse – Druckgeschwindigkeit und Farbauftrag",
+  "variablen": [
+    "x1 = Druckgeschwindigkeit (Stufen)",
+    "x2 = Farbauftrag (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Farbverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Papierspannung",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Geschwindigkeit"
+    },
+    "c2": {
+      "min": 5,
+      "max": 12,
+      "label": "Druckqualitaet Farbauftrag"
+    },
+    "a11": {
+      "min": 1,
+      "max": 4,
+      "label": "Farbe pro Geschwindigkeitsstufe"
+    },
+    "a12": {
+      "min": 3,
+      "max": 10,
+      "label": "Farbe pro Farbstufe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Farbverbrauch"
+    },
+    "a21": {
+      "min": 3,
+      "max": 8,
+      "label": "Spannung Geschwindigkeit"
+    },
+    "a22": {
+      "min": 1,
+      "max": 5,
+      "label": "Spannung Farbauftrag"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Papierspannung"
+    }
+  },
+  "beschreibung": "Eine Druckpresse wird ueber Geschwindigkeit und Farbauftrag eingestellt. Die Druckgeschwindigkeit liefert {c1} Durchsatzpunkte, der Farbauftrag {c2} Punkte Druckqualitaet. Der Farbverbrauch betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Farbstufe bei maximal {b1} Farbeinheiten. Die Papierspannung liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Farbstufe bei maximal {b2} Spannungseinheiten.",
+  "hinweis": "Maximiere den Druckoutput unter Beachtung von Farbverbrauch und Papierspannung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Druckgeschwindigkeit liefert {c1} Durchsatzpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Farbauftrag {c2} Punkte Druckqualitaet",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Farbstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Farbeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Farbstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Spannungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

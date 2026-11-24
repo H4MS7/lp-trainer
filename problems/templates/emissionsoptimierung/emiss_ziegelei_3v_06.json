@@ -1,0 +1,60 @@
+{
+  "id": "emiss_ziegelei_3v_06",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Mauerziegel", "x2 = Einheiten Dachziegel", "x3 = Einheiten Klinker"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Staubemissionen", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Ertrag Mauerziegel (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Dachziegel (Tsd. €)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Ertrag Klinker (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "CO₂ Mauerziegel (t)"},
+    "a12": {"min": 3, "max": 8,   "label": "CO₂ Dachziegel (t)"},
+    "a13": {"min": 4, "max": 10,  "label": "CO₂ Klinker (t)"},
+    "b1":  {"min": 80, "max": 350, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 2, "max": 5,   "label": "Energie Mauerziegel (MWh)"},
+    "a22": {"min": 3, "max": 7,   "label": "Energie Dachziegel (MWh)"},
+    "a23": {"min": 4, "max": 10,  "label": "Energie Klinker (MWh)"},
+    "b2":  {"min": 60, "max": 300, "label": "Energiebudget (MWh)"},
+    "a31": {"min": 1, "max": 4,   "label": "Staub Mauerziegel (kg)"},
+    "a32": {"min": 2, "max": 5,   "label": "Staub Dachziegel (kg)"},
+    "a33": {"min": 3, "max": 8,   "label": "Staub Klinker (kg)"},
+    "b3":  {"min": 40, "max": 150, "label": "Staublimit (kg)"}
+  },
+  "titel": "Ziegelei – Mauer-, Dachziegel und Klinker",
+  "beschreibung": "Eine Ziegelei produziert Mauerziegel, Dachziegel und Klinker. Mauerziegel erwirtschaften {c1} Tsd. €, Dachziegel {c2} Tsd. €, Klinker {c3} Tsd. € pro Einheit. Mauerziegel verursachen {a11} Tonnen CO₂, Dachziegel {a12} Tonnen, Klinker {a13} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Mauerziegel verbrauchen {a21} MWh Energie, Dachziegel {a22} MWh, Klinker {a23} MWh pro Einheit. Das Energiebudget beträgt {b2} MWh. Mauerziegel erzeugen {a31} kg Staub, Dachziegel {a32} kg, Klinker {a33} kg pro Einheit. Das Staublimit liegt bei {b3} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umwelt- und Energielimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Mauerziegel erwirtschaften {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Dachziegel {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Klinker {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Energie", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} MWh pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kg Staub", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} kg", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} kg pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} kg", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

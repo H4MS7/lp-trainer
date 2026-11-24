@@ -1,0 +1,1158 @@
+[
+  {
+    "titel": "Aktien und Staatsanleihen",
+    "beschreibung": "Ein privater Investor möchte sein Vermögen in zwei Anlageklassen aufteilen: Aktien und Staatsanleihen. Nach sorgfältiger Marktanalyse und Beratung durch seinen Finanzberater hat er die erwarteten Erträge ermittelt. Pro Einheit Aktien erwartet er eine jährliche Rendite von 6 Tausend €, pro Einheit Staatsanleihen eine Rendite von 13 Tausend €. Das interne Risikomanagement bewertet die Anlagen unterschiedlich: Jede Einheit Aktien verursacht 9 Risikoeinheiten, jede Einheit Staatsanleihen verursacht 1 Risikoeinheit. Das gesamte Risikobudget darf höchstens 3271 Punkte betragen. Zusätzlich erfordert jede Einheit Aktien einen Verwaltungsaufwand von 12 Stunden und jede Einheit Staatsanleihen einen Aufwand von 1 Stunde. Insgesamt stehen maximal 257 Verwaltungsstunden zur Verfügung. Der Investor möchte seine jährliche Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Aktien",
+      "x2 = Einheiten Staatsanleihen"
+    ],
+    "zielfunktion": "Z = 6x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + x2 ≤ 3271 (Risikobudget)",
+      "12x1 + x2 ≤ 257 (Verwaltungsaufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die Risiko- und Verwaltungsrestriktionen als Nebenbedingungen. Die Rendite pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 6 Tausend €",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Rendite von 13 Tausend €",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "9 Risikoeinheiten",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "1 Risikoeinheit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "höchstens 3271 Punkte",
+            "bedeutung": "≤ 3271"
+          }
+        ],
+        [
+          {
+            "text": "Verwaltungsaufwand von 12 Stunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Aufwand von 1 Stunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "maximal 257 Verwaltungsstunden",
+            "bedeutung": "≤ 257"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Immobilienfonds und ETF",
+    "beschreibung": "Eine Vermögensverwaltung plant Investitionen in Immobilienfonds und ETF für einen institutionellen Kunden. Die aktuelle Marktlage ist günstig und beide Anlageformen versprechen stabile Erträge bei überschaubarem Risiko. Das Anlagekomitee hat strenge Vorgaben definiert, die bei der Portfolioaufteilung eingehalten werden müssen. Pro Einheit Immobilienfonds wird ein jährlicher Ertrag von 4 Tausend € erwartet, pro Einheit ETF ein Ertrag von 10 Tausend €. Das Risikomanagement erlaubt pro Einheit Immobilienfonds ein Risikomaß von 10 Punkten und pro Einheit ETF ein Risikomaß von 6 Punkten. Insgesamt dürfen höchstens 456 Risikopunkte anfallen. Zudem ist die Betreuungskapazität begrenzt: Jede Einheit Immobilienfonds benötigt 12 Betreuungsstunden und jede Einheit ETF benötigt 4 Betreuungsstunden, wobei maximal 3554 Betreuungsstunden verfügbar sind. Die Verwaltung möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Immobilienfonds",
+      "x2 = Einheiten ETF"
+    ],
+    "zielfunktion": "Z = 4x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 6x2 ≤ 456 (Risikobudget)",
+      "12x1 + 4x2 ≤ 3554 (Betreuungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme die Kapazitätsgrenzen für Risiko und Betreuung. Die Erträge pro Einheit ergeben die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 4 Tausend €",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Ertrag von 10 Tausend €",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Risikomaß von 10 Punkten",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Risikomaß von 6 Punkten",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 456 Risikopunkte",
+            "bedeutung": "≤ 456"
+          }
+        ],
+        [
+          {
+            "text": "12 Betreuungsstunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "4 Betreuungsstunden",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "maximal 3554 Betreuungsstunden",
+            "bedeutung": "≤ 3554"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Startup-Beteiligungen und Festgeld",
+    "beschreibung": "Ein Family Office erwägt Investitionen in Startup-Beteiligungen und Festgeld. Die Geschäftsführung möchte das vorhandene Kapital möglichst gewinnbringend einsetzen und dabei die internen Richtlinien einhalten. Pro Einheit Startup-Beteiligungen wird eine Rendite von 6 Tausend € pro Jahr erwartet, pro Einheit Festgeld ebenfalls eine Rendite von 6 Tausend € pro Jahr. Das Risikokomitee schreibt vor, dass jede Einheit Startup-Beteiligungen 6 Risikopunkte und jede Einheit Festgeld 11 Risikopunkte verursacht, wobei das Risikobudget auf höchstens 2848 Punkte begrenzt ist. Außerdem erfordert jede Einheit Startup-Beteiligungen einen Due-Diligence-Aufwand von 3 Tagen und jede Einheit Festgeld einen Aufwand von 5 Tagen. Insgesamt stehen maximal 160 Due-Diligence-Tage zur Verfügung. Das Family Office möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Startup-Beteiligungen",
+      "x2 = Einheiten Festgeld"
+    ],
+    "zielfunktion": "Z = 6x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 11x2 ≤ 2848 (Risikobudget)",
+      "3x1 + 5x2 ≤ 160 (Due-Diligence-Aufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anlageformen haben denselben Ertrag pro Einheit. Achte auf die unterschiedlichen Risiko- und Aufwandsgrenzen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 6 Tausend € pro Jahr erwartet, pro Einheit Festgeld ebenfalls eine Rendite von 6 Tausend €",
+          "bedeutung": "6 × x₁ + 6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Risikopunkte",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "11 Risikopunkte",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 2848 Punkte",
+            "bedeutung": "≤ 2848"
+          }
+        ],
+        [
+          {
+            "text": "Due-Diligence-Aufwand von 3 Tagen",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Aufwand von 5 Tagen",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "maximal 160 Due-Diligence-Tage",
+            "bedeutung": "≤ 160"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krypto und Gold",
+    "beschreibung": "Ein erfahrener Fondsmanager möchte in Kryptowährungen und Gold investieren, um sein Portfolio breiter aufzustellen. Beide Anlageklassen gelten als alternative Investments mit unterschiedlichen Risikoprofilen und Wachstumschancen. Pro Einheit Krypto erwartet er eine jährliche Rendite von 11 Tausend €, pro Einheit Gold eine Rendite von 13 Tausend €. Beide Anlageformen müssen vor dem Kauf intern analysiert werden. Jede Einheit Krypto benötigt 12 Analysestunden und jede Einheit Gold benötigt 3 Analysestunden. Insgesamt stehen höchstens 1675 Analysestunden zur Verfügung. Darüber hinaus verbraucht jede Einheit Krypto 9 Compliance-Punkte und jede Einheit Gold 2 Compliance-Punkte, wobei maximal 672 Compliance-Punkte vergeben werden können. Der Fondsmanager möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Kryptowährungen",
+      "x2 = Einheiten Gold"
+    ],
+    "zielfunktion": "Z = 11x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 3x2 ≤ 1675 (Analysekapazität)",
+      "9x1 + 2x2 ≤ 672 (Compliance-Budget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei verschiedenen Kapazitätsgrenzen: Analysestunden und Compliance-Punkte. Die Renditen bilden die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 11 Tausend €",
+          "bedeutung": "11 × x₁"
+        },
+        {
+          "text": "Rendite von 13 Tausend €",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "12 Analysestunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "3 Analysestunden",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 1675 Analysestunden",
+            "bedeutung": "≤ 1675"
+          }
+        ],
+        [
+          {
+            "text": "9 Compliance-Punkte",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "2 Compliance-Punkte",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "maximal 672 Compliance-Punkte",
+            "bedeutung": "≤ 672"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rohstoff-Futures und Staatsanleihen",
+    "beschreibung": "Ein institutioneller Investor plant, einen Teil seiner strategischen Reserven in Rohstoff-Futures und Staatsanleihen anzulegen. Das Ziel ist eine möglichst hohe Gesamtrendite bei strikter Einhaltung aller internen Vorgaben und regulatorischen Anforderungen. Pro Einheit Rohstoff-Futures wird eine jährliche Rendite von 14 Tausend € erwartet, pro Einheit Staatsanleihen eine Rendite von 6 Tausend €. Jede Einheit Rohstoff-Futures erfordert 3 Einheiten Marktanalyse und jede Einheit Staatsanleihen erfordert 6 Einheiten Marktanalyse. Die Kapazität der Marktanalyse beträgt höchstens 2403 Einheiten. Zudem benötigt jede Einheit Rohstoff-Futures 1 Clearingstelle und jede Einheit Staatsanleihen 5 Clearingstellen, wobei insgesamt maximal 492 Clearingstellen verfügbar sind. Der Investor möchte seine Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Rohstoff-Futures",
+      "x2 = Einheiten Staatsanleihen"
+    ],
+    "zielfunktion": "Z = 14x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≤ 2403 (Marktanalyse)",
+      "x1 + 5x2 ≤ 492 (Clearingstellen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme Marktanalyse und Clearingstellen als knappe Ressourcen. Rohstoff-Futures haben die höhere Rendite.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 14 Tausend €",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Rendite von 6 Tausend €",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Einheiten Marktanalyse",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "6 Einheiten Marktanalyse",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "höchstens 2403 Einheiten",
+            "bedeutung": "≤ 2403"
+          }
+        ],
+        [
+          {
+            "text": "1 Clearingstelle",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "5 Clearingstellen",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "maximal 492 Clearingstellen",
+            "bedeutung": "≤ 492"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Mietimmobilien und Dividendenaktien",
+    "beschreibung": "Ein Anlageberater empfiehlt seinem Kunden, in Mietimmobilien und Dividendenaktien zu investieren. Der Kunde verfügt über ein beträchtliches Vermögen und sucht nach regelmäßigen Einkünften aus seinen Investments. Beide Anlageformen bieten unterschiedliche Vorteile hinsichtlich Stabilität und Ertrag. Pro Einheit Mietimmobilien wird ein jährlicher Cashflow von 3 Tausend € erzielt, pro Einheit Dividendenaktien ein Cashflow von 8 Tausend €. Die Verwaltung jeder Einheit Mietimmobilien erfordert 10 Arbeitsstunden, während jede Einheit Dividendenaktien nur 1 Arbeitsstunde benötigt. Das Zeitbudget ist auf höchstens 3617 Arbeitsstunden begrenzt. Gleichzeitig bindet jede Einheit Mietimmobilien 3 Kapitalblöcke und jede Einheit Dividendenaktien 5 Kapitalblöcke, wobei maximal 1731 Kapitalblöcke eingesetzt werden können. Der Kunde möchte seinen jährlichen Cashflow maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Mietimmobilien",
+      "x2 = Einheiten Dividendenaktien"
+    ],
+    "zielfunktion": "Z = 3x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + x2 ≤ 3617 (Zeitbudget)",
+      "3x1 + 5x2 ≤ 1731 (Kapitalbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere Zeitbudget und Kapitaleinsatz als begrenzende Faktoren. Die Cashflows bilden die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Cashflow von 3 Tausend €",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Cashflow von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "10 Arbeitsstunden",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "1 Arbeitsstunde",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "höchstens 3617 Arbeitsstunden",
+            "bedeutung": "≤ 3617"
+          }
+        ],
+        [
+          {
+            "text": "3 Kapitalblöcke",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "5 Kapitalblöcke",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "maximal 1731 Kapitalblöcke",
+            "bedeutung": "≤ 1731"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wagniskapital und Unternehmensanleihen",
+    "beschreibung": "Eine gemeinnützige Stiftung plant Investitionen in Wagniskapital und Unternehmensanleihen. Der Stiftungsvorstand möchte das Stiftungsvermögen nachhaltig mehren und dabei strenge Anlagerichtlinien beachten. Beide Anlageklassen wurden vom Investitionsausschuss nach eingehender Prüfung als geeignet eingestuft. Pro Einheit Wagniskapital wird ein Jahresertrag von 3 Tausend € erwartet, pro Einheit Unternehmensanleihen ein Jahresertrag von 3 Tausend €. Das Risikokomitee legt fest, dass jede Einheit Wagniskapital 5 Risikopunkte und jede Einheit Unternehmensanleihen 3 Risikopunkte verursacht. Das maximale Risikobudget beträgt 631 Punkte. Ferner ist der Prüfungsaufwand begrenzt: Jede Einheit Wagniskapital erfordert 5 Prüftage und jede Einheit Unternehmensanleihen 4 Prüftage, wobei höchstens 4985 Prüftage verfügbar sind. Die Stiftung möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Wagniskapital",
+      "x2 = Einheiten Unternehmensanleihen"
+    ],
+    "zielfunktion": "Z = 3x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 631 (Risikobudget)",
+      "5x1 + 4x2 ≤ 4985 (Prüfungsaufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anlageformen haben identische Erträge. Die Entscheidung hängt allein von den Nebenbedingungen ab.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Jahresertrag von 3 Tausend € erwartet, pro Einheit Unternehmensanleihen ein Jahresertrag von 3 Tausend €",
+          "bedeutung": "3 × x₁ + 3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Risikopunkte",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Risikopunkte",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "631 Punkte",
+            "bedeutung": "≤ 631"
+          }
+        ],
+        [
+          {
+            "text": "5 Prüftage",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "4 Prüftage",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "höchstens 4985 Prüftage",
+            "bedeutung": "≤ 4985"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Photovoltaik und Windpark",
+    "beschreibung": "Ein Energieinvestor möchte Kapital in Photovoltaikanlagen und Windparks anlegen. Der Markt für erneuerbare Energien bietet attraktive Einspeisevergütungen und langfristige Abnahmeverträge, die eine sichere Rendite versprechen. Beide Technologien gelten als zukunftssicher und profitieren von staatlicher Förderung. Pro Einheit Photovoltaik wird eine jährliche Rendite von 15 Tausend € prognostiziert, pro Einheit Windpark eine Rendite von 12 Tausend €. Jede Einheit Photovoltaik benötigt 3 Genehmigungsverfahren und jede Einheit Windpark benötigt 11 Genehmigungsverfahren. Insgesamt können höchstens 4898 Genehmigungsverfahren durchgeführt werden. Außerdem erfordert jede Einheit Photovoltaik 4 Netzanschlusspunkte und jede Einheit Windpark 12 Netzanschlusspunkte, wobei maximal 4607 Netzanschlusspunkte verfügbar sind. Der Investor möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Photovoltaikanlagen",
+      "x2 = Einheiten Windparks"
+    ],
+    "zielfunktion": "Z = 15x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 11x2 ≤ 4898 (Genehmigungsverfahren)",
+      "4x1 + 12x2 ≤ 4607 (Netzanschluss)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die unterschiedliche Beanspruchung der Genehmigungs- und Netzanschlusskapazitäten bei beiden Anlageformen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 15 Tausend €",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Rendite von 12 Tausend €",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Genehmigungsverfahren",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "11 Genehmigungsverfahren",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 4898 Genehmigungsverfahren",
+            "bedeutung": "≤ 4898"
+          }
+        ],
+        [
+          {
+            "text": "4 Netzanschlusspunkte",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "12 Netzanschlusspunkte",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "maximal 4607 Netzanschlusspunkte",
+            "bedeutung": "≤ 4607"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Crowdfunding und Sparbrief",
+    "beschreibung": "Ein Kleinanleger möchte sein Erspartes in Crowdfunding-Projekte und Sparbriefe aufteilen. Er hat sich über verschiedene Plattformen informiert und die Konditionen sorgfältig verglichen, um die beste Anlagestrategie zu finden. Pro Einheit Crowdfunding erwartet er eine jährliche Rendite von 14 Tausend €, pro Einheit Sparbrief eine Rendite von 8 Tausend €. Vor jeder Investition ist eine gründliche Analyse erforderlich. Jede Einheit Crowdfunding erfordert 9 Recherchestunden und jede Einheit Sparbrief erfordert 12 Recherchestunden. Das Recherchebudget umfasst höchstens 2753 Stunden. Zusätzlich kostet jede Einheit Crowdfunding 4 Verwaltungspunkte und jede Einheit Sparbrief ebenfalls 4 Verwaltungspunkte, wobei maximal 1094 Verwaltungspunkte zur Verfügung stehen. Der Kleinanleger möchte seine Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Crowdfunding",
+      "x2 = Einheiten Sparbrief"
+    ],
+    "zielfunktion": "Z = 14x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + 12x2 ≤ 2753 (Recherchebudget)",
+      "4x1 + 4x2 ≤ 1094 (Verwaltungsbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Verwaltungspunkte pro Einheit sind bei beiden Anlageformen gleich. Nutze dies zur Vereinfachung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 14 Tausend €",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "9 Recherchestunden",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "12 Recherchestunden",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "höchstens 2753 Stunden",
+            "bedeutung": "≤ 2753"
+          }
+        ],
+        [
+          {
+            "text": "4 Verwaltungspunkte",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "4 Verwaltungspunkte, wobei maximal 1094 Verwaltungspunkte",
+            "bedeutung": "+ 4x₂ ≤ 1094"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Private Equity und Geldmarktfonds",
+    "beschreibung": "Ein großer Pensionsfonds plant Investitionen in Private Equity und Geldmarktfonds, um die langfristigen Rentenansprüche seiner Mitglieder abzusichern. Die Anlagerichtlinien des Fonds schreiben eine sorgfältige Prüfung jeder einzelnen Investition vor. Pro Einheit Private Equity wird eine jährliche Rendite von 5 Tausend € erwartet, pro Einheit Geldmarktfonds eine Rendite von 8 Tausend €. Die regulatorische Prüfung verlangt pro Einheit Private Equity 3 Prüfeinheiten und pro Einheit Geldmarktfonds 1 Prüfeinheit. Insgesamt stehen höchstens 502 Prüfeinheiten bereit. Zudem bindet jede Einheit Private Equity 2 Kapitaleinheiten und jede Einheit Geldmarktfonds 3 Kapitaleinheiten, wobei das Kapitalbudget auf maximal 3813 Einheiten begrenzt ist. Der Pensionsfonds möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Private Equity",
+      "x2 = Einheiten Geldmarktfonds"
+    ],
+    "zielfunktion": "Z = 5x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 502 (Regulatorische Prüfung)",
+      "2x1 + 3x2 ≤ 3813 (Kapitalbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme die regulatorische Prüfkapazität und das Kapitalbudget als Nebenbedingungen. Die Renditen ergeben die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 5 Tausend €",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "3 Prüfeinheiten",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "1 Prüfeinheit",
+            "bedeutung": "+ x₂"
+          },
+          {
+            "text": "höchstens 502 Prüfeinheiten",
+            "bedeutung": "≤ 502"
+          }
+        ],
+        [
+          {
+            "text": "2 Kapitaleinheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Kapitaleinheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "maximal 3813 Einheiten",
+            "bedeutung": "≤ 3813"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Aktien und Anleihen",
+    "beschreibung": "Ein Vermögensverwalter betreut ein Portfolio aus Aktien und Anleihen für einen vermögenden Privatkunden. Die Anlagestrategie soll konservativ bleiben und gleichzeitig attraktive Renditen erzielen. Nach einer umfassenden Marktanalyse wurden die folgenden Ertragsprognosen erstellt. Pro Einheit Aktien wird eine jährliche Rendite von 13 Tausend € erwartet, pro Einheit Anleihen eine Rendite von 5 Tausend €. Jede Einheit Aktien verursacht 6 Risikopunkte und jede Einheit Anleihen verursacht 11 Risikopunkte. Das Risikobudget des Portfolios darf höchstens 1307 Punkte betragen. Zusätzlich erfordert jede Einheit Aktien 8 Beratungsstunden und jede Einheit Anleihen 12 Beratungsstunden, wobei insgesamt maximal 3007 Beratungsstunden zur Verfügung stehen. Der Verwalter möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Aktien",
+      "x2 = Einheiten Anleihen"
+    ],
+    "zielfunktion": "Z = 13x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 11x2 ≤ 1307 (Risikobudget)",
+      "8x1 + 12x2 ≤ 3007 (Beratungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass Anleihen hier ein höheres Risikomaß pro Einheit haben als Aktien. Beide Nebenbedingungen schränken die zulässige Menge ein.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 13 Tausend €",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Rendite von 5 Tausend €",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Risikopunkte",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "11 Risikopunkte",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "höchstens 1307 Punkte",
+            "bedeutung": "≤ 1307"
+          }
+        ],
+        [
+          {
+            "text": "8 Beratungsstunden",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "12 Beratungsstunden",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "maximal 3007 Beratungsstunden",
+            "bedeutung": "≤ 3007"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kryptowährungen und Goldanlagen",
+    "beschreibung": "Eine Investmentgesellschaft möchte in Kryptowährungen und Goldanlagen investieren. Die Geschäftsleitung hat beschlossen, das Portfolio um alternative Anlageklassen zu erweitern, um von der Marktvolatilität zu profitieren und eine Absicherung gegen Inflation zu schaffen. Pro Einheit Kryptowährungen wird ein jährlicher Gewinn von 7 Tausend € erwartet, pro Einheit Gold ein Gewinn von 13 Tausend €. Das Risikomanagement vergibt pro Einheit Kryptowährungen 5 Risikopunkte und pro Einheit Gold 3 Risikopunkte. Das Risikobudget beträgt höchstens 913 Punkte. Außerdem fallen pro Einheit Kryptowährungen 9 Compliance-Einheiten und pro Einheit Gold 10 Compliance-Einheiten an, wobei insgesamt maximal 4559 Compliance-Einheiten zulässig sind. Die Gesellschaft möchte den Gesamtgewinn maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Kryptowährungen",
+      "x2 = Einheiten Goldanlagen"
+    ],
+    "zielfunktion": "Z = 7x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 913 (Risikobudget)",
+      "9x1 + 10x2 ≤ 4559 (Compliance-Budget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gold hat sowohl die höhere Rendite als auch ein geringeres Risiko pro Einheit. Achte auf die Compliance-Beschränkung als zweite Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 7 Tausend €",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "Gewinn von 13 Tausend €",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Risikopunkte",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Risikopunkte",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 913 Punkte",
+            "bedeutung": "≤ 913"
+          }
+        ],
+        [
+          {
+            "text": "9 Compliance-Einheiten",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "10 Compliance-Einheiten",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "maximal 4559 Compliance-Einheiten",
+            "bedeutung": "≤ 4559"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Immobilienfonds und ETF-Sparplan",
+    "beschreibung": "Eine Privatbank berät einen wohlhabenden Kunden zur optimalen Aufteilung seines Vermögens auf Immobilienfonds und ETF-Sparpläne. Der Kunde legt großen Wert auf eine stabile Wertentwicklung und möchte sein Geld langfristig und gewinnbringend anlegen. Pro Einheit Immobilienfonds erzielt der Kunde einen jährlichen Ertrag von 5 Tausend €, pro Einheit ETF-Sparplan einen Ertrag von 7 Tausend €. Pro Einheit Immobilienfonds fallen 4 Bearbeitungsstunden an und pro Einheit ETF-Sparplan fallen 2 Bearbeitungsstunden an. Das Bearbeitungsbudget umfasst höchstens 2933 Stunden. Zudem erfordert jede Einheit Immobilienfonds 11 Kapitalanteile und jede Einheit ETF-Sparplan 4 Kapitalanteile, wobei maximal 4805 Kapitalanteile verfügbar sind. Der Kunde möchte seinen Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Immobilienfonds",
+      "x2 = Einheiten ETF-Sparplan"
+    ],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 2933 (Bearbeitungsbudget)",
+      "11x1 + 4x2 ≤ 4805 (Kapitalbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme Bearbeitungsstunden und Kapitalanteile als Obergrenzen. ETF-Sparpläne haben die höhere Rendite.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 5 Tausend €",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Ertrag von 7 Tausend €",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "4 Bearbeitungsstunden",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "2 Bearbeitungsstunden",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 2933 Stunden",
+            "bedeutung": "≤ 2933"
+          }
+        ],
+        [
+          {
+            "text": "11 Kapitalanteile",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "4 Kapitalanteile",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "maximal 4805 Kapitalanteile",
+            "bedeutung": "≤ 4805"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rohstoff-Futures und Bundesanleihen",
+    "beschreibung": "Ein Hedgefonds möchte in Rohstoff-Futures und Bundesanleihen investieren. Das erfahrene Fondsmanagement sucht nach einer ausgewogenen Kombination aus Sicherheit und Wachstum, die den regulatorischen Anforderungen entspricht. Beide Anlageklassen sind im aktuellen Zinsumfeld besonders gefragt. Pro Einheit Rohstoff-Futures wird eine jährliche Rendite von 15 Tausend € erwartet, pro Einheit Bundesanleihen eine Rendite von 9 Tausend €. Das Risikokomitee vergibt pro Einheit Rohstoff-Futures 5 Risikopunkte und pro Einheit Bundesanleihen 3 Risikopunkte. Die Risikoobergrenze beträgt 1609 Punkte. Darüber hinaus erfordert jede Einheit Rohstoff-Futures ebenfalls 5 Compliance-Punkte und jede Einheit Bundesanleihen 3 Compliance-Punkte, wobei höchstens 2850 Compliance-Punkte erlaubt sind. Der Hedgefonds möchte seine Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Rohstoff-Futures",
+      "x2 = Einheiten Bundesanleihen"
+    ],
+    "zielfunktion": "Z = 15x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 1609 (Risikobudget)",
+      "5x1 + 3x2 ≤ 2850 (Compliance-Budget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass beide Nebenbedingungen dieselben Koeffizienten haben. Die engere Grenze bestimmt die zulässige Menge.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 15 Tausend €",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Rendite von 9 Tausend €",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "5 Risikopunkte",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Risikopunkte",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "1609 Punkte",
+            "bedeutung": "≤ 1609"
+          }
+        ],
+        [
+          {
+            "text": "5 Compliance-Punkte",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "3 Compliance-Punkte",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 2850 Compliance-Punkte",
+            "bedeutung": "≤ 2850"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Mietimmobilien und Dividendenaktien",
+    "beschreibung": "Ein Versorgungswerk möchte in Mietimmobilien und Dividendenaktien investieren, um die Rentenansprüche seiner Mitglieder langfristig zu sichern. Die Anlagerichtlinien des Versorgungswerks schreiben eine breite Diversifikation und die Einhaltung strenger Risikovorgaben vor. Beide Anlageklassen wurden vom Anlageausschuss als geeignet eingestuft und stehen zur Disposition. Pro Einheit Mietimmobilien wird eine jährliche Ausschüttung von 3 Tausend € erwartet, pro Einheit Dividendenaktien eine Ausschüttung von 13 Tausend €. Jede Einheit Mietimmobilien erfordert 11 Verwaltungspunkte und jede Einheit Dividendenaktien erfordert 8 Verwaltungspunkte. Das Verwaltungsbudget beträgt höchstens 3990 Punkte. Zudem bindet jede Einheit Mietimmobilien 4 Liquiditätseinheiten und jede Einheit Dividendenaktien 5 Liquiditätseinheiten, wobei maximal 1959 Liquiditätseinheiten verfügbar sind. Das Versorgungswerk möchte die Gesamtausschüttung maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Mietimmobilien",
+      "x2 = Einheiten Dividendenaktien"
+    ],
+    "zielfunktion": "Z = 3x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "11x1 + 8x2 ≤ 3990 (Verwaltungsbudget)",
+      "4x1 + 5x2 ≤ 1959 (Liquiditätsbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Bestimme die Verwaltungs- und Liquiditätsgrenzen als Nebenbedingungen. Die Ausschüttungen pro Einheit bilden die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ausschüttung von 3 Tausend €",
+          "bedeutung": "3 × x₁"
+        },
+        {
+          "text": "Ausschüttung von 13 Tausend €",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "11 Verwaltungspunkte",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "8 Verwaltungspunkte",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 3990 Punkte",
+            "bedeutung": "≤ 3990"
+          }
+        ],
+        [
+          {
+            "text": "4 Liquiditätseinheiten",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "5 Liquiditätseinheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "maximal 1959 Liquiditätseinheiten",
+            "bedeutung": "≤ 1959"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wagniskapital und Firmenanleihen",
+    "beschreibung": "Ein Family Office plant die strategische Aufteilung von Mitteln zwischen Wagniskapital und Firmenanleihen. Die Entscheidungsträger möchten eine ausgewogene Mischung finden, die Ertrag und Sicherheit vereint. Beide Anlageformen wurden nach intensiver Prüfung als geeignet eingestuft. Pro Einheit Wagniskapital erwartet man eine jährliche Rendite von 4 Tausend €, pro Einheit Firmenanleihen eine Rendite von 8 Tausend €. Das Risikomanagement ordnet jeder Einheit Wagniskapital 8 Risikopunkte und jeder Einheit Firmenanleihen 3 Risikopunkte zu. Das Risikobudget ist auf höchstens 3605 Punkte begrenzt. Gleichzeitig erfordert jede Einheit Wagniskapital 7 Prüfstunden und jede Einheit Firmenanleihen 5 Prüfstunden, wobei maximal 4785 Prüfstunden verfügbar sind. Das Family Office möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Wagniskapital",
+      "x2 = Einheiten Firmenanleihen"
+    ],
+    "zielfunktion": "Z = 4x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 3x2 ≤ 3605 (Risikobudget)",
+      "7x1 + 5x2 ≤ 4785 (Prüfungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Firmenanleihen haben die höhere Rendite und ein niedrigeres Risiko pro Einheit. Prüfe beide Nebenbedingungen sorgfältig.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 4 Tausend €",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Rendite von 8 Tausend €",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "8 Risikopunkte",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "3 Risikopunkte",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 3605 Punkte",
+            "bedeutung": "≤ 3605"
+          }
+        ],
+        [
+          {
+            "text": "7 Prüfstunden",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "5 Prüfstunden",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "maximal 4785 Prüfstunden",
+            "bedeutung": "≤ 4785"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kryptowährungen und Goldbarren",
+    "beschreibung": "Ein Fintech-Unternehmen erwägt Investitionen in Kryptowährungen und Goldbarren. Die Firmenleitung möchte die überschüssige Liquidität gewinnbringend anlegen und dabei alle regulatorischen Vorgaben und internen Richtlinien strikt einhalten. Die Investitionsentscheidung soll auf Basis eines quantitativen Modells getroffen werden. Pro Einheit Kryptowährungen erwartet es einen jährlichen Ertrag von 2 Tausend €, pro Einheit Goldbarren einen Ertrag von 13 Tausend €. Das Risikomodell weist jeder Einheit Kryptowährungen 9 Risikoeinheiten und jeder Einheit Goldbarren 5 Risikoeinheiten zu. Das Risikolimit beträgt höchstens 156 Einheiten. Ferner erfordert jede Einheit Kryptowährungen 11 Technologiepunkte und jede Einheit Goldbarren 10 Technologiepunkte, wobei insgesamt maximal 2890 Technologiepunkte verfügbar sind. Das Unternehmen möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Kryptowährungen",
+      "x2 = Einheiten Goldbarren"
+    ],
+    "zielfunktion": "Z = 2x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + 5x2 ≤ 156 (Risikolimit)",
+      "11x1 + 10x2 ≤ 2890 (Technologiebudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Das Risikolimit ist hier die engere Restriktion. Gold hat eine deutlich höhere Rendite und ein geringeres Risiko.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 2 Tausend €",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Ertrag von 13 Tausend €",
+          "bedeutung": "13 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "9 Risikoeinheiten",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "5 Risikoeinheiten",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 156 Einheiten",
+            "bedeutung": "≤ 156"
+          }
+        ],
+        [
+          {
+            "text": "11 Technologiepunkte",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "10 Technologiepunkte",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "maximal 2890 Technologiepunkte",
+            "bedeutung": "≤ 2890"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Photovoltaik und Windenergie",
+    "beschreibung": "Ein Infrastrukturfonds plant Investitionen in Photovoltaik und Windenergieanlagen. Der Fonds konzentriert sich auf den deutschen Markt und profitiert von staatlichen Förderprogrammen für erneuerbare Energien. Beide Anlageklassen profitieren von langfristigen Einspeiseverträgen und einer stetig steigenden Nachfrage nach grünem Strom. Pro Einheit Photovoltaik wird eine jährliche Rendite von 5 Tausend € prognostiziert, pro Einheit Windenergie eine Rendite von 11 Tausend €. Jede Einheit Photovoltaik erfordert 6 Genehmigungseinheiten und jede Einheit Windenergie erfordert 6 Genehmigungseinheiten. Insgesamt dürfen höchstens 771 Genehmigungseinheiten beansprucht werden. Zudem benötigt jede Einheit Photovoltaik 4 Netzkapazitätspunkte und jede Einheit Windenergie 11 Netzkapazitätspunkte, wobei maximal 3607 Netzkapazitätspunkte verfügbar sind. Der Fonds möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Photovoltaik",
+      "x2 = Einheiten Windenergie"
+    ],
+    "zielfunktion": "Z = 5x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 6x2 ≤ 771 (Genehmigungskapazität)",
+      "4x1 + 11x2 ≤ 3607 (Netzkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anlageformen haben denselben Genehmigungsaufwand pro Einheit. Die Netzkapazität unterscheidet sich jedoch deutlich.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 5 Tausend €",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Rendite von 11 Tausend €",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Genehmigungseinheiten und jede Einheit Windenergie erfordert 6 Genehmigungseinheiten",
+            "bedeutung": "6x₁ + 6x₂"
+          },
+          {
+            "text": "höchstens 771 Genehmigungseinheiten",
+            "bedeutung": "≤ 771"
+          }
+        ],
+        [
+          {
+            "text": "4 Netzkapazitätspunkte",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "11 Netzkapazitätspunkte",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "maximal 3607 Netzkapazitätspunkte",
+            "bedeutung": "≤ 3607"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Crowdfunding und Festgeld",
+    "beschreibung": "Ein erfahrener Anleger möchte zwischen Crowdfunding-Projekten und Festgeldanlagen wählen. Er hat bereits umfangreiche Erfahrung mit beiden Anlageformen gesammelt und möchte nun seine Strategie systematisch optimieren. Dabei sollen Risikogrenzen und Prüfungskapazitäten berücksichtigt werden. Pro Einheit Crowdfunding erwartet er einen jährlichen Gewinn von 9 Tausend €, pro Einheit Festgeld einen Gewinn von 9 Tausend €. Das Risikokomitee seiner Beraterbank ordnet jeder Einheit Crowdfunding 1 Risikopunkt und jeder Einheit Festgeld 8 Risikopunkte zu. Die Risikoobergrenze liegt bei 3344 Punkten. Zusätzlich erfordert jede Einheit Crowdfunding 3 Sorgfaltsprüfungen und jede Einheit Festgeld 8 Sorgfaltsprüfungen, wobei höchstens 2639 Sorgfaltsprüfungen durchgeführt werden können. Der Anleger möchte seinen Gesamtgewinn maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Crowdfunding",
+      "x2 = Einheiten Festgeld"
+    ],
+    "zielfunktion": "Z = 9x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 8x2 ≤ 3344 (Risikobudget)",
+      "3x1 + 8x2 ≤ 2639 (Sorgfaltsprüfungen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anlageformen haben dieselbe Rendite. Die optimale Lösung hängt allein von den Nebenbedingungen ab.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Gewinn von 9 Tausend €, pro Einheit Festgeld einen Gewinn von 9 Tausend €",
+          "bedeutung": "9 × x₁ + 9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "1 Risikopunkt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "8 Risikopunkte",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "3344 Punkten",
+            "bedeutung": "≤ 3344"
+          }
+        ],
+        [
+          {
+            "text": "3 Sorgfaltsprüfungen",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "8 Sorgfaltsprüfungen",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "höchstens 2639 Sorgfaltsprüfungen",
+            "bedeutung": "≤ 2639"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Private Equity und Geldmarktfonds",
+    "beschreibung": "Eine große Versicherungsgesellschaft möchte ihr bestehendes Portfolio mit Private Equity und Geldmarktfonds diversifizieren. Der Vorstand hat eine strategische Neuausrichtung beschlossen, die auf höhere Renditen bei kontrolliertem Risiko abzielt. Die Entscheidung soll auf Basis einer quantitativen Analyse getroffen werden. Pro Einheit Private Equity wird eine jährliche Rendite von 14 Tausend € erwartet, pro Einheit Geldmarktfonds eine Rendite von 14 Tausend €. Jede Einheit Private Equity erfordert 2 Prüfungseinheiten und jede Einheit Geldmarktfonds erfordert 9 Prüfungseinheiten. Die Prüfungskapazität beträgt höchstens 4804 Einheiten. Zudem benötigt jede Einheit Private Equity 4 Kapitalblöcke und jede Einheit Geldmarktfonds 12 Kapitalblöcke, wobei maximal 1487 Kapitalblöcke eingesetzt werden können. Die Gesellschaft möchte ihre Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Private Equity",
+      "x2 = Einheiten Geldmarktfonds"
+    ],
+    "zielfunktion": "Z = 14x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 9x2 ≤ 4804 (Prüfungskapazität)",
+      "4x1 + 12x2 ≤ 1487 (Kapitalbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anlageformen haben die gleiche Rendite. Die unterschiedlichen Ressourcenanforderungen bestimmen die optimale Mischung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Rendite von 14 Tausend € erwartet, pro Einheit Geldmarktfonds eine Rendite von 14 Tausend €",
+          "bedeutung": "14 × x₁ + 14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "2 Prüfungseinheiten",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "9 Prüfungseinheiten",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "höchstens 4804 Einheiten",
+            "bedeutung": "≤ 4804"
+          }
+        ],
+        [
+          {
+            "text": "4 Kapitalblöcke",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "12 Kapitalblöcke",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "maximal 1487 Kapitalblöcke",
+            "bedeutung": "≤ 1487"
+          }
+        ]
+      ]
+    }
+  }
+]

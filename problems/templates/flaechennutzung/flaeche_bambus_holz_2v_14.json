@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_bambus_holz_2v_14",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Bambusplantage", "x2 = Hektar Nutzholzwald"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Bambus (Tsd. €/ha)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Nutzholz (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Bambus (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Nutzholz (ha/ha)"},
+    "b1":  {"min": 40, "max": 250, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 4, "max": 10,  "label": "Wasserbedarf Bambus (m³/ha)"},
+    "a22": {"min": 2, "max": 6,   "label": "Wasserbedarf Nutzholz (m³/ha)"},
+    "b2":  {"min": 80, "max": 400, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Forstwirtschaft – Bambus und Nutzholz",
+  "beschreibung": "Ein Forstbetrieb bewirtschaftet Flächen für Bambus und Nutzholz. Bambus bringt {c1} Tsd. € Ertrag pro Hektar, Nutzholz bringt {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Bambus und {a12} Hektar pro Hektar Nutzholz. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserbedarf liegt bei {a21} m³ pro Hektar Bambus und {a22} m³ pro Hektar Nutzholz. Das Wasserbudget beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Wasserbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Bambus bringt {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Nutzholz bringt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Bambus", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Nutzholz", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro Hektar Bambus", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro Hektar Nutzholz", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "medien_event_pr_2v_12",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Events", "x2 = Anzahl PR-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Organisationszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 15,    "label": "Teilnehmer Event (Tsd.)"},
+    "c2":  {"min": 10, "max": 50,   "label": "Medienkontakte PR (Tsd.)"},
+    "a11": {"min": 5, "max": 20,    "label": "Kosten Event (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten PR (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 10, "max": 30,   "label": "Organisation Event (Stunden)"},
+    "a22": {"min": 5, "max": 15,    "label": "Organisation PR (Stunden)"},
+    "b2":  {"min": 40, "max": 150,  "label": "Organisationsstunden"}
+  },
+  "titel": "Markenbildung – Events und PR",
+  "beschreibung": "Ein Markenteam plant Maßnahmen zur Markenbildung mit Events und PR-Kampagnen. Ein Event erreicht {c1} Tsd. Teilnehmer, eine PR-Kampagne generiert {c2} Tsd. Medienkontakte. Ein Event kostet {a11} Tsd. €, eine PR-Kampagne kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Organisationszeit beträgt {a21} Stunden pro Event und {a22} Stunden pro PR-Kampagne. Insgesamt stehen {b2} Organisationsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Organisationszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Event erreicht {c1} Tsd. Teilnehmer", "bedeutung": "{c1} × x₁"},
+      {"text": "PR-Kampagne generiert {c2} Tsd. Medienkontakte", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine PR-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Event und {a22} Stunden pro PR-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Organisationsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

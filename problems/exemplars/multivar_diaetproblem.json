@@ -1,0 +1,94 @@
+[
+  {
+    "titel": "Sportlerdiät mit drei Lebensmitteln",
+    "beschreibung": "Ein Sportler plant seine Ernährung mit drei Lebensmitteln: Hähnchenbrust, Reis und Brokkoli. Die Kosten betragen 4 Euro pro Portion Hähnchenbrust, 1 Euro pro Portion Reis und 2 Euro pro Portion Brokkoli. Der tägliche Proteinbedarf von mindestens 600 g muss gedeckt werden: eine Portion Hähnchenbrust liefert 10 g, eine Portion Reis 2 g und eine Portion Brokkoli 3 g Protein. Auch der Kohlenhydratbedarf von mindestens 800 g ist zu erfüllen, wobei Hähnchenbrust 1 g, Reis 12 g und Brokkoli 4 g Kohlenhydrate pro Portion liefern. Die Gesamtkalorienzufuhr darf 1500 kcal nicht überschreiten, wobei Hähnchenbrust 6 kcal, Reis 8 kcal und Brokkoli 3 kcal pro Portion beitragen. Der Sportler möchte die Kosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Portionen Hähnchenbrust", "x2 = Portionen Reis", "x3 = Portionen Brokkoli"],
+    "zielfunktion": "Z = 4x1 + x2 + 2x3 (min)",
+    "nebenbedingungen": [
+      "10x1 + 2x2 + 3x3 ≥ 600 (Protein)",
+      "x1 + 12x2 + 4x3 ≥ 800 (Kohlenhydrate)",
+      "6x1 + 8x2 + 3x3 ≤ 1500 (Kalorien)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Mindestbedarfe (Protein, Kohlenhydrate) sind ≥-Nebenbedingungen, die Kalorienbegrenzung ist eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "4 Euro pro Portion Hähnchenbrust", "bedeutung": "4 × x₁"},
+        {"text": "1 Euro pro Portion Reis", "bedeutung": "1 × x₂"},
+        {"text": "2 Euro pro Portion Brokkoli", "bedeutung": "2 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Hähnchenbrust liefert 10 g", "bedeutung": "10x₁"},
+          {"text": "Reis 2 g", "bedeutung": "+ 2x₂"},
+          {"text": "Brokkoli 3 g Protein", "bedeutung": "+ 3x₃"},
+          {"text": "mindestens 600 g", "bedeutung": "≥ 600"}
+        ],
+        [
+          {"text": "Hähnchenbrust 1 g", "bedeutung": "x₁"},
+          {"text": "Reis 12 g", "bedeutung": "+ 12x₂"},
+          {"text": "Brokkoli 4 g Kohlenhydrate", "bedeutung": "+ 4x₃"},
+          {"text": "mindestens 800 g", "bedeutung": "≥ 800"}
+        ],
+        [
+          {"text": "Hähnchenbrust 6 kcal", "bedeutung": "6x₁"},
+          {"text": "Reis 8 kcal", "bedeutung": "+ 8x₂"},
+          {"text": "Brokkoli 3 kcal", "bedeutung": "+ 3x₃"},
+          {"text": "1500 kcal nicht überschreiten", "bedeutung": "≤ 1500"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankenhausernährung mit vier Lebensmittelgruppen",
+    "beschreibung": "Ein Krankenhaus plant den Speiseplan mit vier Lebensmittelgruppen: Fleisch, Getreide, Gemüse und Milchprodukte. Die Kosten betragen 6 Euro pro Einheit Fleisch, 2 Euro pro Einheit Getreide, 3 Euro pro Einheit Gemüse und 4 Euro pro Einheit Milchprodukte. Der Proteinbedarf von mindestens 1000 g wird gedeckt durch 12 g pro Einheit Fleisch, 3 g Getreide, 2 g Gemüse und 8 g Milchprodukte. Der Vitaminbedarf von mindestens 500 Einheiten wird durch 2 Einheiten Fleisch, 4 Einheiten Getreide, 10 Einheiten Gemüse und 3 Einheiten Milchprodukte gedeckt. Das Gesamtvolumen darf 400 Portionen nicht überschreiten. Zudem ist das Fettbudget begrenzt auf 600 g: Fleisch enthält 8 g, Getreide 1 g, Gemüse 1 g und Milchprodukte 5 g Fett pro Einheit. Das Krankenhaus möchte die Gesamtkosten minimieren.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Einheiten Fleisch", "x2 = Einheiten Getreide", "x3 = Einheiten Gemüse", "x4 = Einheiten Milchprodukte"],
+    "zielfunktion": "Z = 6x1 + 2x2 + 3x3 + 4x4 (min)",
+    "nebenbedingungen": [
+      "12x1 + 3x2 + 2x3 + 8x4 ≥ 1000 (Protein)",
+      "2x1 + 4x2 + 10x3 + 3x4 ≥ 500 (Vitamine)",
+      "x1 + x2 + x3 + x4 ≤ 400 (Gesamtvolumen)",
+      "8x1 + x2 + x3 + 5x4 ≤ 600 (Fettbudget)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Zwei Mindestbedarfe (≥) und zwei Obergrenzen (≤). Ordne jedem Lebensmittel eine Variable zu und achte auf die richtige Ungleichungsrichtung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "6 Euro pro Einheit Fleisch", "bedeutung": "6 × x₁"},
+        {"text": "2 Euro pro Einheit Getreide", "bedeutung": "2 × x₂"},
+        {"text": "3 Euro pro Einheit Gemüse", "bedeutung": "3 × x₃"},
+        {"text": "4 Euro pro Einheit Milchprodukte", "bedeutung": "4 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "12 g pro Einheit Fleisch", "bedeutung": "12x₁"},
+          {"text": "3 g Getreide", "bedeutung": "+ 3x₂"},
+          {"text": "2 g Gemüse", "bedeutung": "+ 2x₃"},
+          {"text": "8 g Milchprodukte", "bedeutung": "+ 8x₄"},
+          {"text": "mindestens 1000 g", "bedeutung": "≥ 1000"}
+        ],
+        [
+          {"text": "2 Einheiten Fleisch", "bedeutung": "2x₁"},
+          {"text": "4 Einheiten Getreide", "bedeutung": "+ 4x₂"},
+          {"text": "10 Einheiten Gemüse", "bedeutung": "+ 10x₃"},
+          {"text": "3 Einheiten Milchprodukte", "bedeutung": "+ 3x₄"},
+          {"text": "mindestens 500 Einheiten", "bedeutung": "≥ 500"}
+        ],
+        [
+          {"text": "400 Portionen nicht überschreiten", "bedeutung": "x₁ + x₂ + x₃ + x₄ ≤ 400"}
+        ],
+        [
+          {"text": "Fleisch enthält 8 g", "bedeutung": "8x₁"},
+          {"text": "Getreide 1 g", "bedeutung": "+ x₂"},
+          {"text": "Gemüse 1 g", "bedeutung": "+ x₃"},
+          {"text": "Milchprodukte 5 g Fett", "bedeutung": "+ 5x₄"},
+          {"text": "begrenzt auf 600 g", "bedeutung": "≤ 600"}
+        ]
+      ]
+    }
+  }
+]

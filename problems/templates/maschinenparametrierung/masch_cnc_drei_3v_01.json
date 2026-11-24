@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_cnc_drei_3v_01",
+  "titel": "CNC-Fraese – Drehzahl, Vorschub und Schnitttiefe",
+  "variablen": [
+    "x1 = Drehzahl (Stufen)",
+    "x2 = Vorschub (Stufen)",
+    "x3 = Schnitttiefe (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Spindelleistung",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Werkzeugverschleiss",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Vibrationsgrenze",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Qualitaet Drehzahl"
+    },
+    "c2": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Vorschub"
+    },
+    "c3": {
+      "min": 2,
+      "max": 8,
+      "label": "Materialabtrag Tiefe"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Spindel Drehzahl"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Spindel Vorschub"
+    },
+    "a13": {
+      "min": 2,
+      "max": 6,
+      "label": "Spindel Tiefe"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Spindelleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 7,
+      "label": "Verschleiss Drehzahl"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Verschleiss Vorschub"
+    },
+    "a23": {
+      "min": 4,
+      "max": 10,
+      "label": "Verschleiss Tiefe"
+    },
+    "b2": {
+      "min": 60,
+      "max": 350,
+      "label": "Max. Verschleisseinheiten"
+    },
+    "a31": {
+      "min": 3,
+      "max": 7,
+      "label": "Vibration Drehzahl"
+    },
+    "a32": {
+      "min": 1,
+      "max": 4,
+      "label": "Vibration Vorschub"
+    },
+    "a33": {
+      "min": 2,
+      "max": 6,
+      "label": "Vibration Tiefe"
+    },
+    "b3": {
+      "min": 50,
+      "max": 250,
+      "label": "Max. Vibrationseinheiten"
+    }
+  },
+  "beschreibung": "Eine CNC-Fraese wird ueber drei Parameter eingestellt. Die Drehzahl liefert {c1} Qualitaetspunkte, der Vorschub {c2} Durchsatzpunkte und die Schnitttiefe {c3} Abtragpunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub und {a13} fuer Tiefe bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub und {a23} fuer Tiefe bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub und {a33} fuer Tiefe bei maximal {b3} Vibrationseinheiten.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiss und Vibration.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Drehzahl liefert {c1} Qualitaetspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Vorschub {c2} Durchsatzpunkte",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Schnitttiefe {c3} Abtragpunkte",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Drehzahl",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Vorschub",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Tiefe",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Spindeleinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Drehzahl",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Vorschub",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Tiefe",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Drehzahl",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Vorschub",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Tiefe",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Vibrationseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

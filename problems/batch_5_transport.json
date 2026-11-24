@@ -1,0 +1,801 @@
+[
+  {
+    "titel": "Fluglinie: Passagier- und Frachttransport",
+    "beschreibung": "Eine Fluglinie setzt Großflugzeuge und Kleinflugzeuge ein, um Passagiere und Fracht zu befördern. Ein Großflugzeug kostet 12000€ pro Flug, ein Kleinflugzeug kostet 5000€ pro Flug. Ein Großflugzeug befördert 300 Passagiere, ein Kleinflugzeug 120 Passagiere. Es müssen mindestens 2400 Passagiere befördert werden. An Fracht transportiert ein Großflugzeug 20 Tonnen und ein Kleinflugzeug 8 Tonnen. Es müssen mindestens 140 Tonnen Fracht transportiert werden. Es stehen maximal 10 Großflugzeuge und maximal 15 Kleinflugzeuge zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Flüge mit Großflugzeug", "x2 = Anzahl Flüge mit Kleinflugzeug"],
+    "zielfunktion": "Z = 12000x1 + 5000x2 (min)",
+    "nebenbedingungen": [
+      "300x1 + 120x2 ≥ 2400 (Passagiere)",
+      "20x1 + 8x2 ≥ 140 (Fracht in Tonnen)",
+      "x1 ≤ 10 (Großflugzeuge verfügbar)",
+      "x2 ≤ 15 (Kleinflugzeuge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Flugkosten, aber beachte die Mindestanforderungen an Passagier- und Frachttransport sowie die Verfügbarkeit der Flugzeuge.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Großflugzeug kostet 12000€ pro Flug", "bedeutung": "12000 × x₁"},
+        {"text": "Kleinflugzeug kostet 5000€ pro Flug", "bedeutung": "5000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Großflugzeug befördert 300 Passagiere", "bedeutung": "300x₁"},
+          {"text": "Kleinflugzeug 120 Passagiere", "bedeutung": "+ 120x₂"},
+          {"text": "mindestens 2400 Passagiere", "bedeutung": "≥ 2400"}
+        ],
+        [
+          {"text": "Großflugzeug 20 Tonnen", "bedeutung": "20x₁"},
+          {"text": "Kleinflugzeug 8 Tonnen", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 140 Tonnen Fracht", "bedeutung": "≥ 140"}
+        ],
+        [
+          {"text": "maximal 10 Großflugzeuge", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 15 Kleinflugzeuge", "bedeutung": "x₂ ≤ 15"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spedition: Pakete und Gewicht",
+    "beschreibung": "Eine Spedition setzt LKWs und Transporter ein, um Waren auszuliefern. Ein LKW kostet 800€ pro Tour, ein Transporter kostet 350€ pro Tour. Ein LKW transportiert 200 Pakete, ein Transporter 80 Pakete. Es müssen mindestens 1600 Pakete ausgeliefert werden. An Gewicht fasst ein LKW 12 Tonnen und ein Transporter 4 Tonnen. Es müssen mindestens 80 Tonnen transportiert werden. Es stehen maximal 12 LKWs und maximal 20 Transporter zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Touren mit LKW", "x2 = Anzahl Touren mit Transporter"],
+    "zielfunktion": "Z = 800x1 + 350x2 (min)",
+    "nebenbedingungen": [
+      "200x1 + 80x2 ≥ 1600 (Pakete)",
+      "12x1 + 4x2 ≥ 80 (Gewicht in Tonnen)",
+      "x1 ≤ 12 (LKWs verfügbar)",
+      "x2 ≤ 20 (Transporter verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Tourenkosten und achte auf die Mindestmengen bei Paketen und Gewicht sowie die Fahrzeugverfügbarkeit.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "LKW kostet 800€ pro Tour", "bedeutung": "800 × x₁"},
+        {"text": "Transporter kostet 350€ pro Tour", "bedeutung": "350 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "LKW transportiert 200 Pakete", "bedeutung": "200x₁"},
+          {"text": "Transporter 80 Pakete", "bedeutung": "+ 80x₂"},
+          {"text": "mindestens 1600 Pakete", "bedeutung": "≥ 1600"}
+        ],
+        [
+          {"text": "LKW 12 Tonnen", "bedeutung": "12x₁"},
+          {"text": "Transporter 4 Tonnen", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 80 Tonnen", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "maximal 12 LKWs", "bedeutung": "x₁ ≤ 12"}
+        ],
+        [
+          {"text": "maximal 20 Transporter", "bedeutung": "x₂ ≤ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Busunternehmen: Fahrgäste und Gepäck",
+    "beschreibung": "Ein Busunternehmen plant den Einsatz von Reisebussen und Kleinbussen für eine Strecke. Ein Reisebus kostet 600€ pro Fahrt, ein Kleinbus kostet 250€ pro Fahrt. Ein Reisebus befördert 50 Fahrgäste, ein Kleinbus 18 Fahrgäste. Es müssen mindestens 400 Fahrgäste befördert werden. Ein Reisebus fasst 60 Gepäckstücke, ein Kleinbus 20 Gepäckstücke. Es müssen mindestens 480 Gepäckstücke transportiert werden. Es stehen maximal 10 Reisebusse und maximal 25 Kleinbusse zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Reisebus", "x2 = Anzahl Fahrten mit Kleinbus"],
+    "zielfunktion": "Z = 600x1 + 250x2 (min)",
+    "nebenbedingungen": [
+      "50x1 + 18x2 ≥ 400 (Fahrgäste)",
+      "60x1 + 20x2 ≥ 480 (Gepäckstücke)",
+      "x1 ≤ 10 (Reisebusse verfügbar)",
+      "x2 ≤ 25 (Kleinbusse verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die Mindestanforderungen bei Fahrgästen und Gepäck. Stelle die Ungleichungen mit ≥ auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Reisebus kostet 600€ pro Fahrt", "bedeutung": "600 × x₁"},
+        {"text": "Kleinbus kostet 250€ pro Fahrt", "bedeutung": "250 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Reisebus befördert 50 Fahrgäste", "bedeutung": "50x₁"},
+          {"text": "Kleinbus 18 Fahrgäste", "bedeutung": "+ 18x₂"},
+          {"text": "mindestens 400 Fahrgäste", "bedeutung": "≥ 400"}
+        ],
+        [
+          {"text": "Reisebus fasst 60 Gepäckstücke", "bedeutung": "60x₁"},
+          {"text": "Kleinbus 20 Gepäckstücke", "bedeutung": "+ 20x₂"},
+          {"text": "mindestens 480 Gepäckstücke", "bedeutung": "≥ 480"}
+        ],
+        [
+          {"text": "maximal 10 Reisebusse", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 25 Kleinbusse", "bedeutung": "x₂ ≤ 25"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Reederei: Container und Tonnage",
+    "beschreibung": "Eine Reederei setzt Containerschiffe und Frachtkähne ein, um Waren über einen Fluss zu transportieren. Ein Containerschiff kostet 15000€ pro Fahrt, ein Frachtkahn kostet 4000€ pro Fahrt. Ein Containerschiff transportiert 80 Container, ein Frachtkahn 25 Container. Es müssen mindestens 500 Container befördert werden. An Tonnage bewältigt ein Containerschiff 2000 Tonnen und ein Frachtkahn 600 Tonnen. Es müssen mindestens 12000 Tonnen transportiert werden. Es stehen maximal 8 Containerschiffe und maximal 24 Frachtkähne zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Containerschiff", "x2 = Anzahl Fahrten mit Frachtkahn"],
+    "zielfunktion": "Z = 15000x1 + 4000x2 (min)",
+    "nebenbedingungen": [
+      "80x1 + 25x2 ≥ 500 (Container)",
+      "2000x1 + 600x2 ≥ 12000 (Tonnage)",
+      "x1 ≤ 8 (Containerschiffe verfügbar)",
+      "x2 ≤ 24 (Frachtkähne verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Minimiere die Transportkosten unter Einhaltung der Mindestmengen für Container und Tonnage.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Containerschiff kostet 15000€ pro Fahrt", "bedeutung": "15000 × x₁"},
+        {"text": "Frachtkahn kostet 4000€ pro Fahrt", "bedeutung": "4000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Containerschiff transportiert 80 Container", "bedeutung": "80x₁"},
+          {"text": "Frachtkahn 25 Container", "bedeutung": "+ 25x₂"},
+          {"text": "mindestens 500 Container", "bedeutung": "≥ 500"}
+        ],
+        [
+          {"text": "Containerschiff 2000 Tonnen", "bedeutung": "2000x₁"},
+          {"text": "Frachtkahn 600 Tonnen", "bedeutung": "+ 600x₂"},
+          {"text": "mindestens 12000 Tonnen", "bedeutung": "≥ 12000"}
+        ],
+        [
+          {"text": "maximal 8 Containerschiffe", "bedeutung": "x₁ ≤ 8"}
+        ],
+        [
+          {"text": "maximal 24 Frachtkähne", "bedeutung": "x₂ ≤ 24"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kurierdienst: Innerstädtische Paketzustellung",
+    "beschreibung": "Ein Kurierdienst liefert Pakete innerstädtisch mit Fahrrädern und Autos aus. Ein Fahrrad kostet 15€ pro Tour, ein Auto kostet 45€ pro Tour. Ein Fahrrad liefert 8 Pakete pro Tour, ein Auto liefert 30 Pakete pro Tour. Es müssen mindestens 360 Pakete pro Tag ausgeliefert werden. Ein Fahrrad schafft 3 Stadtteile pro Tour, ein Auto schafft 5 Stadtteile pro Tour. Es müssen mindestens 60 Stadtteile abgedeckt werden. Es stehen maximal 20 Fahrräder und maximal 14 Autos zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Touren mit Fahrrad", "x2 = Anzahl Touren mit Auto"],
+    "zielfunktion": "Z = 15x1 + 45x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 30x2 ≥ 360 (Pakete)",
+      "3x1 + 5x2 ≥ 60 (Stadtteile)",
+      "x1 ≤ 20 (Fahrräder verfügbar)",
+      "x2 ≤ 14 (Autos verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte darauf, dass die Mindestanzahl an Paketen und abgedeckten Stadtteilen erreicht wird. Die Fahrrad-Touren sind günstiger, liefern aber weniger.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Fahrrad kostet 15€ pro Tour", "bedeutung": "15 × x₁"},
+        {"text": "Auto kostet 45€ pro Tour", "bedeutung": "45 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Fahrrad liefert 8 Pakete pro Tour", "bedeutung": "8x₁"},
+          {"text": "Auto liefert 30 Pakete pro Tour", "bedeutung": "+ 30x₂"},
+          {"text": "mindestens 360 Pakete", "bedeutung": "≥ 360"}
+        ],
+        [
+          {"text": "Fahrrad schafft 3 Stadtteile pro Tour", "bedeutung": "3x₁"},
+          {"text": "Auto schafft 5 Stadtteile pro Tour", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 60 Stadtteile", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "maximal 20 Fahrräder", "bedeutung": "x₁ ≤ 20"}
+        ],
+        [
+          {"text": "maximal 14 Autos", "bedeutung": "x₂ ≤ 14"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Umzugsunternehmen: Möbel und Kartons",
+    "beschreibung": "Ein Umzugsunternehmen setzt große LKWs und Kleintransporter ein. Ein großer LKW kostet 500€ pro Fahrt, ein Kleintransporter kostet 200€ pro Fahrt. Ein großer LKW transportiert 40 Möbelstücke, ein Kleintransporter 15 Möbelstücke. Es müssen mindestens 300 Möbelstücke transportiert werden. Ein großer LKW fasst 80 Kartons, ein Kleintransporter 35 Kartons. Es müssen mindestens 600 Kartons transportiert werden. Es stehen maximal 9 große LKWs und maximal 18 Kleintransporter zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit großem LKW", "x2 = Anzahl Fahrten mit Kleintransporter"],
+    "zielfunktion": "Z = 500x1 + 200x2 (min)",
+    "nebenbedingungen": [
+      "40x1 + 15x2 ≥ 300 (Möbelstücke)",
+      "80x1 + 35x2 ≥ 600 (Kartons)",
+      "x1 ≤ 9 (große LKWs verfügbar)",
+      "x2 ≤ 18 (Kleintransporter verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Mindestanforderungen für Möbelstücke und Kartons. Prüfe, ob die Kapazitätsgrenzen der Fahrzeuge eingehalten werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "großer LKW kostet 500€ pro Fahrt", "bedeutung": "500 × x₁"},
+        {"text": "Kleintransporter kostet 200€ pro Fahrt", "bedeutung": "200 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "großer LKW transportiert 40 Möbelstücke", "bedeutung": "40x₁"},
+          {"text": "Kleintransporter 15 Möbelstücke", "bedeutung": "+ 15x₂"},
+          {"text": "mindestens 300 Möbelstücke", "bedeutung": "≥ 300"}
+        ],
+        [
+          {"text": "großer LKW fasst 80 Kartons", "bedeutung": "80x₁"},
+          {"text": "Kleintransporter 35 Kartons", "bedeutung": "+ 35x₂"},
+          {"text": "mindestens 600 Kartons", "bedeutung": "≥ 600"}
+        ],
+        [
+          {"text": "maximal 9 große LKWs", "bedeutung": "x₁ ≤ 9"}
+        ],
+        [
+          {"text": "maximal 18 Kleintransporter", "bedeutung": "x₂ ≤ 18"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Lieferservice: Bestellungen und Volumen",
+    "beschreibung": "Ein Lieferservice nutzt E-Bikes und Lieferwagen für die Auslieferung. Ein E-Bike kostet 10€ pro Tour, ein Lieferwagen kostet 40€ pro Tour. Ein E-Bike liefert 6 Bestellungen pro Tour, ein Lieferwagen liefert 25 Bestellungen pro Tour. Es müssen mindestens 300 Bestellungen pro Tag ausgeliefert werden. An Volumen fasst ein E-Bike 50 Liter, ein Lieferwagen 250 Liter. Es müssen mindestens 3000 Liter Volumen transportiert werden. Es stehen maximal 30 E-Bikes und maximal 12 Lieferwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Touren mit E-Bike", "x2 = Anzahl Touren mit Lieferwagen"],
+    "zielfunktion": "Z = 10x1 + 40x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 25x2 ≥ 300 (Bestellungen)",
+      "50x1 + 250x2 ≥ 3000 (Volumen in Liter)",
+      "x1 ≤ 30 (E-Bikes verfügbar)",
+      "x2 ≤ 12 (Lieferwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass E-Bikes zwar günstiger sind, aber deutlich weniger Volumen transportieren. Beide Mindestanforderungen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "E-Bike kostet 10€ pro Tour", "bedeutung": "10 × x₁"},
+        {"text": "Lieferwagen kostet 40€ pro Tour", "bedeutung": "40 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "E-Bike liefert 6 Bestellungen pro Tour", "bedeutung": "6x₁"},
+          {"text": "Lieferwagen liefert 25 Bestellungen pro Tour", "bedeutung": "+ 25x₂"},
+          {"text": "mindestens 300 Bestellungen", "bedeutung": "≥ 300"}
+        ],
+        [
+          {"text": "E-Bike 50 Liter", "bedeutung": "50x₁"},
+          {"text": "Lieferwagen 250 Liter", "bedeutung": "+ 250x₂"},
+          {"text": "mindestens 3000 Liter Volumen", "bedeutung": "≥ 3000"}
+        ],
+        [
+          {"text": "maximal 30 E-Bikes", "bedeutung": "x₁ ≤ 30"}
+        ],
+        [
+          {"text": "maximal 12 Lieferwagen", "bedeutung": "x₂ ≤ 12"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bahntransport: Güter und Passagiere",
+    "beschreibung": "Ein Bahnunternehmen setzt Güterzüge und Schnellzüge auf einer Strecke ein. Ein Güterzug kostet 3000€ pro Fahrt, ein Schnellzug kostet 5000€ pro Fahrt. Ein Güterzug transportiert 500 Tonnen Fracht, ein Schnellzug 60 Tonnen Fracht. Es müssen mindestens 4000 Tonnen Fracht befördert werden. Ein Güterzug befördert 0 Passagiere, ein Schnellzug 400 Passagiere. Es müssen mindestens 2000 Passagiere befördert werden. Es stehen maximal 10 Güterzüge und maximal 8 Schnellzüge zur Verfügung. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Güterzug", "x2 = Anzahl Fahrten mit Schnellzug"],
+    "zielfunktion": "Z = 3000x1 + 5000x2 (min)",
+    "nebenbedingungen": [
+      "500x1 + 60x2 ≥ 4000 (Fracht in Tonnen)",
+      "400x2 ≥ 2000 (Passagiere)",
+      "x1 ≤ 10 (Güterzüge verfügbar)",
+      "x2 ≤ 8 (Schnellzüge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass nur Schnellzüge Passagiere befördern. Die Mindestanzahl an Passagieren bestimmt direkt die Mindestanzahl der Schnellzüge.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Güterzug kostet 3000€ pro Fahrt", "bedeutung": "3000 × x₁"},
+        {"text": "Schnellzug kostet 5000€ pro Fahrt", "bedeutung": "5000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Güterzug transportiert 500 Tonnen Fracht", "bedeutung": "500x₁"},
+          {"text": "Schnellzug 60 Tonnen Fracht", "bedeutung": "+ 60x₂"},
+          {"text": "mindestens 4000 Tonnen Fracht", "bedeutung": "≥ 4000"}
+        ],
+        [
+          {"text": "Schnellzug 400 Passagiere", "bedeutung": "400x₂"},
+          {"text": "mindestens 2000 Passagiere", "bedeutung": "≥ 2000"}
+        ],
+        [
+          {"text": "maximal 10 Güterzüge", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 8 Schnellzüge", "bedeutung": "x₂ ≤ 8"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Rettungsdienst: Einsätze und Personal",
+    "beschreibung": "Ein Rettungsdienst setzt Rettungswagen (RTW) und Notarzteinsatzfahrzeuge (NEF) ein. Ein RTW kostet 400€ pro Schicht, ein NEF kostet 600€ pro Schicht. Ein RTW bewältigt 8 Einsätze pro Schicht, ein NEF bewältigt 5 Einsätze pro Schicht. Es müssen mindestens 60 Einsätze pro Tag abgedeckt werden. Ein RTW bindet 3 Personen Personal, ein NEF bindet 2 Personen Personal. Es müssen mindestens 24 Personen Personal im Einsatz sein. Es stehen maximal 10 RTWs und maximal 8 NEFs zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl RTW-Schichten", "x2 = Anzahl NEF-Schichten"],
+    "zielfunktion": "Z = 400x1 + 600x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 5x2 ≥ 60 (Einsätze)",
+      "3x1 + 2x2 ≥ 24 (Personal)",
+      "x1 ≤ 10 (RTWs verfügbar)",
+      "x2 ≤ 8 (NEFs verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Mindestanforderungen (Einsätze und Personalstärke) müssen gleichzeitig erfüllt werden. RTWs sind günstiger, binden aber mehr Personal.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "RTW kostet 400€ pro Schicht", "bedeutung": "400 × x₁"},
+        {"text": "NEF kostet 600€ pro Schicht", "bedeutung": "600 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "RTW bewältigt 8 Einsätze pro Schicht", "bedeutung": "8x₁"},
+          {"text": "NEF bewältigt 5 Einsätze pro Schicht", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 60 Einsätze", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "RTW bindet 3 Personen Personal", "bedeutung": "3x₁"},
+          {"text": "NEF bindet 2 Personen Personal", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 24 Personen Personal", "bedeutung": "≥ 24"}
+        ],
+        [
+          {"text": "maximal 10 RTWs", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 8 NEFs", "bedeutung": "x₂ ≤ 8"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Müllabfuhr: Tonnen und Bezirke",
+    "beschreibung": "Die Müllabfuhr einer Stadt setzt große Müllfahrzeuge und kleine Sammelfahrzeuge ein. Ein großes Müllfahrzeug kostet 700€ pro Einsatz, ein kleines Sammelfahrzeug kostet 300€ pro Einsatz. Ein großes Müllfahrzeug sammelt 10 Tonnen Müll, ein kleines Sammelfahrzeug sammelt 3 Tonnen Müll. Es müssen mindestens 80 Tonnen Müll abgeholt werden. Ein großes Müllfahrzeug deckt 4 Bezirke ab, ein kleines Sammelfahrzeug deckt 6 Bezirke ab. Es müssen mindestens 48 Bezirke bedient werden. Es stehen maximal 10 große Müllfahrzeuge und maximal 16 kleine Sammelfahrzeuge zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Einsätze mit großem Müllfahrzeug", "x2 = Anzahl Einsätze mit kleinem Sammelfahrzeug"],
+    "zielfunktion": "Z = 700x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "10x1 + 3x2 ≥ 80 (Tonnen Müll)",
+      "4x1 + 6x2 ≥ 48 (Bezirke)",
+      "x1 ≤ 10 (große Müllfahrzeuge verfügbar)",
+      "x2 ≤ 16 (kleine Sammelfahrzeuge verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die großen Fahrzeuge sammeln mehr Müll, die kleinen decken mehr Bezirke ab. Beachte beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "großes Müllfahrzeug kostet 700€ pro Einsatz", "bedeutung": "700 × x₁"},
+        {"text": "kleines Sammelfahrzeug kostet 300€ pro Einsatz", "bedeutung": "300 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "großes Müllfahrzeug sammelt 10 Tonnen Müll", "bedeutung": "10x₁"},
+          {"text": "kleines Sammelfahrzeug sammelt 3 Tonnen Müll", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 80 Tonnen Müll", "bedeutung": "≥ 80"}
+        ],
+        [
+          {"text": "großes Müllfahrzeug deckt 4 Bezirke ab", "bedeutung": "4x₁"},
+          {"text": "kleines Sammelfahrzeug deckt 6 Bezirke ab", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 48 Bezirke", "bedeutung": "≥ 48"}
+        ],
+        [
+          {"text": "maximal 10 große Müllfahrzeuge", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 16 kleine Sammelfahrzeuge", "bedeutung": "x₂ ≤ 16"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Baustellenlogistik: Beton und Schotter",
+    "beschreibung": "Für eine Baustelle werden Schwerlaster und Kipper eingesetzt. Ein Schwerlaster kostet 900€ pro Fahrt, ein Kipper kostet 450€ pro Fahrt. Ein Schwerlaster liefert 15 Kubikmeter Beton, ein Kipper liefert 5 Kubikmeter Beton. Es müssen mindestens 120 Kubikmeter Beton geliefert werden. Ein Schwerlaster transportiert 20 Tonnen Schotter, ein Kipper transportiert 10 Tonnen Schotter. Es müssen mindestens 160 Tonnen Schotter geliefert werden. Es stehen maximal 10 Schwerlaster und maximal 18 Kipper zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Schwerlaster", "x2 = Anzahl Fahrten mit Kipper"],
+    "zielfunktion": "Z = 900x1 + 450x2 (min)",
+    "nebenbedingungen": [
+      "15x1 + 5x2 ≥ 120 (Beton in Kubikmeter)",
+      "20x1 + 10x2 ≥ 160 (Schotter in Tonnen)",
+      "x1 ≤ 10 (Schwerlaster verfügbar)",
+      "x2 ≤ 18 (Kipper verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Baumaterialien müssen in ausreichender Menge geliefert werden. Der Schwerlaster ist teurer, hat aber mehr Kapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schwerlaster kostet 900€ pro Fahrt", "bedeutung": "900 × x₁"},
+        {"text": "Kipper kostet 450€ pro Fahrt", "bedeutung": "450 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Schwerlaster liefert 15 Kubikmeter Beton", "bedeutung": "15x₁"},
+          {"text": "Kipper liefert 5 Kubikmeter Beton", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 120 Kubikmeter Beton", "bedeutung": "≥ 120"}
+        ],
+        [
+          {"text": "Schwerlaster transportiert 20 Tonnen Schotter", "bedeutung": "20x₁"},
+          {"text": "Kipper transportiert 10 Tonnen Schotter", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 160 Tonnen Schotter", "bedeutung": "≥ 160"}
+        ],
+        [
+          {"text": "maximal 10 Schwerlaster", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 18 Kipper", "bedeutung": "x₂ ≤ 18"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Erntehelfer: Hektar und Tonnen",
+    "beschreibung": "Ein landwirtschaftlicher Betrieb setzt Traktoren und Erntemaschinen ein. Ein Traktor kostet 250€ pro Tag, eine Erntemaschine kostet 800€ pro Tag. Ein Traktor bearbeitet 5 Hektar pro Tag, eine Erntemaschine bearbeitet 20 Hektar pro Tag. Es müssen mindestens 100 Hektar bearbeitet werden. Ein Traktor erntet 3 Tonnen pro Tag, eine Erntemaschine erntet 15 Tonnen pro Tag. Es müssen mindestens 60 Tonnen geerntet werden. Es stehen maximal 12 Traktoren und maximal 6 Erntemaschinen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Einsatztage Traktor", "x2 = Anzahl Einsatztage Erntemaschine"],
+    "zielfunktion": "Z = 250x1 + 800x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 20x2 ≥ 100 (Hektar)",
+      "3x1 + 15x2 ≥ 60 (Tonnen Ernte)",
+      "x1 ≤ 12 (Traktoren verfügbar)",
+      "x2 ≤ 6 (Erntemaschinen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Erntemaschinen sind teurer, aber leistungsfähiger. Prüfe, ob mit günstigeren Traktoren die Mindestanforderungen erfüllt werden können.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Traktor kostet 250€ pro Tag", "bedeutung": "250 × x₁"},
+        {"text": "Erntemaschine kostet 800€ pro Tag", "bedeutung": "800 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Traktor bearbeitet 5 Hektar pro Tag", "bedeutung": "5x₁"},
+          {"text": "Erntemaschine bearbeitet 20 Hektar pro Tag", "bedeutung": "+ 20x₂"},
+          {"text": "mindestens 100 Hektar", "bedeutung": "≥ 100"}
+        ],
+        [
+          {"text": "Traktor erntet 3 Tonnen pro Tag", "bedeutung": "3x₁"},
+          {"text": "Erntemaschine erntet 15 Tonnen pro Tag", "bedeutung": "+ 15x₂"},
+          {"text": "mindestens 60 Tonnen", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "maximal 12 Traktoren", "bedeutung": "x₁ ≤ 12"}
+        ],
+        [
+          {"text": "maximal 6 Erntemaschinen", "bedeutung": "x₂ ≤ 6"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Postverteilung: Briefe und Pakete",
+    "beschreibung": "Ein Postunternehmen setzt Postbusse und Fahrradkuriere ein. Ein Postbus kostet 120€ pro Tour, ein Fahrradkurier kostet 30€ pro Tour. Ein Postbus verteilt 500 Briefe pro Tour, ein Fahrradkurier verteilt 80 Briefe pro Tour. Es müssen mindestens 4000 Briefe verteilt werden. Ein Postbus liefert 60 Pakete pro Tour, ein Fahrradkurier liefert 10 Pakete pro Tour. Es müssen mindestens 400 Pakete ausgeliefert werden. Es stehen maximal 10 Postbusse und maximal 30 Fahrradkuriere zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Touren mit Postbus", "x2 = Anzahl Touren mit Fahrradkurier"],
+    "zielfunktion": "Z = 120x1 + 30x2 (min)",
+    "nebenbedingungen": [
+      "500x1 + 80x2 ≥ 4000 (Briefe)",
+      "60x1 + 10x2 ≥ 400 (Pakete)",
+      "x1 ≤ 10 (Postbusse verfügbar)",
+      "x2 ≤ 30 (Fahrradkuriere verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Postbusse sind teurer, transportieren aber viel mehr. Fahrradkuriere sind günstig, aber mit geringer Kapazität. Beide Mindestmengen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Postbus kostet 120€ pro Tour", "bedeutung": "120 × x₁"},
+        {"text": "Fahrradkurier kostet 30€ pro Tour", "bedeutung": "30 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Postbus verteilt 500 Briefe pro Tour", "bedeutung": "500x₁"},
+          {"text": "Fahrradkurier verteilt 80 Briefe pro Tour", "bedeutung": "+ 80x₂"},
+          {"text": "mindestens 4000 Briefe", "bedeutung": "≥ 4000"}
+        ],
+        [
+          {"text": "Postbus liefert 60 Pakete pro Tour", "bedeutung": "60x₁"},
+          {"text": "Fahrradkurier liefert 10 Pakete pro Tour", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 400 Pakete", "bedeutung": "≥ 400"}
+        ],
+        [
+          {"text": "maximal 10 Postbusse", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 30 Fahrradkuriere", "bedeutung": "x₂ ≤ 30"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Taxiunternehmen: Fahrten und Personen",
+    "beschreibung": "Ein Taxiunternehmen setzt Limousinen und Kleinwagen ein. Eine Limousine kostet 90€ pro Schicht, ein Kleinwagen kostet 50€ pro Schicht. Eine Limousine schafft 12 Fahrten pro Schicht, ein Kleinwagen schafft 10 Fahrten pro Schicht. Es müssen mindestens 120 Fahrten pro Tag durchgeführt werden. Eine Limousine befördert 5 Personen pro Fahrt, ein Kleinwagen befördert 3 Personen pro Fahrt. Es müssen mindestens 45 Personen pro Schicht befördert werden können. Es stehen maximal 8 Limousinen und maximal 15 Kleinwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Limousinen-Schichten", "x2 = Anzahl Kleinwagen-Schichten"],
+    "zielfunktion": "Z = 90x1 + 50x2 (min)",
+    "nebenbedingungen": [
+      "12x1 + 10x2 ≥ 120 (Fahrten)",
+      "5x1 + 3x2 ≥ 45 (Personenkapazität)",
+      "x1 ≤ 8 (Limousinen verfügbar)",
+      "x2 ≤ 15 (Kleinwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Limousinen sind teurer, bieten aber mehr Plätze. Beide Mindestanforderungen (Fahrten und Personenkapazität) müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Limousine kostet 90€ pro Schicht", "bedeutung": "90 × x₁"},
+        {"text": "Kleinwagen kostet 50€ pro Schicht", "bedeutung": "50 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Limousine schafft 12 Fahrten pro Schicht", "bedeutung": "12x₁"},
+          {"text": "Kleinwagen schafft 10 Fahrten pro Schicht", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 120 Fahrten", "bedeutung": "≥ 120"}
+        ],
+        [
+          {"text": "Limousine befördert 5 Personen pro Fahrt", "bedeutung": "5x₁"},
+          {"text": "Kleinwagen befördert 3 Personen pro Fahrt", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 45 Personen", "bedeutung": "≥ 45"}
+        ],
+        [
+          {"text": "maximal 8 Limousinen", "bedeutung": "x₁ ≤ 8"}
+        ],
+        [
+          {"text": "maximal 15 Kleinwagen", "bedeutung": "x₂ ≤ 15"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Containerterminal: Container und Stunden",
+    "beschreibung": "Ein Containerterminal setzt Portalkräne und Stapler ein. Ein Portalkran kostet 1200€ pro Schicht, ein Stapler kostet 400€ pro Schicht. Ein Portalkran bewegt 50 Container pro Schicht, ein Stapler bewegt 15 Container pro Schicht. Es müssen mindestens 400 Container pro Tag bewegt werden. Ein Portalkran benötigt 2 Bedienstunden Wartung, ein Stapler benötigt 3 Bedienstunden Wartung. Es stehen maximal 30 Bedienstunden Wartung zur Verfügung. Es stehen maximal 10 Portalkräne und maximal 20 Stapler zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portalkran-Schichten", "x2 = Anzahl Stapler-Schichten"],
+    "zielfunktion": "Z = 1200x1 + 400x2 (min)",
+    "nebenbedingungen": [
+      "50x1 + 15x2 ≥ 400 (Container)",
+      "2x1 + 3x2 ≤ 30 (Wartungsstunden)",
+      "x1 ≤ 10 (Portalkräne verfügbar)",
+      "x2 ≤ 20 (Stapler verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es eine Mischung aus ≥ (Mindestcontainer) und ≤ (Wartungsstunden, Verfügbarkeit). Achte auf die unterschiedlichen Ungleichungsrichtungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Portalkran kostet 1200€ pro Schicht", "bedeutung": "1200 × x₁"},
+        {"text": "Stapler kostet 400€ pro Schicht", "bedeutung": "400 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Portalkran bewegt 50 Container pro Schicht", "bedeutung": "50x₁"},
+          {"text": "Stapler bewegt 15 Container pro Schicht", "bedeutung": "+ 15x₂"},
+          {"text": "mindestens 400 Container", "bedeutung": "≥ 400"}
+        ],
+        [
+          {"text": "Portalkran benötigt 2 Bedienstunden Wartung", "bedeutung": "2x₁"},
+          {"text": "Stapler benötigt 3 Bedienstunden Wartung", "bedeutung": "+ 3x₂"},
+          {"text": "maximal 30 Bedienstunden Wartung", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "maximal 10 Portalkräne", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 20 Stapler", "bedeutung": "x₂ ≤ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wasserversorgung: Liter und Ortschaften",
+    "beschreibung": "Ein Wasserversorger setzt Großtanker und Kleintanker ein, um Trinkwasser zu liefern. Ein Großtanker kostet 350€ pro Fahrt, ein Kleintanker kostet 150€ pro Fahrt. Ein Großtanker liefert 10000 Liter, ein Kleintanker liefert 3000 Liter. Es müssen mindestens 80000 Liter Trinkwasser geliefert werden. Ein Großtanker versorgt 2 Ortschaften, ein Kleintanker versorgt 3 Ortschaften. Es müssen mindestens 24 Ortschaften versorgt werden. Es stehen maximal 10 Großtanker und maximal 12 Kleintanker zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Großtanker", "x2 = Anzahl Fahrten mit Kleintanker"],
+    "zielfunktion": "Z = 350x1 + 150x2 (min)",
+    "nebenbedingungen": [
+      "10000x1 + 3000x2 ≥ 80000 (Liter Trinkwasser)",
+      "2x1 + 3x2 ≥ 24 (Ortschaften)",
+      "x1 ≤ 10 (Großtanker verfügbar)",
+      "x2 ≤ 12 (Kleintanker verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Der Großtanker liefert mehr Wasser, der Kleintanker erreicht mehr Ortschaften. Beide Mindestanforderungen müssen erfüllt werden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Großtanker kostet 350€ pro Fahrt", "bedeutung": "350 × x₁"},
+        {"text": "Kleintanker kostet 150€ pro Fahrt", "bedeutung": "150 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Großtanker liefert 10000 Liter", "bedeutung": "10000x₁"},
+          {"text": "Kleintanker liefert 3000 Liter", "bedeutung": "+ 3000x₂"},
+          {"text": "mindestens 80000 Liter Trinkwasser", "bedeutung": "≥ 80000"}
+        ],
+        [
+          {"text": "Großtanker versorgt 2 Ortschaften", "bedeutung": "2x₁"},
+          {"text": "Kleintanker versorgt 3 Ortschaften", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 24 Ortschaften", "bedeutung": "≥ 24"}
+        ],
+        [
+          {"text": "maximal 10 Großtanker", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 12 Kleintanker", "bedeutung": "x₂ ≤ 12"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Möbellieferung: Möbelstücke und Volumen",
+    "beschreibung": "Ein Möbelhaus setzt Sattelschlepper und Kastenwagen für Auslieferungen ein. Ein Sattelschlepper kostet 650€ pro Tour, ein Kastenwagen kostet 280€ pro Tour. Ein Sattelschlepper transportiert 35 Möbelstücke, ein Kastenwagen transportiert 12 Möbelstücke. Es müssen mindestens 280 Möbelstücke ausgeliefert werden. Ein Sattelschlepper fasst 45 Kubikmeter Volumen, ein Kastenwagen fasst 15 Kubikmeter Volumen. Es müssen mindestens 360 Kubikmeter Volumen transportiert werden. Es stehen maximal 10 Sattelschlepper und maximal 20 Kastenwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Touren mit Sattelschlepper", "x2 = Anzahl Touren mit Kastenwagen"],
+    "zielfunktion": "Z = 650x1 + 280x2 (min)",
+    "nebenbedingungen": [
+      "35x1 + 12x2 ≥ 280 (Möbelstücke)",
+      "45x1 + 15x2 ≥ 360 (Volumen in Kubikmeter)",
+      "x1 ≤ 10 (Sattelschlepper verfügbar)",
+      "x2 ≤ 20 (Kastenwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Anforderungen (Stückzahl und Volumen) müssen gleichzeitig erfüllt werden. Sattelschlepper bieten mehr Kapazität, sind aber teurer.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Sattelschlepper kostet 650€ pro Tour", "bedeutung": "650 × x₁"},
+        {"text": "Kastenwagen kostet 280€ pro Tour", "bedeutung": "280 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Sattelschlepper transportiert 35 Möbelstücke", "bedeutung": "35x₁"},
+          {"text": "Kastenwagen transportiert 12 Möbelstücke", "bedeutung": "+ 12x₂"},
+          {"text": "mindestens 280 Möbelstücke", "bedeutung": "≥ 280"}
+        ],
+        [
+          {"text": "Sattelschlepper fasst 45 Kubikmeter Volumen", "bedeutung": "45x₁"},
+          {"text": "Kastenwagen fasst 15 Kubikmeter Volumen", "bedeutung": "+ 15x₂"},
+          {"text": "mindestens 360 Kubikmeter Volumen", "bedeutung": "≥ 360"}
+        ],
+        [
+          {"text": "maximal 10 Sattelschlepper", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 20 Kastenwagen", "bedeutung": "x₂ ≤ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankentransport: Patienten und Rollstühle",
+    "beschreibung": "Ein Krankentransportdienst setzt Großraumwagen und Kombis ein. Ein Großraumwagen kostet 180€ pro Fahrt, ein Kombi kostet 80€ pro Fahrt. Ein Großraumwagen befördert 6 Patienten, ein Kombi befördert 2 Patienten. Es müssen mindestens 48 Patienten pro Tag befördert werden. Ein Großraumwagen nimmt 4 Rollstühle mit, ein Kombi nimmt 1 Rollstuhl mit. Es müssen mindestens 30 Rollstühle transportiert werden. Es stehen maximal 10 Großraumwagen und maximal 20 Kombis zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Fahrten mit Großraumwagen", "x2 = Anzahl Fahrten mit Kombi"],
+    "zielfunktion": "Z = 180x1 + 80x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≥ 48 (Patienten)",
+      "4x1 + x2 ≥ 30 (Rollstühle)",
+      "x1 ≤ 10 (Großraumwagen verfügbar)",
+      "x2 ≤ 20 (Kombis verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Großraumwagen transportieren mehr Patienten und Rollstühle, sind aber teurer. Achte auf beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Großraumwagen kostet 180€ pro Fahrt", "bedeutung": "180 × x₁"},
+        {"text": "Kombi kostet 80€ pro Fahrt", "bedeutung": "80 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Großraumwagen befördert 6 Patienten", "bedeutung": "6x₁"},
+          {"text": "Kombi befördert 2 Patienten", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 48 Patienten", "bedeutung": "≥ 48"}
+        ],
+        [
+          {"text": "Großraumwagen nimmt 4 Rollstühle mit", "bedeutung": "4x₁"},
+          {"text": "Kombi nimmt 1 Rollstuhl mit", "bedeutung": "+ x₂"},
+          {"text": "mindestens 30 Rollstühle", "bedeutung": "≥ 30"}
+        ],
+        [
+          {"text": "maximal 10 Großraumwagen", "bedeutung": "x₁ ≤ 10"}
+        ],
+        [
+          {"text": "maximal 20 Kombis", "bedeutung": "x₂ ≤ 20"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schulbusverkehr: Schüler und Routen",
+    "beschreibung": "Ein Schulbusunternehmen setzt Doppeldecker und Standardbusse ein. Ein Doppeldecker kostet 500€ pro Tag, ein Standardbus kostet 300€ pro Tag. Ein Doppeldecker befördert 80 Schüler, ein Standardbus befördert 45 Schüler. Es müssen mindestens 720 Schüler befördert werden. Ein Doppeldecker fährt 3 Routen pro Tag, ein Standardbus fährt 5 Routen pro Tag. Es müssen mindestens 40 Routen pro Tag abgedeckt werden. Es stehen maximal 12 Doppeldecker und maximal 10 Standardbusse zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Doppeldecker im Einsatz", "x2 = Anzahl Standardbusse im Einsatz"],
+    "zielfunktion": "Z = 500x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "80x1 + 45x2 ≥ 720 (Schüler)",
+      "3x1 + 5x2 ≥ 40 (Routen)",
+      "x1 ≤ 12 (Doppeldecker verfügbar)",
+      "x2 ≤ 10 (Standardbusse verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Doppeldecker befördern mehr Schüler, Standardbusse decken mehr Routen ab. Beachte beide Mindestanforderungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Doppeldecker kostet 500€ pro Tag", "bedeutung": "500 × x₁"},
+        {"text": "Standardbus kostet 300€ pro Tag", "bedeutung": "300 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Doppeldecker befördert 80 Schüler", "bedeutung": "80x₁"},
+          {"text": "Standardbus befördert 45 Schüler", "bedeutung": "+ 45x₂"},
+          {"text": "mindestens 720 Schüler", "bedeutung": "≥ 720"}
+        ],
+        [
+          {"text": "Doppeldecker fährt 3 Routen pro Tag", "bedeutung": "3x₁"},
+          {"text": "Standardbus fährt 5 Routen pro Tag", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 40 Routen", "bedeutung": "≥ 40"}
+        ],
+        [
+          {"text": "maximal 12 Doppeldecker", "bedeutung": "x₁ ≤ 12"}
+        ],
+        [
+          {"text": "maximal 10 Standardbusse", "bedeutung": "x₂ ≤ 10"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Waldholztransport: Festmeter und Fahrten",
+    "beschreibung": "Ein Forstbetrieb setzt Langholzwagen und Kurzholzwagen für den Holztransport ein. Ein Langholzwagen kostet 550€ pro Fahrt, ein Kurzholzwagen kostet 300€ pro Fahrt. Ein Langholzwagen transportiert 25 Festmeter, ein Kurzholzwagen transportiert 10 Festmeter. Es müssen mindestens 200 Festmeter Holz transportiert werden. Ein Langholzwagen schafft 2 Fahrten pro Tag, ein Kurzholzwagen schafft 4 Fahrten pro Tag. Es müssen mindestens 28 Fahrten pro Tag durchgeführt werden. Es stehen maximal 8 Langholzwagen und maximal 10 Kurzholzwagen zur Verfügung. Die Kosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Langholzwagen im Einsatz", "x2 = Anzahl Kurzholzwagen im Einsatz"],
+    "zielfunktion": "Z = 550x1 + 300x2 (min)",
+    "nebenbedingungen": [
+      "25x1 + 10x2 ≥ 200 (Festmeter)",
+      "2x1 + 4x2 ≥ 28 (Fahrten pro Tag)",
+      "x1 ≤ 8 (Langholzwagen verfügbar)",
+      "x2 ≤ 10 (Kurzholzwagen verfügbar)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Langholzwagen transportieren mehr Festmeter, Kurzholzwagen schaffen mehr Fahrten. Beachte die Verfügbarkeitsgrenzen beider Fahrzeugtypen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Langholzwagen kostet 550€ pro Fahrt", "bedeutung": "550 × x₁"},
+        {"text": "Kurzholzwagen kostet 300€ pro Fahrt", "bedeutung": "300 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Langholzwagen transportiert 25 Festmeter", "bedeutung": "25x₁"},
+          {"text": "Kurzholzwagen transportiert 10 Festmeter", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 200 Festmeter", "bedeutung": "≥ 200"}
+        ],
+        [
+          {"text": "Langholzwagen schafft 2 Fahrten pro Tag", "bedeutung": "2x₁"},
+          {"text": "Kurzholzwagen schafft 4 Fahrten pro Tag", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 28 Fahrten", "bedeutung": "≥ 28"}
+        ],
+        [
+          {"text": "maximal 8 Langholzwagen", "bedeutung": "x₁ ≤ 8"}
+        ],
+        [
+          {"text": "maximal 10 Kurzholzwagen", "bedeutung": "x₂ ≤ 10"}
+        ]
+      ]
+    }
+  }
+]

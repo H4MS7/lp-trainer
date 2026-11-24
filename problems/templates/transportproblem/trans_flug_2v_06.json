@@ -1,0 +1,39 @@
+{
+  "id": "trans_flug_2v_06",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Flüge Cargo-Jet", "x2 = Flüge Propellermaschine"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fracht", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Landerechte", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 30, "label": "Kosten Cargo-Jet (EUR/Flug)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Propellermaschine (EUR/Flug)"},
+    "a11": {"min": 5, "max": 15,  "label": "Fracht pro Cargo-Jet (t/Flug)"},
+    "a12": {"min": 2, "max": 7,   "label": "Fracht pro Propellermaschine (t/Flug)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Frachtmenge (t)"},
+    "a21": {"min": 2, "max": 5,   "label": "Landerechte pro Cargo-Jet"},
+    "a22": {"min": 1, "max": 3,   "label": "Landerechte pro Propellermaschine"},
+    "b2":  {"min": 20, "max": 60, "label": "Verfügbare Landerechte"}
+  },
+  "titel": "Luftfracht – Cargo-Jet und Propellermaschine",
+  "beschreibung": "Eine Frachtfluggesellschaft transportiert Güter mit zwei Flugzeugtypen. Ein Flug mit dem Cargo-Jet kostet {c1} EUR, ein Flug mit der Propellermaschine kostet {c2} EUR. Der Cargo-Jet transportiert {a11} Tonnen pro Flug, die Propellermaschine transportiert {a12} Tonnen pro Flug. Mindestens {b1} Tonnen müssen transportiert werden. Der Cargo-Jet benötigt {a21} Landerechte pro Flug, die Propellermaschine benötigt {a22} Landerechte pro Flug. Insgesamt stehen {b2} Landerechte zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Frachtmenge und begrenzten Landerechten.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Cargo-Jet kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Propellermaschine kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen pro Flug, die Propellermaschine transportiert {a12} Tonnen pro Flug. Mindestens {b1} Tonnen müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Landerechte pro Flug, die Propellermaschine benötigt {a22} Landerechte pro Flug. Insgesamt stehen {b2} Landerechte zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

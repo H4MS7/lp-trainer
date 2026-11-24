@@ -1,0 +1,51 @@
+{
+  "id": "trans_bus_3v_06",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Fahrten Linie 1", "x2 = Fahrten Linie 2", "x3 = Fahrten Linie 3"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fahrgäste", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Busfahrer", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Dieselvorrat", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Linie 1 (EUR/Fahrt)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Linie 2 (EUR/Fahrt)"},
+    "c3":  {"min": 5, "max": 16,  "label": "Kosten Linie 3 (EUR/Fahrt)"},
+    "a11": {"min": 5, "max": 15,  "label": "Fahrgäste Linie 1 pro Fahrt"},
+    "a12": {"min": 3, "max": 10,  "label": "Fahrgäste Linie 2 pro Fahrt"},
+    "a13": {"min": 4, "max": 12,  "label": "Fahrgäste Linie 3 pro Fahrt"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Fahrgäste"},
+    "a21": {"min": 1, "max": 3,   "label": "Fahrer pro Fahrt Linie 1"},
+    "a22": {"min": 1, "max": 2,   "label": "Fahrer pro Fahrt Linie 2"},
+    "a23": {"min": 1, "max": 3,   "label": "Fahrer pro Fahrt Linie 3"},
+    "b2":  {"min": 15, "max": 50, "label": "Verfügbare Busfahrer"},
+    "a31": {"min": 2, "max": 7,   "label": "Diesel Linie 1 (Liter/Fahrt)"},
+    "a32": {"min": 1, "max": 5,   "label": "Diesel Linie 2 (Liter/Fahrt)"},
+    "a33": {"min": 3, "max": 8,   "label": "Diesel Linie 3 (Liter/Fahrt)"},
+    "b3":  {"min": 30, "max": 120, "label": "Max. Dieselvorrat (Liter)"}
+  },
+  "titel": "Busverkehr – drei Linien",
+  "beschreibung": "Ein Busunternehmen betreibt drei Linien. Eine Fahrt auf Linie 1 kostet {c1} EUR, auf Linie 2 kostet sie {c2} EUR und auf Linie 3 kostet sie {c3} EUR. Linie 1 befördert {a11} Fahrgäste pro Fahrt, Linie 2 befördert {a12} und Linie 3 befördert {a13} Fahrgäste pro Fahrt. Mindestens {b1} Fahrgäste müssen befördert werden. Linie 1 benötigt {a21} Fahrer pro Fahrt, Linie 2 benötigt {a22} und Linie 3 benötigt {a23} Fahrer pro Fahrt. Insgesamt stehen {b2} Busfahrer zur Verfügung. Linie 1 verbraucht {a31} Liter Diesel pro Fahrt, Linie 2 verbraucht {a32} Liter und Linie 3 verbraucht {a33} Liter pro Fahrt. Der Dieselvorrat beträgt höchstens {b3} Liter.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Fahrgästen, begrenzten Fahrern und Diesel.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Linie 1 kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Linie 2 kostet sie {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Linie 3 kostet sie {c3} EUR", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Fahrgäste pro Fahrt, Linie 2 befördert {a12} und Linie 3 befördert {a13} Fahrgäste pro Fahrt. Mindestens {b1} Fahrgäste müssen befördert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrer pro Fahrt, Linie 2 benötigt {a22} und Linie 3 benötigt {a23} Fahrer pro Fahrt. Insgesamt stehen {b2} Busfahrer zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Liter Diesel pro Fahrt, Linie 2 verbraucht {a32} Liter und Linie 3 verbraucht {a33} Liter pro Fahrt. Der Dieselvorrat beträgt höchstens {b3} Liter", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

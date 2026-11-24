@@ -1,0 +1,41 @@
+{
+  "id": "medien_print_banner_2v_05",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Print-Anzeigen", "x2 = Anzahl Online-Banner"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Designkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Leser Print (Tsd.)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Impressionen Banner (Tsd.)"},
+    "a11": {"min": 2, "max": 10,    "label": "Kosten Print (Tsd. €)"},
+    "a12": {"min": 1, "max": 4,     "label": "Kosten Banner (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 4, "max": 10,    "label": "Design Print (Stunden)"},
+    "a22": {"min": 1, "max": 3,     "label": "Design Banner (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Designstunden"}
+  },
+  "titel": "Medienmix – Print und Online-Banner",
+  "beschreibung": "Eine Werbeagentur plant einen Medienmix aus Print-Anzeigen und Online-Bannern. Eine Print-Anzeige erreicht {c1} Tsd. Leser, ein Online-Banner erreicht {c2} Tsd. Impressionen. Eine Print-Anzeige kostet {a11} Tsd. €, ein Online-Banner kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Designkapazität beträgt {a21} Stunden pro Print-Anzeige und {a22} Stunden pro Online-Banner. Insgesamt stehen {b2} Designstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Designkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Print-Anzeige erreicht {c1} Tsd. Leser", "bedeutung": "{c1} × x₁"},
+      {"text": "Online-Banner erreicht {c2} Tsd. Impressionen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, ein Online-Banner kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Print-Anzeige und {a22} Stunden pro Online-Banner", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Designstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "kapa_gpu_3v_04",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Training-Jobs", "x2 = Anzahl Inferenz-Jobs", "x3 = Anzahl Preprocessing-Jobs"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "GPU-Karten", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,     "label": "Trainingsleistung (Modelle/Tag)"},
+    "c2":  {"min": 10, "max": 50,   "label": "Inferenzleistung (Tsd. Pred/s)"},
+    "c3":  {"min": 5, "max": 20,    "label": "Vorverarbeitung (TB/h)"},
+    "a11": {"min": 4, "max": 8,     "label": "GPUs Training"},
+    "a12": {"min": 1, "max": 2,     "label": "GPUs Inferenz"},
+    "a13": {"min": 1, "max": 2,     "label": "GPUs Preprocessing"},
+    "b1":  {"min": 16, "max": 64,   "label": "Verfügbare GPUs"},
+    "a21": {"min": 16, "max": 64,   "label": "RAM Training (GB)"},
+    "a22": {"min": 4, "max": 16,    "label": "RAM Inferenz (GB)"},
+    "a23": {"min": 8, "max": 32,    "label": "RAM Preprocessing (GB)"},
+    "b2":  {"min": 128, "max": 512, "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 2, "max": 5,     "label": "Strom Training (kW)"},
+    "a32": {"min": 1, "max": 2,     "label": "Strom Inferenz (kW)"},
+    "a33": {"min": 1, "max": 2,     "label": "Strom Preprocessing (kW)"},
+    "b3":  {"min": 15, "max": 50,   "label": "Strombudget (kW)"}
+  },
+  "titel": "GPU-Cluster – ML-Pipeline-Allokation",
+  "beschreibung": "Ein ML-Team plant die Verteilung von Jobs auf einem GPU-Cluster. Ein Training-Job liefert {c1} Modelle pro Tag, ein Inferenz-Job verarbeitet {c2} Tsd. Vorhersagen pro Sekunde und ein Preprocessing-Job verarbeitet {c3} TB pro Stunde. Ein Training-Job benötigt {a11} GPU-Karten, ein Inferenz-Job benötigt {a12} GPU-Karten und ein Preprocessing-Job benötigt {a13} GPU-Karten. Es stehen {b1} GPU-Karten zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Training, {a22} GB für Inferenz und {a23} GB für Preprocessing. Das verfügbare RAM beträgt {b2} GB. Der Stromverbrauch beträgt {a31} kW für Training, {a32} kW für Inferenz und {a33} kW für Preprocessing. Das Strombudget beträgt {b3} kW.",
+  "hinweis": "Maximiere die Gesamtrechenleistung unter Beachtung aller Ressourcenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Training-Job liefert {c1} Modelle pro Tag", "bedeutung": "{c1} × x₁"},
+      {"text": "Inferenz-Job verarbeitet {c2} Tsd. Vorhersagen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Preprocessing-Job verarbeitet {c3} TB pro Stunde", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} GPU-Karten, ein Inferenz-Job benötigt {a12} GPU-Karten und ein Preprocessing-Job benötigt {a13} GPU-Karten", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} GPU-Karten zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Training, {a22} GB für Inferenz und {a23} GB für Preprocessing", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kW für Training, {a32} kW für Inferenz und {a33} kW für Preprocessing", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} kW", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "schicht_itsupport_2v_13",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Kernzeit-Schichten", "x2 = Anzahl Bereitschafts-Schichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung First-Level-Support", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Server-Überwachung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 200, "label": "Kosten Kernzeit-Schicht (€)"},
+    "c2":  {"min": 80, "max": 160, "label": "Kosten Bereitschafts-Schicht (€)"},
+    "a11": {"min": 3, "max": 7, "label": "First-Level pro Kernzeit-Schicht"},
+    "a12": {"min": 1, "max": 3, "label": "First-Level pro Bereitschafts-Schicht"},
+    "b1":  {"min": 10, "max": 40, "label": "Mindestbesetzung First-Level-Support"},
+    "a21": {"min": 1, "max": 3, "label": "Server-Admins pro Kernzeit-Schicht"},
+    "a22": {"min": 2, "max": 5, "label": "Server-Admins pro Bereitschafts-Schicht"},
+    "b2":  {"min": 8, "max": 25, "label": "Mindestbesetzung Server-Überwachung"}
+  },
+  "titel": "IT-Support – Schichtplanung",
+  "beschreibung": "Eine IT-Abteilung plant die Schichtbesetzung für First-Level-Support und Server-Überwachung. Eine Kernzeit-Schicht kostet {c1} €, eine Bereitschafts-Schicht kostet {c2} €. Jede Kernzeit-Schicht stellt {a11} First-Level-Techniker bereit, jede Bereitschafts-Schicht stellt {a12} First-Level-Techniker bereit. Mindestens {b1} First-Level-Techniker werden benötigt. Jede Kernzeit-Schicht stellt {a21} Server-Admins bereit, jede Bereitschafts-Schicht stellt {a22} Server-Admins bereit. Mindestens {b2} Server-Admins werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für First-Level-Support und Server-Überwachung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kernzeit-Schicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Bereitschafts-Schicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} First-Level-Techniker bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} First-Level-Techniker bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} First-Level-Techniker werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Server-Admins bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Server-Admins bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Server-Admins werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

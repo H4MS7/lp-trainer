@@ -1,0 +1,39 @@
+{
+  "id": "trans_kurier_2v_05",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Kurier Express", "x2 = Fahrten Kurier Standard"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Sendungen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Tageszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 20,  "label": "Kosten Express (EUR/Fahrt)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Standard (EUR/Fahrt)"},
+    "a11": {"min": 2, "max": 6,   "label": "Sendungen pro Express-Fahrt"},
+    "a12": {"min": 4, "max": 12,  "label": "Sendungen pro Standard-Fahrt"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Sendungen"},
+    "a21": {"min": 1, "max": 3,   "label": "Stunden pro Express-Fahrt"},
+    "a22": {"min": 2, "max": 5,   "label": "Stunden pro Standard-Fahrt"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Tagesstunden"}
+  },
+  "titel": "Kurierdienst – Express und Standard",
+  "beschreibung": "Ein Kurierdienst liefert Sendungen mit zwei Servicearten aus. Eine Express-Fahrt kostet {c1} EUR, eine Standard-Fahrt kostet {c2} EUR. Pro Express-Fahrt werden {a11} Sendungen zugestellt, pro Standard-Fahrt werden {a12} Sendungen zugestellt. Mindestens {b1} Sendungen müssen zugestellt werden. Eine Express-Fahrt dauert {a21} Stunden, eine Standard-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Stunden am Tag zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Sendungszahl und begrenzter Tageszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Express-Fahrt kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Standard-Fahrt kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Sendungen zugestellt, pro Standard-Fahrt werden {a12} Sendungen zugestellt. Mindestens {b1} Sendungen müssen zugestellt werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden, eine Standard-Fahrt dauert {a22} Stunden. Insgesamt stehen {b2} Stunden am Tag zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

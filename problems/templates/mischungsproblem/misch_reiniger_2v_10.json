@@ -1,0 +1,39 @@
+{
+  "id": "misch_reiniger_2v_10",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Reiniger A (Liter)", "x2 = Menge Reiniger B (Liter)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Reinigungskraft", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Säuregehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Reiniger A (EUR/Liter)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Reiniger B (EUR/Liter)"},
+    "a11": {"min": 4, "max": 12,  "label": "Reinigungskraft A (Einheiten/Liter)"},
+    "a12": {"min": 2, "max": 8,   "label": "Reinigungskraft B (Einheiten/Liter)"},
+    "b1":  {"min": 60, "max": 200, "label": "Mindest-Reinigungskraft (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Säure in A (ml/Liter)"},
+    "a22": {"min": 2, "max": 7,   "label": "Säure in B (ml/Liter)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Säuregehalt (ml)"}
+  },
+  "titel": "Reinigungsmittel – Wirksamkeit und Säure",
+  "beschreibung": "Ein Reinigungsunternehmen mischt ein Reinigungsmittel aus zwei Konzentraten. Reiniger A kostet {c1} EUR pro Liter, Reiniger B kostet {c2} EUR pro Liter. Reiniger A hat {a11} Reinigungskraft-Einheiten pro Liter, Reiniger B hat {a12} Reinigungskraft-Einheiten pro Liter. Die Mischung muss mindestens {b1} Reinigungskraft-Einheiten erreichen. Reiniger A enthält {a21} ml Säure pro Liter, Reiniger B enthält {a22} ml Säure pro Liter. Der Säuregehalt darf höchstens {b2} ml betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Reinigungskraft und begrenztem Säuregehalt.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Reiniger A kostet {c1} EUR pro Liter", "bedeutung": "{c1} × x₁"},
+      {"text": "Reiniger B kostet {c2} EUR pro Liter", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Reinigungskraft-Einheiten pro Liter, Reiniger B hat {a12} Reinigungskraft-Einheiten pro Liter. Die Mischung muss mindestens {b1} Reinigungskraft-Einheiten erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} ml Säure pro Liter, Reiniger B enthält {a22} ml Säure pro Liter. Der Säuregehalt darf höchstens {b2} ml betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

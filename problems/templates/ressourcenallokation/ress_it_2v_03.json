@@ -1,0 +1,43 @@
+{
+  "id": "ress_it_2v_03",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Serverkapazitaet fuer Webshop (Einheiten)", "x2 = Serverkapazitaet fuer Datenanalyse (Einheiten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Serverkapazitaet", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Administrationszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,    "label": "Nutzen/Einheit Webshop"},
+    "c2":  {"min": 5, "max": 15,    "label": "Nutzen/Einheit Datenanalyse"},
+    "a11": {"min": 1, "max": 3,     "label": "Server/Einheit Webshop"},
+    "a12": {"min": 2, "max": 5,     "label": "Server/Einheit Datenanalyse"},
+    "b1":  {"min": 20, "max": 80,   "label": "Serverkapazitaet gesamt"},
+    "a21": {"min": 1, "max": 4,     "label": "Adminstunden/Einheit Webshop"},
+    "a22": {"min": 2, "max": 6,     "label": "Adminstunden/Einheit Datenanalyse"},
+    "b2":  {"min": 20, "max": 100,  "label": "Administrationsstunden"}
+  },
+  "titel": "IT-Abteilung – Webshop und Datenanalyse",
+  "beschreibung": "Eine IT-Abteilung verteilt Serverkapazitaet auf den Webshop und die Datenanalyse. Jede Einheit Webshop-Kapazitaet erbringt einen Nutzen von {c1}, jede Einheit Datenanalyse {c2}. Der Webshop benoetigt {a11} Server pro Einheit, die Datenanalyse {a12} Server. Es stehen {b1} Servereinheiten bereit. Die Administration erfordert {a21} Stunden pro Webshop-Einheit und {a22} Stunden pro Datenanalyse-Einheit. Insgesamt sind {b2} Administrationsstunden verfuegbar.",
+  "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Serverkapazitaet und Administrationszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Webshop-Kapazitaet erbringt einen Nutzen von {c1}", "bedeutung": "{c1} × x₁"},
+      {"text": "Datenanalyse {c2}", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Webshop benoetigt {a11} Server", "bedeutung": "{a11}x₁"},
+        {"text": "Datenanalyse {a12} Server", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Servereinheiten bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Webshop-Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Datenanalyse-Einheit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Administrationsstunden verfuegbar", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

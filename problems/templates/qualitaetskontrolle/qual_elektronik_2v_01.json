@@ -1,0 +1,43 @@
+{
+  "id": "qual_elektronik_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Lötstellenprüfungen", "x2 = Anzahl Spannungstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fehlerfindung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüfstandkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten Lötstellenprüfung (€/Prüfung)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Spannungstest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Fehlerfindung Lötstellen (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Fehlerfindung Spannung (%)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindest-Fehlerfindung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Prüfstandzeit Lötstellen (min)"},
+    "a22": {"min": 2, "max": 5,   "label": "Prüfstandzeit Spannung (min)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Prüfstandkapazität (min)"}
+  },
+  "titel": "Elektronikfertigung – Platinenprüfung",
+  "beschreibung": "Ein Elektronikfertiger prüft Platinen mit Lötstellenprüfungen und Spannungstests. Eine Lötstellenprüfung kostet {c1} €, ein Spannungstest kostet {c2} €. Die Lötstellenprüfung findet {a11} % der Fehler, der Spannungstest findet {a12} % der Fehler. Die Mindest-Fehlerfindung beträgt {b1} %. Die Lötstellenprüfung benötigt {a21} Minuten Prüfstandzeit, der Spannungstest benötigt {a22} Minuten Prüfstandzeit. Die Prüfstandkapazität beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Fehlerfindung und begrenzter Prüfstandkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lötstellenprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spannungstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Fehler", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % der Fehler", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Prüfstandzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten Prüfstandzeit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

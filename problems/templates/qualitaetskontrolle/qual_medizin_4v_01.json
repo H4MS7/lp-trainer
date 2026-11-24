@@ -1,0 +1,81 @@
+{
+  "id": "qual_medizin_4v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Sterilisationstests", "x2 = Anzahl Funktionstests", "x3 = Anzahl Biokompatibilitätstests", "x4 = Anzahl Haltbarkeitstests"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Zulassungspunkte", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborkapazität", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Reagenzienbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Gerätezeit", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten Sterilisation (€/Test)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Funktionstest (€/Test)"},
+    "c3":  {"min": 8, "max": 20,  "label": "Kosten Biokompatibilität (€/Test)"},
+    "c4":  {"min": 3, "max": 10,  "label": "Kosten Haltbarkeit (€/Test)"},
+    "a11": {"min": 3, "max": 7,   "label": "Zulassungspunkte Sterilisation"},
+    "a12": {"min": 3, "max": 8,   "label": "Zulassungspunkte Funktion"},
+    "a13": {"min": 4, "max": 10,  "label": "Zulassungspunkte Biokompatibilität"},
+    "a14": {"min": 2, "max": 6,   "label": "Zulassungspunkte Haltbarkeit"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindest-Zulassungspunkte"},
+    "a21": {"min": 2, "max": 4,   "label": "Laborzeit Sterilisation (Stunden)"},
+    "a22": {"min": 1, "max": 3,   "label": "Laborzeit Funktion (Stunden)"},
+    "a23": {"min": 3, "max": 6,   "label": "Laborzeit Biokompatibilität (Stunden)"},
+    "a24": {"min": 2, "max": 5,   "label": "Laborzeit Haltbarkeit (Stunden)"},
+    "b2":  {"min": 40, "max": 150, "label": "Laborkapazität (Stunden)"},
+    "a31": {"min": 3, "max": 8,   "label": "Reagenzien Sterilisation (€)"},
+    "a32": {"min": 2, "max": 6,   "label": "Reagenzien Funktion (€)"},
+    "a33": {"min": 5, "max": 12,  "label": "Reagenzien Biokompatibilität (€)"},
+    "a34": {"min": 2, "max": 5,   "label": "Reagenzien Haltbarkeit (€)"},
+    "b3":  {"min": 100, "max": 400, "label": "Reagenzienbudget (€)"},
+    "a41": {"min": 1, "max": 3,   "label": "Gerätezeit Sterilisation (Stunden)"},
+    "a42": {"min": 2, "max": 4,   "label": "Gerätezeit Funktion (Stunden)"},
+    "a43": {"min": 2, "max": 5,   "label": "Gerätezeit Biokompatibilität (Stunden)"},
+    "a44": {"min": 3, "max": 6,   "label": "Gerätezeit Haltbarkeit (Stunden)"},
+    "b4":  {"min": 30, "max": 120, "label": "Gerätezeit (Stunden)"}
+  },
+  "titel": "Medizinprodukte – Vier Zulassungstests",
+  "beschreibung": "Ein Medizinproduktehersteller führt Sterilisationstests, Funktionstests, Biokompatibilitätstests und Haltbarkeitstests durch. Ein Sterilisationstest kostet {c1} €, ein Funktionstest kostet {c2} €, ein Biokompatibilitätstest kostet {c3} € und ein Haltbarkeitstest kostet {c4} €. Die Zulassungspunkte betragen {a11} pro Sterilisationstest, {a12} pro Funktionstest, {a13} pro Biokompatibilitätstest und {a14} pro Haltbarkeitstest. Die Mindest-Zulassungspunkte betragen {b1} Punkte. Die Laborzeit beträgt {a21} Stunden pro Sterilisationstest, {a22} Stunden pro Funktionstest, {a23} Stunden pro Biokompatibilitätstest und {a24} Stunden pro Haltbarkeitstest. Die Laborkapazität beträgt {b2} Stunden. Die Reagenzienkosten betragen {a31} € pro Sterilisationstest, {a32} € pro Funktionstest, {a33} € pro Biokompatibilitätstest und {a34} € pro Haltbarkeitstest. Das Reagenzienbudget beträgt {b3} €. Die Gerätezeit beträgt {a41} Stunden pro Sterilisationstest, {a42} Stunden pro Funktionstest, {a43} Stunden pro Biokompatibilitätstest und {a44} Stunden pro Haltbarkeitstest. Die Gerätezeit ist auf {b4} Stunden begrenzt.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichenden Zulassungspunkten und Einhaltung aller Kapazitätsgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sterilisationstest kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Funktionstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Biokompatibilitätstest kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Haltbarkeitstest kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} pro Sterilisationstest", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} pro Funktionstest", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} pro Biokompatibilitätstest", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} pro Haltbarkeitstest", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Sterilisationstest", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Funktionstest", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden pro Biokompatibilitätstest", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Stunden pro Haltbarkeitstest", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Sterilisationstest", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Funktionstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Biokompatibilitätstest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Haltbarkeitstest", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden pro Sterilisationstest", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Stunden pro Funktionstest", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Stunden pro Biokompatibilitätstest", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Stunden pro Haltbarkeitstest", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Stunden begrenzt", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "id": "qual_auto_4v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Sichtprüfungen", "x2 = Anzahl Geräuschprüfungen", "x3 = Anzahl Bremstests", "x4 = Anzahl Abgastests"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Prüfabdeckung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Bandzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Prüfpersonal", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Gerätebudget", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten Sichtprüfung (€)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Geräuschprüfung (€)"},
+    "c3":  {"min": 5, "max": 15,  "label": "Kosten Bremstest (€)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Kosten Abgastest (€)"},
+    "a11": {"min": 2, "max": 5,   "label": "Prüfabdeckung Sicht (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Prüfabdeckung Geräusch (%)"},
+    "a13": {"min": 3, "max": 8,   "label": "Prüfabdeckung Bremse (%)"},
+    "a14": {"min": 3, "max": 7,   "label": "Prüfabdeckung Abgas (%)"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindest-Prüfabdeckung (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Bandzeit Sicht (min)"},
+    "a22": {"min": 2, "max": 4,   "label": "Bandzeit Geräusch (min)"},
+    "a23": {"min": 2, "max": 5,   "label": "Bandzeit Bremse (min)"},
+    "a24": {"min": 3, "max": 6,   "label": "Bandzeit Abgas (min)"},
+    "b2":  {"min": 40, "max": 150, "label": "Bandzeit (min)"},
+    "a31": {"min": 1, "max": 2,   "label": "Personal Sicht (Prüfer)"},
+    "a32": {"min": 1, "max": 2,   "label": "Personal Geräusch (Prüfer)"},
+    "a33": {"min": 1, "max": 3,   "label": "Personal Bremse (Prüfer)"},
+    "a34": {"min": 1, "max": 2,   "label": "Personal Abgas (Prüfer)"},
+    "b3":  {"min": 15, "max": 50,  "label": "Prüfpersonal (Prüfer)"},
+    "a41": {"min": 1, "max": 4,   "label": "Gerätekosten Sicht (€)"},
+    "a42": {"min": 3, "max": 8,   "label": "Gerätekosten Geräusch (€)"},
+    "a43": {"min": 4, "max": 10,  "label": "Gerätekosten Bremse (€)"},
+    "a44": {"min": 5, "max": 12,  "label": "Gerätekosten Abgas (€)"},
+    "b4":  {"min": 100, "max": 400, "label": "Gerätebudget (€)"}
+  },
+  "titel": "Automobilwerk – Vier Prüfstationen",
+  "beschreibung": "Ein Automobilwerk betreibt vier Prüfstationen: Sichtprüfungen, Geräuschprüfungen, Bremstests und Abgastests. Eine Sichtprüfung kostet {c1} €, eine Geräuschprüfung kostet {c2} €, ein Bremstest kostet {c3} € und ein Abgastest kostet {c4} €. Die Prüfabdeckung beträgt {a11} % bei Sichtprüfungen, {a12} % bei Geräuschprüfungen, {a13} % bei Bremstests und {a14} % bei Abgastests. Die Mindest-Prüfabdeckung beträgt {b1} %. Die Bandzeit beträgt {a21} Minuten pro Sichtprüfung, {a22} Minuten pro Geräuschprüfung, {a23} Minuten pro Bremstest und {a24} Minuten pro Abgastest. Die Bandzeit ist auf {b2} Minuten begrenzt. Der Personalbedarf beträgt {a31} Prüfer pro Sichtprüfung, {a32} Prüfer pro Geräuschprüfung, {a33} Prüfer pro Bremstest und {a34} Prüfer pro Abgastest. Das Prüfpersonal umfasst {b3} Prüfer. Die Gerätekosten betragen {a41} € pro Sichtprüfung, {a42} € pro Geräuschprüfung, {a43} € pro Bremstest und {a44} € pro Abgastest. Das Gerätebudget beträgt {b4} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Prüfabdeckung und Einhaltung aller Kapazitätsgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sichtprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Geräuschprüfung kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Bremstest kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Abgastest kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % bei Sichtprüfungen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % bei Geräuschprüfungen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % bei Bremstests", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} % bei Abgastests", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten pro Sichtprüfung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten pro Geräuschprüfung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten pro Bremstest", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Minuten pro Abgastest", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Minuten begrenzt", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Prüfer pro Sichtprüfung", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Prüfer pro Geräuschprüfung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Prüfer pro Bremstest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Prüfer pro Abgastest", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Prüfer", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} € pro Sichtprüfung", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} € pro Geräuschprüfung", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} € pro Bremstest", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} € pro Abgastest", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

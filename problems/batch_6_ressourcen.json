@@ -1,0 +1,727 @@
+[
+  {
+    "titel": "Werbeagentur – TV-Spots und Online-Kampagnen",
+    "beschreibung": "Eine Werbeagentur bietet TV-Spots und Online-Kampagnen an. Ein TV-Spot bringt einen Gewinn von 5000€, eine Online-Kampagne einen Gewinn von 3000€. Für einen TV-Spot werden 20 Personalstunden benötigt, für eine Online-Kampagne 10 Personalstunden. Insgesamt stehen 200 Personalstunden pro Monat zur Verfügung. Das Budget für Medienkosten beträgt 60000€ pro Monat, wobei ein TV-Spot 8000€ und eine Online-Kampagne 3000€ an Medienkosten verursacht. Aufgrund der Sendeplatzverfügbarkeit können höchstens 6 TV-Spots pro Monat produziert werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl TV-Spots pro Monat", "x2 = Anzahl Online-Kampagnen pro Monat"],
+    "zielfunktion": "Z = 5000x1 + 3000x2 (max)",
+    "nebenbedingungen": [
+      "20x1 + 10x2 ≤ 200 (Personalstunden)",
+      "8000x1 + 3000x2 ≤ 60000 (Budget)",
+      "x1 ≤ 6 (Sendeplätze)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die drei Beschränkungen: Personalstunden, Budget und maximale Sendeplätze.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "TV-Spot bringt einen Gewinn von 5000€", "bedeutung": "5000 × x₁"},
+        {"text": "Online-Kampagne einen Gewinn von 3000€", "bedeutung": "3000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "TV-Spot werden 20 Personalstunden benötigt", "bedeutung": "20x₁"},
+          {"text": "Online-Kampagne 10 Personalstunden", "bedeutung": "+ 10x₂"},
+          {"text": "200 Personalstunden pro Monat zur Verfügung", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "TV-Spot 8000€", "bedeutung": "8000x₁"},
+          {"text": "Online-Kampagne 3000€ an Medienkosten", "bedeutung": "+ 3000x₂"},
+          {"text": "60000€ pro Monat", "bedeutung": "≤ 60000"}
+        ],
+        [
+          {"text": "höchstens 6 TV-Spots pro Monat", "bedeutung": "x₁ ≤ 6"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "IT-Firma – Webseiten und Apps",
+    "beschreibung": "Eine IT-Firma entwickelt Webseiten und Apps. Eine Webseite bringt einen Umsatz von 4000€, eine App einen Umsatz von 7000€. Für eine Webseite werden 40 Entwicklerstunden benötigt, für eine App 80 Entwicklerstunden. Insgesamt stehen 480 Entwicklerstunden pro Monat zur Verfügung. Außerdem braucht eine Webseite 15 Designerstunden und eine App 25 Designerstunden, wobei das Designerteam 150 Stunden pro Monat leisten kann. Die Nachfrage nach Apps liegt bei höchstens 4 Aufträgen pro Monat.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Webseiten pro Monat", "x2 = Anzahl Apps pro Monat"],
+    "zielfunktion": "Z = 4000x1 + 7000x2 (max)",
+    "nebenbedingungen": [
+      "40x1 + 80x2 ≤ 480 (Entwicklerstunden)",
+      "15x1 + 25x2 ≤ 150 (Designerstunden)",
+      "x2 ≤ 4 (Nachfrage Apps)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Nachfrage nach Apps begrenzt x₂ direkt. Prüfe, welche Ressource zuerst knapp wird.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Webseite bringt einen Umsatz von 4000€", "bedeutung": "4000 × x₁"},
+        {"text": "App einen Umsatz von 7000€", "bedeutung": "7000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Webseite werden 40 Entwicklerstunden benötigt", "bedeutung": "40x₁"},
+          {"text": "App 80 Entwicklerstunden", "bedeutung": "+ 80x₂"},
+          {"text": "480 Entwicklerstunden pro Monat", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "Webseite 15 Designerstunden", "bedeutung": "15x₁"},
+          {"text": "App 25 Designerstunden", "bedeutung": "+ 25x₂"},
+          {"text": "150 Stunden pro Monat", "bedeutung": "≤ 150"}
+        ],
+        [
+          {"text": "höchstens 4 Aufträgen pro Monat", "bedeutung": "x₂ ≤ 4"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Unternehmensberatung – Strategie und Prozessoptimierung",
+    "beschreibung": "Eine Unternehmensberatung bietet Strategieprojekte und Prozessoptimierungen an. Ein Strategieprojekt erzielt einen Deckungsbeitrag von 12000€, eine Prozessoptimierung einen Deckungsbeitrag von 8000€. Ein Strategieprojekt erfordert 3 Berater, eine Prozessoptimierung 2 Berater. Insgesamt stehen 18 Berater zur Verfügung. Zusätzlich benötigt ein Strategieprojekt 2 Analysten und eine Prozessoptimierung 3 Analysten, wobei 15 Analysten verfügbar sind. Pro Quartal können maximal 5 Strategieprojekte angenommen werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Strategieprojekte", "x2 = Anzahl Prozessoptimierungen"],
+    "zielfunktion": "Z = 12000x1 + 8000x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 18 (Berater)",
+      "2x1 + 3x2 ≤ 15 (Analysten)",
+      "x1 ≤ 5 (Strategieprojekte max)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Berater und Analysten werden unterschiedlich beansprucht – achte auf die gegenläufigen Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Strategieprojekt erzielt einen Deckungsbeitrag von 12000€", "bedeutung": "12000 × x₁"},
+        {"text": "Prozessoptimierung einen Deckungsbeitrag von 8000€", "bedeutung": "8000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Strategieprojekt erfordert 3 Berater", "bedeutung": "3x₁"},
+          {"text": "Prozessoptimierung 2 Berater", "bedeutung": "+ 2x₂"},
+          {"text": "18 Berater zur Verfügung", "bedeutung": "≤ 18"}
+        ],
+        [
+          {"text": "Strategieprojekt 2 Analysten", "bedeutung": "2x₁"},
+          {"text": "Prozessoptimierung 3 Analysten", "bedeutung": "+ 3x₂"},
+          {"text": "15 Analysten verfügbar", "bedeutung": "≤ 15"}
+        ],
+        [
+          {"text": "maximal 5 Strategieprojekte", "bedeutung": "x₁ ≤ 5"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Personalvermittlung – Fachkräfte und Aushilfen",
+    "beschreibung": "Eine Personalvermittlung vermittelt Fachkräfte und Aushilfen. Die Vermittlung einer Fachkraft bringt eine Provision von 2500€, die einer Aushilfe eine Provision von 800€. Für die Vermittlung einer Fachkraft benötigt ein Recruiter 6 Stunden, für eine Aushilfe 2 Stunden. Es stehen 120 Recruiterstunden pro Monat zur Verfügung. Pro Fachkraft werden 3 Interviews durchgeführt, pro Aushilfe 1 Interview. Insgesamt können 45 Interviews pro Monat stattfinden. Die Nachfrage liegt bei höchstens 12 Fachkräften pro Monat.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl vermittelter Fachkräfte pro Monat", "x2 = Anzahl vermittelter Aushilfen pro Monat"],
+    "zielfunktion": "Z = 2500x1 + 800x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≤ 120 (Recruiterstunden)",
+      "3x1 + x2 ≤ 45 (Interviews)",
+      "x1 ≤ 12 (Nachfrage Fachkräfte)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Fachkräfte bringen mehr Provision, verbrauchen aber deutlich mehr Recruiterzeit und Interviews.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Fachkraft bringt eine Provision von 2500€", "bedeutung": "2500 × x₁"},
+        {"text": "Aushilfe eine Provision von 800€", "bedeutung": "800 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Fachkraft benötigt ein Recruiter 6 Stunden", "bedeutung": "6x₁"},
+          {"text": "Aushilfe 2 Stunden", "bedeutung": "+ 2x₂"},
+          {"text": "120 Recruiterstunden pro Monat", "bedeutung": "≤ 120"}
+        ],
+        [
+          {"text": "Fachkraft werden 3 Interviews durchgeführt", "bedeutung": "3x₁"},
+          {"text": "Aushilfe 1 Interview", "bedeutung": "+ x₂"},
+          {"text": "45 Interviews pro Monat", "bedeutung": "≤ 45"}
+        ],
+        [
+          {"text": "höchstens 12 Fachkräften pro Monat", "bedeutung": "x₁ ≤ 12"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Eventagentur – Firmenfeiern und Hochzeiten",
+    "beschreibung": "Eine Eventagentur organisiert Firmenfeiern und Hochzeiten. Eine Firmenfeier erzielt einen Gewinn von 3500€, eine Hochzeit einen Gewinn von 5000€. Für eine Firmenfeier werden 2 Eventplaner eingesetzt, für eine Hochzeit 3 Eventplaner. Insgesamt stehen 18 Eventplaner pro Monat zur Verfügung. An Equipment-Tagen benötigt eine Firmenfeier 4 Tage und eine Hochzeit 5 Tage, wobei 30 Equipment-Tage pro Monat verfügbar sind. Außerdem ist das Budget für Fremdleistungen auf 40000€ begrenzt, wobei eine Firmenfeier 5000€ und eine Hochzeit 6000€ an Fremdleistungen erfordert.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Firmenfeiern pro Monat", "x2 = Anzahl Hochzeiten pro Monat"],
+    "zielfunktion": "Z = 3500x1 + 5000x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 ≤ 18 (Eventplaner)",
+      "4x1 + 5x2 ≤ 30 (Equipment-Tage)",
+      "5000x1 + 6000x2 ≤ 40000 (Fremdleistungen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Ressourcen begrenzen die Planung – finde heraus, welche zuerst erschöpft ist.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Firmenfeier erzielt einen Gewinn von 3500€", "bedeutung": "3500 × x₁"},
+        {"text": "Hochzeit einen Gewinn von 5000€", "bedeutung": "5000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Firmenfeier werden 2 Eventplaner eingesetzt", "bedeutung": "2x₁"},
+          {"text": "Hochzeit 3 Eventplaner", "bedeutung": "+ 3x₂"},
+          {"text": "18 Eventplaner pro Monat", "bedeutung": "≤ 18"}
+        ],
+        [
+          {"text": "Firmenfeier 4 Tage", "bedeutung": "4x₁"},
+          {"text": "Hochzeit 5 Tage", "bedeutung": "+ 5x₂"},
+          {"text": "30 Equipment-Tage pro Monat", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "Firmenfeier 5000€", "bedeutung": "5000x₁"},
+          {"text": "Hochzeit 6000€ an Fremdleistungen", "bedeutung": "+ 6000x₂"},
+          {"text": "40000€ begrenzt", "bedeutung": "≤ 40000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nachhilfe-Institut – Einzel- und Gruppenunterricht",
+    "beschreibung": "Ein Nachhilfe-Institut bietet Einzelunterricht und Gruppenunterricht an. Eine Einzelstunde bringt einen Erlös von 45€, eine Gruppenstunde einen Erlös von 80€. Für eine Einzelstunde wird 1 Lehrer benötigt, für eine Gruppenstunde ebenfalls 1 Lehrer. Insgesamt stehen 30 Lehrerstunden pro Woche zur Verfügung. Eine Einzelstunde benötigt 1 Raum für 1 Stunde, eine Gruppenstunde benötigt 1 Raum für 2 Stunden. Es sind 40 Raumstunden pro Woche verfügbar. Die Nachfrage nach Gruppenunterricht liegt bei höchstens 10 Stunden pro Woche.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Einzelstunden pro Woche", "x2 = Anzahl Gruppenstunden pro Woche"],
+    "zielfunktion": "Z = 45x1 + 80x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 30 (Lehrerstunden)",
+      "x1 + 2x2 ≤ 40 (Raumstunden)",
+      "x2 ≤ 10 (Nachfrage Gruppenunterricht)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gruppenunterricht bringt mehr Erlös, verbraucht aber doppelt so viele Raumstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Einzelstunde bringt einen Erlös von 45€", "bedeutung": "45 × x₁"},
+        {"text": "Gruppenstunde einen Erlös von 80€", "bedeutung": "80 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Einzelstunde wird 1 Lehrer benötigt", "bedeutung": "x₁"},
+          {"text": "Gruppenstunde ebenfalls 1 Lehrer", "bedeutung": "+ x₂"},
+          {"text": "30 Lehrerstunden pro Woche", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "Einzelstunde benötigt 1 Raum für 1 Stunde", "bedeutung": "x₁"},
+          {"text": "Gruppenstunde benötigt 1 Raum für 2 Stunden", "bedeutung": "+ 2x₂"},
+          {"text": "40 Raumstunden pro Woche", "bedeutung": "≤ 40"}
+        ],
+        [
+          {"text": "höchstens 10 Stunden pro Woche", "bedeutung": "x₂ ≤ 10"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fitnessstudio – Personal Training und Gruppenkurse",
+    "beschreibung": "Ein Fitnessstudio bietet Personal Training und Gruppenkurse an. Eine Personal-Training-Einheit erzielt einen Umsatz von 70€, ein Gruppenkurs einen Umsatz von 120€. Für eine Personal-Training-Einheit wird 1 Trainer für 1 Stunde benötigt, für einen Gruppenkurs 1 Trainer für 2 Stunden. Insgesamt stehen 50 Trainerstunden pro Woche zur Verfügung. An Räumlichkeiten benötigt Personal Training 1 Raumstunde und ein Gruppenkurs 2 Raumstunden, wobei 60 Raumstunden pro Woche verfügbar sind. Die maximale Anzahl an Gruppenkursen ist durch die Teilnehmernachfrage auf 15 pro Woche beschränkt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Personal-Training-Einheiten pro Woche", "x2 = Anzahl Gruppenkurse pro Woche"],
+    "zielfunktion": "Z = 70x1 + 120x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 50 (Trainerstunden)",
+      "x1 + 2x2 ≤ 60 (Raumstunden)",
+      "x2 ≤ 15 (Nachfrage Gruppenkurse)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Trainerstunden und Raumstunden haben dieselbe Struktur – eine der beiden wird stärker einschränken.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Personal-Training-Einheit erzielt einen Umsatz von 70€", "bedeutung": "70 × x₁"},
+        {"text": "Gruppenkurs einen Umsatz von 120€", "bedeutung": "120 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Personal-Training-Einheit wird 1 Trainer für 1 Stunde benötigt", "bedeutung": "x₁"},
+          {"text": "Gruppenkurs 1 Trainer für 2 Stunden", "bedeutung": "+ 2x₂"},
+          {"text": "50 Trainerstunden pro Woche", "bedeutung": "≤ 50"}
+        ],
+        [
+          {"text": "Personal Training 1 Raumstunde", "bedeutung": "x₁"},
+          {"text": "Gruppenkurs 2 Raumstunden", "bedeutung": "+ 2x₂"},
+          {"text": "60 Raumstunden pro Woche", "bedeutung": "≤ 60"}
+        ],
+        [
+          {"text": "auf 15 pro Woche beschränkt", "bedeutung": "x₂ ≤ 15"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Werbeflächen – Plakatwände und Digitaldisplays",
+    "beschreibung": "Ein Werbevermarkter betreibt Plakatwände und Digitaldisplays. Eine Plakatwand bringt einen monatlichen Erlös von 600€, ein Digitaldisplay einen monatlichen Erlös von 1000€. Für die Wartung einer Plakatwand werden 2 Wartungsstunden pro Monat benötigt, für ein Digitaldisplay 5 Wartungsstunden. Es stehen insgesamt 200 Wartungsstunden pro Monat zur Verfügung. An verfügbaren Standorten gibt es 60 Plätze für Plakatwände und 30 Plätze für Digitaldisplays. Das Installationsbudget beträgt 50000€, wobei eine Plakatwand 500€ und ein Digitaldisplay 1200€ Installationskosten verursacht.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Plakatwände", "x2 = Anzahl Digitaldisplays"],
+    "zielfunktion": "Z = 600x1 + 1000x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 200 (Wartungsstunden)",
+      "x1 ≤ 60 (Standorte Plakatwände)",
+      "x2 ≤ 30 (Standorte Digitaldisplays)",
+      "500x1 + 1200x2 ≤ 50000 (Installationsbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen – prüfe Wartung, Standorte und Budget getrennt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Plakatwand bringt einen monatlichen Erlös von 600€", "bedeutung": "600 × x₁"},
+        {"text": "Digitaldisplay einen monatlichen Erlös von 1000€", "bedeutung": "1000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Plakatwand werden 2 Wartungsstunden pro Monat benötigt", "bedeutung": "2x₁"},
+          {"text": "Digitaldisplay 5 Wartungsstunden", "bedeutung": "+ 5x₂"},
+          {"text": "200 Wartungsstunden pro Monat", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "60 Plätze für Plakatwände", "bedeutung": "x₁ ≤ 60"}
+        ],
+        [
+          {"text": "30 Plätze für Digitaldisplays", "bedeutung": "x₂ ≤ 30"}
+        ],
+        [
+          {"text": "Plakatwand 500€", "bedeutung": "500x₁"},
+          {"text": "Digitaldisplay 1200€ Installationskosten", "bedeutung": "+ 1200x₂"},
+          {"text": "50000€", "bedeutung": "≤ 50000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Landwirt – Weizen und Mais",
+    "beschreibung": "Ein Landwirt kann Weizen und Mais anbauen. Pro Hektar Weizen erzielt er einen Gewinn von 800€, pro Hektar Mais einen Gewinn von 1000€. Er verfügt über 50 Hektar Ackerfläche. Für die Bewässerung benötigt ein Hektar Weizen 3 Einheiten und ein Hektar Mais 5 Einheiten Wasser. Insgesamt stehen 200 Einheiten Bewässerung zur Verfügung. Außerdem erfordert ein Hektar Weizen 4 Arbeitsstunden und ein Hektar Mais 6 Arbeitsstunden zur Ernte, wobei maximal 240 Arbeitsstunden verfügbar sind.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Mais"],
+    "zielfunktion": "Z = 800x1 + 1000x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 50 (Ackerfläche)",
+      "3x1 + 5x2 ≤ 200 (Bewässerung)",
+      "4x1 + 6x2 ≤ 240 (Arbeitsstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Mais bringt mehr Gewinn, benötigt aber auch mehr Wasser und Arbeit pro Hektar.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Hektar Weizen erzielt er einen Gewinn von 800€", "bedeutung": "800 × x₁"},
+        {"text": "Hektar Mais einen Gewinn von 1000€", "bedeutung": "1000 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "50 Hektar Ackerfläche", "bedeutung": "x₁ + x₂ ≤ 50"}
+        ],
+        [
+          {"text": "Hektar Weizen 3 Einheiten", "bedeutung": "3x₁"},
+          {"text": "Hektar Mais 5 Einheiten Wasser", "bedeutung": "+ 5x₂"},
+          {"text": "200 Einheiten Bewässerung", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "Hektar Weizen 4 Arbeitsstunden", "bedeutung": "4x₁"},
+          {"text": "Hektar Mais 6 Arbeitsstunden", "bedeutung": "+ 6x₂"},
+          {"text": "240 Arbeitsstunden verfügbar", "bedeutung": "≤ 240"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Obstbauer – Äpfel und Birnen",
+    "beschreibung": "Ein Obstbauer kann Äpfel und Birnen anbauen. Pro Hektar Äpfel erzielt er einen Erlös von 3000€, pro Hektar Birnen einen Erlös von 2500€. Ihm stehen 20 Hektar Anbaufläche zur Verfügung. Pro Hektar Äpfel werden 50 Arbeitsstunden und pro Hektar Birnen 30 Arbeitsstunden zur Pflege benötigt. Die verfügbaren Arbeitskräfte leisten insgesamt 700 Arbeitsstunden pro Saison. Außerdem ist der Absatzmarkt für Birnen auf maximal 10 Hektar Ertrag begrenzt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Äpfel", "x2 = Hektar Birnen"],
+    "zielfunktion": "Z = 3000x1 + 2500x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 20 (Anbaufläche)",
+      "50x1 + 30x2 ≤ 700 (Arbeitsstunden)",
+      "x2 ≤ 10 (Absatzmarkt Birnen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Äpfel bringen mehr Erlös pro Hektar, brauchen aber deutlich mehr Arbeitsstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Hektar Äpfel erzielt er einen Erlös von 3000€", "bedeutung": "3000 × x₁"},
+        {"text": "Hektar Birnen einen Erlös von 2500€", "bedeutung": "2500 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "20 Hektar Anbaufläche", "bedeutung": "x₁ + x₂ ≤ 20"}
+        ],
+        [
+          {"text": "Hektar Äpfel werden 50 Arbeitsstunden", "bedeutung": "50x₁"},
+          {"text": "Hektar Birnen 30 Arbeitsstunden", "bedeutung": "+ 30x₂"},
+          {"text": "700 Arbeitsstunden pro Saison", "bedeutung": "≤ 700"}
+        ],
+        [
+          {"text": "maximal 10 Hektar", "bedeutung": "x₂ ≤ 10"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Investmentfirma – Aktien und Anleihen",
+    "beschreibung": "Eine Investmentfirma legt Kapital in Aktien und Anleihen an. Aktien erzielen eine erwartete Rendite von 8% (also 0,08 pro Euro) pro Jahr, Anleihen eine erwartete Rendite von 4% (also 0,04 pro Euro) pro Jahr. Das verfügbare Kapital beträgt 500000€. Zur Risikobegrenzung wird jeder Euro in Aktien mit einem Risikofaktor von 0,6 und jeder Euro in Anleihen mit einem Risikofaktor von 0,2 bewertet. Das gesamte Risikobudget darf 240000 nicht überschreiten. Zudem sollen mindestens 100000€ in Anleihen investiert werden, um die Stabilität zu sichern.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Investment in Aktien (€)", "x2 = Investment in Anleihen (€)"],
+    "zielfunktion": "Z = 0,08x1 + 0,04x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 500000 (Kapital)",
+      "0,6x1 + 0,2x2 ≤ 240000 (Risikobudget)",
+      "x2 ≥ 100000 (Mindestanlage Anleihen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Aktien bringen mehr Rendite, aber auch höheres Risiko. Beachte die Mindestanlage in Anleihen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Rendite von 8% (also 0,08 pro Euro)", "bedeutung": "0,08 × x₁"},
+        {"text": "Rendite von 4% (also 0,04 pro Euro)", "bedeutung": "0,04 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "500000€", "bedeutung": "x₁ + x₂ ≤ 500000"}
+        ],
+        [
+          {"text": "Aktien mit einem Risikofaktor von 0,6", "bedeutung": "0,6x₁"},
+          {"text": "Anleihen mit einem Risikofaktor von 0,2", "bedeutung": "+ 0,2x₂"},
+          {"text": "240000 nicht überschreiten", "bedeutung": "≤ 240000"}
+        ],
+        [
+          {"text": "mindestens 100000€ in Anleihen", "bedeutung": "x₂ ≥ 100000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Hotel – Einzel- und Doppelzimmer",
+    "beschreibung": "Ein Hotel vermietet Einzelzimmer und Doppelzimmer. Ein Einzelzimmer bringt einen Tageserlös von 80€, ein Doppelzimmer einen Tageserlös von 130€. Das Hotel verfügt über insgesamt 100 Zimmer. Für die Reinigung benötigt ein Einzelzimmer 0,5 Stunden und ein Doppelzimmer 1 Stunde. Das Reinigungspersonal kann maximal 70 Stunden pro Tag leisten. Außerdem stehen nur 60 Doppelbetten zur Verfügung, sodass höchstens 60 Doppelzimmer eingerichtet werden können.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl belegter Einzelzimmer", "x2 = Anzahl belegter Doppelzimmer"],
+    "zielfunktion": "Z = 80x1 + 130x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 100 (Zimmer)",
+      "0,5x1 + x2 ≤ 70 (Reinigungsstunden)",
+      "x2 ≤ 60 (Doppelbetten)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Doppelzimmer bringen mehr Erlös, brauchen aber doppelt so viel Reinigungszeit.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Einzelzimmer bringt einen Tageserlös von 80€", "bedeutung": "80 × x₁"},
+        {"text": "Doppelzimmer einen Tageserlös von 130€", "bedeutung": "130 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "100 Zimmer", "bedeutung": "x₁ + x₂ ≤ 100"}
+        ],
+        [
+          {"text": "Einzelzimmer 0,5 Stunden", "bedeutung": "0,5x₁"},
+          {"text": "Doppelzimmer 1 Stunde", "bedeutung": "+ x₂"},
+          {"text": "70 Stunden pro Tag", "bedeutung": "≤ 70"}
+        ],
+        [
+          {"text": "höchstens 60 Doppelzimmer", "bedeutung": "x₂ ≤ 60"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Restaurant – Menü A und Menü B",
+    "beschreibung": "Ein Restaurant bietet Menü A und Menü B an. Menü A bringt einen Gewinn von 12€ pro Portion, Menü B einen Gewinn von 18€ pro Portion. Für Menü A werden 15 Minuten Küchenzeit benötigt, für Menü B 25 Minuten. Die Küche ist pro Abend 600 Minuten verfügbar. An Zutaten benötigt Menü A Wareneinsatz von 8€ und Menü B Wareneinsatz von 14€ pro Portion. Das tägliche Budget für Zutaten beträgt 420€. Außerdem kann der Koch maximal 35 Portionen pro Abend zubereiten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Portionen Menü A pro Abend", "x2 = Anzahl Portionen Menü B pro Abend"],
+    "zielfunktion": "Z = 12x1 + 18x2 (max)",
+    "nebenbedingungen": [
+      "15x1 + 25x2 ≤ 600 (Küchenzeit)",
+      "8x1 + 14x2 ≤ 420 (Zutatenbudget)",
+      "x1 + x2 ≤ 35 (Kapazität Koch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Menü B bringt mehr Gewinn, verbraucht aber auch mehr Küchenzeit und teurere Zutaten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Menü A bringt einen Gewinn von 12€ pro Portion", "bedeutung": "12 × x₁"},
+        {"text": "Menü B einen Gewinn von 18€ pro Portion", "bedeutung": "18 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Menü A werden 15 Minuten Küchenzeit benötigt", "bedeutung": "15x₁"},
+          {"text": "Menü B 25 Minuten", "bedeutung": "+ 25x₂"},
+          {"text": "600 Minuten verfügbar", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "Menü A Wareneinsatz von 8€", "bedeutung": "8x₁"},
+          {"text": "Menü B Wareneinsatz von 14€", "bedeutung": "+ 14x₂"},
+          {"text": "420€", "bedeutung": "≤ 420"}
+        ],
+        [
+          {"text": "maximal 35 Portionen pro Abend", "bedeutung": "x₁ + x₂ ≤ 35"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Verlag – Taschenbücher und Hardcover",
+    "beschreibung": "Ein Verlag produziert Taschenbücher und Hardcover-Bücher. Ein Taschenbuch bringt einen Gewinn von 3€, ein Hardcover einen Gewinn von 7€. Die Druckkapazität beträgt 10000 Einheiten pro Monat, wobei ein Taschenbuch 1 Einheit und ein Hardcover 2 Einheiten Druckkapazität benötigt. Der Lagerplatz umfasst 6000 Stellplätze, wobei ein Taschenbuch 1 Stellplatz und ein Hardcover 1 Stellplatz belegt. Außerdem können aufgrund der Bindemaschine maximal 3000 Hardcover pro Monat gebunden werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Taschenbücher pro Monat", "x2 = Anzahl Hardcover pro Monat"],
+    "zielfunktion": "Z = 3x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 10000 (Druckkapazität)",
+      "x1 + x2 ≤ 6000 (Lagerplatz)",
+      "x2 ≤ 3000 (Bindemaschine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hardcover bringen mehr Gewinn, brauchen aber doppelte Druckkapazität.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Taschenbuch bringt einen Gewinn von 3€", "bedeutung": "3 × x₁"},
+        {"text": "Hardcover einen Gewinn von 7€", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Taschenbuch 1 Einheit", "bedeutung": "x₁"},
+          {"text": "Hardcover 2 Einheiten Druckkapazität", "bedeutung": "+ 2x₂"},
+          {"text": "10000 Einheiten pro Monat", "bedeutung": "≤ 10000"}
+        ],
+        [
+          {"text": "Taschenbuch 1 Stellplatz", "bedeutung": "x₁"},
+          {"text": "Hardcover 1 Stellplatz", "bedeutung": "+ x₂"},
+          {"text": "6000 Stellplätze", "bedeutung": "≤ 6000"}
+        ],
+        [
+          {"text": "maximal 3000 Hardcover pro Monat", "bedeutung": "x₂ ≤ 3000"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fahrschule – Fahrstunden Auto und Motorrad",
+    "beschreibung": "Eine Fahrschule bietet Fahrstunden für Auto und Motorrad an. Eine Fahrstunde Auto bringt 50€ Umsatz, eine Fahrstunde Motorrad bringt 60€ Umsatz. Für eine Fahrstunde Auto wird 1 Fahrlehrer für 1 Stunde benötigt, für eine Fahrstunde Motorrad ebenfalls 1 Fahrlehrer für 1 Stunde. Es stehen insgesamt 40 Fahrlehrerstunden pro Woche zur Verfügung. An Fahrzeugen stehen 25 verfügbare Autostunden und 20 verfügbare Motorradstunden pro Woche bereit. Außerdem ist die Nachfrage nach Motorradstunden auf höchstens 15 pro Woche begrenzt.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Fahrstunden Auto pro Woche", "x2 = Anzahl Fahrstunden Motorrad pro Woche"],
+    "zielfunktion": "Z = 50x1 + 60x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 40 (Fahrlehrerstunden)",
+      "x1 ≤ 25 (Autos verfügbar)",
+      "x2 ≤ 20 (Motorräder verfügbar)",
+      "x2 ≤ 15 (Nachfrage Motorrad)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Motorrad bringt mehr Umsatz pro Stunde, ist aber durch Fahrzeuge und Nachfrage doppelt begrenzt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Fahrstunde Auto bringt 50€ Umsatz", "bedeutung": "50 × x₁"},
+        {"text": "Fahrstunde Motorrad bringt 60€ Umsatz", "bedeutung": "60 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Fahrstunde Auto wird 1 Fahrlehrer für 1 Stunde benötigt", "bedeutung": "x₁"},
+          {"text": "Fahrstunde Motorrad ebenfalls 1 Fahrlehrer für 1 Stunde", "bedeutung": "+ x₂"},
+          {"text": "40 Fahrlehrerstunden pro Woche", "bedeutung": "≤ 40"}
+        ],
+        [
+          {"text": "25 verfügbare Autostunden", "bedeutung": "x₁ ≤ 25"}
+        ],
+        [
+          {"text": "20 verfügbare Motorradstunden", "bedeutung": "x₂ ≤ 20"}
+        ],
+        [
+          {"text": "höchstens 15 pro Woche begrenzt", "bedeutung": "x₂ ≤ 15"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Reinigungsfirma – Büroreinigung und Grundreinigung",
+    "beschreibung": "Eine Reinigungsfirma bietet Büroreinigungen und Grundreinigungen an. Eine Büroreinigung bringt einen Gewinn von 150€, eine Grundreinigung einen Gewinn von 400€. Für eine Büroreinigung werden 2 Mitarbeiter benötigt, für eine Grundreinigung 5 Mitarbeiter. Insgesamt stehen 30 Mitarbeiter pro Woche zur Verfügung. An Spezialequipment benötigt eine Büroreinigung 1 Set und eine Grundreinigung 3 Sets, wobei 18 Equipment-Sets verfügbar sind. Die Gesamtzahl der Aufträge darf 10 pro Woche nicht überschreiten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Büroreinigungen pro Woche", "x2 = Anzahl Grundreinigungen pro Woche"],
+    "zielfunktion": "Z = 150x1 + 400x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≤ 30 (Personal)",
+      "x1 + 3x2 ≤ 18 (Equipment)",
+      "x1 + x2 ≤ 10 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Grundreinigungen sind lukrativer, brauchen aber deutlich mehr Personal und Equipment.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Büroreinigung bringt einen Gewinn von 150€", "bedeutung": "150 × x₁"},
+        {"text": "Grundreinigung einen Gewinn von 400€", "bedeutung": "400 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Büroreinigung werden 2 Mitarbeiter benötigt", "bedeutung": "2x₁"},
+          {"text": "Grundreinigung 5 Mitarbeiter", "bedeutung": "+ 5x₂"},
+          {"text": "30 Mitarbeiter pro Woche", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "Büroreinigung 1 Set", "bedeutung": "x₁"},
+          {"text": "Grundreinigung 3 Sets", "bedeutung": "+ 3x₂"},
+          {"text": "18 Equipment-Sets verfügbar", "bedeutung": "≤ 18"}
+        ],
+        [
+          {"text": "10 pro Woche nicht überschreiten", "bedeutung": "x₁ + x₂ ≤ 10"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fotografenteam – Porträts und Eventfotografie",
+    "beschreibung": "Ein Fotografenteam bietet Porträtshootings und Eventfotografie an. Ein Porträtshooting bringt einen Erlös von 300€, ein Eventauftrag einen Erlös von 800€. Für ein Porträtshooting wird 1 Fotograf benötigt, für einen Eventauftrag werden 2 Fotografen benötigt. Es stehen insgesamt 12 Fotografentage pro Woche zur Verfügung. Ein Porträtshooting belegt 2 Stunden Studiozeit, ein Eventauftrag benötigt kein Studio, also 0 Stunden Studiozeit. Die Studiozeit ist auf 16 Stunden pro Woche begrenzt. Insgesamt können maximal 8 Aufträge pro Woche angenommen werden.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Porträtshootings pro Woche", "x2 = Anzahl Eventaufträge pro Woche"],
+    "zielfunktion": "Z = 300x1 + 800x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 12 (Fotografentage)",
+      "2x1 ≤ 16 (Studiozeit)",
+      "x1 + x2 ≤ 8 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Eventaufträge brauchen kein Studio, aber doppelt so viele Fotografentage.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Porträtshooting bringt einen Erlös von 300€", "bedeutung": "300 × x₁"},
+        {"text": "Eventauftrag einen Erlös von 800€", "bedeutung": "800 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Porträtshooting wird 1 Fotograf benötigt", "bedeutung": "x₁"},
+          {"text": "Eventauftrag werden 2 Fotografen benötigt", "bedeutung": "+ 2x₂"},
+          {"text": "12 Fotografentage pro Woche", "bedeutung": "≤ 12"}
+        ],
+        [
+          {"text": "Porträtshooting belegt 2 Stunden Studiozeit", "bedeutung": "2x₁"},
+          {"text": "16 Stunden pro Woche begrenzt", "bedeutung": "≤ 16"}
+        ],
+        [
+          {"text": "maximal 8 Aufträge pro Woche", "bedeutung": "x₁ + x₂ ≤ 8"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sprachschule – Intensivkurse und Abendkurse",
+    "beschreibung": "Eine Sprachschule bietet Intensivkurse und Abendkurse an. Ein Intensivkurs erzielt einen Umsatz von 2000€, ein Abendkurs einen Umsatz von 1200€. Für einen Intensivkurs werden 4 Dozentenstunden pro Woche benötigt, für einen Abendkurs 2 Dozentenstunden. Es stehen insgesamt 24 Dozentenstunden pro Woche zur Verfügung. An Kursräumen benötigt ein Intensivkurs 5 Raumstunden und ein Abendkurs 2 Raumstunden pro Woche, wobei 30 Raumstunden verfügbar sind. Zudem kann die Schule maximal 8 Kurse gleichzeitig anbieten.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Intensivkurse", "x2 = Anzahl Abendkurse"],
+    "zielfunktion": "Z = 2000x1 + 1200x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 24 (Dozentenstunden)",
+      "5x1 + 2x2 ≤ 30 (Raumstunden)",
+      "x1 + x2 ≤ 8 (Kursanzahl)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Intensivkurse bringen mehr Umsatz, beanspruchen aber deutlich mehr Dozenten- und Raumstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Intensivkurs erzielt einen Umsatz von 2000€", "bedeutung": "2000 × x₁"},
+        {"text": "Abendkurs einen Umsatz von 1200€", "bedeutung": "1200 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Intensivkurs werden 4 Dozentenstunden pro Woche benötigt", "bedeutung": "4x₁"},
+          {"text": "Abendkurs 2 Dozentenstunden", "bedeutung": "+ 2x₂"},
+          {"text": "24 Dozentenstunden pro Woche", "bedeutung": "≤ 24"}
+        ],
+        [
+          {"text": "Intensivkurs 5 Raumstunden", "bedeutung": "5x₁"},
+          {"text": "Abendkurs 2 Raumstunden", "bedeutung": "+ 2x₂"},
+          {"text": "30 Raumstunden verfügbar", "bedeutung": "≤ 30"}
+        ],
+        [
+          {"text": "maximal 8 Kurse gleichzeitig", "bedeutung": "x₁ + x₂ ≤ 8"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gartenbauunternehmen – Gartengestaltung und Pflege",
+    "beschreibung": "Ein Gartenbauunternehmen bietet Gartengestaltung und Gartenpflege an. Ein Gestaltungsauftrag bringt einen Gewinn von 1500€, ein Pflegeauftrag einen Gewinn von 500€. Für einen Gestaltungsauftrag werden 3 Gärtner benötigt, für einen Pflegeauftrag 1 Gärtner. Insgesamt stehen 15 Gärtner pro Woche zur Verfügung. An Maschinen benötigt ein Gestaltungsauftrag 4 Maschinentage und ein Pflegeauftrag 1 Maschinentag, wobei 20 Maschinentage pro Woche verfügbar sind. Die Nachfrage nach Gestaltungsaufträgen liegt bei höchstens 4 pro Woche.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Gestaltungsaufträge pro Woche", "x2 = Anzahl Pflegeaufträge pro Woche"],
+    "zielfunktion": "Z = 1500x1 + 500x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≤ 15 (Gärtner)",
+      "4x1 + x2 ≤ 20 (Maschinentage)",
+      "x1 ≤ 4 (Nachfrage Gestaltung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Gestaltungsaufträge bringen dreimal so viel Gewinn, brauchen aber mehr Gärtner und Maschinen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gestaltungsauftrag bringt einen Gewinn von 1500€", "bedeutung": "1500 × x₁"},
+        {"text": "Pflegeauftrag einen Gewinn von 500€", "bedeutung": "500 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Gestaltungsauftrag werden 3 Gärtner benötigt", "bedeutung": "3x₁"},
+          {"text": "Pflegeauftrag 1 Gärtner", "bedeutung": "+ x₂"},
+          {"text": "15 Gärtner pro Woche", "bedeutung": "≤ 15"}
+        ],
+        [
+          {"text": "Gestaltungsauftrag 4 Maschinentage", "bedeutung": "4x₁"},
+          {"text": "Pflegeauftrag 1 Maschinentag", "bedeutung": "+ x₂"},
+          {"text": "20 Maschinentage pro Woche", "bedeutung": "≤ 20"}
+        ],
+        [
+          {"text": "höchstens 4 pro Woche", "bedeutung": "x₁ ≤ 4"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Copyshop – Farb- und SW-Druckaufträge",
+    "beschreibung": "Ein Copyshop nimmt Farbdruckaufträge und SW-Druckaufträge an. Ein Farbdruckauftrag bringt einen Gewinn von 25€, ein SW-Druckauftrag einen Gewinn von 10€. Der Farbdrucker schafft pro Auftrag 30 Minuten Druckzeit, der SW-Drucker pro Auftrag 10 Minuten. An Druckerkapazität stehen 600 Minuten für Farbdruck und 400 Minuten für SW-Druck pro Tag zur Verfügung. Jeder Farbdruckauftrag verbraucht 500 Blatt Papier und jeder SW-Druckauftrag 200 Blatt. Insgesamt stehen 12000 Blatt Papier pro Tag bereit. Außerdem beträgt die Gesamtkapazität des Shops maximal 50 Aufträge pro Tag.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Farbdruckaufträge pro Tag", "x2 = Anzahl SW-Druckaufträge pro Tag"],
+    "zielfunktion": "Z = 25x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "30x1 ≤ 600 (Farbdruckerkapazität)",
+      "10x2 ≤ 400 (SW-Druckerkapazität)",
+      "500x1 + 200x2 ≤ 12000 (Papier)",
+      "x1 + x2 ≤ 50 (Auftragskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Farb- und SW-Drucker sind getrennte Ressourcen, aber Papier und Auftragskapazität werden gemeinsam genutzt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Farbdruckauftrag bringt einen Gewinn von 25€", "bedeutung": "25 × x₁"},
+        {"text": "SW-Druckauftrag einen Gewinn von 10€", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "pro Auftrag 30 Minuten Druckzeit", "bedeutung": "30x₁"},
+          {"text": "600 Minuten für Farbdruck", "bedeutung": "≤ 600"}
+        ],
+        [
+          {"text": "SW-Drucker pro Auftrag 10 Minuten", "bedeutung": "10x₂"},
+          {"text": "400 Minuten für SW-Druck", "bedeutung": "≤ 400"}
+        ],
+        [
+          {"text": "Farbdruckauftrag verbraucht 500 Blatt Papier", "bedeutung": "500x₁"},
+          {"text": "SW-Druckauftrag 200 Blatt", "bedeutung": "+ 200x₂"},
+          {"text": "12000 Blatt Papier pro Tag", "bedeutung": "≤ 12000"}
+        ],
+        [
+          {"text": "maximal 50 Aufträge pro Tag", "bedeutung": "x₁ + x₂ ≤ 50"}
+        ]
+      ]
+    }
+  }
+]

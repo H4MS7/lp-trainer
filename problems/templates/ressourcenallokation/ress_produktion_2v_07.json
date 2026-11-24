@@ -1,0 +1,43 @@
+{
+  "id": "ress_produktion_2v_07",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Schichten Linie Alpha", "x2 = Schichten Linie Beta"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Schichtkapazitaet", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Energiebudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 30,   "label": "Output/Schicht Linie Alpha (Einheiten)"},
+    "c2":  {"min": 15, "max": 40,   "label": "Output/Schicht Linie Beta (Einheiten)"},
+    "a11": {"min": 1, "max": 1,     "label": "Schicht/Schicht Alpha"},
+    "a12": {"min": 1, "max": 1,     "label": "Schicht/Schicht Beta"},
+    "b1":  {"min": 10, "max": 40,   "label": "Maximale Schichten"},
+    "a21": {"min": 3, "max": 8,     "label": "Energiekosten/Schicht Alpha (kWh)"},
+    "a22": {"min": 5, "max": 12,    "label": "Energiekosten/Schicht Beta (kWh)"},
+    "b2":  {"min": 40, "max": 160,  "label": "Energiebudget (kWh)"}
+  },
+  "titel": "Produktionslinien – Alpha und Beta",
+  "beschreibung": "Ein Werk verteilt Produktionsschichten auf Linie Alpha und Linie Beta. Jede Schicht auf Linie Alpha erzeugt {c1} Einheiten Output, auf Linie Beta {c2} Einheiten. Pro Schicht Alpha wird {a11} Schichtslot benoetigt, pro Schicht Beta {a12} Schichtslot. Es stehen {b1} Schichtslots bereit. Linie Alpha verbraucht {a21} kWh Energie pro Schicht, Linie Beta {a22} kWh. Das Energiebudget umfasst {b2} kWh.",
+  "hinweis": "Maximiere den Output unter Beachtung der Schicht- und Energiegrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Linie Alpha erzeugt {c1} Einheiten Output", "bedeutung": "{c1} × x₁"},
+      {"text": "Linie Beta {c2} Einheiten", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Alpha wird {a11} Schichtslot benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Beta {a12} Schichtslot", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Schichtslots bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Alpha verbraucht {a21} kWh", "bedeutung": "{a21}x₁"},
+        {"text": "Beta {a22} kWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kWh", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

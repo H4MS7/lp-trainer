@@ -1,0 +1,88 @@
+[
+  {
+    "titel": "Futtermischung mit drei Zutaten",
+    "beschreibung": "Ein Landwirt stellt eine Futtermischung aus drei Zutaten her: Mais, Soja und Weizen. Die Kosten betragen 3 Euro pro kg Mais, 5 Euro pro kg Soja und 2 Euro pro kg Weizen. Die Mischung muss bestimmte Nährwertanforderungen erfüllen. Der Proteingehalt soll mindestens 800 g betragen, wobei 1 kg Mais 4 g, 1 kg Soja 10 g und 1 kg Weizen 3 g Protein liefert. Der Energiegehalt muss mindestens 1200 kcal erreichen: 1 kg Mais liefert 8 kcal, 1 kg Soja 6 kcal und 1 kg Weizen 7 kcal. Die Gesamtmenge darf höchstens 300 kg betragen. Der Landwirt möchte die Gesamtkosten minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = kg Mais", "x2 = kg Soja", "x3 = kg Weizen"],
+    "zielfunktion": "Z = 3x1 + 5x2 + 2x3 (min)",
+    "nebenbedingungen": [
+      "4x1 + 10x2 + 3x3 ≥ 800 (Protein)",
+      "8x1 + 6x2 + 7x3 ≥ 1200 (Energie)",
+      "x1 + x2 + x3 ≤ 300 (Gesamtmenge)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Mindestanforderungen an Protein und Energie ergeben ≥-Nebenbedingungen, die Gesamtmengenbegrenzung eine ≤-Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "3 Euro pro kg Mais", "bedeutung": "3 × x₁"},
+        {"text": "5 Euro pro kg Soja", "bedeutung": "5 × x₂"},
+        {"text": "2 Euro pro kg Weizen", "bedeutung": "2 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 kg Mais 4 g", "bedeutung": "4x₁"},
+          {"text": "1 kg Soja 10 g", "bedeutung": "+ 10x₂"},
+          {"text": "1 kg Weizen 3 g Protein", "bedeutung": "+ 3x₃"},
+          {"text": "mindestens 800 g", "bedeutung": "≥ 800"}
+        ],
+        [
+          {"text": "1 kg Mais liefert 8 kcal", "bedeutung": "8x₁"},
+          {"text": "1 kg Soja 6 kcal", "bedeutung": "+ 6x₂"},
+          {"text": "1 kg Weizen 7 kcal", "bedeutung": "+ 7x₃"},
+          {"text": "mindestens 1200 kcal", "bedeutung": "≥ 1200"}
+        ],
+        [
+          {"text": "höchstens 300 kg", "bedeutung": "x₁ + x₂ + x₃ ≤ 300"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Betonmischung mit vier Komponenten",
+    "beschreibung": "Ein Betonwerk mischt vier Komponenten: Zement, Sand, Kies und Wasser. Die Kosten betragen 8 Euro pro Einheit Zement, 2 Euro pro Einheit Sand, 4 Euro pro Einheit Kies und 1 Euro pro Einheit Wasser. Für die Druckfestigkeit muss gelten: 10 Einheiten Zement plus 2 Einheiten Sand plus 3 Einheiten Kies plus 1 Einheit Wasser ergeben mindestens 500 Festigkeitspunkte. Die Frostbeständigkeit erfordert mindestens 300 Punkte, wobei 5 Einheiten Zement, 4 Einheiten Sand, 6 Einheiten Kies und 2 Einheiten Wasser beitragen. Die Gesamtmenge darf 200 Einheiten nicht überschreiten. Zudem ist das Wasserbudget auf 120 Einheiten begrenzt, da 2 Einheiten Zement, 3 Einheiten Sand, 1 Einheit Kies und 8 Einheiten Wasser zum Wasserverbrauch beitragen. Das Werk möchte die Mischungskosten minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Einheiten Zement", "x2 = Einheiten Sand", "x3 = Einheiten Kies", "x4 = Einheiten Wasser"],
+    "zielfunktion": "Z = 8x1 + 2x2 + 4x3 + x4 (min)",
+    "nebenbedingungen": [
+      "10x1 + 2x2 + 3x3 + x4 ≥ 500 (Druckfestigkeit)",
+      "5x1 + 4x2 + 6x3 + 2x4 ≥ 300 (Frostbeständigkeit)",
+      "x1 + x2 + x3 + x4 ≤ 200 (Gesamtmenge)",
+      "2x1 + 3x2 + x3 + 8x4 ≤ 120 (Wasserverbrauch)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Zwei Qualitätsanforderungen (≥) und zwei Mengenbeschränkungen (≤). Achte darauf, welche Nebenbedingungen Mindest- und welche Höchstgrenzen sind.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "8 Euro pro Einheit Zement", "bedeutung": "8 × x₁"},
+        {"text": "2 Euro pro Einheit Sand", "bedeutung": "2 × x₂"},
+        {"text": "4 Euro pro Einheit Kies", "bedeutung": "4 × x₃"},
+        {"text": "1 Euro pro Einheit Wasser", "bedeutung": "1 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 Einheiten Zement", "bedeutung": "10x₁"},
+          {"text": "2 Einheiten Sand", "bedeutung": "+ 2x₂"},
+          {"text": "3 Einheiten Kies", "bedeutung": "+ 3x₃"},
+          {"text": "1 Einheit Wasser", "bedeutung": "+ x₄"},
+          {"text": "mindestens 500 Festigkeitspunkte", "bedeutung": "≥ 500"}
+        ],
+        [
+          {"text": "5 Einheiten Zement", "bedeutung": "5x₁"},
+          {"text": "4 Einheiten Sand", "bedeutung": "+ 4x₂"},
+          {"text": "6 Einheiten Kies", "bedeutung": "+ 6x₃"},
+          {"text": "2 Einheiten Wasser", "bedeutung": "+ 2x₄"},
+          {"text": "mindestens 300 Punkte", "bedeutung": "≥ 300"}
+        ],
+        [
+          {"text": "200 Einheiten nicht überschreiten", "bedeutung": "x₁ + x₂ + x₃ + x₄ ≤ 200"}
+        ],
+        [
+          {"text": "2 Einheiten Zement, 3 Einheiten Sand, 1 Einheit Kies und 8 Einheiten Wasser", "bedeutung": "2x₁ + 3x₂ + x₃ + 8x₄"},
+          {"text": "Wasserbudget auf 120 Einheiten begrenzt", "bedeutung": "≤ 120"}
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,128 @@
+[
+  {
+    "titel": "Paketdienst Blitzversand: Vier Zustellrouten optimieren",
+    "beschreibung": "Der Paketdienst Blitzversand betreibt vier Zustellrouten von seinem Verteilzentrum aus. Route A in den Norden kostet 26 Euro pro Fahrt. Route B in den Osten kostet 23 Euro pro Fahrt. Route C in den Sueden kostet 28 Euro pro Fahrt. Route D in den Westen kostet nur 4 Euro pro Fahrt. Die Fahrzeugkapazitaet ist begrenzt: Route A beansprucht 12 Fahrzeugstunden, Route B beansprucht 7 Fahrzeugstunden, Route C beansprucht 7 Fahrzeugstunden und Route D beansprucht 1 Fahrzeugstunde pro Fahrt. Insgesamt stehen hoechstens 269 Fahrzeugstunden zur Verfuegung. Fuer die termingerechte Zustellung muessen Mindestmengen eingehalten werden: Route A erfordert 4 Fahrten, Route B erfordert 1 Fahrt, Route C erfordert 14 Fahrten und Route D erfordert 6 Fahrten pro Zyklus. Der Mindestumfang betraegt 217 Zustellungen insgesamt. Die Lagerhaltung begrenzt zudem die Vorkommissionierung: Route A belegt 8 Lagerplaetze, Route B belegt 1 Lagerplatz, Route C belegt 3 Lagerplaetze und Route D belegt 3 Lagerplaetze pro Fahrt. Es stehen maximal 302 Lagerplaetze bereit. Die Verpackungsstation ist ebenfalls limitiert: Route A benoetigt 15 Verpackungseinheiten, Route B benoetigt 2 Verpackungseinheiten, Route C benoetigt 4 Verpackungseinheiten und Route D benoetigt 9 Verpackungseinheiten pro Fahrt. Maximal 490 Verpackungseinheiten sind verfuegbar. Zusaetzlich muessen Abholauftraege bedient werden: Route A generiert 4 Abholungen, Route B generiert 11 Abholungen, Route C generiert 6 Abholungen und Route D generiert 2 Abholungen pro Fahrt. Mindestens 70 Abholungen muessen durchgefuehrt werden. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Fahrten auf Route A (Norden)",
+      "x2 = Anzahl Fahrten auf Route B (Osten)",
+      "x3 = Anzahl Fahrten auf Route C (Sueden)",
+      "x4 = Anzahl Fahrten auf Route D (Westen)"
+    ],
+    "zielfunktion": "Z = 26x1 + 23x2 + 28x3 + 4x4 (min)",
+    "nebenbedingungen": [
+      "12x1 + 7x2 + 7x3 + x4 ≤ 269 (Fahrzeugkapazitaet)",
+      "4x1 + x2 + 14x3 + 6x4 ≥ 217 (Mindestzustellungen)",
+      "8x1 + x2 + 3x3 + 3x4 ≤ 302 (Lagerplaetze)",
+      "15x1 + 2x2 + 4x3 + 9x4 ≤ 490 (Verpackungsstation)",
+      "4x1 + 11x2 + 6x3 + 2x4 ≥ 70 (Abholauftraege)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Achte genau auf die Ungleichungsrichtungen: Kapazitaetsgrenzen nutzen das Zeichen kleiner-gleich, Mindestanforderungen nutzen groesser-gleich. Route D ist am guenstigsten, hat aber in jeder Nebenbedingung unterschiedliche Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A in den Norden kostet 26 Euro pro Fahrt", "bedeutung": "26 × x₁"},
+        {"text": "Route B in den Osten kostet 23 Euro pro Fahrt", "bedeutung": "23 × x₂"},
+        {"text": "Route C in den Sueden kostet 28 Euro pro Fahrt", "bedeutung": "28 × x₃"},
+        {"text": "Route D in den Westen kostet nur 4 Euro pro Fahrt", "bedeutung": "4 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A beansprucht 12 Fahrzeugstunden", "bedeutung": "12x₁"},
+          {"text": "Route B beansprucht 7 Fahrzeugstunden", "bedeutung": "+ 7x₂"},
+          {"text": "Route C beansprucht 7 Fahrzeugstunden", "bedeutung": "+ 7x₃"},
+          {"text": "Route D beansprucht 1 Fahrzeugstunde", "bedeutung": "+ x₄"},
+          {"text": "hoechstens 269 Fahrzeugstunden", "bedeutung": "≤ 269"}
+        ],
+        [
+          {"text": "Route A erfordert 4 Fahrten", "bedeutung": "4x₁"},
+          {"text": "Route B erfordert 1 Fahrt", "bedeutung": "+ x₂"},
+          {"text": "Route C erfordert 14 Fahrten", "bedeutung": "+ 14x₃"},
+          {"text": "Route D erfordert 6 Fahrten", "bedeutung": "+ 6x₄"},
+          {"text": "Mindestumfang betraegt 217 Zustellungen", "bedeutung": "≥ 217"}
+        ],
+        [
+          {"text": "Route A belegt 8 Lagerplaetze", "bedeutung": "8x₁"},
+          {"text": "Route B belegt 1 Lagerplatz", "bedeutung": "+ x₂"},
+          {"text": "Route C belegt 3 Lagerplaetze", "bedeutung": "+ 3x₃"},
+          {"text": "Route D belegt 3 Lagerplaetze", "bedeutung": "+ 3x₄"},
+          {"text": "maximal 302 Lagerplaetze", "bedeutung": "≤ 302"}
+        ],
+        [
+          {"text": "Route A benoetigt 15 Verpackungseinheiten", "bedeutung": "15x₁"},
+          {"text": "Route B benoetigt 2 Verpackungseinheiten", "bedeutung": "+ 2x₂"},
+          {"text": "Route C benoetigt 4 Verpackungseinheiten", "bedeutung": "+ 4x₃"},
+          {"text": "Route D benoetigt 9 Verpackungseinheiten", "bedeutung": "+ 9x₄"},
+          {"text": "Maximal 490 Verpackungseinheiten", "bedeutung": "≤ 490"}
+        ],
+        [
+          {"text": "Route A generiert 4 Abholungen", "bedeutung": "4x₁"},
+          {"text": "Route B generiert 11 Abholungen", "bedeutung": "+ 11x₂"},
+          {"text": "Route C generiert 6 Abholungen", "bedeutung": "+ 6x₃"},
+          {"text": "Route D generiert 2 Abholungen", "bedeutung": "+ 2x₄"},
+          {"text": "Mindestens 70 Abholungen", "bedeutung": "≥ 70"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spedition Suedkargo: Vier internationale Frachtrouten",
+    "beschreibung": "Die Spedition Suedkargo organisiert den internationalen Warentransport ueber vier Routen. Route A nach Prag kostet 4 Euro pro Palette. Route B nach Mailand kostet 37 Euro pro Palette. Route C nach Zuerich kostet 29 Euro pro Palette. Route D nach Wien kostet 44 Euro pro Palette. Die Zollabwicklung ist begrenzt: Route A erfordert 5 Zolldokumente, Route B erfordert 8 Zolldokumente, Route C erfordert 14 Zolldokumente und Route D erfordert 1 Zolldokument pro Palette. Maximal 480 Zolldokumente koennen pro Monat bearbeitet werden. Es bestehen Liefervertraege mit Mindestmengen: Route A muss 6 Paletten liefern, Route B muss 3 Paletten liefern, Route C muss 5 Paletten liefern und Route D muss 11 Paletten liefern pro Lieferzyklus. Der vertragliche Mindestumfang betraegt 176 Paletten insgesamt. Die Laderampen sind ebenfalls limitiert: Route A belegt 1 Rampenslot, Route B belegt 7 Rampenslots, Route C belegt 3 Rampenslots und Route D belegt 12 Rampenslots pro Palette. Es stehen hoechstens 177 Rampenslots zur Verfuegung. Ausserdem ist die LKW-Flotte beschraenkt: Route A beansprucht 4 LKW-Stunden, Route B beansprucht 13 LKW-Stunden, Route C beansprucht 12 LKW-Stunden und Route D beansprucht 12 LKW-Stunden pro Palette. Maximal 170 LKW-Stunden sind pro Monat einsetzbar. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Transportproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Paletten auf Route A (Prag)",
+      "x2 = Anzahl Paletten auf Route B (Mailand)",
+      "x3 = Anzahl Paletten auf Route C (Zuerich)",
+      "x4 = Anzahl Paletten auf Route D (Wien)"
+    ],
+    "zielfunktion": "Z = 4x1 + 37x2 + 29x3 + 44x4 (min)",
+    "nebenbedingungen": [
+      "5x1 + 8x2 + 14x3 + x4 ≤ 480 (Zollabwicklung)",
+      "6x1 + 3x2 + 5x3 + 11x4 ≥ 176 (Liefervertraege)",
+      "x1 + 7x2 + 3x3 + 12x4 ≤ 177 (Laderampen)",
+      "4x1 + 13x2 + 12x3 + 12x4 ≤ 170 (LKW-Flotte)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Route A ist die guenstigste Route, hat aber nur geringe Rampen- und Zollkoeffizienten. Pruefe, ob die Mindestliefermengen und Kapazitaetsobergrenzen gleichzeitig erfuellbar sind.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Route A nach Prag kostet 4 Euro pro Palette", "bedeutung": "4 × x₁"},
+        {"text": "Route B nach Mailand kostet 37 Euro pro Palette", "bedeutung": "37 × x₂"},
+        {"text": "Route C nach Zuerich kostet 29 Euro pro Palette", "bedeutung": "29 × x₃"},
+        {"text": "Route D nach Wien kostet 44 Euro pro Palette", "bedeutung": "44 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Route A erfordert 5 Zolldokumente", "bedeutung": "5x₁"},
+          {"text": "Route B erfordert 8 Zolldokumente", "bedeutung": "+ 8x₂"},
+          {"text": "Route C erfordert 14 Zolldokumente", "bedeutung": "+ 14x₃"},
+          {"text": "Route D erfordert 1 Zolldokument", "bedeutung": "+ x₄"},
+          {"text": "Maximal 480 Zolldokumente", "bedeutung": "≤ 480"}
+        ],
+        [
+          {"text": "Route A muss 6 Paletten liefern", "bedeutung": "6x₁"},
+          {"text": "Route B muss 3 Paletten liefern", "bedeutung": "+ 3x₂"},
+          {"text": "Route C muss 5 Paletten liefern", "bedeutung": "+ 5x₃"},
+          {"text": "Route D muss 11 Paletten liefern", "bedeutung": "+ 11x₄"},
+          {"text": "Mindestumfang betraegt 176 Paletten", "bedeutung": "≥ 176"}
+        ],
+        [
+          {"text": "Route A belegt 1 Rampenslot", "bedeutung": "x₁"},
+          {"text": "Route B belegt 7 Rampenslots", "bedeutung": "+ 7x₂"},
+          {"text": "Route C belegt 3 Rampenslots", "bedeutung": "+ 3x₃"},
+          {"text": "Route D belegt 12 Rampenslots", "bedeutung": "+ 12x₄"},
+          {"text": "hoechstens 177 Rampenslots", "bedeutung": "≤ 177"}
+        ],
+        [
+          {"text": "Route A beansprucht 4 LKW-Stunden", "bedeutung": "4x₁"},
+          {"text": "Route B beansprucht 13 LKW-Stunden", "bedeutung": "+ 13x₂"},
+          {"text": "Route C beansprucht 12 LKW-Stunden", "bedeutung": "+ 12x₃"},
+          {"text": "Route D beansprucht 12 LKW-Stunden", "bedeutung": "+ 12x₄"},
+          {"text": "Maximal 170 LKW-Stunden", "bedeutung": "≤ 170"}
+        ]
+      ]
+    }
+  }
+]

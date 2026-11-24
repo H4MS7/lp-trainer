@@ -1,0 +1,43 @@
+{
+  "id": "energie_geothermie_pv_2v_03",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Geothermie", "x2 = MWh Photovoltaik"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Flächennutzung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 120, "label": "Kosten Geothermie (€/MWh)"},
+    "c2":  {"min": 35, "max": 85, "label": "Kosten Photovoltaik (€/MWh)"},
+    "a11": {"min": 3, "max": 8, "label": "Leistung Geothermie (MW/MWh)"},
+    "a12": {"min": 1, "max": 4, "label": "Leistung Photovoltaik (MW/MWh)"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 3, "label": "Fläche Geothermie (ha/MWh)"},
+    "a22": {"min": 2, "max": 6, "label": "Fläche Photovoltaik (ha/MWh)"},
+    "b2":  {"min": 30, "max": 150, "label": "Maximale Fläche (ha)"}
+  },
+  "titel": "Energiemix – Geothermie und Photovoltaik",
+  "beschreibung": "Ein Energieversorger plant den Strommix aus Geothermie und Photovoltaik. Geothermie kostet {c1} € pro MWh, Photovoltaik kostet {c2} € pro MWh. Geothermie liefert {a11} MW Leistung pro MWh, Photovoltaik liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Der Flächenbedarf beträgt {a21} ha pro MWh Geothermie und {a22} ha pro MWh Photovoltaik. Maximal {b2} ha Fläche stehen zur Verfügung.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Flächenbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Geothermie kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Photovoltaik kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} ha pro MWh Geothermie", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} ha pro MWh Photovoltaik", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} ha Fläche stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

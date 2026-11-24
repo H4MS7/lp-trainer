@@ -1,0 +1,43 @@
+{
+  "id": "qual_beton_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Druckfestigkeitstests", "x2 = Anzahl Dichtigkeitstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Normerfüllung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Prüflaborzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten Druckfestigkeit (€/Test)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Kosten Dichtigkeit (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Normpunkte Druckfestigkeit"},
+    "a12": {"min": 2, "max": 6,   "label": "Normpunkte Dichtigkeit"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Normerfüllung (Punkte)"},
+    "a21": {"min": 2, "max": 5,   "label": "Laborzeit Druckfestigkeit (Stunden)"},
+    "a22": {"min": 1, "max": 4,   "label": "Laborzeit Dichtigkeit (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Prüflaborzeit (Stunden)"}
+  },
+  "titel": "Betonwerk – Baustoffprüfung",
+  "beschreibung": "Ein Betonwerk prüft die Qualität mit Druckfestigkeitstests und Dichtigkeitstests. Ein Druckfestigkeitstest kostet {c1} €, ein Dichtigkeitstest kostet {c2} €. Der Druckfestigkeitstest liefert {a11} Normpunkte, der Dichtigkeitstest liefert {a12} Normpunkte. Die Mindest-Normerfüllung beträgt {b1} Punkte. Ein Druckfestigkeitstest dauert {a21} Stunden, ein Dichtigkeitstest dauert {a22} Stunden. Die Prüflaborzeit beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Normerfüllung und begrenzter Laborzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Druckfestigkeitstest kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Dichtigkeitstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Normpunkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Normpunkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

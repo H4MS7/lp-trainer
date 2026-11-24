@@ -1,0 +1,68 @@
+{
+  "id": "qual_elektronik_4v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Lötprüfungen", "x2 = Anzahl Spannungstests", "x3 = Anzahl Wärmebildanalysen", "x4 = Anzahl Frequenztests"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fehlerquote", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Teststandzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten Lötprüfung (€)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Kosten Spannungstest (€)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Kosten Wärmebild (€)"},
+    "c4":  {"min": 5, "max": 14,  "label": "Kosten Frequenztest (€)"},
+    "a11": {"min": 2, "max": 6,   "label": "Fehlerquote Löt (%)"},
+    "a12": {"min": 2, "max": 5,   "label": "Fehlerquote Spannung (%)"},
+    "a13": {"min": 3, "max": 7,   "label": "Fehlerquote Wärmebild (%)"},
+    "a14": {"min": 3, "max": 8,   "label": "Fehlerquote Frequenz (%)"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindest-Fehlerquote (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Testzeit Löt (min)"},
+    "a22": {"min": 1, "max": 3,   "label": "Testzeit Spannung (min)"},
+    "a23": {"min": 2, "max": 4,   "label": "Testzeit Wärmebild (min)"},
+    "a24": {"min": 2, "max": 5,   "label": "Testzeit Frequenz (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Teststandzeit (min)"},
+    "a31": {"min": 1, "max": 4,   "label": "Materialkosten Löt (€)"},
+    "a32": {"min": 2, "max": 5,   "label": "Materialkosten Spannung (€)"},
+    "a33": {"min": 2, "max": 6,   "label": "Materialkosten Wärmebild (€)"},
+    "a34": {"min": 3, "max": 8,   "label": "Materialkosten Frequenz (€)"},
+    "b3":  {"min": 60, "max": 250, "label": "Materialbudget (€)"}
+  },
+  "titel": "Elektronikfertigung – Vier Prüfverfahren",
+  "beschreibung": "Ein Elektronikfertiger setzt vier Prüfverfahren ein: Lötprüfungen, Spannungstests, Wärmebildanalysen und Frequenztests. Eine Lötprüfung kostet {c1} €, ein Spannungstest kostet {c2} €, eine Wärmebildanalyse kostet {c3} € und ein Frequenztest kostet {c4} €. Die Fehlererkennungsrate beträgt {a11} % bei Lötprüfungen, {a12} % bei Spannungstests, {a13} % bei Wärmebildanalysen und {a14} % bei Frequenztests. Die Mindest-Fehlerquote beträgt {b1} %. Die Testzeiten betragen {a21} Minuten pro Lötprüfung, {a22} Minuten pro Spannungstest, {a23} Minuten pro Wärmebildanalyse und {a24} Minuten pro Frequenztest. Die Teststandzeit beträgt {b2} Minuten. Die Materialkosten betragen {a31} € pro Lötprüfung, {a32} € pro Spannungstest, {a33} € pro Wärmebildanalyse und {a34} € pro Frequenztest. Das Materialbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Fehlererkennung und begrenzter Testzeit und Materialbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lötprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spannungstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Wärmebildanalyse kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Frequenztest kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % bei Lötprüfungen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % bei Spannungstests", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % bei Wärmebildanalysen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} % bei Frequenztests", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten pro Lötprüfung", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten pro Spannungstest", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten pro Wärmebildanalyse", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Minuten pro Frequenztest", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Lötprüfung", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Spannungstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Wärmebildanalyse", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Frequenztest", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

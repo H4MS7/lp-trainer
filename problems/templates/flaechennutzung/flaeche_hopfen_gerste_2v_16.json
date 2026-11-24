@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_hopfen_gerste_2v_16",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Hopfen", "x2 = Hektar Gerste"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Bewässerungskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 22,  "label": "Ertrag Hopfen (Tsd. €/ha)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Ertrag Gerste (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Hopfen (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Gerste (ha/ha)"},
+    "b1":  {"min": 30, "max": 200, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 5, "max": 12,  "label": "Bewässerung Hopfen (m³/ha)"},
+    "a22": {"min": 2, "max": 5,   "label": "Bewässerung Gerste (m³/ha)"},
+    "b2":  {"min": 60, "max": 350, "label": "Bewässerungskapazität (m³)"}
+  },
+  "titel": "Brauerei-Zulieferer – Hopfen und Gerste",
+  "beschreibung": "Ein Brauerei-Zulieferer baut Hopfen und Gerste an. Hopfen bringt {c1} Tsd. € Ertrag pro Hektar, Gerste bringt {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Hopfen und {a12} Hektar pro Hektar Gerste. Die Gesamtfläche beträgt {b1} Hektar. Die Bewässerung erfordert {a21} m³ pro Hektar Hopfen und {a22} m³ pro Hektar Gerste. Die Bewässerungskapazität beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Bewässerungsbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hopfen bringt {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Gerste bringt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Hopfen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Gerste", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro Hektar Hopfen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro Hektar Gerste", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

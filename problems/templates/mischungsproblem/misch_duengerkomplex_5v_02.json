@@ -1,0 +1,81 @@
+{
+  "id": "misch_duengerkomplex_5v_02",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Menge Dünger A (kg)", "x2 = Menge Dünger B (kg)", "x3 = Menge Dünger C (kg)", "x4 = Menge Dünger D (kg)", "x5 = Menge Dünger E (kg)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Stickstoff", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Phosphor", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Kalium", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Chlorid", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Gesamtmenge", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Dünger A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Dünger B (EUR/kg)"},
+    "c3":  {"min": 1, "max": 7,   "label": "Kosten Dünger C (EUR/kg)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Kosten Dünger D (EUR/kg)"},
+    "c5":  {"min": 2, "max": 9,   "label": "Kosten Dünger E (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Stickstoff in A (g/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Stickstoff in B (g/kg)"},
+    "a13": {"min": 1, "max": 5,   "label": "Stickstoff in C (g/kg)"},
+    "a14": {"min": 2, "max": 8,   "label": "Stickstoff in D (g/kg)"},
+    "a15": {"min": 1, "max": 6,   "label": "Stickstoff in E (g/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Stickstoff (g)"},
+    "a21": {"min": 1, "max": 5,   "label": "Phosphor in A (g/kg)"},
+    "a22": {"min": 3, "max": 9,   "label": "Phosphor in B (g/kg)"},
+    "a23": {"min": 2, "max": 7,   "label": "Phosphor in C (g/kg)"},
+    "a24": {"min": 1, "max": 4,   "label": "Phosphor in D (g/kg)"},
+    "a25": {"min": 2, "max": 8,   "label": "Phosphor in E (g/kg)"},
+    "b2":  {"min": 30, "max": 130, "label": "Mindest-Phosphor (g)"},
+    "a31": {"min": 2, "max": 6,   "label": "Kalium in A (g/kg)"},
+    "a32": {"min": 1, "max": 5,   "label": "Kalium in B (g/kg)"},
+    "a33": {"min": 3, "max": 8,   "label": "Kalium in C (g/kg)"},
+    "a34": {"min": 2, "max": 7,   "label": "Kalium in D (g/kg)"},
+    "a35": {"min": 1, "max": 4,   "label": "Kalium in E (g/kg)"},
+    "b3":  {"min": 30, "max": 120, "label": "Mindest-Kalium (g)"},
+    "a41": {"min": 1, "max": 4,   "label": "Chlorid in A (mg/kg)"},
+    "a42": {"min": 2, "max": 5,   "label": "Chlorid in B (mg/kg)"},
+    "a43": {"min": 1, "max": 3,   "label": "Chlorid in C (mg/kg)"},
+    "a44": {"min": 2, "max": 6,   "label": "Chlorid in D (mg/kg)"},
+    "a45": {"min": 1, "max": 4,   "label": "Chlorid in E (mg/kg)"},
+    "b4":  {"min": 25, "max": 90, "label": "Max. Chlorid (mg)"},
+    "a51": {"min": 1, "max": 3,   "label": "Mengenfaktor A"},
+    "a52": {"min": 1, "max": 3,   "label": "Mengenfaktor B"},
+    "a53": {"min": 1, "max": 3,   "label": "Mengenfaktor C"},
+    "a54": {"min": 1, "max": 3,   "label": "Mengenfaktor D"},
+    "a55": {"min": 1, "max": 3,   "label": "Mengenfaktor E"},
+    "b5":  {"min": 40, "max": 120, "label": "Max. Gesamtmenge (Einheiten)"}
+  },
+  "titel": "Komplexdünger – NPK, Chlorid und Menge",
+  "beschreibung": "Ein Agrarbetrieb mischt einen Komplexdünger aus fünf Ausgangsstoffen. Dünger A kostet {c1} EUR pro kg, B kostet {c2} EUR pro kg, C kostet {c3} EUR pro kg, D kostet {c4} EUR pro kg und E kostet {c5} EUR pro kg. Dünger A enthält {a11} g Stickstoff pro kg, B enthält {a12}, C enthält {a13}, D enthält {a14} und E enthält {a15} g pro kg. Es werden mindestens {b1} g Stickstoff benötigt. Dünger A enthält {a21} g Phosphor pro kg, B enthält {a22}, C enthält {a23}, D enthält {a24} und E enthält {a25} g pro kg. Es werden mindestens {b2} g Phosphor benötigt. Dünger A enthält {a31} g Kalium pro kg, B enthält {a32}, C enthält {a33}, D enthält {a34} und E enthält {a35} g pro kg. Es werden mindestens {b3} g Kalium benötigt. Dünger A enthält {a41} mg Chlorid pro kg, B enthält {a42}, C enthält {a43}, D enthält {a44} und E enthält {a45} mg pro kg. Der Chloridgehalt darf höchstens {b4} mg betragen. Der Mengenfaktor beträgt {a51} für A, {a52} für B, {a53} für C, {a54} für D und {a55} für E. Die Gesamtmenge darf höchstens {b5} Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Nährstoff-Mindestanforderungen und Obergrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Dünger A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet {c4} EUR pro kg", "bedeutung": "{c4} × x₄"},
+      {"text": "E kostet {c5} EUR pro kg", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Stickstoff pro kg, B enthält {a12}, C enthält {a13}, D enthält {a14} und E enthält {a15} g pro kg. Es werden mindestens {b1} g Stickstoff benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Phosphor pro kg, B enthält {a22}, C enthält {a23}, D enthält {a24} und E enthält {a25} g pro kg. Es werden mindestens {b2} g Phosphor benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} g Kalium pro kg, B enthält {a32}, C enthält {a33}, D enthält {a34} und E enthält {a35} g pro kg. Es werden mindestens {b3} g Kalium benötigt", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} mg Chlorid pro kg, B enthält {a42}, C enthält {a43}, D enthält {a44} und E enthält {a45} mg pro kg. Der Chloridgehalt darf höchstens {b4} mg betragen", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} für A, {a52} für B, {a53} für C, {a54} für D und {a55} für E. Die Gesamtmenge darf höchstens {b5} Einheiten betragen", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅ ≤ {b5}"}
+      ]
+    ]
+  }
+}

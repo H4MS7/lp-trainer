@@ -1,0 +1,72 @@
+[
+  {
+    "titel": "CNC-Fräse – Durchsatzoptimierung",
+    "beschreibung": "Ein Fertigungsbetrieb möchte den Durchsatz einer CNC-Fräse maximieren, indem zwei Parameter optimal eingestellt werden: die Drehzahl und der Vorschub. Jede Einheit Drehzahl steigert den Durchsatz um 4 Teile pro Stunde, jede Einheit Vorschub steigert den Durchsatz um 3 Teile pro Stunde. Die Leistungsaufnahme beträgt 5 kW pro Einheit Drehzahl und 2 kW pro Einheit Vorschub. Die maximale Maschinenleistung liegt bei 200 kW. Der Verschleiß wird mit 2 Punkten pro Einheit Drehzahl und 6 Punkten pro Einheit Vorschub bewertet. Der zulässige Verschleiß darf höchstens 240 Punkte betragen. Gesucht ist die optimale Parameterkombination für maximalen Durchsatz.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Drehzahl", "x2 = Einheit Vorschub"],
+    "zielfunktion": "Z = 4x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≤ 200 (Maschinenleistung)",
+      "2x1 + 6x2 ≤ 240 (Verschleiß)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Maschinenleistung in kW und Verschleiß in Punkten. Der Durchsatz pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Durchsatz um 4 Teile pro Stunde", "bedeutung": "4 × x₁"},
+        {"text": "Durchsatz um 3 Teile pro Stunde", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 kW pro Einheit Drehzahl", "bedeutung": "5x₁"},
+          {"text": "2 kW pro Einheit Vorschub", "bedeutung": "+ 2x₂"},
+          {"text": "maximale Maschinenleistung liegt bei 200 kW", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "2 Punkten pro Einheit Drehzahl", "bedeutung": "2x₁"},
+          {"text": "6 Punkten pro Einheit Vorschub", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 240 Punkte", "bedeutung": "≤ 240"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "3D-Drucker – Parametrierung",
+    "beschreibung": "Ein Prototypenlabor optimiert die Einstellungen eines 3D-Druckers. Die zwei Stellgrößen sind die Druckgeschwindigkeit und die Schichthöhe. Jede Einheit Druckgeschwindigkeit erhöht den Ausstoß um 5 Teile pro Tag, jede Einheit Schichthöhe erhöht den Ausstoß um 7 Teile pro Tag. Die Druckqualität wird durch beide Parameter beeinflusst: 3 Qualitätspunkte pro Einheit Druckgeschwindigkeit und 4 Qualitätspunkte pro Einheit Schichthöhe werden verbraucht. Das verfügbare Qualitätsbudget beträgt 120 Qualitätspunkte. Die Leistungsaufnahme beträgt 6 Watt pro Einheit Druckgeschwindigkeit und 2 Watt pro Einheit Schichthöhe, wobei die maximale Leistung bei 180 Watt liegt. Außerdem verbraucht jede Einheit Druckgeschwindigkeit 1 Rolle Filament und jede Einheit Schichthöhe 3 Rollen Filament. Der Vorrat beträgt 90 Rollen Filament. Der Ausstoß soll maximiert werden.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Druckgeschwindigkeit", "x2 = Einheit Schichthöhe"],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≤ 120 (Qualitätsbudget)",
+      "6x1 + 2x2 ≤ 180 (Leistung)",
+      "x1 + 3x2 ≤ 90 (Filament)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Beschränkungen: Qualität, Leistung und Filamentverbrauch. Achte darauf, welcher Parameter wie viel von jeder Ressource verbraucht.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ausstoß um 5 Teile pro Tag", "bedeutung": "5 × x₁"},
+        {"text": "Ausstoß um 7 Teile pro Tag", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Qualitätspunkte pro Einheit Druckgeschwindigkeit", "bedeutung": "3x₁"},
+          {"text": "4 Qualitätspunkte pro Einheit Schichthöhe", "bedeutung": "+ 4x₂"},
+          {"text": "120 Qualitätspunkte", "bedeutung": "≤ 120"}
+        ],
+        [
+          {"text": "6 Watt pro Einheit Druckgeschwindigkeit", "bedeutung": "6x₁"},
+          {"text": "2 Watt pro Einheit Schichthöhe", "bedeutung": "+ 2x₂"},
+          {"text": "maximale Leistung bei 180 Watt", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "1 Rolle Filament", "bedeutung": "x₁"},
+          {"text": "3 Rollen Filament", "bedeutung": "+ 3x₂"},
+          {"text": "90 Rollen Filament", "bedeutung": "≤ 90"}
+        ]
+      ]
+    }
+  }
+]

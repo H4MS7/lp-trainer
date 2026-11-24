@@ -1,0 +1,54 @@
+{
+  "id": "energie_h2_batterie_netz_3v_06",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Wasserstoff", "x2 = MWh Batteriespeicher", "x3 = MWh Netzbezug"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Netzbelastung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestanteil emissionsfrei", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 140, "label": "Kosten H2 (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Batterie (€/MWh)"},
+    "c3":  {"min": 35, "max": 85, "label": "Kosten Netz (€/MWh)"},
+    "a11": {"min": 2, "max": 5, "label": "Versorgung H2 (MW/MWh)"},
+    "a12": {"min": 2, "max": 6, "label": "Versorgung Batterie (MW/MWh)"},
+    "a13": {"min": 3, "max": 7, "label": "Versorgung Netz (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestversorgung (MW)"},
+    "a21": {"min": 1, "max": 2, "label": "Netzlast H2 (MW/MWh)"},
+    "a22": {"min": 1, "max": 3, "label": "Netzlast Batterie (MW/MWh)"},
+    "a23": {"min": 3, "max": 7, "label": "Netzlast Netz (MW/MWh)"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale Netzbelastung (MW)"},
+    "a31": {"min": 3, "max": 6, "label": "Emissionsfrei H2 (MW/MWh)"},
+    "a32": {"min": 2, "max": 5, "label": "Emissionsfrei Batterie (MW/MWh)"},
+    "a33": {"min": 1, "max": 2, "label": "Emissionsfrei Netz (MW/MWh)"},
+    "b3":  {"min": 20, "max": 80, "label": "Mindestanteil emissionsfrei (MW)"}
+  },
+  "titel": "Energiemix – Wasserstoff, Batterie und Netz",
+  "beschreibung": "Ein Technologiepark plant die Energieversorgung aus Wasserstoff, Batteriespeicher und Netzbezug. Wasserstoff kostet {c1} € pro MWh, Batterie kostet {c2} € pro MWh und Netzbezug kostet {c3} € pro MWh. Wasserstoff liefert {a11} MW pro MWh, Batterie liefert {a12} MW pro MWh und Netz liefert {a13} MW pro MWh. Mindestens {b1} MW Versorgung müssen bereitgestellt werden. Die Netzbelastung beträgt {a21} MW pro MWh H2, {a22} MW pro MWh Batterie und {a23} MW pro MWh Netz. Die Netzbelastung darf {b2} MW nicht überschreiten. Der emissionsfreie Beitrag beträgt {a31} MW pro MWh H2, {a32} MW pro MWh Batterie und {a33} MW pro MWh Netz. Mindestens {b3} MW emissionsfreie Leistung werden benötigt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestversorgung, Netzlimit und Emissionsfreiheitsquote.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wasserstoff kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Batterie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Netzbezug kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW pro MWh, Batterie liefert {a12} MW pro MWh und Netz liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Versorgung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh H2, {a22} MW pro MWh Batterie und {a23} MW pro MWh Netz", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} MW nicht überschreiten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MW pro MWh H2, {a32} MW pro MWh Batterie und {a33} MW pro MWh Netz", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} MW emissionsfreie Leistung werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "diaet_pferde_2v_15",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Heu", "x2 = Einheiten Kraftfutter"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Rohfaser", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Energie", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Heu (€/Einheit)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Kosten Kraftfutter (€/Einheit)"},
+    "a11": {"min": 5, "max": 12,  "label": "Rohfaser Heu (g/Einheit)"},
+    "a12": {"min": 1, "max": 4,   "label": "Rohfaser Kraftfutter (g/Einheit)"},
+    "b1":  {"min": 40, "max": 100, "label": "Mindest-Rohfaser (g)"},
+    "a21": {"min": 2, "max": 6,   "label": "Energie Heu (MJ/Einheit)"},
+    "a22": {"min": 4, "max": 10,  "label": "Energie Kraftfutter (MJ/Einheit)"},
+    "b2":  {"min": 30, "max": 80,  "label": "Mindest-Energie (MJ)"}
+  },
+  "titel": "Pferdefütterung – Heu und Kraftfutter",
+  "beschreibung": "Ein Reitstall möchte die Futterkosten pro Pferd minimieren. Eine Einheit Heu kostet {c1} €, eine Einheit Kraftfutter kostet {c2} €. Heu liefert {a11} g Rohfaser pro Einheit, Kraftfutter liefert {a12} g Rohfaser pro Einheit. Mindestens {b1} g Rohfaser werden benötigt. Heu enthält {a21} MJ Energie pro Einheit, Kraftfutter enthält {a22} MJ Energie pro Einheit. Der Mindestbedarf an Energie beträgt {b2} MJ.",
+  "hinweis": "Minimiere die Futterkosten bei Einhaltung der Mindestanforderungen an Rohfaser und Energie.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Heu kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kraftfutter kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Rohfaser pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Rohfaser pro Einheit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Rohfaser werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MJ Energie pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MJ Energie pro Einheit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MJ", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

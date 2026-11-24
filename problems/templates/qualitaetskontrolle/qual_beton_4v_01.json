@@ -1,0 +1,68 @@
+{
+  "id": "qual_beton_4v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Druckfestigkeitstests", "x2 = Anzahl Dichtigkeitstests", "x3 = Anzahl Frostbeständigkeitstests", "x4 = Anzahl Schwindmaßtests"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Normerfüllung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Probenbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Kosten Druckfestigkeit (€/Test)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Kosten Dichtigkeit (€/Test)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Kosten Frostbeständigkeit (€/Test)"},
+    "c4":  {"min": 3, "max": 10,  "label": "Kosten Schwindmaß (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Normpunkte Druckfestigkeit"},
+    "a12": {"min": 2, "max": 6,   "label": "Normpunkte Dichtigkeit"},
+    "a13": {"min": 3, "max": 7,   "label": "Normpunkte Frostbeständigkeit"},
+    "a14": {"min": 2, "max": 5,   "label": "Normpunkte Schwindmaß"},
+    "b1":  {"min": 60, "max": 240, "label": "Mindest-Normerfüllung (Punkte)"},
+    "a21": {"min": 2, "max": 5,   "label": "Laborzeit Druckfestigkeit (Stunden)"},
+    "a22": {"min": 1, "max": 3,   "label": "Laborzeit Dichtigkeit (Stunden)"},
+    "a23": {"min": 3, "max": 7,   "label": "Laborzeit Frostbeständigkeit (Stunden)"},
+    "a24": {"min": 1, "max": 4,   "label": "Laborzeit Schwindmaß (Stunden)"},
+    "b2":  {"min": 30, "max": 120, "label": "Laborzeit (Stunden)"},
+    "a31": {"min": 3, "max": 8,   "label": "Probenkosten Druckfestigkeit (€)"},
+    "a32": {"min": 2, "max": 5,   "label": "Probenkosten Dichtigkeit (€)"},
+    "a33": {"min": 4, "max": 10,  "label": "Probenkosten Frostbeständigkeit (€)"},
+    "a34": {"min": 2, "max": 6,   "label": "Probenkosten Schwindmaß (€)"},
+    "b3":  {"min": 80, "max": 300, "label": "Probenbudget (€)"}
+  },
+  "titel": "Betonwerk – Vier Normprüfungen",
+  "beschreibung": "Ein Betonwerk führt vier Normprüfungen durch: Druckfestigkeitstests, Dichtigkeitstests, Frostbeständigkeitstests und Schwindmaßtests. Ein Druckfestigkeitstest kostet {c1} €, ein Dichtigkeitstest kostet {c2} €, ein Frostbeständigkeitstest kostet {c3} € und ein Schwindmaßtest kostet {c4} €. Die Normpunkte betragen {a11} pro Druckfestigkeitstest, {a12} pro Dichtigkeitstest, {a13} pro Frostbeständigkeitstest und {a14} pro Schwindmaßtest. Die Mindest-Normerfüllung beträgt {b1} Punkte. Die Laborzeit beträgt {a21} Stunden pro Druckfestigkeitstest, {a22} Stunden pro Dichtigkeitstest, {a23} Stunden pro Frostbeständigkeitstest und {a24} Stunden pro Schwindmaßtest. Die Laborzeit ist auf {b2} Stunden begrenzt. Die Probenkosten betragen {a31} € pro Druckfestigkeitstest, {a32} € pro Dichtigkeitstest, {a33} € pro Frostbeständigkeitstest und {a34} € pro Schwindmaßtest. Das Probenbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Normerfüllung und begrenzter Laborzeit und Probenbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Druckfestigkeitstest kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Dichtigkeitstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Frostbeständigkeitstest kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Schwindmaßtest kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} pro Druckfestigkeitstest", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} pro Dichtigkeitstest", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} pro Frostbeständigkeitstest", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} pro Schwindmaßtest", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Punkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Druckfestigkeitstest", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Dichtigkeitstest", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden pro Frostbeständigkeitstest", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Stunden pro Schwindmaßtest", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden begrenzt", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Druckfestigkeitstest", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Dichtigkeitstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Frostbeständigkeitstest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Schwindmaßtest", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

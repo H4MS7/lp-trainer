@@ -1,0 +1,43 @@
+{
+  "id": "wart_maschinen_2v_01",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl präventive Wartungen", "x2 = Anzahl reaktive Reparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Technikerstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten präventiv (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten reaktiv (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "Verfügbarkeit präventiv (%)"},
+    "a12": {"min": 1, "max": 5,   "label": "Verfügbarkeit reaktiv (%)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 2, "max": 6,   "label": "Stunden präventiv (h)"},
+    "a22": {"min": 3, "max": 8,   "label": "Stunden reaktiv (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Technikerstunden (h)"}
+  },
+  "titel": "Maschinenpark – Wartungsoptimierung",
+  "beschreibung": "Ein Produktionsbetrieb plant die Wartung seines Maschinenparks. Eine präventive Wartung kostet {c1} Tsd. €, eine reaktive Reparatur kostet {c2} Tsd. €. Die präventive Wartung steigert die Verfügbarkeit um {a11} %, die reaktive Reparatur um {a12} %. Die Mindestverfügbarkeit beträgt {b1} %. Eine präventive Wartung benötigt {a21} Technikerstunden, eine reaktive Reparatur benötigt {a22} Technikerstunden. Maximal {b2} Technikerstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Mindestverfügbarkeit und der Technikerstunden.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "präventive Wartung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "reaktive Reparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Technikerstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Technikerstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Technikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "prod_schuh_2v_14",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Paar Sneaker", "x2 = Paar Stiefel"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Leder", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Klebstoff", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 35,   "label": "Gewinn/Paar Sneaker (€)"},
+    "c2":  {"min": 20, "max": 55,   "label": "Gewinn/Paar Stiefel (€)"},
+    "a11": {"min": 1, "max": 3,     "label": "Leder/Sneaker (m²)"},
+    "a12": {"min": 2, "max": 5,     "label": "Leder/Stiefel (m²)"},
+    "b1":  {"min": 40, "max": 200,  "label": "Ledervorrat (m²)"},
+    "a21": {"min": 1, "max": 4,     "label": "Klebstoff/Sneaker (dl)"},
+    "a22": {"min": 2, "max": 6,     "label": "Klebstoff/Stiefel (dl)"},
+    "b2":  {"min": 30, "max": 150,  "label": "Klebstoffvorrat (dl)"}
+  },
+  "titel": "Schuhfabrik – Sneaker und Stiefel",
+  "beschreibung": "Eine Schuhfabrik stellt Sneaker und Stiefel her. Pro Paar Sneaker betraegt der Gewinn {c1} Euro, pro Paar Stiefel {c2} Euro. Ein Paar Sneaker benoetigt {a11} m² Leder, ein Paar Stiefel {a12} m². Es stehen {b1} m² Leder zur Verfuegung. Fuer Sneaker werden {a21} dl Klebstoff benoetigt, fuer Stiefel {a22} dl. Der Klebstoffvorrat betraegt {b2} dl.",
+  "hinweis": "Identifiziere Gewinn und die Beschraenkungen durch Leder und Klebstoff.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sneaker betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Stiefel {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Sneaker benoetigt {a11} m² Leder", "bedeutung": "{a11}x₁"},
+        {"text": "Stiefel {a12} m²", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m² Leder zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Sneaker werden {a21} dl Klebstoff benoetigt", "bedeutung": "{a21}x₁"},
+        {"text": "Stiefel {a22} dl", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} dl", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

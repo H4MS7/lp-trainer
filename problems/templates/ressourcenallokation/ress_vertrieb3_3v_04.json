@@ -1,0 +1,60 @@
+{
+  "id": "ress_vertrieb3_3v_04",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Vertreter Region West", "x2 = Vertreter Region Mitte", "x3 = Vertreter Region Ost"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Vertreterstellen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Dienstwagenbudget", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Schulungstage", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 30,   "label": "Umsatz/Vertreter West (1000 €)"},
+    "c2":  {"min": 8, "max": 25,    "label": "Umsatz/Vertreter Mitte (1000 €)"},
+    "c3":  {"min": 12, "max": 35,   "label": "Umsatz/Vertreter Ost (1000 €)"},
+    "a11": {"min": 1, "max": 1,     "label": "Stelle/Vertreter West"},
+    "a12": {"min": 1, "max": 1,     "label": "Stelle/Vertreter Mitte"},
+    "a13": {"min": 1, "max": 1,     "label": "Stelle/Vertreter Ost"},
+    "b1":  {"min": 5, "max": 25,    "label": "Verfuegbare Stellen"},
+    "a21": {"min": 2, "max": 5,     "label": "Dienstwagenkosten/Vertreter West (1000 €)"},
+    "a22": {"min": 1, "max": 4,     "label": "Dienstwagenkosten/Vertreter Mitte (1000 €)"},
+    "a23": {"min": 2, "max": 6,     "label": "Dienstwagenkosten/Vertreter Ost (1000 €)"},
+    "b2":  {"min": 15, "max": 60,   "label": "Dienstwagenbudget (1000 €)"},
+    "a31": {"min": 1, "max": 3,     "label": "Schulungstage/Vertreter West"},
+    "a32": {"min": 1, "max": 3,     "label": "Schulungstage/Vertreter Mitte"},
+    "a33": {"min": 2, "max": 4,     "label": "Schulungstage/Vertreter Ost"},
+    "b3":  {"min": 10, "max": 40,   "label": "Schulungstage gesamt"}
+  },
+  "titel": "Vertriebsgebiete – West, Mitte und Ost",
+  "beschreibung": "Der Vertriebsleiter verteilt Aussendienstmitarbeiter auf drei Regionen: West, Mitte und Ost. Jeder Vertreter in Region West bringt {c1} Tausend Euro Umsatz, in Mitte {c2} Tausend Euro und in Ost {c3} Tausend Euro. Jeder Vertreter West benoetigt {a11} Stelle, Mitte {a12} Stelle und Ost {a13} Stelle. Es stehen {b1} Stellen zur Verfuegung. Die Dienstwagenkosten betragen {a21} Tausend Euro pro Vertreter West, {a22} Tausend Euro Mitte und {a23} Tausend Euro Ost. Das Dienstwagenbudget umfasst {b2} Tausend Euro. Die Einarbeitung dauert {a31} Schulungstage pro Vertreter West, {a32} Tage Mitte und {a33} Tage Ost bei {b3} verfuegbaren Schulungstagen.",
+  "hinweis": "Drei Regionen mit Stellen-, Dienstwagen- und Schulungsbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Region West bringt {c1} Tausend Euro Umsatz", "bedeutung": "{c1} × x₁"},
+      {"text": "Mitte {c2} Tausend Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Ost {c3} Tausend Euro", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Vertreter West benoetigt {a11} Stelle", "bedeutung": "{a11}x₁"},
+        {"text": "Mitte {a12} Stelle", "bedeutung": "+ {a12}x₂"},
+        {"text": "Ost {a13} Stelle", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Stellen zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tausend Euro pro Vertreter West", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tausend Euro Mitte", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tausend Euro Ost", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Tausend Euro", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Schulungstage pro Vertreter West", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tage Mitte", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tage Ost", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} verfuegbaren Schulungstagen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

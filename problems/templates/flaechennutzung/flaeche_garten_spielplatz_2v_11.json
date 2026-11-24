@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_garten_spielplatz_2v_11",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Gemeinschaftsgarten", "x2 = Hektar Spielplatz"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Pflegeaufwand", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Nutzen Garten (Tsd. €/ha)"},
+    "c2":  {"min": 5, "max": 12,  "label": "Nutzen Spielplatz (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Garten (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Spielplatz (ha/ha)"},
+    "b1":  {"min": 5, "max": 40,   "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 8,   "label": "Pflegestunden Garten (h/ha)"},
+    "a22": {"min": 2, "max": 5,   "label": "Pflegestunden Spielplatz (h/ha)"},
+    "b2":  {"min": 20, "max": 100, "label": "Max. Pflegestunden (h)"}
+  },
+  "titel": "Gemeinde – Gemeinschaftsgarten und Spielplatz",
+  "beschreibung": "Eine Gemeinde plant die Nutzung einer Freifläche als Gemeinschaftsgarten und Spielplatz. Der Garten stiftet {c1} Tsd. € Nutzen pro Hektar, der Spielplatz stiftet {c2} Tsd. € Nutzen pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Garten und {a12} Hektar pro Hektar Spielplatz. Die Gesamtfläche beträgt {b1} Hektar. Der Pflegeaufwand beträgt {a21} Stunden pro Hektar Garten und {a22} Stunden pro Hektar Spielplatz. Maximal {b2} Pflegestunden stehen zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtnutzen unter Beachtung der Flächen- und Pflegebeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Garten stiftet {c1} Tsd. € Nutzen pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Spielplatz stiftet {c2} Tsd. € Nutzen pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Garten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Spielplatz", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Hektar Garten", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Hektar Spielplatz", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Pflegestunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

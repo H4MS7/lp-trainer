@@ -1,0 +1,65 @@
+{
+  "id": "misch_pharma_4v_01",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Menge Wirkstoff A (mg)", "x2 = Menge Wirkstoff B (mg)", "x3 = Menge Wirkstoff C (mg)", "x4 = Menge Wirkstoff D (mg)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Schmerzlinderung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Entzündungshemmung", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Nebenwirkungen", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Dosierung", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Wirkstoff A (EUR/mg)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Kosten Wirkstoff B (EUR/mg)"},
+    "c3":  {"min": 4, "max": 14,  "label": "Kosten Wirkstoff C (EUR/mg)"},
+    "c4":  {"min": 1, "max": 8,   "label": "Kosten Wirkstoff D (EUR/mg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Schmerzlinderung A (Einheiten/mg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Schmerzlinderung B (Einheiten/mg)"},
+    "a13": {"min": 1, "max": 5,   "label": "Schmerzlinderung C (Einheiten/mg)"},
+    "a14": {"min": 2, "max": 8,   "label": "Schmerzlinderung D (Einheiten/mg)"},
+    "b1":  {"min": 40, "max": 150, "label": "Mindest-Schmerzlinderung (Einheiten)"},
+    "a21": {"min": 1, "max": 5,   "label": "Entzündungshemmung A (Einheiten/mg)"},
+    "a22": {"min": 3, "max": 9,   "label": "Entzündungshemmung B (Einheiten/mg)"},
+    "a23": {"min": 2, "max": 7,   "label": "Entzündungshemmung C (Einheiten/mg)"},
+    "a24": {"min": 1, "max": 6,   "label": "Entzündungshemmung D (Einheiten/mg)"},
+    "b2":  {"min": 30, "max": 120, "label": "Mindest-Entzündungshemmung (Einheiten)"},
+    "a31": {"min": 1, "max": 4,   "label": "Nebenwirkungen A (Einheiten/mg)"},
+    "a32": {"min": 2, "max": 6,   "label": "Nebenwirkungen B (Einheiten/mg)"},
+    "a33": {"min": 1, "max": 5,   "label": "Nebenwirkungen C (Einheiten/mg)"},
+    "a34": {"min": 2, "max": 7,   "label": "Nebenwirkungen D (Einheiten/mg)"},
+    "b3":  {"min": 30, "max": 100, "label": "Max. Nebenwirkungen (Einheiten)"},
+    "a41": {"min": 1, "max": 3,   "label": "Dosierungsfaktor A"},
+    "a42": {"min": 1, "max": 4,   "label": "Dosierungsfaktor B"},
+    "a43": {"min": 2, "max": 5,   "label": "Dosierungsfaktor C"},
+    "a44": {"min": 1, "max": 3,   "label": "Dosierungsfaktor D"},
+    "b4":  {"min": 40, "max": 120, "label": "Max. Dosierung (Einheiten)"}
+  },
+  "titel": "Medikament – Wirkung, Nebenwirkungen und Dosierung",
+  "beschreibung": "Ein Pharmaunternehmen mischt ein Medikament aus vier Wirkstoffen. Wirkstoff A kostet {c1} EUR pro mg, B kostet {c2} EUR pro mg, C kostet {c3} EUR pro mg und D kostet {c4} EUR pro mg. Wirkstoff A liefert {a11} Schmerzlinderungs-Einheiten pro mg, B liefert {a12}, C liefert {a13} und D liefert {a14} Einheiten pro mg. Es werden mindestens {b1} Schmerzlinderungs-Einheiten benötigt. Wirkstoff A liefert {a21} Entzündungshemmungs-Einheiten pro mg, B liefert {a22}, C liefert {a23} und D liefert {a24} Einheiten pro mg. Es werden mindestens {b2} Entzündungshemmungs-Einheiten benötigt. Wirkstoff A verursacht {a31} Nebenwirkungs-Einheiten pro mg, B verursacht {a32}, C verursacht {a33} und D verursacht {a34} Einheiten pro mg. Die Nebenwirkungen dürfen höchstens {b3} Einheiten betragen. Der Dosierungsfaktor beträgt {a41} pro mg für A, {a42} für B, {a43} für C und {a44} für D. Die Gesamtdosierung darf höchstens {b4} Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichender Schmerz- und Entzündungshemmung sowie begrenzten Nebenwirkungen und Dosierung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wirkstoff A kostet {c1} EUR pro mg", "bedeutung": "{c1} × x₁"},
+      {"text": "B kostet {c2} EUR pro mg", "bedeutung": "{c2} × x₂"},
+      {"text": "C kostet {c3} EUR pro mg", "bedeutung": "{c3} × x₃"},
+      {"text": "D kostet {c4} EUR pro mg", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Schmerzlinderungs-Einheiten pro mg, B liefert {a12}, C liefert {a13} und D liefert {a14} Einheiten pro mg. Es werden mindestens {b1} Schmerzlinderungs-Einheiten benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Entzündungshemmungs-Einheiten pro mg, B liefert {a22}, C liefert {a23} und D liefert {a24} Einheiten pro mg. Es werden mindestens {b2} Entzündungshemmungs-Einheiten benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Nebenwirkungs-Einheiten pro mg, B verursacht {a32}, C verursacht {a33} und D verursacht {a34} Einheiten pro mg. Die Nebenwirkungen dürfen höchstens {b3} Einheiten betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} pro mg für A, {a42} für B, {a43} für C und {a44} für D. Die Gesamtdosierung darf höchstens {b4} Einheiten betragen", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ ≤ {b4}"}
+      ]
+    ]
+  }
+}

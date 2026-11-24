@@ -1,0 +1,360 @@
+[
+  {
+    "titel": "Energiemix mit fünf erneuerbaren Quellen",
+    "beschreibung": "Ein überregionaler Energieversorger plant die Stromerzeugung aus fünf erneuerbaren Quellen: Onshore-Windkraft, Offshore-Windkraft, Photovoltaik, Biomasse und Geothermie. Die Betriebskosten betragen 2€ pro MWh für Onshore-Windstrom, 2€ pro MWh für Offshore-Windstrom, 3€ pro MWh für Photovoltaikstrom, 8€ pro MWh für Biomassestrom und 14€ pro MWh für Geothermiestrom. Für die Grundlastversorgung müssen mindestens 532 MWh Leistung bereitgestellt werden. Jede MWh Onshore-Windstrom liefert 5 MWh Grundlastleistung, jede MWh Offshore-Windstrom 2 MWh Grundlastleistung, jede MWh Photovoltaikstrom 5 MWh Grundlastleistung, jede MWh Biomassestrom 2 MWh Grundlastleistung und jede MWh Geothermiestrom 8 MWh Grundlastleistung. Die Transformatorkapazität ist auf höchstens 765 MWh begrenzt. Jede MWh Onshore-Windstrom beansprucht 7 MWh Transformatorkapazität, jede MWh Offshore-Windstrom 1 MWh Transformatorkapazität, jede MWh Photovoltaikstrom 3 MWh Transformatorkapazität, jede MWh Biomassestrom 12 MWh Transformatorkapazität und jede MWh Geothermiestrom 11 MWh Transformatorkapazität. Die Netzeinspeisung darf höchstens 1665 MWh betragen. Jede MWh Onshore-Windstrom belegt 7 MWh Netzeinspeisung, jede MWh Offshore-Windstrom 4 MWh Netzeinspeisung, jede MWh Photovoltaikstrom 8 MWh Netzeinspeisung, jede MWh Biomassestrom 4 MWh Netzeinspeisung und jede MWh Geothermiestrom 5 MWh Netzeinspeisung. Für die Spitzenlastabdeckung müssen mindestens 194 MWh erzeugt werden. Jede MWh Onshore-Windstrom liefert 7 MWh Spitzenlastabdeckung, jede MWh Offshore-Windstrom 11 MWh Spitzenlastabdeckung, jede MWh Photovoltaikstrom 6 MWh Spitzenlastabdeckung, jede MWh Biomassestrom 12 MWh Spitzenlastabdeckung und jede MWh Geothermiestrom 9 MWh Spitzenlastabdeckung. Die Speicherkapazität beträgt höchstens 1546 MWh. Jede MWh Onshore-Windstrom beansprucht 6 MWh Speicherkapazität, jede MWh Offshore-Windstrom 3 MWh Speicherkapazität, jede MWh Photovoltaikstrom 3 MWh Speicherkapazität, jede MWh Biomassestrom 5 MWh Speicherkapazität und jede MWh Geothermiestrom 8 MWh Speicherkapazität. Die Gesamtbetriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Onshore-Windkraft",
+      "x2 = MWh aus Offshore-Windkraft",
+      "x3 = MWh aus Photovoltaik",
+      "x4 = MWh aus Biomasse",
+      "x5 = MWh aus Geothermie"
+    ],
+    "zielfunktion": "Z = 2x1 + 2x2 + 3x3 + 8x4 + 14x5 (min)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 + 5x3 + 2x4 + 8x5 ≥ 532 (Mindest-Grundlastleistung)",
+      "7x1 + x2 + 3x3 + 12x4 + 11x5 ≤ 765 (Max-Transformatorkapazität)",
+      "7x1 + 4x2 + 8x3 + 4x4 + 5x5 ≤ 1665 (Max-Netzeinspeisung)",
+      "7x1 + 11x2 + 6x3 + 12x4 + 9x5 ≥ 194 (Mindest-Spitzenlastabdeckung)",
+      "6x1 + 3x2 + 3x3 + 5x4 + 8x5 ≤ 1546 (Max-Speicherkapazität)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie sorgfältig alle fünf Variablen und die Richtung jeder Nebenbedingung. Grundlast und Spitzenlast sind Mindestanforderungen (≥), während Transformatorkapazität, Netzeinspeisung und Speicherkapazität Obergrenzen (≤) darstellen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro MWh für Onshore-Windstrom",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "2€ pro MWh für Offshore-Windstrom",
+          "bedeutung": "2 × x₂"
+        },
+        {
+          "text": "3€ pro MWh für Photovoltaikstrom",
+          "bedeutung": "3 × x₃"
+        },
+        {
+          "text": "8€ pro MWh für Biomassestrom",
+          "bedeutung": "8 × x₄"
+        },
+        {
+          "text": "14€ pro MWh für Geothermiestrom",
+          "bedeutung": "14 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Onshore-Windstrom liefert 5 MWh Grundlastleistung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Offshore-Windstrom 2 MWh Grundlastleistung",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Photovoltaikstrom 5 MWh Grundlastleistung",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "Biomassestrom 2 MWh Grundlastleistung",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Geothermiestrom 8 MWh Grundlastleistung",
+            "bedeutung": "+ 8x₅"
+          },
+          {
+            "text": "mindestens 532 MWh Leistung",
+            "bedeutung": "≥ 532"
+          }
+        ],
+        [
+          {
+            "text": "Onshore-Windstrom beansprucht 7 MWh Transformatorkapazität",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Offshore-Windstrom 1 MWh Transformatorkapazität",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "Photovoltaikstrom 3 MWh Transformatorkapazität",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Biomassestrom 12 MWh Transformatorkapazität",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Geothermiestrom 11 MWh Transformatorkapazität",
+            "bedeutung": "+ 11x₅"
+          },
+          {
+            "text": "höchstens 765 MWh",
+            "bedeutung": "≤ 765"
+          }
+        ],
+        [
+          {
+            "text": "Onshore-Windstrom belegt 7 MWh Netzeinspeisung",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Offshore-Windstrom 4 MWh Netzeinspeisung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "Photovoltaikstrom 8 MWh Netzeinspeisung",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "Biomassestrom 4 MWh Netzeinspeisung",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "Geothermiestrom 5 MWh Netzeinspeisung",
+            "bedeutung": "+ 5x₅"
+          },
+          {
+            "text": "höchstens 1665 MWh",
+            "bedeutung": "≤ 1665"
+          }
+        ],
+        [
+          {
+            "text": "Onshore-Windstrom liefert 7 MWh Spitzenlastabdeckung",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Offshore-Windstrom 11 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "Photovoltaikstrom 6 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Biomassestrom 12 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Geothermiestrom 9 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 9x₅"
+          },
+          {
+            "text": "mindestens 194 MWh",
+            "bedeutung": "≥ 194"
+          }
+        ],
+        [
+          {
+            "text": "Onshore-Windstrom beansprucht 6 MWh Speicherkapazität",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Offshore-Windstrom 3 MWh Speicherkapazität",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Photovoltaikstrom 3 MWh Speicherkapazität",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "Biomassestrom 5 MWh Speicherkapazität",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "Geothermiestrom 8 MWh Speicherkapazität",
+            "bedeutung": "+ 8x₅"
+          },
+          {
+            "text": "höchstens 1546 MWh",
+            "bedeutung": "≤ 1546"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix für Großstadt mit fünf Quellen",
+    "beschreibung": "Eine Großstadt plant die Energieversorgung aus fünf erneuerbaren Quellen: Solaranlagen, Windparks, Wasserkraftwerke, Biomassekraftwerke und Geothermieanlagen. Die Erzeugungskosten betragen 13€ pro MWh für Solarstrom, 11€ pro MWh für Windstrom, 2€ pro MWh für Wasserkraftstrom, 5€ pro MWh für Biomassestrom und 7€ pro MWh für Geothermiestrom. Die Grundlastversorgung der Stadt erfordert mindestens 598 MWh Erzeugung. Jede MWh Solarstrom liefert 11 MWh Grundlasterzeugung, jede MWh Windstrom 6 MWh Grundlasterzeugung, jede MWh Wasserkraftstrom 6 MWh Grundlasterzeugung, jede MWh Biomassestrom 7 MWh Grundlasterzeugung und jede MWh Geothermiestrom 9 MWh Grundlasterzeugung. Die Netzkapazität für die Wechselrichterleistung beträgt höchstens 1974 MWh. Jede MWh Solarstrom beansprucht 2 MWh Wechselrichterleistung, jede MWh Windstrom 3 MWh Wechselrichterleistung, jede MWh Wasserkraftstrom 1 MWh Wechselrichterleistung, jede MWh Biomassestrom 12 MWh Wechselrichterleistung und jede MWh Geothermiestrom 8 MWh Wechselrichterleistung. Die Transformatorkapazität ist auf höchstens 1613 MWh begrenzt. Jede MWh Solarstrom belegt 4 MWh Transformatorkapazität, jede MWh Windstrom 8 MWh Transformatorkapazität, jede MWh Wasserkraftstrom 11 MWh Transformatorkapazität, jede MWh Biomassestrom 2 MWh Transformatorkapazität und jede MWh Geothermiestrom 12 MWh Transformatorkapazität. Für die Spitzenlastabdeckung müssen mindestens 171 MWh bereitgestellt werden. Jede MWh Solarstrom liefert 10 MWh Spitzenlastabdeckung, jede MWh Windstrom 8 MWh Spitzenlastabdeckung, jede MWh Wasserkraftstrom 10 MWh Spitzenlastabdeckung, jede MWh Biomassestrom 1 MWh Spitzenlastabdeckung und jede MWh Geothermiestrom 1 MWh Spitzenlastabdeckung. Die Speicherkapazität beträgt höchstens 697 MWh. Jede MWh Solarstrom beansprucht 9 MWh Speicherkapazität, jede MWh Windstrom 11 MWh Speicherkapazität, jede MWh Wasserkraftstrom 4 MWh Speicherkapazität, jede MWh Biomassestrom 9 MWh Speicherkapazität und jede MWh Geothermiestrom 10 MWh Speicherkapazität. Die Gesamterzeugungskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windparks",
+      "x3 = MWh aus Wasserkraftwerken",
+      "x4 = MWh aus Biomassekraftwerken",
+      "x5 = MWh aus Geothermieanlagen"
+    ],
+    "zielfunktion": "Z = 13x1 + 11x2 + 2x3 + 5x4 + 7x5 (min)",
+    "nebenbedingungen": [
+      "11x1 + 6x2 + 6x3 + 7x4 + 9x5 ≥ 598 (Mindest-Grundlasterzeugung)",
+      "2x1 + 3x2 + x3 + 12x4 + 8x5 ≤ 1974 (Max-Wechselrichterleistung)",
+      "4x1 + 8x2 + 11x3 + 2x4 + 12x5 ≤ 1613 (Max-Transformatorkapazität)",
+      "10x1 + 8x2 + 10x3 + x4 + x5 ≥ 171 (Mindest-Spitzenlastabdeckung)",
+      "9x1 + 11x2 + 4x3 + 9x4 + 10x5 ≤ 697 (Max-Speicherkapazität)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie bei fünf Variablen die Zuordnung der Koeffizienten zu den Quellen. Grundlast und Spitzenlast sind Mindestanforderungen (≥), während Wechselrichterleistung, Transformatorkapazität und Speicherkapazität Obergrenzen (≤) darstellen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "13€ pro MWh für Solarstrom",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "11€ pro MWh für Windstrom",
+          "bedeutung": "11 × x₂"
+        },
+        {
+          "text": "2€ pro MWh für Wasserkraftstrom",
+          "bedeutung": "2 × x₃"
+        },
+        {
+          "text": "5€ pro MWh für Biomassestrom",
+          "bedeutung": "5 × x₄"
+        },
+        {
+          "text": "7€ pro MWh für Geothermiestrom",
+          "bedeutung": "7 × x₅"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solarstrom liefert 11 MWh Grundlasterzeugung",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Windstrom 6 MWh Grundlasterzeugung",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "Wasserkraftstrom 6 MWh Grundlasterzeugung",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Biomassestrom 7 MWh Grundlasterzeugung",
+            "bedeutung": "+ 7x₄"
+          },
+          {
+            "text": "Geothermiestrom 9 MWh Grundlasterzeugung",
+            "bedeutung": "+ 9x₅"
+          },
+          {
+            "text": "mindestens 598 MWh Erzeugung",
+            "bedeutung": "≥ 598"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom beansprucht 2 MWh Wechselrichterleistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windstrom 3 MWh Wechselrichterleistung",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Wasserkraftstrom 1 MWh Wechselrichterleistung",
+            "bedeutung": "+ 1x₃"
+          },
+          {
+            "text": "Biomassestrom 12 MWh Wechselrichterleistung",
+            "bedeutung": "+ 12x₄"
+          },
+          {
+            "text": "Geothermiestrom 8 MWh Wechselrichterleistung",
+            "bedeutung": "+ 8x₅"
+          },
+          {
+            "text": "höchstens 1974 MWh",
+            "bedeutung": "≤ 1974"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom belegt 4 MWh Transformatorkapazität",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Windstrom 8 MWh Transformatorkapazität",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "Wasserkraftstrom 11 MWh Transformatorkapazität",
+            "bedeutung": "+ 11x₃"
+          },
+          {
+            "text": "Biomassestrom 2 MWh Transformatorkapazität",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "Geothermiestrom 12 MWh Transformatorkapazität",
+            "bedeutung": "+ 12x₅"
+          },
+          {
+            "text": "höchstens 1613 MWh",
+            "bedeutung": "≤ 1613"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom liefert 10 MWh Spitzenlastabdeckung",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Windstrom 8 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "Wasserkraftstrom 10 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 10x₃"
+          },
+          {
+            "text": "Biomassestrom 1 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 1x₄"
+          },
+          {
+            "text": "Geothermiestrom 1 MWh Spitzenlastabdeckung",
+            "bedeutung": "+ 1x₅"
+          },
+          {
+            "text": "mindestens 171 MWh",
+            "bedeutung": "≥ 171"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom beansprucht 9 MWh Speicherkapazität",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Windstrom 11 MWh Speicherkapazität",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "Wasserkraftstrom 4 MWh Speicherkapazität",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "Biomassestrom 9 MWh Speicherkapazität",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "Geothermiestrom 10 MWh Speicherkapazität",
+            "bedeutung": "+ 10x₅"
+          },
+          {
+            "text": "höchstens 697 MWh",
+            "bedeutung": "≤ 697"
+          }
+        ]
+      ]
+    }
+  }
+]

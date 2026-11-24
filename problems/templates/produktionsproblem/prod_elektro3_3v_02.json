@@ -1,0 +1,60 @@
+{
+  "id": "prod_elektro3_3v_02",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Laptops", "x2 = Anzahl Monitore", "x3 = Anzahl Tastaturen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Montagezeit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Testzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Verpackung", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 180, "label": "Gewinn/Laptop (€)"},
+    "c2":  {"min": 30, "max": 90,  "label": "Gewinn/Monitor (€)"},
+    "c3":  {"min": 5, "max": 20,   "label": "Gewinn/Tastatur (€)"},
+    "a11": {"min": 3, "max": 8,    "label": "Montagezeit/Laptop (h)"},
+    "a12": {"min": 2, "max": 5,    "label": "Montagezeit/Monitor (h)"},
+    "a13": {"min": 1, "max": 2,    "label": "Montagezeit/Tastatur (h)"},
+    "b1":  {"min": 80, "max": 300, "label": "Montagestunden"},
+    "a21": {"min": 2, "max": 6,    "label": "Testzeit/Laptop (h)"},
+    "a22": {"min": 1, "max": 3,    "label": "Testzeit/Monitor (h)"},
+    "a23": {"min": 1, "max": 2,    "label": "Testzeit/Tastatur (h)"},
+    "b2":  {"min": 40, "max": 160, "label": "Teststunden"},
+    "a31": {"min": 1, "max": 3,    "label": "Verpackungszeit/Laptop (h)"},
+    "a32": {"min": 1, "max": 2,    "label": "Verpackungszeit/Monitor (h)"},
+    "a33": {"min": 1, "max": 2,    "label": "Verpackungszeit/Tastatur (h)"},
+    "b3":  {"min": 30, "max": 120, "label": "Verpackungsstunden"}
+  },
+  "titel": "Elektronikwerk – Laptops, Monitore und Tastaturen",
+  "beschreibung": "Ein Elektronikwerk fertigt Laptops, Monitore und Tastaturen. Pro Laptop werden {c1} Euro Gewinn erzielt, pro Monitor {c2} Euro, pro Tastatur {c3} Euro. Die Montage eines Laptops dauert {a11} Stunden, eines Monitors {a12} Stunden, einer Tastatur {a13} Stunden. Es stehen {b1} Montagestunden bereit. Der Test eines Laptops benoetigt {a21} Stunden, eines Monitors {a22} Stunden, einer Tastatur {a23} Stunden bei insgesamt {b2} Teststunden. Die Verpackung dauert {a31} Stunden pro Laptop, {a32} Stunden pro Monitor und {a33} Stunden pro Tastatur. Die Verpackungskapazitaet betraegt {b3} Stunden.",
+  "hinweis": "Drei Produkte mit drei Zeitbeschraenkungen: Montage, Test und Verpackung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Laptop werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Monitor {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Tastatur {c3} Euro", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Laptops dauert {a11} Stunden", "bedeutung": "{a11}x₁"},
+        {"text": "Monitors {a12} Stunden", "bedeutung": "+ {a12}x₂"},
+        {"text": "Tastatur {a13} Stunden", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Montagestunden bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Laptops benoetigt {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Monitors {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "Tastatur {a23} Stunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Teststunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden pro Laptop", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden pro Monitor", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden pro Tastatur", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

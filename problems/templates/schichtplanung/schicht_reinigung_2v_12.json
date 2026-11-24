@@ -1,0 +1,43 @@
+{
+  "id": "schicht_reinigung_2v_12",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Büroreinigung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Hallenreinigung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 35, "max": 80, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 40, "max": 90, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 2, "max": 6, "label": "Reinigungskräfte Büro pro Frühschicht"},
+    "a12": {"min": 1, "max": 4, "label": "Reinigungskräfte Büro pro Spätschicht"},
+    "b1":  {"min": 10, "max": 35, "label": "Mindestbesetzung Büroreinigung"},
+    "a21": {"min": 1, "max": 4, "label": "Reinigungskräfte Halle pro Frühschicht"},
+    "a22": {"min": 2, "max": 5, "label": "Reinigungskräfte Halle pro Spätschicht"},
+    "b2":  {"min": 8, "max": 30, "label": "Mindestbesetzung Hallenreinigung"}
+  },
+  "titel": "Reinigungsdienst – Schichtplanung",
+  "beschreibung": "Ein Reinigungsdienst plant die Schichtbesetzung für Büro- und Hallenreinigung. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Reinigungskräfte für Büros bereit, jede Spätschicht stellt {a12} Reinigungskräfte für Büros bereit. Mindestens {b1} Reinigungskräfte für Büros werden benötigt. Jede Frühschicht stellt {a21} Reinigungskräfte für Hallen bereit, jede Spätschicht stellt {a22} Reinigungskräfte für Hallen bereit. Mindestens {b2} Reinigungskräfte für Hallen werden benötigt.",
+  "hinweis": "Minimiere die Schichtkosten bei Einhaltung der Mindestbesetzung für Büro- und Hallenreinigung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Reinigungskräfte für Büros bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Reinigungskräfte für Büros bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Reinigungskräfte für Büros werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Reinigungskräfte für Hallen bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Reinigungskräfte für Hallen bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Reinigungskräfte für Hallen werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

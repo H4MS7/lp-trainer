@@ -1,0 +1,68 @@
+{
+  "id": "schicht_grossfabrik_4v_01",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Frühschichten Vollzeit", "x2 = Anzahl Spätschichten Vollzeit", "x3 = Anzahl Nachtschichten Vollzeit", "x4 = Anzahl Teilzeitschichten"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Montage", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Verpackung", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Qualitätssicherung", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Maximale Gesamtschichten", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 120, "max": 220, "label": "Kosten Frühschicht VZ (€)"},
+    "c2":  {"min": 130, "max": 240, "label": "Kosten Spätschicht VZ (€)"},
+    "c3":  {"min": 170, "max": 300, "label": "Kosten Nachtschicht VZ (€)"},
+    "c4":  {"min": 60, "max": 120, "label": "Kosten Teilzeitschicht (€)"},
+    "a11": {"min": 4, "max": 9, "label": "Montage pro Frühschicht VZ"},
+    "a12": {"min": 3, "max": 7, "label": "Montage pro Spätschicht VZ"},
+    "a13": {"min": 2, "max": 5, "label": "Montage pro Nachtschicht VZ"},
+    "a14": {"min": 1, "max": 4, "label": "Montage pro Teilzeitschicht"},
+    "b1":  {"min": 25, "max": 70, "label": "Mindestbesetzung Montage"},
+    "a21": {"min": 3, "max": 6, "label": "Verpackung pro Frühschicht VZ"},
+    "a22": {"min": 3, "max": 6, "label": "Verpackung pro Spätschicht VZ"},
+    "a23": {"min": 2, "max": 4, "label": "Verpackung pro Nachtschicht VZ"},
+    "a24": {"min": 1, "max": 3, "label": "Verpackung pro Teilzeitschicht"},
+    "b2":  {"min": 15, "max": 50, "label": "Mindestbesetzung Verpackung"},
+    "a31": {"min": 2, "max": 4, "label": "QS pro Frühschicht VZ"},
+    "a32": {"min": 1, "max": 3, "label": "QS pro Spätschicht VZ"},
+    "a33": {"min": 1, "max": 2, "label": "QS pro Nachtschicht VZ"},
+    "a34": {"min": 1, "max": 2, "label": "QS pro Teilzeitschicht"},
+    "b3":  {"min": 8, "max": 25, "label": "Mindestbesetzung Qualitätssicherung"},
+    "a41": {"min": 1, "max": 1, "label": "Schichtfaktor Früh VZ"},
+    "a42": {"min": 1, "max": 1, "label": "Schichtfaktor Spät VZ"},
+    "a43": {"min": 1, "max": 1, "label": "Schichtfaktor Nacht VZ"},
+    "a44": {"min": 1, "max": 1, "label": "Schichtfaktor Teilzeit"},
+    "b4":  {"min": 20, "max": 50, "label": "Maximale Gesamtschichten"}
+  },
+  "titel": "Großfabrik – Vier-Schicht-Planung",
+  "beschreibung": "Eine Großfabrik plant die Besetzung mit vier Schichttypen. Eine Frühschicht Vollzeit kostet {c1} €, eine Spätschicht Vollzeit kostet {c2} €, eine Nachtschicht Vollzeit kostet {c3} € und eine Teilzeitschicht kostet {c4} €. Für die Montage stellt jede Frühschicht VZ {a11} Arbeiter bereit, jede Spätschicht VZ {a12}, jede Nachtschicht VZ {a13} und jede Teilzeitschicht {a14}. Mindestens {b1} Montagearbeiter werden benötigt. Für die Verpackung stellt jede Frühschicht VZ {a21} Arbeiter bereit, jede Spätschicht VZ {a22}, jede Nachtschicht VZ {a23} und jede Teilzeitschicht {a24}. Mindestens {b2} Verpackungsarbeiter werden benötigt. Für die Qualitätssicherung stellt jede Frühschicht VZ {a31} Prüfer bereit, jede Spätschicht VZ {a32}, jede Nachtschicht VZ {a33} und jede Teilzeitschicht {a34}. Mindestens {b3} Qualitätsprüfer werden benötigt. Insgesamt dürfen höchstens {b4} Schichten eingeplant werden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung und des Schichtlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht Vollzeit kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht Vollzeit kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht Vollzeit kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Teilzeitschicht kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Arbeiter bereit, jede Spätschicht VZ {a12}, jede Nachtschicht VZ {a13} und jede Teilzeitschicht {a14}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Montagearbeiter werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Arbeiter bereit, jede Spätschicht VZ {a22}, jede Nachtschicht VZ {a23} und jede Teilzeitschicht {a24}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Verpackungsarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Prüfer bereit, jede Spätschicht VZ {a32}, jede Nachtschicht VZ {a33} und jede Teilzeitschicht {a34}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Qualitätsprüfer werden benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "höchstens {b4} Schichten eingeplant werden", "bedeutung": "x₁ + x₂ + x₃ + x₄ ≤ {b4}"}
+      ]
+    ]
+  }
+}

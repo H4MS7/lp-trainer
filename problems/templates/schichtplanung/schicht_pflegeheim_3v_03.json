@@ -1,0 +1,54 @@
+{
+  "id": "schicht_pflegeheim_3v_03",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten", "x3 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Pflege", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Betreuung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Hauswirtschaft", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 70, "max": 140, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 75, "max": 150, "label": "Kosten Spätschicht (€)"},
+    "c3":  {"min": 100, "max": 190, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Pflegekräfte pro Frühschicht"},
+    "a12": {"min": 2, "max": 6, "label": "Pflegekräfte pro Spätschicht"},
+    "a13": {"min": 2, "max": 5, "label": "Pflegekräfte pro Nachtschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Pflege"},
+    "a21": {"min": 2, "max": 5, "label": "Betreuer pro Frühschicht"},
+    "a22": {"min": 2, "max": 5, "label": "Betreuer pro Spätschicht"},
+    "a23": {"min": 1, "max": 3, "label": "Betreuer pro Nachtschicht"},
+    "b2":  {"min": 8, "max": 30, "label": "Mindestbesetzung Betreuung"},
+    "a31": {"min": 2, "max": 4, "label": "Hauswirtschaft pro Frühschicht"},
+    "a32": {"min": 1, "max": 3, "label": "Hauswirtschaft pro Spätschicht"},
+    "a33": {"min": 1, "max": 2, "label": "Hauswirtschaft pro Nachtschicht"},
+    "b3":  {"min": 6, "max": 20, "label": "Mindestbesetzung Hauswirtschaft"}
+  },
+  "titel": "Pflegeheim – Drei-Schicht-Planung",
+  "beschreibung": "Ein Pflegeheim plant die Besetzung über drei Schichten. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} € und eine Nachtschicht kostet {c3} €. Jede Frühschicht stellt {a11} Pflegekräfte bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}. Mindestens {b1} Pflegekräfte werden benötigt. Jede Frühschicht stellt {a21} Betreuer bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}. Mindestens {b2} Betreuer werden benötigt. Jede Frühschicht stellt {a31} Hauswirtschaftskräfte bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}. Mindestens {b3} Hauswirtschaftskräfte werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Pflege, Betreuung und Hauswirtschaft.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Pflegekräfte bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Pflegekräfte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Betreuer bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Betreuer werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Hauswirtschaftskräfte bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Hauswirtschaftskräfte werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

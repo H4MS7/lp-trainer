@@ -1,0 +1,43 @@
+{
+  "id": "schicht_post_2v_16",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Sortierung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Zustellung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 55, "max": 110, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 60, "max": 120, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Sortierer pro Frühschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Sortierer pro Spätschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Sortierung"},
+    "a21": {"min": 4, "max": 10, "label": "Zusteller pro Frühschicht"},
+    "a22": {"min": 1, "max": 4, "label": "Zusteller pro Spätschicht"},
+    "b2":  {"min": 20, "max": 60, "label": "Mindestbesetzung Zustellung"}
+  },
+  "titel": "Postdienst – Schichtplanung",
+  "beschreibung": "Ein Postdienst plant die Schichtbesetzung für Sortierung und Zustellung. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Sortierer bereit, jede Spätschicht stellt {a12} Sortierer bereit. Mindestens {b1} Sortierer werden benötigt. Jede Frühschicht stellt {a21} Zusteller bereit, jede Spätschicht stellt {a22} Zusteller bereit. Mindestens {b2} Zusteller werden benötigt.",
+  "hinweis": "Minimiere die Schichtkosten bei Einhaltung der Mindestbesetzung für Sortierung und Zustellung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Sortierer bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Sortierer bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Sortierer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Zusteller bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Zusteller bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Zusteller werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

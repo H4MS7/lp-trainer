@@ -1,0 +1,54 @@
+{
+  "id": "kapa_cloud_3v_01",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Small-VMs", "x2 = Anzahl Medium-VMs", "x3 = Anzahl Large-VMs"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Speicherplatz", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,     "label": "Durchsatz Small (Req/s)"},
+    "c2":  {"min": 3, "max": 10,    "label": "Durchsatz Medium (Req/s)"},
+    "c3":  {"min": 8, "max": 20,    "label": "Durchsatz Large (Req/s)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Small (Kerne)"},
+    "a12": {"min": 2, "max": 4,     "label": "CPU Medium (Kerne)"},
+    "a13": {"min": 4, "max": 8,     "label": "CPU Large (Kerne)"},
+    "b1":  {"min": 40, "max": 160,  "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 4,     "label": "RAM Small (GB)"},
+    "a22": {"min": 4, "max": 8,     "label": "RAM Medium (GB)"},
+    "a23": {"min": 8, "max": 16,    "label": "RAM Large (GB)"},
+    "b2":  {"min": 64, "max": 256,  "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 10, "max": 50,   "label": "Speicher Small (GB)"},
+    "a32": {"min": 50, "max": 100,  "label": "Speicher Medium (GB)"},
+    "a33": {"min": 100, "max": 500, "label": "Speicher Large (GB)"},
+    "b3":  {"min": 500, "max": 2000, "label": "Verfügbarer Speicher (GB)"}
+  },
+  "titel": "Cloud-Plattform – VM-Größenklassen",
+  "beschreibung": "Ein Cloud-Dienst bietet drei VM-Größen an. Small-VMs verarbeiten {c1} Anfragen pro Sekunde, Medium-VMs verarbeiten {c2} Anfragen pro Sekunde und Large-VMs verarbeiten {c3} Anfragen pro Sekunde. Eine Small-VM benötigt {a11} CPU-Kerne, eine Medium-VM benötigt {a12} CPU-Kerne und eine Large-VM benötigt {a13} CPU-Kerne. Insgesamt stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für Small, {a22} GB für Medium und {a23} GB für Large. Das verfügbare RAM beträgt {b2} GB. Der Speicherbedarf beträgt {a31} GB für Small, {a32} GB für Medium und {a33} GB für Large. Der verfügbare Speicher beträgt {b3} GB.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Ressourcenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Small-VMs verarbeiten {c1} Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Medium-VMs verarbeiten {c2} Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Large-VMs verarbeiten {c3} Anfragen pro Sekunde", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, eine Medium-VM benötigt {a12} CPU-Kerne und eine Large-VM benötigt {a13} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für Small, {a22} GB für Medium und {a23} GB für Large", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} GB für Small, {a32} GB für Medium und {a33} GB für Large", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} GB", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "energie_biomasse_wasser_2v_02",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Biomasse", "x2 = MWh Wasserkraft"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 90, "label": "Kosten Biomasse (€/MWh)"},
+    "c2":  {"min": 20, "max": 60, "label": "Kosten Wasserkraft (€/MWh)"},
+    "a11": {"min": 2, "max": 6, "label": "Leistung Biomasse (MW/MWh)"},
+    "a12": {"min": 3, "max": 7, "label": "Leistung Wasserkraft (MW/MWh)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 6, "label": "CO2 Biomasse (t/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "CO2 Wasserkraft (t/MWh)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale CO2-Emission (t)"}
+  },
+  "titel": "Energiemix – Biomasse und Wasserkraft",
+  "beschreibung": "Ein Stadtwerk plant den Strommix aus Biomasse und Wasserkraft. Biomasse kostet {c1} € pro MWh, Wasserkraft kostet {c2} € pro MWh. Biomasse liefert {a11} MW Leistung pro MWh, Wasserkraft liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die CO2-Emission beträgt {a21} Tonnen pro MWh Biomasse und {a22} Tonnen pro MWh Wasserkraft. Maximal {b2} Tonnen CO2 dürfen ausgestoßen werden.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und CO2-Grenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Biomasse kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wasserkraft kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen pro MWh Biomasse", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen pro MWh Wasserkraft", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen CO2 dürfen ausgestoßen werden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

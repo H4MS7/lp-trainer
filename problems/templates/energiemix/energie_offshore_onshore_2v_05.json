@@ -1,0 +1,43 @@
+{
+  "id": "energie_offshore_onshore_2v_05",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Offshore-Wind", "x2 = MWh Onshore-Wind"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Anlagenzahl", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 130, "label": "Kosten Offshore (€/MWh)"},
+    "c2":  {"min": 30, "max": 80, "label": "Kosten Onshore (€/MWh)"},
+    "a11": {"min": 3, "max": 8, "label": "Leistung Offshore (MW/MWh)"},
+    "a12": {"min": 1, "max": 5, "label": "Leistung Onshore (MW/MWh)"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 3, "label": "Anlagen Offshore (pro MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Anlagen Onshore (pro MWh)"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale Anlagenzahl"}
+  },
+  "titel": "Energiemix – Offshore und Onshore Wind",
+  "beschreibung": "Ein Windparkbetreiber plant den Energiemix aus Offshore- und Onshore-Windanlagen. Offshore-Wind kostet {c1} € pro MWh, Onshore-Wind kostet {c2} € pro MWh. Offshore-Wind liefert {a11} MW Leistung pro MWh, Onshore-Wind liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Pro MWh werden {a21} Offshore-Anlagen und {a22} Onshore-Anlagen benötigt. Maximal {b2} Anlagen können installiert werden.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Anlagenbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Offshore-Wind kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Onshore-Wind kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Offshore-Anlagen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Onshore-Anlagen benötigt", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Anlagen können installiert werden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

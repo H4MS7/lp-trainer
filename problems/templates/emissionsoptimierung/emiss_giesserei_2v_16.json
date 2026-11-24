@@ -1,0 +1,43 @@
+{
+  "id": "emiss_giesserei_2v_16",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Stahlguss", "x2 = Einheiten Aluminiumguss"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Feinstaub", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Stahlguss (Tsd. €)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Ertrag Aluminiumguss (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Feinstaub Stahlguss (kg)"},
+    "a12": {"min": 2, "max": 6,   "label": "Feinstaub Aluminiumguss (kg)"},
+    "b1":  {"min": 60, "max": 250, "label": "Feinstaubgrenze (kg)"},
+    "a21": {"min": 4, "max": 10,  "label": "Energie Stahlguss (MWh)"},
+    "a22": {"min": 5, "max": 12,  "label": "Energie Aluminiumguss (MWh)"},
+    "b2":  {"min": 100, "max": 400, "label": "Energiebudget (MWh)"}
+  },
+  "titel": "Gießerei – Stahl- und Aluminiumguss",
+  "beschreibung": "Eine Gießerei produziert Stahlguss und Aluminiumguss. Stahlguss erwirtschaftet {c1} Tsd. € pro Einheit, Aluminiumguss {c2} Tsd. €. Stahlguss verursacht {a11} kg Feinstaub pro Einheit, Aluminiumguss {a12} kg. Die Feinstaubgrenze liegt bei {b1} kg. Stahlguss verbraucht {a21} MWh Energie pro Einheit, Aluminiumguss {a22} MWh. Das Energiebudget beträgt {b2} MWh.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung der Feinstaubgrenze und des Energiebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Stahlguss erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Aluminiumguss {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg Feinstaub pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Energie pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

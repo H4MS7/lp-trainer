@@ -1,0 +1,43 @@
+{
+  "id": "prod_ziegel_2v_13",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Paletten Mauerziegel", "x2 = Paletten Dachziegel"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Ton", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Brennofenzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 90,   "label": "Gewinn/Palette Mauerziegel (€)"},
+    "c2":  {"min": 40, "max": 110,  "label": "Gewinn/Palette Dachziegel (€)"},
+    "a11": {"min": 2, "max": 6,     "label": "Ton/Palette Mauerziegel (t)"},
+    "a12": {"min": 1, "max": 4,     "label": "Ton/Palette Dachziegel (t)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Tonvorrat (t)"},
+    "a21": {"min": 2, "max": 5,     "label": "Brennzeit/Palette Mauerziegel (h)"},
+    "a22": {"min": 3, "max": 7,     "label": "Brennzeit/Palette Dachziegel (h)"},
+    "b2":  {"min": 30, "max": 140,  "label": "Brennofenkapazitaet (h)"}
+  },
+  "titel": "Ziegelei – Mauer- und Dachziegel",
+  "beschreibung": "Eine Ziegelei produziert Mauer- und Dachziegel. Pro Palette Mauerziegel wird ein Gewinn von {c1} Euro erzielt, pro Palette Dachziegel {c2} Euro. Eine Palette Mauerziegel benoetigt {a11} Tonnen Ton, Dachziegel {a12} Tonnen. Der Tonvorrat betraegt {b1} Tonnen. Das Brennen einer Palette Mauerziegel dauert {a21} Stunden, Dachziegel {a22} Stunden. Die Brennofenkapazitaet liegt bei {b2} Stunden.",
+  "hinweis": "Modelliere den Gewinn und die Beschraenkungen durch Ton und Brennofen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Mauerziegel wird ein Gewinn von {c1} Euro erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Dachziegel {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Mauerziegel benoetigt {a11} Tonnen Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Dachziegel {a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Mauerziegel dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Dachziegel {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

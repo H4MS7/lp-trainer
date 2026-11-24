@@ -1,0 +1,43 @@
+{
+  "id": "energie_pv_speicher_2v_16",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh PV-Direkteinspeisung", "x2 = MWh PV-Speichernutzung"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestversorgung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Dachfläche", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 15, "max": 45, "label": "Kosten PV-Direkt (€/MWh)"},
+    "c2":  {"min": 30, "max": 75, "label": "Kosten PV-Speicher (€/MWh)"},
+    "a11": {"min": 2, "max": 5, "label": "Versorgung PV-Direkt (MW/MWh)"},
+    "a12": {"min": 3, "max": 7, "label": "Versorgung PV-Speicher (MW/MWh)"},
+    "b1":  {"min": 30, "max": 130, "label": "Mindestversorgung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Dachfläche PV-Direkt (m²/MWh)"},
+    "a22": {"min": 2, "max": 5, "label": "Dachfläche PV-Speicher (m²/MWh)"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale Dachfläche (m²)"}
+  },
+  "titel": "Energiemix – PV-Direkt und PV-Speicher",
+  "beschreibung": "Ein Gewerbebetrieb plant die Solarversorgung aus PV-Direkteinspeisung und PV-Speichernutzung. PV-Direkteinspeisung kostet {c1} € pro MWh, PV-Speichernutzung kostet {c2} € pro MWh. PV-Direkteinspeisung liefert {a11} MW Versorgung pro MWh, PV-Speichernutzung liefert {a12} MW Versorgung pro MWh. Mindestens {b1} MW Versorgung müssen bereitgestellt werden. Der Dachflächenbedarf beträgt {a21} m² pro MWh PV-Direkt und {a22} m² pro MWh PV-Speicher. Maximal {b2} m² Dachfläche stehen zur Verfügung.",
+  "hinweis": "Minimiere die Solarkosten bei Einhaltung der Mindestversorgung und Dachflächenbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "PV-Direkteinspeisung kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "PV-Speichernutzung kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Versorgung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Versorgung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Versorgung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² pro MWh PV-Direkt", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m² pro MWh PV-Speicher", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m² Dachfläche stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

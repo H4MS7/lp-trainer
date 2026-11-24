@@ -1,0 +1,60 @@
+{
+  "id": "emiss_bergbau_3v_08",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Eisenerz", "x2 = Einheiten Kupfererz", "x3 = Einheiten Kohle"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Abraum", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Eisenerz (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Kupfererz (Tsd. €)"},
+    "c3":  {"min": 2, "max": 8,   "label": "Ertrag Kohle (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "CO₂ Eisenerz (t)"},
+    "a12": {"min": 3, "max": 8,   "label": "CO₂ Kupfererz (t)"},
+    "a13": {"min": 4, "max": 12,  "label": "CO₂ Kohle (t)"},
+    "b1":  {"min": 80, "max": 400, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "Abraum Eisenerz (t)"},
+    "a22": {"min": 4, "max": 10,  "label": "Abraum Kupfererz (t)"},
+    "a23": {"min": 2, "max": 6,   "label": "Abraum Kohle (t)"},
+    "b2":  {"min": 60, "max": 300, "label": "Abraumlimit (t)"},
+    "a31": {"min": 2, "max": 6,   "label": "Wasser Eisenerz (m³)"},
+    "a32": {"min": 4, "max": 10,  "label": "Wasser Kupfererz (m³)"},
+    "a33": {"min": 1, "max": 4,   "label": "Wasser Kohle (m³)"},
+    "b3":  {"min": 60, "max": 250, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Bergbau – Eisenerz, Kupfererz und Kohle",
+  "beschreibung": "Ein Bergbauunternehmen fördert Eisenerz, Kupfererz und Kohle. Eisenerz erwirtschaftet {c1} Tsd. €, Kupfererz {c2} Tsd. €, Kohle {c3} Tsd. € pro Einheit. Eisenerz verursacht {a11} Tonnen CO₂, Kupfererz {a12} Tonnen, Kohle {a13} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Eisenerz erzeugt {a21} Tonnen Abraum, Kupfererz {a22} Tonnen, Kohle {a23} Tonnen pro Einheit. Das Abraumlimit liegt bei {b2} Tonnen. Eisenerz verbraucht {a31} m³ Wasser, Kupfererz {a32} m³, Kohle {a33} m³ pro Einheit. Das Wasserbudget beträgt {b3} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Eisenerz erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kupfererz {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Kohle {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen Abraum", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tonnen pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} m³ Wasser", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} m³", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} m³ pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} m³", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

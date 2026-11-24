@@ -1,0 +1,43 @@
+{
+  "id": "emiss_glas_2v_10",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Flachglas", "x2 = Einheiten Hohlglas"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Ertrag Flachglas (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Hohlglas (Tsd. €)"},
+    "a11": {"min": 3, "max": 10,  "label": "CO₂ Flachglas (t)"},
+    "a12": {"min": 2, "max": 7,   "label": "CO₂ Hohlglas (t)"},
+    "b1":  {"min": 80, "max": 350, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 4, "max": 12,  "label": "Energie Flachglas (MWh)"},
+    "a22": {"min": 3, "max": 8,   "label": "Energie Hohlglas (MWh)"},
+    "b2":  {"min": 100, "max": 400, "label": "Energiebudget (MWh)"}
+  },
+  "titel": "Glasfabrik – Flach- und Hohlglas",
+  "beschreibung": "Eine Glasfabrik produziert Flachglas und Hohlglas. Flachglas erwirtschaftet {c1} Tsd. € pro Einheit, Hohlglas {c2} Tsd. €. Flachglas verursacht {a11} Tonnen CO₂ pro Einheit, Hohlglas {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. Flachglas verbraucht {a21} MWh Energie pro Einheit, Hohlglas {a22} MWh. Das Energiebudget beträgt {b2} MWh.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Energiebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Flachglas erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Hohlglas {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Energie pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

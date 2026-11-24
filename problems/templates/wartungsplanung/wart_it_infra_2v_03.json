@@ -1,0 +1,43 @@
+{
+  "id": "wart_it_infra_2v_03",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl geplante Updates", "x2 = Anzahl Hotfixes"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestverfügbarkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Administratorstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Update (Tsd. €)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Hotfix (Tsd. €)"},
+    "a11": {"min": 4, "max": 12,  "label": "Verfügbarkeit Update (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Verfügbarkeit Hotfix (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestverfügbarkeit (%)"},
+    "a21": {"min": 3, "max": 8,   "label": "Adminstunden Update (h)"},
+    "a22": {"min": 5, "max": 12,  "label": "Adminstunden Hotfix (h)"},
+    "b2":  {"min": 40, "max": 150, "label": "Max. Administratorstunden (h)"}
+  },
+  "titel": "IT-Infrastruktur – Server-Wartung",
+  "beschreibung": "Ein IT-Dienstleister plant die Wartung seiner Serverinfrastruktur. Ein geplantes Update kostet {c1} Tsd. €, ein Hotfix kostet {c2} Tsd. €. Ein Update verbessert die Verfügbarkeit um {a11} %, ein Hotfix um {a12} %. Die Mindestverfügbarkeit beträgt {b1} %. Ein Update benötigt {a21} Administratorstunden, ein Hotfix benötigt {a22} Administratorstunden. Maximal {b2} Administratorstunden stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung der Verfügbarkeit und Administratorstunden.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Update kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Hotfix kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Administratorstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Administratorstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Administratorstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

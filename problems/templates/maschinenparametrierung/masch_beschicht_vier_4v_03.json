@@ -1,0 +1,241 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "masch_beschicht_vier_4v_03",
+  "titel": "Beschichtungsanlage – Spruehrate, Abstand, Temperatur und Bandgeschwindigkeit",
+  "variablen": [
+    "x1 = Spruehrate (Stufen)",
+    "x2 = Spruhabstand (Stufen)",
+    "x3 = Trocknungstemperatur (Stufen)",
+    "x4 = Bandgeschwindigkeit (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Lackverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Trocknungskapazitaet",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Deckung Spruehrate"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Gleichmaessigkeit Abstand"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Haertung Temperatur"
+    },
+    "c4": {
+      "min": 3,
+      "max": 9,
+      "label": "Durchsatz Band"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Lack Spruehrate"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Lack Abstand"
+    },
+    "a13": {
+      "min": 1,
+      "max": 2,
+      "label": "Lack Temperatur"
+    },
+    "a14": {
+      "min": 1,
+      "max": 3,
+      "label": "Lack Band"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Lackverbrauch"
+    },
+    "a21": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Spruehrate"
+    },
+    "a22": {
+      "min": 1,
+      "max": 2,
+      "label": "Energie Abstand"
+    },
+    "a23": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie Temperatur"
+    },
+    "a24": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Band"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieverbrauch"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Trocknung Spruehrate"
+    },
+    "a32": {
+      "min": 1,
+      "max": 2,
+      "label": "Trocknung Abstand"
+    },
+    "a33": {
+      "min": 3,
+      "max": 7,
+      "label": "Trocknung Temperatur"
+    },
+    "a34": {
+      "min": 2,
+      "max": 6,
+      "label": "Trocknung Band"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Trocknungskapazitaet"
+    }
+  },
+  "beschreibung": "Eine Beschichtungsanlage wird ueber vier Parameter optimiert. Die Spruehrate liefert {c1} Deckungspunkte, der Spruhabstand {c2} Gleichmaessigkeitspunkte, die Trocknungstemperatur {c3} Haertungspunkte und die Bandgeschwindigkeit {c4} Durchsatzpunkte. Der Lackverbrauch betraegt {a11} Einheiten fuer Spruehrate, {a12} fuer Abstand, {a13} fuer Temperatur und {a14} fuer Band bei maximal {b1} Lackeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Spruehrate, {a22} fuer Abstand, {a23} fuer Temperatur und {a24} fuer Band bei maximal {b2} Energieeinheiten. Die Trocknungskapazitaet betraegt {a31} Einheiten fuer Spruehrate, {a32} fuer Abstand, {a33} fuer Temperatur und {a34} fuer Band bei maximal {b3} Trocknungseinheiten.",
+  "hinweis": "Maximiere die Beschichtungsqualitaet unter Beachtung von Lack, Energie und Trocknung.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Spruehrate liefert {c1} Deckungspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Spruhabstand {c2} Gleichmaessigkeitspunkte",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Trocknungstemperatur {c3} Haertungspunkte",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Bandgeschwindigkeit {c4} Durchsatzpunkte",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Spruehrate",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Abstand",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Temperatur",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Band",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Lackeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Spruehrate",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Abstand",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Temperatur",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Band",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Energieeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Spruehrate",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Abstand",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Temperatur",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Band",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Trocknungseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

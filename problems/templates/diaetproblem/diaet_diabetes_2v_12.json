@@ -1,0 +1,43 @@
+{
+  "id": "diaet_diabetes_2v_12",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Lachs", "x2 = Portionen Brokkoli"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Omega-3", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Kohlenhydrate", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Lachs (€/Portion)"},
+    "c2":  {"min": 1, "max": 4,   "label": "Kosten Brokkoli (€/Portion)"},
+    "a11": {"min": 2, "max": 8,   "label": "Omega-3 Lachs (g/Portion)"},
+    "a12": {"min": 1, "max": 3,   "label": "Omega-3 Brokkoli (g/Portion)"},
+    "b1":  {"min": 10, "max": 30,  "label": "Mindest-Omega-3 (g)"},
+    "a21": {"min": 1, "max": 3,   "label": "Kohlenhydrate Lachs (g/Portion)"},
+    "a22": {"min": 2, "max": 6,   "label": "Kohlenhydrate Brokkoli (g/Portion)"},
+    "b2":  {"min": 30, "max": 80,  "label": "Maximal-Kohlenhydrate (g)"}
+  },
+  "titel": "Diabetes-Ernährung – Lachs und Brokkoli",
+  "beschreibung": "Ein Diabetiker möchte seine Ernährung möglichst kostengünstig planen. Eine Portion Lachs kostet {c1} €, eine Portion Brokkoli kostet {c2} €. Lachs liefert {a11} g Omega-3 pro Portion, Brokkoli liefert {a12} g Omega-3 pro Portion. Mindestens {b1} g Omega-3 werden benötigt. Lachs enthält {a21} g Kohlenhydrate pro Portion, Brokkoli enthält {a22} g Kohlenhydrate pro Portion. Höchstens {b2} g Kohlenhydrate sind erlaubt.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung des Omega-3-Mindestbedarfs und der Kohlenhydratobergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Lachs kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Brokkoli kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Omega-3 pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Omega-3 pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Omega-3 werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Kohlenhydrate pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Kohlenhydrate pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} g Kohlenhydrate sind erlaubt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

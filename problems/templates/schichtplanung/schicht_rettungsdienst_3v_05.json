@@ -1,0 +1,54 @@
+{
+  "id": "schicht_rettungsdienst_3v_05",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten", "x3 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Notärzte", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Rettungssanitäter", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Fahrer", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 250, "max": 500, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 270, "max": 520, "label": "Kosten Spätschicht (€)"},
+    "c3":  {"min": 350, "max": 600, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 2, "max": 5, "label": "Notärzte pro Frühschicht"},
+    "a12": {"min": 2, "max": 4, "label": "Notärzte pro Spätschicht"},
+    "a13": {"min": 1, "max": 3, "label": "Notärzte pro Nachtschicht"},
+    "b1":  {"min": 8, "max": 25, "label": "Mindestbesetzung Notärzte"},
+    "a21": {"min": 3, "max": 7, "label": "Sanitäter pro Frühschicht"},
+    "a22": {"min": 3, "max": 6, "label": "Sanitäter pro Spätschicht"},
+    "a23": {"min": 2, "max": 5, "label": "Sanitäter pro Nachtschicht"},
+    "b2":  {"min": 12, "max": 40, "label": "Mindestbesetzung Rettungssanitäter"},
+    "a31": {"min": 2, "max": 5, "label": "Fahrer pro Frühschicht"},
+    "a32": {"min": 2, "max": 4, "label": "Fahrer pro Spätschicht"},
+    "a33": {"min": 1, "max": 3, "label": "Fahrer pro Nachtschicht"},
+    "b3":  {"min": 8, "max": 25, "label": "Mindestbesetzung Fahrer"}
+  },
+  "titel": "Rettungsdienst – Drei-Schicht-Planung",
+  "beschreibung": "Ein Rettungsdienst plant die Besetzung über drei Schichten. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} € und eine Nachtschicht kostet {c3} €. Jede Frühschicht stellt {a11} Notärzte bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}. Mindestens {b1} Notärzte werden benötigt. Jede Frühschicht stellt {a21} Sanitäter bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}. Mindestens {b2} Sanitäter werden benötigt. Jede Frühschicht stellt {a31} Fahrer bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}. Mindestens {b3} Fahrer werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung für Notärzte, Sanitäter und Fahrer.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Notärzte bereit, jede Spätschicht {a12} und jede Nachtschicht {a13}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Notärzte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Sanitäter bereit, jede Spätschicht {a22} und jede Nachtschicht {a23}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Sanitäter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Fahrer bereit, jede Spätschicht {a32} und jede Nachtschicht {a33}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Fahrer werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "ress_event_2v_13",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Workshops", "x2 = Vortraege"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Raumstunden", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Moderatorenstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Teilnehmerzufriedenheit/Workshop"},
+    "c2":  {"min": 3, "max": 10,    "label": "Teilnehmerzufriedenheit/Vortrag"},
+    "a11": {"min": 2, "max": 5,     "label": "Raumstunden/Workshop"},
+    "a12": {"min": 1, "max": 3,     "label": "Raumstunden/Vortrag"},
+    "b1":  {"min": 20, "max": 80,   "label": "Raumstunden gesamt"},
+    "a21": {"min": 2, "max": 6,     "label": "Moderatorenstunden/Workshop"},
+    "a22": {"min": 1, "max": 3,     "label": "Moderatorenstunden/Vortrag"},
+    "b2":  {"min": 15, "max": 60,   "label": "Moderatorenstunden gesamt"}
+  },
+  "titel": "Eventplanung – Workshops und Vortraege",
+  "beschreibung": "Ein Eventmanager plant eine Konferenz mit Workshops und Vortraegen. Jeder Workshop erbringt {c1} Zufriedenheitspunkte, jeder Vortrag {c2} Punkte. Ein Workshop belegt {a11} Raumstunden, ein Vortrag {a12} Raumstunden. Es stehen {b1} Raumstunden bereit. Jeder Workshop benoetigt {a21} Moderatorenstunden, jeder Vortrag {a22} Moderatorenstunden. Die Moderatorenkapazitaet betraegt {b2} Stunden.",
+  "hinweis": "Maximiere die Zufriedenheit unter Raum- und Moderatorenbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Workshop erbringt {c1} Zufriedenheitspunkte", "bedeutung": "{c1} × x₁"},
+      {"text": "Vortrag {c2} Punkte", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Workshop belegt {a11} Raumstunden", "bedeutung": "{a11}x₁"},
+        {"text": "Vortrag {a12} Raumstunden", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Raumstunden bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Workshop benoetigt {a21} Moderatorenstunden", "bedeutung": "{a21}x₁"},
+        {"text": "Vortrag {a22} Moderatorenstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

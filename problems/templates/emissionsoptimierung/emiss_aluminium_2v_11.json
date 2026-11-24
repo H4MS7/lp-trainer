@@ -1,0 +1,43 @@
+{
+  "id": "emiss_aluminium_2v_11",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Primäraluminium", "x2 = Einheiten Sekundäraluminium"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Ertrag Primäraluminium (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Sekundäraluminium (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "CO₂ Primäraluminium (t)"},
+    "a12": {"min": 1, "max": 4,   "label": "CO₂ Sekundäraluminium (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 6, "max": 12,  "label": "Strom Primäraluminium (MWh)"},
+    "a22": {"min": 1, "max": 4,   "label": "Strom Sekundäraluminium (MWh)"},
+    "b2":  {"min": 100, "max": 500, "label": "Strombudget (MWh)"}
+  },
+  "titel": "Aluminiumhütte – Primär- und Sekundäraluminium",
+  "beschreibung": "Eine Aluminiumhütte produziert Primäraluminium und Sekundäraluminium. Primäraluminium erwirtschaftet {c1} Tsd. € pro Einheit, Sekundäraluminium {c2} Tsd. €. Primäraluminium verursacht {a11} Tonnen CO₂ pro Einheit, Sekundäraluminium {a12} Tonnen. Das CO₂-Limit beträgt {b1} Tonnen. Primäraluminium verbraucht {a21} MWh Strom pro Einheit, Sekundäraluminium {a22} MWh. Das Strombudget beträgt {b2} MWh.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des CO₂-Limits und des Strombudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Primäraluminium erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sekundäraluminium {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Strom pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

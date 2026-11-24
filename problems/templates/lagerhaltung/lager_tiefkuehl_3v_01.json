@@ -1,0 +1,60 @@
+{
+  "id": "lager_tiefkuehl_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Fleisch (Paletten)", "x2 = Bestellmenge Fisch (Paletten)", "x3 = Bestellmenge Backwaren (Paletten)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestliefermenge", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Tiefkühlraumkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Energiebudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kühlkosten Fleisch (€/Palette)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kühlkosten Fisch (€/Palette)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kühlkosten Backwaren (€/Palette)"},
+    "a11": {"min": 8, "max": 20,  "label": "Portionen pro Palette Fleisch"},
+    "a12": {"min": 6, "max": 15,  "label": "Portionen pro Palette Fisch"},
+    "a13": {"min": 10, "max": 25, "label": "Portionen pro Palette Backwaren"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestliefermenge (Portionen)"},
+    "a21": {"min": 2, "max": 5,   "label": "Kühlraum Fleisch (m³)"},
+    "a22": {"min": 2, "max": 4,   "label": "Kühlraum Fisch (m³)"},
+    "a23": {"min": 1, "max": 3,   "label": "Kühlraum Backwaren (m³)"},
+    "b2":  {"min": 30, "max": 120, "label": "Tiefkühlraumkapazität (m³)"},
+    "a31": {"min": 3, "max": 8,   "label": "Energiebedarf Fleisch (kWh)"},
+    "a32": {"min": 4, "max": 10,  "label": "Energiebedarf Fisch (kWh)"},
+    "a33": {"min": 2, "max": 5,   "label": "Energiebedarf Backwaren (kWh)"},
+    "b3":  {"min": 50, "max": 200, "label": "Energiebudget (kWh)"}
+  },
+  "titel": "Tiefkühllager – Drei Produktgruppen",
+  "beschreibung": "Ein Tiefkühllager verwaltet Fleisch, Fisch und Backwaren. Die Kühlkosten betragen {c1} € pro Palette Fleisch, {c2} € pro Palette Fisch und {c3} € pro Palette Backwaren. Jede Palette Fleisch enthält {a11} Portionen, Fisch enthält {a12} Portionen und Backwaren enthalten {a13} Portionen. Die Mindestliefermenge beträgt {b1} Portionen. Fleisch benötigt {a21} m³ Kühlraum, Fisch benötigt {a22} m³ und Backwaren benötigen {a23} m³ pro Palette. Die Tiefkühlraumkapazität beträgt {b2} m³. Der Energiebedarf beträgt {a31} kWh pro Palette Fleisch, {a32} kWh pro Palette Fisch und {a33} kWh pro Palette Backwaren. Das Energiebudget beträgt {b3} kWh.",
+  "hinweis": "Minimiere die Kühlkosten bei Einhaltung der Mindestliefermenge, der Raumkapazität und des Energiebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Fleisch", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Fisch", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Palette Backwaren", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Portionen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Portionen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Portionen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Portionen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Kühlraum", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro Palette", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kWh pro Palette Fleisch", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} kWh pro Palette Fisch", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} kWh pro Palette Backwaren", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} kWh", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

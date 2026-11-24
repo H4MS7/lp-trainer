@@ -1,0 +1,43 @@
+{
+  "id": "lager_tierbedarf_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Trockenfutter (Säcke)", "x2 = Bestellmenge Nassfutter (Kartons)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestfutterbestand", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerplatz", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Lagerkosten Trockenfutter (€/Sack)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Lagerkosten Nassfutter (€/Karton)"},
+    "a11": {"min": 5, "max": 15,  "label": "Futterportionen pro Sack Trockenfutter"},
+    "a12": {"min": 8, "max": 20,  "label": "Futterportionen pro Karton Nassfutter"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestfutterbestand (Portionen)"},
+    "a21": {"min": 2, "max": 4,   "label": "Lagerplatz Trockenfutter (Regalplätze)"},
+    "a22": {"min": 1, "max": 3,   "label": "Lagerplatz Nassfutter (Regalplätze)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Lagerplatz (Regalplätze)"}
+  },
+  "titel": "Zoofachhandel – Futterbevorratung",
+  "beschreibung": "Ein Zoofachhandel verwaltet die Lagerung von Trockenfutter und Nassfutter. Die Lagerkosten betragen {c1} € pro Sack Trockenfutter und {c2} € pro Karton Nassfutter. Jeder Sack Trockenfutter enthält {a11} Futterportionen, jeder Karton Nassfutter enthält {a12} Futterportionen. Der Mindestfutterbestand beträgt {b1} Portionen. Trockenfutter belegt {a21} Regalplätze pro Sack, Nassfutter belegt {a22} Regalplätze pro Karton. Der verfügbare Lagerplatz umfasst {b2} Regalplätze.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestfutterbestands und des Lagerplatzes.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Sack Trockenfutter", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Nassfutter", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Futterportionen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Futterportionen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Portionen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalplätze pro Sack", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalplätze pro Karton", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Regalplätze", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "prod_metall_2v_05",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Zahnraeder", "x2 = Anzahl Wellen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Stahl", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maschinenzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 15, "max": 45,  "label": "Gewinn/Zahnrad (€)"},
+    "c2":  {"min": 20, "max": 60,  "label": "Gewinn/Welle (€)"},
+    "a11": {"min": 2, "max": 6,    "label": "Stahl/Zahnrad (kg)"},
+    "a12": {"min": 3, "max": 10,   "label": "Stahl/Welle (kg)"},
+    "b1":  {"min": 100, "max": 400, "label": "Stahlvorrat (kg)"},
+    "a21": {"min": 1, "max": 5,    "label": "Maschinenzeit/Zahnrad (h)"},
+    "a22": {"min": 2, "max": 7,    "label": "Maschinenzeit/Welle (h)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maschinenstunden"}
+  },
+  "titel": "Metallwerkstatt – Zahnraeder und Wellen",
+  "beschreibung": "Eine Metallwerkstatt fertigt Zahnraeder und Wellen. Der Gewinn pro Zahnrad liegt bei {c1} Euro, pro Welle bei {c2} Euro. Ein Zahnrad verbraucht {a11} kg Stahl, eine Welle {a12} kg. Es sind {b1} kg Stahl vorhanden. Die Bearbeitung eines Zahnrads dauert {a21} Maschinenstunden, die einer Welle {a22} Maschinenstunden. Die Maschinenkapazitaet betraegt {b2} Stunden.",
+  "hinweis": "Stelle die Zielfunktion und die Nebenbedingungen fuer Stahl und Maschinenzeit auf.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zahnrad liegt bei {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Welle bei {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg Stahl, eine Welle", "bedeutung": "{a11}x₁"},
+        {"text": "Welle {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg Stahl vorhanden", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Zahnrads dauert {a21} Maschinenstunden", "bedeutung": "{a21}x₁"},
+        {"text": "Welle {a22} Maschinenstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

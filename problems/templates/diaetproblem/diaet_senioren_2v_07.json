@@ -1,0 +1,43 @@
+{
+  "id": "diaet_senioren_2v_07",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Haferbrei", "x2 = Portionen Obstsalat"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kalzium", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Vitamin D", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Haferbrei (€/Portion)"},
+    "c2":  {"min": 2, "max": 6,   "label": "Kosten Obstsalat (€/Portion)"},
+    "a11": {"min": 3, "max": 10,  "label": "Kalzium Haferbrei (mg/Portion)"},
+    "a12": {"min": 5, "max": 12,  "label": "Kalzium Obstsalat (mg/Portion)"},
+    "b1":  {"min": 50, "max": 150, "label": "Mindest-Kalzium (mg)"},
+    "a21": {"min": 1, "max": 5,   "label": "Vitamin D Haferbrei (µg/Portion)"},
+    "a22": {"min": 2, "max": 6,   "label": "Vitamin D Obstsalat (µg/Portion)"},
+    "b2":  {"min": 10, "max": 30,  "label": "Mindest-Vitamin D (µg)"}
+  },
+  "titel": "Seniorenheim – Haferbrei und Obstsalat",
+  "beschreibung": "Ein Seniorenheim plant das Frühstück aus Haferbrei und Obstsalat möglichst kostengünstig. Eine Portion Haferbrei kostet {c1} €, eine Portion Obstsalat kostet {c2} €. Haferbrei liefert {a11} mg Kalzium pro Portion, Obstsalat liefert {a12} mg Kalzium pro Portion. Mindestens {b1} mg Kalzium müssen enthalten sein. Haferbrei enthält {a21} µg Vitamin D pro Portion, Obstsalat enthält {a22} µg Vitamin D pro Portion. Der Mindestbedarf an Vitamin D beträgt {b2} µg.",
+  "hinweis": "Minimiere die Frühstückskosten bei Einhaltung der Mindestanforderungen an Kalzium und Vitamin D.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Haferbrei kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Obstsalat kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Kalzium pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} mg Kalzium pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} mg Kalzium müssen enthalten sein", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} µg Vitamin D pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} µg Vitamin D pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} µg", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

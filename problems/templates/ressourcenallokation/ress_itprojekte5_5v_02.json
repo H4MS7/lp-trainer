@@ -1,0 +1,106 @@
+{
+  "id": "ress_itprojekte5_5v_02",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Sprints ERP-System", "x2 = Sprints CRM-System", "x3 = Sprints Data Warehouse", "x4 = Sprints Mobile App", "x5 = Sprints Security"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Entwicklerkapazitaet", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "QA-Kapazitaet", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Infrastruktur", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Projektbudget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Managementkapazitaet", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,    "label": "Businesswert/Sprint ERP"},
+    "c2":  {"min": 6, "max": 18,    "label": "Businesswert/Sprint CRM"},
+    "c3":  {"min": 5, "max": 15,    "label": "Businesswert/Sprint Data Warehouse"},
+    "c4":  {"min": 7, "max": 20,    "label": "Businesswert/Sprint Mobile App"},
+    "c5":  {"min": 4, "max": 12,    "label": "Businesswert/Sprint Security"},
+    "a11": {"min": 3, "max": 6,     "label": "Entwickler/Sprint ERP"},
+    "a12": {"min": 2, "max": 5,     "label": "Entwickler/Sprint CRM"},
+    "a13": {"min": 2, "max": 4,     "label": "Entwickler/Sprint Data Warehouse"},
+    "a14": {"min": 2, "max": 5,     "label": "Entwickler/Sprint Mobile App"},
+    "a15": {"min": 1, "max": 3,     "label": "Entwickler/Sprint Security"},
+    "b1":  {"min": 20, "max": 80,   "label": "Entwicklermonate gesamt"},
+    "a21": {"min": 1, "max": 3,     "label": "QA-Tage/Sprint ERP"},
+    "a22": {"min": 1, "max": 3,     "label": "QA-Tage/Sprint CRM"},
+    "a23": {"min": 2, "max": 4,     "label": "QA-Tage/Sprint Data Warehouse"},
+    "a24": {"min": 2, "max": 5,     "label": "QA-Tage/Sprint Mobile App"},
+    "a25": {"min": 1, "max": 3,     "label": "QA-Tage/Sprint Security"},
+    "b2":  {"min": 15, "max": 60,   "label": "QA-Tage gesamt"},
+    "a31": {"min": 2, "max": 4,     "label": "Server/Sprint ERP"},
+    "a32": {"min": 1, "max": 3,     "label": "Server/Sprint CRM"},
+    "a33": {"min": 3, "max": 6,     "label": "Server/Sprint Data Warehouse"},
+    "a34": {"min": 1, "max": 2,     "label": "Server/Sprint Mobile App"},
+    "a35": {"min": 1, "max": 3,     "label": "Server/Sprint Security"},
+    "b3":  {"min": 10, "max": 40,   "label": "Serverkapazitaet gesamt"},
+    "a41": {"min": 3, "max": 8,     "label": "Budget/Sprint ERP (1000 €)"},
+    "a42": {"min": 2, "max": 6,     "label": "Budget/Sprint CRM (1000 €)"},
+    "a43": {"min": 2, "max": 5,     "label": "Budget/Sprint Data Warehouse (1000 €)"},
+    "a44": {"min": 2, "max": 6,     "label": "Budget/Sprint Mobile App (1000 €)"},
+    "a45": {"min": 1, "max": 4,     "label": "Budget/Sprint Security (1000 €)"},
+    "b4":  {"min": 20, "max": 80,   "label": "Projektbudget (1000 €)"},
+    "a51": {"min": 1, "max": 2,     "label": "Management/Sprint ERP (h)"},
+    "a52": {"min": 1, "max": 2,     "label": "Management/Sprint CRM (h)"},
+    "a53": {"min": 1, "max": 2,     "label": "Management/Sprint Data Warehouse (h)"},
+    "a54": {"min": 1, "max": 2,     "label": "Management/Sprint Mobile App (h)"},
+    "a55": {"min": 1, "max": 2,     "label": "Management/Sprint Security (h)"},
+    "b5":  {"min": 8, "max": 30,    "label": "Managementstunden gesamt"}
+  },
+  "titel": "IT-Portfolio – ERP, CRM, Data Warehouse, Mobile App und Security",
+  "beschreibung": "Der CTO verteilt Sprints auf fuenf IT-Projekte: ERP, CRM, Data Warehouse, Mobile App und Security. Der Businesswert pro Sprint betraegt {c1} fuer ERP, {c2} fuer CRM, {c3} fuer Data Warehouse, {c4} fuer Mobile App und {c5} fuer Security. An Entwicklern werden {a11} pro Sprint ERP, {a12} pro Sprint CRM, {a13} pro Sprint Data Warehouse, {a14} pro Sprint Mobile App und {a15} pro Sprint Security benoetigt bei {b1} Entwicklermonate gesamt. QA erfordert {a21} Tage ERP, {a22} Tage CRM, {a23} Tage Data Warehouse, {a24} Tage Mobile App und {a25} Tage Security pro Sprint bei {b2} QA-Tagen. Die Infrastruktur benoetigt {a31} Server ERP, {a32} Server CRM, {a33} Server Data Warehouse, {a34} Server Mobile App und {a35} Server Security pro Sprint bei {b3} Serverkapazitaet. Das Budget betraegt {a41} Tausend Euro ERP, {a42} Tausend Euro CRM, {a43} Tausend Euro Data Warehouse, {a44} Tausend Euro Mobile App und {a45} Tausend Euro Security pro Sprint bei {b4} Tausend Euro gesamt. Das Management benoetigt {a51} Stunden ERP, {a52} Stunden CRM, {a53} Stunden Data Warehouse, {a54} Stunden Mobile App und {a55} Stunden Security pro Sprint bei {b5} Managementstunden.",
+  "hinweis": "Fuenf IT-Projekte mit fuenf Beschraenkungen: Entwickler, QA, Infrastruktur, Budget und Management.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} fuer ERP", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} fuer CRM", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} fuer Data Warehouse", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} fuer Mobile App", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} fuer Security", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} pro Sprint ERP", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} pro Sprint CRM", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} pro Sprint Data Warehouse", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} pro Sprint Mobile App", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} pro Sprint Security", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Entwicklermonate gesamt", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tage ERP", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tage CRM", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tage Data Warehouse", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Tage Mobile App", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Tage Security", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} QA-Tagen", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Server ERP", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Server CRM", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Server Data Warehouse", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Server Mobile App", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Server Security", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Serverkapazitaet", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tausend Euro ERP", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tausend Euro CRM", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tausend Euro Data Warehouse", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tausend Euro Mobile App", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Tausend Euro Security", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Tausend Euro gesamt", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} Stunden ERP", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} Stunden CRM", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} Stunden Data Warehouse", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} Stunden Mobile App", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} Stunden Security", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} Managementstunden", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

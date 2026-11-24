@@ -1,0 +1,68 @@
+{
+  "id": "wart_schiff_4v_27",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Rumpfinspektionen", "x2 = Anzahl Motorwartungen", "x3 = Anzahl Navigationsprüfungen", "x4 = Anzahl Korrosionsschutzmaßnahmen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestseetauglichkeit", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Dockzeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Rumpf (Tsd. €)"},
+    "c2":  {"min": 8, "max": 22,  "label": "Kosten Motor (Tsd. €)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Navigation (Tsd. €)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Kosten Korrosionsschutz (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Tauglichkeit Rumpf (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Tauglichkeit Motor (%)"},
+    "a13": {"min": 2, "max": 5,   "label": "Tauglichkeit Navigation (%)"},
+    "a14": {"min": 2, "max": 6,   "label": "Tauglichkeit Korrosion (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestseetauglichkeit (%)"},
+    "a21": {"min": 3, "max": 7,   "label": "Dockzeit Rumpf (h)"},
+    "a22": {"min": 4, "max": 10,  "label": "Dockzeit Motor (h)"},
+    "a23": {"min": 1, "max": 3,   "label": "Dockzeit Navigation (h)"},
+    "a24": {"min": 3, "max": 8,   "label": "Dockzeit Korrosion (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Dockzeit (h)"},
+    "a31": {"min": 3, "max": 8,   "label": "Material Rumpf (Tsd. €)"},
+    "a32": {"min": 4, "max": 12,  "label": "Material Motor (Tsd. €)"},
+    "a33": {"min": 2, "max": 5,   "label": "Material Navigation (Tsd. €)"},
+    "a34": {"min": 3, "max": 8,   "label": "Material Korrosion (Tsd. €)"},
+    "b3":  {"min": 25, "max": 100, "label": "Materialbudget (Tsd. €)"}
+  },
+  "titel": "Reederei – Schiffswartung vierstufig",
+  "beschreibung": "Eine Reederei plant die Schiffswartung in vier Bereichen. Eine Rumpfinspektion kostet {c1} Tsd. €, eine Motorwartung kostet {c2} Tsd. €, eine Navigationsprüfung kostet {c3} Tsd. €, eine Korrosionsschutzmaßnahme kostet {c4} Tsd. €. Eine Rumpfinspektion sichert {a11} % Seetauglichkeit, Motorwartung {a12} %, Navigation {a13} %, Korrosionsschutz {a14} %. Die Mindestseetauglichkeit beträgt {b1} %. Die Dockzeit beträgt {a21} h pro Rumpf, {a22} h pro Motor, {a23} h pro Navigation und {a24} h pro Korrosion. Die maximale Dockzeit beträgt {b2} Stunden. Das Material kostet {a31} Tsd. € pro Rumpf, {a32} Tsd. € pro Motor, {a33} Tsd. € pro Navigation und {a34} Tsd. € pro Korrosion. Das Materialbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Seetauglichkeit, Dockzeit und Materialbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Rumpfinspektion kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Motorwartung kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Navigationsprüfung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Korrosionsschutzmaßnahme kostet {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Seetauglichkeit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Rumpf", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Motor", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Navigation", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro Korrosion", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Rumpf", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Motor", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Navigation", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Tsd. € pro Korrosion", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

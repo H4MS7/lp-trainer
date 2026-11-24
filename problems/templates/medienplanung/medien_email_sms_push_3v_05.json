@@ -1,0 +1,54 @@
+{
+  "id": "medien_email_sms_push_3v_05",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl E-Mail-Kampagnen", "x2 = Anzahl SMS-Kampagnen", "x3 = Anzahl Push-Kampagnen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Erstellungszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Frequenzlimit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,    "label": "Öffnungsrate E-Mail (Tsd.)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Leserate SMS (Tsd.)"},
+    "c3":  {"min": 1, "max": 5,     "label": "Klickrate Push (Tsd.)"},
+    "a11": {"min": 1, "max": 3,     "label": "Kosten E-Mail (Tsd. €)"},
+    "a12": {"min": 1, "max": 4,     "label": "Kosten SMS (Tsd. €)"},
+    "a13": {"min": 1, "max": 2,     "label": "Kosten Push (Tsd. €)"},
+    "b1":  {"min": 10, "max": 50,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 6,     "label": "Erstellung E-Mail (Stunden)"},
+    "a22": {"min": 1, "max": 3,     "label": "Erstellung SMS (Stunden)"},
+    "a23": {"min": 1, "max": 3,     "label": "Erstellung Push (Stunden)"},
+    "b2":  {"min": 15, "max": 40,   "label": "Erstellungsstunden"},
+    "a31": {"min": 2, "max": 4,     "label": "Frequenz E-Mail (pro Woche)"},
+    "a32": {"min": 1, "max": 3,     "label": "Frequenz SMS (pro Woche)"},
+    "a33": {"min": 2, "max": 5,     "label": "Frequenz Push (pro Woche)"},
+    "b3":  {"min": 10, "max": 30,   "label": "Max. Nachrichten pro Woche"}
+  },
+  "titel": "CRM-Marketing – E-Mail, SMS und Push",
+  "beschreibung": "Ein CRM-Team plant Kundenansprache über drei Kanäle. Eine E-Mail-Kampagne erzielt {c1} Tsd. Öffnungen, eine SMS-Kampagne erzielt {c2} Tsd. Leser und eine Push-Kampagne erzielt {c3} Tsd. Klicks. Die Kosten betragen {a11} Tsd. € für E-Mail, {a12} Tsd. € für SMS und {a13} Tsd. € für Push. Das Budget beträgt {b1} Tsd. €. Die Erstellungszeit beträgt {a21} Stunden für E-Mail, {a22} Stunden für SMS und {a23} Stunden für Push. Es stehen {b2} Erstellungsstunden zur Verfügung. Die Sendefrequenz beträgt {a31} pro Woche für E-Mail, {a32} pro Woche für SMS und {a33} pro Woche für Push. Das Frequenzlimit beträgt {b3} Nachrichten pro Woche.",
+  "hinweis": "Maximiere die Gesamtresponse unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "E-Mail-Kampagne erzielt {c1} Tsd. Öffnungen", "bedeutung": "{c1} × x₁"},
+      {"text": "SMS-Kampagne erzielt {c2} Tsd. Leser", "bedeutung": "{c2} × x₂"},
+      {"text": "Push-Kampagne erzielt {c3} Tsd. Klicks", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für E-Mail, {a12} Tsd. € für SMS und {a13} Tsd. € für Push", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für E-Mail, {a22} Stunden für SMS und {a23} Stunden für Push", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Erstellungsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} pro Woche für E-Mail, {a32} pro Woche für SMS und {a33} pro Woche für Push", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Nachrichten pro Woche", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

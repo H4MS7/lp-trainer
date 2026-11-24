@@ -1,0 +1,43 @@
+{
+  "id": "energie_spitzenlast_grundlast_2v_11",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Spitzenlastkraftwerk", "x2 = MWh Grundlastkraftwerk"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Betriebsstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 140, "label": "Kosten Spitzenlast (€/MWh)"},
+    "c2":  {"min": 25, "max": 65, "label": "Kosten Grundlast (€/MWh)"},
+    "a11": {"min": 3, "max": 8, "label": "Leistung Spitzenlast (MW/MWh)"},
+    "a12": {"min": 2, "max": 5, "label": "Leistung Grundlast (MW/MWh)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 1, "max": 3, "label": "Betriebsstunden Spitzenlast (h/MWh)"},
+    "a22": {"min": 2, "max": 6, "label": "Betriebsstunden Grundlast (h/MWh)"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale Betriebsstunden (h)"}
+  },
+  "titel": "Energiemix – Spitzenlast und Grundlast",
+  "beschreibung": "Ein Kraftwerksbetreiber plant den Energiemix aus Spitzenlast- und Grundlastkraftwerken. Das Spitzenlastkraftwerk kostet {c1} € pro MWh, das Grundlastkraftwerk kostet {c2} € pro MWh. Das Spitzenlastkraftwerk liefert {a11} MW Leistung pro MWh, das Grundlastkraftwerk liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Betriebsstunden betragen {a21} Stunden pro MWh Spitzenlast und {a22} Stunden pro MWh Grundlast. Maximal {b2} Betriebsstunden sind verfügbar.",
+  "hinweis": "Minimiere die Erzeugungskosten bei Einhaltung der Mindestleistung und Betriebsstundenbegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Spitzenlastkraftwerk kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Grundlastkraftwerk kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro MWh Spitzenlast", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro MWh Grundlast", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Betriebsstunden sind verfügbar", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

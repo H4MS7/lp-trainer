@@ -1,0 +1,39 @@
+{
+  "id": "trans_bahn_2v_03",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Züge Strecke Nord", "x2 = Züge Strecke Süd"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Passagiere", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Gleiskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 18,  "label": "Kosten Strecke Nord (EUR/Zug)"},
+    "c2":  {"min": 4, "max": 15,  "label": "Kosten Strecke Süd (EUR/Zug)"},
+    "a11": {"min": 3, "max": 10,  "label": "Passagiere pro Zug Nord"},
+    "a12": {"min": 4, "max": 12,  "label": "Passagiere pro Zug Süd"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Passagiere"},
+    "a21": {"min": 1, "max": 4,   "label": "Gleisbelegung Nord (Einheiten/Zug)"},
+    "a22": {"min": 2, "max": 5,   "label": "Gleisbelegung Süd (Einheiten/Zug)"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Gleiskapazität (Einheiten)"}
+  },
+  "titel": "Bahnverkehr – Nord- und Südstrecke",
+  "beschreibung": "Ein Bahnunternehmen betreibt Züge auf zwei Strecken. Ein Zug auf der Strecke Nord kostet {c1} EUR, ein Zug auf der Strecke Süd kostet {c2} EUR. Ein Zug auf der Strecke Nord befördert {a11} Passagiere, ein Zug auf der Strecke Süd befördert {a12} Passagiere. Mindestens {b1} Passagiere müssen befördert werden. Die Gleisbelegung beträgt {a21} Einheiten pro Zug auf der Strecke Nord und {a22} Einheiten pro Zug auf der Strecke Süd. Die Gleiskapazität beträgt höchstens {b2} Einheiten.",
+  "hinweis": "Minimiere die Betriebskosten bei Mindestbeförderung und begrenzter Gleiskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Strecke Nord kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Strecke Süd kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Passagiere, ein Zug auf der Strecke Süd befördert {a12} Passagiere. Mindestens {b1} Passagiere müssen befördert werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Einheiten pro Zug auf der Strecke Nord und {a22} Einheiten pro Zug auf der Strecke Süd. Die Gleiskapazität beträgt höchstens {b2} Einheiten", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

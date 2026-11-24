@@ -1,0 +1,75 @@
+{
+  "id": "medien_fullmix_5v_01",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl TV-Spots", "x2 = Anzahl Social-Ads", "x3 = Anzahl Print-Anzeigen", "x4 = Anzahl Radiospots", "x5 = Anzahl Outdoor-Plakate"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Kreativteam", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Medienplanung", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Produktionszeit", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Reichweite TV (Tsd.)"},
+    "c2":  {"min": 5, "max": 20,    "label": "Reichweite Social (Tsd.)"},
+    "c3":  {"min": 5, "max": 15,    "label": "Reichweite Print (Tsd.)"},
+    "c4":  {"min": 3, "max": 12,    "label": "Reichweite Radio (Tsd.)"},
+    "c5":  {"min": 8, "max": 30,    "label": "Reichweite Outdoor (Tsd.)"},
+    "a11": {"min": 5, "max": 20,    "label": "Kosten TV (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten Social (Tsd. €)"},
+    "a13": {"min": 2, "max": 8,     "label": "Kosten Print (Tsd. €)"},
+    "a14": {"min": 1, "max": 4,     "label": "Kosten Radio (Tsd. €)"},
+    "a15": {"min": 3, "max": 10,    "label": "Kosten Outdoor (Tsd. €)"},
+    "b1":  {"min": 80, "max": 300,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 5, "max": 12,    "label": "Kreativ TV (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Kreativ Social (Stunden)"},
+    "a23": {"min": 3, "max": 8,     "label": "Kreativ Print (Stunden)"},
+    "a24": {"min": 2, "max": 4,     "label": "Kreativ Radio (Stunden)"},
+    "a25": {"min": 3, "max": 8,     "label": "Kreativ Outdoor (Stunden)"},
+    "b2":  {"min": 30, "max": 100,  "label": "Kreativstunden"},
+    "a31": {"min": 2, "max": 5,     "label": "Planung TV (Stunden)"},
+    "a32": {"min": 1, "max": 3,     "label": "Planung Social (Stunden)"},
+    "a33": {"min": 1, "max": 3,     "label": "Planung Print (Stunden)"},
+    "a34": {"min": 1, "max": 2,     "label": "Planung Radio (Stunden)"},
+    "a35": {"min": 1, "max": 3,     "label": "Planung Outdoor (Stunden)"},
+    "b3":  {"min": 15, "max": 50,   "label": "Planungsstunden"},
+    "a41": {"min": 5, "max": 15,    "label": "Produktion TV (Stunden)"},
+    "a42": {"min": 2, "max": 5,     "label": "Produktion Social (Stunden)"},
+    "a43": {"min": 3, "max": 8,     "label": "Produktion Print (Stunden)"},
+    "a44": {"min": 2, "max": 5,     "label": "Produktion Radio (Stunden)"},
+    "a45": {"min": 4, "max": 10,    "label": "Produktion Outdoor (Stunden)"},
+    "b4":  {"min": 30, "max": 100,  "label": "Produktionsstunden"}
+  },
+  "titel": "Full-Media-Mix – Fünf Kanäle",
+  "beschreibung": "Eine Agentur plant eine Kampagne über fünf Medienkanäle. TV-Spots erreichen {c1} Tsd. Personen, Social-Ads erreichen {c2} Tsd. Personen, Print-Anzeigen erreichen {c3} Tsd. Personen, Radiospots erreichen {c4} Tsd. Personen und Outdoor-Plakate erreichen {c5} Tsd. Personen. Die Kosten betragen {a11} Tsd. € für TV, {a12} Tsd. € für Social, {a13} Tsd. € für Print, {a14} Tsd. € für Radio und {a15} Tsd. € für Outdoor. Das Budget beträgt {b1} Tsd. €. Das Kreativteam benötigt {a21} Stunden für TV, {a22} Stunden für Social, {a23} Stunden für Print, {a24} Stunden für Radio und {a25} Stunden für Outdoor. Es stehen {b2} Kreativstunden zur Verfügung. Die Medienplanung benötigt {a31} Stunden für TV, {a32} Stunden für Social, {a33} Stunden für Print, {a34} Stunden für Radio und {a35} Stunden für Outdoor. Es stehen {b3} Planungsstunden zur Verfügung. Die Produktionszeit beträgt {a41} Stunden für TV, {a42} Stunden für Social, {a43} Stunden für Print, {a44} Stunden für Radio und {a45} Stunden für Outdoor. Es stehen {b4} Produktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "TV-Spots erreichen {c1} Tsd. Personen", "bedeutung": "{c1} × x₁"},
+      {"text": "Social-Ads erreichen {c2} Tsd. Personen", "bedeutung": "{c2} × x₂"},
+      {"text": "Print-Anzeigen erreichen {c3} Tsd. Personen", "bedeutung": "{c3} × x₃"},
+      {"text": "Radiospots erreichen {c4} Tsd. Personen", "bedeutung": "{c4} × x₄"},
+      {"text": "Outdoor-Plakate erreichen {c5} Tsd. Personen", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für TV, {a12} Tsd. € für Social, {a13} Tsd. € für Print, {a14} Tsd. € für Radio und {a15} Tsd. € für Outdoor", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für TV, {a22} Stunden für Social, {a23} Stunden für Print, {a24} Stunden für Radio und {a25} Stunden für Outdoor", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Kreativstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für TV, {a32} Stunden für Social, {a33} Stunden für Print, {a34} Stunden für Radio und {a35} Stunden für Outdoor", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Planungsstunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden für TV, {a42} Stunden für Social, {a43} Stunden für Print, {a44} Stunden für Radio und {a45} Stunden für Outdoor", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Produktionsstunden zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

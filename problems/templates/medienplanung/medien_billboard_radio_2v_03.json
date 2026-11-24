@@ -1,0 +1,41 @@
+{
+  "id": "medien_billboard_radio_2v_03",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Plakatwände", "x2 = Anzahl Radiospots"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Produktionszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Sichtkontakte Plakat (Tsd./Woche)"},
+    "c2":  {"min": 3, "max": 15,    "label": "Hörkontakte Radio (Tsd./Spot)"},
+    "a11": {"min": 2, "max": 8,     "label": "Kosten Plakat (Tsd. €/Monat)"},
+    "a12": {"min": 1, "max": 4,     "label": "Kosten Radiospot (Tsd. €)"},
+    "b1":  {"min": 30, "max": 120,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,     "label": "Produktion Plakat (Stunden)"},
+    "a22": {"min": 2, "max": 5,     "label": "Produktion Radio (Stunden)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Produktionsstunden"}
+  },
+  "titel": "Außenwerbung – Plakatwände und Radio",
+  "beschreibung": "Eine Agentur plant eine Kampagne mit Plakatwänden und Radiospots. Eine Plakatwand erzielt {c1} Tsd. Sichtkontakte pro Woche, ein Radiospot erzielt {c2} Tsd. Hörkontakte. Eine Plakatwand kostet {a11} Tsd. € pro Monat, ein Radiospot kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Produktionszeit beträgt {a21} Stunden pro Plakatwand und {a22} Stunden pro Radiospot. Insgesamt stehen {b2} Produktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtkontakte unter Beachtung von Budget und Produktionszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Plakatwand erzielt {c1} Tsd. Sichtkontakte pro Woche", "bedeutung": "{c1} × x₁"},
+      {"text": "Radiospot erzielt {c2} Tsd. Hörkontakte", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € pro Monat, ein Radiospot kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Plakatwand und {a22} Stunden pro Radiospot", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Produktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

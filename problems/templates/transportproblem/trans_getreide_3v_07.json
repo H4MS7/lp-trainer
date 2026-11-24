@@ -1,0 +1,51 @@
+{
+  "id": "trans_getreide_3v_07",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Transporte per Silo-LKW", "x2 = Transporte per Güterzug", "x3 = Transporte per Binnenschiff"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Getreide", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Verladekapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Zeitfenster", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Silo-LKW (EUR/Transport)"},
+    "c2":  {"min": 6, "max": 20,  "label": "Kosten Güterzug (EUR/Transport)"},
+    "c3":  {"min": 3, "max": 12,  "label": "Kosten Binnenschiff (EUR/Transport)"},
+    "a11": {"min": 2, "max": 8,   "label": "Getreide pro Silo-LKW (t)"},
+    "a12": {"min": 5, "max": 15,  "label": "Getreide pro Güterzug (t)"},
+    "a13": {"min": 4, "max": 12,  "label": "Getreide pro Binnenschiff (t)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Getreidemenge (t)"},
+    "a21": {"min": 1, "max": 3,   "label": "Verladeeinheiten pro Silo-LKW"},
+    "a22": {"min": 2, "max": 5,   "label": "Verladeeinheiten pro Güterzug"},
+    "a23": {"min": 2, "max": 6,   "label": "Verladeeinheiten pro Binnenschiff"},
+    "b2":  {"min": 20, "max": 80, "label": "Max. Verladekapazität"},
+    "a31": {"min": 1, "max": 4,   "label": "Stunden pro Silo-LKW"},
+    "a32": {"min": 2, "max": 5,   "label": "Stunden pro Güterzug"},
+    "a33": {"min": 3, "max": 8,   "label": "Stunden pro Binnenschiff"},
+    "b3":  {"min": 30, "max": 120, "label": "Verfügbare Stunden"}
+  },
+  "titel": "Getreidetransport – LKW, Zug und Schiff",
+  "beschreibung": "Eine Getreidemühle bezieht Getreide über drei Transportwege. Ein Silo-LKW-Transport kostet {c1} EUR, ein Güterzug-Transport kostet {c2} EUR und ein Binnenschiff-Transport kostet {c3} EUR. Der Silo-LKW liefert {a11} Tonnen, der Güterzug liefert {a12} Tonnen und das Binnenschiff liefert {a13} Tonnen pro Transport. Mindestens {b1} Tonnen Getreide werden benötigt. Der Silo-LKW benötigt {a21} Verladeeinheiten, der Güterzug benötigt {a22} und das Binnenschiff benötigt {a23} Verladeeinheiten. Die Verladekapazität beträgt höchstens {b2} Einheiten. Ein Silo-LKW-Transport dauert {a31} Stunden, ein Güterzug dauert {a32} Stunden und ein Binnenschiff dauert {a33} Stunden. Insgesamt stehen {b3} Stunden zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Getreidemenge, begrenzter Verladekapazität und begrenzter Zeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Silo-LKW-Transport kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Güterzug-Transport kostet {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Binnenschiff-Transport kostet {c3} EUR", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen, der Güterzug liefert {a12} Tonnen und das Binnenschiff liefert {a13} Tonnen pro Transport. Mindestens {b1} Tonnen Getreide werden benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Verladeeinheiten, der Güterzug benötigt {a22} und das Binnenschiff benötigt {a23} Verladeeinheiten. Die Verladekapazität beträgt höchstens {b2} Einheiten", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden, ein Güterzug dauert {a32} Stunden und ein Binnenschiff dauert {a33} Stunden. Insgesamt stehen {b3} Stunden zur Verfügung", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

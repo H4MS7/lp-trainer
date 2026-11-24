@@ -1,0 +1,43 @@
+{
+  "id": "emiss_textil_2v_12",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Baumwollstoff", "x2 = Einheiten Polyesterstoff"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Chemikalien", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Baumwolle (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Polyester (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "Wasser Baumwolle (m³)"},
+    "a12": {"min": 2, "max": 6,   "label": "Wasser Polyester (m³)"},
+    "b1":  {"min": 100, "max": 400, "label": "Wasserbudget (m³)"},
+    "a21": {"min": 2, "max": 6,   "label": "Chemikalien Baumwolle (kg)"},
+    "a22": {"min": 3, "max": 10,  "label": "Chemikalien Polyester (kg)"},
+    "b2":  {"min": 60, "max": 250, "label": "Chemikalienlimit (kg)"}
+  },
+  "titel": "Textilfabrik – Baumwoll- und Polyesterstoff",
+  "beschreibung": "Eine Textilfabrik produziert Baumwollstoff und Polyesterstoff. Baumwollstoff erwirtschaftet {c1} Tsd. € pro Einheit, Polyesterstoff {c2} Tsd. €. Baumwollstoff verbraucht {a11} m³ Wasser pro Einheit, Polyesterstoff {a12} m³. Das Wasserbudget beträgt {b1} m³. Baumwollstoff benötigt {a21} kg Chemikalien pro Einheit, Polyesterstoff {a22} kg. Das Chemikalienlimit liegt bei {b2} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des Wasserbudgets und des Chemikalienlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Baumwollstoff erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Polyesterstoff {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ Wasser pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} m³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m³", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kg Chemikalien pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kg", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kg", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

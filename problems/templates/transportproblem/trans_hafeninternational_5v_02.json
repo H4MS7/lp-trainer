@@ -1,0 +1,81 @@
+{
+  "id": "trans_hafeninternational_5v_02",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Sendungen per Seefracht", "x2 = Sendungen per Luftfracht", "x3 = Sendungen per Bahn", "x4 = Sendungen per LKW", "x5 = Sendungen per Binnenschiff"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Container", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Umschlagkapazität", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Zollabfertigung", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Personal", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Versicherungskosten", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Seefracht (EUR/Sendung)"},
+    "c2":  {"min": 8, "max": 25,  "label": "Kosten Luftfracht (EUR/Sendung)"},
+    "c3":  {"min": 4, "max": 14,  "label": "Kosten Bahn (EUR/Sendung)"},
+    "c4":  {"min": 5, "max": 16,  "label": "Kosten LKW (EUR/Sendung)"},
+    "c5":  {"min": 3, "max": 12,  "label": "Kosten Binnenschiff (EUR/Sendung)"},
+    "a11": {"min": 4, "max": 12,  "label": "Container Seefracht"},
+    "a12": {"min": 1, "max": 4,   "label": "Container Luftfracht"},
+    "a13": {"min": 3, "max": 9,   "label": "Container Bahn"},
+    "a14": {"min": 1, "max": 5,   "label": "Container LKW"},
+    "a15": {"min": 2, "max": 7,   "label": "Container Binnenschiff"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Container"},
+    "a21": {"min": 2, "max": 6,   "label": "Umschlag Seefracht (Einheiten)"},
+    "a22": {"min": 3, "max": 7,   "label": "Umschlag Luftfracht (Einheiten)"},
+    "a23": {"min": 1, "max": 4,   "label": "Umschlag Bahn (Einheiten)"},
+    "a24": {"min": 1, "max": 3,   "label": "Umschlag LKW (Einheiten)"},
+    "a25": {"min": 2, "max": 5,   "label": "Umschlag Binnenschiff (Einheiten)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Umschlagkapazität (Einheiten)"},
+    "a31": {"min": 2, "max": 5,   "label": "Zoll Seefracht (h)"},
+    "a32": {"min": 1, "max": 3,   "label": "Zoll Luftfracht (h)"},
+    "a33": {"min": 1, "max": 4,   "label": "Zoll Bahn (h)"},
+    "a34": {"min": 1, "max": 3,   "label": "Zoll LKW (h)"},
+    "a35": {"min": 2, "max": 4,   "label": "Zoll Binnenschiff (h)"},
+    "b3":  {"min": 20, "max": 80, "label": "Max. Zollstunden (h)"},
+    "a41": {"min": 2, "max": 5,   "label": "Personal Seefracht"},
+    "a42": {"min": 3, "max": 6,   "label": "Personal Luftfracht"},
+    "a43": {"min": 1, "max": 3,   "label": "Personal Bahn"},
+    "a44": {"min": 1, "max": 3,   "label": "Personal LKW"},
+    "a45": {"min": 2, "max": 4,   "label": "Personal Binnenschiff"},
+    "b4":  {"min": 20, "max": 80, "label": "Verfügbares Personal"},
+    "a51": {"min": 1, "max": 4,   "label": "Versicherung Seefracht (EUR)"},
+    "a52": {"min": 2, "max": 6,   "label": "Versicherung Luftfracht (EUR)"},
+    "a53": {"min": 1, "max": 3,   "label": "Versicherung Bahn (EUR)"},
+    "a54": {"min": 1, "max": 4,   "label": "Versicherung LKW (EUR)"},
+    "a55": {"min": 1, "max": 3,   "label": "Versicherung Binnenschiff (EUR)"},
+    "b5":  {"min": 20, "max": 80, "label": "Max. Versicherungskosten (EUR)"}
+  },
+  "titel": "Internationaler Warentransport – fünf Verkehrswege",
+  "beschreibung": "Ein Handelsunternehmen transportiert Waren international über fünf Wege. Seefracht kostet {c1} EUR pro Sendung, Luftfracht {c2} EUR, Bahn {c3} EUR, LKW {c4} EUR und Binnenschiff {c5} EUR pro Sendung. Seefracht transportiert {a11} Container, Luftfracht {a12}, Bahn {a13}, LKW {a14} und Binnenschiff {a15} Container pro Sendung. Mindestens {b1} Container müssen transportiert werden. Seefracht belegt {a21} Umschlag-Einheiten, Luftfracht {a22}, Bahn {a23}, LKW {a24} und Binnenschiff {a25} Einheiten. Die Umschlagkapazität beträgt höchstens {b2} Einheiten. Seefracht benötigt {a31} h Zollabfertigung, Luftfracht {a32} h, Bahn {a33} h, LKW {a34} h und Binnenschiff {a35} h. Die Zollstunden betragen höchstens {b3} h. Seefracht benötigt {a41} Personen, Luftfracht {a42}, Bahn {a43}, LKW {a44} und Binnenschiff {a45} Personen. Insgesamt stehen {b4} Personen zur Verfügung. Seefracht kostet {a51} EUR Versicherung, Luftfracht {a52} EUR, Bahn {a53} EUR, LKW {a54} EUR und Binnenschiff {a55} EUR. Die Versicherungskosten betragen höchstens {b5} EUR.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Kapazitätsgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Seefracht kostet {c1} EUR pro Sendung", "bedeutung": "{c1} × x₁"},
+      {"text": "Luftfracht {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Bahn {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "LKW {c4} EUR", "bedeutung": "{c4} × x₄"},
+      {"text": "Binnenschiff {c5} EUR pro Sendung", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Container, Luftfracht {a12}, Bahn {a13}, LKW {a14} und Binnenschiff {a15} Container pro Sendung. Mindestens {b1} Container müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Umschlag-Einheiten, Luftfracht {a22}, Bahn {a23}, LKW {a24} und Binnenschiff {a25} Einheiten. Die Umschlagkapazität beträgt höchstens {b2} Einheiten", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h Zollabfertigung, Luftfracht {a32} h, Bahn {a33} h, LKW {a34} h und Binnenschiff {a35} h. Die Zollstunden betragen höchstens {b3} h", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Personen, Luftfracht {a42}, Bahn {a43}, LKW {a44} und Binnenschiff {a45} Personen. Insgesamt stehen {b4} Personen zur Verfügung", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} EUR Versicherung, Luftfracht {a52} EUR, Bahn {a53} EUR, LKW {a54} EUR und Binnenschiff {a55} EUR. Die Versicherungskosten betragen höchstens {b5} EUR", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅ ≤ {b5}"}
+      ]
+    ]
+  }
+}

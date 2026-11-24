@@ -1,0 +1,60 @@
+{
+  "id": "qual_software_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Unit-Tests", "x2 = Anzahl Integrationstests", "x3 = Anzahl Lasttests"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Testabdeckung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Serverzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Entwicklerzeit", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Unit-Test (€/Test)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Integrationstest (€/Test)"},
+    "c3":  {"min": 5, "max": 15,  "label": "Kosten Lasttest (€/Test)"},
+    "a11": {"min": 2, "max": 5,   "label": "Testabdeckung Unit (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Testabdeckung Integration (%)"},
+    "a13": {"min": 1, "max": 4,   "label": "Testabdeckung Last (%)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Testabdeckung (%)"},
+    "a21": {"min": 1, "max": 2,   "label": "Serverzeit Unit (min)"},
+    "a22": {"min": 2, "max": 5,   "label": "Serverzeit Integration (min)"},
+    "a23": {"min": 4, "max": 10,  "label": "Serverzeit Last (min)"},
+    "b2":  {"min": 30, "max": 100, "label": "Serverzeit (min)"},
+    "a31": {"min": 1, "max": 3,   "label": "Entwicklerzeit Unit (min)"},
+    "a32": {"min": 2, "max": 5,   "label": "Entwicklerzeit Integration (min)"},
+    "a33": {"min": 3, "max": 7,   "label": "Entwicklerzeit Last (min)"},
+    "b3":  {"min": 30, "max": 120, "label": "Entwicklerzeit (min)"}
+  },
+  "titel": "Software-QA – Drei Teststufen",
+  "beschreibung": "Ein Softwareteam setzt Unit-Tests, Integrationstests und Lasttests ein. Ein Unit-Test kostet {c1} €, ein Integrationstest kostet {c2} € und ein Lasttest kostet {c3} €. Unit-Tests erreichen {a11} % Testabdeckung, Integrationstests erreichen {a12} % und Lasttests erreichen {a13} % Testabdeckung. Die Mindest-Testabdeckung beträgt {b1} %. Unit-Tests benötigen {a21} Minuten Serverzeit, Integrationstests benötigen {a22} Minuten und Lasttests benötigen {a23} Minuten. Die Serverzeit beträgt {b2} Minuten. Die Entwicklerzeit beträgt {a31} Minuten pro Unit-Test, {a32} Minuten pro Integrationstest und {a33} Minuten pro Lasttest. Die verfügbare Entwicklerzeit beträgt {b3} Minuten.",
+  "hinweis": "Minimiere die Testkosten bei ausreichender Testabdeckung, begrenzter Server- und Entwicklerzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Unit-Test kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Integrationstest kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Lasttest kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Testabdeckung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % Testabdeckung", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Serverzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Minuten pro Unit-Test", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Minuten pro Integrationstest", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Minuten pro Lasttest", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Minuten", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

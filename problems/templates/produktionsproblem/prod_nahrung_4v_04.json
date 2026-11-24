@@ -1,0 +1,81 @@
+{
+  "id": "prod_nahrung_4v_04",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Tonnen Ketchup", "x2 = Tonnen Senf", "x3 = Tonnen Mayonnaise", "x4 = Tonnen Dressing"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Essig", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Oel", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Ruehrwerk", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Abfuellanlage", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 200, "max": 500, "label": "Gewinn/t Ketchup (€)"},
+    "c2":  {"min": 150, "max": 400, "label": "Gewinn/t Senf (€)"},
+    "c3":  {"min": 250, "max": 600, "label": "Gewinn/t Mayonnaise (€)"},
+    "c4":  {"min": 300, "max": 700, "label": "Gewinn/t Dressing (€)"},
+    "a11": {"min": 1, "max": 4,     "label": "Essig/t Ketchup (hl)"},
+    "a12": {"min": 2, "max": 5,     "label": "Essig/t Senf (hl)"},
+    "a13": {"min": 1, "max": 3,     "label": "Essig/t Mayonnaise (hl)"},
+    "a14": {"min": 2, "max": 6,     "label": "Essig/t Dressing (hl)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Essigvorrat (hl)"},
+    "a21": {"min": 1, "max": 3,     "label": "Oel/t Ketchup (hl)"},
+    "a22": {"min": 1, "max": 2,     "label": "Oel/t Senf (hl)"},
+    "a23": {"min": 3, "max": 8,     "label": "Oel/t Mayonnaise (hl)"},
+    "a24": {"min": 2, "max": 6,     "label": "Oel/t Dressing (hl)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Oelvorrat (hl)"},
+    "a31": {"min": 1, "max": 3,     "label": "Ruehrzeit/t Ketchup (h)"},
+    "a32": {"min": 1, "max": 4,     "label": "Ruehrzeit/t Senf (h)"},
+    "a33": {"min": 2, "max": 5,     "label": "Ruehrzeit/t Mayonnaise (h)"},
+    "a34": {"min": 1, "max": 4,     "label": "Ruehrzeit/t Dressing (h)"},
+    "b3":  {"min": 15, "max": 60,   "label": "Ruehrwerkstunden"},
+    "a41": {"min": 1, "max": 3,     "label": "Abfuellzeit/t Ketchup (h)"},
+    "a42": {"min": 1, "max": 2,     "label": "Abfuellzeit/t Senf (h)"},
+    "a43": {"min": 1, "max": 3,     "label": "Abfuellzeit/t Mayonnaise (h)"},
+    "a44": {"min": 1, "max": 3,     "label": "Abfuellzeit/t Dressing (h)"},
+    "b4":  {"min": 10, "max": 50,   "label": "Abfuellkapazitaet (h)"}
+  },
+  "titel": "Lebensmittelfabrik – Saucen und Dressings",
+  "beschreibung": "Eine Lebensmittelfabrik stellt Ketchup, Senf, Mayonnaise und Dressing her. Pro Tonne Ketchup werden {c1} Euro Gewinn erwirtschaftet, pro Tonne Senf {c2} Euro, pro Tonne Mayonnaise {c3} Euro und pro Tonne Dressing {c4} Euro. Der Essigverbrauch betraegt {a11} hl pro Tonne Ketchup, {a12} hl pro Tonne Senf, {a13} hl pro Tonne Mayonnaise und {a14} hl pro Tonne Dressing. Der Essigvorrat umfasst {b1} hl. An Oel werden {a21} hl pro Tonne Ketchup, {a22} hl pro Tonne Senf, {a23} hl pro Tonne Mayonnaise und {a24} hl pro Tonne Dressing benoetigt bei einem Vorrat von {b2} hl. Das Ruehrwerk arbeitet {a31} Stunden pro Tonne Ketchup, {a32} Stunden pro Tonne Senf, {a33} Stunden pro Tonne Mayonnaise und {a34} Stunden pro Tonne Dressing. Die Ruehrkapazitaet betraegt {b3} Stunden. Die Abfuellung erfordert {a41} Stunden pro Tonne Ketchup, {a42} Stunden pro Tonne Senf, {a43} Stunden pro Tonne Mayonnaise und {a44} Stunden pro Tonne Dressing bei {b4} Abfuellstunden.",
+  "hinweis": "Vier Saucen mit vier Beschraenkungen: Essig, Oel, Ruehrwerk und Abfuellung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Ketchup werden {c1} Euro Gewinn erwirtschaftet", "bedeutung": "{c1} × x₁"},
+      {"text": "Senf {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Mayonnaise {c3} Euro", "bedeutung": "{c3} × x₃"},
+      {"text": "Dressing {c4} Euro", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} hl pro Tonne Ketchup", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} hl pro Tonne Senf", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} hl pro Tonne Mayonnaise", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} hl pro Tonne Dressing", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} hl", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} hl pro Tonne Ketchup", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} hl pro Tonne Senf", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} hl pro Tonne Mayonnaise", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} hl pro Tonne Dressing", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} hl", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden pro Tonne Ketchup", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden pro Tonne Senf", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden pro Tonne Mayonnaise", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Stunden pro Tonne Dressing", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Stunden pro Tonne Ketchup", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Stunden pro Tonne Senf", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Stunden pro Tonne Mayonnaise", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Stunden pro Tonne Dressing", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Abfuellstunden", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

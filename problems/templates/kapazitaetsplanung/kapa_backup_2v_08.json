@@ -1,0 +1,41 @@
+{
+  "id": "kapa_backup_2v_08",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Hot-Backup-Server", "x2 = Anzahl Cold-Backup-Server"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Speicherkapazität", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Budget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Sicherungsrate Hot (TB/h)"},
+    "c2":  {"min": 2, "max": 10,    "label": "Sicherungsrate Cold (TB/h)"},
+    "a11": {"min": 10, "max": 50,   "label": "Speicher Hot (TB)"},
+    "a12": {"min": 20, "max": 100,  "label": "Speicher Cold (TB)"},
+    "b1":  {"min": 200, "max": 1000, "label": "Verfügbarer Speicher (TB)"},
+    "a21": {"min": 3, "max": 10,    "label": "Kosten Hot (Tsd. €/Monat)"},
+    "a22": {"min": 1, "max": 5,     "label": "Kosten Cold (Tsd. €/Monat)"},
+    "b2":  {"min": 30, "max": 120,  "label": "Monatsbudget (Tsd. €)"}
+  },
+  "titel": "Backup-Infrastruktur – Serverplanung",
+  "beschreibung": "Ein Unternehmen plant seine Backup-Infrastruktur mit Hot- und Cold-Backup-Servern. Ein Hot-Backup-Server sichert {c1} TB pro Stunde, ein Cold-Backup-Server sichert {c2} TB pro Stunde. Ein Hot-Backup-Server benötigt {a11} TB Speicher, ein Cold-Backup-Server benötigt {a12} TB Speicher. Insgesamt stehen {b1} TB Speicher zur Verfügung. Die monatlichen Kosten betragen {a21} Tsd. € pro Hot-Backup-Server und {a22} Tsd. € pro Cold-Backup-Server. Das Monatsbudget beträgt {b2} Tsd. €.",
+  "hinweis": "Maximiere die Gesamtsicherungsrate unter Beachtung von Speicher und Budget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hot-Backup-Server sichert {c1} TB pro Stunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Cold-Backup-Server sichert {c2} TB pro Stunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} TB Speicher, ein Cold-Backup-Server benötigt {a12} TB Speicher", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} TB Speicher zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Hot-Backup-Server und {a22} Tsd. € pro Cold-Backup-Server", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

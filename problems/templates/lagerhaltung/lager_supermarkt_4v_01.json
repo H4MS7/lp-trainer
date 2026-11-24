@@ -1,0 +1,68 @@
+{
+  "id": "lager_supermarkt_4v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Bestellmenge Obst (Paletten)", "x2 = Bestellmenge Gemüse (Paletten)", "x3 = Bestellmenge Fleisch (Paletten)", "x4 = Bestellmenge Backwaren (Paletten)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Gesamtlagerfläche", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Kühlkapazität", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 8,   "label": "Lagerkosten Obst (€/Palette)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Lagerkosten Gemüse (€/Palette)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Lagerkosten Fleisch (€/Palette)"},
+    "c4":  {"min": 1, "max": 5,   "label": "Lagerkosten Backwaren (€/Palette)"},
+    "a11": {"min": 3, "max": 8,   "label": "Produkteinheiten Obst"},
+    "a12": {"min": 4, "max": 10,  "label": "Produkteinheiten Gemüse"},
+    "a13": {"min": 2, "max": 6,   "label": "Produkteinheiten Fleisch"},
+    "a14": {"min": 5, "max": 12,  "label": "Produkteinheiten Backwaren"},
+    "b1":  {"min": 80, "max": 320, "label": "Mindestbestand (Produkteinheiten)"},
+    "a21": {"min": 2, "max": 4,   "label": "Lagerfläche Obst (m²)"},
+    "a22": {"min": 2, "max": 5,   "label": "Lagerfläche Gemüse (m²)"},
+    "a23": {"min": 1, "max": 3,   "label": "Lagerfläche Fleisch (m²)"},
+    "a24": {"min": 2, "max": 4,   "label": "Lagerfläche Backwaren (m²)"},
+    "b2":  {"min": 50, "max": 200, "label": "Gesamtlagerfläche (m²)"},
+    "a31": {"min": 2, "max": 4,   "label": "Kühlbedarf Obst (kWh)"},
+    "a32": {"min": 1, "max": 3,   "label": "Kühlbedarf Gemüse (kWh)"},
+    "a33": {"min": 3, "max": 6,   "label": "Kühlbedarf Fleisch (kWh)"},
+    "a34": {"min": 1, "max": 2,   "label": "Kühlbedarf Backwaren (kWh)"},
+    "b3":  {"min": 40, "max": 150, "label": "Kühlkapazität (kWh)"}
+  },
+  "titel": "Großmarkt – Vier Warengruppen",
+  "beschreibung": "Ein Großmarkt optimiert die Lagerung von Obst, Gemüse, Fleisch und Backwaren. Die Lagerkosten betragen {c1} € pro Palette Obst, {c2} € pro Palette Gemüse, {c3} € pro Palette Fleisch und {c4} € pro Palette Backwaren. Obst liefert {a11} Produkteinheiten, Gemüse liefert {a12} Produkteinheiten, Fleisch liefert {a13} Produkteinheiten und Backwaren liefern {a14} Produkteinheiten pro Palette. Der Mindestbestand beträgt {b1} Produkteinheiten. Die Lagerfläche beträgt {a21} m² pro Palette Obst, {a22} m² pro Palette Gemüse, {a23} m² pro Palette Fleisch und {a24} m² pro Palette Backwaren. Die Gesamtlagerfläche beträgt {b2} m². Der Kühlbedarf beträgt {a31} kWh pro Palette Obst, {a32} kWh pro Palette Gemüse, {a33} kWh pro Palette Fleisch und {a34} kWh pro Palette Backwaren. Die Kühlkapazität beträgt {b3} kWh.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands, der Lagerfläche und der Kühlkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Obst", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Gemüse", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Palette Fleisch", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Palette Backwaren", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Produkteinheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Produkteinheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Produkteinheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Produkteinheiten pro Palette", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Produkteinheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² pro Palette Obst", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m² pro Palette Gemüse", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m² pro Palette Fleisch", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m² pro Palette Backwaren", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kWh pro Palette Obst", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} kWh pro Palette Gemüse", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} kWh pro Palette Fleisch", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} kWh pro Palette Backwaren", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} kWh", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

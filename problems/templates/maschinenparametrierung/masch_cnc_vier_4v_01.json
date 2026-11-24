@@ -1,0 +1,241 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "masch_cnc_vier_4v_01",
+  "titel": "CNC-Bearbeitungszentrum – Drehzahl, Vorschub, Tiefe und Kuehlmittel",
+  "variablen": [
+    "x1 = Drehzahl (Stufen)",
+    "x2 = Vorschub (Stufen)",
+    "x3 = Schnitttiefe (Stufen)",
+    "x4 = Kuehlmittelmenge (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Spindelleistung",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Werkzeugverschleiss",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Vibrationsgrenze",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Qualitaet Drehzahl"
+    },
+    "c2": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Vorschub"
+    },
+    "c3": {
+      "min": 2,
+      "max": 8,
+      "label": "Abtrag Tiefe"
+    },
+    "c4": {
+      "min": 2,
+      "max": 6,
+      "label": "Standzeit Kuehlmittel"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Spindel Drehzahl"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Spindel Vorschub"
+    },
+    "a13": {
+      "min": 2,
+      "max": 6,
+      "label": "Spindel Tiefe"
+    },
+    "a14": {
+      "min": 1,
+      "max": 2,
+      "label": "Spindel Kuehlmittel"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Spindelleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 6,
+      "label": "Verschleiss Drehzahl"
+    },
+    "a22": {
+      "min": 3,
+      "max": 8,
+      "label": "Verschleiss Vorschub"
+    },
+    "a23": {
+      "min": 4,
+      "max": 10,
+      "label": "Verschleiss Tiefe"
+    },
+    "a24": {
+      "min": 1,
+      "max": 3,
+      "label": "Verschleiss Kuehlmittel"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Verschleisseinheiten"
+    },
+    "a31": {
+      "min": 3,
+      "max": 7,
+      "label": "Vibration Drehzahl"
+    },
+    "a32": {
+      "min": 1,
+      "max": 4,
+      "label": "Vibration Vorschub"
+    },
+    "a33": {
+      "min": 2,
+      "max": 5,
+      "label": "Vibration Tiefe"
+    },
+    "a34": {
+      "min": 1,
+      "max": 2,
+      "label": "Vibration Kuehlmittel"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Vibrationseinheiten"
+    }
+  },
+  "beschreibung": "Ein CNC-Bearbeitungszentrum wird ueber vier Parameter gesteuert. Die Drehzahl liefert {c1} Qualitaetspunkte, der Vorschub {c2} Durchsatzpunkte, die Schnitttiefe {c3} Abtragpunkte und das Kuehlmittel {c4} Standzeitpunkte. Die Spindelleistung betraegt {a11} Einheiten fuer Drehzahl, {a12} fuer Vorschub, {a13} fuer Tiefe und {a14} fuer Kuehlmittel bei maximal {b1} Spindeleinheiten. Der Verschleiss liegt bei {a21} Einheiten fuer Drehzahl, {a22} fuer Vorschub, {a23} fuer Tiefe und {a24} fuer Kuehlmittel bei maximal {b2} Verschleisseinheiten. Die Vibration betraegt {a31} Einheiten fuer Drehzahl, {a32} fuer Vorschub, {a33} fuer Tiefe und {a34} fuer Kuehlmittel bei maximal {b3} Vibrationseinheiten.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Spindel, Verschleiss und Vibration.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Drehzahl liefert {c1} Qualitaetspunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Vorschub {c2} Durchsatzpunkte",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Schnitttiefe {c3} Abtragpunkte",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Kuehlmittel {c4} Standzeitpunkte",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Drehzahl",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Vorschub",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Tiefe",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Kuehlmittel",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Spindeleinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Drehzahl",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Vorschub",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Tiefe",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Kuehlmittel",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Drehzahl",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Vorschub",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Tiefe",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Kuehlmittel",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Vibrationseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

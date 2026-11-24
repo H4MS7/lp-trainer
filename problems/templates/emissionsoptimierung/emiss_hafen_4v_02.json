@@ -1,0 +1,68 @@
+{
+  "id": "emiss_hafen_4v_02",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Einheiten Containerschiff", "x2 = Einheiten Tanker", "x3 = Einheiten Bulkcarrier", "x4 = Einheiten Fähre"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "SOₓ-Emissionen", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Lärmbelastung", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Ertrag Containerschiff (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Tanker (Tsd. €)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Ertrag Bulkcarrier (Tsd. €)"},
+    "c4":  {"min": 2, "max": 8,   "label": "Ertrag Fähre (Tsd. €)"},
+    "a11": {"min": 4, "max": 12,  "label": "CO₂ Containerschiff (t)"},
+    "a12": {"min": 5, "max": 12,  "label": "CO₂ Tanker (t)"},
+    "a13": {"min": 3, "max": 8,   "label": "CO₂ Bulkcarrier (t)"},
+    "a14": {"min": 2, "max": 6,   "label": "CO₂ Fähre (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 8,   "label": "SOₓ Containerschiff (kg)"},
+    "a22": {"min": 4, "max": 10,  "label": "SOₓ Tanker (kg)"},
+    "a23": {"min": 2, "max": 6,   "label": "SOₓ Bulkcarrier (kg)"},
+    "a24": {"min": 1, "max": 4,   "label": "SOₓ Fähre (kg)"},
+    "b2":  {"min": 60, "max": 250, "label": "SOₓ-Limit (kg)"},
+    "a31": {"min": 2, "max": 6,   "label": "Lärm Containerschiff (dB-h)"},
+    "a32": {"min": 3, "max": 7,   "label": "Lärm Tanker (dB-h)"},
+    "a33": {"min": 2, "max": 5,   "label": "Lärm Bulkcarrier (dB-h)"},
+    "a34": {"min": 1, "max": 4,   "label": "Lärm Fähre (dB-h)"},
+    "b3":  {"min": 50, "max": 200, "label": "Lärmgrenze (dB-h)"}
+  },
+  "titel": "Hafenbetrieb – Container, Tanker, Bulk und Fähre",
+  "beschreibung": "Ein Hafenbetrieb fertigt Containerschiffe, Tanker, Bulkcarrier und Fähren ab. Ein Containerschiff erwirtschaftet {c1} Tsd. €, ein Tanker {c2} Tsd. €, ein Bulkcarrier {c3} Tsd. €, eine Fähre {c4} Tsd. € pro Einheit. Ein Containerschiff verursacht {a11} Tonnen CO₂, ein Tanker {a12} Tonnen, ein Bulkcarrier {a13} Tonnen, eine Fähre {a14} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Ein Containerschiff erzeugt {a21} kg SOₓ, ein Tanker {a22} kg, ein Bulkcarrier {a23} kg, eine Fähre {a24} kg pro Einheit. Das SOₓ-Limit liegt bei {b2} kg. Ein Containerschiff verursacht {a31} dB-h Lärm, ein Tanker {a32} dB-h, ein Bulkcarrier {a33} dB-h, eine Fähre {a34} dB-h pro Einheit. Die Lärmgrenze beträgt {b3} dB-h.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Containerschiff erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Tanker {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Bulkcarrier {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Fähre {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Tonnen pro Einheit", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kg SOₓ", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kg", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} kg", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} kg pro Einheit", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} kg", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} dB-h Lärm", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} dB-h", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} dB-h", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} dB-h pro Einheit", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} dB-h", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

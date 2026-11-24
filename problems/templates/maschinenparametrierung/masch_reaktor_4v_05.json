@@ -1,0 +1,299 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "masch_reaktor_4v_05",
+  "titel": "Chemiereaktor – Temperatur, Druck, Katalysator und Verweilzeit",
+  "variablen": [
+    "x1 = Reaktortemperatur (Stufen)",
+    "x2 = Reaktordruck (Stufen)",
+    "x3 = Katalysatormenge (Stufen)",
+    "x4 = Verweilzeit (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Sicherheitsgrenze",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Katalysatorkosten",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Durchsatzlimit",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 9,
+      "label": "Umsatzrate Temperatur"
+    },
+    "c2": {
+      "min": 2,
+      "max": 7,
+      "label": "Selektivitaet Druck"
+    },
+    "c3": {
+      "min": 4,
+      "max": 12,
+      "label": "Reaktionsrate Katalysator"
+    },
+    "c4": {
+      "min": 2,
+      "max": 6,
+      "label": "Ausbeute Verweilzeit"
+    },
+    "a11": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie Temperatur"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Druck"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Katalysator"
+    },
+    "a14": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Verweilzeit"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Energieverbrauch"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Sicherheit Temperatur"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Sicherheit Druck"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Sicherheit Katalysator"
+    },
+    "a24": {
+      "min": 1,
+      "max": 2,
+      "label": "Sicherheit Verweilzeit"
+    },
+    "b2": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Sicherheitsgrenze"
+    },
+    "a31": {
+      "min": 1,
+      "max": 2,
+      "label": "Kosten Temperatur"
+    },
+    "a32": {
+      "min": 1,
+      "max": 2,
+      "label": "Kosten Druck"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Kosten Katalysator"
+    },
+    "a34": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Verweilzeit"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Katalysatorkosten"
+    },
+    "a41": {
+      "min": 1,
+      "max": 2,
+      "label": "Durchsatz Temperatur"
+    },
+    "a42": {
+      "min": 1,
+      "max": 3,
+      "label": "Durchsatz Druck"
+    },
+    "a43": {
+      "min": 1,
+      "max": 2,
+      "label": "Durchsatz Katalysator"
+    },
+    "a44": {
+      "min": 3,
+      "max": 8,
+      "label": "Durchsatz Verweilzeit"
+    },
+    "b4": {
+      "min": 50,
+      "max": 250,
+      "label": "Max. Durchsatzlimit"
+    }
+  },
+  "beschreibung": "Ein Chemiereaktor wird ueber vier Parameter gesteuert. Die Temperatur liefert {c1} Punkte Umsatzrate, der Druck {c2} Punkte Selektivitaet, die Katalysatormenge {c3} Punkte Reaktionsrate und die Verweilzeit {c4} Punkte Ausbeute. Der Energieverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Druck, {a13} fuer Katalysator und {a14} fuer Verweilzeit bei maximal {b1} Energieeinheiten. Die Sicherheitsgrenze liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Druck, {a23} fuer Katalysator und {a24} fuer Verweilzeit bei maximal {b2} Sicherheitseinheiten. Die Katalysatorkosten betragen {a31} Einheiten fuer Temperatur, {a32} fuer Druck, {a33} fuer Katalysator und {a34} fuer Verweilzeit bei maximal {b3} Kosteneinheiten. Das Durchsatzlimit liegt bei {a41} Einheiten fuer Temperatur, {a42} fuer Druck, {a43} fuer Katalysator und {a44} fuer Verweilzeit bei maximal {b4} Durchsatzeinheiten.",
+  "hinweis": "Maximiere die Reaktorleistung unter Beachtung von Energie, Sicherheit, Kosten und Durchsatz.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Temperatur liefert {c1} Punkte Umsatzrate",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Druck {c2} Punkte Selektivitaet",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Katalysatormenge {c3} Punkte Reaktionsrate",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Verweilzeit {c4} Punkte Ausbeute",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Temperatur",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Druck",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Katalysator",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Verweilzeit",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Energieeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Temperatur",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Druck",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Katalysator",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Verweilzeit",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Sicherheitseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Temperatur",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Druck",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Katalysator",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Verweilzeit",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Kosteneinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Temperatur",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Druck",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Katalysator",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Verweilzeit",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{b4} Durchsatzeinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

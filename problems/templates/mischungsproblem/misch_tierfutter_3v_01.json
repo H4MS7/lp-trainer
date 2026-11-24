@@ -1,0 +1,51 @@
+{
+  "id": "misch_tierfutter_3v_01",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Menge Futter A (kg)", "x2 = Menge Futter B (kg)", "x3 = Menge Futter C (kg)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Eiweiß", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalzium", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Fettgehalt", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Futter A (EUR/kg)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Futter B (EUR/kg)"},
+    "c3":  {"min": 1, "max": 7,   "label": "Kosten Futter C (EUR/kg)"},
+    "a11": {"min": 3, "max": 9,   "label": "Eiweiß in A (g/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Eiweiß in B (g/kg)"},
+    "a13": {"min": 1, "max": 6,   "label": "Eiweiß in C (g/kg)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Eiweiß (g)"},
+    "a21": {"min": 1, "max": 5,   "label": "Kalzium in A (mg/kg)"},
+    "a22": {"min": 2, "max": 7,   "label": "Kalzium in B (mg/kg)"},
+    "a23": {"min": 3, "max": 8,   "label": "Kalzium in C (mg/kg)"},
+    "b2":  {"min": 30, "max": 120, "label": "Mindest-Kalzium (mg)"},
+    "a31": {"min": 2, "max": 6,   "label": "Fett in A (g/kg)"},
+    "a32": {"min": 1, "max": 5,   "label": "Fett in B (g/kg)"},
+    "a33": {"min": 3, "max": 8,   "label": "Fett in C (g/kg)"},
+    "b3":  {"min": 50, "max": 180, "label": "Max. Fettgehalt (g)"}
+  },
+  "titel": "Tierfutter – Eiweiß, Kalzium und Fett",
+  "beschreibung": "Ein Landwirtschaftsbetrieb mischt Tierfutter aus drei Sorten. Futter A kostet {c1} EUR pro kg, Futter B kostet {c2} EUR pro kg und Futter C kostet {c3} EUR pro kg. Futter A enthält {a11} g Eiweiß pro kg, Futter B enthält {a12} g und Futter C enthält {a13} g pro kg. Es werden mindestens {b1} g Eiweiß benötigt. Futter A enthält {a21} mg Kalzium pro kg, Futter B enthält {a22} mg und Futter C enthält {a23} mg pro kg. Es werden mindestens {b2} mg Kalzium benötigt. Futter A enthält {a31} g Fett pro kg, Futter B enthält {a32} g und Futter C enthält {a33} g pro kg. Der Fettgehalt darf höchstens {b3} g betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung der Mindestanforderungen für Eiweiß und Kalzium sowie der Fett-Obergrenze.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Futter A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Futter B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Futter C kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Eiweiß pro kg, Futter B enthält {a12} g und Futter C enthält {a13} g pro kg. Es werden mindestens {b1} g Eiweiß benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Kalzium pro kg, Futter B enthält {a22} mg und Futter C enthält {a23} mg pro kg. Es werden mindestens {b2} mg Kalzium benötigt", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} g Fett pro kg, Futter B enthält {a32} g und Futter C enthält {a33} g pro kg. Der Fettgehalt darf höchstens {b3} g betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ ≤ {b3}"}
+      ]
+    ]
+  }
+}

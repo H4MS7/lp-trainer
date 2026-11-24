@@ -1,0 +1,56 @@
+{
+  "id": "trans_hilfsgueter_4v_02",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Flüge Hubschrauber", "x2 = Fahrten Geländewagen", "x3 = Fahrten LKW", "x4 = Bootsfahrten"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Hilfsgüter", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Personal", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Treibstoff", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 30, "label": "Kosten Hubschrauber (EUR/Flug)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Geländewagen (EUR/Fahrt)"},
+    "c3":  {"min": 5, "max": 18,  "label": "Kosten LKW (EUR/Fahrt)"},
+    "c4":  {"min": 4, "max": 14,  "label": "Kosten Boot (EUR/Fahrt)"},
+    "a11": {"min": 1, "max": 4,   "label": "Güter pro Hubschrauber (t)"},
+    "a12": {"min": 1, "max": 3,   "label": "Güter pro Geländewagen (t)"},
+    "a13": {"min": 3, "max": 10,  "label": "Güter pro LKW (t)"},
+    "a14": {"min": 2, "max": 7,   "label": "Güter pro Boot (t)"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindest-Hilfsgüter (t)"},
+    "a21": {"min": 2, "max": 5,   "label": "Personal pro Hubschrauber"},
+    "a22": {"min": 1, "max": 3,   "label": "Personal pro Geländewagen"},
+    "a23": {"min": 1, "max": 4,   "label": "Personal pro LKW"},
+    "a24": {"min": 2, "max": 4,   "label": "Personal pro Boot"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbares Personal"},
+    "a31": {"min": 4, "max": 10,  "label": "Treibstoff Hubschrauber (kl)"},
+    "a32": {"min": 1, "max": 4,   "label": "Treibstoff Geländewagen (kl)"},
+    "a33": {"min": 2, "max": 6,   "label": "Treibstoff LKW (kl)"},
+    "a34": {"min": 2, "max": 5,   "label": "Treibstoff Boot (kl)"},
+    "b3":  {"min": 30, "max": 120, "label": "Max. Treibstoff (kl)"}
+  },
+  "titel": "Katastrophenhilfe – vier Transportwege",
+  "beschreibung": "Eine Hilfsorganisation transportiert Güter in ein Katastrophengebiet über vier Wege. Ein Hubschrauberflug kostet {c1} EUR, eine Geländewagenfahrt kostet {c2} EUR, eine LKW-Fahrt kostet {c3} EUR und eine Bootsfahrt kostet {c4} EUR. Der Hubschrauber transportiert {a11} Tonnen, der Geländewagen {a12} Tonnen, der LKW {a13} Tonnen und das Boot {a14} Tonnen pro Fahrt. Mindestens {b1} Tonnen Hilfsgüter müssen geliefert werden. Der Hubschrauber benötigt {a21} Personen, der Geländewagen {a22}, der LKW {a23} und das Boot {a24} Personen pro Fahrt. Insgesamt stehen {b2} Personen zur Verfügung. Der Hubschrauber verbraucht {a31} kl Treibstoff, der Geländewagen {a32} kl, der LKW {a33} kl und das Boot {a34} kl pro Fahrt. Der Treibstoffvorrat beträgt höchstens {b3} kl.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Hilfsgütern, begrenztem Personal und Treibstoff.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hubschrauberflug kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Geländewagenfahrt kostet {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "LKW-Fahrt kostet {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "Bootsfahrt kostet {c4} EUR", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen, der Geländewagen {a12} Tonnen, der LKW {a13} Tonnen und das Boot {a14} Tonnen pro Fahrt. Mindestens {b1} Tonnen Hilfsgüter müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Personen, der Geländewagen {a22}, der LKW {a23} und das Boot {a24} Personen pro Fahrt. Insgesamt stehen {b2} Personen zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kl Treibstoff, der Geländewagen {a32} kl, der LKW {a33} kl und das Boot {a34} kl pro Fahrt. Der Treibstoffvorrat beträgt höchstens {b3} kl", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≤ {b3}"}
+      ]
+    ]
+  }
+}

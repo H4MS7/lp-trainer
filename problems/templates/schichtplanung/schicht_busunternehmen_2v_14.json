@@ -1,0 +1,43 @@
+{
+  "id": "schicht_busunternehmen_2v_14",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Fahrer", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Disponenten", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 80, "max": 160, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 90, "max": 180, "label": "Kosten Spätschicht (€)"},
+    "a11": {"min": 4, "max": 10, "label": "Fahrer pro Frühschicht"},
+    "a12": {"min": 3, "max": 7, "label": "Fahrer pro Spätschicht"},
+    "b1":  {"min": 20, "max": 60, "label": "Mindestbesetzung Fahrer"},
+    "a21": {"min": 1, "max": 3, "label": "Disponenten pro Frühschicht"},
+    "a22": {"min": 1, "max": 2, "label": "Disponenten pro Spätschicht"},
+    "b2":  {"min": 5, "max": 15, "label": "Mindestbesetzung Disponenten"}
+  },
+  "titel": "Busunternehmen – Schichtplanung",
+  "beschreibung": "Ein Busunternehmen plant die Schichtbesetzung für Fahrer und Disponenten. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €. Jede Frühschicht stellt {a11} Fahrer bereit, jede Spätschicht stellt {a12} Fahrer bereit. Mindestens {b1} Fahrer werden benötigt. Jede Frühschicht stellt {a21} Disponenten bereit, jede Spätschicht stellt {a22} Disponenten bereit. Mindestens {b2} Disponenten werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Fahrer und Disponenten.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Fahrer bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Fahrer bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Fahrer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Disponenten bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Disponenten bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Disponenten werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

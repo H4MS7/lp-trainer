@@ -1,0 +1,41 @@
+{
+  "id": "medien_google_insta_2v_02",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Google-Ads-Kampagnen", "x2 = Anzahl Instagram-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Werbebudget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Betreuungszeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,   "label": "Klicks Google (Tsd.)"},
+    "c2":  {"min": 2, "max": 8,    "label": "Klicks Instagram (Tsd.)"},
+    "a11": {"min": 2, "max": 8,    "label": "Kosten Google (Tsd. €)"},
+    "a12": {"min": 1, "max": 6,    "label": "Kosten Instagram (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150, "label": "Werbebudget (Tsd. €)"},
+    "a21": {"min": 3, "max": 8,    "label": "Betreuung Google (Stunden)"},
+    "a22": {"min": 2, "max": 6,    "label": "Betreuung Instagram (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Betreuungsstunden"}
+  },
+  "titel": "Online-Werbung – Google Ads und Instagram",
+  "beschreibung": "Ein Marketingteam plant Online-Werbung über Google Ads und Instagram. Eine Google-Ads-Kampagne generiert {c1} Tsd. Klicks, eine Instagram-Kampagne generiert {c2} Tsd. Klicks. Eine Google-Ads-Kampagne kostet {a11} Tsd. €, eine Instagram-Kampagne kostet {a12} Tsd. €. Das Werbebudget beträgt {b1} Tsd. €. Die Betreuungszeit beträgt {a21} Stunden pro Google-Ads-Kampagne und {a22} Stunden pro Instagram-Kampagne. Insgesamt stehen {b2} Betreuungsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtklickzahl unter Beachtung des Budgets und der Betreuungszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Google-Ads-Kampagne generiert {c1} Tsd. Klicks", "bedeutung": "{c1} × x₁"},
+      {"text": "Instagram-Kampagne generiert {c2} Tsd. Klicks", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine Instagram-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Google-Ads-Kampagne und {a22} Stunden pro Instagram-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Betreuungsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

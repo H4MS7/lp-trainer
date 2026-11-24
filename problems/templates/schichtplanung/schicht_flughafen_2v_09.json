@@ -1,0 +1,43 @@
+{
+  "id": "schicht_flughafen_2v_09",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Sicherheitskontrolle", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Bodenabfertigung", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 90, "max": 180, "label": "Kosten Tagschicht (€)"},
+    "c2":  {"min": 130, "max": 250, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 4, "max": 10, "label": "Sicherheitspersonal pro Tagschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Sicherheitspersonal pro Nachtschicht"},
+    "b1":  {"min": 25, "max": 70, "label": "Mindestbesetzung Sicherheitskontrolle"},
+    "a21": {"min": 3, "max": 8, "label": "Bodenpersonal pro Tagschicht"},
+    "a22": {"min": 1, "max": 4, "label": "Bodenpersonal pro Nachtschicht"},
+    "b2":  {"min": 15, "max": 50, "label": "Mindestbesetzung Bodenabfertigung"}
+  },
+  "titel": "Flughafen – Schichtplanung",
+  "beschreibung": "Ein Flughafen plant die Schichtbesetzung für Sicherheitskontrolle und Bodenabfertigung. Eine Tagschicht kostet {c1} €, eine Nachtschicht kostet {c2} €. Jede Tagschicht stellt {a11} Sicherheitskräfte bereit, jede Nachtschicht stellt {a12} Sicherheitskräfte bereit. Mindestens {b1} Sicherheitskräfte werden benötigt. Jede Tagschicht stellt {a21} Bodenpersonal bereit, jede Nachtschicht stellt {a22} Bodenpersonal bereit. Mindestens {b2} Bodenpersonal werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Sicherheitskontrolle und Bodenabfertigung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tagschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nachtschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Sicherheitskräfte bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Sicherheitskräfte bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Sicherheitskräfte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Bodenpersonal bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Bodenpersonal bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Bodenpersonal werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "prod_keramik_4v_05",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Teller", "x2 = Anzahl Tassen", "x3 = Anzahl Vasen", "x4 = Anzahl Schalen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Ton", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Glasur", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Ofenzeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,    "label": "Gewinn/Teller (€)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Gewinn/Tasse (€)"},
+    "c3":  {"min": 8, "max": 25,    "label": "Gewinn/Vase (€)"},
+    "c4":  {"min": 4, "max": 15,    "label": "Gewinn/Schale (€)"},
+    "a11": {"min": 1, "max": 3,     "label": "Ton/Teller (kg)"},
+    "a12": {"min": 1, "max": 2,     "label": "Ton/Tasse (kg)"},
+    "a13": {"min": 2, "max": 5,     "label": "Ton/Vase (kg)"},
+    "a14": {"min": 1, "max": 3,     "label": "Ton/Schale (kg)"},
+    "b1":  {"min": 40, "max": 200,  "label": "Tonvorrat (kg)"},
+    "a21": {"min": 1, "max": 3,     "label": "Glasur/Teller (dl)"},
+    "a22": {"min": 1, "max": 2,     "label": "Glasur/Tasse (dl)"},
+    "a23": {"min": 2, "max": 4,     "label": "Glasur/Vase (dl)"},
+    "a24": {"min": 1, "max": 3,     "label": "Glasur/Schale (dl)"},
+    "b2":  {"min": 20, "max": 100,  "label": "Glasurvorrat (dl)"},
+    "a31": {"min": 1, "max": 2,     "label": "Ofenzeit/Teller (h)"},
+    "a32": {"min": 1, "max": 2,     "label": "Ofenzeit/Tasse (h)"},
+    "a33": {"min": 1, "max": 3,     "label": "Ofenzeit/Vase (h)"},
+    "a34": {"min": 1, "max": 2,     "label": "Ofenzeit/Schale (h)"},
+    "b3":  {"min": 20, "max": 80,   "label": "Ofenkapazitaet (h)"}
+  },
+  "titel": "Keramikwerkstatt – Teller, Tassen, Vasen und Schalen",
+  "beschreibung": "Eine Keramikwerkstatt produziert Teller, Tassen, Vasen und Schalen. Jeder Teller bringt {c1} Euro Gewinn, jede Tasse {c2} Euro, jede Vase {c3} Euro und jede Schale {c4} Euro. Ein Teller benoetigt {a11} kg Ton, eine Tasse {a12} kg, eine Vase {a13} kg und eine Schale {a14} kg. Es stehen {b1} kg Ton bereit. Fuer die Glasur werden {a21} dl pro Teller, {a22} dl pro Tasse, {a23} dl pro Vase und {a24} dl pro Schale benoetigt. Der Glasurvorrat umfasst {b2} dl. Im Ofen benoetigt jeder Teller {a31} Stunden, jede Tasse {a32} Stunden, jede Vase {a33} Stunden und jede Schale {a34} Stunden. Die Ofenkapazitaet liegt bei {b3} Stunden.",
+  "hinweis": "Vier Keramikprodukte mit Beschraenkungen bei Ton, Glasur und Ofenzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Teller bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Tasse {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Vase {c3} Euro", "bedeutung": "{c3} × x₃"},
+      {"text": "Schale {c4} Euro", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Teller benoetigt {a11} kg Ton", "bedeutung": "{a11}x₁"},
+        {"text": "Tasse {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "Vase {a13} kg", "bedeutung": "+ {a13}x₃"},
+        {"text": "Schale {a14} kg", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} kg Ton bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} dl pro Teller", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} dl pro Tasse", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} dl pro Vase", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} dl pro Schale", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} dl", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "Teller {a31} Stunden", "bedeutung": "{a31}x₁"},
+        {"text": "Tasse {a32} Stunden", "bedeutung": "+ {a32}x₂"},
+        {"text": "Vase {a33} Stunden", "bedeutung": "+ {a33}x₃"},
+        {"text": "Schale {a34} Stunden", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

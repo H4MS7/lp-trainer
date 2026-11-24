@@ -1,0 +1,43 @@
+{
+  "id": "lager_baumarkt_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Werkzeuge (Paletten)", "x2 = Bestellmenge Farben (Paletten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Hallenkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 9,   "label": "Lagerkosten Werkzeuge (€/Palette)"},
+    "c2":  {"min": 2, "max": 7,   "label": "Lagerkosten Farben (€/Palette)"},
+    "a11": {"min": 5, "max": 12,  "label": "Produkte pro Palette Werkzeuge"},
+    "a12": {"min": 8, "max": 18,  "label": "Produkte pro Palette Farben"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestsortiment (Produkte)"},
+    "a21": {"min": 2, "max": 4,   "label": "Hallenfläche Werkzeuge (m²)"},
+    "a22": {"min": 1, "max": 3,   "label": "Hallenfläche Farben (m²)"},
+    "b2":  {"min": 40, "max": 160, "label": "Hallenkapazität (m²)"}
+  },
+  "titel": "Baumarkt – Lagerverwaltung",
+  "beschreibung": "Ein Baumarkt plant die Lagerung von Werkzeugen und Farben. Die Lagerkosten betragen {c1} € pro Palette Werkzeuge und {c2} € pro Palette Farben. Jede Palette Werkzeuge enthält {a11} Produkte, jede Palette Farben enthält {a12} Produkte. Das Mindestsortiment umfasst {b1} Produkte. Werkzeuge belegen {a21} m² Hallenfläche pro Palette, Farben belegen {a22} m² Hallenfläche pro Palette. Die Hallenkapazität beträgt {b2} m².",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments und der Hallenkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Palette Werkzeuge", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Palette Farben", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Produkte", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Produkte", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Produkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² Hallenfläche pro Palette", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m² Hallenfläche pro Palette", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,368 @@
+[
+  {
+    "titel": "Weizen und Solaranlage",
+    "beschreibung": "Ein Landwirt bewirtschaftet eine große Agrarfläche und möchte den jährlichen Gesamtertrag durch den Anbau von Weizen und die Installation von Solarmodulen maximieren. Pro Hektar Weizen erzielt er einen Ertrag von 13€ pro Hektar, pro Hektar Solaranlage einen Ertrag von 9€ pro Hektar. Der Wasserverbrauch ist begrenzt: Weizen benötigt 3 Kubikmeter pro Hektar und Solarflächen benötigen 5 Kubikmeter pro Hektar für die Reinigung, wobei insgesamt höchstens 1352 Kubikmeter zur Verfügung stehen. Zur Sicherung der Energieversorgung müssen mindestens 2 Hektar Weizen und 2 Hektar Solaranlage bewirtschaftet werden, also insgesamt mindestens 98 Hektar bei einer Gewichtung von 2 Hektar pro Einheit beider Nutzungsarten. Der Arbeitsaufwand beträgt 9 Stunden pro Hektar Weizen und 12 Stunden pro Hektar Solaranlage, wobei höchstens 1824 Arbeitsstunden verfügbar sind. Außerdem darf die Gesamtnutzung mit 1 Hektar Weizen und 2 Hektar Solaranlage eine Planungsgrenze von 190 Hektar nicht überschreiten. Der Landwirt möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Solaranlage"],
+    "zielfunktion": "Z = 13x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 5x2 ≤ 1352 (Wasserverbrauch)",
+      "2x1 + 2x2 ≥ 98 (Mindestnutzung)",
+      "9x1 + 12x2 ≤ 1824 (Arbeitsstunden)",
+      "x1 + 2x2 ≤ 190 (Planungsgrenze)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen mit unterschiedlichen Richtungen: Wasserverbrauch, Arbeitsstunden und Planungsgrenze sind Obergrenzen (≤), die Mindestnutzung ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 13€ pro Hektar", "bedeutung": "13 × x₁"},
+        {"text": "Ertrag von 9€ pro Hektar", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Kubikmeter pro Hektar", "bedeutung": "3x₁"},
+          {"text": "5 Kubikmeter pro Hektar", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 1352 Kubikmeter", "bedeutung": "≤ 1352"}
+        ],
+        [
+          {"text": "mindestens 98 Hektar", "bedeutung": "2x₁ + 2x₂ ≥ 98"}
+        ],
+        [
+          {"text": "9 Stunden pro Hektar Weizen", "bedeutung": "9x₁"},
+          {"text": "12 Stunden pro Hektar Solaranlage", "bedeutung": "+ 12x₂"},
+          {"text": "höchstens 1824 Arbeitsstunden", "bedeutung": "≤ 1824"}
+        ],
+        [
+          {"text": "Planungsgrenze von 190 Hektar", "bedeutung": "x₁ + 2x₂ ≤ 190"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Mais und Windpark",
+    "beschreibung": "Eine Gemeinde plant die optimale Nutzung ihrer Agrarfläche für Maisanbau und einen Windpark. Pro Hektar Mais wird ein Ertrag von 2€ erzielt, pro Hektar Windpark ein Ertrag von 14€. Die Bodenvorbereitung erfordert 6 Arbeitsstunden pro Hektar Mais und 2 Arbeitsstunden pro Hektar Windpark, wobei insgesamt höchstens 1379 Arbeitsstunden zur Verfügung stehen. Um die landwirtschaftliche Grundversorgung zu sichern, müssen mindestens 5 Hektar Mais und 1 Hektar Windpark bewirtschaftet werden, was eine Mindestnutzung von 100 ergibt. Der Flächenverbrauch für Infrastruktur beträgt 7 Hektar pro Einheit Mais und 2 Hektar pro Einheit Windpark und darf insgesamt 1529 Hektar nicht überschreiten. Die Gemeinde möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Mais", "x2 = Hektar Windpark"],
+    "zielfunktion": "Z = 2x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≤ 1379 (Arbeitsstunden)",
+      "5x1 + x2 ≥ 100 (Mindestnutzung)",
+      "7x1 + 2x2 ≤ 1529 (Infrastruktur)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Arbeitsstunden und Infrastruktur sind Obergrenzen (≤), die Mindestnutzung ist eine Untergrenze (≥). Achten Sie auf die unterschiedlichen Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 2€", "bedeutung": "2 × x₁"},
+        {"text": "Ertrag von 14€", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Arbeitsstunden pro Hektar Mais", "bedeutung": "6x₁"},
+          {"text": "2 Arbeitsstunden pro Hektar Windpark", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 1379 Arbeitsstunden", "bedeutung": "≤ 1379"}
+        ],
+        [
+          {"text": "Mindestnutzung von 100", "bedeutung": "5x₁ + x₂ ≥ 100"}
+        ],
+        [
+          {"text": "7 Hektar pro Einheit Mais", "bedeutung": "7x₁"},
+          {"text": "2 Hektar pro Einheit Windpark", "bedeutung": "+ 2x₂"},
+          {"text": "1529 Hektar nicht überschreiten", "bedeutung": "≤ 1529"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wald- und Weidenutzung",
+    "beschreibung": "Ein Forstbetrieb möchte eine große Fläche optimal zwischen Aufforstung und Weidewirtschaft aufteilen, um den Gesamtnutzen zu maximieren. Pro Hektar Wald erzielt der Betrieb einen Nutzen von 3€ und pro Hektar Weide einen Nutzen von 9€. Die Bewässerung erfordert 10 Kubikmeter pro Hektar Wald und 4 Kubikmeter pro Hektar Weide, wobei insgesamt höchstens 1211 Kubikmeter Wasser verfügbar sind. Um Erosionsschutz zu gewährleisten, müssen Wald und Weide zusammen eine Mindestbepflanzung erreichen: 6 Hektar pro Einheit Wald und 4 Hektar pro Einheit Weide ergeben mindestens 601 Hektar. Die verfügbare Arbeitskapazität beträgt 9 Stunden pro Hektar Wald und 4 Stunden pro Hektar Weide, wobei höchstens 989 Arbeitsstunden eingeplant werden können. Der Betrieb möchte den Gesamtnutzen maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Wald", "x2 = Hektar Weide"],
+    "zielfunktion": "Z = 3x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 4x2 ≤ 1211 (Bewässerung)",
+      "6x1 + 4x2 ≥ 601 (Erosionsschutz)",
+      "9x1 + 4x2 ≤ 989 (Arbeitskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Bewässerung und Arbeitskapazität sind Obergrenzen (≤), der Erosionsschutz ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nutzen von 3€", "bedeutung": "3 × x₁"},
+        {"text": "Nutzen von 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "10 Kubikmeter pro Hektar Wald", "bedeutung": "10x₁"},
+          {"text": "4 Kubikmeter pro Hektar Weide", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 1211 Kubikmeter Wasser", "bedeutung": "≤ 1211"}
+        ],
+        [
+          {"text": "mindestens 601 Hektar", "bedeutung": "6x₁ + 4x₂ ≥ 601"}
+        ],
+        [
+          {"text": "9 Stunden pro Hektar Wald", "bedeutung": "9x₁"},
+          {"text": "4 Stunden pro Hektar Weide", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 989 Arbeitsstunden", "bedeutung": "≤ 989"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bio- und konventioneller Anbau",
+    "beschreibung": "Ein Agrarbetrieb plant die Aufteilung seiner Fläche zwischen biologischem und konventionellem Anbau, um den Gesamtertrag zu maximieren. Pro Hektar Bioanbau erzielt er einen Ertrag von 12€, pro Hektar konventionellem Anbau einen Ertrag von 6€. Der Wasserverbrauch beträgt 3 Kubikmeter pro Hektar Bioanbau und 4 Kubikmeter pro Hektar konventionellem Anbau, wobei insgesamt höchstens 429 Kubikmeter Wasser zur Verfügung stehen. Um Fördermittel zu erhalten, müssen Bio- und konventioneller Anbau zusammen eine Mindestfläche erreichen: 1 Hektar pro Einheit Bioanbau und 1 Hektar pro Einheit konventionellem Anbau ergeben mindestens 61 Hektar. Der Personaleinsatz ist begrenzt auf 3 Stunden pro Hektar Bioanbau und 3 Stunden pro Hektar konventionellem Anbau, wobei höchstens 199 Personalstunden verfügbar sind. Der Betrieb möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Bioanbau", "x2 = Hektar konventioneller Anbau"],
+    "zielfunktion": "Z = 12x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≤ 429 (Wasserverbrauch)",
+      "x1 + x2 ≥ 61 (Mindestfläche)",
+      "3x1 + 3x2 ≤ 199 (Personalstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Wasserverbrauch und Personalstunden sind Obergrenzen (≤), die Mindestfläche ist eine Untergrenze (≥). Beachten Sie die gleichen Koeffizienten bei den Personalstunden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 12€", "bedeutung": "12 × x₁"},
+        {"text": "Ertrag von 6€", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Kubikmeter pro Hektar Bioanbau", "bedeutung": "3x₁"},
+          {"text": "4 Kubikmeter pro Hektar konventionellem Anbau", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 429 Kubikmeter Wasser", "bedeutung": "≤ 429"}
+        ],
+        [
+          {"text": "mindestens 61 Hektar", "bedeutung": "x₁ + x₂ ≥ 61"}
+        ],
+        [
+          {"text": "3 Stunden pro Hektar Bioanbau", "bedeutung": "3x₁"},
+          {"text": "3 Stunden pro Hektar konventionellem Anbau", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 199 Personalstunden", "bedeutung": "≤ 199"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wohnbau und Grünfläche",
+    "beschreibung": "Eine Stadtverwaltung plant die Aufteilung eines Entwicklungsgebiets zwischen Wohnbebauung und Grünflächen, um den Gesamtnutzen für die Bevölkerung zu maximieren. Pro Hektar Wohnbau entsteht ein Nutzen von 11€, pro Hektar Grünfläche ein Nutzen von 2€. Die verfügbare Gesamtfläche ist begrenzt: 5 Hektar pro Einheit Wohnbau und 5 Hektar pro Einheit Grünfläche dürfen insgesamt höchstens 1378 Hektar betragen. Zur Sicherung der Lebensqualität müssen mindestens 1 Hektar Wohnbau und 2 Hektar Grünfläche realisiert werden, was einer Mindestnutzung von 242 Hektar entspricht. Die Erschließungskosten betragen 6 Einheiten pro Hektar Wohnbau und 8 Einheiten pro Hektar Grünfläche und dürfen höchstens 1093 Einheiten betragen. Außerdem ist der Planungsaufwand mit 3 Stunden pro Hektar Wohnbau und 1 Stunde pro Hektar Grünfläche auf höchstens 783 Stunden begrenzt. Die Stadt möchte den Gesamtnutzen maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Wohnbau", "x2 = Hektar Grünfläche"],
+    "zielfunktion": "Z = 11x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 5x2 ≤ 1378 (Gesamtfläche)",
+      "x1 + 2x2 ≥ 242 (Mindestnutzung)",
+      "6x1 + 8x2 ≤ 1093 (Erschließungskosten)",
+      "3x1 + x2 ≤ 783 (Planungsaufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: Gesamtfläche, Erschließungskosten und Planungsaufwand sind Obergrenzen (≤), die Mindestnutzung ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nutzen von 11€", "bedeutung": "11 × x₁"},
+        {"text": "Nutzen von 2€", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Hektar pro Einheit Wohnbau", "bedeutung": "5x₁"},
+          {"text": "5 Hektar pro Einheit Grünfläche", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 1378 Hektar", "bedeutung": "≤ 1378"}
+        ],
+        [
+          {"text": "Mindestnutzung von 242 Hektar", "bedeutung": "x₁ + 2x₂ ≥ 242"}
+        ],
+        [
+          {"text": "6 Einheiten pro Hektar Wohnbau", "bedeutung": "6x₁"},
+          {"text": "8 Einheiten pro Hektar Grünfläche", "bedeutung": "+ 8x₂"},
+          {"text": "höchstens 1093 Einheiten", "bedeutung": "≤ 1093"}
+        ],
+        [
+          {"text": "3 Stunden pro Hektar Wohnbau", "bedeutung": "3x₁"},
+          {"text": "1 Stunde pro Hektar Grünfläche", "bedeutung": "+ x₂"},
+          {"text": "höchstens 783 Stunden", "bedeutung": "≤ 783"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Weizen und Photovoltaik",
+    "beschreibung": "Ein landwirtschaftlicher Betrieb möchte seine Flächen zwischen Weizenanbau und Photovoltaikmodulen aufteilen, um den Gesamtertrag zu maximieren. Pro Hektar Weizen wird ein Ertrag von 9€ erzielt, pro Hektar Photovoltaik ein Ertrag von 8€. Die Bewässerung erfordert 1 Kubikmeter pro Hektar Weizen und 3 Kubikmeter pro Hektar Photovoltaik für die Kühlung, wobei insgesamt höchstens 1358 Kubikmeter verfügbar sind. Die Bodennutzung muss eine Mindestbewirtschaftung gewährleisten: 2 Hektar pro Einheit Weizen und 2 Hektar pro Einheit Photovoltaik ergeben mindestens 1044 Hektar. Die Erschließung benötigt 2 Stunden pro Hektar Weizen und 1 Stunde pro Hektar Photovoltaik und ist auf höchstens 907 Stunden begrenzt. Zusätzlich darf der Gesamtaufwand von 2 Einheiten pro Hektar Weizen und 2 Einheiten pro Hektar Photovoltaik höchstens 1244 Einheiten betragen. Der Betrieb möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Photovoltaik"],
+    "zielfunktion": "Z = 9x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 3x2 ≤ 1358 (Bewässerung)",
+      "2x1 + 2x2 ≥ 1044 (Mindestbewirtschaftung)",
+      "2x1 + x2 ≤ 907 (Erschließung)",
+      "2x1 + 2x2 ≤ 1244 (Gesamtaufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: Bewässerung, Erschließung und Gesamtaufwand sind Obergrenzen (≤), die Mindestbewirtschaftung ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 9€", "bedeutung": "9 × x₁"},
+        {"text": "Ertrag von 8€", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 Kubikmeter pro Hektar Weizen", "bedeutung": "x₁"},
+          {"text": "3 Kubikmeter pro Hektar Photovoltaik", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 1358 Kubikmeter", "bedeutung": "≤ 1358"}
+        ],
+        [
+          {"text": "mindestens 1044 Hektar", "bedeutung": "2x₁ + 2x₂ ≥ 1044"}
+        ],
+        [
+          {"text": "2 Stunden pro Hektar Weizen", "bedeutung": "2x₁"},
+          {"text": "1 Stunde pro Hektar Photovoltaik", "bedeutung": "+ x₂"},
+          {"text": "höchstens 907 Stunden", "bedeutung": "≤ 907"}
+        ],
+        [
+          {"text": "höchstens 1244 Einheiten", "bedeutung": "2x₁ + 2x₂ ≤ 1244"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Mais und Solarpark",
+    "beschreibung": "Ein Agrarunternehmen plant die Nutzung seiner Fläche für Maisanbau und einen Solarpark, um den Gesamtertrag zu maximieren. Pro Hektar Mais wird ein Ertrag von 5€ erzielt, pro Hektar Solarpark ein Ertrag von 6€. Der Wasserverbrauch beträgt 7 Kubikmeter pro Hektar Mais und 2 Kubikmeter pro Hektar Solarpark, wobei insgesamt höchstens 758 Kubikmeter Wasser zur Verfügung stehen. Zur Sicherstellung einer wirtschaftlichen Mindestgröße müssen 5 Hektar pro Einheit Mais und 1 Hektar pro Einheit Solarpark zusammen mindestens 123 Hektar ergeben. Außerdem darf die Gesamtbelegung von 1 Hektar pro Einheit Mais und 2 Hektar pro Einheit Solarpark höchstens 770 Hektar betragen. Das Unternehmen möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Mais", "x2 = Hektar Solarpark"],
+    "zielfunktion": "Z = 5x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + 2x2 ≤ 758 (Wasserverbrauch)",
+      "5x1 + x2 ≥ 123 (Mindestgröße)",
+      "x1 + 2x2 ≤ 770 (Gesamtbelegung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Wasserverbrauch und Gesamtbelegung sind Obergrenzen (≤), die Mindestgröße ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 5€", "bedeutung": "5 × x₁"},
+        {"text": "Ertrag von 6€", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "7 Kubikmeter pro Hektar Mais", "bedeutung": "7x₁"},
+          {"text": "2 Kubikmeter pro Hektar Solarpark", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 758 Kubikmeter Wasser", "bedeutung": "≤ 758"}
+        ],
+        [
+          {"text": "mindestens 123 Hektar", "bedeutung": "5x₁ + x₂ ≥ 123"}
+        ],
+        [
+          {"text": "höchstens 770 Hektar", "bedeutung": "x₁ + 2x₂ ≤ 770"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wald und Weideland",
+    "beschreibung": "Eine Forstverwaltung möchte ein Gebiet zwischen Waldfläche und Weideland aufteilen, um den Gesamtnutzen zu maximieren. Pro Hektar Wald wird ein Nutzen von 10€ erzielt, pro Hektar Weideland ein Nutzen von 9€. Die Gesamtfläche ist durch die Tragfähigkeit begrenzt: 5 Hektar pro Einheit Wald und 5 Hektar pro Einheit Weideland dürfen insgesamt höchstens 1317 Hektar betragen. Zur Aufrechterhaltung der Biodiversität müssen 5 Hektar pro Einheit Wald und 1 Hektar pro Einheit Weideland zusammen mindestens 470 Hektar ergeben. Außerdem darf die Nutzungsintensität mit 1 Hektar pro Einheit Wald und 1 Hektar pro Einheit Weideland insgesamt höchstens 96 Hektar betragen. Die Verwaltung möchte den Gesamtnutzen maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Wald", "x2 = Hektar Weideland"],
+    "zielfunktion": "Z = 10x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 5x2 ≤ 1317 (Tragfähigkeit)",
+      "5x1 + x2 ≥ 470 (Biodiversität)",
+      "x1 + x2 ≤ 96 (Nutzungsintensität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Tragfähigkeit und Nutzungsintensität sind Obergrenzen (≤), die Biodiversität ist eine Untergrenze (≥). Achten Sie auf die unterschiedlichen Koeffizienten bei der Biodiversitätsanforderung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nutzen von 10€", "bedeutung": "10 × x₁"},
+        {"text": "Nutzen von 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "höchstens 1317 Hektar", "bedeutung": "5x₁ + 5x₂ ≤ 1317"}
+        ],
+        [
+          {"text": "mindestens 470 Hektar", "bedeutung": "5x₁ + x₂ ≥ 470"}
+        ],
+        [
+          {"text": "höchstens 96 Hektar", "bedeutung": "x₁ + x₂ ≤ 96"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Bio- und Intensivlandwirtschaft",
+    "beschreibung": "Ein landwirtschaftlicher Betrieb möchte seine Fläche zwischen biologischem Anbau und Intensivlandwirtschaft aufteilen, um den Gesamtertrag zu maximieren. Pro Hektar Bioanbau erzielt er einen Ertrag von 11€, pro Hektar Intensivlandwirtschaft einen Ertrag von 5€. Die Erschließung erfordert 8 Arbeitsstunden pro Hektar Bioanbau und 10 Arbeitsstunden pro Hektar Intensivlandwirtschaft, wobei insgesamt höchstens 1683 Arbeitsstunden verfügbar sind. Zur Einhaltung von Umweltauflagen müssen 1 Hektar pro Einheit Bioanbau und 5 Hektar pro Einheit Intensivlandwirtschaft zusammen mindestens 105 Hektar ergeben. Der Personalaufwand beträgt 6 Stunden pro Hektar Bioanbau und 6 Stunden pro Hektar Intensivlandwirtschaft und darf höchstens 867 Personalstunden betragen. Der Betrieb möchte den Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Bioanbau", "x2 = Hektar Intensivlandwirtschaft"],
+    "zielfunktion": "Z = 11x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 10x2 ≤ 1683 (Erschließung)",
+      "x1 + 5x2 ≥ 105 (Umweltauflagen)",
+      "6x1 + 6x2 ≤ 867 (Personalaufwand)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Erschließung und Personalaufwand sind Obergrenzen (≤), die Umweltauflagen sind eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 11€", "bedeutung": "11 × x₁"},
+        {"text": "Ertrag von 5€", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Arbeitsstunden pro Hektar Bioanbau", "bedeutung": "8x₁"},
+          {"text": "10 Arbeitsstunden pro Hektar Intensivlandwirtschaft", "bedeutung": "+ 10x₂"},
+          {"text": "höchstens 1683 Arbeitsstunden", "bedeutung": "≤ 1683"}
+        ],
+        [
+          {"text": "mindestens 105 Hektar", "bedeutung": "x₁ + 5x₂ ≥ 105"}
+        ],
+        [
+          {"text": "6 Stunden pro Hektar Bioanbau", "bedeutung": "6x₁"},
+          {"text": "6 Stunden pro Hektar Intensivlandwirtschaft", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 867 Personalstunden", "bedeutung": "≤ 867"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Wohngebiet und Parkanlage",
+    "beschreibung": "Eine Stadtplanungsbehörde möchte ein großes Entwicklungsgebiet am Stadtrand zwischen Wohnbebauung und Parkanlagen aufteilen, um den Gesamtnutzen für die Bevölkerung zu maximieren. Pro Hektar Wohngebiet entsteht ein Nutzen von 5€ durch Mieteinnahmen und Infrastrukturvorteile, pro Hektar Parkanlage ein Nutzen von 11€ durch gesteigerte Lebensqualität und Erholungswert. Die Erschließungskapazität beträgt 3 Einheiten pro Hektar Wohngebiet und 2 Einheiten pro Hektar Parkanlage, wobei insgesamt höchstens 1733 Einheiten verfügbar sind. Zur Versorgung der Bevölkerung müssen 4 Hektar pro Einheit Wohngebiet und 8 Hektar pro Einheit Parkanlage zusammen mindestens 1253 Hektar ergeben. Die Gesamtnutzung darf mit 2 Hektar pro Einheit Wohngebiet und 2 Hektar pro Einheit Parkanlage höchstens 1203 Hektar betragen. Die Behörde möchte den Gesamtnutzen maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Wohngebiet", "x2 = Hektar Parkanlage"],
+    "zielfunktion": "Z = 5x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 1733 (Erschließungskapazität)",
+      "4x1 + 8x2 ≥ 1253 (Mindestversorgung)",
+      "2x1 + 2x2 ≤ 1203 (Gesamtnutzung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Erschließungskapazität und Gesamtnutzung sind Obergrenzen (≤), die Mindestversorgung ist eine Untergrenze (≥). Beachten Sie die verschiedenen Koeffizienten.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nutzen von 5€", "bedeutung": "5 × x₁"},
+        {"text": "Nutzen von 11€", "bedeutung": "11 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Einheiten pro Hektar Wohngebiet", "bedeutung": "3x₁"},
+          {"text": "2 Einheiten pro Hektar Parkanlage", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 1733 Einheiten", "bedeutung": "≤ 1733"}
+        ],
+        [
+          {"text": "mindestens 1253 Hektar", "bedeutung": "4x₁ + 8x₂ ≥ 1253"}
+        ],
+        [
+          {"text": "höchstens 1203 Hektar", "bedeutung": "2x₁ + 2x₂ ≤ 1203"}
+        ]
+      ]
+    }
+  }
+]

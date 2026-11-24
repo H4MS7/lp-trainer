@@ -1,0 +1,60 @@
+{
+  "id": "wart_bahn_3v_23",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Bremsenchecks", "x2 = Anzahl Achsüberholungen", "x3 = Anzahl Elektronikprüfungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsicherheit", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Depotkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Prüferbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Bremsen (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Achse (Tsd. €)"},
+    "c3":  {"min": 3, "max": 10,  "label": "Kosten Elektronik (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Sicherheit Bremsen (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Sicherheit Achse (%)"},
+    "a13": {"min": 2, "max": 6,   "label": "Sicherheit Elektronik (%)"},
+    "b1":  {"min": 50, "max": 150, "label": "Mindestsicherheit (%)"},
+    "a21": {"min": 2, "max": 4,   "label": "Depotzeit Bremsen (h)"},
+    "a22": {"min": 4, "max": 8,   "label": "Depotzeit Achse (h)"},
+    "a23": {"min": 1, "max": 3,   "label": "Depotzeit Elektronik (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Depotkapazität (h)"},
+    "a31": {"min": 1, "max": 3,   "label": "Prüfer Bremsen (Personen)"},
+    "a32": {"min": 2, "max": 5,   "label": "Prüfer Achse (Personen)"},
+    "a33": {"min": 1, "max": 3,   "label": "Prüfer Elektronik (Personen)"},
+    "b3":  {"min": 10, "max": 40,  "label": "Verfügbare Prüfer (Personen)"}
+  },
+  "titel": "Bahnbetrieb – Waggonwartung dreistufig",
+  "beschreibung": "Ein Bahnbetreiber plant die Waggonwartung auf drei Stufen. Ein Bremsencheck kostet {c1} Tsd. €, eine Achsüberholung kostet {c2} Tsd. €, eine Elektronikprüfung kostet {c3} Tsd. €. Ein Bremsencheck erhöht die Sicherheit um {a11} %, Achsüberholung um {a12} %, Elektronikprüfung um {a13} %. Die Mindestsicherheit beträgt {b1} %. Die Depotzeit beträgt {a21} h pro Bremsencheck, {a22} h pro Achsüberholung und {a23} h pro Elektronikprüfung. Die Depotkapazität beträgt {b2} Stunden. Es werden {a31} Prüfer pro Bremsencheck, {a32} Prüfer pro Achsüberholung und {a33} Prüfer pro Elektronikprüfung benötigt. Insgesamt stehen {b3} Prüfer zur Verfügung.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Sicherheit, Depotzeit und Prüferpersonal.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Bremsencheck kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Achsüberholung kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Elektronikprüfung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Bremsencheck", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Achsüberholung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Elektronikprüfung", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Prüfer pro Bremsencheck", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Prüfer pro Achsüberholung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Prüfer pro Elektronikprüfung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Prüfer zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "prod_textil_2v_04",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Hemden", "x2 = Anzahl Hosen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Stoff", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Naehzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 25,   "label": "Gewinn/Hemd (€)"},
+    "c2":  {"min": 12, "max": 35,  "label": "Gewinn/Hose (€)"},
+    "a11": {"min": 1, "max": 3,    "label": "Stoff/Hemd (m)"},
+    "a12": {"min": 2, "max": 5,    "label": "Stoff/Hose (m)"},
+    "b1":  {"min": 80, "max": 250, "label": "Stoffvorrat (m)"},
+    "a21": {"min": 1, "max": 4,    "label": "Naehzeit/Hemd (h)"},
+    "a22": {"min": 2, "max": 6,    "label": "Naehzeit/Hose (h)"},
+    "b2":  {"min": 50, "max": 180, "label": "Naehstunden"}
+  },
+  "titel": "Textilfabrik – Hemden und Hosen",
+  "beschreibung": "Eine Textilfabrik produziert Hemden und Hosen. Pro Hemd betraegt der Gewinn {c1} Euro, pro Hose {c2} Euro. Fuer ein Hemd werden {a11} m Stoff benoetigt, fuer eine Hose {a12} m. Der Stoffvorrat belaeuft sich auf {b1} m. Das Naehen eines Hemdes dauert {a21} Stunden, das einer Hose {a22} Stunden. Die Naehkapazitaet betraegt {b2} Stunden.",
+  "hinweis": "Finde die Gewinnfunktion und die Beschraenkungen bei Stoff und Naehzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hemd betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Hose {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m Stoff benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "Hose {a12} m", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Hemdes dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Hose {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

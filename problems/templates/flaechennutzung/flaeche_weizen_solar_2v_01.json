@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_weizen_solar_2v_01",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Solaranlage"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Ertrag Weizen (Tsd. €/ha)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Solar (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 3,   "label": "Flächenbedarf Weizen (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Solar (ha/ha)"},
+    "b1":  {"min": 50, "max": 300, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 8,   "label": "Wasserbedarf Weizen (m³/ha)"},
+    "a22": {"min": 1, "max": 3,   "label": "Wasserbedarf Solar (m³/ha)"},
+    "b2":  {"min": 100, "max": 500, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Landwirtschaft – Weizen und Solaranlage",
+  "beschreibung": "Ein Landwirt teilt seine Fläche zwischen Weizenanbau und einer Solaranlage auf. Weizen bringt {c1} Tsd. € Ertrag pro Hektar, die Solaranlage bringt {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Weizen und {a12} Hektar pro Hektar Solar. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserbedarf liegt bei {a21} m³ pro Hektar Weizen und {a22} m³ pro Hektar Solar. Das Wasserbudget beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Wasserbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Weizen bringt {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Solaranlage bringt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Weizen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Solar", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro Hektar Weizen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro Hektar Solar", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

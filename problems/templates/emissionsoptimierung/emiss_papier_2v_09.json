@@ -1,0 +1,43 @@
+{
+  "id": "emiss_papier_2v_09",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Frischfaserpapier", "x2 = Einheiten Recyclingpapier"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Frischfaser (Tsd. €)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Ertrag Recycling (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "Wasser Frischfaser (m³)"},
+    "a12": {"min": 2, "max": 6,   "label": "Wasser Recycling (m³)"},
+    "b1":  {"min": 100, "max": 400, "label": "Wasserbudget (m³)"},
+    "a21": {"min": 3, "max": 10,  "label": "CO₂ Frischfaser (t)"},
+    "a22": {"min": 1, "max": 4,   "label": "CO₂ Recycling (t)"},
+    "b2":  {"min": 60, "max": 250, "label": "CO₂-Limit (t)"}
+  },
+  "titel": "Papierfabrik – Frischfaser und Recycling",
+  "beschreibung": "Eine Papierfabrik stellt Frischfaserpapier und Recyclingpapier her. Frischfaserpapier erwirtschaftet {c1} Tsd. € pro Einheit, Recyclingpapier {c2} Tsd. €. Frischfaserpapier verbraucht {a11} m³ Wasser pro Einheit, Recyclingpapier {a12} m³. Das Wasserbudget beträgt {b1} m³. Frischfaserpapier verursacht {a21} Tonnen CO₂ pro Einheit, Recyclingpapier {a22} Tonnen. Das CO₂-Limit liegt bei {b2} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung des Wasserbudgets und des CO₂-Limits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frischfaserpapier erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Recyclingpapier {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ Wasser pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} m³", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} m³", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen CO₂ pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

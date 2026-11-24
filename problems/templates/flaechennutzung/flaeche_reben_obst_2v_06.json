@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_reben_obst_2v_06",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Weinreben", "x2 = Hektar Obstbäume"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Bewässerungskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 18,  "label": "Ertrag Weinreben (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Obstbäume (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Weinreben (ha/ha)"},
+    "a12": {"min": 1, "max": 3,   "label": "Flächenbedarf Obstbäume (ha/ha)"},
+    "b1":  {"min": 20, "max": 150, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 8,   "label": "Bewässerung Weinreben (m³/ha)"},
+    "a22": {"min": 2, "max": 6,   "label": "Bewässerung Obstbäume (m³/ha)"},
+    "b2":  {"min": 60, "max": 400, "label": "Bewässerungskapazität (m³)"}
+  },
+  "titel": "Weingut – Weinreben und Obstbäume",
+  "beschreibung": "Ein Weingut nutzt seine Fläche für Weinreben und Obstbäume. Weinreben bringen {c1} Tsd. € Ertrag pro Hektar, Obstbäume bringen {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Weinreben und {a12} Hektar pro Hektar Obstbäume. Die Gesamtfläche beträgt {b1} Hektar. Die Bewässerung erfordert {a21} m³ pro Hektar Weinreben und {a22} m³ pro Hektar Obstbäume. Die Bewässerungskapazität beträgt {b2} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung der Flächen- und Bewässerungsbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Weinreben bringen {c1} Tsd. € Ertrag pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Obstbäume bringen {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Weinreben", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Obstbäume", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro Hektar Weinreben", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro Hektar Obstbäume", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

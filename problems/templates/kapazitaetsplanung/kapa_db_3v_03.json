@@ -1,0 +1,54 @@
+{
+  "id": "kapa_db_3v_03",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl OLTP-Instanzen", "x2 = Anzahl OLAP-Instanzen", "x3 = Anzahl Cache-Instanzen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Speicherplatz", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,     "label": "Durchsatz OLTP (Tsd. TPS)"},
+    "c2":  {"min": 2, "max": 10,     "label": "Durchsatz OLAP (Queries/s)"},
+    "c3":  {"min": 50, "max": 200,   "label": "Durchsatz Cache (Tsd. Ops/s)"},
+    "a11": {"min": 2, "max": 8,      "label": "CPU OLTP (Kerne)"},
+    "a12": {"min": 4, "max": 16,     "label": "CPU OLAP (Kerne)"},
+    "a13": {"min": 1, "max": 4,      "label": "CPU Cache (Kerne)"},
+    "b1":  {"min": 32, "max": 128,   "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 4, "max": 16,     "label": "RAM OLTP (GB)"},
+    "a22": {"min": 8, "max": 32,     "label": "RAM OLAP (GB)"},
+    "a23": {"min": 4, "max": 16,     "label": "RAM Cache (GB)"},
+    "b2":  {"min": 64, "max": 256,   "label": "Verfügbares RAM (GB)"},
+    "a31": {"min": 50, "max": 200,   "label": "Speicher OLTP (GB)"},
+    "a32": {"min": 100, "max": 500,  "label": "Speicher OLAP (GB)"},
+    "a33": {"min": 10, "max": 50,    "label": "Speicher Cache (GB)"},
+    "b3":  {"min": 500, "max": 2000, "label": "Verfügbarer Speicher (GB)"}
+  },
+  "titel": "Datenbank-Plattform – Instanzmix",
+  "beschreibung": "Eine Datenbank-Plattform betreibt drei Instanztypen. OLTP-Instanzen erreichen {c1} Tsd. Transaktionen pro Sekunde, OLAP-Instanzen erreichen {c2} Abfragen pro Sekunde und Cache-Instanzen erreichen {c3} Tsd. Operationen pro Sekunde. Eine OLTP-Instanz benötigt {a11} CPU-Kerne, eine OLAP-Instanz benötigt {a12} CPU-Kerne und eine Cache-Instanz benötigt {a13} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB für OLTP, {a22} GB für OLAP und {a23} GB für Cache. Das verfügbare RAM beträgt {b2} GB. Der Speicherbedarf beträgt {a31} GB für OLTP, {a32} GB für OLAP und {a33} GB für Cache. Der verfügbare Speicher beträgt {b3} GB.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Ressourcenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "OLTP-Instanzen erreichen {c1} Tsd. Transaktionen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "OLAP-Instanzen erreichen {c2} Abfragen pro Sekunde", "bedeutung": "{c2} × x₂"},
+      {"text": "Cache-Instanzen erreichen {c3} Tsd. Operationen pro Sekunde", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, eine OLAP-Instanz benötigt {a12} CPU-Kerne und eine Cache-Instanz benötigt {a13} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB für OLTP, {a22} GB für OLAP und {a23} GB für Cache", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} GB für OLTP, {a32} GB für OLAP und {a33} GB für Cache", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} GB", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

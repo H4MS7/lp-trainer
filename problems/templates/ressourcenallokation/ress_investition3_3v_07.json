@@ -1,0 +1,60 @@
+{
+  "id": "ress_investition3_3v_07",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anteile Anleihen (10.000 €)", "x2 = Anteile Aktien (10.000 €)", "x3 = Anteile Rohstoffe (10.000 €)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Anlagekapital", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Analyseaufwand", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Risikobudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 5,     "label": "Rendite/10.000€ Anleihen (%)"},
+    "c2":  {"min": 4, "max": 10,    "label": "Rendite/10.000€ Aktien (%)"},
+    "c3":  {"min": 3, "max": 8,     "label": "Rendite/10.000€ Rohstoffe (%)"},
+    "a11": {"min": 1, "max": 1,     "label": "Kapital/Anteil Anleihen (10.000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kapital/Anteil Aktien (10.000€)"},
+    "a13": {"min": 1, "max": 1,     "label": "Kapital/Anteil Rohstoffe (10.000€)"},
+    "b1":  {"min": 20, "max": 100,  "label": "Anlagekapital (10.000 €)"},
+    "a21": {"min": 1, "max": 2,     "label": "Analysestunden/Anteil Anleihen"},
+    "a22": {"min": 2, "max": 5,     "label": "Analysestunden/Anteil Aktien"},
+    "a23": {"min": 2, "max": 4,     "label": "Analysestunden/Anteil Rohstoffe"},
+    "b2":  {"min": 15, "max": 60,   "label": "Analysestunden gesamt"},
+    "a31": {"min": 1, "max": 2,     "label": "Risikopunkte/Anteil Anleihen"},
+    "a32": {"min": 3, "max": 6,     "label": "Risikopunkte/Anteil Aktien"},
+    "a33": {"min": 2, "max": 5,     "label": "Risikopunkte/Anteil Rohstoffe"},
+    "b3":  {"min": 20, "max": 80,   "label": "Risikobudget (Punkte)"}
+  },
+  "titel": "Anlagestrategie – Anleihen, Aktien und Rohstoffe",
+  "beschreibung": "Ein Fondsmanager verteilt Kapital auf Anleihen, Aktien und Rohstoffe. Pro Anteil Anleihen wird eine Rendite von {c1} Prozent erwartet, bei Aktien {c2} Prozent und bei Rohstoffen {c3} Prozent. Jeder Anteil kostet {a11} Zehntausend Euro bei Anleihen, {a12} Zehntausend Euro bei Aktien und {a13} Zehntausend Euro bei Rohstoffen. Das Anlagekapital betraegt {b1} Zehntausend Euro. Die Analyse erfordert {a21} Stunden pro Anteil Anleihen, {a22} Stunden pro Anteil Aktien und {a23} Stunden pro Anteil Rohstoffe. Es stehen {b2} Analysestunden bereit. Das Risiko betraegt {a31} Punkte pro Anteil Anleihen, {a32} Punkte pro Anteil Aktien und {a33} Punkte pro Anteil Rohstoffe. Das Risikobudget liegt bei {b3} Punkten.",
+  "hinweis": "Drei Anlageklassen mit Kapital-, Analyse- und Risikobeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Anleihen wird eine Rendite von {c1} Prozent erwartet", "bedeutung": "{c1} × x₁"},
+      {"text": "Aktien {c2} Prozent", "bedeutung": "{c2} × x₂"},
+      {"text": "Rohstoffen {c3} Prozent", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Zehntausend Euro bei Anleihen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Zehntausend Euro bei Aktien", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Zehntausend Euro bei Rohstoffen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Anteil Anleihen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden pro Anteil Aktien", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden pro Anteil Rohstoffe", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Analysestunden bereit", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Punkte pro Anteil Anleihen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Punkte pro Anteil Aktien", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Punkte pro Anteil Rohstoffe", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Punkten", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "qual_medizin_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Sterilisationstests", "x2 = Anzahl Funktionstests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Sicherheitsrate", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Sterilisationstest (€/Test)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Funktionstest (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Sicherheitswert Sterilisation (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Sicherheitswert Funktionstest (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Sicherheitsrate (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Laborzeit Sterilisation (Stunden)"},
+    "a22": {"min": 1, "max": 4,   "label": "Laborzeit Funktionstest (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Laborkapazität (Stunden)"}
+  },
+  "titel": "Medizinprodukte – Sicherheitsprüfung",
+  "beschreibung": "Ein Hersteller von Medizinprodukten führt Sterilisationstests und Funktionstests durch. Ein Sterilisationstest kostet {c1} €, ein Funktionstest kostet {c2} €. Der Sterilisationstest erreicht {a11} % Sicherheitswert, der Funktionstest erreicht {a12} % Sicherheitswert. Die Mindest-Sicherheitsrate beträgt {b1} %. Der Sterilisationstest benötigt {a21} Stunden Laborzeit, der Funktionstest benötigt {a22} Stunden Laborzeit. Die Laborkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Sicherheitsrate und begrenzter Laborkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sterilisationstest kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Funktionstest kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Sicherheitswert", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % Sicherheitswert", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden Laborzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden Laborzeit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

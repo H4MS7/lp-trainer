@@ -1,0 +1,91 @@
+{
+  "id": "wart_flughafen_5v_32",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Rollbahnprüfungen", "x2 = Anzahl Befeuerungswartungen", "x3 = Anzahl Gepäckbandservice", "x4 = Anzahl Klimaanlagenchecks", "x5 = Anzahl Sicherheitssystemtests"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbetriebsbereitschaft", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Wartungspersonal", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Betriebsunterbrechung", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 18,  "label": "Kosten Rollbahn (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Befeuerung (Tsd. €)"},
+    "c3":  {"min": 4, "max": 12,  "label": "Kosten Gepäckband (Tsd. €)"},
+    "c4":  {"min": 2, "max": 8,   "label": "Kosten Klima (Tsd. €)"},
+    "c5":  {"min": 5, "max": 15,  "label": "Kosten Sicherheit (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Bereitschaft Rollbahn (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Bereitschaft Befeuerung (%)"},
+    "a13": {"min": 2, "max": 5,   "label": "Bereitschaft Gepäck (%)"},
+    "a14": {"min": 1, "max": 4,   "label": "Bereitschaft Klima (%)"},
+    "a15": {"min": 3, "max": 7,   "label": "Bereitschaft Sicherheit (%)"},
+    "b1":  {"min": 60, "max": 180, "label": "Mindestbetriebsbereitschaft (%)"},
+    "a21": {"min": 3, "max": 6,   "label": "Personal Rollbahn (Personen)"},
+    "a22": {"min": 1, "max": 3,   "label": "Personal Befeuerung (Personen)"},
+    "a23": {"min": 2, "max": 4,   "label": "Personal Gepäck (Personen)"},
+    "a24": {"min": 1, "max": 3,   "label": "Personal Klima (Personen)"},
+    "a25": {"min": 2, "max": 5,   "label": "Personal Sicherheit (Personen)"},
+    "b2":  {"min": 15, "max": 60,  "label": "Verfügbares Wartungspersonal (Personen)"},
+    "a31": {"min": 2, "max": 5,   "label": "Unterbrechung Rollbahn (h)"},
+    "a32": {"min": 1, "max": 2,   "label": "Unterbrechung Befeuerung (h)"},
+    "a33": {"min": 1, "max": 3,   "label": "Unterbrechung Gepäck (h)"},
+    "a34": {"min": 1, "max": 2,   "label": "Unterbrechung Klima (h)"},
+    "a35": {"min": 2, "max": 4,   "label": "Unterbrechung Sicherheit (h)"},
+    "b3":  {"min": 10, "max": 40,  "label": "Max. Betriebsunterbrechung (h)"},
+    "a41": {"min": 4, "max": 10,  "label": "Material Rollbahn (Tsd. €)"},
+    "a42": {"min": 2, "max": 5,   "label": "Material Befeuerung (Tsd. €)"},
+    "a43": {"min": 3, "max": 7,   "label": "Material Gepäck (Tsd. €)"},
+    "a44": {"min": 1, "max": 4,   "label": "Material Klima (Tsd. €)"},
+    "a45": {"min": 3, "max": 8,   "label": "Material Sicherheit (Tsd. €)"},
+    "b4":  {"min": 20, "max": 80,  "label": "Materialbudget (Tsd. €)"}
+  },
+  "titel": "Flughafen – Fünf Infrastrukturbereiche",
+  "beschreibung": "Ein Flughafen plant die Wartung in fünf Bereichen. Rollbahnprüfungen kosten {c1} Tsd. €, Befeuerungswartungen kosten {c2} Tsd. €, Gepäckbandservice kostet {c3} Tsd. €, Klimaanlagenchecks kosten {c4} Tsd. €, Sicherheitssystemtests kosten {c5} Tsd. €. Rollbahnprüfungen erhöhen die Betriebsbereitschaft um {a11} %, Befeuerung um {a12} %, Gepäck um {a13} %, Klima um {a14} %, Sicherheit um {a15} %. Die Mindestbetriebsbereitschaft beträgt {b1} %. Es werden {a21} Personen pro Rollbahn, {a22} pro Befeuerung, {a23} pro Gepäck, {a24} pro Klima und {a25} pro Sicherheit benötigt. Insgesamt stehen {b2} Wartungstechniker zur Verfügung. Die Betriebsunterbrechung beträgt {a31} h pro Rollbahn, {a32} h pro Befeuerung, {a33} h pro Gepäck, {a34} h pro Klima und {a35} h pro Sicherheit. Maximal {b3} Stunden Unterbrechung sind zulässig. Das Material kostet {a41} Tsd. € pro Rollbahn, {a42} Tsd. € pro Befeuerung, {a43} Tsd. € pro Gepäck, {a44} Tsd. € pro Klima und {a45} Tsd. € pro Sicherheit. Das Materialbudget beträgt {b4} Tsd. €.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Betriebsbereitschafts- und Ressourcenvorgaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Rollbahnprüfungen kosten {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Befeuerungswartungen kosten {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Gepäckbandservice kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Klimaanlagenchecks kosten {c4} Tsd. €", "bedeutung": "{c4} × x₄"},
+      {"text": "Sicherheitssystemtests kosten {c5} Tsd. €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} %", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Personen pro Rollbahn", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} pro Befeuerung", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} pro Gepäck", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} pro Klima", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} pro Sicherheit", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Wartungstechniker zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro Rollbahn", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro Befeuerung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro Gepäck", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} h pro Klima", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} h pro Sicherheit", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Stunden Unterbrechung sind zulässig", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tsd. € pro Rollbahn", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tsd. € pro Befeuerung", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tsd. € pro Gepäck", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tsd. € pro Klima", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Tsd. € pro Sicherheit", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Tsd. €", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

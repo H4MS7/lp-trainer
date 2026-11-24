@@ -1,0 +1,43 @@
+{
+  "id": "energie_wasserstoff_erdgas_2v_08",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Wasserstoff", "x2 = MWh Erdgas"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestanteil Wasserstoff", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 60, "max": 150, "label": "Kosten Wasserstoff (€/MWh)"},
+    "c2":  {"min": 30, "max": 80, "label": "Kosten Erdgas (€/MWh)"},
+    "a11": {"min": 2, "max": 6, "label": "Leistung Wasserstoff (MW/MWh)"},
+    "a12": {"min": 3, "max": 7, "label": "Leistung Erdgas (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 3, "max": 8, "label": "Wasserstoffanteil (MW/MWh)"},
+    "a22": {"min": 1, "max": 2, "label": "Erdgasanteil an H2-Quote (MW/MWh)"},
+    "b2":  {"min": 20, "max": 80, "label": "Mindestanteil Wasserstoff (MW)"}
+  },
+  "titel": "Energiemix – Wasserstoff und Erdgas",
+  "beschreibung": "Ein Gasnetzbetreiber plant den Energiemix aus Wasserstoff und Erdgas. Wasserstoff kostet {c1} € pro MWh, Erdgas kostet {c2} € pro MWh. Wasserstoff liefert {a11} MW Leistung pro MWh, Erdgas liefert {a12} MW Leistung pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Zur Erfüllung der Klimaauflagen muss der Wasserstoffbeitrag mit {a21} MW pro MWh und der Erdgasbeitrag mit {a22} MW pro MWh zusammen mindestens {b2} MW erreichen.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung der Mindestleistung und Wasserstoffquote.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wasserstoff kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Erdgas kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Leistung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Leistung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} MW pro MWh", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MW pro MWh zusammen mindestens", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MW erreichen", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "ress_energie3_3v_06",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Solaranlagen", "x2 = Windraeder", "x3 = Biogasanlagen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Investitionsbudget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Techniker", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Genehmigungen", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Energieertrag/Solaranlage (MWh)"},
+    "c2":  {"min": 8, "max": 25,    "label": "Energieertrag/Windrad (MWh)"},
+    "c3":  {"min": 10, "max": 30,   "label": "Energieertrag/Biogasanlage (MWh)"},
+    "a11": {"min": 3, "max": 8,     "label": "Investition/Solar (10.000 €)"},
+    "a12": {"min": 5, "max": 12,    "label": "Investition/Wind (10.000 €)"},
+    "a13": {"min": 8, "max": 20,    "label": "Investition/Biogas (10.000 €)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Investitionsbudget (10.000 €)"},
+    "a21": {"min": 1, "max": 3,     "label": "Techniker/Solaranlage"},
+    "a22": {"min": 2, "max": 4,     "label": "Techniker/Windrad"},
+    "a23": {"min": 2, "max": 5,     "label": "Techniker/Biogasanlage"},
+    "b2":  {"min": 8, "max": 30,    "label": "Verfuegbare Techniker"},
+    "a31": {"min": 1, "max": 2,     "label": "Genehmigungen/Solaranlage"},
+    "a32": {"min": 1, "max": 3,     "label": "Genehmigungen/Windrad"},
+    "a33": {"min": 2, "max": 4,     "label": "Genehmigungen/Biogasanlage"},
+    "b3":  {"min": 5, "max": 20,    "label": "Genehmigungskapazitaet"}
+  },
+  "titel": "Energiemix – Solar, Wind und Biogas",
+  "beschreibung": "Ein Energieversorger plant drei Anlagentypen: Solar, Wind und Biogas. Jede Solaranlage liefert {c1} MWh, jedes Windrad {c2} MWh und jede Biogasanlage {c3} MWh Ertrag. Die Investition betraegt {a11} Zehntausend Euro pro Solaranlage, {a12} Zehntausend Euro pro Windrad und {a13} Zehntausend Euro pro Biogasanlage. Das Investitionsbudget umfasst {b1} Zehntausend Euro. Pro Solaranlage werden {a21} Techniker benoetigt, pro Windrad {a22} und pro Biogasanlage {a23} Techniker. Es stehen {b2} Techniker bereit. An Genehmigungen erfordert eine Solaranlage {a31}, ein Windrad {a32} und eine Biogasanlage {a33} Verfahren. Die Genehmigungskapazitaet liegt bei {b3} Verfahren.",
+  "hinweis": "Drei Energiequellen mit Budget-, Techniker- und Genehmigungsbeschraenkung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Solaranlage liefert {c1} MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Windrad {c2} MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Biogasanlage {c3} MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Zehntausend Euro pro Solaranlage", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Zehntausend Euro pro Windrad", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Zehntausend Euro pro Biogasanlage", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Zehntausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Techniker benoetigt", "bedeutung": "{a21}x₁"},
+        {"text": "Windrad {a22}", "bedeutung": "+ {a22}x₂"},
+        {"text": "Biogasanlage {a23} Techniker", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Techniker bereit", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "Solaranlage {a31}", "bedeutung": "{a31}x₁"},
+        {"text": "Windrad {a32}", "bedeutung": "+ {a32}x₂"},
+        {"text": "Biogasanlage {a33} Verfahren", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Verfahren", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,772 @@
+[
+  {
+    "titel": "Stahlwerk – Produktionsplanung mit CO₂-Limit",
+    "beschreibung": "Ein Stahlwerk betreibt zwei Produktionslinien: Linie A und Linie B. Linie A erwirtschaftet einen Ertrag von 9 Tausend € pro Schicht, Linie B einen Ertrag von 2 Tausend € pro Schicht. Bei der Stahlproduktion fallen Emissionen an: Linie A verursacht 1 Tonne CO₂ pro Schicht und Linie B verursacht 7 Tonnen CO₂ pro Schicht. Die behördlich festgelegte Emissionsobergrenze beträgt 690 Tonnen CO₂ pro Monat. Zusätzlich verbraucht Linie A 3 Tonnen Kohle pro Schicht und Linie B 9 Tonnen Kohle pro Schicht. Der monatliche Kohlevorrat umfasst 950 Tonnen. Die Werkleitung fordert eine Mindestproduktion, sodass 2 Schichten von Linie A plus 6 Schichten von Linie B zusammen mindestens 334 Einheiten Stahl ergeben müssen. Der Gesamtertrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Schichten Linie A", "x2 = Anzahl Schichten Linie B"],
+    "zielfunktion": "Z = 9x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 7x2 ≤ 690 (CO₂-Emissionen)",
+      "3x1 + 9x2 ≤ 950 (Kohle)",
+      "2x1 + 6x2 ≥ 334 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen (≤) für Emissionen und Kohle sowie die Untergrenze (≥) für die Mindestproduktion. Der Ertrag pro Schicht bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 9 Tausend €", "bedeutung": "9 × x₁"},
+        {"text": "Ertrag von 2 Tausend €", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 Tonne CO₂ pro Schicht", "bedeutung": "x₁"},
+          {"text": "7 Tonnen CO₂ pro Schicht", "bedeutung": "+ 7x₂"},
+          {"text": "690 Tonnen CO₂ pro Monat", "bedeutung": "≤ 690"}
+        ],
+        [
+          {"text": "3 Tonnen Kohle pro Schicht", "bedeutung": "3x₁"},
+          {"text": "9 Tonnen Kohle pro Schicht", "bedeutung": "+ 9x₂"},
+          {"text": "950 Tonnen", "bedeutung": "≤ 950"}
+        ],
+        [
+          {"text": "2 Schichten von Linie A plus 6 Schichten von Linie B zusammen mindestens 334 Einheiten", "bedeutung": "2x₁ + 6x₂ ≥ 334"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kraftwerk – Energieproduktion mit Emissionslimit",
+    "beschreibung": "Ein Energieversorger betreibt zwei Kraftwerksblöcke: Block A und Block B. Block A liefert einen Erlös von 6 Tausend € pro Betriebsstunde, Block B einen Erlös von 8 Tausend € pro Betriebsstunde. Block A stößt 8 Tonnen CO₂ pro Betriebsstunde aus und Block B stößt 2 Tonnen CO₂ pro Betriebsstunde aus. Die wöchentliche Emissionsobergrenze beträgt 682 Tonnen CO₂. An Brennstoff verbraucht Block A 4 Einheiten pro Betriebsstunde und Block B 2 Einheiten pro Betriebsstunde. Der wöchentliche Brennstoffvorrat umfasst 1803 Einheiten. Die Geschäftsführung fordert eine Mindestproduktion von zusammen mindestens 236 Megawattstunden, wobei Block A 5 Megawattstunden pro Betriebsstunde und Block B 5 Megawattstunden pro Betriebsstunde erzeugt. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebsstunden Block A", "x2 = Betriebsstunden Block B"],
+    "zielfunktion": "Z = 6x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 2x2 ≤ 682 (CO₂-Emissionen)",
+      "4x1 + 2x2 ≤ 1803 (Brennstoff)",
+      "5x1 + 5x2 ≥ 236 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es zwei Obergrenzen (≤) für Emissionen und Brennstoff sowie eine Untergrenze (≥) für die Mindestproduktion. Achte auf die Richtung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 6 Tausend €", "bedeutung": "6 × x₁"},
+        {"text": "Erlös von 8 Tausend €", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Tonnen CO₂ pro Betriebsstunde", "bedeutung": "8x₁"},
+          {"text": "2 Tonnen CO₂ pro Betriebsstunde", "bedeutung": "+ 2x₂"},
+          {"text": "682 Tonnen CO₂", "bedeutung": "≤ 682"}
+        ],
+        [
+          {"text": "4 Einheiten pro Betriebsstunde", "bedeutung": "4x₁"},
+          {"text": "2 Einheiten pro Betriebsstunde", "bedeutung": "+ 2x₂"},
+          {"text": "1803 Einheiten", "bedeutung": "≤ 1803"}
+        ],
+        [
+          {"text": "5 Megawattstunden pro Betriebsstunde und Block B 5 Megawattstunden pro Betriebsstunde", "bedeutung": "5x₁ + 5x₂"},
+          {"text": "mindestens 236 Megawattstunden", "bedeutung": "≥ 236"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zementfabrik – Produktion unter Emissionsauflagen",
+    "beschreibung": "Eine Zementfabrik betreibt zwei Brennöfen: Ofen A und Ofen B. Ofen A erzielt einen Gewinn von 15 Tausend € pro Produktionstag, Ofen B einen Gewinn von 2 Tausend € pro Produktionstag. Ofen A emittiert 2 Tonnen Feinstaub pro Produktionstag und Ofen B emittiert 4 Tonnen Feinstaub pro Produktionstag. Die Feinstaubobergrenze liegt bei 102 Tonnen pro Quartal. Beim Brennvorgang verbraucht Ofen A 4 Tonnen Kalkstein pro Produktionstag und Ofen B 9 Tonnen Kalkstein pro Produktionstag. Der Kalksteinvorrat beträgt 736 Tonnen pro Quartal. Die Umweltbehörde verlangt zudem eine Mindestauslastung: Ofen A muss mindestens 1 Tag und Ofen B mindestens 5 Tage laufen, zusammen also mindestens 95 Produktionstage gewichtet. Außerdem begrenzt die Werkskapazität die Produktion auf 5 Einheiten von Ofen A plus 1 Einheit von Ofen B, insgesamt höchstens 1722 Kapazitätseinheiten. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Produktionstage Ofen A", "x2 = Produktionstage Ofen B"],
+    "zielfunktion": "Z = 15x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 102 (Feinstaub)",
+      "4x1 + 9x2 ≤ 736 (Kalkstein)",
+      "x1 + 5x2 ≥ 95 (Mindestauslastung)",
+      "5x1 + x2 ≤ 1722 (Werkskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die vier Nebenbedingungen: zwei Obergrenzen für Feinstaub und Kalkstein, eine Untergrenze für die Mindestauslastung und eine Kapazitätsgrenze. Achte genau auf die Richtung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 15 Tausend €", "bedeutung": "15 × x₁"},
+        {"text": "Gewinn von 2 Tausend €", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Tonnen Feinstaub pro Produktionstag", "bedeutung": "2x₁"},
+          {"text": "4 Tonnen Feinstaub pro Produktionstag", "bedeutung": "+ 4x₂"},
+          {"text": "102 Tonnen pro Quartal", "bedeutung": "≤ 102"}
+        ],
+        [
+          {"text": "4 Tonnen Kalkstein pro Produktionstag", "bedeutung": "4x₁"},
+          {"text": "9 Tonnen Kalkstein pro Produktionstag", "bedeutung": "+ 9x₂"},
+          {"text": "736 Tonnen pro Quartal", "bedeutung": "≤ 736"}
+        ],
+        [
+          {"text": "mindestens 95 Produktionstage", "bedeutung": "x₁ + 5x₂ ≥ 95"}
+        ],
+        [
+          {"text": "höchstens 1722 Kapazitätseinheiten", "bedeutung": "5x₁ + x₂ ≤ 1722"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiefabrik – Gewinnmaximierung unter Umweltauflagen",
+    "beschreibung": "Eine Chemiefabrik produziert zwei Grundchemikalien: Produkt A und Produkt B. Produkt A bringt einen Deckungsbeitrag von 6 Tausend € pro Charge, Produkt B ebenfalls einen Deckungsbeitrag von 6 Tausend € pro Charge. Bei der Herstellung entstehen Abgase: Produkt A verursacht 3 Tonnen Schwefeldioxid pro Charge und Produkt B verursacht 6 Tonnen Schwefeldioxid pro Charge. Die Emissionsgrenze liegt bei 1371 Tonnen Schwefeldioxid pro Jahr. Außerdem verbraucht Produkt A 5 Tonnen Rohöl pro Charge und Produkt B 10 Tonnen Rohöl pro Charge. Der jährliche Rohölvorrat beträgt 1094 Tonnen. Die Betriebsvereinbarung sieht eine Mindestproduktion vor: 4 Chargen von Produkt A plus 3 Chargen von Produkt B müssen zusammen mindestens 656 Einheiten ergeben. Der Gesamtdeckungsbeitrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Chargen Produkt A", "x2 = Anzahl Chargen Produkt B"],
+    "zielfunktion": "Z = 6x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≤ 1371 (Schwefeldioxid-Emissionen)",
+      "5x1 + 10x2 ≤ 1094 (Rohöl)",
+      "4x1 + 3x2 ≥ 656 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Produkte haben den gleichen Deckungsbeitrag. Beachte die Emissionsgrenze, den Rohölvorrat und die Mindestproduktion als Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 6 Tausend € pro Charge, Produkt B ebenfalls einen Deckungsbeitrag von 6 Tausend €", "bedeutung": "6 × x₁ + 6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Tonnen Schwefeldioxid pro Charge", "bedeutung": "3x₁"},
+          {"text": "6 Tonnen Schwefeldioxid pro Charge", "bedeutung": "+ 6x₂"},
+          {"text": "1371 Tonnen Schwefeldioxid pro Jahr", "bedeutung": "≤ 1371"}
+        ],
+        [
+          {"text": "5 Tonnen Rohöl pro Charge", "bedeutung": "5x₁"},
+          {"text": "10 Tonnen Rohöl pro Charge", "bedeutung": "+ 10x₂"},
+          {"text": "1094 Tonnen", "bedeutung": "≤ 1094"}
+        ],
+        [
+          {"text": "4 Chargen von Produkt A plus 3 Chargen von Produkt B müssen zusammen mindestens 656 Einheiten", "bedeutung": "4x₁ + 3x₂ ≥ 656"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Raffinerie – Produktionsoptimierung mit Emissionsvorgaben",
+    "beschreibung": "Eine Raffinerie verarbeitet Rohöl in zwei Verfahren: Verfahren A und Verfahren B. Verfahren A erzielt einen Erlös von 14 Tausend € pro Durchlauf, Verfahren B einen Erlös von 5 Tausend € pro Durchlauf. Pro Durchlauf stößt Verfahren A 9 Tonnen CO₂ aus und Verfahren B 3 Tonnen CO₂. Die monatliche Emissionsobergrenze beträgt 613 Tonnen CO₂. An Energie verbraucht Verfahren A 8 Megawattstunden pro Durchlauf und Verfahren B 2 Megawattstunden pro Durchlauf. Der monatliche Energievorrat umfasst 1401 Megawattstunden. Die Betriebsleitung fordert eine Mindestauslastung: 8 Einheiten von Verfahren A plus 3 Einheiten von Verfahren B müssen zusammen mindestens 151 Produktionseinheiten erreichen. Darüber hinaus darf der Wasserverbrauch von 4 Einheiten pro Durchlauf A und 5 Einheiten pro Durchlauf B höchstens 1124 Kubikmeter betragen. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Durchläufe Verfahren A", "x2 = Anzahl Durchläufe Verfahren B"],
+    "zielfunktion": "Z = 14x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + 3x2 ≤ 613 (CO₂-Emissionen)",
+      "8x1 + 2x2 ≤ 1401 (Energie)",
+      "8x1 + 3x2 ≥ 151 (Mindestauslastung)",
+      "4x1 + 5x2 ≤ 1124 (Wasserverbrauch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es vier Nebenbedingungen mit unterschiedlichen Richtungen: zwei Obergrenzen für Emissionen und Energie, eine Untergrenze für die Mindestauslastung und eine Obergrenze für den Wasserverbrauch.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 14 Tausend €", "bedeutung": "14 × x₁"},
+        {"text": "Erlös von 5 Tausend €", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "9 Tonnen CO₂", "bedeutung": "9x₁"},
+          {"text": "3 Tonnen CO₂", "bedeutung": "+ 3x₂"},
+          {"text": "613 Tonnen CO₂", "bedeutung": "≤ 613"}
+        ],
+        [
+          {"text": "8 Megawattstunden pro Durchlauf", "bedeutung": "8x₁"},
+          {"text": "2 Megawattstunden pro Durchlauf", "bedeutung": "+ 2x₂"},
+          {"text": "1401 Megawattstunden", "bedeutung": "≤ 1401"}
+        ],
+        [
+          {"text": "8 Einheiten von Verfahren A plus 3 Einheiten von Verfahren B müssen zusammen mindestens 151 Produktionseinheiten", "bedeutung": "8x₁ + 3x₂ ≥ 151"}
+        ],
+        [
+          {"text": "4 Einheiten pro Durchlauf A", "bedeutung": "4x₁"},
+          {"text": "5 Einheiten pro Durchlauf B", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 1124 Kubikmeter", "bedeutung": "≤ 1124"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauerei – Produktion unter Abwasserlimit",
+    "beschreibung": "Eine Brauerei stellt zwei Biersorten her: Sorte A und Sorte B. Sorte A erzielt einen Gewinn von 3 Tausend € pro Produktionslauf, Sorte B einen Gewinn von 6 Tausend € pro Produktionslauf. Bei der Herstellung fallen Abwässer an: Sorte A verursacht 7 Kubikmeter Abwasser pro Produktionslauf und Sorte B verursacht 6 Kubikmeter Abwasser pro Produktionslauf. Die erlaubte Abwassermenge beträgt höchstens 1055 Kubikmeter pro Monat. Außerdem verbraucht Sorte A 1 Tonne Malz pro Produktionslauf und Sorte B 1 Tonne Malz pro Produktionslauf. Der monatliche Malzvorrat umfasst 513 Tonnen. Die Vertriebsabteilung verlangt eine Mindestproduktion von zusammen mindestens 163 Hektolitern, wobei Sorte A 4 Hektoliter pro Produktionslauf und Sorte B 6 Hektoliter pro Produktionslauf liefert. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Produktionsläufe Sorte A", "x2 = Anzahl Produktionsläufe Sorte B"],
+    "zielfunktion": "Z = 3x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + 6x2 ≤ 1055 (Abwasser)",
+      "x1 + x2 ≤ 513 (Malz)",
+      "4x1 + 6x2 ≥ 163 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen für Abwasser und Malz sowie die Untergrenze für die Mindestproduktion. Der Malzverbrauch ist für beide Sorten gleich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 3 Tausend €", "bedeutung": "3 × x₁"},
+        {"text": "Gewinn von 6 Tausend €", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "7 Kubikmeter Abwasser pro Produktionslauf", "bedeutung": "7x₁"},
+          {"text": "6 Kubikmeter Abwasser pro Produktionslauf", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 1055 Kubikmeter pro Monat", "bedeutung": "≤ 1055"}
+        ],
+        [
+          {"text": "1 Tonne Malz pro Produktionslauf und Sorte B 1 Tonne Malz pro Produktionslauf", "bedeutung": "x₁ + x₂"},
+          {"text": "513 Tonnen", "bedeutung": "≤ 513"}
+        ],
+        [
+          {"text": "4 Hektoliter pro Produktionslauf", "bedeutung": "4x₁"},
+          {"text": "6 Hektoliter pro Produktionslauf", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 163 Hektolitern", "bedeutung": "≥ 163"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Logistikunternehmen – Flottenoptimierung mit Abgaslimit",
+    "beschreibung": "Ein Logistikunternehmen setzt zwei Fahrzeugtypen ein: Typ A (Diesel-Lkw) und Typ B (Gas-Lkw). Typ A bringt einen Deckungsbeitrag von 5 Tausend € pro Einsatztag, Typ B einen Deckungsbeitrag von 13 Tausend € pro Einsatztag. Typ A stößt 3 Tonnen CO₂ pro Einsatztag aus und Typ B stößt 4 Tonnen CO₂ pro Einsatztag aus. Die Emissionsobergrenze liegt bei 1589 Tonnen CO₂ pro Quartal. Der Dieselverbrauch beträgt 5 Einheiten pro Einsatztag für Typ A und 4 Einheiten pro Einsatztag für Typ B. Der Kraftstoffvorrat ist auf 685 Einheiten pro Quartal begrenzt. Aufgrund von Lieferverpflichtungen müssen mindestens 253 Transporteinheiten erbracht werden, wobei Typ A 5 Einheiten und Typ B 2 Einheiten pro Einsatztag leistet. Darüber hinaus begrenzt die Werkstattkapazität die Wartung auf 8 Einheiten pro Einsatztag A plus 4 Einheiten pro Einsatztag B, höchstens 1326 Wartungseinheiten. Der Gesamtdeckungsbeitrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einsatztage Typ A", "x2 = Einsatztage Typ B"],
+    "zielfunktion": "Z = 5x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≤ 1589 (CO₂-Emissionen)",
+      "5x1 + 4x2 ≤ 685 (Kraftstoff)",
+      "5x1 + 2x2 ≥ 253 (Mindest-Transportleistung)",
+      "8x1 + 4x2 ≤ 1326 (Wartungskapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die vier Nebenbedingungen mit unterschiedlichen Ungleichungsrichtungen. Die Mindest-Transportleistung nutzt ≥, alle anderen ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 5 Tausend €", "bedeutung": "5 × x₁"},
+        {"text": "Deckungsbeitrag von 13 Tausend €", "bedeutung": "13 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Tonnen CO₂ pro Einsatztag", "bedeutung": "3x₁"},
+          {"text": "4 Tonnen CO₂ pro Einsatztag", "bedeutung": "+ 4x₂"},
+          {"text": "1589 Tonnen CO₂ pro Quartal", "bedeutung": "≤ 1589"}
+        ],
+        [
+          {"text": "5 Einheiten pro Einsatztag für Typ A", "bedeutung": "5x₁"},
+          {"text": "4 Einheiten pro Einsatztag für Typ B", "bedeutung": "+ 4x₂"},
+          {"text": "685 Einheiten pro Quartal", "bedeutung": "≤ 685"}
+        ],
+        [
+          {"text": "5 Einheiten und Typ B 2 Einheiten pro Einsatztag", "bedeutung": "5x₁ + 2x₂"},
+          {"text": "mindestens 253 Transporteinheiten", "bedeutung": "≥ 253"}
+        ],
+        [
+          {"text": "8 Einheiten pro Einsatztag A plus 4 Einheiten pro Einsatztag B", "bedeutung": "8x₁ + 4x₂"},
+          {"text": "höchstens 1326 Wartungseinheiten", "bedeutung": "≤ 1326"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kraftwerk – Blockbetrieb mit CO₂-Obergrenze",
+    "beschreibung": "Ein regionales Kraftwerk betreibt zwei Erzeugungsblöcke: Block A und Block B. Block A erwirtschaftet einen Ertrag von 14 Tausend € pro Betriebsschicht, Block B einen Ertrag von 12 Tausend € pro Betriebsschicht. Block A emittiert 3 Tonnen CO₂ pro Betriebsschicht und Block B emittiert 11 Tonnen CO₂ pro Betriebsschicht. Die behördliche Emissionsobergrenze beträgt 1009 Tonnen CO₂ pro Monat. An Brennstoff verbraucht Block A 10 Einheiten pro Betriebsschicht und Block B 6 Einheiten pro Betriebsschicht. Der monatliche Brennstoffvorrat umfasst 492 Einheiten. Die Netzagentur fordert eine Mindesteinspeisung von zusammen mindestens 189 Megawattstunden, wobei Block A 6 Megawattstunden pro Betriebsschicht und Block B 4 Megawattstunden pro Betriebsschicht liefert. Zusätzlich begrenzt die Kühlwasserkapazität die Produktion: Block A benötigt 8 Einheiten Kühlwasser und Block B 1 Einheit Kühlwasser pro Betriebsschicht, insgesamt höchstens 432 Einheiten. Der Gesamtertrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebsschichten Block A", "x2 = Betriebsschichten Block B"],
+    "zielfunktion": "Z = 14x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 11x2 ≤ 1009 (CO₂-Emissionen)",
+      "10x1 + 6x2 ≤ 492 (Brennstoff)",
+      "6x1 + 4x2 ≥ 189 (Mindesteinspeisung)",
+      "8x1 + x2 ≤ 432 (Kühlwasser)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: drei Obergrenzen (CO₂, Brennstoff, Kühlwasser) und eine Untergrenze für die Mindesteinspeisung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 14 Tausend €", "bedeutung": "14 × x₁"},
+        {"text": "Ertrag von 12 Tausend €", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Tonnen CO₂ pro Betriebsschicht", "bedeutung": "3x₁"},
+          {"text": "11 Tonnen CO₂ pro Betriebsschicht", "bedeutung": "+ 11x₂"},
+          {"text": "1009 Tonnen CO₂ pro Monat", "bedeutung": "≤ 1009"}
+        ],
+        [
+          {"text": "10 Einheiten pro Betriebsschicht", "bedeutung": "10x₁"},
+          {"text": "6 Einheiten pro Betriebsschicht", "bedeutung": "+ 6x₂"},
+          {"text": "492 Einheiten", "bedeutung": "≤ 492"}
+        ],
+        [
+          {"text": "6 Megawattstunden pro Betriebsschicht", "bedeutung": "6x₁"},
+          {"text": "4 Megawattstunden pro Betriebsschicht", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 189 Megawattstunden", "bedeutung": "≥ 189"}
+        ],
+        [
+          {"text": "8 Einheiten Kühlwasser", "bedeutung": "8x₁"},
+          {"text": "1 Einheit Kühlwasser", "bedeutung": "+ x₂"},
+          {"text": "höchstens 432 Einheiten", "bedeutung": "≤ 432"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Landwirtschaft – Anbauplanung mit Emissionsgrenze",
+    "beschreibung": "Ein landwirtschaftlicher Betrieb bewirtschaftet zwei Anbauflächen: Feld A und Feld B. Feld A liefert einen Erlös von 4 Tausend € pro Anbauperiode, Feld B einen Erlös von 9 Tausend € pro Anbauperiode. Die Düngung verursacht Lachgasemissionen: Feld A erzeugt 2 Tonnen Lachgas pro Anbauperiode und Feld B erzeugt 2 Tonnen Lachgas pro Anbauperiode. Die Emissionsgrenze beträgt 1562 Tonnen Lachgas pro Jahr. An Düngemittel verbraucht Feld A 6 Tonnen pro Anbauperiode und Feld B 3 Tonnen pro Anbauperiode. Der jährliche Düngemittelvorrat umfasst 287 Tonnen. Die Genossenschaft fordert eine Mindestliefermenge von zusammen mindestens 184 Tonnen Ernte, wobei Feld A 1 Tonne pro Anbauperiode und Feld B 4 Tonnen pro Anbauperiode liefert. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anbauperioden Feld A", "x2 = Anbauperioden Feld B"],
+    "zielfunktion": "Z = 4x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 2x2 ≤ 1562 (Lachgas-Emissionen)",
+      "6x1 + 3x2 ≤ 287 (Düngemittel)",
+      "x1 + 4x2 ≥ 184 (Mindestliefermenge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen für Emissionen und Düngemittel sowie die Untergrenze für die Mindestliefermenge. Die Lachgasemissionen sind für beide Felder gleich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 4 Tausend €", "bedeutung": "4 × x₁"},
+        {"text": "Erlös von 9 Tausend €", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Tonnen Lachgas pro Anbauperiode und Feld B erzeugt 2 Tonnen Lachgas pro Anbauperiode", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "1562 Tonnen Lachgas pro Jahr", "bedeutung": "≤ 1562"}
+        ],
+        [
+          {"text": "6 Tonnen pro Anbauperiode", "bedeutung": "6x₁"},
+          {"text": "3 Tonnen pro Anbauperiode", "bedeutung": "+ 3x₂"},
+          {"text": "287 Tonnen", "bedeutung": "≤ 287"}
+        ],
+        [
+          {"text": "1 Tonne pro Anbauperiode", "bedeutung": "x₁"},
+          {"text": "4 Tonnen pro Anbauperiode", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 184 Tonnen Ernte", "bedeutung": "≥ 184"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Stahlwerk – Hochofenbetrieb mit Abgaslimit",
+    "beschreibung": "Ein Stahlwerk betreibt zwei Hochöfen: Hochofen A und Hochofen B. Hochofen A erzielt einen Gewinn von 9 Tausend € pro Produktionswoche, Hochofen B einen Gewinn von 12 Tausend € pro Produktionswoche. Hochofen A emittiert 5 Tonnen CO₂ pro Produktionswoche und Hochofen B emittiert 11 Tonnen CO₂ pro Produktionswoche. Die Emissionsobergrenze beträgt 308 Tonnen CO₂ pro Quartal. An Koks verbraucht Hochofen A 2 Tonnen pro Produktionswoche und Hochofen B 7 Tonnen pro Produktionswoche. Der Koksvorrat ist auf 1902 Tonnen pro Quartal begrenzt. Die Geschäftsführung verlangt eine Mindestauslastung: 2 Einheiten von Hochofen A und 4 Einheiten von Hochofen B müssen zusammen mindestens 113 Produktionseinheiten erreichen. Zudem darf der Schrottverbrauch von 3 Tonnen pro Woche A plus 4 Tonnen pro Woche B höchstens 771 Tonnen Schrott betragen. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Produktionswochen Hochofen A", "x2 = Produktionswochen Hochofen B"],
+    "zielfunktion": "Z = 9x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 11x2 ≤ 308 (CO₂-Emissionen)",
+      "2x1 + 7x2 ≤ 1902 (Koks)",
+      "2x1 + 4x2 ≥ 113 (Mindestauslastung)",
+      "3x1 + 4x2 ≤ 771 (Schrott)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: drei Obergrenzen (CO₂, Koks, Schrott) und eine Untergrenze für die Mindestauslastung. Achte auf die Richtung jeder Ungleichung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 9 Tausend €", "bedeutung": "9 × x₁"},
+        {"text": "Gewinn von 12 Tausend €", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Tonnen CO₂ pro Produktionswoche", "bedeutung": "5x₁"},
+          {"text": "11 Tonnen CO₂ pro Produktionswoche", "bedeutung": "+ 11x₂"},
+          {"text": "308 Tonnen CO₂ pro Quartal", "bedeutung": "≤ 308"}
+        ],
+        [
+          {"text": "2 Tonnen pro Produktionswoche", "bedeutung": "2x₁"},
+          {"text": "7 Tonnen pro Produktionswoche", "bedeutung": "+ 7x₂"},
+          {"text": "1902 Tonnen pro Quartal", "bedeutung": "≤ 1902"}
+        ],
+        [
+          {"text": "2 Einheiten von Hochofen A und 4 Einheiten von Hochofen B müssen zusammen mindestens 113 Produktionseinheiten", "bedeutung": "2x₁ + 4x₂ ≥ 113"}
+        ],
+        [
+          {"text": "3 Tonnen pro Woche A", "bedeutung": "3x₁"},
+          {"text": "4 Tonnen pro Woche B", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 771 Tonnen Schrott", "bedeutung": "≤ 771"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Zementfabrik – Ofenbetrieb mit Staubobergrenze",
+    "beschreibung": "Eine Zementfabrik betreibt zwei Drehrohröfen: Ofen A und Ofen B. Ofen A erwirtschaftet einen Ertrag von 6 Tausend € pro Betriebstag, Ofen B einen Ertrag von 11 Tausend € pro Betriebstag. Beim Brennprozess entstehen Emissionen: Ofen A verursacht 1 Tonne Feinstaub pro Betriebstag und Ofen B verursacht 1 Tonne Feinstaub pro Betriebstag. Die Feinstaubobergrenze liegt bei 558 Tonnen pro Halbjahr. An Energie benötigt Ofen A 2 Megawattstunden pro Betriebstag und Ofen B 1 Megawattstunde pro Betriebstag. Die verfügbare Energiemenge beträgt 816 Megawattstunden pro Halbjahr. Die Werkleitung schreibt eine Mindestproduktion vor: 2 Einheiten von Ofen A plus 6 Einheiten von Ofen B müssen zusammen mindestens 750 Tonnen Zement ergeben. Der Gesamtertrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebstage Ofen A", "x2 = Betriebstage Ofen B"],
+    "zielfunktion": "Z = 6x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 558 (Feinstaub-Emissionen)",
+      "2x1 + x2 ≤ 816 (Energie)",
+      "2x1 + 6x2 ≥ 750 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Öfen verursachen gleich viel Feinstaub pro Betriebstag. Beachte die Mindestproduktion als Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 6 Tausend €", "bedeutung": "6 × x₁"},
+        {"text": "Ertrag von 11 Tausend €", "bedeutung": "11 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 Tonne Feinstaub pro Betriebstag und Ofen B verursacht 1 Tonne Feinstaub pro Betriebstag", "bedeutung": "x₁ + x₂"},
+          {"text": "558 Tonnen pro Halbjahr", "bedeutung": "≤ 558"}
+        ],
+        [
+          {"text": "2 Megawattstunden pro Betriebstag", "bedeutung": "2x₁"},
+          {"text": "1 Megawattstunde pro Betriebstag", "bedeutung": "+ x₂"},
+          {"text": "816 Megawattstunden pro Halbjahr", "bedeutung": "≤ 816"}
+        ],
+        [
+          {"text": "2 Einheiten von Ofen A plus 6 Einheiten von Ofen B müssen zusammen mindestens 750 Tonnen Zement", "bedeutung": "2x₁ + 6x₂ ≥ 750"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiefabrik – Produktion unter Emissionsdeckel",
+    "beschreibung": "Eine Chemiefabrik stellt zwei Produkte her: Produkt A und Produkt B. Produkt A bringt einen Erlös von 4 Tausend € pro Produktionslauf, Produkt B einen Erlös von 6 Tausend € pro Produktionslauf. Bei der Synthese entstehen Abgase: Produkt A erzeugt 12 Tonnen SO₂ pro Produktionslauf und Produkt B erzeugt 5 Tonnen SO₂ pro Produktionslauf. Die SO₂-Obergrenze liegt bei 932 Tonnen pro Jahr. An Rohstoffen verbraucht Produkt A 8 Tonnen pro Produktionslauf und Produkt B 2 Tonnen pro Produktionslauf. Der jährliche Rohstoffvorrat umfasst 809 Tonnen. Die Geschäftsleitung verlangt eine Mindestproduktion von zusammen mindestens 280 Chargen, wobei 6 Einheiten von Produkt A und 4 Einheiten von Produkt B gewichtet werden. Ferner begrenzt die Lagerkapazität die Produktion: 5 Paletten pro Lauf A und 3 Paletten pro Lauf B, höchstens 1928 Lagerplätze. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Produktionsläufe Produkt A", "x2 = Anzahl Produktionsläufe Produkt B"],
+    "zielfunktion": "Z = 4x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 5x2 ≤ 932 (SO₂-Emissionen)",
+      "8x1 + 2x2 ≤ 809 (Rohstoffe)",
+      "6x1 + 4x2 ≥ 280 (Mindestproduktion)",
+      "5x1 + 3x2 ≤ 1928 (Lagerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen mit unterschiedlichen Richtungen: Emissionen, Rohstoffe und Lagerkapazität als Obergrenzen, die Mindestproduktion als Untergrenze.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 4 Tausend €", "bedeutung": "4 × x₁"},
+        {"text": "Erlös von 6 Tausend €", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "12 Tonnen SO₂ pro Produktionslauf", "bedeutung": "12x₁"},
+          {"text": "5 Tonnen SO₂ pro Produktionslauf", "bedeutung": "+ 5x₂"},
+          {"text": "932 Tonnen pro Jahr", "bedeutung": "≤ 932"}
+        ],
+        [
+          {"text": "8 Tonnen pro Produktionslauf", "bedeutung": "8x₁"},
+          {"text": "2 Tonnen pro Produktionslauf", "bedeutung": "+ 2x₂"},
+          {"text": "809 Tonnen", "bedeutung": "≤ 809"}
+        ],
+        [
+          {"text": "6 Einheiten von Produkt A und 4 Einheiten von Produkt B", "bedeutung": "6x₁ + 4x₂"},
+          {"text": "mindestens 280 Chargen", "bedeutung": "≥ 280"}
+        ],
+        [
+          {"text": "5 Paletten pro Lauf A", "bedeutung": "5x₁"},
+          {"text": "3 Paletten pro Lauf B", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 1928 Lagerplätze", "bedeutung": "≤ 1928"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Raffinerie – Destillation mit Schadstoffgrenze",
+    "beschreibung": "Eine Raffinerie betreibt zwei Destillationskolonnen: Kolonne A und Kolonne B. Kolonne A erzielt einen Gewinn von 6 Tausend € pro Betriebszyklus, Kolonne B einen Gewinn von 2 Tausend € pro Betriebszyklus. Kolonne A stößt 5 Tonnen Kohlenwasserstoffe pro Betriebszyklus aus und Kolonne B stößt 3 Tonnen Kohlenwasserstoffe pro Betriebszyklus aus. Die Emissionsobergrenze beträgt 1961 Tonnen Kohlenwasserstoffe pro Jahr. An Rohöl verbraucht Kolonne A 5 Barrel pro Betriebszyklus und Kolonne B 9 Barrel pro Betriebszyklus. Der Rohölvorrat ist auf 1217 Barrel pro Jahr begrenzt. Die Aufsichtsbehörde verlangt eine Mindestdurchsatzmenge: 4 Einheiten von Kolonne A und 4 Einheiten von Kolonne B müssen zusammen mindestens 280 Durchsatzeinheiten ergeben. Zusätzlich begrenzt die Dampfkapazität die Produktion auf 6 Einheiten pro Zyklus A plus 6 Einheiten pro Zyklus B, höchstens 1239 Dampfeinheiten. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Betriebszyklen Kolonne A", "x2 = Anzahl Betriebszyklen Kolonne B"],
+    "zielfunktion": "Z = 6x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≤ 1961 (Kohlenwasserstoff-Emissionen)",
+      "5x1 + 9x2 ≤ 1217 (Rohöl)",
+      "4x1 + 4x2 ≥ 280 (Mindestdurchsatz)",
+      "6x1 + 6x2 ≤ 1239 (Dampfkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: drei Obergrenzen und eine Untergrenze. Der Mindestdurchsatz hat gleiche Koeffizienten für beide Kolonnen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 6 Tausend €", "bedeutung": "6 × x₁"},
+        {"text": "Gewinn von 2 Tausend €", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Tonnen Kohlenwasserstoffe pro Betriebszyklus", "bedeutung": "5x₁"},
+          {"text": "3 Tonnen Kohlenwasserstoffe pro Betriebszyklus", "bedeutung": "+ 3x₂"},
+          {"text": "1961 Tonnen Kohlenwasserstoffe pro Jahr", "bedeutung": "≤ 1961"}
+        ],
+        [
+          {"text": "5 Barrel pro Betriebszyklus", "bedeutung": "5x₁"},
+          {"text": "9 Barrel pro Betriebszyklus", "bedeutung": "+ 9x₂"},
+          {"text": "1217 Barrel pro Jahr", "bedeutung": "≤ 1217"}
+        ],
+        [
+          {"text": "4 Einheiten von Kolonne A und 4 Einheiten von Kolonne B müssen zusammen mindestens 280 Durchsatzeinheiten", "bedeutung": "4x₁ + 4x₂ ≥ 280"}
+        ],
+        [
+          {"text": "6 Einheiten pro Zyklus A plus 6 Einheiten pro Zyklus B", "bedeutung": "6x₁ + 6x₂"},
+          {"text": "höchstens 1239 Dampfeinheiten", "bedeutung": "≤ 1239"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kraftwerk – Stromerzeugung mit Schadstofflimit",
+    "beschreibung": "Ein Stadtwerk betreibt zwei Turbinen: Turbine A und Turbine B. Turbine A liefert einen Ertrag von 10 Tausend € pro Betriebstag, Turbine B ebenfalls einen Ertrag von 10 Tausend € pro Betriebstag. Die Turbinen erzeugen Stickoxide: Turbine A stößt 4 Tonnen NOₓ pro Betriebstag aus und Turbine B stößt 3 Tonnen NOₓ pro Betriebstag aus. Die Stickoxid-Obergrenze beträgt 1427 Tonnen pro Jahr. An Erdgas verbraucht Turbine A 3 Einheiten pro Betriebstag und Turbine B 7 Einheiten pro Betriebstag. Der Erdgasvorrat umfasst 526 Einheiten pro Jahr. Die Netzagentur fordert eine Mindesteinspeisung von zusammen mindestens 328 Megawattstunden, wobei Turbine A 2 Megawattstunden pro Betriebstag und Turbine B 4 Megawattstunden pro Betriebstag liefert. Der Gesamtertrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebstage Turbine A", "x2 = Betriebstage Turbine B"],
+    "zielfunktion": "Z = 10x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≤ 1427 (NOₓ-Emissionen)",
+      "3x1 + 7x2 ≤ 526 (Erdgas)",
+      "2x1 + 4x2 ≥ 328 (Mindesteinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Turbinen haben den gleichen Ertrag. Beachte die zwei Obergrenzen und die Untergrenze für die Mindesteinspeisung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 10 Tausend € pro Betriebstag, Turbine B ebenfalls einen Ertrag von 10 Tausend €", "bedeutung": "10 × x₁ + 10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Tonnen NOₓ pro Betriebstag", "bedeutung": "4x₁"},
+          {"text": "3 Tonnen NOₓ pro Betriebstag", "bedeutung": "+ 3x₂"},
+          {"text": "1427 Tonnen pro Jahr", "bedeutung": "≤ 1427"}
+        ],
+        [
+          {"text": "3 Einheiten pro Betriebstag", "bedeutung": "3x₁"},
+          {"text": "7 Einheiten pro Betriebstag", "bedeutung": "+ 7x₂"},
+          {"text": "526 Einheiten pro Jahr", "bedeutung": "≤ 526"}
+        ],
+        [
+          {"text": "2 Megawattstunden pro Betriebstag", "bedeutung": "2x₁"},
+          {"text": "4 Megawattstunden pro Betriebstag", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 328 Megawattstunden", "bedeutung": "≥ 328"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Logistik – Transportplanung mit CO₂-Beschränkung",
+    "beschreibung": "Ein Transportunternehmen betreibt zwei Fuhrparklinien: Linie A und Linie B. Linie A erwirtschaftet einen Erlös von 10 Tausend € pro Einsatzwoche, Linie B einen Erlös von 7 Tausend € pro Einsatzwoche. Der CO₂-Ausstoß beträgt 6 Tonnen pro Einsatzwoche für Linie A und 5 Tonnen pro Einsatzwoche für Linie B. Die Emissionsobergrenze liegt bei 925 Tonnen CO₂ pro Halbjahr. An Diesel verbraucht Linie A 1 Einheit pro Einsatzwoche und Linie B 9 Einheiten pro Einsatzwoche. Der Dieselvorrat umfasst 1152 Einheiten pro Halbjahr. Die Kundenverpflichtung verlangt eine Mindestleistung von zusammen mindestens 165 Transporteinheiten, wobei Linie A 5 Transporteinheiten pro Einsatzwoche und Linie B 6 Transporteinheiten pro Einsatzwoche erbringt. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einsatzwochen Linie A", "x2 = Einsatzwochen Linie B"],
+    "zielfunktion": "Z = 10x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 5x2 ≤ 925 (CO₂-Emissionen)",
+      "x1 + 9x2 ≤ 1152 (Diesel)",
+      "5x1 + 6x2 ≥ 165 (Mindest-Transportleistung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen für CO₂ und Diesel sowie die Untergrenze für die Mindest-Transportleistung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 10 Tausend €", "bedeutung": "10 × x₁"},
+        {"text": "Erlös von 7 Tausend €", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Tonnen pro Einsatzwoche für Linie A", "bedeutung": "6x₁"},
+          {"text": "5 Tonnen pro Einsatzwoche für Linie B", "bedeutung": "+ 5x₂"},
+          {"text": "925 Tonnen CO₂ pro Halbjahr", "bedeutung": "≤ 925"}
+        ],
+        [
+          {"text": "1 Einheit pro Einsatzwoche", "bedeutung": "x₁"},
+          {"text": "9 Einheiten pro Einsatzwoche", "bedeutung": "+ 9x₂"},
+          {"text": "1152 Einheiten pro Halbjahr", "bedeutung": "≤ 1152"}
+        ],
+        [
+          {"text": "5 Transporteinheiten pro Einsatzwoche", "bedeutung": "5x₁"},
+          {"text": "6 Transporteinheiten pro Einsatzwoche", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 165 Transporteinheiten", "bedeutung": "≥ 165"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Stahlwerk – Walzwerk mit Emissionsauflagen",
+    "beschreibung": "Ein Walzwerk betreibt zwei Walzstraßen: Straße A und Straße B. Straße A erzielt einen Ertrag von 10 Tausend € pro Produktionsschicht, Straße B einen Ertrag von 6 Tausend € pro Produktionsschicht. Beim Walzprozess entstehen Abgase: Straße A verursacht 2 Tonnen CO₂ pro Produktionsschicht und Straße B verursacht 2 Tonnen CO₂ pro Produktionsschicht. Die CO₂-Obergrenze beträgt 1449 Tonnen pro Jahr. An Kühlwasser verbraucht Straße A 2 Kubikmeter pro Produktionsschicht und Straße B 6 Kubikmeter pro Produktionsschicht. Der Kühlwasservorrat umfasst 1839 Kubikmeter pro Jahr. Die Werkleitung fordert eine Mindestproduktion: 8 Tonnen von Straße A plus 5 Tonnen von Straße B müssen zusammen mindestens 1436 Tonnen Walzstahl ergeben. Zusätzlich begrenzt die Arbeitszeit die Produktion auf 2 Schichten A plus 2 Schichten B, höchstens 1708 Arbeitsstunden. Der Gesamtertrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Produktionsschichten Straße A", "x2 = Produktionsschichten Straße B"],
+    "zielfunktion": "Z = 10x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 2x2 ≤ 1449 (CO₂-Emissionen)",
+      "2x1 + 6x2 ≤ 1839 (Kühlwasser)",
+      "8x1 + 5x2 ≥ 1436 (Mindestproduktion)",
+      "2x1 + 2x2 ≤ 1708 (Arbeitszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die vier Nebenbedingungen: CO₂ und Arbeitszeit haben die gleichen Koeffizienten (je 2 und 2). Die Mindestproduktion ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 10 Tausend €", "bedeutung": "10 × x₁"},
+        {"text": "Ertrag von 6 Tausend €", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Tonnen CO₂ pro Produktionsschicht und Straße B verursacht 2 Tonnen CO₂ pro Produktionsschicht", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "1449 Tonnen pro Jahr", "bedeutung": "≤ 1449"}
+        ],
+        [
+          {"text": "2 Kubikmeter pro Produktionsschicht", "bedeutung": "2x₁"},
+          {"text": "6 Kubikmeter pro Produktionsschicht", "bedeutung": "+ 6x₂"},
+          {"text": "1839 Kubikmeter pro Jahr", "bedeutung": "≤ 1839"}
+        ],
+        [
+          {"text": "8 Tonnen von Straße A plus 5 Tonnen von Straße B müssen zusammen mindestens 1436 Tonnen Walzstahl", "bedeutung": "8x₁ + 5x₂ ≥ 1436"}
+        ],
+        [
+          {"text": "2 Schichten A plus 2 Schichten B", "bedeutung": "2x₁ + 2x₂"},
+          {"text": "höchstens 1708 Arbeitsstunden", "bedeutung": "≤ 1708"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brauerei – Produktion mit Abwasser- und CO₂-Limit",
+    "beschreibung": "Eine Großbrauerei betreibt zwei Sudlinien: Linie A und Linie B. Linie A bringt einen Gewinn von 7 Tausend € pro Sudvorgang, Linie B einen Gewinn von 14 Tausend € pro Sudvorgang. Bei der Gärung entstehen CO₂-Emissionen: Linie A verursacht 4 Tonnen CO₂ pro Sudvorgang und Linie B verursacht 6 Tonnen CO₂ pro Sudvorgang. Die Emissionsgrenze liegt bei 1665 Tonnen CO₂ pro Jahr. An Brauwasser verbraucht Linie A 3 Kubikmeter pro Sudvorgang und Linie B 3 Kubikmeter pro Sudvorgang. Der Brauwasservorrat umfasst 263 Kubikmeter pro Jahr. Die Lieferverpflichtung verlangt eine Mindestproduktion von zusammen mindestens 83 Hektolitern, wobei Linie A 4 Hektoliter pro Sudvorgang und Linie B 8 Hektoliter pro Sudvorgang erzeugt. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Sudvorgänge Linie A", "x2 = Anzahl Sudvorgänge Linie B"],
+    "zielfunktion": "Z = 7x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 6x2 ≤ 1665 (CO₂-Emissionen)",
+      "3x1 + 3x2 ≤ 263 (Brauwasser)",
+      "4x1 + 8x2 ≥ 83 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte, dass der Brauwasserverbrauch für beide Linien gleich ist. Die Mindestproduktion nutzt ≥.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 7 Tausend €", "bedeutung": "7 × x₁"},
+        {"text": "Gewinn von 14 Tausend €", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Tonnen CO₂ pro Sudvorgang", "bedeutung": "4x₁"},
+          {"text": "6 Tonnen CO₂ pro Sudvorgang", "bedeutung": "+ 6x₂"},
+          {"text": "1665 Tonnen CO₂ pro Jahr", "bedeutung": "≤ 1665"}
+        ],
+        [
+          {"text": "3 Kubikmeter pro Sudvorgang und Linie B 3 Kubikmeter pro Sudvorgang", "bedeutung": "3x₁ + 3x₂"},
+          {"text": "263 Kubikmeter pro Jahr", "bedeutung": "≤ 263"}
+        ],
+        [
+          {"text": "4 Hektoliter pro Sudvorgang", "bedeutung": "4x₁"},
+          {"text": "8 Hektoliter pro Sudvorgang", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 83 Hektolitern", "bedeutung": "≥ 83"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kraftwerk – Dampfturbinen mit Stickoxidlimit",
+    "beschreibung": "Ein Heizkraftwerk betreibt zwei Dampfturbinen: Turbine A und Turbine B. Turbine A liefert einen Deckungsbeitrag von 8 Tausend € pro Betriebswoche, Turbine B einen Deckungsbeitrag von 3 Tausend € pro Betriebswoche. Turbine A emittiert 3 Tonnen NOₓ pro Betriebswoche und Turbine B emittiert 2 Tonnen NOₓ pro Betriebswoche. Die NOₓ-Obergrenze beträgt 1806 Tonnen pro Jahr. An Steinkohle verbraucht Turbine A 4 Tonnen pro Betriebswoche und Turbine B 11 Tonnen pro Betriebswoche. Der Steinkohlevorrat ist auf 211 Tonnen pro Jahr begrenzt. Die Netzagentur fordert eine Mindesteinspeisung: 4 Einheiten von Turbine A plus 1 Einheit von Turbine B müssen zusammen mindestens 67 Megawattstunden ergeben. Der Gesamtdeckungsbeitrag soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebswochen Turbine A", "x2 = Betriebswochen Turbine B"],
+    "zielfunktion": "Z = 8x1 + 3x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 ≤ 1806 (NOₓ-Emissionen)",
+      "4x1 + 11x2 ≤ 211 (Steinkohle)",
+      "4x1 + x2 ≥ 67 (Mindesteinspeisung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen für Emissionen und Steinkohle sowie die Untergrenze für die Mindesteinspeisung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Deckungsbeitrag von 8 Tausend €", "bedeutung": "8 × x₁"},
+        {"text": "Deckungsbeitrag von 3 Tausend €", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Tonnen NOₓ pro Betriebswoche", "bedeutung": "3x₁"},
+          {"text": "2 Tonnen NOₓ pro Betriebswoche", "bedeutung": "+ 2x₂"},
+          {"text": "1806 Tonnen pro Jahr", "bedeutung": "≤ 1806"}
+        ],
+        [
+          {"text": "4 Tonnen pro Betriebswoche", "bedeutung": "4x₁"},
+          {"text": "11 Tonnen pro Betriebswoche", "bedeutung": "+ 11x₂"},
+          {"text": "211 Tonnen pro Jahr", "bedeutung": "≤ 211"}
+        ],
+        [
+          {"text": "4 Einheiten von Turbine A plus 1 Einheit von Turbine B müssen zusammen mindestens 67 Megawattstunden", "bedeutung": "4x₁ + x₂ ≥ 67"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Landwirtschaft – Tierhaltung mit Methangrenze",
+    "beschreibung": "Ein landwirtschaftlicher Großbetrieb bewirtschaftet zwei Tierhaltungsanlagen: Anlage A und Anlage B. Anlage A erwirtschaftet einen Erlös von 6 Tausend € pro Betriebsmonat, Anlage B einen Erlös von 15 Tausend € pro Betriebsmonat. Bei der Tierhaltung entsteht Methan: Anlage A erzeugt 6 Tonnen Methan pro Betriebsmonat und Anlage B erzeugt 6 Tonnen Methan pro Betriebsmonat. Die Methanobergrenze beträgt 1545 Tonnen pro Jahr. An Futtermitteln verbraucht Anlage A 4 Tonnen pro Betriebsmonat und Anlage B 4 Tonnen pro Betriebsmonat. Der jährliche Futtermittelvorrat umfasst 1744 Tonnen. Die Genossenschaft fordert eine Mindestliefermenge von zusammen mindestens 203 Tonnen Fleisch, wobei Anlage A 6 Tonnen pro Betriebsmonat und Anlage B 5 Tonnen pro Betriebsmonat liefert. Der Gesamterlös soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Betriebsmonate Anlage A", "x2 = Betriebsmonate Anlage B"],
+    "zielfunktion": "Z = 6x1 + 15x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 6x2 ≤ 1545 (Methan-Emissionen)",
+      "4x1 + 4x2 ≤ 1744 (Futtermittel)",
+      "6x1 + 5x2 ≥ 203 (Mindestliefermenge)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Methan und Futtermittel haben jeweils gleiche Koeffizienten für beide Anlagen. Die Mindestliefermenge hat unterschiedliche Gewichtung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Erlös von 6 Tausend €", "bedeutung": "6 × x₁"},
+        {"text": "Erlös von 15 Tausend €", "bedeutung": "15 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Tonnen Methan pro Betriebsmonat und Anlage B erzeugt 6 Tonnen Methan pro Betriebsmonat", "bedeutung": "6x₁ + 6x₂"},
+          {"text": "1545 Tonnen pro Jahr", "bedeutung": "≤ 1545"}
+        ],
+        [
+          {"text": "4 Tonnen pro Betriebsmonat und Anlage B 4 Tonnen pro Betriebsmonat", "bedeutung": "4x₁ + 4x₂"},
+          {"text": "1744 Tonnen", "bedeutung": "≤ 1744"}
+        ],
+        [
+          {"text": "6 Tonnen pro Betriebsmonat und Anlage B 5 Tonnen pro Betriebsmonat", "bedeutung": "6x₁ + 5x₂"},
+          {"text": "mindestens 203 Tonnen Fleisch", "bedeutung": "≥ 203"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Chemiefabrik – Prozessoptimierung unter Abgasauflagen",
+    "beschreibung": "Eine Chemiefabrik nutzt zwei Reaktoren: Reaktor A und Reaktor B. Reaktor A erzielt einen Gewinn von 4 Tausend € pro Reaktionszyklus, Reaktor B einen Gewinn von 2 Tausend € pro Reaktionszyklus. Beim chemischen Prozess fallen Emissionen an: Reaktor A erzeugt 7 Tonnen Chlorwasserstoff pro Reaktionszyklus und Reaktor B erzeugt 9 Tonnen Chlorwasserstoff pro Reaktionszyklus. Die Emissionsobergrenze beträgt 1649 Tonnen Chlorwasserstoff pro Jahr. An Katalysator verbraucht Reaktor A 1 Einheit pro Reaktionszyklus und Reaktor B 10 Einheiten pro Reaktionszyklus. Der Katalysatorvorrat ist auf 94 Einheiten pro Jahr begrenzt. Die Betriebsvereinbarung sieht eine Mindestproduktion vor: 5 Chargen von Reaktor A plus 2 Chargen von Reaktor B müssen zusammen mindestens 119 Produktionseinheiten ergeben. Der Gesamtgewinn soll maximiert werden.",
+    "typ": "Emissionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Reaktionszyklen Reaktor A", "x2 = Anzahl Reaktionszyklen Reaktor B"],
+    "zielfunktion": "Z = 4x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + 9x2 ≤ 1649 (Chlorwasserstoff-Emissionen)",
+      "x1 + 10x2 ≤ 94 (Katalysator)",
+      "5x1 + 2x2 ≥ 119 (Mindestproduktion)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Obergrenzen für Emissionen und Katalysator sowie die Untergrenze für die Mindestproduktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 4 Tausend €", "bedeutung": "4 × x₁"},
+        {"text": "Gewinn von 2 Tausend €", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "7 Tonnen Chlorwasserstoff pro Reaktionszyklus", "bedeutung": "7x₁"},
+          {"text": "9 Tonnen Chlorwasserstoff pro Reaktionszyklus", "bedeutung": "+ 9x₂"},
+          {"text": "1649 Tonnen Chlorwasserstoff pro Jahr", "bedeutung": "≤ 1649"}
+        ],
+        [
+          {"text": "1 Einheit pro Reaktionszyklus", "bedeutung": "x₁"},
+          {"text": "10 Einheiten pro Reaktionszyklus", "bedeutung": "+ 10x₂"},
+          {"text": "94 Einheiten pro Jahr", "bedeutung": "≤ 94"}
+        ],
+        [
+          {"text": "5 Chargen von Reaktor A plus 2 Chargen von Reaktor B müssen zusammen mindestens 119 Produktionseinheiten", "bedeutung": "5x₁ + 2x₂ ≥ 119"}
+        ]
+      ]
+    }
+  }
+]

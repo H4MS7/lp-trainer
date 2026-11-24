@@ -1,0 +1,106 @@
+{
+  "id": "prod_elektro5_5v_02",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Lampen", "x2 = Anzahl Steckdosen", "x3 = Anzahl Schalter", "x4 = Anzahl Kabeltrommeln", "x5 = Anzahl Sicherungen"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Kupfer", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Kunststoff", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Montagezeit", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Pruefzeit", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Verpackung", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Gewinn/Lampe (€)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Gewinn/Steckdose (€)"},
+    "c3":  {"min": 1, "max": 6,     "label": "Gewinn/Schalter (€)"},
+    "c4":  {"min": 8, "max": 25,    "label": "Gewinn/Kabeltrommel (€)"},
+    "c5":  {"min": 1, "max": 5,     "label": "Gewinn/Sicherung (€)"},
+    "a11": {"min": 2, "max": 6,     "label": "Kupfer/Lampe (g)"},
+    "a12": {"min": 1, "max": 4,     "label": "Kupfer/Steckdose (g)"},
+    "a13": {"min": 1, "max": 3,     "label": "Kupfer/Schalter (g)"},
+    "a14": {"min": 5, "max": 12,    "label": "Kupfer/Kabeltrommel (g)"},
+    "a15": {"min": 1, "max": 3,     "label": "Kupfer/Sicherung (g)"},
+    "b1":  {"min": 100, "max": 500, "label": "Kupfervorrat (g)"},
+    "a21": {"min": 2, "max": 5,     "label": "Kunststoff/Lampe (g)"},
+    "a22": {"min": 1, "max": 3,     "label": "Kunststoff/Steckdose (g)"},
+    "a23": {"min": 1, "max": 2,     "label": "Kunststoff/Schalter (g)"},
+    "a24": {"min": 3, "max": 8,     "label": "Kunststoff/Kabeltrommel (g)"},
+    "a25": {"min": 1, "max": 2,     "label": "Kunststoff/Sicherung (g)"},
+    "b2":  {"min": 80, "max": 400,  "label": "Kunststoffvorrat (g)"},
+    "a31": {"min": 2, "max": 5,     "label": "Montagezeit/Lampe (min)"},
+    "a32": {"min": 1, "max": 3,     "label": "Montagezeit/Steckdose (min)"},
+    "a33": {"min": 1, "max": 2,     "label": "Montagezeit/Schalter (min)"},
+    "a34": {"min": 3, "max": 6,     "label": "Montagezeit/Kabeltrommel (min)"},
+    "a35": {"min": 1, "max": 2,     "label": "Montagezeit/Sicherung (min)"},
+    "b3":  {"min": 60, "max": 300,  "label": "Montageminuten"},
+    "a41": {"min": 1, "max": 3,     "label": "Pruefzeit/Lampe (min)"},
+    "a42": {"min": 1, "max": 2,     "label": "Pruefzeit/Steckdose (min)"},
+    "a43": {"min": 1, "max": 2,     "label": "Pruefzeit/Schalter (min)"},
+    "a44": {"min": 1, "max": 3,     "label": "Pruefzeit/Kabeltrommel (min)"},
+    "a45": {"min": 1, "max": 2,     "label": "Pruefzeit/Sicherung (min)"},
+    "b4":  {"min": 30, "max": 150,  "label": "Pruefminuten"},
+    "a51": {"min": 1, "max": 3,     "label": "Verpackungszeit/Lampe (min)"},
+    "a52": {"min": 1, "max": 2,     "label": "Verpackungszeit/Steckdose (min)"},
+    "a53": {"min": 1, "max": 2,     "label": "Verpackungszeit/Schalter (min)"},
+    "a54": {"min": 1, "max": 3,     "label": "Verpackungszeit/Kabeltrommel (min)"},
+    "a55": {"min": 1, "max": 2,     "label": "Verpackungszeit/Sicherung (min)"},
+    "b5":  {"min": 30, "max": 150,  "label": "Verpackungsminuten"}
+  },
+  "titel": "Elektrofabrik – Lampen, Steckdosen, Schalter, Kabeltrommeln und Sicherungen",
+  "beschreibung": "Eine Elektrofabrik produziert fuenf Artikel: Lampen, Steckdosen, Schalter, Kabeltrommeln und Sicherungen. Der Gewinn betraegt {c1} Euro pro Lampe, {c2} Euro pro Steckdose, {c3} Euro pro Schalter, {c4} Euro pro Kabeltrommel und {c5} Euro pro Sicherung. An Kupfer werden {a11} g pro Lampe, {a12} g pro Steckdose, {a13} g pro Schalter, {a14} g pro Kabeltrommel und {a15} g pro Sicherung verbraucht. Der Kupfervorrat betraegt {b1} g. Kunststoff erfordert {a21} g pro Lampe, {a22} g pro Steckdose, {a23} g pro Schalter, {a24} g pro Kabeltrommel und {a25} g pro Sicherung bei {b2} g Vorrat. Die Montage dauert {a31} Minuten pro Lampe, {a32} Minuten pro Steckdose, {a33} Minuten pro Schalter, {a34} Minuten pro Kabeltrommel und {a35} Minuten pro Sicherung bei {b3} Montageminuten. Die Pruefung benoetigt {a41} Minuten pro Lampe, {a42} Minuten pro Steckdose, {a43} Minuten pro Schalter, {a44} Minuten pro Kabeltrommel und {a45} Minuten pro Sicherung bei {b4} Pruefminuten. Das Verpacken dauert {a51} Minuten pro Lampe, {a52} Minuten pro Steckdose, {a53} Minuten pro Schalter, {a54} Minuten pro Kabeltrommel und {a55} Minuten pro Sicherung bei {b5} Verpackungsminuten.",
+  "hinweis": "Fuenf Elektroprodukte mit fuenf Beschraenkungen: Kupfer, Kunststoff, Montage, Pruefung und Verpackung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} Euro pro Lampe", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} Euro pro Steckdose", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} Euro pro Schalter", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} Euro pro Kabeltrommel", "bedeutung": "{c4} × x₄"},
+      {"text": "{c5} Euro pro Sicherung", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g pro Lampe", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g pro Steckdose", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g pro Schalter", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} g pro Kabeltrommel", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} g pro Sicherung verbraucht", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} g", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} g pro Lampe", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g pro Steckdose", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g pro Schalter", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} g pro Kabeltrommel", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} g pro Sicherung bei", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} g Vorrat", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Minuten pro Lampe", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Minuten pro Steckdose", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Minuten pro Schalter", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Minuten pro Kabeltrommel", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Minuten pro Sicherung bei", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Montageminuten", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Minuten pro Lampe", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Minuten pro Steckdose", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Minuten pro Schalter", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Minuten pro Kabeltrommel", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Minuten pro Sicherung bei", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Pruefminuten", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "{a51} Minuten pro Lampe", "bedeutung": "{a51}x₁"},
+        {"text": "{a52} Minuten pro Steckdose", "bedeutung": "+ {a52}x₂"},
+        {"text": "{a53} Minuten pro Schalter", "bedeutung": "+ {a53}x₃"},
+        {"text": "{a54} Minuten pro Kabeltrommel", "bedeutung": "+ {a54}x₄"},
+        {"text": "{a55} Minuten pro Sicherung bei", "bedeutung": "+ {a55}x₅"},
+        {"text": "{b5} Verpackungsminuten", "bedeutung": "≤ {b5}"}
+      ]
+    ]
+  }
+}

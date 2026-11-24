@@ -1,0 +1,43 @@
+{
+  "id": "schicht_restaurant_2v_08",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Mittagsschichten", "x2 = Anzahl Abendschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Küche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Service", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 100, "label": "Kosten Mittagsschicht (€)"},
+    "c2":  {"min": 60, "max": 130, "label": "Kosten Abendschicht (€)"},
+    "a11": {"min": 2, "max": 5, "label": "Köche pro Mittagsschicht"},
+    "a12": {"min": 2, "max": 6, "label": "Köche pro Abendschicht"},
+    "b1":  {"min": 8, "max": 30, "label": "Mindestbesetzung Küche"},
+    "a21": {"min": 2, "max": 6, "label": "Servicekräfte pro Mittagsschicht"},
+    "a22": {"min": 3, "max": 8, "label": "Servicekräfte pro Abendschicht"},
+    "b2":  {"min": 12, "max": 40, "label": "Mindestbesetzung Service"}
+  },
+  "titel": "Restaurant – Schichtplanung",
+  "beschreibung": "Ein Restaurant plant die Schichtbesetzung für Küche und Service. Eine Mittagsschicht kostet {c1} €, eine Abendschicht kostet {c2} €. Jede Mittagsschicht stellt {a11} Köche bereit, jede Abendschicht stellt {a12} Köche bereit. Mindestens {b1} Köche werden benötigt. Jede Mittagsschicht stellt {a21} Servicekräfte bereit, jede Abendschicht stellt {a22} Servicekräfte bereit. Mindestens {b2} Servicekräfte werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Küche und Service.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Mittagsschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Abendschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Köche bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Köche bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Köche werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Servicekräfte bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Servicekräfte bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Servicekräfte werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

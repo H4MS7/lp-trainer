@@ -1,0 +1,43 @@
+{
+  "id": "schicht_krankenhaus_2v_01",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Tag", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Nacht", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 80, "max": 150, "label": "Kosten Tagschicht (€)"},
+    "c2":  {"min": 120, "max": 200, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Pflegekräfte Tag pro Tagschicht"},
+    "a12": {"min": 1, "max": 3, "label": "Pflegekräfte Tag pro Nachtschicht"},
+    "b1":  {"min": 20, "max": 60, "label": "Mindestbesetzung Tag"},
+    "a21": {"min": 1, "max": 3, "label": "Pflegekräfte Nacht pro Tagschicht"},
+    "a22": {"min": 3, "max": 7, "label": "Pflegekräfte Nacht pro Nachtschicht"},
+    "b2":  {"min": 15, "max": 50, "label": "Mindestbesetzung Nacht"}
+  },
+  "titel": "Krankenhaus – Schichtplanung",
+  "beschreibung": "Ein Krankenhaus plant die Schichtbesetzung seiner Pflegestation. Eine Tagschicht kostet {c1} €, eine Nachtschicht kostet {c2} €. Jede Tagschicht stellt {a11} Pflegekräfte für den Tag bereit, jede Nachtschicht stellt {a12} Pflegekräfte für den Tag bereit. Mindestens {b1} Pflegekräfte werden tagsüber benötigt. Jede Tagschicht stellt {a21} Pflegekräfte für die Nacht bereit, jede Nachtschicht stellt {a22} Pflegekräfte für die Nacht bereit. Mindestens {b2} Pflegekräfte werden nachts benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Tag und Nacht.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tagschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nachtschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Pflegekräfte für den Tag bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Pflegekräfte für den Tag bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Pflegekräfte werden tagsüber benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Pflegekräfte für die Nacht bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Pflegekräfte für die Nacht bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Pflegekräfte werden nachts benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "wart_hafen_5v_31",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Kranwartungen", "x2 = Anzahl Kaischecks", "x3 = Anzahl Schleuseninspektionen", "x4 = Anzahl Beleuchtungsprüfungen", "x5 = Anzahl Signaltechnikupdates"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbetriebssicherheit", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Technikerstunden", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Materialbudget", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Hafensperrzeit", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": ">=", "label": "Mindestnavigationssicherheit", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 6, "max": 16,  "label": "Kosten Kran (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Kai (Tsd. €)"},
+    "c3":  {"min": 8, "max": 20,  "label": "Kosten Schleuse (Tsd. €)"},
+    "c4":  {"min": 2, "max": 6,   "label": "Kosten Beleuchtung (Tsd. €)"},
+    "c5":  {"min": 3, "max": 10,  "label": "Kosten Signal (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "Sicherheit Kran (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Sicherheit Kai (%)"},
+    "a13": {"min": 4, "max": 10,  "label": "Sicherheit Schleuse (%)"},
+    "a14": {"min": 1, "max": 3,   "label": "Sicherheit Beleuchtung (%)"},
+    "a15": {"min": 2, "max": 5,   "label": "Sicherheit Signal (%)"},
+    "b1":  {"min": 60, "max": 180, "label": "Mindestbetriebssicherheit (%)"},
+    "a21": {"min": 3, "max": 6,   "label": "Stunden Kran (h)"},
+    "a22": {"min": 2, "max": 5,   "label": "Stunden Kai (h)"},
+    "a23": {"min": 4, "max": 8,   "label": "Stunden Schleuse (h)"},
+    "a24": {"min": 1, "max": 2,   "label": "Stunden Beleuchtung (h)"},
+    "a25": {"min": 2, "max": 4,   "label": "Stunden Signal (h)"},
+    "b2":  {"min": 30, "max": 100, "label": "Max. Technikerstunden (h)"},
+    "a31": {"min": 3, "max": 8,   "label": "Material Kran (Tsd. €)"},
+    "a32": {"min": 2, "max": 6,   "label": "Material Kai (Tsd. €)"},
+    "a33": {"min": 4, "max": 10,  "label": "Material Schleuse (Tsd. €)"},
+    "a34": {"min": 1, "max": 3,   "label": "Material Beleuchtung (Tsd. €)"},
+    "a35": {"min": 2, "max": 5,   "label": "Material Signal (Tsd. €)"},
+    "b3":  {"min": 20, "max": 80,  "label": "Materialbudget (Tsd. €)"},
+    "a41": {"min": 2, "max": 4,   "label": "Sperrzeit Kran (h)"},
+    "a42": {"min": 1, "max": 3,   "label": "Sperrzeit Kai (h)"},
+    "a43": {"min": 3, "max": 6,   "label": "Sperrzeit Schleuse (h)"},
+    "a44": {"min": 1, "max": 1,   "label": "Sperrzeit Beleuchtung (h)"},
+    "a45": {"min": 1, "max": 2,   "label": "Sperrzeit Signal (h)"},
+    "b4":  {"min": 10, "max": 40,  "label": "Max. Hafensperrzeit (h)"},
+    "a51": {"min": 0, "max": 0,   "label": "Navigation Kran"},
+    "a52": {"min": 0, "max": 0,   "label": "Navigation Kai"},
+    "a53": {"min": 2, "max": 5,   "label": "Navigation Schleuse (%)"},
+    "a54": {"min": 1, "max": 3,   "label": "Navigation Beleuchtung (%)"},
+    "a55": {"min": 3, "max": 8,   "label": "Navigation Signal (%)"},
+    "b5":  {"min": 10, "max": 40,  "label": "Mindestnavigationssicherheit (%)"}
+  },
+  "titel": "Hafen – Fünf Infrastrukturbereiche",
+  "beschreibung": "Ein Hafenbetreiber plant die Wartung in fünf Bereichen. Kranwartungen kosten {c1} Tsd. €, Kaischecks kosten {c2} Tsd. €, Schleuseninspektionen kosten {c3} Tsd. €, Beleuchtungsprüfungen kosten {c4} Tsd. €, Signaltechnikupdates kosten {c5} Tsd. €. Kranwartungen verbessern die Betriebssicherheit um {a11} %, Kai um {a12} %, Schleuse um {a13} %, Beleuchtung um {a14} %, Signal um {a15} %. Die Mindestbetriebssicherheit beträgt {b1} %. Der Zeitbedarf beträgt {a21} h pro Kran, {a22} h pro Kai, {a23} h pro Schleuse, {a24} h pro Beleuchtung und {a25} h pro Signal. Maximal {b2} Technikerstunden stehen zur Verfügung. Das Material kostet {a31} Tsd. € pro Kran, {a32} Tsd. € pro Kai, {a33} Tsd. € pro Schleuse, {a34} Tsd. € pro Beleuchtung und {a35} Tsd. € pro Signal. Das Materialbudget beträgt {b3} Tsd. €. Die Hafensperrzeit beträgt {a41} h pro Kran, {a42} h pro Kai, {a43} h pro Schleuse, {a44} h pro Beleuchtung und {a45} h pro Signal. Maximal {b4} Stunden Hafensperrzeit sind zulässig. Zudem muss eine Mindestnavigationssicherheit von {b5} % erreicht werden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Sicherheits- und Kapazitätsvorgaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kranwartungen kosten {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kaischecks kosten {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Schleuseninspektionen kosten {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Beleuchtungsprüfungen kosten {c4} Tsd. €", "bedeutung": "{c4} × x₄"},
+      {"text": "Signaltechnikupdates kosten {c5} Tsd. €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} %", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Kran", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Kai", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Schleuse", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro Beleuchtung", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} h pro Signal", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Technikerstunden stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro Kran", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro Kai", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro Schleuse", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} Tsd. € pro Beleuchtung", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} Tsd. € pro Signal", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} h pro Kran", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} h pro Kai", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} h pro Schleuse", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} h pro Beleuchtung", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} h pro Signal", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Stunden Hafensperrzeit sind zulässig", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "Mindestnavigationssicherheit von {b5} %", "bedeutung": "≥ {b5}"}
+      ]
+    ]
+  }
+}

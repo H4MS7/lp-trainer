@@ -1,0 +1,43 @@
+{
+  "id": "emiss_raffinerie_2v_05",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Benzin", "x2 = Einheiten Diesel"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "SO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Benzin (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Diesel (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "SO₂ Benzin (kg)"},
+    "a12": {"min": 3, "max": 8,   "label": "SO₂ Diesel (kg)"},
+    "b1":  {"min": 60, "max": 250, "label": "SO₂-Limit (kg)"},
+    "a21": {"min": 3, "max": 10,  "label": "CO₂ Benzin (t)"},
+    "a22": {"min": 4, "max": 12,  "label": "CO₂ Diesel (t)"},
+    "b2":  {"min": 100, "max": 400, "label": "CO₂-Limit (t)"}
+  },
+  "titel": "Raffinerie – Benzin- und Dieselproduktion",
+  "beschreibung": "Eine Raffinerie produziert Benzin und Diesel. Benzin erwirtschaftet {c1} Tsd. € pro Einheit, Diesel {c2} Tsd. €. Benzin verursacht {a11} kg SO₂ pro Einheit, Diesel {a12} kg. Das SO₂-Limit beträgt {b1} kg. Benzin erzeugt {a21} Tonnen CO₂ pro Einheit, Diesel {a22} Tonnen. Das CO₂-Limit liegt bei {b2} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung der SO₂- und CO₂-Limits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Benzin erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Diesel {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg SO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen CO₂ pro Einheit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

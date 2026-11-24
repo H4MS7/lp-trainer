@@ -1,0 +1,310 @@
+[
+  {
+    "titel": "Ersatzteillager-Vierspartenoptimierung",
+    "beschreibung": "Ein Ersatzteillager eines Maschinenbaukonzerns in Nürnberg optimiert die Bestellmengen für vier Produktgruppen: Hydraulikteile, Elektronikmodule, Dichtungen und Lagerkomponenten. Der Lagerleiter muss die Betriebssicherheit für mehrere Produktionslinien gewährleisten und dabei die Bestellkosten minimieren. Die Lagerkosten betragen 8€ pro Einheit Hydraulikteile, 2€ pro Einheit Elektronikmodule, 7€ pro Einheit Dichtungen und 1€ pro Einheit Lagerkomponenten. Um die Grundversorgung für den Produktionsbetrieb sicherzustellen, muss ein Mindestbestand eingehalten werden: 7 Fachbodenplätze pro Einheit Hydraulikteile, 3 Fachbodenplätze pro Einheit Elektronikmodule, 3 Fachbodenplätze pro Einheit Dichtungen und 6 Fachbodenplätze pro Einheit Lagerkomponenten ergeben zusammen mindestens 217 Fachbodenplätze. Die Haupthalle bietet begrenzte Kapazität: 8 Stellplätze pro Einheit Hydraulikteile, 5 Stellplätze pro Einheit Elektronikmodule, 9 Stellplätze pro Einheit Dichtungen und 5 Stellplätze pro Einheit Lagerkomponenten dürfen zusammen höchstens 1271 Stellplätze belegen. Auch das Nebenlager hat eine Obergrenze: 2 Regalplätze pro Einheit Hydraulikteile, 3 Regalplätze pro Einheit Elektronikmodule, 8 Regalplätze pro Einheit Dichtungen und 6 Regalplätze pro Einheit Lagerkomponenten dürfen zusammen höchstens 1658 Regalplätze beanspruchen. Zusätzlich muss die Sicherheitsreserve bedient werden: 12 Lagerplätze pro Einheit Hydraulikteile, 10 Lagerplätze pro Einheit Elektronikmodule, 4 Lagerplätze pro Einheit Dichtungen und 7 Lagerplätze pro Einheit Lagerkomponenten müssen zusammen mindestens 78 Lagerplätze ausmachen. Schließlich ist das Gesamtbudget begrenzt: 11 Kostenstellen pro Einheit Hydraulikteile, 12 Kostenstellen pro Einheit Elektronikmodule, 8 Kostenstellen pro Einheit Dichtungen und 8 Kostenstellen pro Einheit Lagerkomponenten dürfen zusammen höchstens 763 Kostenstellen beanspruchen. Gesucht ist die kostenminimale Bestellstrategie, die alle fünf Restriktionen gleichzeitig erfüllt.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Hydraulikteile",
+      "x2 = Bestellmenge Elektronikmodule",
+      "x3 = Bestellmenge Dichtungen",
+      "x4 = Bestellmenge Lagerkomponenten"
+    ],
+    "zielfunktion": "Z = 8x1 + 2x2 + 7x3 + 1x4 (min)",
+    "nebenbedingungen": [
+      "7x1 + 3x2 + 3x3 + 6x4 ≥ 217 (Mindestbestand)",
+      "8x1 + 5x2 + 9x3 + 5x4 ≤ 1271 (Haupthalle)",
+      "2x1 + 3x2 + 8x3 + 6x4 ≤ 1658 (Nebenlager)",
+      "12x1 + 10x2 + 4x3 + 7x4 ≥ 78 (Sicherheitsreserve)",
+      "11x1 + 12x2 + 8x3 + 8x4 ≤ 763 (Gesamtbudget)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier vier Produktgruppen gleichzeitig optimiert werden. Die fünf Nebenbedingungen enthalten sowohl Mindestbestände (≥) als auch Kapazitätsgrenzen (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ pro Einheit Hydraulikteile",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "2€ pro Einheit Elektronikmodule",
+          "bedeutung": "2 × x₂"
+        },
+        {
+          "text": "7€ pro Einheit Dichtungen",
+          "bedeutung": "7 × x₃"
+        },
+        {
+          "text": "1€ pro Einheit Lagerkomponenten",
+          "bedeutung": "1 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "7 Fachbodenplätze pro Einheit Hydraulikteile",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "3 Fachbodenplätze pro Einheit Elektronikmodule",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "3 Fachbodenplätze pro Einheit Dichtungen",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "6 Fachbodenplätze pro Einheit Lagerkomponenten",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "mindestens 217 Fachbodenplätze",
+            "bedeutung": "≥ 217"
+          }
+        ],
+        [
+          {
+            "text": "8 Stellplätze pro Einheit Hydraulikteile",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "5 Stellplätze pro Einheit Elektronikmodule",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "9 Stellplätze pro Einheit Dichtungen",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "5 Stellplätze pro Einheit Lagerkomponenten",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "höchstens 1271 Stellplätze",
+            "bedeutung": "≤ 1271"
+          }
+        ],
+        [
+          {
+            "text": "2 Regalplätze pro Einheit Hydraulikteile",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "3 Regalplätze pro Einheit Elektronikmodule",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "8 Regalplätze pro Einheit Dichtungen",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "6 Regalplätze pro Einheit Lagerkomponenten",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "höchstens 1658 Regalplätze",
+            "bedeutung": "≤ 1658"
+          }
+        ],
+        [
+          {
+            "text": "12 Lagerplätze pro Einheit Hydraulikteile",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "10 Lagerplätze pro Einheit Elektronikmodule",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "4 Lagerplätze pro Einheit Dichtungen",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "7 Lagerplätze pro Einheit Lagerkomponenten",
+            "bedeutung": "+ 7x₄"
+          },
+          {
+            "text": "mindestens 78 Lagerplätze",
+            "bedeutung": "≥ 78"
+          }
+        ],
+        [
+          {
+            "text": "11 Kostenstellen pro Einheit Hydraulikteile",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "12 Kostenstellen pro Einheit Elektronikmodule",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "8 Kostenstellen pro Einheit Dichtungen",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "8 Kostenstellen pro Einheit Lagerkomponenten",
+            "bedeutung": "+ 8x₄"
+          },
+          {
+            "text": "höchstens 763 Kostenstellen",
+            "bedeutung": "≤ 763"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikversand-Vierkategorienbestand",
+    "beschreibung": "Ein Elektronikversand mit Zentrallager in Leipzig optimiert die Bestellmengen für vier Produktgruppen: Smartphones, Tablets, Laptops und Zubehör. Die Logistikleiterin muss die hohe Nachfragevielfalt bedienen und dabei Lagerkosten, Mindestbestände sowie Kapazitätsgrenzen berücksichtigen. Die Lagerkosten betragen 9€ pro Karton Smartphones, 5€ pro Karton Tablets, 1€ pro Karton Laptops und 7€ pro Karton Zubehör. Um die Lieferfähigkeit sicherzustellen, muss ein Mindestbestand eingehalten werden: 6 Regalplätze pro Karton Smartphones, 3 Regalplätze pro Karton Tablets, 3 Regalplätze pro Karton Laptops und 10 Regalplätze pro Karton Zubehör ergeben zusammen mindestens 205 Regalplätze. Die Hallenkapazität ist begrenzt: 9 Stellplätze pro Karton Smartphones, 11 Stellplätze pro Karton Tablets, 7 Stellplätze pro Karton Laptops und 10 Stellplätze pro Karton Zubehör dürfen zusammen höchstens 1324 Stellplätze belegen. Auch das Hochregallager hat eine Obergrenze: 7 Lagerplätze pro Karton Smartphones, 4 Lagerplätze pro Karton Tablets, 4 Lagerplätze pro Karton Laptops und 10 Lagerplätze pro Karton Zubehör dürfen zusammen höchstens 1025 Lagerplätze beanspruchen. Darüber hinaus erfordert die Mindestabdeckung für den Expressversand: 1 Versandplatz pro Karton Smartphones, 12 Versandplätze pro Karton Tablets, 6 Versandplätze pro Karton Laptops und 4 Versandplätze pro Karton Zubehör müssen zusammen mindestens 72 Versandplätze ausmachen. Schließlich ist die Kommissionierfläche begrenzt: 7 Fachbodenplätze pro Karton Smartphones, 5 Fachbodenplätze pro Karton Tablets, 1 Fachbodenplatz pro Karton Laptops und 9 Fachbodenplätze pro Karton Zubehör dürfen zusammen höchstens 1732 Fachbodenplätze belegen. Gesucht ist die kostenminimale Bestellstrategie unter Einhaltung aller Restriktionen.",
+    "typ": "Lagerhaltung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Bestellmenge Smartphones",
+      "x2 = Bestellmenge Tablets",
+      "x3 = Bestellmenge Laptops",
+      "x4 = Bestellmenge Zubehör"
+    ],
+    "zielfunktion": "Z = 9x1 + 5x2 + 1x3 + 7x4 (min)",
+    "nebenbedingungen": [
+      "6x1 + 3x2 + 3x3 + 10x4 ≥ 205 (Mindestbestand)",
+      "9x1 + 11x2 + 7x3 + 10x4 ≤ 1324 (Hallenkapazität)",
+      "7x1 + 4x2 + 4x3 + 10x4 ≤ 1025 (Hochregallager)",
+      "1x1 + 12x2 + 6x3 + 4x4 ≥ 72 (Mindestabdeckung Expressversand)",
+      "7x1 + 5x2 + 1x3 + 9x4 ≤ 1732 (Kommissionierfläche)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass hier vier Produktgruppen gleichzeitig optimiert werden. Die fünf Nebenbedingungen enthalten sowohl Mindestbestände (≥) als auch Kapazitätsgrenzen (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "9€ pro Karton Smartphones",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "5€ pro Karton Tablets",
+          "bedeutung": "5 × x₂"
+        },
+        {
+          "text": "1€ pro Karton Laptops",
+          "bedeutung": "1 × x₃"
+        },
+        {
+          "text": "7€ pro Karton Zubehör",
+          "bedeutung": "7 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "6 Regalplätze pro Karton Smartphones",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "3 Regalplätze pro Karton Tablets",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "3 Regalplätze pro Karton Laptops",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "10 Regalplätze pro Karton Zubehör",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "mindestens 205 Regalplätze",
+            "bedeutung": "≥ 205"
+          }
+        ],
+        [
+          {
+            "text": "9 Stellplätze pro Karton Smartphones",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "11 Stellplätze pro Karton Tablets",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "7 Stellplätze pro Karton Laptops",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "10 Stellplätze pro Karton Zubehör",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "höchstens 1324 Stellplätze",
+            "bedeutung": "≤ 1324"
+          }
+        ],
+        [
+          {
+            "text": "7 Lagerplätze pro Karton Smartphones",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "4 Lagerplätze pro Karton Tablets",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "4 Lagerplätze pro Karton Laptops",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "10 Lagerplätze pro Karton Zubehör",
+            "bedeutung": "+ 10x₄"
+          },
+          {
+            "text": "höchstens 1025 Lagerplätze",
+            "bedeutung": "≤ 1025"
+          }
+        ],
+        [
+          {
+            "text": "1 Versandplatz pro Karton Smartphones",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "12 Versandplätze pro Karton Tablets",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "6 Versandplätze pro Karton Laptops",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "4 Versandplätze pro Karton Zubehör",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "mindestens 72 Versandplätze",
+            "bedeutung": "≥ 72"
+          }
+        ],
+        [
+          {
+            "text": "7 Fachbodenplätze pro Karton Smartphones",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "5 Fachbodenplätze pro Karton Tablets",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "1 Fachbodenplatz pro Karton Laptops",
+            "bedeutung": "+ 1x₃"
+          },
+          {
+            "text": "9 Fachbodenplätze pro Karton Zubehör",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "höchstens 1732 Fachbodenplätze",
+            "bedeutung": "≤ 1732"
+          }
+        ]
+      ]
+    }
+  }
+]

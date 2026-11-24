@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_spritzguss_drei_3v_06",
+  "titel": "Spritzgussmaschine – Druck, Temperatur und Kuehlzeit",
+  "variablen": [
+    "x1 = Einspritzdruck (Stufen)",
+    "x2 = Massetemperatur (Stufen)",
+    "x3 = Kuehlzeit (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Hydraulikleistung",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Zykluszeit",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Formfuellung Druck"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Fliessfaehigkeit Temperatur"
+    },
+    "c3": {
+      "min": 2,
+      "max": 7,
+      "label": "Masshaltigkeit Kuehlzeit"
+    },
+    "a11": {
+      "min": 3,
+      "max": 9,
+      "label": "Hydraulik Druck"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Hydraulik Temperatur"
+    },
+    "a13": {
+      "min": 1,
+      "max": 2,
+      "label": "Hydraulik Kuehlzeit"
+    },
+    "b1": {
+      "min": 80,
+      "max": 350,
+      "label": "Max. Hydraulikleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 5,
+      "label": "Energie Druck"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Energie Temperatur"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Energie Kuehlzeit"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieverbrauch"
+    },
+    "a31": {
+      "min": 1,
+      "max": 3,
+      "label": "Zyklus Druck"
+    },
+    "a32": {
+      "min": 1,
+      "max": 3,
+      "label": "Zyklus Temperatur"
+    },
+    "a33": {
+      "min": 4,
+      "max": 10,
+      "label": "Zyklus Kuehlzeit"
+    },
+    "b3": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Zykluszeit"
+    }
+  },
+  "beschreibung": "Eine Spritzgussmaschine wird ueber drei Parameter optimiert. Der Einspritzdruck liefert {c1} Punkte Formfuellung, die Massetemperatur {c2} Punkte Fliessfaehigkeit und die Kuehlzeit {c3} Punkte Masshaltigkeit. Die Hydraulikleistung betraegt {a11} Einheiten fuer Druck, {a12} fuer Temperatur und {a13} fuer Kuehlzeit bei maximal {b1} Hydraulikeinheiten. Der Energieverbrauch liegt bei {a21} Einheiten fuer Druck, {a22} fuer Temperatur und {a23} fuer Kuehlzeit bei maximal {b2} Energieeinheiten. Die Zykluszeit betraegt {a31} Einheiten fuer Druck, {a32} fuer Temperatur und {a33} fuer Kuehlzeit bei maximal {b3} Zeiteinheiten.",
+  "hinweis": "Maximiere die Bauteilqualitaet unter Beachtung von Hydraulik, Energie und Zykluszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Einspritzdruck liefert {c1} Punkte Formfuellung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Massetemperatur {c2} Punkte Fliessfaehigkeit",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Kuehlzeit {c3} Punkte Masshaltigkeit",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Druck",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Temperatur",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Kuehlzeit",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Hydraulikeinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Druck",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Temperatur",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Kuehlzeit",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Energieeinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Druck",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Temperatur",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Kuehlzeit",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Zeiteinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

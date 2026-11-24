@@ -1,0 +1,65 @@
+{
+  "id": "trans_logistik_4v_01",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Transporte per Kleinwagen", "x2 = Transporte per Sprinter", "x3 = Transporte per LKW", "x4 = Transporte per Sattelzug"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Waren", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Fahrer", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Stellplätze", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "CO2-Budget", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Kosten Kleinwagen (EUR/Transport)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Sprinter (EUR/Transport)"},
+    "c3":  {"min": 6, "max": 20,  "label": "Kosten LKW (EUR/Transport)"},
+    "c4":  {"min": 8, "max": 25,  "label": "Kosten Sattelzug (EUR/Transport)"},
+    "a11": {"min": 1, "max": 4,   "label": "Waren pro Kleinwagen (Paletten)"},
+    "a12": {"min": 2, "max": 7,   "label": "Waren pro Sprinter (Paletten)"},
+    "a13": {"min": 4, "max": 12,  "label": "Waren pro LKW (Paletten)"},
+    "a14": {"min": 6, "max": 18,  "label": "Waren pro Sattelzug (Paletten)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Paletten"},
+    "a21": {"min": 1, "max": 2,   "label": "Fahrer pro Kleinwagen"},
+    "a22": {"min": 1, "max": 2,   "label": "Fahrer pro Sprinter"},
+    "a23": {"min": 1, "max": 3,   "label": "Fahrer pro LKW"},
+    "a24": {"min": 2, "max": 4,   "label": "Fahrer pro Sattelzug"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Fahrer"},
+    "a31": {"min": 1, "max": 2,   "label": "Stellplätze pro Kleinwagen"},
+    "a32": {"min": 1, "max": 3,   "label": "Stellplätze pro Sprinter"},
+    "a33": {"min": 2, "max": 4,   "label": "Stellplätze pro LKW"},
+    "a34": {"min": 3, "max": 6,   "label": "Stellplätze pro Sattelzug"},
+    "b3":  {"min": 20, "max": 80, "label": "Verfügbare Stellplätze"},
+    "a41": {"min": 1, "max": 3,   "label": "CO2 pro Kleinwagen (kg)"},
+    "a42": {"min": 2, "max": 5,   "label": "CO2 pro Sprinter (kg)"},
+    "a43": {"min": 3, "max": 8,   "label": "CO2 pro LKW (kg)"},
+    "a44": {"min": 4, "max": 10,  "label": "CO2 pro Sattelzug (kg)"},
+    "b4":  {"min": 40, "max": 150, "label": "Max. CO2-Budget (kg)"}
+  },
+  "titel": "Fuhrpark – vier Fahrzeugtypen",
+  "beschreibung": "Ein Logistikunternehmen setzt vier Fahrzeugtypen ein. Ein Transport per Kleinwagen kostet {c1} EUR, per Sprinter {c2} EUR, per LKW {c3} EUR und per Sattelzug {c4} EUR. Der Kleinwagen transportiert {a11} Paletten, der Sprinter {a12}, der LKW {a13} und der Sattelzug {a14} Paletten pro Transport. Mindestens {b1} Paletten müssen transportiert werden. Der Kleinwagen benötigt {a21} Fahrer, der Sprinter {a22}, der LKW {a23} und der Sattelzug {a24} Fahrer pro Transport. Insgesamt stehen {b2} Fahrer zur Verfügung. Der Kleinwagen belegt {a31} Stellplätze, der Sprinter {a32}, der LKW {a33} und der Sattelzug {a34} Stellplätze. Insgesamt stehen {b3} Stellplätze zur Verfügung. Der Kleinwagen verursacht {a41} kg CO2, der Sprinter {a42} kg, der LKW {a43} kg und der Sattelzug {a44} kg pro Transport. Das CO2-Budget beträgt höchstens {b4} kg.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Paletten, begrenzten Fahrern, Stellplätzen und CO2.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kleinwagen kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Sprinter {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "LKW {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "Sattelzug {c4} EUR", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Paletten, der Sprinter {a12}, der LKW {a13} und der Sattelzug {a14} Paletten pro Transport. Mindestens {b1} Paletten müssen transportiert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Fahrer, der Sprinter {a22}, der LKW {a23} und der Sattelzug {a24} Fahrer pro Transport. Insgesamt stehen {b2} Fahrer zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stellplätze, der Sprinter {a32}, der LKW {a33} und der Sattelzug {a34} Stellplätze. Insgesamt stehen {b3} Stellplätze zur Verfügung", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} kg CO2, der Sprinter {a42} kg, der LKW {a43} kg und der Sattelzug {a44} kg pro Transport. Das CO2-Budget beträgt höchstens {b4} kg", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ ≤ {b4}"}
+      ]
+    ]
+  }
+}

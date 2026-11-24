@@ -1,0 +1,81 @@
+{
+  "id": "lager_baumarkt_4v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Bestellmenge Schrauben (Kartons)", "x2 = Bestellmenge Farben (Kartons)", "x3 = Bestellmenge Rohre (Bündel)", "x4 = Bestellmenge Elektrokabel (Rollen)"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestsortiment", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Hallenfläche", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Einkaufsbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Gewichtslimit", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Lagerkosten Schrauben (€/Karton)"},
+    "c2":  {"min": 3, "max": 8,   "label": "Lagerkosten Farben (€/Karton)"},
+    "c3":  {"min": 2, "max": 7,   "label": "Lagerkosten Rohre (€/Bündel)"},
+    "c4":  {"min": 2, "max": 6,   "label": "Lagerkosten Elektrokabel (€/Rolle)"},
+    "a11": {"min": 10, "max": 25, "label": "Produkte pro Karton Schrauben"},
+    "a12": {"min": 4, "max": 10,  "label": "Produkte pro Karton Farben"},
+    "a13": {"min": 3, "max": 8,   "label": "Produkte pro Bündel Rohre"},
+    "a14": {"min": 5, "max": 12,  "label": "Produkte pro Rolle Elektrokabel"},
+    "b1":  {"min": 100, "max": 400, "label": "Mindestsortiment (Produkte)"},
+    "a21": {"min": 1, "max": 2,   "label": "Hallenfläche Schrauben (m²)"},
+    "a22": {"min": 2, "max": 4,   "label": "Hallenfläche Farben (m²)"},
+    "a23": {"min": 3, "max": 6,   "label": "Hallenfläche Rohre (m²)"},
+    "a24": {"min": 1, "max": 3,   "label": "Hallenfläche Elektrokabel (m²)"},
+    "b2":  {"min": 50, "max": 200, "label": "Hallenfläche (m²)"},
+    "a31": {"min": 3, "max": 8,   "label": "Einkaufspreis Schrauben (€/Karton)"},
+    "a32": {"min": 8, "max": 20,  "label": "Einkaufspreis Farben (€/Karton)"},
+    "a33": {"min": 5, "max": 15,  "label": "Einkaufspreis Rohre (€/Bündel)"},
+    "a34": {"min": 4, "max": 12,  "label": "Einkaufspreis Elektrokabel (€/Rolle)"},
+    "b3":  {"min": 400, "max": 1600, "label": "Einkaufsbudget (€)"},
+    "a41": {"min": 2, "max": 5,   "label": "Gewicht Schrauben (kg/Karton)"},
+    "a42": {"min": 3, "max": 8,   "label": "Gewicht Farben (kg/Karton)"},
+    "a43": {"min": 5, "max": 12,  "label": "Gewicht Rohre (kg/Bündel)"},
+    "a44": {"min": 2, "max": 6,   "label": "Gewicht Elektrokabel (kg/Rolle)"},
+    "b4":  {"min": 100, "max": 400, "label": "Gewichtslimit (kg)"}
+  },
+  "titel": "Baumarkt – Vier Produktgruppen",
+  "beschreibung": "Ein Baumarkt lagert Schrauben, Farben, Rohre und Elektrokabel. Die Lagerkosten betragen {c1} € pro Karton Schrauben, {c2} € pro Karton Farben, {c3} € pro Bündel Rohre und {c4} € pro Rolle Elektrokabel. Schrauben liefern {a11} Produkte pro Karton, Farben liefern {a12} Produkte pro Karton, Rohre liefern {a13} Produkte pro Bündel und Elektrokabel liefern {a14} Produkte pro Rolle. Das Mindestsortiment umfasst {b1} Produkte. Die Hallenfläche beträgt {a21} m² pro Karton Schrauben, {a22} m² pro Karton Farben, {a23} m² pro Bündel Rohre und {a24} m² pro Rolle Elektrokabel. Die Hallenfläche ist auf {b2} m² begrenzt. Die Einkaufspreise betragen {a31} € pro Karton Schrauben, {a32} € pro Karton Farben, {a33} € pro Bündel Rohre und {a34} € pro Rolle Elektrokabel. Das Einkaufsbudget beträgt {b3} €. Das Gewicht beträgt {a41} kg pro Karton Schrauben, {a42} kg pro Karton Farben, {a43} kg pro Bündel Rohre und {a44} kg pro Rolle Elektrokabel. Das Gewichtslimit beträgt {b4} kg.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestsortiments, der Hallenfläche, des Budgets und des Gewichtslimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Schrauben", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Farben", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Bündel Rohre", "bedeutung": "{c3} × x₃"},
+      {"text": "{c4} € pro Rolle Elektrokabel", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Produkte pro Karton", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Produkte pro Karton", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Produkte pro Bündel", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Produkte pro Rolle", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Produkte", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² pro Karton Schrauben", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m² pro Karton Farben", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m² pro Bündel Rohre", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m² pro Rolle Elektrokabel", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} m² begrenzt", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Karton Schrauben", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Karton Farben", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Bündel Rohre", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € pro Rolle Elektrokabel", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} kg pro Karton Schrauben", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} kg pro Karton Farben", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} kg pro Bündel Rohre", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} kg pro Rolle Elektrokabel", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} kg", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

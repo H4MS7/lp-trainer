@@ -1,0 +1,43 @@
+{
+  "id": "wart_klimaanlage_2v_08",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Filterwechsel", "x2 = Anzahl Kompressorreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestkühlleistung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wartungsbudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Filterwechsel (Tsd. €)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Kosten Kompressor (Tsd. €)"},
+    "a11": {"min": 2, "max": 7,   "label": "Kühlleistung Filter (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Kühlleistung Kompressor (%)"},
+    "b1":  {"min": 30, "max": 100, "label": "Mindestkühlleistung (%)"},
+    "a21": {"min": 1, "max": 4,   "label": "Materialkosten Filter (Tsd. €)"},
+    "a22": {"min": 3, "max": 10,  "label": "Materialkosten Kompressor (Tsd. €)"},
+    "b2":  {"min": 15, "max": 60,  "label": "Wartungsbudget (Tsd. €)"}
+  },
+  "titel": "Bürogebäude – Klimaanlagenwartung",
+  "beschreibung": "Ein Bürogebäude plant die Wartung seiner Klimaanlagen. Ein Filterwechsel kostet {c1} Tsd. €, eine Kompressorreparatur kostet {c2} Tsd. €. Ein Filterwechsel verbessert die Kühlleistung um {a11} %, eine Kompressorreparatur um {a12} %. Die Mindestkühlleistung beträgt {b1} %. Die Materialkosten betragen {a21} Tsd. € pro Filterwechsel und {a22} Tsd. € pro Kompressorreparatur. Das Wartungsbudget beträgt {b2} Tsd. €.",
+  "hinweis": "Minimiere die Arbeitskosten bei Einhaltung der Kühlleistung und des Materialbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Filterwechsel kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Kompressorreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Filterwechsel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro Kompressorreparatur", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "medien_messe_webinar_2v_07",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Messeauftritte", "x2 = Anzahl Webinare"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Kontakte Messe (Tsd.)"},
+    "c2":  {"min": 1, "max": 5,     "label": "Teilnehmer Webinar (Tsd.)"},
+    "a11": {"min": 5, "max": 20,    "label": "Kosten Messe (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,     "label": "Kosten Webinar (Tsd. €)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 10, "max": 30,   "label": "Personal Messe (Stunden)"},
+    "a22": {"min": 3, "max": 10,    "label": "Personal Webinar (Stunden)"},
+    "b2":  {"min": 40, "max": 200,  "label": "Personalstunden"}
+  },
+  "titel": "Veranstaltungsmarketing – Messe und Webinar",
+  "beschreibung": "Ein B2B-Unternehmen plant Veranstaltungsmarketing mit Messeauftritten und Webinaren. Ein Messeauftritt generiert {c1} Tsd. Kontakte, ein Webinar generiert {c2} Tsd. Teilnehmer. Ein Messeauftritt kostet {a11} Tsd. €, ein Webinar kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Der Personalbedarf beträgt {a21} Stunden pro Messeauftritt und {a22} Stunden pro Webinar. Insgesamt stehen {b2} Personalstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtkontaktzahl unter Beachtung von Budget und Personal.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Messeauftritt generiert {c1} Tsd. Kontakte", "bedeutung": "{c1} × x₁"},
+      {"text": "Webinar generiert {c2} Tsd. Teilnehmer", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, ein Webinar kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Messeauftritt und {a22} Stunden pro Webinar", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "schicht_hafen_4v_03",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Spätschichten", "x3 = Anzahl Nachtschichten", "x4 = Anzahl Wochenendschichten"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Kranführer", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Hafenarbeiter", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Zollpersonal", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Maximale Überstunden", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 140, "max": 260, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 150, "max": 280, "label": "Kosten Spätschicht (€)"},
+    "c3":  {"min": 200, "max": 350, "label": "Kosten Nachtschicht (€)"},
+    "c4":  {"min": 180, "max": 330, "label": "Kosten Wochenendschicht (€)"},
+    "a11": {"min": 3, "max": 7, "label": "Kranführer pro Frühschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Kranführer pro Spätschicht"},
+    "a13": {"min": 1, "max": 3, "label": "Kranführer pro Nachtschicht"},
+    "a14": {"min": 2, "max": 5, "label": "Kranführer pro Wochenendschicht"},
+    "b1":  {"min": 12, "max": 35, "label": "Mindestbesetzung Kranführer"},
+    "a21": {"min": 5, "max": 12, "label": "Hafenarbeiter pro Frühschicht"},
+    "a22": {"min": 4, "max": 10, "label": "Hafenarbeiter pro Spätschicht"},
+    "a23": {"min": 2, "max": 6, "label": "Hafenarbeiter pro Nachtschicht"},
+    "a24": {"min": 3, "max": 8, "label": "Hafenarbeiter pro Wochenendschicht"},
+    "b2":  {"min": 25, "max": 70, "label": "Mindestbesetzung Hafenarbeiter"},
+    "a31": {"min": 2, "max": 4, "label": "Zollpersonal pro Frühschicht"},
+    "a32": {"min": 1, "max": 3, "label": "Zollpersonal pro Spätschicht"},
+    "a33": {"min": 1, "max": 2, "label": "Zollpersonal pro Nachtschicht"},
+    "a34": {"min": 1, "max": 3, "label": "Zollpersonal pro Wochenendschicht"},
+    "b3":  {"min": 8, "max": 20, "label": "Mindestbesetzung Zollpersonal"},
+    "a41": {"min": 2, "max": 4, "label": "Überstunden pro Frühschicht"},
+    "a42": {"min": 2, "max": 5, "label": "Überstunden pro Spätschicht"},
+    "a43": {"min": 3, "max": 6, "label": "Überstunden pro Nachtschicht"},
+    "a44": {"min": 3, "max": 6, "label": "Überstunden pro Wochenendschicht"},
+    "b4":  {"min": 40, "max": 100, "label": "Maximale Überstunden"}
+  },
+  "titel": "Hafenbetrieb – Vier-Schicht-Planung",
+  "beschreibung": "Ein Hafenbetrieb plant die Besetzung mit vier Schichttypen. Eine Frühschicht kostet {c1} €, eine Spätschicht kostet {c2} €, eine Nachtschicht kostet {c3} € und eine Wochenendschicht kostet {c4} €. Für die Kranführer stellt jede Frühschicht {a11} bereit, jede Spätschicht {a12}, jede Nachtschicht {a13} und jede Wochenendschicht {a14}. Mindestens {b1} Kranführer werden benötigt. Für die Hafenarbeiter stellt jede Frühschicht {a21} bereit, jede Spätschicht {a22}, jede Nachtschicht {a23} und jede Wochenendschicht {a24}. Mindestens {b2} Hafenarbeiter werden benötigt. Für das Zollpersonal stellt jede Frühschicht {a31} bereit, jede Spätschicht {a32}, jede Nachtschicht {a33} und jede Wochenendschicht {a34}. Mindestens {b3} Zollpersonal wird benötigt. An Überstunden fallen pro Frühschicht {a41} h an, pro Spätschicht {a42} h, pro Nachtschicht {a43} h und pro Wochenendschicht {a44} h. Maximal {b4} Überstunden sind erlaubt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Mindestbesetzung und des Überstundenlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Wochenendschicht kostet {c4} €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} bereit, jede Spätschicht {a12}, jede Nachtschicht {a13} und jede Wochenendschicht {a14}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Kranführer werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} bereit, jede Spätschicht {a22}, jede Nachtschicht {a23} und jede Wochenendschicht {a24}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Hafenarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} bereit, jede Spätschicht {a32}, jede Nachtschicht {a33} und jede Wochenendschicht {a34}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Zollpersonal wird benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} h an, pro Spätschicht {a42} h, pro Nachtschicht {a43} h und pro Wochenendschicht {a44} h", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b4} Überstunden sind erlaubt", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

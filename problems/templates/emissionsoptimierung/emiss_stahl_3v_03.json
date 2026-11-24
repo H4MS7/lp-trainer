@@ -1,0 +1,60 @@
+{
+  "id": "emiss_stahl_3v_03",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Einheiten Baustahl", "x2 = Einheiten Edelstahl", "x3 = Einheiten Werkzeugstahl"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Schlacke", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 8,   "label": "Ertrag Baustahl (Tsd. €)"},
+    "c2":  {"min": 6, "max": 15,  "label": "Ertrag Edelstahl (Tsd. €)"},
+    "c3":  {"min": 8, "max": 15,  "label": "Ertrag Werkzeugstahl (Tsd. €)"},
+    "a11": {"min": 3, "max": 8,   "label": "CO₂ Baustahl (t)"},
+    "a12": {"min": 4, "max": 10,  "label": "CO₂ Edelstahl (t)"},
+    "a13": {"min": 5, "max": 12,  "label": "CO₂ Werkzeugstahl (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 2, "max": 6,   "label": "Energie Baustahl (MWh)"},
+    "a22": {"min": 4, "max": 10,  "label": "Energie Edelstahl (MWh)"},
+    "a23": {"min": 5, "max": 12,  "label": "Energie Werkzeugstahl (MWh)"},
+    "b2":  {"min": 80, "max": 400, "label": "Energiebudget (MWh)"},
+    "a31": {"min": 2, "max": 5,   "label": "Schlacke Baustahl (t)"},
+    "a32": {"min": 3, "max": 7,   "label": "Schlacke Edelstahl (t)"},
+    "a33": {"min": 1, "max": 4,   "label": "Schlacke Werkzeugstahl (t)"},
+    "b3":  {"min": 50, "max": 200, "label": "Schlackelimit (t)"}
+  },
+  "titel": "Stahlwerk – Bau-, Edel- und Werkzeugstahl",
+  "beschreibung": "Ein Stahlwerk produziert Baustahl, Edelstahl und Werkzeugstahl. Baustahl erwirtschaftet {c1} Tsd. €, Edelstahl {c2} Tsd. €, Werkzeugstahl {c3} Tsd. € pro Einheit. Baustahl verursacht {a11} Tonnen CO₂, Edelstahl {a12} Tonnen, Werkzeugstahl {a13} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Baustahl verbraucht {a21} MWh Energie, Edelstahl {a22} MWh, Werkzeugstahl {a23} MWh pro Einheit. Das Energiebudget beträgt {b2} MWh. Baustahl erzeugt {a31} Tonnen Schlacke, Edelstahl {a32} Tonnen, Werkzeugstahl {a33} Tonnen pro Einheit. Das Schlackelimit liegt bei {b3} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umwelt- und Energielimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Baustahl erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Edelstahl {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Werkzeugstahl {c3} Tsd. €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen pro Einheit", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh Energie", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} MWh pro Einheit", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tonnen Schlacke", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tonnen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tonnen pro Einheit", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

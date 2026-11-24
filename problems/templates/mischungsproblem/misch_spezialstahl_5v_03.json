@@ -1,0 +1,81 @@
+{
+  "id": "misch_spezialstahl_5v_03",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Menge Eisen (kg)", "x2 = Menge Chrom (kg)", "x3 = Menge Nickel (kg)", "x4 = Menge Mangan (kg)", "x5 = Menge Molybdän (kg)"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Härte", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Korrosionsbeständigkeit", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Sprödigkeit", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Schweißbarkeit", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Dichte", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Eisen (EUR/kg)"},
+    "c2":  {"min": 6, "max": 18,  "label": "Kosten Chrom (EUR/kg)"},
+    "c3":  {"min": 8, "max": 22,  "label": "Kosten Nickel (EUR/kg)"},
+    "c4":  {"min": 4, "max": 14,  "label": "Kosten Mangan (EUR/kg)"},
+    "c5":  {"min": 10, "max": 28, "label": "Kosten Molybdän (EUR/kg)"},
+    "a11": {"min": 2, "max": 7,   "label": "Härte durch Eisen (HRC/kg)"},
+    "a12": {"min": 3, "max": 9,   "label": "Härte durch Chrom (HRC/kg)"},
+    "a13": {"min": 1, "max": 5,   "label": "Härte durch Nickel (HRC/kg)"},
+    "a14": {"min": 2, "max": 8,   "label": "Härte durch Mangan (HRC/kg)"},
+    "a15": {"min": 3, "max": 10,  "label": "Härte durch Molybdän (HRC/kg)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Härte (HRC)"},
+    "a21": {"min": 1, "max": 4,   "label": "Korrosionsschutz Eisen (Einheiten/kg)"},
+    "a22": {"min": 4, "max": 10,  "label": "Korrosionsschutz Chrom (Einheiten/kg)"},
+    "a23": {"min": 3, "max": 8,   "label": "Korrosionsschutz Nickel (Einheiten/kg)"},
+    "a24": {"min": 1, "max": 5,   "label": "Korrosionsschutz Mangan (Einheiten/kg)"},
+    "a25": {"min": 2, "max": 7,   "label": "Korrosionsschutz Molybdän (Einheiten/kg)"},
+    "b2":  {"min": 40, "max": 150, "label": "Mindest-Korrosionsbeständigkeit (Einheiten)"},
+    "a31": {"min": 2, "max": 6,   "label": "Sprödigkeit Eisen (Einheiten/kg)"},
+    "a32": {"min": 1, "max": 4,   "label": "Sprödigkeit Chrom (Einheiten/kg)"},
+    "a33": {"min": 1, "max": 3,   "label": "Sprödigkeit Nickel (Einheiten/kg)"},
+    "a34": {"min": 2, "max": 5,   "label": "Sprödigkeit Mangan (Einheiten/kg)"},
+    "a35": {"min": 1, "max": 4,   "label": "Sprödigkeit Molybdän (Einheiten/kg)"},
+    "b3":  {"min": 30, "max": 100, "label": "Max. Sprödigkeit (Einheiten)"},
+    "a41": {"min": 2, "max": 7,   "label": "Schweißbarkeit Eisen (Einheiten/kg)"},
+    "a42": {"min": 1, "max": 4,   "label": "Schweißbarkeit Chrom (Einheiten/kg)"},
+    "a43": {"min": 2, "max": 6,   "label": "Schweißbarkeit Nickel (Einheiten/kg)"},
+    "a44": {"min": 3, "max": 8,   "label": "Schweißbarkeit Mangan (Einheiten/kg)"},
+    "a45": {"min": 1, "max": 5,   "label": "Schweißbarkeit Molybdän (Einheiten/kg)"},
+    "b4":  {"min": 40, "max": 140, "label": "Mindest-Schweißbarkeit (Einheiten)"},
+    "a51": {"min": 1, "max": 4,   "label": "Dichte Eisen (g/cm³/kg)"},
+    "a52": {"min": 2, "max": 5,   "label": "Dichte Chrom (g/cm³/kg)"},
+    "a53": {"min": 2, "max": 6,   "label": "Dichte Nickel (g/cm³/kg)"},
+    "a54": {"min": 1, "max": 3,   "label": "Dichte Mangan (g/cm³/kg)"},
+    "a55": {"min": 2, "max": 5,   "label": "Dichte Molybdän (g/cm³/kg)"},
+    "b5":  {"min": 40, "max": 120, "label": "Max. Dichte (g/cm³)"}
+  },
+  "titel": "Spezialstahl – Härte, Korrosion, Sprödigkeit, Schweißbarkeit und Dichte",
+  "beschreibung": "Ein Stahlwerk mischt einen Spezialstahl aus fünf Metallen. Eisen kostet {c1} EUR pro kg, Chrom kostet {c2} EUR pro kg, Nickel kostet {c3} EUR pro kg, Mangan kostet {c4} EUR pro kg und Molybdän kostet {c5} EUR pro kg. Eisen liefert {a11} HRC Härte pro kg, Chrom liefert {a12}, Nickel liefert {a13}, Mangan liefert {a14} und Molybdän liefert {a15} HRC pro kg. Die Härte muss mindestens {b1} HRC erreichen. Eisen liefert {a21} Korrosionsschutz-Einheiten pro kg, Chrom liefert {a22}, Nickel liefert {a23}, Mangan liefert {a24} und Molybdän liefert {a25} Einheiten pro kg. Der Korrosionsschutz muss mindestens {b2} Einheiten erreichen. Eisen verursacht {a31} Sprödigkeits-Einheiten pro kg, Chrom verursacht {a32}, Nickel verursacht {a33}, Mangan verursacht {a34} und Molybdän verursacht {a35} Einheiten pro kg. Die Sprödigkeit darf höchstens {b3} Einheiten betragen. Eisen liefert {a41} Schweißbarkeits-Einheiten pro kg, Chrom liefert {a42}, Nickel liefert {a43}, Mangan liefert {a44} und Molybdän liefert {a45} Einheiten pro kg. Die Schweißbarkeit muss mindestens {b4} Einheiten erreichen. Eisen hat {a51} Dichte-Einheiten pro kg, Chrom hat {a52}, Nickel hat {a53}, Mangan hat {a54} und Molybdän hat {a55} Einheiten pro kg. Die Dichte darf höchstens {b5} Einheiten betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung aller Materialeigenschaften.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Eisen kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Chrom kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"},
+      {"text": "Nickel kostet {c3} EUR pro kg", "bedeutung": "{c3} × x₃"},
+      {"text": "Mangan kostet {c4} EUR pro kg", "bedeutung": "{c4} × x₄"},
+      {"text": "Molybdän kostet {c5} EUR pro kg", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} HRC Härte pro kg, Chrom liefert {a12}, Nickel liefert {a13}, Mangan liefert {a14} und Molybdän liefert {a15} HRC pro kg. Die Härte muss mindestens {b1} HRC erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Korrosionsschutz-Einheiten pro kg, Chrom liefert {a22}, Nickel liefert {a23}, Mangan liefert {a24} und Molybdän liefert {a25} Einheiten pro kg. Der Korrosionsschutz muss mindestens {b2} Einheiten erreichen", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅ ≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Sprödigkeits-Einheiten pro kg, Chrom verursacht {a32}, Nickel verursacht {a33}, Mangan verursacht {a34} und Molybdän verursacht {a35} Einheiten pro kg. Die Sprödigkeit darf höchstens {b3} Einheiten betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Schweißbarkeits-Einheiten pro kg, Chrom liefert {a42}, Nickel liefert {a43}, Mangan liefert {a44} und Molybdän liefert {a45} Einheiten pro kg. Die Schweißbarkeit muss mindestens {b4} Einheiten erreichen", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅ ≥ {b4}"}
+      ],
+      [
+        {"text": "{a51} Dichte-Einheiten pro kg, Chrom hat {a52}, Nickel hat {a53}, Mangan hat {a54} und Molybdän hat {a55} Einheiten pro kg. Die Dichte darf höchstens {b5} Einheiten betragen", "bedeutung": "{a51}x₁ + {a52}x₂ + {a53}x₃ + {a54}x₄ + {a55}x₅ ≤ {b5}"}
+      ]
+    ]
+  }
+}

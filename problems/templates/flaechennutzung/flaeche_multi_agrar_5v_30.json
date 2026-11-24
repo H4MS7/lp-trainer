@@ -1,0 +1,91 @@
+{
+  "id": "flaeche_multi_agrar_5v_30",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Mais", "x3 = Hektar Raps", "x4 = Hektar Kartoffeln", "x5 = Hektar Zuckerrüben"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Düngerbudget", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Maschinenkapazität", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 8,   "label": "Ertrag Weizen (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 10,  "label": "Ertrag Mais (Tsd. €/ha)"},
+    "c3":  {"min": 5, "max": 12,  "label": "Ertrag Raps (Tsd. €/ha)"},
+    "c4":  {"min": 3, "max": 9,   "label": "Ertrag Kartoffeln (Tsd. €/ha)"},
+    "c5":  {"min": 4, "max": 11,  "label": "Ertrag Zuckerrüben (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Weizen (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Mais (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Raps (ha/ha)"},
+    "a14": {"min": 1, "max": 2,   "label": "Fläche Kartoffeln (ha/ha)"},
+    "a15": {"min": 1, "max": 2,   "label": "Fläche Zuckerrüben (ha/ha)"},
+    "b1":  {"min": 100, "max": 500, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 6,   "label": "Wasser Weizen (m³/ha)"},
+    "a22": {"min": 3, "max": 8,   "label": "Wasser Mais (m³/ha)"},
+    "a23": {"min": 2, "max": 5,   "label": "Wasser Raps (m³/ha)"},
+    "a24": {"min": 3, "max": 7,   "label": "Wasser Kartoffeln (m³/ha)"},
+    "a25": {"min": 2, "max": 6,   "label": "Wasser Zuckerrüben (m³/ha)"},
+    "b2":  {"min": 200, "max": 800, "label": "Wasserbudget (m³)"},
+    "a31": {"min": 1, "max": 4,   "label": "Dünger Weizen (t/ha)"},
+    "a32": {"min": 2, "max": 5,   "label": "Dünger Mais (t/ha)"},
+    "a33": {"min": 1, "max": 3,   "label": "Dünger Raps (t/ha)"},
+    "a34": {"min": 2, "max": 5,   "label": "Dünger Kartoffeln (t/ha)"},
+    "a35": {"min": 2, "max": 4,   "label": "Dünger Zuckerrüben (t/ha)"},
+    "b3":  {"min": 80, "max": 400, "label": "Düngerbudget (t)"},
+    "a41": {"min": 1, "max": 3,   "label": "Maschine Weizen (h/ha)"},
+    "a42": {"min": 2, "max": 4,   "label": "Maschine Mais (h/ha)"},
+    "a43": {"min": 1, "max": 3,   "label": "Maschine Raps (h/ha)"},
+    "a44": {"min": 2, "max": 5,   "label": "Maschine Kartoffeln (h/ha)"},
+    "a45": {"min": 2, "max": 4,   "label": "Maschine Zuckerrüben (h/ha)"},
+    "b4":  {"min": 120, "max": 500, "label": "Maschinenkapazität (h)"}
+  },
+  "titel": "Großbetrieb – Fünf Feldfrüchte",
+  "beschreibung": "Ein Großbetrieb baut Weizen, Mais, Raps, Kartoffeln und Zuckerrüben an. Weizen bringt {c1} Tsd. € pro ha, Mais bringt {c2} Tsd. € pro ha, Raps bringt {c3} Tsd. € pro ha, Kartoffeln bringen {c4} Tsd. € pro ha, Zuckerrüben bringen {c5} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Weizen, {a12} ha pro ha Mais, {a13} ha pro ha Raps, {a14} ha pro ha Kartoffeln und {a15} ha pro ha Zuckerrüben. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserbedarf liegt bei {a21} m³ pro ha Weizen, {a22} m³ pro ha Mais, {a23} m³ pro ha Raps, {a24} m³ pro ha Kartoffeln und {a25} m³ pro ha Zuckerrüben. Das Wasserbudget beträgt {b2} m³. Der Düngerverbrauch beträgt {a31} t pro ha Weizen, {a32} t pro ha Mais, {a33} t pro ha Raps, {a34} t pro ha Kartoffeln und {a35} t pro ha Zuckerrüben. Das Düngerbudget beträgt {b3} Tonnen. Die Maschinenzeit beträgt {a41} h pro ha Weizen, {a42} h pro ha Mais, {a43} h pro ha Raps, {a44} h pro ha Kartoffeln und {a45} h pro ha Zuckerrüben. Die Maschinenkapazität beträgt {b4} Stunden.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Wasser, Dünger und Maschinenzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Weizen bringt {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Mais bringt {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Raps bringt {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Kartoffeln bringen {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"},
+      {"text": "Zuckerrüben bringen {c5} Tsd. € pro ha", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Weizen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Mais", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Raps", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Kartoffeln", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} ha pro ha Zuckerrüben", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Weizen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Mais", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Raps", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m³ pro ha Kartoffeln", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} m³ pro ha Zuckerrüben", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} t pro ha Weizen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} t pro ha Mais", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} t pro ha Raps", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} t pro ha Kartoffeln", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} t pro ha Zuckerrüben", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} Tonnen", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} h pro ha Weizen", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} h pro ha Mais", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} h pro ha Raps", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} h pro ha Kartoffeln", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} h pro ha Zuckerrüben", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Stunden", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

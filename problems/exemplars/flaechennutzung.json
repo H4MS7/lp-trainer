@@ -1,0 +1,74 @@
+[
+  {
+    "titel": "Agri-Solar-Planung",
+    "beschreibung": "Ein Landwirt bewirtschaftet eine Fläche und möchte den Gesamtertrag durch den Anbau von Weizen und die Installation einer Solaranlage maximieren. Pro Hektar Weizen erzielt er einen Ertrag von 800€, pro Hektar Solaranlage einen Ertrag von 1200€. Die gesamte verfügbare Fläche beträgt 100 Hektar. Um die regionale Lebensmittelversorgung sicherzustellen, müssen mindestens 30 Hektar für Weizen reserviert werden. Außerdem ist das Wasserbudget begrenzt: Der Weizenanbau benötigt 5 Kubikmeter Wasser pro Hektar und die Solaranlage benötigt 2 Kubikmeter Wasser pro Hektar für die Reinigung, wobei insgesamt höchstens 400 Kubikmeter Wasser zur Verfügung stehen. Der Landwirt möchte den jährlichen Gesamtertrag maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Solaranlage"],
+    "zielfunktion": "Z = 800x1 + 1200x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 100 (Gesamtfläche)",
+      "x1 ≥ 30 (Mindestanbau Weizen)",
+      "5x1 + 2x2 ≤ 400 (Wasserbudget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen mit unterschiedlichen Richtungen: Die Gesamtfläche und das Wasserbudget sind Obergrenzen (≤), der Mindestanbau ist eine Untergrenze (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 800€", "bedeutung": "800 × x₁"},
+        {"text": "Ertrag von 1200€", "bedeutung": "1200 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "verfügbare Fläche beträgt 100 Hektar", "bedeutung": "x₁ + x₂ ≤ 100"}
+        ],
+        [
+          {"text": "mindestens 30 Hektar für Weizen", "bedeutung": "x₁ ≥ 30"}
+        ],
+        [
+          {"text": "5 Kubikmeter Wasser pro Hektar", "bedeutung": "5x₁"},
+          {"text": "2 Kubikmeter Wasser pro Hektar", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 400 Kubikmeter Wasser", "bedeutung": "≤ 400"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Landwirtschaft und Windenergie",
+    "beschreibung": "Eine Gemeinde plant die Nutzung einer Agrarfläche für Maisanbau und einen Windpark, um den Gesamtnutzen zu maximieren. Pro Hektar Mais wird ein Ertrag von 600€ erzielt, pro Hektar Windpark ein Ertrag von 1500€. Die gesamte Planungsfläche umfasst 80 Hektar. Zur Sicherung der Ernährung müssen mindestens 25 Hektar für Mais genutzt werden. Der Wasserverbrauch ist begrenzt: Mais benötigt 6 Kubikmeter pro Hektar und der Windpark benötigt 1 Kubikmeter pro Hektar für die Kühlung, wobei insgesamt höchstens 300 Kubikmeter verfügbar sind. Zusätzlich soll der Windpark mindestens 10 Hektar umfassen, um eine wirtschaftliche Mindestgröße für die Einspeisung erneuerbarer Energie zu erreichen. Die Gemeinde möchte den Gesamtnutzen maximieren.",
+    "typ": "Flächennutzung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Hektar Mais", "x2 = Hektar Windpark"],
+    "zielfunktion": "Z = 600x1 + 1500x2 (max)",
+    "nebenbedingungen": [
+      "x1 + x2 ≤ 80 (Gesamtfläche)",
+      "x1 ≥ 25 (Mindestanbau Mais)",
+      "6x1 + x2 ≤ 300 (Wasserverbrauch)",
+      "x2 ≥ 10 (Mindestgröße Windpark)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Vier Nebenbedingungen: Gesamtfläche und Wasserverbrauch sind Obergrenzen (≤), Mindestanbau und Mindestgröße Windpark sind Untergrenzen (≥). Achten Sie auf die unterschiedlichen Koeffizienten beim Wasserverbrauch.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ertrag von 600€", "bedeutung": "600 × x₁"},
+        {"text": "Ertrag von 1500€", "bedeutung": "1500 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Planungsfläche umfasst 80 Hektar", "bedeutung": "x₁ + x₂ ≤ 80"}
+        ],
+        [
+          {"text": "mindestens 25 Hektar für Mais", "bedeutung": "x₁ ≥ 25"}
+        ],
+        [
+          {"text": "6 Kubikmeter pro Hektar", "bedeutung": "6x₁"},
+          {"text": "1 Kubikmeter pro Hektar", "bedeutung": "+ x₂"},
+          {"text": "höchstens 300 Kubikmeter", "bedeutung": "≤ 300"}
+        ],
+        [
+          {"text": "Windpark mindestens 10 Hektar", "bedeutung": "x₂ ≥ 10"}
+        ]
+      ]
+    }
+  }
+]

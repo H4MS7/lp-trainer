@@ -1,0 +1,60 @@
+{
+  "id": "qual_wasser_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl chemische Analysen", "x2 = Anzahl mikrobiologische Tests", "x3 = Anzahl physikalische Messungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Parameterabdeckung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Probenahmebudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten chemisch (€/Analyse)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten mikrobiologisch (€/Test)"},
+    "c3":  {"min": 2, "max": 6,   "label": "Kosten physikalisch (€/Messung)"},
+    "a11": {"min": 3, "max": 8,   "label": "Parameterabdeckung chemisch (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Parameterabdeckung mikrobiologisch (%)"},
+    "a13": {"min": 2, "max": 5,   "label": "Parameterabdeckung physikalisch (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Parameterabdeckung (%)"},
+    "a21": {"min": 2, "max": 4,   "label": "Laborzeit chemisch (Stunden)"},
+    "a22": {"min": 3, "max": 6,   "label": "Laborzeit mikrobiologisch (Stunden)"},
+    "a23": {"min": 1, "max": 3,   "label": "Laborzeit physikalisch (Stunden)"},
+    "b2":  {"min": 30, "max": 100, "label": "Laborkapazität (Stunden)"},
+    "a31": {"min": 2, "max": 6,   "label": "Probenahme chemisch (€)"},
+    "a32": {"min": 3, "max": 8,   "label": "Probenahme mikrobiologisch (€)"},
+    "a33": {"min": 1, "max": 4,   "label": "Probenahme physikalisch (€)"},
+    "b3":  {"min": 50, "max": 200, "label": "Probenahmebudget (€)"}
+  },
+  "titel": "Wasserwerk – Dreifach-Wasseranalyse",
+  "beschreibung": "Ein Wasserwerk führt chemische Analysen, mikrobiologische Tests und physikalische Messungen durch. Eine chemische Analyse kostet {c1} €, ein mikrobiologischer Test kostet {c2} € und eine physikalische Messung kostet {c3} €. Chemische Analysen decken {a11} % der Parameter ab, mikrobiologische Tests decken {a12} % und physikalische Messungen decken {a13} % der Parameter ab. Die Mindest-Parameterabdeckung beträgt {b1} %. Chemische Analysen benötigen {a21} Stunden Laborzeit, mikrobiologische Tests benötigen {a22} Stunden und physikalische Messungen benötigen {a23} Stunden. Die Laborkapazität beträgt {b2} Stunden. Die Probenahmekosten betragen {a31} € pro chemische Analyse, {a32} € pro mikrobiologischen Test und {a33} € pro physikalische Messung. Das Probenahmebudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Analysekosten bei ausreichender Parameterabdeckung, begrenzter Laborkapazität und Probenahmebudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "chemische Analyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "mikrobiologischer Test kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "physikalische Messung kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Parameter", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % der Parameter", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden Laborzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Stunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro chemische Analyse", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro mikrobiologischen Test", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro physikalische Messung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "kapa_microservice_2v_09",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Sync-Services", "x2 = Anzahl Async-Services"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Kerne", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "RAM", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,   "label": "Durchsatz Sync (Tsd. Req/s)"},
+    "c2":  {"min": 5, "max": 20,   "label": "Durchsatz Async (Tsd. Msg/s)"},
+    "a11": {"min": 1, "max": 4,    "label": "CPU Sync (Kerne)"},
+    "a12": {"min": 1, "max": 3,    "label": "CPU Async (Kerne)"},
+    "b1":  {"min": 20, "max": 80,  "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 2, "max": 8,    "label": "RAM Sync (GB)"},
+    "a22": {"min": 1, "max": 4,    "label": "RAM Async (GB)"},
+    "b2":  {"min": 32, "max": 128, "label": "Verfügbares RAM (GB)"}
+  },
+  "titel": "Microservice-Architektur – Serviceverteilung",
+  "beschreibung": "Eine Microservice-Plattform wird mit synchronen und asynchronen Services betrieben. Ein Sync-Service verarbeitet {c1} Tsd. Anfragen pro Sekunde, ein Async-Service verarbeitet {c2} Tsd. Nachrichten pro Sekunde. Ein Sync-Service benötigt {a11} CPU-Kerne, ein Async-Service benötigt {a12} CPU-Kerne. Insgesamt stehen {b1} CPU-Kerne zur Verfügung. Der RAM-Bedarf beträgt {a21} GB pro Sync-Service und {a22} GB pro Async-Service. Das verfügbare RAM beträgt {b2} GB.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der CPU- und RAM-Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sync-Service verarbeitet {c1} Tsd. Anfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Async-Service verarbeitet {c2} Tsd. Nachrichten pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein Async-Service benötigt {a12} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB pro Sync-Service und {a22} GB pro Async-Service", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

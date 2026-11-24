@@ -1,0 +1,43 @@
+{
+  "id": "ress_marketing_2v_01",
+  "typ": "Ressourcenallokation",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Budget fuer Online-Werbung (1000 €)", "x2 = Budget fuer Printwerbung (1000 €)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Werbebudget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalstunden", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,    "label": "Reichweite/1000€ Online (1000 Kontakte)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Reichweite/1000€ Print (1000 Kontakte)"},
+    "a11": {"min": 1, "max": 1,     "label": "Kosten Online (1000€/1000€)"},
+    "a12": {"min": 1, "max": 1,     "label": "Kosten Print (1000€/1000€)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Gesamtbudget (1000 €)"},
+    "a21": {"min": 2, "max": 6,     "label": "Personalstunden/1000€ Online"},
+    "a22": {"min": 1, "max": 4,     "label": "Personalstunden/1000€ Print"},
+    "b2":  {"min": 40, "max": 200,  "label": "Personalstunden gesamt"}
+  },
+  "titel": "Marketingplanung – Online und Print",
+  "beschreibung": "Eine Marketingabteilung verteilt ihr Budget auf Online-Werbung und Printwerbung. Pro 1000 Euro Online-Werbung werden {c1} Tausend Kontakte erreicht, pro 1000 Euro Printwerbung {c2} Tausend Kontakte. Jeder Online-Block kostet {a11} Tausend Euro, jeder Print-Block {a12} Tausend Euro. Das Gesamtbudget betraegt {b1} Tausend Euro. Online-Werbung erfordert {a21} Personalstunden pro Block, Printwerbung {a22} Personalstunden. Es stehen {b2} Personalstunden zur Verfuegung.",
+  "hinweis": "Maximiere die Reichweite unter Beachtung von Budget und Personalkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Online-Werbung werden {c1} Tausend Kontakte erreicht", "bedeutung": "{c1} × x₁"},
+      {"text": "Printwerbung {c2} Tausend Kontakte", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Online-Block kostet {a11} Tausend Euro", "bedeutung": "{a11}x₁"},
+        {"text": "Print-Block {a12} Tausend Euro", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tausend Euro", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Online-Werbung erfordert {a21} Personalstunden", "bedeutung": "{a21}x₁"},
+        {"text": "Printwerbung {a22} Personalstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Personalstunden zur Verfuegung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

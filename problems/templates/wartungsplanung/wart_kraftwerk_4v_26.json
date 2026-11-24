@@ -1,0 +1,68 @@
+{
+  "id": "wart_kraftwerk_4v_26",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Kesselreinigungen", "x2 = Anzahl Turbinenservice", "x3 = Anzahl Generatorprüfungen", "x4 = Anzahl Kühlsysteminspektionen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Wartungsfenster", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Spezialistenbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 14,  "label": "Kosten Kessel (Tsd. €)"},
+    "c2":  {"min": 8, "max": 22,  "label": "Kosten Turbine (Tsd. €)"},
+    "c3":  {"min": 6, "max": 18,  "label": "Kosten Generator (Tsd. €)"},
+    "c4":  {"min": 3, "max": 10,  "label": "Kosten Kühlung (Tsd. €)"},
+    "a11": {"min": 2, "max": 6,   "label": "Leistung Kessel (%)"},
+    "a12": {"min": 3, "max": 8,   "label": "Leistung Turbine (%)"},
+    "a13": {"min": 3, "max": 7,   "label": "Leistung Generator (%)"},
+    "a14": {"min": 2, "max": 5,   "label": "Leistung Kühlung (%)"},
+    "b1":  {"min": 50, "max": 160, "label": "Mindestleistung (%)"},
+    "a21": {"min": 3, "max": 7,   "label": "Zeit Kessel (h)"},
+    "a22": {"min": 4, "max": 10,  "label": "Zeit Turbine (h)"},
+    "a23": {"min": 3, "max": 8,   "label": "Zeit Generator (h)"},
+    "a24": {"min": 2, "max": 5,   "label": "Zeit Kühlung (h)"},
+    "b2":  {"min": 30, "max": 120, "label": "Wartungsfenster (h)"},
+    "a31": {"min": 2, "max": 5,   "label": "Spezialisten Kessel (Personen)"},
+    "a32": {"min": 3, "max": 6,   "label": "Spezialisten Turbine (Personen)"},
+    "a33": {"min": 2, "max": 5,   "label": "Spezialisten Generator (Personen)"},
+    "a34": {"min": 1, "max": 3,   "label": "Spezialisten Kühlung (Personen)"},
+    "b3":  {"min": 15, "max": 60,  "label": "Verfügbare Spezialisten (Personen)"}
+  },
+  "titel": "Kraftwerk – Vierstufige Anlagenwartung",
+  "beschreibung": "Ein Kraftwerk plant die Wartung in vier Bereichen. Eine Kesselreinigung kostet {c1} Tsd. €, ein Turbinenservice kostet {c2} Tsd. €, eine Generatorprüfung kostet {c3} Tsd. €, eine Kühlsysteminspektion kostet {c4} Tsd. €. Eine Kesselreinigung sichert {a11} % Leistung, Turbinenservice {a12} %, Generatorprüfung {a13} %, Kühlung {a14} %. Die Mindestleistung beträgt {b1} %. Die Wartungszeit beträgt {a21} h pro Kessel, {a22} h pro Turbine, {a23} h pro Generator und {a24} h pro Kühlung. Das Wartungsfenster beträgt {b2} Stunden. Es werden {a31} Spezialisten pro Kessel, {a32} pro Turbine, {a33} pro Generator und {a34} pro Kühlung benötigt. Insgesamt stehen {b3} Spezialisten zur Verfügung.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung von Leistung, Wartungsfenster und Personal.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kesselreinigung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Turbinenservice kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Generatorprüfung kostet {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Kühlsysteminspektion kostet {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Leistung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} %", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} %", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} h pro Kessel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} h pro Turbine", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} h pro Generator", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} h pro Kühlung", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Spezialisten pro Kessel", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} pro Turbine", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} pro Generator", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} pro Kühlung", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Spezialisten zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

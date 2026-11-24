@@ -1,0 +1,65 @@
+{
+  "id": "trans_supermarkt_4v_03",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 4,
+  "variablen": ["x1 = Lieferungen Filiale Nord", "x2 = Lieferungen Filiale Ost", "x3 = Lieferungen Filiale Süd", "x4 = Lieferungen Filiale West"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Produkte", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Kühl-LKW", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Lieferzeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Laderampen", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Filiale Nord (EUR/Lieferung)"},
+    "c2":  {"min": 4, "max": 14,  "label": "Kosten Filiale Ost (EUR/Lieferung)"},
+    "c3":  {"min": 5, "max": 16,  "label": "Kosten Filiale Süd (EUR/Lieferung)"},
+    "c4":  {"min": 3, "max": 11,  "label": "Kosten Filiale West (EUR/Lieferung)"},
+    "a11": {"min": 3, "max": 10,  "label": "Produkte nach Nord (Paletten)"},
+    "a12": {"min": 2, "max": 8,   "label": "Produkte nach Ost (Paletten)"},
+    "a13": {"min": 4, "max": 12,  "label": "Produkte nach Süd (Paletten)"},
+    "a14": {"min": 2, "max": 7,   "label": "Produkte nach West (Paletten)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Produktpaletten"},
+    "a21": {"min": 1, "max": 3,   "label": "Kühl-LKW nach Nord"},
+    "a22": {"min": 1, "max": 3,   "label": "Kühl-LKW nach Ost"},
+    "a23": {"min": 2, "max": 4,   "label": "Kühl-LKW nach Süd"},
+    "a24": {"min": 1, "max": 3,   "label": "Kühl-LKW nach West"},
+    "b2":  {"min": 15, "max": 60, "label": "Verfügbare Kühl-LKW"},
+    "a31": {"min": 1, "max": 4,   "label": "Stunden nach Nord"},
+    "a32": {"min": 2, "max": 5,   "label": "Stunden nach Ost"},
+    "a33": {"min": 2, "max": 6,   "label": "Stunden nach Süd"},
+    "a34": {"min": 1, "max": 3,   "label": "Stunden nach West"},
+    "b3":  {"min": 20, "max": 80, "label": "Max. Lieferzeit (Stunden)"},
+    "a41": {"min": 1, "max": 3,   "label": "Rampen nach Nord"},
+    "a42": {"min": 1, "max": 2,   "label": "Rampen nach Ost"},
+    "a43": {"min": 1, "max": 3,   "label": "Rampen nach Süd"},
+    "a44": {"min": 1, "max": 2,   "label": "Rampen nach West"},
+    "b4":  {"min": 15, "max": 50, "label": "Verfügbare Laderampen"}
+  },
+  "titel": "Supermarkt-Belieferung – vier Filialen",
+  "beschreibung": "Ein Supermarkt-Zentrallager beliefert vier Filialen. Eine Lieferung nach Nord kostet {c1} EUR, nach Ost {c2} EUR, nach Süd {c3} EUR und nach West {c4} EUR. Nach Nord werden {a11} Paletten geliefert, nach Ost {a12}, nach Süd {a13} und nach West {a14} Paletten pro Lieferung. Mindestens {b1} Paletten müssen geliefert werden. Nach Nord werden {a21} Kühl-LKW benötigt, nach Ost {a22}, nach Süd {a23} und nach West {a24} Kühl-LKW pro Lieferung. Insgesamt stehen {b2} Kühl-LKW zur Verfügung. Nach Nord dauert es {a31} Stunden, nach Ost {a32}, nach Süd {a33} und nach West {a34} Stunden. Die Lieferzeit darf höchstens {b3} Stunden betragen. Nach Nord werden {a41} Rampen belegt, nach Ost {a42}, nach Süd {a43} und nach West {a44} Rampen. Insgesamt stehen {b4} Laderampen zur Verfügung.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Paletten, begrenzten Kühl-LKW, Lieferzeit und Rampen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Nord kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Ost {c2} EUR", "bedeutung": "{c2} × x₂"},
+      {"text": "Süd {c3} EUR", "bedeutung": "{c3} × x₃"},
+      {"text": "West {c4} EUR", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Paletten geliefert, nach Ost {a12}, nach Süd {a13} und nach West {a14} Paletten pro Lieferung. Mindestens {b1} Paletten müssen geliefert werden", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Kühl-LKW benötigt, nach Ost {a22}, nach Süd {a23} und nach West {a24} Kühl-LKW pro Lieferung. Insgesamt stehen {b2} Kühl-LKW zur Verfügung", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ ≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden, nach Ost {a32}, nach Süd {a33} und nach West {a34} Stunden. Die Lieferzeit darf höchstens {b3} Stunden betragen", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ ≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Rampen belegt, nach Ost {a42}, nach Süd {a43} und nach West {a44} Rampen. Insgesamt stehen {b4} Laderampen zur Verfügung", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ ≤ {b4}"}
+      ]
+    ]
+  }
+}

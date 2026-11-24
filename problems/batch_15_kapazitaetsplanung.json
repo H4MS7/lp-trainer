@@ -1,0 +1,1112 @@
+[
+  {
+    "titel": "Cloud-VM-Kapazitätsplanung I",
+    "beschreibung": "Ein Rechenzentrum setzt Standard-VMs und Premium-VMs ein. Jede Standard-VM liefert 9 Anfragen pro Sekunde und jede Premium-VM liefert 11 Anfragen pro Sekunde. An CPU-Kerne stehen insgesamt 483 Kerne zur Verfügung. Jede Standard-VM benötigt 12 Kerne und jede Premium-VM benötigt 6 Kerne. An Arbeitsspeicher in GB stehen insgesamt 848 GB RAM zur Verfügung. Jede Standard-VM benötigt 7 GB RAM und jede Premium-VM benötigt 6 GB RAM. Die Gesamtleistung in Anfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-VMs",
+      "x2 = Anzahl Premium-VMs"
+    ],
+    "zielfunktion": "Z = 9x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 6x2 ≤ 483 (CPU-Kerne)",
+      "7x1 + 6x2 ≤ 848 (Arbeitsspeicher in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (CPU-Kerne und Arbeitsspeicher in GB) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-VM liefert 9 Anfragen pro Sekunde",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "Premium-VM liefert 11 Anfragen pro Sekunde",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-VM benötigt 12 Kerne",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 6 Kerne",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "483 Kerne zur Verfügung",
+            "bedeutung": "≤ 483"
+          }
+        ],
+        [
+          {
+            "text": "Standard-VM benötigt 7 GB RAM",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 6 GB RAM",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "848 GB RAM zur Verfügung",
+            "bedeutung": "≤ 848"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Container-Pod-Kapazitätsplanung II",
+    "beschreibung": "Ein Cloud-Plattform setzt Basis-Pods und Premium-Pods ein. Jede Basis-Pod liefert 14 Transaktionen pro Sekunde und jede Premium-Pod liefert 9 Transaktionen pro Sekunde. An CPU-Kerne stehen insgesamt 51 Kerne zur Verfügung. Jede Basis-Pod benötigt 1 Kerne und jede Premium-Pod benötigt 8 Kerne. An Arbeitsspeicher in GB stehen insgesamt 744 GB RAM zur Verfügung. Jede Basis-Pod benötigt 8 GB RAM und jede Premium-Pod benötigt 3 GB RAM. An Speicherplatz in GB stehen insgesamt 755 GB Speicherplatz zur Verfügung. Jede Basis-Pod benötigt 3 GB Speicherplatz und jede Premium-Pod benötigt 4 GB Speicherplatz. Die Gesamtleistung in Transaktionen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Basis-Pods",
+      "x2 = Anzahl Premium-Pods"
+    ],
+    "zielfunktion": "Z = 14x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 8x2 ≤ 51 (CPU-Kerne)",
+      "8x1 + 3x2 ≤ 744 (Arbeitsspeicher in GB)",
+      "3x1 + 4x2 ≤ 755 (Speicherplatz in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU-Kerne, Arbeitsspeicher in GB und Speicherplatz in GB.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Basis-Pod liefert 14 Transaktionen pro Sekunde",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Premium-Pod liefert 9 Transaktionen pro Sekunde",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Basis-Pod benötigt 1 Kerne",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 8 Kerne",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "51 Kerne zur Verfügung",
+            "bedeutung": "≤ 51"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 8 GB RAM",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 3 GB RAM",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "744 GB RAM zur Verfügung",
+            "bedeutung": "≤ 744"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 3 GB Speicherplatz",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 4 GB Speicherplatz",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "755 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 755"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Datenbankinstanz-Kapazitätsplanung III",
+    "beschreibung": "Ein Datenbank-Cluster setzt Standard-Instanzen und Enterprise-Instanzen ein. Jede Standard-Instanz liefert 13 Abfragen pro Sekunde und jede Enterprise-Instanz liefert 2 Abfragen pro Sekunde. An CPU-Kerne stehen insgesamt 619 Kerne zur Verfügung. Jede Standard-Instanz benötigt 5 Kerne und jede Enterprise-Instanz benötigt 5 Kerne. An Arbeitsspeicher in GB stehen insgesamt 419 GB RAM zur Verfügung. Jede Standard-Instanz benötigt 6 GB RAM und jede Enterprise-Instanz benötigt 4 GB RAM. An Speicherplatz in GB stehen insgesamt 811 GB Speicherplatz zur Verfügung. Jede Standard-Instanz benötigt 10 GB Speicherplatz und jede Enterprise-Instanz benötigt 4 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 887 Gbit/s Bandbreite zur Verfügung. Jede Standard-Instanz benötigt 11 Gbit/s Bandbreite und jede Enterprise-Instanz benötigt 6 Gbit/s Bandbreite. Die Gesamtleistung in Abfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-Instanzen",
+      "x2 = Anzahl Enterprise-Instanzen"
+    ],
+    "zielfunktion": "Z = 13x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 5x2 ≤ 619 (CPU-Kerne)",
+      "6x1 + 4x2 ≤ 419 (Arbeitsspeicher in GB)",
+      "10x1 + 4x2 ≤ 811 (Speicherplatz in GB)",
+      "11x1 + 6x2 ≤ 887 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt vier Ressourcenbeschränkungen. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-Instanz liefert 13 Abfragen pro Sekunde",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Enterprise-Instanz liefert 2 Abfragen pro Sekunde",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-Instanz benötigt 5 Kerne",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 5 Kerne",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "619 Kerne zur Verfügung",
+            "bedeutung": "≤ 619"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 6 GB RAM",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 4 GB RAM",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "419 GB RAM zur Verfügung",
+            "bedeutung": "≤ 419"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 10 GB Speicherplatz",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 4 GB Speicherplatz",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "811 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 811"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 11 Gbit/s Bandbreite",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 6 Gbit/s Bandbreite",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "887 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 887"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "GPU-Cluster-Kapazitätsplanung IV",
+    "beschreibung": "Ein GPU-Cluster setzt Compute-Knoten und Grafik-Knoten ein. Jede Compute-Knoten liefert 6 TFLOPS Rechenleistung und jede Grafik-Knoten liefert 11 TFLOPS Rechenleistung. An CPU-Kerne stehen insgesamt 560 Kerne zur Verfügung. Jede Compute-Knoten benötigt 10 Kerne und jede Grafik-Knoten benötigt 6 Kerne. An Arbeitsspeicher in GB stehen insgesamt 847 GB RAM zur Verfügung. Jede Compute-Knoten benötigt 2 GB RAM und jede Grafik-Knoten benötigt 5 GB RAM. Die Gesamtleistung in TFLOPS Rechenleistung soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Compute-Knoten",
+      "x2 = Anzahl Grafik-Knoten"
+    ],
+    "zielfunktion": "Z = 6x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "10x1 + 6x2 ≤ 560 (CPU-Kerne)",
+      "2x1 + 5x2 ≤ 847 (Arbeitsspeicher in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (CPU-Kerne und Arbeitsspeicher in GB) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Compute-Knoten liefert 6 TFLOPS Rechenleistung",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Grafik-Knoten liefert 11 TFLOPS Rechenleistung",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Compute-Knoten benötigt 10 Kerne",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 6 Kerne",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "560 Kerne zur Verfügung",
+            "bedeutung": "≤ 560"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 2 GB RAM",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 5 GB RAM",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "847 GB RAM zur Verfügung",
+            "bedeutung": "≤ 847"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kubernetes-Node-Kapazitätsplanung V",
+    "beschreibung": "Ein Kubernetes-Cluster setzt Worker-Nodes und High-Memory-Nodes ein. Jede Worker-Node liefert 11 Pods pro Minute und jede High-Memory-Node liefert 6 Pods pro Minute. An CPU-Kerne stehen insgesamt 293 Kerne zur Verfügung. Jede Worker-Node benötigt 4 Kerne und jede High-Memory-Node benötigt 11 Kerne. An Speicherplatz in GB stehen insgesamt 238 GB Speicherplatz zur Verfügung. Jede Worker-Node benötigt 1 GB Speicherplatz und jede High-Memory-Node benötigt 5 GB Speicherplatz. Die Gesamtleistung in Pods pro Minute soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Worker-Nodes",
+      "x2 = Anzahl High-Memory-Nodes"
+    ],
+    "zielfunktion": "Z = 11x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 11x2 ≤ 293 (CPU-Kerne)",
+      "x1 + 5x2 ≤ 238 (Speicherplatz in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (CPU-Kerne und Speicherplatz in GB) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Worker-Node liefert 11 Pods pro Minute",
+          "bedeutung": "11 × x₁"
+        },
+        {
+          "text": "High-Memory-Node liefert 6 Pods pro Minute",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Worker-Node benötigt 4 Kerne",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 11 Kerne",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "293 Kerne zur Verfügung",
+            "bedeutung": "≤ 293"
+          }
+        ],
+        [
+          {
+            "text": "Worker-Node benötigt 1 GB Speicherplatz",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 5 GB Speicherplatz",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "238 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 238"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Cloud-VM-Kapazitätsplanung VI",
+    "beschreibung": "Ein Rechenzentrum setzt Standard-VMs und Premium-VMs ein. Jede Standard-VM liefert 5 Anfragen pro Sekunde und jede Premium-VM liefert 5 Anfragen pro Sekunde. An CPU-Kerne stehen insgesamt 465 Kerne zur Verfügung. Jede Standard-VM benötigt 6 Kerne und jede Premium-VM benötigt 11 Kerne. An Speicherplatz in GB stehen insgesamt 710 GB Speicherplatz zur Verfügung. Jede Standard-VM benötigt 8 GB Speicherplatz und jede Premium-VM benötigt 3 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 566 Gbit/s Bandbreite zur Verfügung. Jede Standard-VM benötigt 5 Gbit/s Bandbreite und jede Premium-VM benötigt 5 Gbit/s Bandbreite. Die Gesamtleistung in Anfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-VMs",
+      "x2 = Anzahl Premium-VMs"
+    ],
+    "zielfunktion": "Z = 5x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 11x2 ≤ 465 (CPU-Kerne)",
+      "8x1 + 3x2 ≤ 710 (Speicherplatz in GB)",
+      "5x1 + 5x2 ≤ 566 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU-Kerne, Speicherplatz in GB und Netzwerkbandbreite in Gbit/s.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-VM liefert 5 Anfragen pro Sekunde",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Premium-VM liefert 5 Anfragen pro Sekunde",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-VM benötigt 6 Kerne",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 11 Kerne",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "465 Kerne zur Verfügung",
+            "bedeutung": "≤ 465"
+          }
+        ],
+        [
+          {
+            "text": "Standard-VM benötigt 8 GB Speicherplatz",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 3 GB Speicherplatz",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "710 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 710"
+          }
+        ],
+        [
+          {
+            "text": "Standard-VM benötigt 5 Gbit/s Bandbreite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 5 Gbit/s Bandbreite",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "566 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 566"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Container-Pod-Kapazitätsplanung VII",
+    "beschreibung": "Ein Cloud-Plattform setzt Basis-Pods und Premium-Pods ein. Jede Basis-Pod liefert 13 Transaktionen pro Sekunde und jede Premium-Pod liefert 10 Transaktionen pro Sekunde. An CPU-Kerne stehen insgesamt 926 Kerne zur Verfügung. Jede Basis-Pod benötigt 4 Kerne und jede Premium-Pod benötigt 12 Kerne. An Arbeitsspeicher in GB stehen insgesamt 177 GB RAM zur Verfügung. Jede Basis-Pod benötigt 1 GB RAM und jede Premium-Pod benötigt 8 GB RAM. An Speicherplatz in GB stehen insgesamt 460 GB Speicherplatz zur Verfügung. Jede Basis-Pod benötigt 10 GB Speicherplatz und jede Premium-Pod benötigt 6 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 134 Gbit/s Bandbreite zur Verfügung. Jede Basis-Pod benötigt 6 Gbit/s Bandbreite und jede Premium-Pod benötigt 7 Gbit/s Bandbreite. Die Gesamtleistung in Transaktionen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Basis-Pods",
+      "x2 = Anzahl Premium-Pods"
+    ],
+    "zielfunktion": "Z = 13x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 12x2 ≤ 926 (CPU-Kerne)",
+      "x1 + 8x2 ≤ 177 (Arbeitsspeicher in GB)",
+      "10x1 + 6x2 ≤ 460 (Speicherplatz in GB)",
+      "6x1 + 7x2 ≤ 134 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt vier Ressourcenbeschränkungen. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Basis-Pod liefert 13 Transaktionen pro Sekunde",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Premium-Pod liefert 10 Transaktionen pro Sekunde",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Basis-Pod benötigt 4 Kerne",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 12 Kerne",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "926 Kerne zur Verfügung",
+            "bedeutung": "≤ 926"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 1 GB RAM",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 8 GB RAM",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "177 GB RAM zur Verfügung",
+            "bedeutung": "≤ 177"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 10 GB Speicherplatz",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 6 GB Speicherplatz",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "460 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 460"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 6 Gbit/s Bandbreite",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 7 Gbit/s Bandbreite",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "134 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 134"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Datenbankinstanz-Kapazitätsplanung VIII",
+    "beschreibung": "Ein Datenbank-Cluster setzt Standard-Instanzen und Enterprise-Instanzen ein. Jede Standard-Instanz liefert 6 Abfragen pro Sekunde und jede Enterprise-Instanz liefert 2 Abfragen pro Sekunde. An CPU-Kerne stehen insgesamt 482 Kerne zur Verfügung. Jede Standard-Instanz benötigt 5 Kerne und jede Enterprise-Instanz benötigt 10 Kerne. An Speicherplatz in GB stehen insgesamt 968 GB Speicherplatz zur Verfügung. Jede Standard-Instanz benötigt 9 GB Speicherplatz und jede Enterprise-Instanz benötigt 7 GB Speicherplatz. Die Gesamtleistung in Abfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-Instanzen",
+      "x2 = Anzahl Enterprise-Instanzen"
+    ],
+    "zielfunktion": "Z = 6x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 10x2 ≤ 482 (CPU-Kerne)",
+      "9x1 + 7x2 ≤ 968 (Speicherplatz in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (CPU-Kerne und Speicherplatz in GB) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-Instanz liefert 6 Abfragen pro Sekunde",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "Enterprise-Instanz liefert 2 Abfragen pro Sekunde",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-Instanz benötigt 5 Kerne",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 10 Kerne",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "482 Kerne zur Verfügung",
+            "bedeutung": "≤ 482"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 9 GB Speicherplatz",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 7 GB Speicherplatz",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "968 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 968"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "GPU-Cluster-Kapazitätsplanung IX",
+    "beschreibung": "Ein GPU-Cluster setzt Compute-Knoten und Grafik-Knoten ein. Jede Compute-Knoten liefert 12 TFLOPS Rechenleistung und jede Grafik-Knoten liefert 11 TFLOPS Rechenleistung. An CPU-Kerne stehen insgesamt 598 Kerne zur Verfügung. Jede Compute-Knoten benötigt 9 Kerne und jede Grafik-Knoten benötigt 1 Kerne. An Arbeitsspeicher in GB stehen insgesamt 889 GB RAM zur Verfügung. Jede Compute-Knoten benötigt 1 GB RAM und jede Grafik-Knoten benötigt 1 GB RAM. An Speicherplatz in GB stehen insgesamt 410 GB Speicherplatz zur Verfügung. Jede Compute-Knoten benötigt 12 GB Speicherplatz und jede Grafik-Knoten benötigt 10 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 83 Gbit/s Bandbreite zur Verfügung. Jede Compute-Knoten benötigt 5 Gbit/s Bandbreite und jede Grafik-Knoten benötigt 11 Gbit/s Bandbreite. Die Gesamtleistung in TFLOPS Rechenleistung soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Compute-Knoten",
+      "x2 = Anzahl Grafik-Knoten"
+    ],
+    "zielfunktion": "Z = 12x1 + 11x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + x2 ≤ 598 (CPU-Kerne)",
+      "x1 + x2 ≤ 889 (Arbeitsspeicher in GB)",
+      "12x1 + 10x2 ≤ 410 (Speicherplatz in GB)",
+      "5x1 + 11x2 ≤ 83 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt vier Ressourcenbeschränkungen. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Compute-Knoten liefert 12 TFLOPS Rechenleistung",
+          "bedeutung": "12 × x₁"
+        },
+        {
+          "text": "Grafik-Knoten liefert 11 TFLOPS Rechenleistung",
+          "bedeutung": "11 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Compute-Knoten benötigt 9 Kerne",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 1 Kerne",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "598 Kerne zur Verfügung",
+            "bedeutung": "≤ 598"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 1 GB RAM",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 1 GB RAM",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "889 GB RAM zur Verfügung",
+            "bedeutung": "≤ 889"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 12 GB Speicherplatz",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 10 GB Speicherplatz",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "410 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 410"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 5 Gbit/s Bandbreite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 11 Gbit/s Bandbreite",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "83 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 83"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kubernetes-Node-Kapazitätsplanung X",
+    "beschreibung": "Ein Kubernetes-Cluster setzt Worker-Nodes und High-Memory-Nodes ein. Jede Worker-Node liefert 6 Pods pro Minute und jede High-Memory-Node liefert 12 Pods pro Minute. An CPU-Kerne stehen insgesamt 970 Kerne zur Verfügung. Jede Worker-Node benötigt 11 Kerne und jede High-Memory-Node benötigt 7 Kerne. An Arbeitsspeicher in GB stehen insgesamt 250 GB RAM zur Verfügung. Jede Worker-Node benötigt 10 GB RAM und jede High-Memory-Node benötigt 5 GB RAM. An Netzwerkbandbreite in Gbit/s stehen insgesamt 897 Gbit/s Bandbreite zur Verfügung. Jede Worker-Node benötigt 3 Gbit/s Bandbreite und jede High-Memory-Node benötigt 11 Gbit/s Bandbreite. Die Gesamtleistung in Pods pro Minute soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Worker-Nodes",
+      "x2 = Anzahl High-Memory-Nodes"
+    ],
+    "zielfunktion": "Z = 6x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "11x1 + 7x2 ≤ 970 (CPU-Kerne)",
+      "10x1 + 5x2 ≤ 250 (Arbeitsspeicher in GB)",
+      "3x1 + 11x2 ≤ 897 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU-Kerne, Arbeitsspeicher in GB und Netzwerkbandbreite in Gbit/s.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Worker-Node liefert 6 Pods pro Minute",
+          "bedeutung": "6 × x₁"
+        },
+        {
+          "text": "High-Memory-Node liefert 12 Pods pro Minute",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Worker-Node benötigt 11 Kerne",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 7 Kerne",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "970 Kerne zur Verfügung",
+            "bedeutung": "≤ 970"
+          }
+        ],
+        [
+          {
+            "text": "Worker-Node benötigt 10 GB RAM",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 5 GB RAM",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "250 GB RAM zur Verfügung",
+            "bedeutung": "≤ 250"
+          }
+        ],
+        [
+          {
+            "text": "Worker-Node benötigt 3 Gbit/s Bandbreite",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 11 Gbit/s Bandbreite",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "897 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 897"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Cloud-VM-Kapazitätsplanung XI",
+    "beschreibung": "Ein Rechenzentrum setzt Standard-VMs und Premium-VMs ein. Jede Standard-VM liefert 5 Anfragen pro Sekunde und jede Premium-VM liefert 2 Anfragen pro Sekunde. An CPU-Kerne stehen insgesamt 413 Kerne zur Verfügung. Jede Standard-VM benötigt 6 Kerne und jede Premium-VM benötigt 12 Kerne. An Arbeitsspeicher in GB stehen insgesamt 652 GB RAM zur Verfügung. Jede Standard-VM benötigt 2 GB RAM und jede Premium-VM benötigt 10 GB RAM. An Speicherplatz in GB stehen insgesamt 803 GB Speicherplatz zur Verfügung. Jede Standard-VM benötigt 1 GB Speicherplatz und jede Premium-VM benötigt 2 GB Speicherplatz. Die Gesamtleistung in Anfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-VMs",
+      "x2 = Anzahl Premium-VMs"
+    ],
+    "zielfunktion": "Z = 5x1 + 2x2 (max)",
+    "nebenbedingungen": [
+      "6x1 + 12x2 ≤ 413 (CPU-Kerne)",
+      "2x1 + 10x2 ≤ 652 (Arbeitsspeicher in GB)",
+      "x1 + 2x2 ≤ 803 (Speicherplatz in GB)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU-Kerne, Arbeitsspeicher in GB und Speicherplatz in GB.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-VM liefert 5 Anfragen pro Sekunde",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Premium-VM liefert 2 Anfragen pro Sekunde",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-VM benötigt 6 Kerne",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 12 Kerne",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "413 Kerne zur Verfügung",
+            "bedeutung": "≤ 413"
+          }
+        ],
+        [
+          {
+            "text": "Standard-VM benötigt 2 GB RAM",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 10 GB RAM",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "652 GB RAM zur Verfügung",
+            "bedeutung": "≤ 652"
+          }
+        ],
+        [
+          {
+            "text": "Standard-VM benötigt 1 GB Speicherplatz",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Premium-VM benötigt 2 GB Speicherplatz",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "803 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 803"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Container-Pod-Kapazitätsplanung XII",
+    "beschreibung": "Ein Cloud-Plattform setzt Basis-Pods und Premium-Pods ein. Jede Basis-Pod liefert 13 Transaktionen pro Sekunde und jede Premium-Pod liefert 9 Transaktionen pro Sekunde. An Arbeitsspeicher in GB stehen insgesamt 595 GB RAM zur Verfügung. Jede Basis-Pod benötigt 4 GB RAM und jede Premium-Pod benötigt 2 GB RAM. An Netzwerkbandbreite in Gbit/s stehen insgesamt 125 Gbit/s Bandbreite zur Verfügung. Jede Basis-Pod benötigt 5 Gbit/s Bandbreite und jede Premium-Pod benötigt 11 Gbit/s Bandbreite. Die Gesamtleistung in Transaktionen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Basis-Pods",
+      "x2 = Anzahl Premium-Pods"
+    ],
+    "zielfunktion": "Z = 13x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 2x2 ≤ 595 (Arbeitsspeicher in GB)",
+      "5x1 + 11x2 ≤ 125 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifizieren Sie die zwei Ressourcen (Arbeitsspeicher in GB und Netzwerkbandbreite in Gbit/s) als separate Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Basis-Pod liefert 13 Transaktionen pro Sekunde",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Premium-Pod liefert 9 Transaktionen pro Sekunde",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Basis-Pod benötigt 4 GB RAM",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 2 GB RAM",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "595 GB RAM zur Verfügung",
+            "bedeutung": "≤ 595"
+          }
+        ],
+        [
+          {
+            "text": "Basis-Pod benötigt 5 Gbit/s Bandbreite",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Premium-Pod benötigt 11 Gbit/s Bandbreite",
+            "bedeutung": "+ 11x₂"
+          },
+          {
+            "text": "125 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 125"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Datenbankinstanz-Kapazitätsplanung XIII",
+    "beschreibung": "Ein Datenbank-Cluster setzt Standard-Instanzen und Enterprise-Instanzen ein. Jede Standard-Instanz liefert 11 Abfragen pro Sekunde und jede Enterprise-Instanz liefert 7 Abfragen pro Sekunde. An CPU-Kerne stehen insgesamt 184 Kerne zur Verfügung. Jede Standard-Instanz benötigt 2 Kerne und jede Enterprise-Instanz benötigt 4 Kerne. An Arbeitsspeicher in GB stehen insgesamt 443 GB RAM zur Verfügung. Jede Standard-Instanz benötigt 6 GB RAM und jede Enterprise-Instanz benötigt 10 GB RAM. An Speicherplatz in GB stehen insgesamt 785 GB Speicherplatz zur Verfügung. Jede Standard-Instanz benötigt 9 GB Speicherplatz und jede Enterprise-Instanz benötigt 2 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 403 Gbit/s Bandbreite zur Verfügung. Jede Standard-Instanz benötigt 2 Gbit/s Bandbreite und jede Enterprise-Instanz benötigt 12 Gbit/s Bandbreite. Die Gesamtleistung in Abfragen pro Sekunde soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Standard-Instanzen",
+      "x2 = Anzahl Enterprise-Instanzen"
+    ],
+    "zielfunktion": "Z = 11x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≤ 184 (CPU-Kerne)",
+      "6x1 + 10x2 ≤ 443 (Arbeitsspeicher in GB)",
+      "9x1 + 2x2 ≤ 785 (Speicherplatz in GB)",
+      "2x1 + 12x2 ≤ 403 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt vier Ressourcenbeschränkungen. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Standard-Instanz liefert 11 Abfragen pro Sekunde",
+          "bedeutung": "11 × x₁"
+        },
+        {
+          "text": "Enterprise-Instanz liefert 7 Abfragen pro Sekunde",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Standard-Instanz benötigt 2 Kerne",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 4 Kerne",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "184 Kerne zur Verfügung",
+            "bedeutung": "≤ 184"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 6 GB RAM",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 10 GB RAM",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "443 GB RAM zur Verfügung",
+            "bedeutung": "≤ 443"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 9 GB Speicherplatz",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 2 GB Speicherplatz",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "785 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 785"
+          }
+        ],
+        [
+          {
+            "text": "Standard-Instanz benötigt 2 Gbit/s Bandbreite",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Enterprise-Instanz benötigt 12 Gbit/s Bandbreite",
+            "bedeutung": "+ 12x₂"
+          },
+          {
+            "text": "403 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 403"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "GPU-Cluster-Kapazitätsplanung XIV",
+    "beschreibung": "Ein GPU-Cluster setzt Compute-Knoten und Grafik-Knoten ein. Jede Compute-Knoten liefert 2 TFLOPS Rechenleistung und jede Grafik-Knoten liefert 7 TFLOPS Rechenleistung. An CPU-Kerne stehen insgesamt 268 Kerne zur Verfügung. Jede Compute-Knoten benötigt 7 Kerne und jede Grafik-Knoten benötigt 4 Kerne. An Arbeitsspeicher in GB stehen insgesamt 774 GB RAM zur Verfügung. Jede Compute-Knoten benötigt 9 GB RAM und jede Grafik-Knoten benötigt 6 GB RAM. An Netzwerkbandbreite in Gbit/s stehen insgesamt 53 Gbit/s Bandbreite zur Verfügung. Jede Compute-Knoten benötigt 1 Gbit/s Bandbreite und jede Grafik-Knoten benötigt 3 Gbit/s Bandbreite. An Lizenzkosten in Euro stehen insgesamt 309 Euro Lizenzbudget zur Verfügung. Jede Compute-Knoten benötigt 3 Euro Lizenzbudget und jede Grafik-Knoten benötigt 5 Euro Lizenzbudget. Die Gesamtleistung in TFLOPS Rechenleistung soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Compute-Knoten",
+      "x2 = Anzahl Grafik-Knoten"
+    ],
+    "zielfunktion": "Z = 2x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + 4x2 ≤ 268 (CPU-Kerne)",
+      "9x1 + 6x2 ≤ 774 (Arbeitsspeicher in GB)",
+      "x1 + 3x2 ≤ 53 (Netzwerkbandbreite in Gbit/s)",
+      "3x1 + 5x2 ≤ 309 (Lizenzkosten in Euro)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt vier Ressourcenbeschränkungen. Jede bildet eine eigene Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Compute-Knoten liefert 2 TFLOPS Rechenleistung",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Grafik-Knoten liefert 7 TFLOPS Rechenleistung",
+          "bedeutung": "7 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Compute-Knoten benötigt 7 Kerne",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 4 Kerne",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "268 Kerne zur Verfügung",
+            "bedeutung": "≤ 268"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 9 GB RAM",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 6 GB RAM",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "774 GB RAM zur Verfügung",
+            "bedeutung": "≤ 774"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 1 Gbit/s Bandbreite",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 3 Gbit/s Bandbreite",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "53 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 53"
+          }
+        ],
+        [
+          {
+            "text": "Compute-Knoten benötigt 3 Euro Lizenzbudget",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Grafik-Knoten benötigt 5 Euro Lizenzbudget",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "309 Euro Lizenzbudget zur Verfügung",
+            "bedeutung": "≤ 309"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kubernetes-Node-Kapazitätsplanung XV",
+    "beschreibung": "Ein Kubernetes-Cluster setzt Worker-Nodes und High-Memory-Nodes ein. Jede Worker-Node liefert 9 Pods pro Minute und jede High-Memory-Node liefert 14 Pods pro Minute. An CPU-Kerne stehen insgesamt 933 Kerne zur Verfügung. Jede Worker-Node benötigt 7 Kerne und jede High-Memory-Node benötigt 1 Kerne. An Speicherplatz in GB stehen insgesamt 505 GB Speicherplatz zur Verfügung. Jede Worker-Node benötigt 10 GB Speicherplatz und jede High-Memory-Node benötigt 2 GB Speicherplatz. An Netzwerkbandbreite in Gbit/s stehen insgesamt 850 Gbit/s Bandbreite zur Verfügung. Jede Worker-Node benötigt 11 Gbit/s Bandbreite und jede High-Memory-Node benötigt 3 Gbit/s Bandbreite. Die Gesamtleistung in Pods pro Minute soll maximiert werden.",
+    "typ": "Kapazitätsplanung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Anzahl Worker-Nodes",
+      "x2 = Anzahl High-Memory-Nodes"
+    ],
+    "zielfunktion": "Z = 9x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + x2 ≤ 933 (CPU-Kerne)",
+      "10x1 + 2x2 ≤ 505 (Speicherplatz in GB)",
+      "11x1 + 3x2 ≤ 850 (Netzwerkbandbreite in Gbit/s)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Es gibt drei Ressourcenbeschränkungen: CPU-Kerne, Speicherplatz in GB und Netzwerkbandbreite in Gbit/s.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Worker-Node liefert 9 Pods pro Minute",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "High-Memory-Node liefert 14 Pods pro Minute",
+          "bedeutung": "14 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Worker-Node benötigt 7 Kerne",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 1 Kerne",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "933 Kerne zur Verfügung",
+            "bedeutung": "≤ 933"
+          }
+        ],
+        [
+          {
+            "text": "Worker-Node benötigt 10 GB Speicherplatz",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 2 GB Speicherplatz",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "505 GB Speicherplatz zur Verfügung",
+            "bedeutung": "≤ 505"
+          }
+        ],
+        [
+          {
+            "text": "Worker-Node benötigt 11 Gbit/s Bandbreite",
+            "bedeutung": "11x₁"
+          },
+          {
+            "text": "High-Memory-Node benötigt 3 Gbit/s Bandbreite",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "850 Gbit/s Bandbreite zur Verfügung",
+            "bedeutung": "≤ 850"
+          }
+        ]
+      ]
+    }
+  }
+]

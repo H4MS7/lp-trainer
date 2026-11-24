@@ -1,0 +1,75 @@
+{
+  "id": "schicht_freizeitpark_5v_02",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Frühschichten", "x2 = Anzahl Mittagsschichten", "x3 = Anzahl Abendschichten", "x4 = Anzahl Wochenendschichten", "x5 = Anzahl Feiertagsschichten"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Fahrgeschäfte", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Gastronomie", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Einlass", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindestbesetzung Technik", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 50, "max": 100, "label": "Kosten Frühschicht (€)"},
+    "c2":  {"min": 55, "max": 110, "label": "Kosten Mittagsschicht (€)"},
+    "c3":  {"min": 60, "max": 120, "label": "Kosten Abendschicht (€)"},
+    "c4":  {"min": 80, "max": 160, "label": "Kosten Wochenendschicht (€)"},
+    "c5":  {"min": 100, "max": 200, "label": "Kosten Feiertagsschicht (€)"},
+    "a11": {"min": 3, "max": 7, "label": "Fahrgeschäfte pro Frühschicht"},
+    "a12": {"min": 4, "max": 8, "label": "Fahrgeschäfte pro Mittagsschicht"},
+    "a13": {"min": 2, "max": 5, "label": "Fahrgeschäfte pro Abendschicht"},
+    "a14": {"min": 4, "max": 9, "label": "Fahrgeschäfte pro Wochenendschicht"},
+    "a15": {"min": 5, "max": 10, "label": "Fahrgeschäfte pro Feiertagsschicht"},
+    "b1":  {"min": 20, "max": 60, "label": "Mindestbesetzung Fahrgeschäfte"},
+    "a21": {"min": 2, "max": 5, "label": "Gastronomie pro Frühschicht"},
+    "a22": {"min": 3, "max": 6, "label": "Gastronomie pro Mittagsschicht"},
+    "a23": {"min": 2, "max": 5, "label": "Gastronomie pro Abendschicht"},
+    "a24": {"min": 3, "max": 7, "label": "Gastronomie pro Wochenendschicht"},
+    "a25": {"min": 4, "max": 8, "label": "Gastronomie pro Feiertagsschicht"},
+    "b2":  {"min": 15, "max": 45, "label": "Mindestbesetzung Gastronomie"},
+    "a31": {"min": 2, "max": 4, "label": "Einlass pro Frühschicht"},
+    "a32": {"min": 1, "max": 3, "label": "Einlass pro Mittagsschicht"},
+    "a33": {"min": 1, "max": 2, "label": "Einlass pro Abendschicht"},
+    "a34": {"min": 3, "max": 5, "label": "Einlass pro Wochenendschicht"},
+    "a35": {"min": 3, "max": 6, "label": "Einlass pro Feiertagsschicht"},
+    "b3":  {"min": 10, "max": 30, "label": "Mindestbesetzung Einlass"},
+    "a41": {"min": 1, "max": 3, "label": "Technik pro Frühschicht"},
+    "a42": {"min": 1, "max": 2, "label": "Technik pro Mittagsschicht"},
+    "a43": {"min": 1, "max": 2, "label": "Technik pro Abendschicht"},
+    "a44": {"min": 2, "max": 4, "label": "Technik pro Wochenendschicht"},
+    "a45": {"min": 2, "max": 4, "label": "Technik pro Feiertagsschicht"},
+    "b4":  {"min": 8, "max": 20, "label": "Mindestbesetzung Technik"}
+  },
+  "titel": "Freizeitpark – Fünf-Schicht-Planung",
+  "beschreibung": "Ein Freizeitpark plant die Besetzung mit fünf Schichttypen. Eine Frühschicht kostet {c1} €, eine Mittagsschicht kostet {c2} €, eine Abendschicht kostet {c3} €, eine Wochenendschicht kostet {c4} € und eine Feiertagsschicht kostet {c5} €. Für Fahrgeschäfte stellt jede Frühschicht {a11} Mitarbeiter bereit, jede Mittagsschicht {a12}, jede Abendschicht {a13}, jede Wochenendschicht {a14} und jede Feiertagsschicht {a15}. Mindestens {b1} Fahrgeschäft-Mitarbeiter werden benötigt. Für die Gastronomie stellt jede Frühschicht {a21} Mitarbeiter bereit, jede Mittagsschicht {a22}, jede Abendschicht {a23}, jede Wochenendschicht {a24} und jede Feiertagsschicht {a25}. Mindestens {b2} Gastronomie-Mitarbeiter werden benötigt. Für den Einlass stellt jede Frühschicht {a31} Mitarbeiter bereit, jede Mittagsschicht {a32}, jede Abendschicht {a33}, jede Wochenendschicht {a34} und jede Feiertagsschicht {a35}. Mindestens {b3} Einlass-Mitarbeiter werden benötigt. Für die Technik stellt jede Frühschicht {a41} Mitarbeiter bereit, jede Mittagsschicht {a42}, jede Abendschicht {a43}, jede Wochenendschicht {a44} und jede Feiertagsschicht {a45}. Mindestens {b4} Techniker werden benötigt.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Mindestbesetzungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Mittagsschicht kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Abendschicht kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Wochenendschicht kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Feiertagsschicht kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Mitarbeiter bereit, jede Mittagsschicht {a12}, jede Abendschicht {a13}, jede Wochenendschicht {a14} und jede Feiertagsschicht {a15}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Fahrgeschäft-Mitarbeiter werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Mitarbeiter bereit, jede Mittagsschicht {a22}, jede Abendschicht {a23}, jede Wochenendschicht {a24} und jede Feiertagsschicht {a25}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Gastronomie-Mitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Mitarbeiter bereit, jede Mittagsschicht {a32}, jede Abendschicht {a33}, jede Wochenendschicht {a34} und jede Feiertagsschicht {a35}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Einlass-Mitarbeiter werden benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} Mitarbeiter bereit, jede Mittagsschicht {a42}, jede Abendschicht {a43}, jede Wochenendschicht {a44} und jede Feiertagsschicht {a45}", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Techniker werden benötigt", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

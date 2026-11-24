@@ -1,0 +1,43 @@
+{
+  "id": "emiss_stahlwerk_2v_01",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Einheiten Hochofen", "x2 = Einheiten Elektrolichtbogen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Hochofen (Tsd. €)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Ertrag Elektrolichtbogen (Tsd. €)"},
+    "a11": {"min": 4, "max": 12,  "label": "CO₂ Hochofen (t)"},
+    "a12": {"min": 1, "max": 6,   "label": "CO₂ Elektrolichtbogen (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 3, "max": 10,  "label": "Energie Hochofen (MWh)"},
+    "a22": {"min": 2, "max": 8,   "label": "Energie Elektrolichtbogen (MWh)"},
+    "b2":  {"min": 80, "max": 400, "label": "Energiebudget (MWh)"}
+  },
+  "titel": "Stahlwerk – Produktion unter CO₂-Limit",
+  "beschreibung": "Ein Stahlwerk betreibt einen Hochofen und einen Elektrolichtbogenofen. Der Hochofen erwirtschaftet {c1} Tsd. € pro Einheit, der Elektrolichtbogenofen {c2} Tsd. €. Der Hochofen verursacht {a11} Tonnen CO₂ pro Einheit, der Elektrolichtbogenofen {a12} Tonnen. Das CO₂-Limit liegt bei {b1} Tonnen. Der Energieverbrauch beträgt {a21} MWh beim Hochofen und {a22} MWh beim Elektrolichtbogenofen. Das Energiebudget beträgt {b2} MWh.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung des CO₂-Limits und des Energiebudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Hochofen erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Elektrolichtbogenofen {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂ pro Einheit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} MWh beim Hochofen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} MWh beim Elektrolichtbogenofen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} MWh", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

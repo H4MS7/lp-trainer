@@ -1,0 +1,60 @@
+{
+  "id": "lager_medizin_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Spritzen (Kartons)", "x2 = Bestellmenge Infusionen (Kartons)", "x3 = Bestellmenge Tupfer (Kartons)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand OP", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Sterilraumkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Beschaffungsbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Lagerkosten Spritzen (€/Karton)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Lagerkosten Infusionen (€/Karton)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Lagerkosten Tupfer (€/Karton)"},
+    "a11": {"min": 10, "max": 30, "label": "Einheiten pro Karton Spritzen"},
+    "a12": {"min": 5, "max": 15,  "label": "Einheiten pro Karton Infusionen"},
+    "a13": {"min": 20, "max": 50, "label": "Einheiten pro Karton Tupfer"},
+    "b1":  {"min": 200, "max": 800, "label": "Mindestbestand (Einheiten)"},
+    "a21": {"min": 1, "max": 3,   "label": "Sterilraum Spritzen (Fächer)"},
+    "a22": {"min": 2, "max": 4,   "label": "Sterilraum Infusionen (Fächer)"},
+    "a23": {"min": 1, "max": 2,   "label": "Sterilraum Tupfer (Fächer)"},
+    "b2":  {"min": 30, "max": 100, "label": "Sterilraumkapazität (Fächer)"},
+    "a31": {"min": 5, "max": 15,  "label": "Einkaufspreis Spritzen (€/Karton)"},
+    "a32": {"min": 10, "max": 25, "label": "Einkaufspreis Infusionen (€/Karton)"},
+    "a33": {"min": 3, "max": 8,   "label": "Einkaufspreis Tupfer (€/Karton)"},
+    "b3":  {"min": 300, "max": 1200, "label": "Beschaffungsbudget (€)"}
+  },
+  "titel": "Krankenhaus – OP-Material",
+  "beschreibung": "Ein Krankenhaus optimiert die Lagerung von Spritzen, Infusionen und Tupfern für den OP-Bereich. Die Lagerkosten betragen {c1} € pro Karton Spritzen, {c2} € pro Karton Infusionen und {c3} € pro Karton Tupfer. Jeder Karton Spritzen enthält {a11} Einheiten, Infusionen enthalten {a12} Einheiten und Tupfer enthalten {a13} Einheiten. Der Mindestbestand für den OP beträgt {b1} Einheiten. Spritzen belegen {a21} Sterilraumfächer, Infusionen belegen {a22} Sterilraumfächer und Tupfer belegen {a23} Sterilraumfächer pro Karton. Die Sterilraumkapazität beträgt {b2} Fächer. Die Einkaufspreise betragen {a31} € pro Karton Spritzen, {a32} € pro Karton Infusionen und {a33} € pro Karton Tupfer. Das Beschaffungsbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des OP-Mindestbestands, der Sterilraumkapazität und des Budgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Spritzen", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Infusionen", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Karton Tupfer", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Einheiten", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Einheiten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Einheiten", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Einheiten", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Sterilraumfächer", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Sterilraumfächer", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Sterilraumfächer pro Karton", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Karton Spritzen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Karton Infusionen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Karton Tupfer", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

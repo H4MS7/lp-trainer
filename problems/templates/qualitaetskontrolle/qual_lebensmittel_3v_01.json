@@ -1,0 +1,60 @@
+{
+  "id": "qual_lebensmittel_3v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Laboranalysen", "x2 = Anzahl Sensorikprüfungen", "x3 = Anzahl Temperaturmessungen"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Hygieneabdeckung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalstunden", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Prüfmittelbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Kosten Laboranalyse (€/Analyse)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Sensorikprüfung (€/Prüfung)"},
+    "c3":  {"min": 1, "max": 4,   "label": "Kosten Temperaturmessung (€/Messung)"},
+    "a11": {"min": 4, "max": 10,  "label": "Hygieneabdeckung Labor (%)"},
+    "a12": {"min": 2, "max": 6,   "label": "Hygieneabdeckung Sensorik (%)"},
+    "a13": {"min": 1, "max": 4,   "label": "Hygieneabdeckung Temperatur (%)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Hygieneabdeckung (%)"},
+    "a21": {"min": 2, "max": 5,   "label": "Personalzeit Labor (Stunden)"},
+    "a22": {"min": 1, "max": 3,   "label": "Personalzeit Sensorik (Stunden)"},
+    "a23": {"min": 1, "max": 2,   "label": "Personalzeit Temperatur (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Personalstunden (Stunden)"},
+    "a31": {"min": 4, "max": 12,  "label": "Prüfmittel Labor (€)"},
+    "a32": {"min": 2, "max": 6,   "label": "Prüfmittel Sensorik (€)"},
+    "a33": {"min": 1, "max": 3,   "label": "Prüfmittel Temperatur (€)"},
+    "b3":  {"min": 60, "max": 250, "label": "Prüfmittelbudget (€)"}
+  },
+  "titel": "Lebensmittelfabrik – Dreifach-Hygienekontrolle",
+  "beschreibung": "Eine Lebensmittelfabrik führt Laboranalysen, Sensorikprüfungen und Temperaturmessungen durch. Eine Laboranalyse kostet {c1} €, eine Sensorikprüfung kostet {c2} € und eine Temperaturmessung kostet {c3} €. Laboranalysen erreichen {a11} % Hygieneabdeckung, Sensorikprüfungen erreichen {a12} % und Temperaturmessungen erreichen {a13} % Hygieneabdeckung. Die Mindest-Hygieneabdeckung beträgt {b1} %. Laboranalysen benötigen {a21} Personalstunden, Sensorikprüfungen benötigen {a22} Personalstunden und Temperaturmessungen benötigen {a23} Personalstunden. Die Personalstunden betragen {b2} Stunden. Die Prüfmittelkosten betragen {a31} € pro Laboranalyse, {a32} € pro Sensorikprüfung und {a33} € pro Temperaturmessung. Das Prüfmittelbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Hygieneabdeckung, begrenzten Personalstunden und Prüfmittelbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Laboranalyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Sensorikprüfung kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Temperaturmessung kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % Hygieneabdeckung", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % Hygieneabdeckung", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Personalstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Personalstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Personalstunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Laboranalyse", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Sensorikprüfung", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Temperaturmessung", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

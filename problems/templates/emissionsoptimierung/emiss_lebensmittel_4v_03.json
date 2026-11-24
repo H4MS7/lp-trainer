@@ -1,0 +1,81 @@
+{
+  "id": "emiss_lebensmittel_4v_03",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Einheiten Fleisch", "x2 = Einheiten Milchprodukte", "x3 = Einheiten Backwaren", "x4 = Einheiten Konserven"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "CO₂-Emissionen", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserverbrauch", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Verpackungsmüll", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Ertrag Fleisch (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Ertrag Milchprodukte (Tsd. €)"},
+    "c3":  {"min": 2, "max": 8,   "label": "Ertrag Backwaren (Tsd. €)"},
+    "c4":  {"min": 2, "max": 7,   "label": "Ertrag Konserven (Tsd. €)"},
+    "a11": {"min": 5, "max": 12,  "label": "CO₂ Fleisch (t)"},
+    "a12": {"min": 3, "max": 8,   "label": "CO₂ Milchprodukte (t)"},
+    "a13": {"min": 1, "max": 4,   "label": "CO₂ Backwaren (t)"},
+    "a14": {"min": 2, "max": 5,   "label": "CO₂ Konserven (t)"},
+    "b1":  {"min": 100, "max": 500, "label": "CO₂-Limit (t)"},
+    "a21": {"min": 4, "max": 10,  "label": "Wasser Fleisch (m³)"},
+    "a22": {"min": 3, "max": 8,   "label": "Wasser Milchprodukte (m³)"},
+    "a23": {"min": 1, "max": 4,   "label": "Wasser Backwaren (m³)"},
+    "a24": {"min": 2, "max": 5,   "label": "Wasser Konserven (m³)"},
+    "b2":  {"min": 80, "max": 400, "label": "Wasserbudget (m³)"},
+    "a31": {"min": 3, "max": 8,   "label": "Energie Fleisch (MWh)"},
+    "a32": {"min": 2, "max": 6,   "label": "Energie Milchprodukte (MWh)"},
+    "a33": {"min": 2, "max": 5,   "label": "Energie Backwaren (MWh)"},
+    "a34": {"min": 1, "max": 4,   "label": "Energie Konserven (MWh)"},
+    "b3":  {"min": 60, "max": 300, "label": "Energiebudget (MWh)"},
+    "a41": {"min": 2, "max": 5,   "label": "Verpackung Fleisch (t)"},
+    "a42": {"min": 1, "max": 4,   "label": "Verpackung Milchprodukte (t)"},
+    "a43": {"min": 1, "max": 3,   "label": "Verpackung Backwaren (t)"},
+    "a44": {"min": 2, "max": 6,   "label": "Verpackung Konserven (t)"},
+    "b4":  {"min": 40, "max": 150, "label": "Verpackungslimit (t)"}
+  },
+  "titel": "Lebensmittelkonzern – Fleisch, Milch, Backwaren und Konserven",
+  "beschreibung": "Ein Lebensmittelkonzern produziert Fleisch, Milchprodukte, Backwaren und Konserven. Fleisch erwirtschaftet {c1} Tsd. €, Milchprodukte {c2} Tsd. €, Backwaren {c3} Tsd. €, Konserven {c4} Tsd. € pro Einheit. Fleisch verursacht {a11} Tonnen CO₂, Milchprodukte {a12} Tonnen, Backwaren {a13} Tonnen, Konserven {a14} Tonnen pro Einheit. Das CO₂-Limit beträgt {b1} Tonnen. Fleisch verbraucht {a21} m³ Wasser, Milchprodukte {a22} m³, Backwaren {a23} m³, Konserven {a24} m³ pro Einheit. Das Wasserbudget beträgt {b2} m³. Fleisch benötigt {a31} MWh Energie, Milchprodukte {a32} MWh, Backwaren {a33} MWh, Konserven {a34} MWh pro Einheit. Das Energiebudget beträgt {b3} MWh. Fleisch erzeugt {a41} Tonnen Verpackungsmüll, Milchprodukte {a42} Tonnen, Backwaren {a43} Tonnen, Konserven {a44} Tonnen pro Einheit. Das Verpackungslimit liegt bei {b4} Tonnen.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung aller Umweltlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Fleisch erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Milchprodukte {c2} Tsd. €", "bedeutung": "{c2} × x₂"},
+      {"text": "Backwaren {c3} Tsd. €", "bedeutung": "{c3} × x₃"},
+      {"text": "Konserven {c4} Tsd. €", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen CO₂", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Tonnen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} Tonnen pro Einheit", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ Wasser", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m³ pro Einheit", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MWh Energie", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} MWh", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} MWh", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} MWh pro Einheit", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} MWh", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Tonnen Verpackungsmüll", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Tonnen", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Tonnen", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Tonnen pro Einheit", "bedeutung": "+ {a44}x₄"},
+        {"text": "{b4} Tonnen", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

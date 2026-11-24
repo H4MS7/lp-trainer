@@ -1,0 +1,39 @@
+{
+  "id": "trans_baustelle_2v_11",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Fahrten Kipplaster", "x2 = Fahrten Betonmischer"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Material", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Zufahrtskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 18,  "label": "Kosten Kipplaster (EUR/Fahrt)"},
+    "c2":  {"min": 7, "max": 22,  "label": "Kosten Betonmischer (EUR/Fahrt)"},
+    "a11": {"min": 4, "max": 12,  "label": "Material pro Kipplaster (t)"},
+    "a12": {"min": 3, "max": 9,   "label": "Material pro Betonmischer (t)"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindest-Materialmenge (t)"},
+    "a21": {"min": 1, "max": 4,   "label": "Zufahrten pro Kipplaster"},
+    "a22": {"min": 2, "max": 5,   "label": "Zufahrten pro Betonmischer"},
+    "b2":  {"min": 20, "max": 70, "label": "Max. Zufahrten pro Tag"}
+  },
+  "titel": "Baustellenversorgung – Kipplaster und Betonmischer",
+  "beschreibung": "Eine Baufirma versorgt die Baustelle mit zwei Fahrzeugtypen. Eine Fahrt mit dem Kipplaster kostet {c1} EUR, eine Fahrt mit dem Betonmischer kostet {c2} EUR. Der Kipplaster liefert {a11} Tonnen Material pro Fahrt, der Betonmischer liefert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Material werden benötigt. Der Kipplaster belegt {a21} Zufahrten, der Betonmischer belegt {a22} Zufahrten. Die Zufahrt erlaubt höchstens {b2} Fahrten pro Tag.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Materialmenge und begrenzter Zufahrtskapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kipplaster kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Betonmischer kostet {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen Material pro Fahrt, der Betonmischer liefert {a12} Tonnen pro Fahrt. Mindestens {b1} Tonnen Material werden benötigt", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Zufahrten, der Betonmischer belegt {a22} Zufahrten. Die Zufahrt erlaubt höchstens {b2} Fahrten pro Tag", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "diaet_schwangerschaft_3v_05",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Portionen Spinat", "x2 = Portionen Rindfleisch", "x3 = Portionen Orangensaft"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Eisen", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Folsäure", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Vitamin C", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Spinat (€/Portion)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Rindfleisch (€/Portion)"},
+    "c3":  {"min": 1, "max": 3,   "label": "Kosten Orangensaft (€/Portion)"},
+    "a11": {"min": 2, "max": 6,   "label": "Eisen Spinat (mg/Portion)"},
+    "a12": {"min": 3, "max": 8,   "label": "Eisen Rindfleisch (mg/Portion)"},
+    "a13": {"min": 1, "max": 2,   "label": "Eisen Orangensaft (mg/Portion)"},
+    "b1":  {"min": 15, "max": 40,  "label": "Mindest-Eisen (mg)"},
+    "a21": {"min": 4, "max": 10,  "label": "Folsäure Spinat (µg/Portion)"},
+    "a22": {"min": 1, "max": 4,   "label": "Folsäure Rindfleisch (µg/Portion)"},
+    "a23": {"min": 2, "max": 6,   "label": "Folsäure Orangensaft (µg/Portion)"},
+    "b2":  {"min": 30, "max": 80,  "label": "Mindest-Folsäure (µg)"},
+    "a31": {"min": 2, "max": 5,   "label": "Vitamin C Spinat (mg/Portion)"},
+    "a32": {"min": 1, "max": 2,   "label": "Vitamin C Rindfleisch (mg/Portion)"},
+    "a33": {"min": 6, "max": 15,  "label": "Vitamin C Orangensaft (mg/Portion)"},
+    "b3":  {"min": 40, "max": 100, "label": "Mindest-Vitamin C (mg)"}
+  },
+  "titel": "Schwangerschaftsernährung – Spinat, Rindfleisch und Orangensaft",
+  "beschreibung": "Eine Schwangere möchte ihren Ernährungsplan möglichst günstig zusammenstellen aus Spinat, Rindfleisch und Orangensaft. Spinat kostet {c1} € pro Portion, Rindfleisch kostet {c2} € pro Portion, Orangensaft kostet {c3} € pro Portion. Spinat liefert {a11} mg Eisen, Rindfleisch liefert {a12} mg Eisen, Orangensaft liefert {a13} mg Eisen pro Portion. Mindestens {b1} mg Eisen sind erforderlich. Spinat enthält {a21} µg Folsäure, Rindfleisch enthält {a22} µg Folsäure, Orangensaft enthält {a23} µg Folsäure pro Portion. Mindestens {b2} µg Folsäure werden benötigt. Spinat liefert {a31} mg Vitamin C, Rindfleisch liefert {a32} mg Vitamin C, Orangensaft liefert {a33} mg Vitamin C pro Portion. Der Mindestbedarf an Vitamin C beträgt {b3} mg.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung der Mindestanforderungen an Eisen, Folsäure und Vitamin C.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Spinat kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Rindfleisch kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Orangensaft kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Eisen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} mg Eisen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} mg Eisen pro Portion", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} mg Eisen sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} µg Folsäure", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} µg Folsäure", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} µg Folsäure pro Portion", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} µg Folsäure werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Vitamin C", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Vitamin C", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Vitamin C pro Portion", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} mg", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

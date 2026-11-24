@@ -1,0 +1,43 @@
+{
+  "id": "diaet_marathon_2v_16",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Energiegel", "x2 = Portionen Elektrolytgetränk"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kohlenhydrate", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Natrium", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Kosten Energiegel (€/Portion)"},
+    "c2":  {"min": 1, "max": 4,   "label": "Kosten Elektrolytgetränk (€/Portion)"},
+    "a11": {"min": 5, "max": 12,  "label": "Kohlenhydrate Energiegel (g/Portion)"},
+    "a12": {"min": 3, "max": 8,   "label": "Kohlenhydrate Elektrolytgetränk (g/Portion)"},
+    "b1":  {"min": 50, "max": 120, "label": "Mindest-Kohlenhydrate (g)"},
+    "a21": {"min": 1, "max": 4,   "label": "Natrium Energiegel (mg/Portion)"},
+    "a22": {"min": 3, "max": 8,   "label": "Natrium Elektrolytgetränk (mg/Portion)"},
+    "b2":  {"min": 20, "max": 60,  "label": "Mindest-Natrium (mg)"}
+  },
+  "titel": "Marathonverpflegung – Energiegel und Elektrolytgetränk",
+  "beschreibung": "Ein Marathonläufer plant seine Verpflegung während des Laufs möglichst günstig. Ein Energiegel kostet {c1} € pro Portion, ein Elektrolytgetränk kostet {c2} € pro Portion. Das Energiegel liefert {a11} g Kohlenhydrate pro Portion, das Elektrolytgetränk liefert {a12} g Kohlenhydrate pro Portion. Mindestens {b1} g Kohlenhydrate werden benötigt. Das Energiegel enthält {a21} mg Natrium pro Portion, das Elektrolytgetränk enthält {a22} mg Natrium pro Portion. Der Mindestbedarf an Natrium beträgt {b2} mg.",
+  "hinweis": "Minimiere die Verpflegungskosten bei Einhaltung der Mindestanforderungen an Kohlenhydrate und Natrium.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Energiegel kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Elektrolytgetränk kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Kohlenhydrate pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Kohlenhydrate pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} g Kohlenhydrate werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} mg Natrium pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} mg Natrium pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} mg", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

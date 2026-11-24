@@ -1,0 +1,39 @@
+{
+  "id": "misch_beton_2v_02",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Zement A (kg)", "x2 = Menge Zement B (kg)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Druckfestigkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wassergehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,  "label": "Kosten Zement A (EUR/kg)"},
+    "c2":  {"min": 2, "max": 9,   "label": "Kosten Zement B (EUR/kg)"},
+    "a11": {"min": 3, "max": 10,  "label": "Festigkeit durch A (MPa/kg)"},
+    "a12": {"min": 2, "max": 7,   "label": "Festigkeit durch B (MPa/kg)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Druckfestigkeit (MPa)"},
+    "a21": {"min": 1, "max": 5,   "label": "Wasseranteil A (ml/kg)"},
+    "a22": {"min": 2, "max": 6,   "label": "Wasseranteil B (ml/kg)"},
+    "b2":  {"min": 40, "max": 150, "label": "Max. Wassergehalt (ml)"}
+  },
+  "titel": "Betonmischung – Festigkeit und Wasser",
+  "beschreibung": "Ein Bauunternehmen mischt Beton aus zwei Zementsorten. Zement A kostet {c1} EUR pro kg, Zement B kostet {c2} EUR pro kg. Zement A liefert {a11} MPa Druckfestigkeit pro kg, Zement B liefert {a12} MPa pro kg. Die Mischung muss mindestens {b1} MPa Druckfestigkeit erreichen. Der Wasseranteil beträgt {a21} ml pro kg bei Zement A und {a22} ml pro kg bei Zement B. Der Wassergehalt darf höchstens {b2} ml betragen.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung der Mindest-Druckfestigkeit und des maximalen Wassergehalts.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Zement A kostet {c1} EUR pro kg", "bedeutung": "{c1} × x₁"},
+      {"text": "Zement B kostet {c2} EUR pro kg", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MPa Druckfestigkeit pro kg, Zement B liefert {a12} MPa pro kg. Die Mischung muss mindestens {b1} MPa Druckfestigkeit erreichen", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} ml pro kg bei Zement A und {a22} ml pro kg bei Zement B. Der Wassergehalt darf höchstens {b2} ml betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

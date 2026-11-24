@@ -1,0 +1,41 @@
+{
+  "id": "medien_sponsoring_branded_2v_14",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Sponsoring-Deals", "x2 = Anzahl Branded-Content-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Projektmanagement", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Markenbekanntheit Sponsoring (Tsd. Kontakte)"},
+    "c2":  {"min": 5, "max": 20,    "label": "Engagement Branded Content (Tsd. Interaktionen)"},
+    "a11": {"min": 5, "max": 20,    "label": "Kosten Sponsoring (Tsd. €)"},
+    "a12": {"min": 3, "max": 10,    "label": "Kosten Branded Content (Tsd. €)"},
+    "b1":  {"min": 40, "max": 200,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 5, "max": 15,    "label": "Management Sponsoring (Stunden)"},
+    "a22": {"min": 8, "max": 20,    "label": "Management Branded Content (Stunden)"},
+    "b2":  {"min": 30, "max": 120,  "label": "Managementstunden"}
+  },
+  "titel": "Markenpartnerschaft – Sponsoring und Branded Content",
+  "beschreibung": "Ein Markenteam plant Partnerschaften über Sponsoring-Deals und Branded-Content-Kampagnen. Ein Sponsoring-Deal erzielt {c1} Tsd. Kontakte Markenbekanntheit, eine Branded-Content-Kampagne erzielt {c2} Tsd. Interaktionen. Ein Sponsoring-Deal kostet {a11} Tsd. €, eine Branded-Content-Kampagne kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Das Projektmanagement beträgt {a21} Stunden pro Sponsoring-Deal und {a22} Stunden pro Branded-Content-Kampagne. Insgesamt stehen {b2} Managementstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung von Budget und Projektmanagement.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sponsoring-Deal erzielt {c1} Tsd. Kontakte Markenbekanntheit", "bedeutung": "{c1} × x₁"},
+      {"text": "Branded-Content-Kampagne erzielt {c2} Tsd. Interaktionen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine Branded-Content-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Sponsoring-Deal und {a22} Stunden pro Branded-Content-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Managementstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

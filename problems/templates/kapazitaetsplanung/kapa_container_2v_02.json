@@ -1,0 +1,41 @@
+{
+  "id": "kapa_container_2v_02",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Worker-Pods", "x2 = Anzahl Service-Pods"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Limits", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Speicher-Limits", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Durchsatz Worker (Jobs/min)"},
+    "c2":  {"min": 5, "max": 20,  "label": "Durchsatz Service (Req/s)"},
+    "a11": {"min": 1, "max": 4,   "label": "CPU Worker (Kerne)"},
+    "a12": {"min": 2, "max": 6,   "label": "CPU Service (Kerne)"},
+    "b1":  {"min": 30, "max": 120, "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 4,   "label": "Speicher Worker (GB)"},
+    "a22": {"min": 2, "max": 8,   "label": "Speicher Service (GB)"},
+    "b2":  {"min": 40, "max": 160, "label": "Verfügbarer Speicher (GB)"}
+  },
+  "titel": "Container-Orchestrierung – Pod-Allokation",
+  "beschreibung": "Ein Kubernetes-Cluster soll optimal mit Pods bestückt werden. Worker-Pods verarbeiten {c1} Jobs pro Minute, Service-Pods bearbeiten {c2} Anfragen pro Sekunde. Ein Worker-Pod benötigt {a11} CPU-Kerne, ein Service-Pod benötigt {a12} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung. Der Speicherbedarf beträgt {a21} GB pro Worker-Pod und {a22} GB pro Service-Pod. Der verfügbare Speicher beträgt {b2} GB.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung der CPU- und Speicher-Limits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Worker-Pods verarbeiten {c1} Jobs pro Minute", "bedeutung": "{c1} × x₁"},
+      {"text": "Service-Pods bearbeiten {c2} Anfragen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein Service-Pod benötigt {a12} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} GB pro Worker-Pod und {a22} GB pro Service-Pod", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} GB", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

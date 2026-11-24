@@ -1,0 +1,43 @@
+{
+  "id": "schicht_polizei_2v_07",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Tagschichten", "x2 = Anzahl Nachtschichten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Streifendienst", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Leitstelle", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 120, "max": 220, "label": "Kosten Tagschicht (€)"},
+    "c2":  {"min": 160, "max": 300, "label": "Kosten Nachtschicht (€)"},
+    "a11": {"min": 3, "max": 8, "label": "Streifenbeamte pro Tagschicht"},
+    "a12": {"min": 2, "max": 5, "label": "Streifenbeamte pro Nachtschicht"},
+    "b1":  {"min": 15, "max": 50, "label": "Mindestbesetzung Streifendienst"},
+    "a21": {"min": 1, "max": 3, "label": "Leitstellenbeamte pro Tagschicht"},
+    "a22": {"min": 1, "max": 4, "label": "Leitstellenbeamte pro Nachtschicht"},
+    "b2":  {"min": 6, "max": 20, "label": "Mindestbesetzung Leitstelle"}
+  },
+  "titel": "Polizeistation – Schichtplanung",
+  "beschreibung": "Eine Polizeistation plant die Schichtbesetzung für Streifendienst und Leitstelle. Eine Tagschicht kostet {c1} €, eine Nachtschicht kostet {c2} €. Jede Tagschicht stellt {a11} Streifenbeamte bereit, jede Nachtschicht stellt {a12} Streifenbeamte bereit. Mindestens {b1} Streifenbeamte werden benötigt. Jede Tagschicht stellt {a21} Leitstellenbeamte bereit, jede Nachtschicht stellt {a22} Leitstellenbeamte bereit. Mindestens {b2} Leitstellenbeamte werden benötigt.",
+  "hinweis": "Minimiere die Personalkosten bei Einhaltung der Mindestbesetzung für Streifendienst und Leitstelle.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tagschicht kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Nachtschicht kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Streifenbeamte bereit", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Streifenbeamte bereit", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Streifenbeamte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Leitstellenbeamte bereit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Leitstellenbeamte bereit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Leitstellenbeamte werden benötigt", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

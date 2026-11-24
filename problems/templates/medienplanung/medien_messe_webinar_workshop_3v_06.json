@@ -1,0 +1,54 @@
+{
+  "id": "medien_messe_webinar_workshop_3v_06",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Messeauftritte", "x2 = Anzahl Webinare", "x3 = Anzahl Workshops"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Zeitslots", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,    "label": "Leads Messe (Tsd.)"},
+    "c2":  {"min": 1, "max": 5,     "label": "Leads Webinar (Tsd.)"},
+    "c3":  {"min": 1, "max": 3,     "label": "Leads Workshop (Tsd.)"},
+    "a11": {"min": 10, "max": 30,   "label": "Kosten Messe (Tsd. €)"},
+    "a12": {"min": 2, "max": 5,     "label": "Kosten Webinar (Tsd. €)"},
+    "a13": {"min": 3, "max": 8,     "label": "Kosten Workshop (Tsd. €)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 10, "max": 25,   "label": "Personal Messe (Stunden)"},
+    "a22": {"min": 4, "max": 8,     "label": "Personal Webinar (Stunden)"},
+    "a23": {"min": 6, "max": 15,    "label": "Personal Workshop (Stunden)"},
+    "b2":  {"min": 40, "max": 150,  "label": "Personalstunden"},
+    "a31": {"min": 3, "max": 5,     "label": "Zeitslots Messe (Tage)"},
+    "a32": {"min": 1, "max": 2,     "label": "Zeitslots Webinar (Tage)"},
+    "a33": {"min": 1, "max": 3,     "label": "Zeitslots Workshop (Tage)"},
+    "b3":  {"min": 10, "max": 30,   "label": "Verfügbare Tage"}
+  },
+  "titel": "B2B-Leadgenerierung – Messe, Webinar und Workshop",
+  "beschreibung": "Ein B2B-Vertriebsteam plant die Leadgenerierung über drei Kanäle. Ein Messeauftritt generiert {c1} Tsd. Leads, ein Webinar generiert {c2} Tsd. Leads und ein Workshop generiert {c3} Tsd. Leads. Die Kosten betragen {a11} Tsd. € für Messe, {a12} Tsd. € für Webinar und {a13} Tsd. € für Workshop. Das Budget beträgt {b1} Tsd. €. Der Personalbedarf beträgt {a21} Stunden für Messe, {a22} Stunden für Webinar und {a23} Stunden für Workshop. Es stehen {b2} Personalstunden zur Verfügung. Die Zeitslots betragen {a31} Tage für Messe, {a32} Tage für Webinar und {a33} Tage für Workshop. Es stehen {b3} Tage zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtzahl der Leads unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Messeauftritt generiert {c1} Tsd. Leads", "bedeutung": "{c1} × x₁"},
+      {"text": "Webinar generiert {c2} Tsd. Leads", "bedeutung": "{c2} × x₂"},
+      {"text": "Workshop generiert {c3} Tsd. Leads", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Messe, {a12} Tsd. € für Webinar und {a13} Tsd. € für Workshop", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Messe, {a22} Stunden für Webinar und {a23} Stunden für Workshop", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tage für Messe, {a32} Tage für Webinar und {a33} Tage für Workshop", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} Tage zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

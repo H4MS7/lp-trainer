@@ -1,0 +1,60 @@
+{
+  "id": "lager_mode_3v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Bestellmenge Jacken (Kartons)", "x2 = Bestellmenge Hosen (Kartons)", "x3 = Bestellmenge Schuhe (Kartons)"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestauswahl", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Lagerraumfläche", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Einkaufsbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 14,  "label": "Lagerkosten Jacken (€/Karton)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Lagerkosten Hosen (€/Karton)"},
+    "c3":  {"min": 4, "max": 11,  "label": "Lagerkosten Schuhe (€/Karton)"},
+    "a11": {"min": 4, "max": 10,  "label": "Artikel pro Karton Jacken"},
+    "a12": {"min": 6, "max": 15,  "label": "Artikel pro Karton Hosen"},
+    "a13": {"min": 3, "max": 8,   "label": "Artikel pro Karton Schuhe"},
+    "b1":  {"min": 60, "max": 250, "label": "Mindestauswahl (Artikel)"},
+    "a21": {"min": 3, "max": 6,   "label": "Lagerfläche Jacken (m²)"},
+    "a22": {"min": 2, "max": 4,   "label": "Lagerfläche Hosen (m²)"},
+    "a23": {"min": 2, "max": 5,   "label": "Lagerfläche Schuhe (m²)"},
+    "b2":  {"min": 40, "max": 150, "label": "Lagerraumfläche (m²)"},
+    "a31": {"min": 10, "max": 25, "label": "Einkaufspreis Jacken (€/Karton)"},
+    "a32": {"min": 6, "max": 15,  "label": "Einkaufspreis Hosen (€/Karton)"},
+    "a33": {"min": 8, "max": 20,  "label": "Einkaufspreis Schuhe (€/Karton)"},
+    "b3":  {"min": 400, "max": 1500, "label": "Einkaufsbudget (€)"}
+  },
+  "titel": "Modegeschäft – Saisonlager",
+  "beschreibung": "Ein Modegeschäft plant die Lagerung von Jacken, Hosen und Schuhen für die Saison. Die Lagerkosten betragen {c1} € pro Karton Jacken, {c2} € pro Karton Hosen und {c3} € pro Karton Schuhe. Jeder Karton Jacken enthält {a11} Artikel, Hosen enthalten {a12} Artikel und Schuhe enthalten {a13} Artikel. Die Mindestauswahl umfasst {b1} Artikel. Jacken benötigen {a21} m² Lagerfläche, Hosen benötigen {a22} m² und Schuhe benötigen {a23} m² pro Karton. Die Lagerraumfläche beträgt {b2} m². Die Einkaufspreise betragen {a31} € pro Karton Jacken, {a32} € pro Karton Hosen und {a33} € pro Karton Schuhe. Das Einkaufsbudget beträgt {b3} €.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung der Mindestauswahl, der Lagerfläche und des Einkaufsbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Karton Jacken", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Karton Hosen", "bedeutung": "{c2} × x₂"},
+      {"text": "{c3} € pro Karton Schuhe", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Artikel", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Artikel", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} Artikel", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Artikel", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m² Lagerfläche", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m²", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m² pro Karton", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m²", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € pro Karton Jacken", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € pro Karton Hosen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € pro Karton Schuhe", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

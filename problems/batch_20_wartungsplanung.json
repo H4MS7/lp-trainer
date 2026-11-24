@@ -1,0 +1,334 @@
+[
+  {
+    "titel": "Maschinenpark-Wartung",
+    "beschreibung": "Ein Produktionsbetrieb mit einer großen Fertigungshalle plant die Wartung seines Maschinenparks mit zwei Maßnahmentypen: präventive Inspektionen und reaktive Reparaturen. Eine präventive Inspektion kostet 11€ pro Einsatz und umfasst die planmäßige Überprüfung von Lagern, Antrieben und Steuerungselektronik. Eine reaktive Reparatur kostet 3€ pro Einsatz und wird bei unerwarteten Maschinenstörungen durchgeführt. Um die Maschinenverfügbarkeit zu gewährleisten, müssen die Maßnahmen eine Mindestabdeckung erreichen: 9 Punkte pro präventiver Inspektion und 3 Punkte pro reaktiver Reparatur ergeben zusammen mindestens 216 Punkte. Gleichzeitig ist die Werkstattkapazität begrenzt: 9 Stunden pro präventiver Inspektion und 5 Stunden pro reaktiver Reparatur dürfen insgesamt höchstens 762 Stunden betragen. Der Betriebsleiter möchte die Gesamtkosten für die Instandhaltung minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl präventive Inspektionen", "x2 = Anzahl reaktive Reparaturen"],
+    "zielfunktion": "Z = 11x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "9x1 + 3x2 ≥ 216 (Mindestabdeckung)",
+      "9x1 + 5x2 ≤ 762 (Werkstattkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Werkstattkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "präventive Inspektion kostet 11€ pro Einsatz", "bedeutung": "11 × x₁"},
+        {"text": "reaktive Reparatur kostet 3€ pro Einsatz", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "9 Punkte pro präventiver Inspektion", "bedeutung": "9x₁"},
+          {"text": "3 Punkte pro reaktiver Reparatur", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 216 Punkte", "bedeutung": "≥ 216"}
+        ],
+        [
+          {"text": "9 Stunden pro präventiver Inspektion", "bedeutung": "9x₁"},
+          {"text": "5 Stunden pro reaktiver Reparatur", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 762 Stunden", "bedeutung": "≤ 762"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fuhrpark-Instandhaltung",
+    "beschreibung": "Ein Logistikunternehmen mit einem umfangreichen Fuhrpark aus Lieferwagen und Sattelzügen plant die Instandhaltung seines Fuhrparks mit zwei Strategien: Routineprüfungen und Generalüberholungen. Eine Routineprüfung kostet 8€ pro Einsatz und umfasst die Überprüfung von Ölstand, Reifendruck und Bremsen. Eine Generalüberholung kostet 9€ pro Einsatz und beinhaltet den kompletten Fahrzeugcheck mit Austausch von Verschleißteilen. Zur Sicherstellung der Einsatzbereitschaft müssen die Maßnahmen eine Mindestabdeckung erreichen: 6 Punkte pro Routineprüfung und 6 Punkte pro Generalüberholung ergeben zusammen mindestens 218 Punkte. Das monatliche Zeitbudget erlaubt höchstens 302 Stunden, wobei eine Routineprüfung 8 Stunden und eine Generalüberholung 8 Stunden dauert. Zusätzlich ist die Werkstattfläche begrenzt: 7 Einheiten pro Routineprüfung und 2 Einheiten pro Generalüberholung dürfen höchstens 795 Einheiten betragen. Der Fuhrparkmanager möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Routineprüfungen", "x2 = Anzahl Generalüberholungen"],
+    "zielfunktion": "Z = 8x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 6x2 ≥ 218 (Mindestabdeckung)",
+      "8x1 + 8x2 ≤ 302 (Zeitbudget)",
+      "7x1 + 2x2 ≤ 795 (Werkstattfläche)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), Zeitbudget und Werkstattfläche sind Obergrenzen (≤). Beachten Sie die gleichen Koeffizienten bei Mindestabdeckung und Zeitbudget.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Routineprüfung kostet 8€ pro Einsatz", "bedeutung": "8 × x₁"},
+        {"text": "Generalüberholung kostet 9€ pro Einsatz", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Punkte pro Routineprüfung", "bedeutung": "6x₁"},
+          {"text": "6 Punkte pro Generalüberholung", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 218 Punkte", "bedeutung": "≥ 218"}
+        ],
+        [
+          {"text": "Routineprüfung 8 Stunden", "bedeutung": "8x₁"},
+          {"text": "Generalüberholung 8 Stunden", "bedeutung": "+ 8x₂"},
+          {"text": "höchstens 302 Stunden", "bedeutung": "≤ 302"}
+        ],
+        [
+          {"text": "7 Einheiten pro Routineprüfung", "bedeutung": "7x₁"},
+          {"text": "2 Einheiten pro Generalüberholung", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 795 Einheiten", "bedeutung": "≤ 795"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "IT-Infrastruktur-Wartung",
+    "beschreibung": "Ein mittelständischer IT-Dienstleister mit über 200 Servern in zwei Rechenzentren plant die regelmäßige Wartung seiner Serverinfrastruktur mit zwei Maßnahmentypen: Softwareupdates und Hardwareaustausch. Ein Softwareupdate kostet 15€ pro Einsatz und umfasst Betriebssystem-Patches sowie Sicherheitsaktualisierungen. Ein Hardwareaustausch kostet 14€ pro Einsatz und beinhaltet den Wechsel verschlissener Komponenten wie Lüfter und Festplatten. Zur Sicherstellung der Systemverfügbarkeit müssen die Maßnahmen eine Mindestabdeckung erreichen: 5 Punkte pro Softwareupdate und 4 Punkte pro Hardwareaustausch ergeben zusammen mindestens 215 Punkte. Die verfügbare Technikerkapazität ist begrenzt: 5 Stunden pro Softwareupdate und 8 Stunden pro Hardwareaustausch dürfen insgesamt höchstens 405 Stunden betragen. Der IT-Leiter möchte die Gesamtkosten für die Wartung minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Softwareupdates", "x2 = Anzahl Hardwareaustausche"],
+    "zielfunktion": "Z = 15x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≥ 215 (Mindestabdeckung)",
+      "5x1 + 8x2 ≤ 405 (Technikerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Technikerkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Softwareupdate kostet 15€ pro Einsatz", "bedeutung": "15 × x₁"},
+        {"text": "Hardwareaustausch kostet 14€ pro Einsatz", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Punkte pro Softwareupdate", "bedeutung": "5x₁"},
+          {"text": "4 Punkte pro Hardwareaustausch", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 215 Punkte", "bedeutung": "≥ 215"}
+        ],
+        [
+          {"text": "5 Stunden pro Softwareupdate", "bedeutung": "5x₁"},
+          {"text": "8 Stunden pro Hardwareaustausch", "bedeutung": "+ 8x₂"},
+          {"text": "höchstens 405 Stunden", "bedeutung": "≤ 405"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gebäudetechnik-Instandhaltung",
+    "beschreibung": "Ein Gebäudemanagement-Unternehmen betreut einen großen Bürokomplex mit zahlreichen technischen Anlagen und plant die Instandhaltung seiner Haustechnik mit zwei Strategien: vorbeugende Wartung und Störungsbehebung. Eine vorbeugende Wartung kostet 3€ pro Einsatz und umfasst die regelmäßige Kontrolle von Heizungs-, Lüftungs- und Klimaanlagen. Eine Störungsbehebung kostet 4€ pro Einsatz und wird bei akuten Ausfällen durchgeführt. Zur Gewährleistung der Betriebssicherheit müssen die Maßnahmen eine Mindestabdeckung erreichen: 4 Punkte pro vorbeugender Wartung und 3 Punkte pro Störungsbehebung ergeben zusammen mindestens 748 Punkte. Die verfügbare Personalkapazität ist begrenzt: 1 Stunde pro vorbeugender Wartung und 1 Stunde pro Störungsbehebung dürfen insgesamt höchstens 869 Stunden betragen. Der Facility-Manager möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl vorbeugende Wartungen", "x2 = Anzahl Störungsbehebungen"],
+    "zielfunktion": "Z = 3x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≥ 748 (Mindestabdeckung)",
+      "x1 + x2 ≤ 869 (Personalkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Personalkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "vorbeugende Wartung kostet 3€ pro Einsatz", "bedeutung": "3 × x₁"},
+        {"text": "Störungsbehebung kostet 4€ pro Einsatz", "bedeutung": "4 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Punkte pro vorbeugender Wartung", "bedeutung": "4x₁"},
+          {"text": "3 Punkte pro Störungsbehebung", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 748 Punkte", "bedeutung": "≥ 748"}
+        ],
+        [
+          {"text": "1 Stunde pro vorbeugender Wartung", "bedeutung": "x₁"},
+          {"text": "1 Stunde pro Störungsbehebung", "bedeutung": "+ x₂"},
+          {"text": "höchstens 869 Stunden", "bedeutung": "≤ 869"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Medizingeräte-Wartung",
+    "beschreibung": "Eine Universitätsklinik mit einer Vielzahl an diagnostischen und therapeutischen Geräten plant die Wartung ihrer medizinischen Geräte mit zwei Maßnahmentypen: Kalibrierungen und Komponentenwechsel. Eine Kalibrierung kostet 13€ pro Einsatz und stellt die Messgenauigkeit von Laborgeräten und bildgebenden Systemen sicher. Ein Komponentenwechsel kostet 9€ pro Einsatz und umfasst den Austausch von Verschleißteilen wie Filtern und Sensoren. Zur Sicherstellung der Gerätefunktion müssen die Maßnahmen eine Mindestabdeckung erreichen: 5 Punkte pro Kalibrierung und 2 Punkte pro Komponentenwechsel ergeben zusammen mindestens 60 Punkte. Die verfügbare Werkstattzeit ist begrenzt: 9 Stunden pro Kalibrierung und 12 Stunden pro Komponentenwechsel dürfen insgesamt höchstens 786 Stunden betragen. Der Klinikleiter möchte die Gesamtkosten für die Wartung minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Kalibrierungen", "x2 = Anzahl Komponentenwechsel"],
+    "zielfunktion": "Z = 13x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 ≥ 60 (Mindestabdeckung)",
+      "9x1 + 12x2 ≤ 786 (Werkstattzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Werkstattzeit eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Kalibrierung kostet 13€ pro Einsatz", "bedeutung": "13 × x₁"},
+        {"text": "Komponentenwechsel kostet 9€ pro Einsatz", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 Punkte pro Kalibrierung", "bedeutung": "5x₁"},
+          {"text": "2 Punkte pro Komponentenwechsel", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 60 Punkte", "bedeutung": "≥ 60"}
+        ],
+        [
+          {"text": "9 Stunden pro Kalibrierung", "bedeutung": "9x₁"},
+          {"text": "12 Stunden pro Komponentenwechsel", "bedeutung": "+ 12x₂"},
+          {"text": "höchstens 786 Stunden", "bedeutung": "≤ 786"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Windkraftanlagen-Wartung",
+    "beschreibung": "Ein Windparkbetreiber mit 50 Anlagen in Norddeutschland plant die regelmäßige Wartung seiner Anlagen mit zwei Maßnahmentypen: Ferndiagnosen und Vor-Ort-Inspektionen. Eine Ferndiagnose kostet 6€ pro Einsatz und umfasst die digitale Überwachung von Vibrationen, Temperatur und Leistungsdaten über das Monitoring-System. Eine Vor-Ort-Inspektion kostet 15€ pro Einsatz und beinhaltet die physische Prüfung von Rotorblättern, Getriebe und elektrischen Anschlüssen. Zur Gewährleistung der Anlagensicherheit müssen die Maßnahmen eine Mindestabdeckung erreichen: 4 Punkte pro Ferndiagnose und 6 Punkte pro Vor-Ort-Inspektion ergeben zusammen mindestens 762 Punkte. Die Einsatzplanung erlaubt höchstens 594 Technikerstunden, wobei eine Ferndiagnose 1 Stunde und eine Vor-Ort-Inspektion 4 Stunden beansprucht. Der Parkmanager möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Ferndiagnosen", "x2 = Anzahl Vor-Ort-Inspektionen"],
+    "zielfunktion": "Z = 6x1 + 15x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 6x2 ≥ 762 (Mindestabdeckung)",
+      "x1 + 4x2 ≤ 594 (Technikerstunden)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Technikerstunden eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ferndiagnose kostet 6€ pro Einsatz", "bedeutung": "6 × x₁"},
+        {"text": "Vor-Ort-Inspektion kostet 15€ pro Einsatz", "bedeutung": "15 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Punkte pro Ferndiagnose", "bedeutung": "4x₁"},
+          {"text": "6 Punkte pro Vor-Ort-Inspektion", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 762 Punkte", "bedeutung": "≥ 762"}
+        ],
+        [
+          {"text": "Ferndiagnose 1 Stunde", "bedeutung": "x₁"},
+          {"text": "Vor-Ort-Inspektion 4 Stunden", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 594 Technikerstunden", "bedeutung": "≤ 594"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Maschinenpark-Instandhaltung",
+    "beschreibung": "Ein Fertigungsbetrieb mit CNC-Fräsen und Drehmaschinen plant die Instandhaltung seines Maschinenparks mit zwei Strategien: Präventivmaßnahmen und Sofortreparaturen. Eine Präventivmaßnahme kostet 3€ pro Einsatz und umfasst die planmäßige Schmierung, Justierung und Funktionskontrolle der Maschinen. Eine Sofortreparatur kostet 3€ pro Einsatz und wird bei unerwarteten Ausfällen im laufenden Betrieb durchgeführt. Zur Sicherung der Produktionsbereitschaft müssen die Maßnahmen eine Mindestabdeckung erreichen: 3 Punkte pro Präventivmaßnahme und 1 Punkt pro Sofortreparatur ergeben zusammen mindestens 149 Punkte. Das monatliche Zeitbudget erlaubt höchstens 847 Stunden, wobei eine Präventivmaßnahme 7 Stunden und eine Sofortreparatur 12 Stunden dauert. Zusätzlich ist die Gesamtbelastung der Werkstatt begrenzt: 9 Einheiten pro Präventivmaßnahme und 10 Einheiten pro Sofortreparatur dürfen höchstens 545 Einheiten betragen. Der Werkstattleiter möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Präventivmaßnahmen", "x2 = Anzahl Sofortreparaturen"],
+    "zielfunktion": "Z = 3x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + x2 ≥ 149 (Mindestabdeckung)",
+      "7x1 + 12x2 ≤ 847 (Zeitbudget)",
+      "9x1 + 10x2 ≤ 545 (Werkstattbelastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Drei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), Zeitbudget und Werkstattbelastung sind Obergrenzen (≤). Beachten Sie die gleichen Kosten in der Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Präventivmaßnahme kostet 3€ pro Einsatz", "bedeutung": "3 × x₁"},
+        {"text": "Sofortreparatur kostet 3€ pro Einsatz", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Punkte pro Präventivmaßnahme", "bedeutung": "3x₁"},
+          {"text": "1 Punkt pro Sofortreparatur", "bedeutung": "+ x₂"},
+          {"text": "mindestens 149 Punkte", "bedeutung": "≥ 149"}
+        ],
+        [
+          {"text": "Präventivmaßnahme 7 Stunden", "bedeutung": "7x₁"},
+          {"text": "Sofortreparatur 12 Stunden", "bedeutung": "+ 12x₂"},
+          {"text": "höchstens 847 Stunden", "bedeutung": "≤ 847"}
+        ],
+        [
+          {"text": "9 Einheiten pro Präventivmaßnahme", "bedeutung": "9x₁"},
+          {"text": "10 Einheiten pro Sofortreparatur", "bedeutung": "+ 10x₂"},
+          {"text": "höchstens 545 Einheiten", "bedeutung": "≤ 545"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Fuhrpark-Pflege",
+    "beschreibung": "Ein überregionales Transportunternehmen mit einer Flotte von 120 Lastkraftwagen plant die Pflege seines Fuhrparks mit zwei Maßnahmentypen: Standardinspektionen und Intensivwartungen. Eine Standardinspektion kostet 9€ pro Einsatz und umfasst die Kontrolle von Bremsen, Reifen und Beleuchtung. Eine Intensivwartung kostet 12€ pro Einsatz und beinhaltet den kompletten Ölwechsel sowie die Prüfung von Motor und Getriebe. Zur Sicherstellung der Fahrzeugverfügbarkeit müssen die Maßnahmen eine Mindestabdeckung erreichen: 6 Punkte pro Standardinspektion und 7 Punkte pro Intensivwartung ergeben zusammen mindestens 226 Punkte. Die Werkstattkapazität ist begrenzt: 4 Stunden pro Standardinspektion und 3 Stunden pro Intensivwartung dürfen insgesamt höchstens 450 Stunden betragen. Der Fuhrparkleiter möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Standardinspektionen", "x2 = Anzahl Intensivwartungen"],
+    "zielfunktion": "Z = 9x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 7x2 ≥ 226 (Mindestabdeckung)",
+      "4x1 + 3x2 ≤ 450 (Werkstattkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Werkstattkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Standardinspektion kostet 9€ pro Einsatz", "bedeutung": "9 × x₁"},
+        {"text": "Intensivwartung kostet 12€ pro Einsatz", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Punkte pro Standardinspektion", "bedeutung": "6x₁"},
+          {"text": "7 Punkte pro Intensivwartung", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 226 Punkte", "bedeutung": "≥ 226"}
+        ],
+        [
+          {"text": "4 Stunden pro Standardinspektion", "bedeutung": "4x₁"},
+          {"text": "3 Stunden pro Intensivwartung", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 450 Stunden", "bedeutung": "≤ 450"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "IT-Serverraum-Wartung",
+    "beschreibung": "Ein Rechenzentrum mit kritischer Infrastruktur für Finanzdienstleister plant die Wartung seiner Serverinfrastruktur mit zwei Maßnahmentypen: Firmwareupdates und Komponentenaustausch. Ein Firmwareupdate kostet 9€ pro Einsatz und umfasst die Aktualisierung von BIOS, Netzwerkkarten und Speichercontrollern. Ein Komponentenaustausch kostet 14€ pro Einsatz und beinhaltet den Wechsel defekter oder alternder Hardwareteile wie Netzteile und Arbeitsspeicher. Zur Sicherstellung der Betriebsbereitschaft müssen die Maßnahmen eine Mindestabdeckung erreichen: 6 Punkte pro Firmwareupdate und 5 Punkte pro Komponentenaustausch ergeben zusammen mindestens 135 Punkte. Die Technikerkapazität ist begrenzt: 3 Stunden pro Firmwareupdate und 11 Stunden pro Komponentenaustausch dürfen insgesamt höchstens 508 Stunden betragen. Der Rechenzentrums-Leiter möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Firmwareupdates", "x2 = Anzahl Komponentenaustausche"],
+    "zielfunktion": "Z = 9x1 + 14x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 5x2 ≥ 135 (Mindestabdeckung)",
+      "3x1 + 11x2 ≤ 508 (Technikerkapazität)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Technikerkapazität eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Firmwareupdate kostet 9€ pro Einsatz", "bedeutung": "9 × x₁"},
+        {"text": "Komponentenaustausch kostet 14€ pro Einsatz", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 Punkte pro Firmwareupdate", "bedeutung": "6x₁"},
+          {"text": "5 Punkte pro Komponentenaustausch", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 135 Punkte", "bedeutung": "≥ 135"}
+        ],
+        [
+          {"text": "3 Stunden pro Firmwareupdate", "bedeutung": "3x₁"},
+          {"text": "11 Stunden pro Komponentenaustausch", "bedeutung": "+ 11x₂"},
+          {"text": "höchstens 508 Stunden", "bedeutung": "≤ 508"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Gebäudetechnik-Pflege",
+    "beschreibung": "Ein Immobilienverwaltungsunternehmen betreut mehrere Gewerbeimmobilien mit umfangreicher technischer Ausstattung und plant die Pflege seiner Gebäudetechnik mit zwei Maßnahmentypen: Sicherheitsprüfungen und Anlagenrevisionen. Eine Sicherheitsprüfung kostet 8€ pro Einsatz und umfasst die Kontrolle von Brandmeldeanlagen, Notbeleuchtung und Aufzügen. Eine Anlagenrevision kostet 3€ pro Einsatz und beinhaltet die Überprüfung von Heizungsanlagen und Lüftungssystemen. Zur Sicherstellung der Gebäudesicherheit müssen die Maßnahmen eine Mindestabdeckung erreichen: 11 Punkte pro Sicherheitsprüfung und 6 Punkte pro Anlagenrevision ergeben zusammen mindestens 408 Punkte. Die verfügbare Arbeitszeit ist begrenzt: 7 Stunden pro Sicherheitsprüfung und 1 Stunde pro Anlagenrevision dürfen insgesamt höchstens 919 Stunden betragen. Der Gebäudemanager möchte die Gesamtkosten minimieren.",
+    "typ": "Wartungsplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Sicherheitsprüfungen", "x2 = Anzahl Anlagenrevisionen"],
+    "zielfunktion": "Z = 8x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "11x1 + 6x2 ≥ 408 (Mindestabdeckung)",
+      "7x1 + x2 ≤ 919 (Arbeitszeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Zwei Nebenbedingungen: Die Mindestabdeckung ist eine Untergrenze (≥), die Arbeitszeit eine Obergrenze (≤).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Sicherheitsprüfung kostet 8€ pro Einsatz", "bedeutung": "8 × x₁"},
+        {"text": "Anlagenrevision kostet 3€ pro Einsatz", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "11 Punkte pro Sicherheitsprüfung", "bedeutung": "11x₁"},
+          {"text": "6 Punkte pro Anlagenrevision", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 408 Punkte", "bedeutung": "≥ 408"}
+        ],
+        [
+          {"text": "7 Stunden pro Sicherheitsprüfung", "bedeutung": "7x₁"},
+          {"text": "1 Stunde pro Anlagenrevision", "bedeutung": "+ x₂"},
+          {"text": "höchstens 919 Stunden", "bedeutung": "≤ 919"}
+        ]
+      ]
+    }
+  }
+]

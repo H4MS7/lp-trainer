@@ -1,0 +1,60 @@
+{
+  "id": "diaet_sportcamp_3v_03",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = Portionen Müsli", "x2 = Portionen Joghurt", "x3 = Portionen Ei"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Protein", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": ">=", "label": "Kohlenhydrate", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Kalzium", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Müsli (€/Portion)"},
+    "c2":  {"min": 1, "max": 3,   "label": "Kosten Joghurt (€/Portion)"},
+    "c3":  {"min": 1, "max": 3,   "label": "Kosten Ei (€/Portion)"},
+    "a11": {"min": 2, "max": 6,   "label": "Protein Müsli (g/Portion)"},
+    "a12": {"min": 3, "max": 8,   "label": "Protein Joghurt (g/Portion)"},
+    "a13": {"min": 5, "max": 12,  "label": "Protein Ei (g/Portion)"},
+    "b1":  {"min": 40, "max": 100, "label": "Mindest-Protein (g)"},
+    "a21": {"min": 8, "max": 15,  "label": "Kohlenhydrate Müsli (g/Portion)"},
+    "a22": {"min": 3, "max": 8,   "label": "Kohlenhydrate Joghurt (g/Portion)"},
+    "a23": {"min": 1, "max": 2,   "label": "Kohlenhydrate Ei (g/Portion)"},
+    "b2":  {"min": 60, "max": 140, "label": "Mindest-Kohlenhydrate (g)"},
+    "a31": {"min": 2, "max": 5,   "label": "Kalzium Müsli (mg/Portion)"},
+    "a32": {"min": 5, "max": 12,  "label": "Kalzium Joghurt (mg/Portion)"},
+    "a33": {"min": 1, "max": 4,   "label": "Kalzium Ei (mg/Portion)"},
+    "b3":  {"min": 40, "max": 90,  "label": "Mindest-Kalzium (mg)"}
+  },
+  "titel": "Sportcamp-Frühstück – Müsli, Joghurt und Ei",
+  "beschreibung": "Ein Sportcamp plant das Frühstück möglichst kostengünstig aus Müsli, Joghurt und Ei. Müsli kostet {c1} € pro Portion, Joghurt kostet {c2} € pro Portion, Ei kostet {c3} € pro Portion. Müsli liefert {a11} g Protein, Joghurt liefert {a12} g Protein, Ei liefert {a13} g Protein pro Portion. Mindestens {b1} g Protein werden benötigt. Müsli enthält {a21} g Kohlenhydrate, Joghurt enthält {a22} g Kohlenhydrate, Ei enthält {a23} g Kohlenhydrate pro Portion. Mindestens {b2} g Kohlenhydrate sind nötig. Müsli liefert {a31} mg Kalzium, Joghurt liefert {a32} mg Kalzium, Ei liefert {a33} mg Kalzium pro Portion. Der Mindestbedarf an Kalzium beträgt {b3} mg.",
+  "hinweis": "Minimiere die Frühstückskosten bei Einhaltung aller Mindestanforderungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Müsli kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Joghurt kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Ei kostet {c3} €", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} g Protein", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} g Protein", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} g Protein pro Portion", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} g Protein werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Kohlenhydrate", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} g Kohlenhydrate", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} g Kohlenhydrate pro Portion", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} g Kohlenhydrate sind nötig", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} mg Kalzium", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} mg Kalzium", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} mg Kalzium pro Portion", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} mg", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

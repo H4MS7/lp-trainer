@@ -1,0 +1,200 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "masch_brennofen_drei_3v_08",
+  "titel": "Brennofen – Temperatur, Dauer und Luftzufuhr",
+  "variablen": [
+    "x1 = Brenntemperatur (Stufen)",
+    "x2 = Brenndauer (Stufen)",
+    "x3 = Luftzufuhr (Stufen)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gasverbrauch",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Ofenbelastung",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Abgaslimit",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 10,
+      "label": "Haertung Temperatur"
+    },
+    "c2": {
+      "min": 3,
+      "max": 8,
+      "label": "Gleichmaessigkeit Dauer"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Atmosphaere Luft"
+    },
+    "a11": {
+      "min": 4,
+      "max": 10,
+      "label": "Gas Temperatur"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Gas Dauer"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Gas Luft"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Gasverbrauch"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Belastung Temperatur"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Belastung Dauer"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Belastung Luft"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Ofenbelastung"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Abgas Temperatur"
+    },
+    "a32": {
+      "min": 1,
+      "max": 3,
+      "label": "Abgas Dauer"
+    },
+    "a33": {
+      "min": 3,
+      "max": 8,
+      "label": "Abgas Luft"
+    },
+    "b3": {
+      "min": 50,
+      "max": 250,
+      "label": "Max. Abgaslimit"
+    }
+  },
+  "beschreibung": "Ein Brennofen wird ueber drei Parameter optimiert. Die Brenntemperatur liefert {c1} Punkte Haertung, die Brenndauer {c2} Punkte Gleichmaessigkeit und die Luftzufuhr {c3} Punkte Atmosphaerenqualitaet. Der Gasverbrauch betraegt {a11} Einheiten fuer Temperatur, {a12} fuer Dauer und {a13} fuer Luft bei maximal {b1} Gaseinheiten. Die Ofenbelastung liegt bei {a21} Einheiten fuer Temperatur, {a22} fuer Dauer und {a23} fuer Luft bei maximal {b2} Belastungseinheiten. Das Abgaslimit betraegt {a31} Einheiten fuer Temperatur, {a32} fuer Dauer und {a33} fuer Luft bei maximal {b3} Abgaseinheiten.",
+  "hinweis": "Maximiere die Brennqualitaet unter Beachtung von Gas, Ofenbelastung und Abgaslimit.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Brenntemperatur liefert {c1} Punkte Haertung",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Brenndauer {c2} Punkte Gleichmaessigkeit",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Luftzufuhr {c3} Punkte Atmosphaerenqualitaet",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Temperatur",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Dauer",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Luft",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Gaseinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Temperatur",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Dauer",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Luft",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Belastungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Temperatur",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Dauer",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Luft",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Abgaseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,264 @@
+[
+  {
+    "titel": "Vier-Klassen-Portfolio einer Pensionskasse",
+    "beschreibung": "Eine Pensionskasse plant die Verteilung ihres Vermögens auf vier Anlageklassen: Staatsanleihen, Unternehmensanleihen, Aktien-ETFs und Immobilienfonds. Die erwarteten Renditen betragen pro Einheit Staatsanleihen 15 Tausend €, pro Einheit Unternehmensanleihen 9 Tausend €, pro Einheit Aktien-ETFs 5 Tausend € und pro Einheit Immobilienfonds 11 Tausend € jährlich. Das Gesamtbudget beträgt höchstens 4943 Budgeteinheiten. Dabei erfordert jede Einheit Staatsanleihen 8 Budgeteinheiten, jede Einheit Unternehmensanleihen 10 Budgeteinheiten, jede Einheit Aktien-ETFs 12 Budgeteinheiten und jede Einheit Immobilienfonds 9 Budgeteinheiten. Das Risikobudget ist auf maximal 2156 Risikopunkte begrenzt: Jede Einheit Staatsanleihen verursacht 5 Risikopunkte, jede Einheit Unternehmensanleihen 8 Risikopunkte, jede Einheit Aktien-ETFs 8 Risikopunkte und jede Einheit Immobilienfonds 4 Risikopunkte. Die gewichtete Mindestrendite muss mindestens 926 Renditeeinheiten betragen. Dabei bringt jede Einheit Staatsanleihen 5 Renditeeinheiten, jede Einheit Unternehmensanleihen 7 Renditeeinheiten, jede Einheit Aktien-ETFs 6 Renditeeinheiten und jede Einheit Immobilienfonds 4 Renditeeinheiten ein. Die Liquiditätsreserve darf höchstens 3597 Liquiditätspunkte binden: Jede Einheit Staatsanleihen bindet 1 Liquiditätspunkt, jede Einheit Unternehmensanleihen 2 Liquiditätspunkte, jede Einheit Aktien-ETFs 9 Liquiditätspunkte und jede Einheit Immobilienfonds 6 Liquiditätspunkte. Die Pensionskasse möchte die Gesamtrendite maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Staatsanleihen",
+      "x2 = Einheiten Unternehmensanleihen",
+      "x3 = Einheiten Aktien-ETFs",
+      "x4 = Einheiten Immobilienfonds"
+    ],
+    "zielfunktion": "Z = 15x1 + 9x2 + 5x3 + 11x4 (max)",
+    "nebenbedingungen": [
+      "8x1 + 10x2 + 12x3 + 9x4 ≤ 4943 (Gesamtbudget)",
+      "5x1 + 8x2 + 8x3 + 4x4 ≤ 2156 (Risikobudget)",
+      "5x1 + 7x2 + 6x3 + 4x4 ≥ 926 (Mindestrendite)",
+      "x1 + 2x2 + 9x3 + 6x4 ≤ 3597 (Liquiditätsreserve)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Vier Anlageklassen mit drei Obergrenzen (Budget, Risiko, Liquidität) und einer Mindestanforderung (Rendite). Achte auf die verschiedenen Einheiten bei den Nebenbedingungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Staatsanleihen 15 Tausend €",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Unternehmensanleihen 9 Tausend €",
+          "bedeutung": "9 × x₂"
+        },
+        {
+          "text": "Aktien-ETFs 5 Tausend €",
+          "bedeutung": "5 × x₃"
+        },
+        {
+          "text": "Immobilienfonds 11 Tausend €",
+          "bedeutung": "11 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Staatsanleihen 8 Budgeteinheiten",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 10 Budgeteinheiten",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "Aktien-ETFs 12 Budgeteinheiten",
+            "bedeutung": "+ 12x₃"
+          },
+          {
+            "text": "Immobilienfonds 9 Budgeteinheiten",
+            "bedeutung": "+ 9x₄"
+          },
+          {
+            "text": "höchstens 4943 Budgeteinheiten",
+            "bedeutung": "≤ 4943"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen verursacht 5 Risikopunkte",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 8 Risikopunkte",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "Aktien-ETFs 8 Risikopunkte",
+            "bedeutung": "+ 8x₃"
+          },
+          {
+            "text": "Immobilienfonds 4 Risikopunkte",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "maximal 2156 Risikopunkte",
+            "bedeutung": "≤ 2156"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen 5 Renditeeinheiten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 7 Renditeeinheiten",
+            "bedeutung": "+ 7x₂"
+          },
+          {
+            "text": "Aktien-ETFs 6 Renditeeinheiten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Immobilienfonds 4 Renditeeinheiten",
+            "bedeutung": "+ 4x₄"
+          },
+          {
+            "text": "mindestens 926 Renditeeinheiten",
+            "bedeutung": "≥ 926"
+          }
+        ],
+        [
+          {
+            "text": "Staatsanleihen bindet 1 Liquiditätspunkt",
+            "bedeutung": "x₁"
+          },
+          {
+            "text": "Unternehmensanleihen 2 Liquiditätspunkte",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Aktien-ETFs 9 Liquiditätspunkte",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "Immobilienfonds 6 Liquiditätspunkte",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "höchstens 3597 Liquiditätspunkte",
+            "bedeutung": "≤ 3597"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Diversifikation mit vier alternativen Anlageklassen",
+    "beschreibung": "Ein Family Office verteilt seine Mittel auf vier alternative Anlageklassen: Private Equity, Venture Capital, Hedgefonds-Anteile und Infrastruktur-Beteiligungen. Pro Einheit Private Equity wird ein jährlicher Ertrag von 5 Tausend € erwartet, pro Einheit Venture Capital ein Ertrag von 11 Tausend €, pro Einheit Hedgefonds-Anteile ein Ertrag von 8 Tausend € und pro Einheit Infrastruktur-Beteiligungen ein Ertrag von 11 Tausend €. Der Kapitalrahmen umfasst höchstens 4070 Kapitaleinheiten: Jede Einheit Private Equity erfordert 9 Kapitaleinheiten, jede Einheit Venture Capital 3 Kapitaleinheiten, jede Einheit Hedgefonds-Anteile 9 Kapitaleinheiten und jede Einheit Infrastruktur-Beteiligungen 2 Kapitaleinheiten. Die Prüfungskapazität beträgt maximal 4244 Prüfstunden: Jede Einheit Private Equity beansprucht 12 Prüfstunden, jede Einheit Venture Capital 10 Prüfstunden, jede Einheit Hedgefonds-Anteile 1 Prüfstunde und jede Einheit Infrastruktur-Beteiligungen 2 Prüfstunden. Zur Diversifikation muss die gewichtete Allokation mindestens 464 Allokationseinheiten erreichen: Jede Einheit Private Equity trägt 5 Allokationseinheiten bei, jede Einheit Venture Capital 10 Allokationseinheiten, jede Einheit Hedgefonds-Anteile 6 Allokationseinheiten und jede Einheit Infrastruktur-Beteiligungen 5 Allokationseinheiten. Das Compliance-Budget ist auf höchstens 4879 Compliance-Punkte begrenzt: Jede Einheit Private Equity verbraucht 6 Compliance-Punkte, jede Einheit Venture Capital 8 Compliance-Punkte, jede Einheit Hedgefonds-Anteile 5 Compliance-Punkte und jede Einheit Infrastruktur-Beteiligungen 6 Compliance-Punkte. Das Family Office möchte den Gesamtertrag maximieren.",
+    "typ": "Investitionsoptimierung",
+    "optimierungsziel": "maximieren",
+    "variablen": [
+      "x1 = Einheiten Private Equity",
+      "x2 = Einheiten Venture Capital",
+      "x3 = Einheiten Hedgefonds-Anteile",
+      "x4 = Einheiten Infrastruktur-Beteiligungen"
+    ],
+    "zielfunktion": "Z = 5x1 + 11x2 + 8x3 + 11x4 (max)",
+    "nebenbedingungen": [
+      "9x1 + 3x2 + 9x3 + 2x4 ≤ 4070 (Kapitalrahmen)",
+      "12x1 + 10x2 + x3 + 2x4 ≤ 4244 (Prüfungskapazität)",
+      "5x1 + 10x2 + 6x3 + 5x4 ≥ 464 (Mindestallokation)",
+      "6x1 + 8x2 + 5x3 + 6x4 ≤ 4879 (Compliance-Budget)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Vier alternative Anlageklassen mit drei Obergrenzen (Kapital, Prüfung, Compliance) und einer Mindestanforderung (Diversifikation). Venture Capital und Infrastruktur haben die gleiche Rendite.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Ertrag von 5 Tausend €",
+          "bedeutung": "5 × x₁"
+        },
+        {
+          "text": "Einheit Venture Capital ein Ertrag von 11 Tausend €",
+          "bedeutung": "11 × x₂"
+        },
+        {
+          "text": "Ertrag von 8 Tausend €",
+          "bedeutung": "8 × x₃"
+        },
+        {
+          "text": "Einheit Infrastruktur-Beteiligungen ein Ertrag von 11 Tausend €",
+          "bedeutung": "11 × x₄"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Private Equity erfordert 9 Kapitaleinheiten",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Venture Capital 3 Kapitaleinheiten",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Hedgefonds-Anteile 9 Kapitaleinheiten",
+            "bedeutung": "+ 9x₃"
+          },
+          {
+            "text": "Infrastruktur-Beteiligungen 2 Kapitaleinheiten",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "höchstens 4070 Kapitaleinheiten",
+            "bedeutung": "≤ 4070"
+          }
+        ],
+        [
+          {
+            "text": "Private Equity beansprucht 12 Prüfstunden",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Venture Capital 10 Prüfstunden",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "Hedgefonds-Anteile 1 Prüfstunde",
+            "bedeutung": "+ x₃"
+          },
+          {
+            "text": "Infrastruktur-Beteiligungen 2 Prüfstunden",
+            "bedeutung": "+ 2x₄"
+          },
+          {
+            "text": "maximal 4244 Prüfstunden",
+            "bedeutung": "≤ 4244"
+          }
+        ],
+        [
+          {
+            "text": "Private Equity trägt 5 Allokationseinheiten",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Venture Capital 10 Allokationseinheiten",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "Hedgefonds-Anteile 6 Allokationseinheiten",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "Infrastruktur-Beteiligungen 5 Allokationseinheiten",
+            "bedeutung": "+ 5x₄"
+          },
+          {
+            "text": "mindestens 464 Allokationseinheiten",
+            "bedeutung": "≥ 464"
+          }
+        ],
+        [
+          {
+            "text": "Private Equity verbraucht 6 Compliance-Punkte",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Venture Capital 8 Compliance-Punkte",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "Hedgefonds-Anteile 5 Compliance-Punkte",
+            "bedeutung": "+ 5x₃"
+          },
+          {
+            "text": "Infrastruktur-Beteiligungen 6 Compliance-Punkte",
+            "bedeutung": "+ 6x₄"
+          },
+          {
+            "text": "höchstens 4879 Compliance-Punkte",
+            "bedeutung": "≤ 4879"
+          }
+        ]
+      ]
+    }
+  }
+]

@@ -1,0 +1,43 @@
+{
+  "id": "lager_ersatzteile_2v_01",
+  "typ": "Lagerhaltung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Bestellmenge Motorenteile (Kisten)", "x2 = Bestellmenge Karosserieteile (Kisten)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbestand Werkstatt", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Regalkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Lagerkosten Motorenteile (€/Kiste)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Lagerkosten Karosserieteile (€/Kiste)"},
+    "a11": {"min": 2, "max": 6,   "label": "Ersatzteile pro Kiste Motorenteile"},
+    "a12": {"min": 3, "max": 8,   "label": "Ersatzteile pro Kiste Karosserieteile"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestbestand (Teile)"},
+    "a21": {"min": 2, "max": 5,   "label": "Regalplatz Motorenteile (Fächer)"},
+    "a22": {"min": 3, "max": 7,   "label": "Regalplatz Karosserieteile (Fächer)"},
+    "b2":  {"min": 40, "max": 150, "label": "Regalkapazität (Fächer)"}
+  },
+  "titel": "Ersatzteillager – Kfz-Werkstatt",
+  "beschreibung": "Eine Kfz-Werkstatt optimiert ihr Ersatzteillager für Motorenteile und Karosserieteile. Die Lagerkosten betragen {c1} € pro Kiste Motorenteile und {c2} € pro Kiste Karosserieteile. Jede Kiste Motorenteile enthält {a11} Ersatzteile, jede Kiste Karosserieteile enthält {a12} Ersatzteile. Der Mindestbestand der Werkstatt liegt bei {b1} Teilen. Motorenteile belegen {a21} Regalfächer pro Kiste, Karosserieteile belegen {a22} Regalfächer pro Kiste. Die Regalkapazität beträgt {b2} Fächer.",
+  "hinweis": "Minimiere die Lagerkosten bei Einhaltung des Mindestbestands und der Regalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro Kiste Motorenteile", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro Kiste Karosserieteile", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Ersatzteile", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Ersatzteile", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Teilen", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Regalfächer pro Kiste", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Regalfächer pro Kiste", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Fächer", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "wart_foerderband_2v_15",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Bandspannungen", "x2 = Anzahl Rollenersatz"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestdurchsatz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Wartungsfenster", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Bandspannung (Tsd. €)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten Rollenersatz (Tsd. €)"},
+    "a11": {"min": 2, "max": 7,   "label": "Durchsatz Bandspannung (%)"},
+    "a12": {"min": 3, "max": 9,   "label": "Durchsatz Rollenersatz (%)"},
+    "b1":  {"min": 30, "max": 100, "label": "Mindestdurchsatz (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Zeit Bandspannung (h)"},
+    "a22": {"min": 2, "max": 6,   "label": "Zeit Rollenersatz (h)"},
+    "b2":  {"min": 10, "max": 40,  "label": "Wartungsfenster (h)"}
+  },
+  "titel": "Fördertechnik – Förderband-Wartung",
+  "beschreibung": "Ein Bergbauunternehmen plant die Wartung seiner Förderbänder. Eine Bandspannung kostet {c1} Tsd. €, ein Rollenersatz kostet {c2} Tsd. €. Eine Bandspannung verbessert den Durchsatz um {a11} %, ein Rollenersatz um {a12} %. Der Mindestdurchsatz beträgt {b1} %. Eine Bandspannung benötigt {a21} Stunden, ein Rollenersatz benötigt {a22} Stunden. Das Wartungsfenster beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Wartungskosten bei Einhaltung des Durchsatzes und Wartungsfensters.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Bandspannung kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Rollenersatz kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

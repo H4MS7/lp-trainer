@@ -1,0 +1,43 @@
+{
+  "id": "flaeche_park_garten_2v_09",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Parkplatz", "x2 = Hektar Garten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Baubudget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,  "label": "Einnahmen Parkplatz (Tsd. €/ha)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Einnahmen Garten (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Parkplatz (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Garten (ha/ha)"},
+    "b1":  {"min": 5, "max": 50,   "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 8, "max": 20,  "label": "Baukosten Parkplatz (Tsd. €/ha)"},
+    "a22": {"min": 2, "max": 8,   "label": "Baukosten Garten (Tsd. €/ha)"},
+    "b2":  {"min": 30, "max": 200, "label": "Baubudget (Tsd. €)"}
+  },
+  "titel": "Gewerbegebiet – Parkplatz und Garten",
+  "beschreibung": "Ein Gewerbegebiet wird in Parkplatz und Garten aufgeteilt. Der Parkplatz generiert {c1} Tsd. € Einnahmen pro Hektar, der Garten generiert {c2} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} Hektar pro Hektar Parkplatz und {a12} Hektar pro Hektar Garten. Die Gesamtfläche beträgt {b1} Hektar. Die Baukosten betragen {a21} Tsd. € pro Hektar Parkplatz und {a22} Tsd. € pro Hektar Garten. Das Baubudget beträgt {b2} Tsd. €.",
+  "hinweis": "Maximiere die Gesamteinnahmen unter Beachtung der Flächen- und Budgetbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Parkplatz generiert {c1} Tsd. € Einnahmen pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Garten generiert {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Hektar pro Hektar Parkplatz", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Hektar pro Hektar Garten", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Hektar Parkplatz", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro Hektar Garten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

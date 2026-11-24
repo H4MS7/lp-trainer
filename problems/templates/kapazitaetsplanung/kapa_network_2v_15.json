@@ -1,0 +1,41 @@
+{
+  "id": "kapa_network_2v_15",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Core-Switches", "x2 = Anzahl Access-Switches"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Ports", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Budget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 400,  "label": "Durchsatz Core (Gbit/s)"},
+    "c2":  {"min": 10, "max": 50,    "label": "Durchsatz Access (Gbit/s)"},
+    "a11": {"min": 24, "max": 48,    "label": "Ports Core"},
+    "a12": {"min": 12, "max": 24,    "label": "Ports Access"},
+    "b1":  {"min": 200, "max": 500,  "label": "Verfügbare Ports"},
+    "a21": {"min": 5, "max": 20,     "label": "Kosten Core (Tsd. €)"},
+    "a22": {"min": 1, "max": 5,      "label": "Kosten Access (Tsd. €)"},
+    "b2":  {"min": 50, "max": 200,   "label": "Budget (Tsd. €)"}
+  },
+  "titel": "Netzwerk-Infrastruktur – Switch-Planung",
+  "beschreibung": "Ein Netzwerkarchitekt plant die Switch-Infrastruktur. Ein Core-Switch liefert {c1} Gbit/s Durchsatz, ein Access-Switch liefert {c2} Gbit/s Durchsatz. Ein Core-Switch belegt {a11} Ports, ein Access-Switch belegt {a12} Ports. Es stehen {b1} Ports zur Verfügung. Die Kosten betragen {a21} Tsd. € pro Core-Switch und {a22} Tsd. € pro Access-Switch. Das Budget beträgt {b2} Tsd. €.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung der Port- und Budgetbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Core-Switch liefert {c1} Gbit/s Durchsatz", "bedeutung": "{c1} × x₁"},
+      {"text": "Access-Switch liefert {c2} Gbit/s Durchsatz", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Ports, ein Access-Switch belegt {a12} Ports", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Ports zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Core-Switch und {a22} Tsd. € pro Access-Switch", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

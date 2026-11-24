@@ -1,0 +1,39 @@
+{
+  "id": "trans_pipeline_2v_07",
+  "typ": "Transportproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Pumpvorgänge Pipeline A", "x2 = Pumpvorgänge Pipeline B"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Durchfluss", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Energieverbrauch", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 14,  "label": "Kosten Pipeline A (EUR/Pumpvorgang)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Kosten Pipeline B (EUR/Pumpvorgang)"},
+    "a11": {"min": 3, "max": 10,  "label": "Durchfluss Pipeline A (m³/Pumpvorgang)"},
+    "a12": {"min": 2, "max": 8,   "label": "Durchfluss Pipeline B (m³/Pumpvorgang)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindest-Durchfluss (m³)"},
+    "a21": {"min": 2, "max": 7,   "label": "Energie Pipeline A (kWh/Pumpvorgang)"},
+    "a22": {"min": 1, "max": 5,   "label": "Energie Pipeline B (kWh/Pumpvorgang)"},
+    "b2":  {"min": 30, "max": 120, "label": "Max. Energieverbrauch (kWh)"}
+  },
+  "titel": "Pipeline-Transport – Durchfluss und Energie",
+  "beschreibung": "Ein Wasserwerk pumpt Wasser durch zwei Pipelines. Ein Pumpvorgang in Pipeline A kostet {c1} EUR, in Pipeline B kostet er {c2} EUR. Pipeline A liefert {a11} m³ pro Pumpvorgang, Pipeline B liefert {a12} m³ pro Pumpvorgang. Mindestens {b1} m³ müssen gepumpt werden. Pipeline A verbraucht {a21} kWh pro Pumpvorgang, Pipeline B verbraucht {a22} kWh pro Pumpvorgang. Der Energieverbrauch darf höchstens {b2} kWh betragen.",
+  "hinweis": "Minimiere die Kosten bei Mindest-Durchfluss und begrenztem Energieverbrauch.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pipeline A kostet {c1} EUR", "bedeutung": "{c1} × x₁"},
+      {"text": "Pipeline B kostet er {c2} EUR", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} m³ pro Pumpvorgang, Pipeline B liefert {a12} m³ pro Pumpvorgang. Mindestens {b1} m³ müssen gepumpt werden", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kWh pro Pumpvorgang, Pipeline B verbraucht {a22} kWh pro Pumpvorgang. Der Energieverbrauch darf höchstens {b2} kWh betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

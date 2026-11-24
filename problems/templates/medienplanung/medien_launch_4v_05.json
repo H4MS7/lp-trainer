@@ -1,0 +1,69 @@
+{
+  "id": "medien_launch_4v_05",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Pressekonferenzen", "x2 = Anzahl Influencer-Events", "x3 = Anzahl Online-Ads", "x4 = Anzahl Sampling-Aktionen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Organisationszeit", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Zeitfenster", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Medienkontakte Presse (Tsd.)"},
+    "c2":  {"min": 5, "max": 30,    "label": "Reichweite Influencer (Tsd.)"},
+    "c3":  {"min": 5, "max": 25,    "label": "Klicks Online (Tsd.)"},
+    "c4":  {"min": 2, "max": 10,    "label": "Kontakte Sampling (Tsd.)"},
+    "a11": {"min": 5, "max": 20,    "label": "Kosten Presse (Tsd. €)"},
+    "a12": {"min": 3, "max": 15,    "label": "Kosten Influencer (Tsd. €)"},
+    "a13": {"min": 1, "max": 5,     "label": "Kosten Online (Tsd. €)"},
+    "a14": {"min": 2, "max": 8,     "label": "Kosten Sampling (Tsd. €)"},
+    "b1":  {"min": 50, "max": 200,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 10, "max": 20,   "label": "Organisation Presse (Stunden)"},
+    "a22": {"min": 5, "max": 15,    "label": "Organisation Influencer (Stunden)"},
+    "a23": {"min": 2, "max": 5,     "label": "Organisation Online (Stunden)"},
+    "a24": {"min": 5, "max": 12,    "label": "Organisation Sampling (Stunden)"},
+    "b2":  {"min": 30, "max": 100,  "label": "Organisationsstunden"},
+    "a31": {"min": 1, "max": 2,     "label": "Zeitfenster Presse (Tage)"},
+    "a32": {"min": 1, "max": 2,     "label": "Zeitfenster Influencer (Tage)"},
+    "a33": {"min": 1, "max": 3,     "label": "Zeitfenster Online (Tage)"},
+    "a34": {"min": 1, "max": 2,     "label": "Zeitfenster Sampling (Tage)"},
+    "b4":  {"min": 5, "max": 20,    "label": "Verfügbare Tage"},
+    "a41": {"min": 5, "max": 10,    "label": "Personal Presse (Personen)"},
+    "a42": {"min": 3, "max": 8,     "label": "Personal Influencer (Personen)"},
+    "a43": {"min": 1, "max": 3,     "label": "Personal Online (Personen)"},
+    "a44": {"min": 3, "max": 8,     "label": "Personal Sampling (Personen)"},
+    "b3":  {"min": 10, "max": 30,   "label": "Verfügbares Personal (Personen)"}
+  },
+  "titel": "Produktlaunch – Vier Aktivierungskanäle",
+  "beschreibung": "Ein Produktmanager plant den Launch über vier Kanäle. Pressekonferenzen erzielen {c1} Tsd. Medienkontakte, Influencer-Events erzielen {c2} Tsd. Reichweite, Online-Ads erzielen {c3} Tsd. Klicks und Sampling-Aktionen erzielen {c4} Tsd. Kontakte. Die Kosten betragen {a11} Tsd. € für Presse, {a12} Tsd. € für Influencer, {a13} Tsd. € für Online und {a14} Tsd. € für Sampling. Das Budget beträgt {b1} Tsd. €. Der Organisationsaufwand beträgt {a21} Stunden für Presse, {a22} Stunden für Influencer, {a23} Stunden für Online und {a24} Stunden für Sampling. Es stehen {b2} Organisationsstunden zur Verfügung. Der Personalbedarf beträgt {a41} Personen für Presse, {a42} Personen für Influencer, {a43} Personen für Online und {a44} Personen für Sampling. Es stehen {b3} Personen zur Verfügung. Das Zeitfenster beträgt {a31} Tage für Presse, {a32} Tage für Influencer, {a33} Tage für Online und {a34} Tage für Sampling. Es stehen {b4} Tage zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite des Produktlaunches unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Pressekonferenzen erzielen {c1} Tsd. Medienkontakte", "bedeutung": "{c1} × x₁"},
+      {"text": "Influencer-Events erzielen {c2} Tsd. Reichweite", "bedeutung": "{c2} × x₂"},
+      {"text": "Online-Ads erzielen {c3} Tsd. Klicks", "bedeutung": "{c3} × x₃"},
+      {"text": "Sampling-Aktionen erzielen {c4} Tsd. Kontakte", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für Presse, {a12} Tsd. € für Influencer, {a13} Tsd. € für Online und {a14} Tsd. € für Sampling", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für Presse, {a22} Stunden für Influencer, {a23} Stunden für Online und {a24} Stunden für Sampling", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Organisationsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a41} Personen für Presse, {a42} Personen für Influencer, {a43} Personen für Online und {a44} Personen für Sampling", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b3} Personen zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a31} Tage für Presse, {a32} Tage für Influencer, {a33} Tage für Online und {a34} Tage für Sampling", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b4} Tage zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

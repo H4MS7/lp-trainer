@@ -1,0 +1,69 @@
+{
+  "id": "kapa_network_4v_04",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl Core-Router", "x2 = Anzahl Distribution-Switches", "x3 = Anzahl Access-Switches", "x4 = Anzahl Firewalls"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Ports", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Stromverbrauch", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Budget", "row": ["a31","a32","a33","a34"], "rhs": "b3"},
+    {"type": "<=", "label": "Rack-Einheiten", "row": ["a41","a42","a43","a44"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 400, "label": "Durchsatz Core (Gbit/s)"},
+    "c2":  {"min": 20, "max": 100,  "label": "Durchsatz Distribution (Gbit/s)"},
+    "c3":  {"min": 5, "max": 25,    "label": "Durchsatz Access (Gbit/s)"},
+    "c4":  {"min": 10, "max": 50,   "label": "Durchsatz Firewall (Gbit/s)"},
+    "a11": {"min": 24, "max": 48,   "label": "Ports Core"},
+    "a12": {"min": 12, "max": 24,   "label": "Ports Distribution"},
+    "a13": {"min": 8, "max": 24,    "label": "Ports Access"},
+    "a14": {"min": 4, "max": 12,    "label": "Ports Firewall"},
+    "b1":  {"min": 100, "max": 500, "label": "Verfügbare Ports"},
+    "a21": {"min": 1, "max": 3,     "label": "Strom Core (kW)"},
+    "a22": {"min": 1, "max": 2,     "label": "Strom Distribution (kW)"},
+    "a23": {"min": 1, "max": 2,     "label": "Strom Access (kW)"},
+    "a24": {"min": 1, "max": 3,     "label": "Strom Firewall (kW)"},
+    "b2":  {"min": 10, "max": 40,   "label": "Strombudget (kW)"},
+    "a31": {"min": 10, "max": 30,   "label": "Kosten Core (Tsd. €)"},
+    "a32": {"min": 3, "max": 10,    "label": "Kosten Distribution (Tsd. €)"},
+    "a33": {"min": 1, "max": 5,     "label": "Kosten Access (Tsd. €)"},
+    "a34": {"min": 5, "max": 20,    "label": "Kosten Firewall (Tsd. €)"},
+    "b3":  {"min": 50, "max": 300,  "label": "Budget (Tsd. €)"},
+    "a41": {"min": 2, "max": 4,     "label": "Rack Core (HE)"},
+    "a42": {"min": 1, "max": 2,     "label": "Rack Distribution (HE)"},
+    "a43": {"min": 1, "max": 2,     "label": "Rack Access (HE)"},
+    "a44": {"min": 2, "max": 4,     "label": "Rack Firewall (HE)"},
+    "b4":  {"min": 20, "max": 84,   "label": "Verfügbare Rack-Einheiten (HE)"}
+  },
+  "titel": "Netzwerk – Vierstufige Infrastruktur",
+  "beschreibung": "Ein Netzwerkarchitekt plant eine vierstufige Netzwerkinfrastruktur. Core-Router liefern {c1} Gbit/s, Distribution-Switches liefern {c2} Gbit/s, Access-Switches liefern {c3} Gbit/s und Firewalls liefern {c4} Gbit/s Durchsatz. Der Portbedarf beträgt {a11} für Core, {a12} für Distribution, {a13} für Access und {a14} für Firewalls. Es stehen {b1} Ports zur Verfügung. Der Stromverbrauch beträgt {a21} kW für Core, {a22} kW für Distribution, {a23} kW für Access und {a24} kW für Firewalls. Das Strombudget beträgt {b2} kW. Die Kosten betragen {a31} Tsd. € für Core, {a32} Tsd. € für Distribution, {a33} Tsd. € für Access und {a34} Tsd. € für Firewalls. Das Budget beträgt {b3} Tsd. €. Der Rack-Bedarf beträgt {a41} HE für Core, {a42} HE für Distribution, {a43} HE für Access und {a44} HE für Firewalls. Es stehen {b4} HE zur Verfügung.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Core-Router liefern {c1} Gbit/s", "bedeutung": "{c1} × x₁"},
+      {"text": "Distribution-Switches liefern {c2} Gbit/s", "bedeutung": "{c2} × x₂"},
+      {"text": "Access-Switches liefern {c3} Gbit/s", "bedeutung": "{c3} × x₃"},
+      {"text": "Firewalls liefern {c4} Gbit/s Durchsatz", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} für Core, {a12} für Distribution, {a13} für Access und {a14} für Firewalls", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Ports zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kW für Core, {a22} kW für Distribution, {a23} kW für Access und {a24} kW für Firewalls", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} kW", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € für Core, {a32} Tsd. € für Distribution, {a33} Tsd. € für Access und {a34} Tsd. € für Firewalls", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} HE für Core, {a42} HE für Distribution, {a43} HE für Access und {a44} HE für Firewalls", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄"},
+        {"text": "{b4} HE zur Verfügung", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "emiss_landwirtschaft_2v_08",
+  "typ": "Emissionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Raps"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Düngemittel", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Pestizide", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Weizen (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Raps (Tsd. €/ha)"},
+    "a11": {"min": 2, "max": 8,   "label": "Düngemittel Weizen (t/ha)"},
+    "a12": {"min": 3, "max": 10,  "label": "Düngemittel Raps (t/ha)"},
+    "b1":  {"min": 60, "max": 250, "label": "Düngemittellimit (t)"},
+    "a21": {"min": 1, "max": 5,   "label": "Pestizide Weizen (kg/ha)"},
+    "a22": {"min": 2, "max": 6,   "label": "Pestizide Raps (kg/ha)"},
+    "b2":  {"min": 40, "max": 150, "label": "Pestizidlimit (kg)"}
+  },
+  "titel": "Landwirtschaft – Weizen und Raps",
+  "beschreibung": "Ein Agrarbetrieb baut Weizen und Raps an. Weizen erwirtschaftet {c1} Tsd. € pro Hektar, Raps {c2} Tsd. €. Weizen benötigt {a11} Tonnen Düngemittel pro Hektar, Raps {a12} Tonnen. Das Düngemittellimit beträgt {b1} Tonnen. Weizen benötigt {a21} kg Pestizide pro Hektar, Raps {a22} kg. Das Pestizidlimit liegt bei {b2} kg.",
+  "hinweis": "Maximiere den Gesamtertrag unter Einhaltung der Düngemittel- und Pestizidlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Weizen erwirtschaftet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Raps {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tonnen Düngemittel pro Hektar", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} Tonnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Tonnen", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} kg Pestizide pro Hektar", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kg", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kg", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

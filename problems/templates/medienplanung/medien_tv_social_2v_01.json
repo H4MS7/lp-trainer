@@ -1,0 +1,41 @@
+{
+  "id": "medien_tv_social_2v_01",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl TV-Spots", "x2 = Anzahl Social-Media-Kampagnen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Werbebudget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Personalkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 15,   "label": "Reichweite TV (Tsd.)"},
+    "c2":  {"min": 2, "max": 10,   "label": "Reichweite Social (Tsd.)"},
+    "a11": {"min": 3, "max": 12,   "label": "Kosten TV (Tsd. €)"},
+    "a12": {"min": 1, "max": 5,    "label": "Kosten Social (Tsd. €)"},
+    "b1":  {"min": 50, "max": 200, "label": "Werbebudget (Tsd. €)"},
+    "a21": {"min": 2, "max": 6,    "label": "Personal TV (Stunden)"},
+    "a22": {"min": 1, "max": 4,    "label": "Personal Social (Stunden)"},
+    "b2":  {"min": 30, "max": 120, "label": "Personalstunden"}
+  },
+  "titel": "Werbekampagne – TV und Social Media",
+  "beschreibung": "Eine Marketingabteilung plant eine Werbekampagne mit TV-Spots und Social-Media-Kampagnen. Ein TV-Spot erreicht {c1} Tsd. Personen, eine Social-Media-Kampagne erreicht {c2} Tsd. Personen. Ein TV-Spot kostet {a11} Tsd. €, eine Social-Media-Kampagne kostet {a12} Tsd. €. Das Werbebudget beträgt {b1} Tsd. €. Die Personalkapazität beträgt {a21} Stunden pro TV-Spot und {a22} Stunden pro Social-Media-Kampagne. Insgesamt stehen {b2} Personalstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtreichweite unter Beachtung des Budgets und der Personalkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "TV-Spot erreicht {c1} Tsd. Personen", "bedeutung": "{c1} × x₁"},
+      {"text": "Social-Media-Kampagne erreicht {c2} Tsd. Personen", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine Social-Media-Kampagne kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro TV-Spot und {a22} Stunden pro Social-Media-Kampagne", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Personalstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

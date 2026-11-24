@@ -1,0 +1,275 @@
+[
+  {
+    "titel": "Energiemix Solar, Wind und Biomasse",
+    "beschreibung": "Ein regionaler Energieversorger in Norddeutschland plant die Stromerzeugung aus drei erneuerbaren Quellen: Solaranlagen, Windkraftanlagen und Biomassekraftwerke. Ziel ist es, den Energiemix so zu gestalten, dass alle regulatorischen Anforderungen erfüllt werden und gleichzeitig die Kosten möglichst gering bleiben. Die Betriebskosten betragen 2€ pro MWh für Solarstrom, 12€ pro MWh für Windstrom und 4€ pro MWh für Biomassestrom. Für die Grundlastversorgung der Region müssen mindestens 1770 MWh Leistung bereitgestellt werden, um die Versorgungssicherheit zu gewährleisten. Dabei liefert jede MWh Solarstrom 2 MWh Grundlastleistung, jede MWh Windstrom 3 MWh Grundlastleistung und jede MWh Biomassestrom 6 MWh Grundlastleistung. Die Netzkapazität für die Spitzenlasteinspeisung ist auf höchstens 1639 MWh begrenzt, da die vorhandenen Transformatoren nicht mehr aufnehmen können. Jede MWh Solarstrom beansprucht 8 MWh Spitzenlasteinspeisung, jede MWh Windstrom 4 MWh Spitzenlasteinspeisung und jede MWh Biomassestrom 4 MWh Spitzenlasteinspeisung. Die Verfügbarkeit der Wärmeauskopplung beträgt höchstens 1067 MWh aufgrund technischer Beschränkungen der Anlagen. Jede MWh Solarstrom benötigt 2 MWh Wärmeauskopplung, jede MWh Windstrom 9 MWh Wärmeauskopplung und jede MWh Biomassestrom 1 MWh Wärmeauskopplung. Der Energieversorger möchte die Gesamtbetriebskosten minimieren und sucht den optimalen Erzeugungsmix.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Solaranlagen",
+      "x2 = MWh aus Windkraftanlagen",
+      "x3 = MWh aus Biomassekraftwerken"
+    ],
+    "zielfunktion": "Z = 2x1 + 12x2 + 4x3 (min)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 + 6x3 ≥ 1770 (Mindest-Grundlastleistung)",
+      "8x1 + 4x2 + 4x3 ≤ 1639 (Max-Spitzenlasteinspeisung)",
+      "2x1 + 9x2 + x3 ≤ 1067 (Max-Wärmeauskopplung)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Die Grundlast erfordert ≥ (Mindestanforderung), während Netzkapazität und Verfügbarkeit ≤ (Obergrenzen) erfordern.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "2€ pro MWh für Solarstrom",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "12€ pro MWh für Windstrom",
+          "bedeutung": "12 × x₂"
+        },
+        {
+          "text": "4€ pro MWh für Biomassestrom",
+          "bedeutung": "4 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Solarstrom 2 MWh Grundlastleistung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windstrom 3 MWh Grundlastleistung",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Biomassestrom 6 MWh Grundlastleistung",
+            "bedeutung": "+ 6x₃"
+          },
+          {
+            "text": "mindestens 1770 MWh Leistung",
+            "bedeutung": "≥ 1770"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom beansprucht 8 MWh Spitzenlasteinspeisung",
+            "bedeutung": "8x₁"
+          },
+          {
+            "text": "Windstrom 4 MWh Spitzenlasteinspeisung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "Biomassestrom 4 MWh Spitzenlasteinspeisung",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "höchstens 1639 MWh",
+            "bedeutung": "≤ 1639"
+          }
+        ],
+        [
+          {
+            "text": "Solarstrom benötigt 2 MWh Wärmeauskopplung",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Windstrom 9 MWh Wärmeauskopplung",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Biomassestrom 1 MWh Wärmeauskopplung",
+            "bedeutung": "+ 1x₃"
+          },
+          {
+            "text": "höchstens 1067 MWh",
+            "bedeutung": "≤ 1067"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Geothermie, Photovoltaik und Wasserkraft",
+    "beschreibung": "Ein kommunales Stadtwerk in Süddeutschland optimiert seinen Energiemix aus drei erneuerbaren Quellen: Geothermieanlagen, Photovoltaikanlagen und Wasserkraftwerke. Die Planungsabteilung hat die spezifischen Kosten und technischen Restriktionen der einzelnen Erzeugungsarten ermittelt und sucht den kostengünstigsten Mix. Die Kosten pro MWh betragen 11€ für Geothermie, 7€ für Photovoltaik und 15€ für Wasserkraft. Das Stadtwerk muss eine Mindesteinspeisung von 1049 MWh in das Versorgungsnetz sicherstellen, um den vertraglichen Lieferverpflichtungen nachzukommen. Jede MWh Geothermie liefert 5 MWh Netzeinspeisung, jede MWh Photovoltaik 4 MWh Netzeinspeisung und jede MWh Wasserkraft 4 MWh Netzeinspeisung. Die Transformatorkapazität ist auf höchstens 842 MWh begrenzt, da die Umspannwerke nicht weiter ausgebaut werden können. Jede MWh Geothermie beansprucht 12 MWh Transformatorkapazität, jede MWh Photovoltaik 3 MWh Transformatorkapazität und jede MWh Wasserkraft 3 MWh Transformatorkapazität. Die verfügbare Leitungskapazität beträgt höchstens 327 MWh durch die begrenzten Hochspannungsleitungen in der Region. Jede MWh Geothermie belegt 9 MWh Leitungskapazität, jede MWh Photovoltaik 1 MWh Leitungskapazität und jede MWh Wasserkraft 2 MWh Leitungskapazität. Das Stadtwerk möchte die Gesamtkosten minimieren.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Geothermieanlagen",
+      "x2 = MWh aus Photovoltaikanlagen",
+      "x3 = MWh aus Wasserkraftwerken"
+    ],
+    "zielfunktion": "Z = 11x1 + 7x2 + 15x3 (min)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 + 4x3 ≥ 1049 (Mindest-Netzeinspeisung)",
+      "12x1 + 3x2 + 3x3 ≤ 842 (Max-Transformatorkapazität)",
+      "9x1 + x2 + 2x3 ≤ 327 (Max-Leitungskapazität)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie, dass die Mindesteinspeisung eine ≥-Bedingung erfordert, während Transformator- und Leitungskapazität Obergrenzen mit ≤ darstellen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "11€ für Geothermie",
+          "bedeutung": "11 × x₁"
+        },
+        {
+          "text": "7€ für Photovoltaik",
+          "bedeutung": "7 × x₂"
+        },
+        {
+          "text": "15€ für Wasserkraft",
+          "bedeutung": "15 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Geothermie liefert 5 MWh Netzeinspeisung",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Photovoltaik 4 MWh Netzeinspeisung",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "Wasserkraft 4 MWh Netzeinspeisung",
+            "bedeutung": "+ 4x₃"
+          },
+          {
+            "text": "Mindesteinspeisung von 1049 MWh",
+            "bedeutung": "≥ 1049"
+          }
+        ],
+        [
+          {
+            "text": "Geothermie beansprucht 12 MWh Transformatorkapazität",
+            "bedeutung": "12x₁"
+          },
+          {
+            "text": "Photovoltaik 3 MWh Transformatorkapazität",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "Wasserkraft 3 MWh Transformatorkapazität",
+            "bedeutung": "+ 3x₃"
+          },
+          {
+            "text": "höchstens 842 MWh",
+            "bedeutung": "≤ 842"
+          }
+        ],
+        [
+          {
+            "text": "Geothermie belegt 9 MWh Leitungskapazität",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Photovoltaik 1 MWh Leitungskapazität",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "Wasserkraft 2 MWh Leitungskapazität",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "höchstens 327 MWh",
+            "bedeutung": "≤ 327"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Offshore-Wind, Onshore-Wind und Biomasse",
+    "beschreibung": "Ein Energiekonzern mit Standorten an der Nord- und Ostsee plant die Stromerzeugung aus drei Quellen: Offshore-Windkraft, Onshore-Windkraft und Biomassekraftwerken. Der Konzern möchte den Erzeugungsmix optimieren und dabei sowohl die Mindestversorgung sicherstellen als auch die technischen Grenzen der Infrastruktur einhalten. Die Erzeugungskosten betragen 8€ pro MWh für Offshore-Windstrom, 12€ pro MWh für Onshore-Windstrom und 13€ pro MWh für Biomassestrom. Um die Versorgungssicherheit zu gewährleisten, müssen mindestens 1411 MWh Grundlast erzeugt werden, da die Region auf eine zuverlässige Stromversorgung angewiesen ist. Jede MWh Offshore-Windstrom liefert 5 MWh Grundlast, jede MWh Onshore-Windstrom 2 MWh Grundlast und jede MWh Biomassestrom 7 MWh Grundlast. Die Netzkapazität für die Wechselrichterleistung ist auf höchstens 1862 MWh begrenzt, da die vorhandenen Anlagen nicht erweitert werden können. Jede MWh Offshore-Windstrom beansprucht 3 MWh Wechselrichterleistung, jede MWh Onshore-Windstrom 8 MWh Wechselrichterleistung und jede MWh Biomassestrom 1 MWh Wechselrichterleistung. Die Speicherkapazität im Netz beträgt höchstens 1725 MWh aufgrund der begrenzten Batteriespeicher. Jede MWh Offshore-Windstrom belegt 2 MWh Speicherkapazität, jede MWh Onshore-Windstrom 9 MWh Speicherkapazität und jede MWh Biomassestrom 2 MWh Speicherkapazität. Der Konzern möchte die Gesamterzeugungskosten minimieren.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = MWh aus Offshore-Windkraft",
+      "x2 = MWh aus Onshore-Windkraft",
+      "x3 = MWh aus Biomassekraftwerken"
+    ],
+    "zielfunktion": "Z = 8x1 + 12x2 + 13x3 (min)",
+    "nebenbedingungen": [
+      "5x1 + 2x2 + 7x3 ≥ 1411 (Mindest-Grundlast)",
+      "3x1 + 8x2 + x3 ≤ 1862 (Max-Wechselrichterleistung)",
+      "2x1 + 9x2 + 2x3 ≤ 1725 (Max-Speicherkapazität)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Die Grundlast ist eine Mindestanforderung (≥), während Wechselrichterleistung und Speicherkapazität Obergrenzen (≤) darstellen. Identifizieren Sie alle Koeffizienten sorgfältig aus dem Text.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "8€ pro MWh für Offshore-Windstrom",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "12€ pro MWh für Onshore-Windstrom",
+          "bedeutung": "12 × x₂"
+        },
+        {
+          "text": "13€ pro MWh für Biomassestrom",
+          "bedeutung": "13 × x₃"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Offshore-Windstrom liefert 5 MWh Grundlast",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Onshore-Windstrom 2 MWh Grundlast",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "Biomassestrom 7 MWh Grundlast",
+            "bedeutung": "+ 7x₃"
+          },
+          {
+            "text": "mindestens 1411 MWh Grundlast",
+            "bedeutung": "≥ 1411"
+          }
+        ],
+        [
+          {
+            "text": "Offshore-Windstrom beansprucht 3 MWh Wechselrichterleistung",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Onshore-Windstrom 8 MWh Wechselrichterleistung",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "Biomassestrom 1 MWh Wechselrichterleistung",
+            "bedeutung": "+ 1x₃"
+          },
+          {
+            "text": "höchstens 1862 MWh",
+            "bedeutung": "≤ 1862"
+          }
+        ],
+        [
+          {
+            "text": "Offshore-Windstrom belegt 2 MWh Speicherkapazität",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Onshore-Windstrom 9 MWh Speicherkapazität",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "Biomassestrom 2 MWh Speicherkapazität",
+            "bedeutung": "+ 2x₃"
+          },
+          {
+            "text": "höchstens 1725 MWh",
+            "bedeutung": "≤ 1725"
+          }
+        ]
+      ]
+    }
+  }
+]

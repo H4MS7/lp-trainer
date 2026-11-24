@@ -1,0 +1,668 @@
+[
+  {
+    "titel": "Reis und Linsen – Studentenbudget",
+    "beschreibung": "Ein Student plant seine tägliche Ernährung mit zwei Grundnahrungsmitteln: Reis (x1) und Linsen (x2). Eine Portion Reis kostet 3€ und enthält 8 g Protein sowie 2 g Ballaststoffe. Eine Portion Linsen kostet 12€ und enthält 8 g Protein sowie 4 g Ballaststoffe. Der Student benötigt täglich mindestens 131 g Protein und mindestens 1175 g Ballaststoffe. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Reis", "x2 = Anzahl Portionen Linsen"],
+    "zielfunktion": "Z = 3x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "8x1 + 8x2 ≥ 131 (Protein)",
+      "2x1 + 4x2 ≥ 1175 (Ballaststoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Reis und Linsen haben den gleichen Proteingehalt, unterscheiden sich aber bei den Ballaststoffen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Reis kostet 3€", "bedeutung": "3 × x₁"},
+        {"text": "Linsen kostet 12€", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 g Protein", "bedeutung": "8x₁ bzw. 8x₂"},
+          {"text": "mindestens 131 g Protein", "bedeutung": "≥ 131"}
+        ],
+        [
+          {"text": "2 g Ballaststoffe", "bedeutung": "2x₁"},
+          {"text": "4 g Ballaststoffe", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 1175 g Ballaststoffe", "bedeutung": "≥ 1175"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sportlerdiät – Wettkampfvorbereitung",
+    "beschreibung": "Eine Leistungssportlerin stellt ihren Ernährungsplan aus zwei Mahlzeiten zusammen: Mahlzeit A (x1) und Mahlzeit B (x2). Mahlzeit A kostet 1€ und liefert 14 g Protein, 14 g Kohlenhydrate, 1 g Vitamin-Mix sowie 1 g Mineralstoffe. Mahlzeit B kostet 9€ und liefert 3 g Protein, 2 g Kohlenhydrate, 9 g Vitamin-Mix sowie 1 g Mineralstoffe. Die Sportlerin benötigt pro Tag mindestens 94 g Protein und mindestens 1031 g Kohlenhydrate. Der Vitamin-Mix darf höchstens 1386 g betragen. Außerdem benötigt sie mindestens 1146 g Mineralstoffe. Die täglichen Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Mahlzeiten A", "x2 = Anzahl Mahlzeiten B"],
+    "zielfunktion": "Z = x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "14x1 + 3x2 ≥ 94 (Protein)",
+      "14x1 + 2x2 ≥ 1031 (Kohlenhydrate)",
+      "x1 + 9x2 ≤ 1386 (Vitamin-Mix)",
+      "x1 + x2 ≥ 1146 (Mineralstoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl Mindestanforderungen (≥) als auch eine Obergrenze (≤) beim Vitamin-Mix. Achte auf die unterschiedlichen Richtungen der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Mahlzeit A kostet 1€", "bedeutung": "1 × x₁"},
+        {"text": "Mahlzeit B kostet 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "14 g Protein", "bedeutung": "14x₁"},
+          {"text": "3 g Protein", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 94 g Protein", "bedeutung": "≥ 94"}
+        ],
+        [
+          {"text": "14 g Kohlenhydrate", "bedeutung": "14x₁"},
+          {"text": "2 g Kohlenhydrate", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 1031 g Kohlenhydrate", "bedeutung": "≥ 1031"}
+        ],
+        [
+          {"text": "1 g Vitamin-Mix", "bedeutung": "x₁"},
+          {"text": "9 g Vitamin-Mix", "bedeutung": "+ 9x₂"},
+          {"text": "höchstens 1386 g", "bedeutung": "≤ 1386"}
+        ],
+        [
+          {"text": "1 g Mineralstoffe", "bedeutung": "x₁"},
+          {"text": "mindestens 1146 g Mineralstoffe", "bedeutung": "≥ 1146"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kartoffeln und Hühnchen – Familienküche",
+    "beschreibung": "Eine Familie möchte ihren wöchentlichen Speiseplan kostengünstig gestalten und verwendet zwei Hauptzutaten: Kartoffeln (x1) und Hühnchen (x2). Eine Einheit Kartoffeln kostet 5€ und enthält 9 g Eiweiß sowie 11 g Eisen. Eine Einheit Hühnchen kostet 1€ und enthält 2 g Eiweiß sowie 6 g Eisen. Die Familie benötigt wöchentlich mindestens 1540 g Eiweiß und mindestens 1611 g Eisen. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Einheiten Kartoffeln", "x2 = Anzahl Einheiten Hühnchen"],
+    "zielfunktion": "Z = 5x1 + x2 (min)",
+    "nebenbedingungen": [
+      "9x1 + 2x2 ≥ 1540 (Eiweiß)",
+      "11x1 + 6x2 ≥ 1611 (Eisen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Kartoffeln liefern viel Eiweiß und Eisen, Hühnchen ist günstiger.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Kartoffeln kostet 5€", "bedeutung": "5 × x₁"},
+        {"text": "Hühnchen kostet 1€", "bedeutung": "1 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "9 g Eiweiß", "bedeutung": "9x₁"},
+          {"text": "2 g Eiweiß", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 1540 g Eiweiß", "bedeutung": "≥ 1540"}
+        ],
+        [
+          {"text": "11 g Eisen", "bedeutung": "11x₁"},
+          {"text": "6 g Eisen", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 1611 g Eisen", "bedeutung": "≥ 1611"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Tofu und Quinoa – Vegane Ernährung",
+    "beschreibung": "Ein veganes Restaurant plant seine tägliche Menüzusammenstellung mit zwei Zutaten: Tofu (x1) und Quinoa (x2). Eine Portion Tofu kostet 11€ und enthält 2 g Protein sowie 5 g Ballaststoffe. Eine Portion Quinoa kostet 6€ und enthält 10 g Protein sowie 3 g Ballaststoffe. Das Restaurant benötigt täglich mindestens 555 g Protein und mindestens 1520 g Ballaststoffe. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Tofu", "x2 = Anzahl Portionen Quinoa"],
+    "zielfunktion": "Z = 11x1 + 6x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 10x2 ≥ 555 (Protein)",
+      "5x1 + 3x2 ≥ 1520 (Ballaststoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Tofu ist proteinarm aber ballaststoffreich, Quinoa ist proteinreich aber ballaststoffärmer. Beide Nebenbedingungen sind Mindestanforderungen (≥).",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Tofu kostet 11€", "bedeutung": "11 × x₁"},
+        {"text": "Quinoa kostet 6€", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 g Protein", "bedeutung": "2x₁"},
+          {"text": "10 g Protein", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 555 g Protein", "bedeutung": "≥ 555"}
+        ],
+        [
+          {"text": "5 g Ballaststoffe", "bedeutung": "5x₁"},
+          {"text": "3 g Ballaststoffe", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 1520 g Ballaststoffe", "bedeutung": "≥ 1520"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Haferflocken und Eier – Frühstücksplan",
+    "beschreibung": "Eine Jugendherberge plant ihr Frühstücksangebot mit zwei Komponenten: Haferflocken (x1) und Eier (x2). Eine Portion Haferflocken kostet 5€ und enthält 5 g Protein sowie 4 g Calcium. Eine Portion Eier kostet 2€ und enthält 3 g Protein sowie 11 g Calcium. Die Herberge benötigt täglich mindestens 587 g Protein und mindestens 182 g Calcium. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Haferflocken", "x2 = Anzahl Portionen Eier"],
+    "zielfunktion": "Z = 5x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 3x2 ≥ 587 (Protein)",
+      "4x1 + 11x2 ≥ 182 (Calcium)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Haferflocken sind teurer aber proteinreicher, Eier sind günstiger und calciumreich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Haferflocken kostet 5€", "bedeutung": "5 × x₁"},
+        {"text": "Eier kostet 2€", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 g Protein", "bedeutung": "5x₁"},
+          {"text": "3 g Protein", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 587 g Protein", "bedeutung": "≥ 587"}
+        ],
+        [
+          {"text": "4 g Calcium", "bedeutung": "4x₁"},
+          {"text": "11 g Calcium", "bedeutung": "+ 11x₂"},
+          {"text": "mindestens 182 g Calcium", "bedeutung": "≥ 182"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brot und Käse – Kantinenverpflegung",
+    "beschreibung": "Eine Betriebskantine plant die tägliche Brotzeit mit zwei Zutaten: Brot (x1) und Käse (x2). Eine Einheit Brot kostet 1€ und enthält 1 g Eiweiß sowie 1 g Fett. Eine Einheit Käse kostet 8€ und enthält 8 g Eiweiß sowie 2 g Fett. Die Kantine benötigt täglich mindestens 565 g Eiweiß und mindestens 335 g Fett. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Einheiten Brot", "x2 = Anzahl Einheiten Käse"],
+    "zielfunktion": "Z = x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "x1 + 8x2 ≥ 565 (Eiweiß)",
+      "x1 + 2x2 ≥ 335 (Fett)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Die Zielfunktion hat die gleichen Koeffizienten wie die erste Nebenbedingung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Brot kostet 1€", "bedeutung": "1 × x₁"},
+        {"text": "Käse kostet 8€", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 g Eiweiß", "bedeutung": "x₁"},
+          {"text": "8 g Eiweiß", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 565 g Eiweiß", "bedeutung": "≥ 565"}
+        ],
+        [
+          {"text": "1 g Fett", "bedeutung": "x₁"},
+          {"text": "2 g Fett", "bedeutung": "+ 2x₂"},
+          {"text": "mindestens 335 g Fett", "bedeutung": "≥ 335"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nudeln und Gemüse – Günstige Mensa",
+    "beschreibung": "Eine Universitätsmensa plant ihr Mittagsmenü mit zwei Komponenten: Nudeln (x1) und Gemüse (x2). Eine Portion Nudeln kostet 8€ und enthält 4 g Kohlenhydrate sowie 7 g Vitamine. Eine Portion Gemüse kostet 2€ und enthält 3 g Kohlenhydrate sowie 12 g Vitamine. Die Mensa benötigt täglich mindestens 1895 g Kohlenhydrate und mindestens 1385 g Vitamine. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Nudeln", "x2 = Anzahl Portionen Gemüse"],
+    "zielfunktion": "Z = 8x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≥ 1895 (Kohlenhydrate)",
+      "7x1 + 12x2 ≥ 1385 (Vitamine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Nudeln sind teurer, Gemüse ist günstiger und vitaminreicher.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nudeln kostet 8€", "bedeutung": "8 × x₁"},
+        {"text": "Gemüse kostet 2€", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 g Kohlenhydrate", "bedeutung": "4x₁"},
+          {"text": "3 g Kohlenhydrate", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 1895 g Kohlenhydrate", "bedeutung": "≥ 1895"}
+        ],
+        [
+          {"text": "7 g Vitamine", "bedeutung": "7x₁"},
+          {"text": "12 g Vitamine", "bedeutung": "+ 12x₂"},
+          {"text": "mindestens 1385 g Vitamine", "bedeutung": "≥ 1385"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Astronautennahrung – Raumstation",
+    "beschreibung": "Auf einer Raumstation werden zwei Nahrungsriegel verwendet: Riegel Alpha (x1) und Riegel Beta (x2). Riegel Alpha kostet 11€ und enthält 1 g Protein sowie 3 g Energiekonzentrat. Riegel Beta kostet 2€ und enthält 12 g Protein sowie 5 g Energiekonzentrat. Die Astronauten benötigen täglich mindestens 1375 g Protein und mindestens 1482 g Energiekonzentrat. Die Versorgungskosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Riegel Alpha", "x2 = Anzahl Riegel Beta"],
+    "zielfunktion": "Z = 11x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "x1 + 12x2 ≥ 1375 (Protein)",
+      "3x1 + 5x2 ≥ 1482 (Energiekonzentrat)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Riegel Alpha ist teuer aber energiereich, Riegel Beta ist günstig und proteinreich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Riegel Alpha kostet 11€", "bedeutung": "11 × x₁"},
+        {"text": "Riegel Beta kostet 2€", "bedeutung": "2 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 g Protein", "bedeutung": "x₁"},
+          {"text": "12 g Protein", "bedeutung": "+ 12x₂"},
+          {"text": "mindestens 1375 g Protein", "bedeutung": "≥ 1375"}
+        ],
+        [
+          {"text": "3 g Energiekonzentrat", "bedeutung": "3x₁"},
+          {"text": "5 g Energiekonzentrat", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 1482 g Energiekonzentrat", "bedeutung": "≥ 1482"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankenhausessen – Patientenversorgung",
+    "beschreibung": "Ein Krankenhaus plant die Patientenernährung mit zwei Mahlzeitentypen: Schonkost (x1) und Vollkost (x2). Eine Portion Schonkost kostet 1€ und enthält 2 g Protein sowie 4 g Kalorien. Eine Portion Vollkost kostet 9€ und enthält 6 g Protein sowie 14 g Kalorien. Das Krankenhaus benötigt täglich mindestens 239 g Protein und mindestens 1334 g Kalorien. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Schonkost", "x2 = Anzahl Portionen Vollkost"],
+    "zielfunktion": "Z = x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 6x2 ≥ 239 (Protein)",
+      "4x1 + 14x2 ≥ 1334 (Kalorien)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Schonkost ist günstig, Vollkost ist teurer aber nährstoffreicher.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schonkost kostet 1€", "bedeutung": "1 × x₁"},
+        {"text": "Vollkost kostet 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 g Protein", "bedeutung": "2x₁"},
+          {"text": "6 g Protein", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 239 g Protein", "bedeutung": "≥ 239"}
+        ],
+        [
+          {"text": "4 g Kalorien", "bedeutung": "4x₁"},
+          {"text": "14 g Kalorien", "bedeutung": "+ 14x₂"},
+          {"text": "mindestens 1334 g Kalorien", "bedeutung": "≥ 1334"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schulkantine – Mittagsversorgung",
+    "beschreibung": "Eine Schulkantine stellt das Mittagessen aus zwei Gerichten zusammen: Gericht A (x1) und Gericht B (x2). Gericht A kostet 8€ und enthält 2 g Eiweiß sowie 9 g Kohlenhydrate. Gericht B kostet 1€ und enthält 7 g Eiweiß sowie 3 g Kohlenhydrate. Die Kantine muss pro Tag mindestens 212 g Eiweiß und mindestens 860 g Kohlenhydrate bereitstellen. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Gerichte A", "x2 = Anzahl Gerichte B"],
+    "zielfunktion": "Z = 8x1 + x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 7x2 ≥ 212 (Eiweiß)",
+      "9x1 + 3x2 ≥ 860 (Kohlenhydrate)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Gericht A ist teuer und kohlenhydratreich, Gericht B ist günstig und eiweißreich.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gericht A kostet 8€", "bedeutung": "8 × x₁"},
+        {"text": "Gericht B kostet 1€", "bedeutung": "1 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 g Eiweiß", "bedeutung": "2x₁"},
+          {"text": "7 g Eiweiß", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 212 g Eiweiß", "bedeutung": "≥ 212"}
+        ],
+        [
+          {"text": "9 g Kohlenhydrate", "bedeutung": "9x₁"},
+          {"text": "3 g Kohlenhydrate", "bedeutung": "+ 3x₂"},
+          {"text": "mindestens 860 g Kohlenhydrate", "bedeutung": "≥ 860"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Reis und Linsen – Wohngemeinschaft",
+    "beschreibung": "Eine Wohngemeinschaft plant ihren wöchentlichen Einkauf mit zwei Lebensmitteln: Reis (x1) und Linsen (x2). Eine Packung Reis kostet 3€ und enthält 4 g Eiweiß sowie 4 g Ballaststoffe. Eine Packung Linsen kostet 12€ und enthält 10 g Eiweiß sowie 11 g Ballaststoffe. Die WG benötigt wöchentlich mindestens 1029 g Eiweiß und mindestens 1201 g Ballaststoffe. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Packungen Reis", "x2 = Anzahl Packungen Linsen"],
+    "zielfunktion": "Z = 3x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 10x2 ≥ 1029 (Eiweiß)",
+      "4x1 + 11x2 ≥ 1201 (Ballaststoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Linsen sind teurer, liefern aber mehr Eiweiß und Ballaststoffe pro Packung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Reis kostet 3€", "bedeutung": "3 × x₁"},
+        {"text": "Linsen kostet 12€", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 g Eiweiß", "bedeutung": "4x₁"},
+          {"text": "10 g Eiweiß", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 1029 g Eiweiß", "bedeutung": "≥ 1029"}
+        ],
+        [
+          {"text": "4 g Ballaststoffe", "bedeutung": "4x₁"},
+          {"text": "11 g Ballaststoffe", "bedeutung": "+ 11x₂"},
+          {"text": "mindestens 1201 g Ballaststoffe", "bedeutung": "≥ 1201"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Tofu und Quinoa – Fitnessstudio",
+    "beschreibung": "Ein Fitnessstudio bietet seinen Mitgliedern zwei Snacks an: Tofu-Riegel (x1) und Quinoa-Bowl (x2). Ein Tofu-Riegel kostet 4€ und enthält 6 g Protein sowie 15 g Kohlenhydrate. Eine Quinoa-Bowl kostet 9€ und enthält 9 g Protein sowie 5 g Kohlenhydrate. Das Studio muss täglich mindestens 803 g Protein und mindestens 472 g Kohlenhydrate bereitstellen. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Tofu-Riegel", "x2 = Anzahl Quinoa-Bowls"],
+    "zielfunktion": "Z = 4x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 9x2 ≥ 803 (Protein)",
+      "15x1 + 5x2 ≥ 472 (Kohlenhydrate)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Tofu-Riegel sind günstiger und kohlenhydratreicher, Quinoa-Bowls sind teurer und proteinreicher.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Tofu-Riegel kostet 4€", "bedeutung": "4 × x₁"},
+        {"text": "Quinoa-Bowl kostet 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 g Protein", "bedeutung": "6x₁"},
+          {"text": "9 g Protein", "bedeutung": "+ 9x₂"},
+          {"text": "mindestens 803 g Protein", "bedeutung": "≥ 803"}
+        ],
+        [
+          {"text": "15 g Kohlenhydrate", "bedeutung": "15x₁"},
+          {"text": "5 g Kohlenhydrate", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 472 g Kohlenhydrate", "bedeutung": "≥ 472"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Krankenhausessen – Seniorenstation",
+    "beschreibung": "Die Seniorenstation eines Krankenhauses plant die Ernährung mit zwei Menüs: Menü Leicht (x1) und Menü Kräftig (x2). Menü Leicht kostet 12€ und enthält 13 g Calcium sowie 4 g Eisen. Menü Kräftig kostet 9€ und enthält 8 g Calcium sowie 1 g Eisen. Die Station benötigt täglich mindestens 484 g Calcium und mindestens 780 g Eisen. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Menü Leicht", "x2 = Anzahl Menü Kräftig"],
+    "zielfunktion": "Z = 12x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "13x1 + 8x2 ≥ 484 (Calcium)",
+      "4x1 + x2 ≥ 780 (Eisen)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Menü Leicht liefert mehr Calcium und Eisen, ist aber auch teurer.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Menü Leicht kostet 12€", "bedeutung": "12 × x₁"},
+        {"text": "Menü Kräftig kostet 9€", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "13 g Calcium", "bedeutung": "13x₁"},
+          {"text": "8 g Calcium", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 484 g Calcium", "bedeutung": "≥ 484"}
+        ],
+        [
+          {"text": "4 g Eisen", "bedeutung": "4x₁"},
+          {"text": "1 g Eisen", "bedeutung": "+ x₂"},
+          {"text": "mindestens 780 g Eisen", "bedeutung": "≥ 780"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Haferflocken und Eier – Kinderheim",
+    "beschreibung": "Ein Kinderheim plant das Frühstück mit zwei Nahrungsmitteln: Haferflocken (x1) und Eier (x2). Eine Portion Haferflocken kostet 4€ und enthält 5 g Protein sowie 12 g Kohlenhydrate. Eine Portion Eier kostet 7€ und enthält 7 g Protein sowie 8 g Kohlenhydrate. Das Heim benötigt täglich mindestens 394 g Protein und mindestens 210 g Kohlenhydrate. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Haferflocken", "x2 = Anzahl Portionen Eier"],
+    "zielfunktion": "Z = 4x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 7x2 ≥ 394 (Protein)",
+      "12x1 + 8x2 ≥ 210 (Kohlenhydrate)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Haferflocken sind günstiger und kohlenhydratreicher, Eier liefern mehr Protein pro Portion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Haferflocken kostet 4€", "bedeutung": "4 × x₁"},
+        {"text": "Eier kostet 7€", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 g Protein", "bedeutung": "5x₁"},
+          {"text": "7 g Protein", "bedeutung": "+ 7x₂"},
+          {"text": "mindestens 394 g Protein", "bedeutung": "≥ 394"}
+        ],
+        [
+          {"text": "12 g Kohlenhydrate", "bedeutung": "12x₁"},
+          {"text": "8 g Kohlenhydrate", "bedeutung": "+ 8x₂"},
+          {"text": "mindestens 210 g Kohlenhydrate", "bedeutung": "≥ 210"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brot und Käse – Ernährungsberatung",
+    "beschreibung": "Eine Ernährungsberaterin stellt einen Plan mit zwei Lebensmitteln zusammen: Brot (x1) und Käse (x2). Eine Einheit Brot kostet 2€ und enthält 13 g Protein, 3 g Fett sowie 2 g Vitamine. Eine Einheit Käse kostet 3€ und enthält 4 g Protein, 5 g Fett sowie 2 g Vitamine. Der Patient benötigt täglich mindestens 291 g Protein und mindestens 1649 g Fett. Die Vitaminzufuhr darf höchstens 1682 g betragen. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Einheiten Brot", "x2 = Anzahl Einheiten Käse"],
+    "zielfunktion": "Z = 2x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "13x1 + 4x2 ≥ 291 (Protein)",
+      "3x1 + 5x2 ≥ 1649 (Fett)",
+      "2x1 + 2x2 ≤ 1682 (Vitamine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl Mindestanforderungen (≥) als auch eine Obergrenze (≤) bei den Vitaminen. Achte auf die unterschiedlichen Richtungen der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Brot kostet 2€", "bedeutung": "2 × x₁"},
+        {"text": "Käse kostet 3€", "bedeutung": "3 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "13 g Protein", "bedeutung": "13x₁"},
+          {"text": "4 g Protein", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 291 g Protein", "bedeutung": "≥ 291"}
+        ],
+        [
+          {"text": "3 g Fett", "bedeutung": "3x₁"},
+          {"text": "5 g Fett", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 1649 g Fett", "bedeutung": "≥ 1649"}
+        ],
+        [
+          {"text": "2 g Vitamine", "bedeutung": "2x₁ bzw. 2x₂"},
+          {"text": "höchstens 1682 g", "bedeutung": "≤ 1682"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Nudeln und Gemüse – Catering-Service",
+    "beschreibung": "Ein Catering-Service plant Mahlzeiten mit zwei Komponenten: Nudeln (x1) und Gemüse (x2). Eine Portion Nudeln kostet 2€ und enthält 15 g Kohlenhydrate sowie 5 g Vitamine. Eine Portion Gemüse kostet 12€ und enthält 4 g Kohlenhydrate sowie 14 g Vitamine. Der Service benötigt täglich mindestens 1313 g Kohlenhydrate und mindestens 1864 g Vitamine. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Nudeln", "x2 = Anzahl Portionen Gemüse"],
+    "zielfunktion": "Z = 2x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "15x1 + 4x2 ≥ 1313 (Kohlenhydrate)",
+      "5x1 + 14x2 ≥ 1864 (Vitamine)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Nudeln sind günstig und kohlenhydratreich, Gemüse ist teurer aber vitaminreicher.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nudeln kostet 2€", "bedeutung": "2 × x₁"},
+        {"text": "Gemüse kostet 12€", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "15 g Kohlenhydrate", "bedeutung": "15x₁"},
+          {"text": "4 g Kohlenhydrate", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 1313 g Kohlenhydrate", "bedeutung": "≥ 1313"}
+        ],
+        [
+          {"text": "5 g Vitamine", "bedeutung": "5x₁"},
+          {"text": "14 g Vitamine", "bedeutung": "+ 14x₂"},
+          {"text": "mindestens 1864 g Vitamine", "bedeutung": "≥ 1864"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Kartoffeln und Hühnchen – Sportlercamp",
+    "beschreibung": "Ein Sportlercamp plant die tägliche Ernährung mit zwei Gerichten: Kartoffelgericht (x1) und Hühnchengericht (x2). Ein Kartoffelgericht kostet 1€ und enthält 6 g Protein sowie 5 g Kohlenhydrate. Ein Hühnchengericht kostet 5€ und enthält 10 g Protein sowie 9 g Kohlenhydrate. Das Camp benötigt täglich mindestens 390 g Protein und mindestens 1656 g Kohlenhydrate. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Kartoffelgerichte", "x2 = Anzahl Hühnchengerichte"],
+    "zielfunktion": "Z = x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 10x2 ≥ 390 (Protein)",
+      "5x1 + 9x2 ≥ 1656 (Kohlenhydrate)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Das Kartoffelgericht ist sehr günstig, das Hühnchengericht liefert aber mehr Nährstoffe.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Kartoffelgericht kostet 1€", "bedeutung": "1 × x₁"},
+        {"text": "Hühnchengericht kostet 5€", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "6 g Protein", "bedeutung": "6x₁"},
+          {"text": "10 g Protein", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 390 g Protein", "bedeutung": "≥ 390"}
+        ],
+        [
+          {"text": "5 g Kohlenhydrate", "bedeutung": "5x₁"},
+          {"text": "9 g Kohlenhydrate", "bedeutung": "+ 9x₂"},
+          {"text": "mindestens 1656 g Kohlenhydrate", "bedeutung": "≥ 1656"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Astronautennahrung – Marsexpedition",
+    "beschreibung": "Für eine Marsexpedition werden zwei Nahrungspakettypen geplant: Paket Standard (x1) und Paket Premium (x2). Paket Standard kostet 2€ und enthält 5 g Protein, 13 g Kohlenhydrate, 7 g Fett sowie 6 g Mineralstoffe. Paket Premium kostet 7€ und enthält 4 g Protein, 13 g Kohlenhydrate, 2 g Fett sowie 13 g Mineralstoffe. Die Astronauten benötigen mindestens 1132 g Protein und mindestens 1065 g Kohlenhydrate. Die Fettzufuhr darf höchstens 1704 g betragen. Außerdem benötigen sie mindestens 777 g Mineralstoffe. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Pakete Standard", "x2 = Anzahl Pakete Premium"],
+    "zielfunktion": "Z = 2x1 + 7x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 4x2 ≥ 1132 (Protein)",
+      "13x1 + 13x2 ≥ 1065 (Kohlenhydrate)",
+      "7x1 + 2x2 ≤ 1704 (Fett)",
+      "6x1 + 13x2 ≥ 777 (Mineralstoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es drei Mindestanforderungen (≥) und eine Obergrenze (≤) beim Fett. Die Kohlenhydrate haben gleiche Koeffizienten in beiden Paketen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Paket Standard kostet 2€", "bedeutung": "2 × x₁"},
+        {"text": "Paket Premium kostet 7€", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 g Protein", "bedeutung": "5x₁"},
+          {"text": "4 g Protein", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 1132 g Protein", "bedeutung": "≥ 1132"}
+        ],
+        [
+          {"text": "13 g Kohlenhydrate", "bedeutung": "13x₁ bzw. 13x₂"},
+          {"text": "mindestens 1065 g Kohlenhydrate", "bedeutung": "≥ 1065"}
+        ],
+        [
+          {"text": "7 g Fett", "bedeutung": "7x₁"},
+          {"text": "2 g Fett", "bedeutung": "+ 2x₂"},
+          {"text": "höchstens 1704 g", "bedeutung": "≤ 1704"}
+        ],
+        [
+          {"text": "6 g Mineralstoffe", "bedeutung": "6x₁"},
+          {"text": "13 g Mineralstoffe", "bedeutung": "+ 13x₂"},
+          {"text": "mindestens 777 g Mineralstoffe", "bedeutung": "≥ 777"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Sportlerdiät – Trainingscamp",
+    "beschreibung": "Ein Trainingscamp plant die Verpflegung mit zwei Mahlzeiten: Power-Shake (x1) und Energiebowl (x2). Ein Power-Shake kostet 4€ und enthält 5 g Protein sowie 15 g Kohlenhydrate. Eine Energiebowl kostet 12€ und enthält 12 g Protein sowie 10 g Kohlenhydrate. Das Camp benötigt täglich mindestens 1955 g Protein und mindestens 1954 g Kohlenhydrate. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Power-Shakes", "x2 = Anzahl Energiebowls"],
+    "zielfunktion": "Z = 4x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 12x2 ≥ 1955 (Protein)",
+      "15x1 + 10x2 ≥ 1954 (Kohlenhydrate)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Der Power-Shake ist günstiger und kohlenhydratreicher, die Energiebowl ist proteinreicher.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Power-Shake kostet 4€", "bedeutung": "4 × x₁"},
+        {"text": "Energiebowl kostet 12€", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 g Protein", "bedeutung": "5x₁"},
+          {"text": "12 g Protein", "bedeutung": "+ 12x₂"},
+          {"text": "mindestens 1955 g Protein", "bedeutung": "≥ 1955"}
+        ],
+        [
+          {"text": "15 g Kohlenhydrate", "bedeutung": "15x₁"},
+          {"text": "10 g Kohlenhydrate", "bedeutung": "+ 10x₂"},
+          {"text": "mindestens 1954 g Kohlenhydrate", "bedeutung": "≥ 1954"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schulkantine – Wochenplanung",
+    "beschreibung": "Eine Schulkantine plant das Wochenmenü mit zwei Gerichten: Vollkornpasta (x1) und Gemüsepfanne (x2). Eine Portion Vollkornpasta kostet 12€ und enthält 1 g Eiweiß sowie 1 g Ballaststoffe. Eine Portion Gemüsepfanne kostet 11€ und enthält 6 g Eiweiß sowie 13 g Ballaststoffe. Die Kantine benötigt wöchentlich mindestens 1601 g Eiweiß und mindestens 1052 g Ballaststoffe. Die Kosten sollen minimiert werden.",
+    "typ": "Diätproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Portionen Vollkornpasta", "x2 = Anzahl Portionen Gemüsepfanne"],
+    "zielfunktion": "Z = 12x1 + 11x2 (min)",
+    "nebenbedingungen": [
+      "x1 + 6x2 ≥ 1601 (Eiweiß)",
+      "x1 + 13x2 ≥ 1052 (Ballaststoffe)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beide Nebenbedingungen sind Mindestanforderungen (≥). Beide Gerichte haben ähnliche Kosten, aber die Gemüsepfanne liefert deutlich mehr Eiweiß und Ballaststoffe.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Vollkornpasta kostet 12€", "bedeutung": "12 × x₁"},
+        {"text": "Gemüsepfanne kostet 11€", "bedeutung": "11 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 g Eiweiß", "bedeutung": "x₁"},
+          {"text": "6 g Eiweiß", "bedeutung": "+ 6x₂"},
+          {"text": "mindestens 1601 g Eiweiß", "bedeutung": "≥ 1601"}
+        ],
+        [
+          {"text": "1 g Ballaststoffe", "bedeutung": "x₁"},
+          {"text": "13 g Ballaststoffe", "bedeutung": "+ 13x₂"},
+          {"text": "mindestens 1052 g Ballaststoffe", "bedeutung": "≥ 1052"}
+        ]
+      ]
+    }
+  }
+]

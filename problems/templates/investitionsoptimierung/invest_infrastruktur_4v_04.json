@@ -1,0 +1,299 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "id": "invest_infrastruktur_4v_04",
+  "titel": "Infrastruktur – Strassen, Schienen, Hafen und Flughafen",
+  "variablen": [
+    "x1 = Investment Strassen (Tsd. EUR)",
+    "x2 = Investment Schienen (Tsd. EUR)",
+    "x3 = Investment Hafen (Tsd. EUR)",
+    "x4 = Investment Flughafen (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Investitionsbudget",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Umweltbelastung",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Baukapazitaet",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Genehmigungen",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44"
+      ],
+      "rhs": "b4"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 8,
+      "label": "Nutzen Strassen"
+    },
+    "c2": {
+      "min": 5,
+      "max": 11,
+      "label": "Nutzen Schienen"
+    },
+    "c3": {
+      "min": 4,
+      "max": 9,
+      "label": "Nutzen Hafen"
+    },
+    "c4": {
+      "min": 6,
+      "max": 12,
+      "label": "Nutzen Flughafen"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Strassen"
+    },
+    "a12": {
+      "min": 2,
+      "max": 5,
+      "label": "Kosten Schienen"
+    },
+    "a13": {
+      "min": 2,
+      "max": 4,
+      "label": "Kosten Hafen"
+    },
+    "a14": {
+      "min": 3,
+      "max": 6,
+      "label": "Kosten Flughafen"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Budget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Umwelt Strassen"
+    },
+    "a22": {
+      "min": 1,
+      "max": 3,
+      "label": "Umwelt Schienen"
+    },
+    "a23": {
+      "min": 2,
+      "max": 5,
+      "label": "Umwelt Hafen"
+    },
+    "a24": {
+      "min": 4,
+      "max": 10,
+      "label": "Umwelt Flughafen"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Umweltbelastung"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Bau Strassen"
+    },
+    "a32": {
+      "min": 3,
+      "max": 7,
+      "label": "Bau Schienen"
+    },
+    "a33": {
+      "min": 2,
+      "max": 6,
+      "label": "Bau Hafen"
+    },
+    "a34": {
+      "min": 3,
+      "max": 8,
+      "label": "Bau Flughafen"
+    },
+    "b3": {
+      "min": 80,
+      "max": 300,
+      "label": "Max. Baukapazitaet"
+    },
+    "a41": {
+      "min": 1,
+      "max": 3,
+      "label": "Genehmigung Strassen"
+    },
+    "a42": {
+      "min": 2,
+      "max": 5,
+      "label": "Genehmigung Schienen"
+    },
+    "a43": {
+      "min": 2,
+      "max": 4,
+      "label": "Genehmigung Hafen"
+    },
+    "a44": {
+      "min": 3,
+      "max": 8,
+      "label": "Genehmigung Flughafen"
+    },
+    "b4": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Genehmigungen"
+    }
+  },
+  "beschreibung": "Eine Regierung plant Infrastrukturinvestitionen. Strassen bringen {c1} Nutzenpunkte, Schienen {c2}, Hafen {c3} und Flughafen {c4}. Die Kosten betragen {a11} Einheiten fuer Strassen, {a12} fuer Schienen, {a13} fuer Hafen und {a14} fuer Flughafen bei einem Budget von {b1} Tausend Euro. Die Umweltbelastung liegt bei {a21} Einheiten fuer Strassen, {a22} fuer Schienen, {a23} fuer Hafen und {a24} fuer Flughafen bei maximal {b2} Umwelteinheiten. Die Baukapazitaet erfordert {a31} Einheiten fuer Strassen, {a32} fuer Schienen, {a33} fuer Hafen und {a34} fuer Flughafen bei maximal {b3} Baueinheiten. Die Genehmigungen betragen {a41} Einheiten fuer Strassen, {a42} fuer Schienen, {a43} fuer Hafen und {a44} fuer Flughafen bei maximal {b4} Genehmigungseinheiten.",
+  "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Budget, Umwelt, Baukapazitaet und Genehmigungen.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Strassen bringen {c1} Nutzenpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Schienen {c2}",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Hafen {c3}",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "Flughafen {c4}",
+        "bedeutung": "{c4} × x₄"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Strassen",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Schienen",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Hafen",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer Flughafen",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Strassen",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Schienen",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Hafen",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer Flughafen",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{b2} Umwelteinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Strassen",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Schienen",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Hafen",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer Flughafen",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{b3} Baueinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Strassen",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Schienen",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Hafen",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer Flughafen",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{b4} Genehmigungseinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ]
+    ]
+  }
+}

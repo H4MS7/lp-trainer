@@ -1,0 +1,54 @@
+{
+  "id": "energie_wasser_geo_pv_3v_02",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh Wasserkraft", "x2 = MWh Geothermie", "x3 = MWh Photovoltaik"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Flächennutzung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestanteil grundlastfähig", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 20, "max": 55, "label": "Kosten Wasserkraft (€/MWh)"},
+    "c2":  {"min": 45, "max": 110, "label": "Kosten Geothermie (€/MWh)"},
+    "c3":  {"min": 30, "max": 75, "label": "Kosten Photovoltaik (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Leistung Wasserkraft (MW/MWh)"},
+    "a12": {"min": 2, "max": 6, "label": "Leistung Geothermie (MW/MWh)"},
+    "a13": {"min": 1, "max": 4, "label": "Leistung Photovoltaik (MW/MWh)"},
+    "b1":  {"min": 50, "max": 200, "label": "Mindestleistung (MW)"},
+    "a21": {"min": 2, "max": 5, "label": "Fläche Wasserkraft (ha/MWh)"},
+    "a22": {"min": 1, "max": 3, "label": "Fläche Geothermie (ha/MWh)"},
+    "a23": {"min": 3, "max": 7, "label": "Fläche Photovoltaik (ha/MWh)"},
+    "b2":  {"min": 40, "max": 180, "label": "Maximale Fläche (ha)"},
+    "a31": {"min": 3, "max": 6, "label": "Grundlast Wasserkraft (MW/MWh)"},
+    "a32": {"min": 3, "max": 6, "label": "Grundlast Geothermie (MW/MWh)"},
+    "a33": {"min": 1, "max": 2, "label": "Grundlast Photovoltaik (MW/MWh)"},
+    "b3":  {"min": 30, "max": 120, "label": "Mindestanteil grundlastfähig (MW)"}
+  },
+  "titel": "Energiemix – Wasser, Geothermie und PV",
+  "beschreibung": "Ein Versorgungsunternehmen plant den Strommix aus Wasserkraft, Geothermie und Photovoltaik. Wasserkraft kostet {c1} € pro MWh, Geothermie kostet {c2} € pro MWh und Photovoltaik kostet {c3} € pro MWh. Wasserkraft liefert {a11} MW pro MWh, Geothermie liefert {a12} MW pro MWh und Photovoltaik liefert {a13} MW pro MWh. Mindestens {b1} MW Leistung müssen bereitgestellt werden. Die Flächennutzung beträgt {a21} ha pro MWh Wasserkraft, {a22} ha pro MWh Geothermie und {a23} ha pro MWh Photovoltaik. Maximal {b2} ha Fläche stehen zur Verfügung. Die Grundlastfähigkeit beträgt {a31} MW pro MWh Wasserkraft, {a32} MW pro MWh Geothermie und {a33} MW pro MWh Photovoltaik. Mindestens {b3} MW grundlastfähige Leistung werden benötigt.",
+  "hinweis": "Minimiere die Energiekosten bei Einhaltung von Mindestleistung, Flächenbegrenzung und Grundlastanforderung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wasserkraft kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Geothermie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Photovoltaik kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW pro MWh, Geothermie liefert {a12} MW pro MWh und Photovoltaik liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Leistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} ha pro MWh Wasserkraft, {a22} ha pro MWh Geothermie und {a23} ha pro MWh Photovoltaik", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} ha Fläche stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} MW pro MWh Wasserkraft, {a32} MW pro MWh Geothermie und {a33} MW pro MWh Photovoltaik", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} MW grundlastfähige Leistung werden benötigt", "bedeutung": "≥ {b3}"}
+      ]
+    ]
+  }
+}

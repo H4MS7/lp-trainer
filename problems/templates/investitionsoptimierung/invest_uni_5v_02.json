@@ -1,0 +1,418 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "id": "invest_uni_5v_02",
+  "titel": "Universitaetsstiftung – Forschung, Lehre, Bibliothek, IT und Stipendien",
+  "variablen": [
+    "x1 = Budget Forschung (Tsd. EUR)",
+    "x2 = Budget Lehre (Tsd. EUR)",
+    "x3 = Budget Bibliothek (Tsd. EUR)",
+    "x4 = Budget IT (Tsd. EUR)",
+    "x5 = Budget Stipendien (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3",
+    "c4",
+    "c5"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Stiftungskapital",
+      "row": [
+        "a11",
+        "a12",
+        "a13",
+        "a14",
+        "a15"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Personalressourcen",
+      "row": [
+        "a21",
+        "a22",
+        "a23",
+        "a24",
+        "a25"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Raumkapazitaet",
+      "row": [
+        "a31",
+        "a32",
+        "a33",
+        "a34",
+        "a35"
+      ],
+      "rhs": "b3"
+    },
+    {
+      "type": "<=",
+      "label": "Verwaltungsaufwand",
+      "row": [
+        "a41",
+        "a42",
+        "a43",
+        "a44",
+        "a45"
+      ],
+      "rhs": "b4"
+    },
+    {
+      "type": "<=",
+      "label": "Zeitbudget",
+      "row": [
+        "a51",
+        "a52",
+        "a53",
+        "a54",
+        "a55"
+      ],
+      "rhs": "b5"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Nutzen Forschung"
+    },
+    "c2": {
+      "min": 4,
+      "max": 9,
+      "label": "Nutzen Lehre"
+    },
+    "c3": {
+      "min": 2,
+      "max": 6,
+      "label": "Nutzen Bibliothek"
+    },
+    "c4": {
+      "min": 3,
+      "max": 8,
+      "label": "Nutzen IT"
+    },
+    "c5": {
+      "min": 4,
+      "max": 10,
+      "label": "Nutzen Stipendien"
+    },
+    "a11": {
+      "min": 2,
+      "max": 5,
+      "label": "Kosten Forschung"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Lehre"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Kosten Bibliothek"
+    },
+    "a14": {
+      "min": 1,
+      "max": 4,
+      "label": "Kosten IT"
+    },
+    "a15": {
+      "min": 1,
+      "max": 2,
+      "label": "Kosten Stipendien"
+    },
+    "b1": {
+      "min": 150,
+      "max": 500,
+      "label": "Stiftungskapital (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 7,
+      "label": "Personal Forschung"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Personal Lehre"
+    },
+    "a23": {
+      "min": 1,
+      "max": 3,
+      "label": "Personal Bibliothek"
+    },
+    "a24": {
+      "min": 2,
+      "max": 4,
+      "label": "Personal IT"
+    },
+    "a25": {
+      "min": 1,
+      "max": 2,
+      "label": "Personal Stipendien"
+    },
+    "b2": {
+      "min": 80,
+      "max": 300,
+      "label": "Max. Personaleinheiten"
+    },
+    "a31": {
+      "min": 2,
+      "max": 5,
+      "label": "Raum Forschung"
+    },
+    "a32": {
+      "min": 3,
+      "max": 7,
+      "label": "Raum Lehre"
+    },
+    "a33": {
+      "min": 2,
+      "max": 4,
+      "label": "Raum Bibliothek"
+    },
+    "a34": {
+      "min": 1,
+      "max": 3,
+      "label": "Raum IT"
+    },
+    "a35": {
+      "min": 1,
+      "max": 2,
+      "label": "Raum Stipendien"
+    },
+    "b3": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Raumeinheiten"
+    },
+    "a41": {
+      "min": 2,
+      "max": 4,
+      "label": "Verwaltung Forschung"
+    },
+    "a42": {
+      "min": 1,
+      "max": 3,
+      "label": "Verwaltung Lehre"
+    },
+    "a43": {
+      "min": 1,
+      "max": 2,
+      "label": "Verwaltung Bibliothek"
+    },
+    "a44": {
+      "min": 2,
+      "max": 5,
+      "label": "Verwaltung IT"
+    },
+    "a45": {
+      "min": 1,
+      "max": 3,
+      "label": "Verwaltung Stipendien"
+    },
+    "b4": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Verwaltungseinheiten"
+    },
+    "a51": {
+      "min": 3,
+      "max": 6,
+      "label": "Zeit Forschung"
+    },
+    "a52": {
+      "min": 2,
+      "max": 5,
+      "label": "Zeit Lehre"
+    },
+    "a53": {
+      "min": 1,
+      "max": 3,
+      "label": "Zeit Bibliothek"
+    },
+    "a54": {
+      "min": 2,
+      "max": 4,
+      "label": "Zeit IT"
+    },
+    "a55": {
+      "min": 1,
+      "max": 3,
+      "label": "Zeit Stipendien"
+    },
+    "b5": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Zeitbudget"
+    }
+  },
+  "beschreibung": "Eine Universitaetsstiftung verteilt Mittel auf fuenf Bereiche. Forschung erzielt {c1} Nutzenpunkte, Lehre {c2}, Bibliothek {c3}, IT {c4} und Stipendien {c5}. Die Kosten betragen {a11} Einheiten fuer Forschung, {a12} fuer Lehre, {a13} fuer Bibliothek, {a14} fuer IT und {a15} fuer Stipendien bei einem Stiftungskapital von {b1} Tausend Euro. Der Personalbedarf liegt bei {a21} Einheiten fuer Forschung, {a22} fuer Lehre, {a23} fuer Bibliothek, {a24} fuer IT und {a25} fuer Stipendien bei maximal {b2} Personaleinheiten. Der Raumbedarf betraegt {a31} Einheiten fuer Forschung, {a32} fuer Lehre, {a33} fuer Bibliothek, {a34} fuer IT und {a35} fuer Stipendien bei maximal {b3} Raumeinheiten. Der Verwaltungsaufwand liegt bei {a41} Einheiten fuer Forschung, {a42} fuer Lehre, {a43} fuer Bibliothek, {a44} fuer IT und {a45} fuer Stipendien bei maximal {b4} Verwaltungseinheiten. Das Zeitbudget betraegt {a51} Einheiten fuer Forschung, {a52} fuer Lehre, {a53} fuer Bibliothek, {a54} fuer IT und {a55} fuer Stipendien bei maximal {b5} Zeiteinheiten.",
+  "hinweis": "Maximiere den Gesamtnutzen unter Beachtung von Kapital, Personal, Raum, Verwaltung und Zeit.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Forschung erzielt {c1} Nutzenpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Lehre {c2}",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Bibliothek {c3}",
+        "bedeutung": "{c3} × x₃"
+      },
+      {
+        "text": "IT {c4}",
+        "bedeutung": "{c4} × x₄"
+      },
+      {
+        "text": "Stipendien {c5}",
+        "bedeutung": "{c5} × x₅"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Forschung",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Lehre",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Bibliothek",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{a14} fuer IT",
+          "bedeutung": "+ {a14}x₄"
+        },
+        {
+          "text": "{a15} fuer Stipendien",
+          "bedeutung": "+ {a15}x₅"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten fuer Forschung",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Lehre",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Bibliothek",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{a24} fuer IT",
+          "bedeutung": "+ {a24}x₄"
+        },
+        {
+          "text": "{a25} fuer Stipendien",
+          "bedeutung": "+ {a25}x₅"
+        },
+        {
+          "text": "{b2} Personaleinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Forschung",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Lehre",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Bibliothek",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{a34} fuer IT",
+          "bedeutung": "+ {a34}x₄"
+        },
+        {
+          "text": "{a35} fuer Stipendien",
+          "bedeutung": "+ {a35}x₅"
+        },
+        {
+          "text": "{b3} Raumeinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ],
+      [
+        {
+          "text": "{a41} Einheiten fuer Forschung",
+          "bedeutung": "{a41}x₁"
+        },
+        {
+          "text": "{a42} fuer Lehre",
+          "bedeutung": "+ {a42}x₂"
+        },
+        {
+          "text": "{a43} fuer Bibliothek",
+          "bedeutung": "+ {a43}x₃"
+        },
+        {
+          "text": "{a44} fuer IT",
+          "bedeutung": "+ {a44}x₄"
+        },
+        {
+          "text": "{a45} fuer Stipendien",
+          "bedeutung": "+ {a45}x₅"
+        },
+        {
+          "text": "{b4} Verwaltungseinheiten",
+          "bedeutung": "≤ {b4}"
+        }
+      ],
+      [
+        {
+          "text": "{a51} Einheiten fuer Forschung",
+          "bedeutung": "{a51}x₁"
+        },
+        {
+          "text": "{a52} fuer Lehre",
+          "bedeutung": "+ {a52}x₂"
+        },
+        {
+          "text": "{a53} fuer Bibliothek",
+          "bedeutung": "+ {a53}x₃"
+        },
+        {
+          "text": "{a54} fuer IT",
+          "bedeutung": "+ {a54}x₄"
+        },
+        {
+          "text": "{a55} fuer Stipendien",
+          "bedeutung": "+ {a55}x₅"
+        },
+        {
+          "text": "{b5} Zeiteinheiten",
+          "bedeutung": "≤ {b5}"
+        }
+      ]
+    ]
+  }
+}

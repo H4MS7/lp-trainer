@@ -1,0 +1,43 @@
+{
+  "id": "wart_fuhrpark_2v_02",
+  "typ": "Wartungsplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Inspektionen", "x2 = Anzahl Notfallreparaturen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestzuverlässigkeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Werkstattkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 5,   "label": "Kosten Inspektion (Tsd. €)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Kosten Notfallreparatur (Tsd. €)"},
+    "a11": {"min": 2, "max": 8,   "label": "Zuverlässigkeit Inspektion (%)"},
+    "a12": {"min": 1, "max": 4,   "label": "Zuverlässigkeit Notfall (%)"},
+    "b1":  {"min": 30, "max": 120, "label": "Mindestzuverlässigkeit (%)"},
+    "a21": {"min": 1, "max": 4,   "label": "Werkstattzeit Inspektion (h)"},
+    "a22": {"min": 3, "max": 8,   "label": "Werkstattzeit Notfall (h)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Werkstattkapazität (h)"}
+  },
+  "titel": "Fuhrpark – Fahrzeugwartung",
+  "beschreibung": "Ein Logistikunternehmen plant die Wartung seines Fuhrparks. Eine Inspektion kostet {c1} Tsd. €, eine Notfallreparatur kostet {c2} Tsd. €. Eine Inspektion erhöht die Zuverlässigkeit um {a11} %, eine Notfallreparatur um {a12} %. Die Mindestzuverlässigkeit beträgt {b1} %. Eine Inspektion benötigt {a21} Werkstattstunden, eine Notfallreparatur benötigt {a22} Werkstattstunden. Die Werkstattkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung der Zuverlässigkeit und Werkstattkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Inspektion kostet {c1} Tsd. €", "bedeutung": "{c1} × x₁"},
+      {"text": "Notfallreparatur kostet {c2} Tsd. €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} %", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} %", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Werkstattstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Werkstattstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

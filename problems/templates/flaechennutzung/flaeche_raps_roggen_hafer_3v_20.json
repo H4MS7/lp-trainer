@@ -1,0 +1,60 @@
+{
+  "id": "flaeche_raps_roggen_hafer_3v_20",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Hektar Raps", "x2 = Hektar Roggen", "x3 = Hektar Hafer"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Düngerbudget", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Maschinenkapazität", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Raps (Tsd. €/ha)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Ertrag Roggen (Tsd. €/ha)"},
+    "c3":  {"min": 3, "max": 9,   "label": "Ertrag Hafer (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Raps (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Roggen (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Flächenbedarf Hafer (ha/ha)"},
+    "b1":  {"min": 50, "max": 300, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 6,   "label": "Dünger Raps (t/ha)"},
+    "a22": {"min": 1, "max": 4,   "label": "Dünger Roggen (t/ha)"},
+    "a23": {"min": 1, "max": 3,   "label": "Dünger Hafer (t/ha)"},
+    "b2":  {"min": 30, "max": 200, "label": "Düngerbudget (t)"},
+    "a31": {"min": 2, "max": 5,   "label": "Maschinenzeit Raps (h/ha)"},
+    "a32": {"min": 1, "max": 4,   "label": "Maschinenzeit Roggen (h/ha)"},
+    "a33": {"min": 1, "max": 3,   "label": "Maschinenzeit Hafer (h/ha)"},
+    "b3":  {"min": 60, "max": 300, "label": "Maschinenkapazität (h)"}
+  },
+  "titel": "Ackerbau – Raps, Roggen und Hafer",
+  "beschreibung": "Ein Landwirt baut Raps, Roggen und Hafer an. Raps bringt {c1} Tsd. € pro Hektar, Roggen bringt {c2} Tsd. € pro Hektar, Hafer bringt {c3} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} ha pro ha Raps, {a12} ha pro ha Roggen und {a13} ha pro ha Hafer. Die Gesamtfläche beträgt {b1} Hektar. Der Düngerverbrauch liegt bei {a21} Tonnen pro ha Raps, {a22} Tonnen pro ha Roggen und {a23} Tonnen pro ha Hafer. Das Düngerbudget beträgt {b2} Tonnen. Die Maschinenzeit beträgt {a31} Stunden pro ha Raps, {a32} Stunden pro ha Roggen und {a33} Stunden pro ha Hafer. Die Maschinenkapazität beträgt {b3} Stunden.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Dünger und Maschinenzeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Raps bringt {c1} Tsd. € pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Roggen bringt {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"},
+      {"text": "Hafer bringt {c3} Tsd. € pro Hektar", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Raps", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Roggen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Hafer", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tonnen pro ha Raps", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tonnen pro ha Roggen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tonnen pro ha Hafer", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Tonnen", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden pro ha Raps", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Stunden pro ha Roggen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Stunden pro ha Hafer", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Stunden", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

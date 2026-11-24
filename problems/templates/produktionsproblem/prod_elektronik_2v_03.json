@@ -1,0 +1,43 @@
+{
+  "id": "prod_elektronik_2v_03",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Smartphones", "x2 = Anzahl Tablets"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Montagezeit", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Chips", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 80,  "label": "Gewinn/Smartphone (€)"},
+    "c2":  {"min": 50, "max": 150, "label": "Gewinn/Tablet (€)"},
+    "a11": {"min": 1, "max": 4,    "label": "Montagezeit/Smartphone (h)"},
+    "a12": {"min": 2, "max": 6,    "label": "Montagezeit/Tablet (h)"},
+    "b1":  {"min": 80, "max": 300, "label": "Montagekapazitaet (h)"},
+    "a21": {"min": 1, "max": 3,    "label": "Chips/Smartphone"},
+    "a22": {"min": 2, "max": 5,    "label": "Chips/Tablet"},
+    "b2":  {"min": 50, "max": 200, "label": "Chipvorrat"}
+  },
+  "titel": "Elektronikfertigung – Smartphones und Tablets",
+  "beschreibung": "Ein Elektronikwerk fertigt Smartphones und Tablets. Jedes Smartphone erbringt {c1} Euro Gewinn, jedes Tablet {c2} Euro. Die Montage eines Smartphones dauert {a11} Stunden, die eines Tablets {a12} Stunden. Es stehen {b1} Montagestunden zur Verfuegung. Jedes Smartphone benoetigt {a21} Chips, jedes Tablet {a22} Chips. Insgesamt sind {b2} Chips auf Lager.",
+  "hinweis": "Ermittle die Gewinne und die zwei Kapazitaetsgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Smartphone erbringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Tablet {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Smartphones dauert {a11} Stunden", "bedeutung": "{a11}x₁"},
+        {"text": "Tablets {a12} Stunden", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} Montagestunden zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Chips, jedes Tablet", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Chips. Insgesamt", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Chips auf Lager", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_rohstoff_2v_07",
+  "titel": "Rohstoffinvestment – Gold und Silber",
+  "variablen": [
+    "x1 = Einheiten Gold (Unzen)",
+    "x2 = Einheiten Silber (Unzen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Kaufbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Lagerkapazitaet",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 5,
+      "max": 12,
+      "label": "Erwarteter Gewinn Gold (EUR/Unze)"
+    },
+    "c2": {
+      "min": 2,
+      "max": 7,
+      "label": "Erwarteter Gewinn Silber (EUR/Unze)"
+    },
+    "a11": {
+      "min": 3,
+      "max": 10,
+      "label": "Kaufpreis Gold (Einheiten)"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Kaufpreis Silber (Einheiten)"
+    },
+    "b1": {
+      "min": 80,
+      "max": 300,
+      "label": "Kaufbudget (EUR)"
+    },
+    "a21": {
+      "min": 1,
+      "max": 3,
+      "label": "Lagerbedarf Gold"
+    },
+    "a22": {
+      "min": 2,
+      "max": 6,
+      "label": "Lagerbedarf Silber"
+    },
+    "b2": {
+      "min": 50,
+      "max": 200,
+      "label": "Max. Lagerplaetze"
+    }
+  },
+  "beschreibung": "Ein Edelmetallhaendler moechte sein Investment optimieren. Pro Unze Gold erwartet er {c1} EUR Gewinn, pro Unze Silber {c2} EUR. Der Kaufpreis betraegt {a11} Einheiten pro Unze Gold und {a12} Einheiten pro Unze Silber. Das Kaufbudget liegt bei {b1} EUR. Jede Unze Gold belegt {a21} Lagerplaetze, jede Unze Silber {a22} Lagerplaetze bei maximal {b2} verfuegbaren Lagerplaetzen.",
+  "hinweis": "Maximiere den Gewinn unter Beachtung von Budget und Lagerkapazitaet.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Gold erwartet er {c1} EUR Gewinn",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Silber {c2} EUR",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Unze Gold",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Unze Silber",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} EUR",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "Gold belegt {a21} Lagerplaetze",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "Silber {a22} Lagerplaetze",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} verfuegbaren Lagerplaetzen",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "energie_bhkw_solar_waerme_3v_04",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 3,
+  "variablen": ["x1 = MWh BHKW", "x2 = MWh Solarthermie", "x3 = MWh Wärmepumpe"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximaler Gasverbrauch", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximaler Stromverbrauch", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 95, "label": "Kosten BHKW (€/MWh)"},
+    "c2":  {"min": 20, "max": 55, "label": "Kosten Solarthermie (€/MWh)"},
+    "c3":  {"min": 35, "max": 80, "label": "Kosten Wärmepumpe (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Wärme BHKW (MW/MWh)"},
+    "a12": {"min": 1, "max": 4, "label": "Wärme Solarthermie (MW/MWh)"},
+    "a13": {"min": 2, "max": 5, "label": "Wärme Wärmepumpe (MW/MWh)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 3, "max": 7, "label": "Gas BHKW (m³/MWh)"},
+    "a22": {"min": 1, "max": 1, "label": "Gas Solarthermie (m³/MWh)"},
+    "a23": {"min": 1, "max": 2, "label": "Gas Wärmepumpe (m³/MWh)"},
+    "b2":  {"min": 30, "max": 120, "label": "Maximaler Gasverbrauch (m³)"},
+    "a31": {"min": 1, "max": 2, "label": "Strom BHKW (kW/MWh)"},
+    "a32": {"min": 1, "max": 2, "label": "Strom Solarthermie (kW/MWh)"},
+    "a33": {"min": 3, "max": 7, "label": "Strom Wärmepumpe (kW/MWh)"},
+    "b3":  {"min": 25, "max": 100, "label": "Maximaler Stromverbrauch (kW)"}
+  },
+  "titel": "Wärmemix – BHKW, Solarthermie und Wärmepumpe",
+  "beschreibung": "Eine Wohnanlage plant die Wärmeversorgung aus BHKW, Solarthermie und Wärmepumpe. BHKW kostet {c1} € pro MWh, Solarthermie kostet {c2} € pro MWh und Wärmepumpe kostet {c3} € pro MWh. BHKW liefert {a11} MW Wärme pro MWh, Solarthermie liefert {a12} MW pro MWh und Wärmepumpe liefert {a13} MW pro MWh. Mindestens {b1} MW Wärmeleistung müssen bereitgestellt werden. Der Gasverbrauch beträgt {a21} m³ pro MWh BHKW, {a22} m³ pro MWh Solarthermie und {a23} m³ pro MWh Wärmepumpe. Maximal {b2} m³ Gas stehen zur Verfügung. Der Stromverbrauch beträgt {a31} kW pro MWh BHKW, {a32} kW pro MWh Solarthermie und {a33} kW pro MWh Wärmepumpe. Maximal {b3} kW Strom stehen zur Verfügung.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung von Mindestwärmeleistung, Gas- und Strombegrenzung.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "BHKW kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Solarthermie kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Wärmepumpe kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Wärme pro MWh, Solarthermie liefert {a12} MW pro MWh und Wärmepumpe liefert {a13} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃"},
+        {"text": "{b1} MW Wärmeleistung müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro MWh BHKW, {a22} m³ pro MWh Solarthermie und {a23} m³ pro MWh Wärmepumpe", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃"},
+        {"text": "{b2} m³ Gas stehen zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kW pro MWh BHKW, {a32} kW pro MWh Solarthermie und {a33} kW pro MWh Wärmepumpe", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃"},
+        {"text": "{b3} kW Strom stehen zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

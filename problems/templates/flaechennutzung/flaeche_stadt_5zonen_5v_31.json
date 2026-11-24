@@ -1,0 +1,96 @@
+{
+  "id": "flaeche_stadt_5zonen_5v_31",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 5,
+  "variablen": ["x1 = Hektar Wohngebiet", "x2 = Hektar Gewerbegebiet", "x3 = Hektar Park", "x4 = Hektar Sportplatz", "x5 = Hektar Kulturzentrum"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Erschließungsbudget", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestfreifläche", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Verkehrsanbindung", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": ">=", "label": "Mindestkultur", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 20,  "label": "Wert Wohnen (Tsd. €/ha)"},
+    "c2":  {"min": 12, "max": 28, "label": "Wert Gewerbe (Tsd. €/ha)"},
+    "c3":  {"min": 2, "max": 6,   "label": "Wert Park (Tsd. €/ha)"},
+    "c4":  {"min": 3, "max": 8,   "label": "Wert Sport (Tsd. €/ha)"},
+    "c5":  {"min": 4, "max": 10,  "label": "Wert Kultur (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Wohnen (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Gewerbe (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Park (ha/ha)"},
+    "a14": {"min": 1, "max": 2,   "label": "Fläche Sport (ha/ha)"},
+    "a15": {"min": 1, "max": 2,   "label": "Fläche Kultur (ha/ha)"},
+    "b1":  {"min": 50, "max": 300, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 5, "max": 12,  "label": "Erschließung Wohnen (Tsd. €/ha)"},
+    "a22": {"min": 8, "max": 18,  "label": "Erschließung Gewerbe (Tsd. €/ha)"},
+    "a23": {"min": 1, "max": 4,   "label": "Erschließung Park (Tsd. €/ha)"},
+    "a24": {"min": 3, "max": 8,   "label": "Erschließung Sport (Tsd. €/ha)"},
+    "a25": {"min": 6, "max": 14,  "label": "Erschließung Kultur (Tsd. €/ha)"},
+    "b2":  {"min": 100, "max": 600, "label": "Erschließungsbudget (Tsd. €)"},
+    "a31": {"min": 0, "max": 0,   "label": "Freifläche Wohnen"},
+    "a32": {"min": 0, "max": 0,   "label": "Freifläche Gewerbe"},
+    "a33": {"min": 1, "max": 2,   "label": "Freifläche Park (ha/ha)"},
+    "a34": {"min": 1, "max": 2,   "label": "Freifläche Sport (ha/ha)"},
+    "a35": {"min": 0, "max": 0,   "label": "Freifläche Kultur"},
+    "b3":  {"min": 5, "max": 40,   "label": "Mindestfreifläche (ha)"},
+    "a41": {"min": 3, "max": 7,   "label": "Verkehr Wohnen (Fahrten/ha)"},
+    "a42": {"min": 5, "max": 10,  "label": "Verkehr Gewerbe (Fahrten/ha)"},
+    "a43": {"min": 1, "max": 3,   "label": "Verkehr Park (Fahrten/ha)"},
+    "a44": {"min": 2, "max": 5,   "label": "Verkehr Sport (Fahrten/ha)"},
+    "a45": {"min": 2, "max": 5,   "label": "Verkehr Kultur (Fahrten/ha)"},
+    "b4":  {"min": 80, "max": 400, "label": "Max. Verkehrskapazität (Fahrten)"},
+    "a51": {"min": 0, "max": 0,   "label": "Kulturanteil Wohnen"},
+    "a52": {"min": 0, "max": 0,   "label": "Kulturanteil Gewerbe"},
+    "a53": {"min": 0, "max": 0,   "label": "Kulturanteil Park"},
+    "a54": {"min": 0, "max": 0,   "label": "Kulturanteil Sport"},
+    "a55": {"min": 1, "max": 2,   "label": "Kulturanteil Kultur (ha/ha)"},
+    "b5":  {"min": 2, "max": 15,   "label": "Mindestfläche Kultur (ha)"}
+  },
+  "titel": "Großstadt – Fünf Nutzungszonen",
+  "beschreibung": "Eine Großstadt plant ein neues Stadtviertel mit fünf Nutzungszonen. Wohngebiet bringt {c1} Tsd. € pro ha, Gewerbe bringt {c2} Tsd. € pro ha, Park bringt {c3} Tsd. € pro ha, Sportplatz bringt {c4} Tsd. € pro ha, Kulturzentrum bringt {c5} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Wohnen, {a12} ha pro ha Gewerbe, {a13} ha pro ha Park, {a14} ha pro ha Sport und {a15} ha pro ha Kultur. Die Gesamtfläche beträgt {b1} Hektar. Die Erschließung kostet {a21} Tsd. € pro ha Wohnen, {a22} Tsd. € pro ha Gewerbe, {a23} Tsd. € pro ha Park, {a24} Tsd. € pro ha Sport und {a25} Tsd. € pro ha Kultur. Das Erschließungsbudget beträgt {b2} Tsd. €. Es müssen mindestens {b3} Hektar als Freifläche ausgewiesen werden. Die Verkehrsbelastung beträgt {a41} Fahrten pro ha Wohnen, {a42} Fahrten pro ha Gewerbe, {a43} Fahrten pro ha Park, {a44} Fahrten pro ha Sport und {a45} Fahrten pro ha Kultur. Die Verkehrskapazität beträgt maximal {b4} Fahrten. Zudem müssen mindestens {b5} Hektar als Kulturzentrum vorgesehen werden.",
+  "hinweis": "Maximiere den Gesamtwert unter Beachtung aller städtebaulichen Vorgaben.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wohngebiet bringt {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Gewerbe bringt {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Park bringt {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Sportplatz bringt {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"},
+      {"text": "Kulturzentrum bringt {c5} Tsd. € pro ha", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Wohnen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Gewerbe", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Park", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Sport", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} ha pro ha Kultur", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro ha Wohnen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Tsd. € pro ha Gewerbe", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Tsd. € pro ha Park", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Tsd. € pro ha Sport", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Tsd. € pro ha Kultur", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "mindestens {b3} Hektar als Freifläche", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} Fahrten pro ha Wohnen", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Fahrten pro ha Gewerbe", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Fahrten pro ha Park", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Fahrten pro ha Sport", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Fahrten pro ha Kultur", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Fahrten", "bedeutung": "≤ {b4}"}
+      ],
+      [
+        {"text": "mindestens {b5} Hektar als Kulturzentrum", "bedeutung": "≥ {b5}"}
+      ]
+    ]
+  }
+}

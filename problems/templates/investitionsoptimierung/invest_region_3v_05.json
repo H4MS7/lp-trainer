@@ -1,0 +1,200 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "invest_region_3v_05",
+  "titel": "Regionale Diversifikation – Europa, Asien und Nordamerika",
+  "variablen": [
+    "x1 = Betrag in Europa-Fonds (Tsd. EUR)",
+    "x2 = Betrag in Asien-Fonds (Tsd. EUR)",
+    "x3 = Betrag in Nordamerika-Fonds (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Gesamtkapital",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Waehrungsrisiko",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Zeitzonenaufwand",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 8,
+      "label": "Rendite Europa (%)"
+    },
+    "c2": {
+      "min": 5,
+      "max": 13,
+      "label": "Rendite Asien (%)"
+    },
+    "c3": {
+      "min": 4,
+      "max": 10,
+      "label": "Rendite Nordamerika (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Europa"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Asien"
+    },
+    "a13": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Nordamerika"
+    },
+    "b1": {
+      "min": 100,
+      "max": 400,
+      "label": "Gesamtkapital (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 1,
+      "max": 3,
+      "label": "Waehrungsrisiko Europa"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Waehrungsrisiko Asien"
+    },
+    "a23": {
+      "min": 2,
+      "max": 6,
+      "label": "Waehrungsrisiko Nordamerika"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Waehrungsrisiko"
+    },
+    "a31": {
+      "min": 1,
+      "max": 2,
+      "label": "Aufwand Europa"
+    },
+    "a32": {
+      "min": 3,
+      "max": 7,
+      "label": "Aufwand Asien"
+    },
+    "a33": {
+      "min": 2,
+      "max": 5,
+      "label": "Aufwand Nordamerika"
+    },
+    "b3": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Betreuungsaufwand"
+    }
+  },
+  "beschreibung": "Ein Fondsmanager diversifiziert regional. Der Europa-Fonds erzielt {c1} % Rendite, der Asien-Fonds {c2} % und der Nordamerika-Fonds {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Europa, {a12} fuer Asien und {a13} fuer Nordamerika bei einem Gesamtkapital von {b1} Tausend Euro. Das Waehrungsrisiko liegt bei {a21} Punkten fuer Europa, {a22} fuer Asien und {a23} fuer Nordamerika bei maximal {b2} Risikopunkten. Der Betreuungsaufwand betraegt {a31} Einheiten fuer Europa, {a32} fuer Asien und {a33} fuer Nordamerika bei maximal {b3} Betreuungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Kapital, Waehrungsrisiko und Betreuungsaufwand.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Europa-Fonds erzielt {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Asien-Fonds {c2} %",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Nordamerika-Fonds {c3} %",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Europa",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Asien",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Nordamerika",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkten fuer Europa",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Asien",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Nordamerika",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Risikopunkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Europa",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Asien",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Nordamerika",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Betreuungseinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

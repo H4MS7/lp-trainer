@@ -1,0 +1,98 @@
+[
+  {
+    "titel": "Möbelwerkstatt mit drei Produktlinien",
+    "beschreibung": "Eine Möbelwerkstatt stellt drei Produkte her: Tische, Stühle und Regale. Pro Tisch wird ein Gewinn von 12 Euro erzielt, pro Stuhl 8 Euro und pro Regal 15 Euro. Für die Herstellung stehen drei Ressourcen begrenzt zur Verfügung. Jeder Tisch benötigt 3 Stunden in der Schreinerei, jeder Stuhl 2 Stunden und jedes Regal 5 Stunden. Insgesamt stehen 120 Schreinereistunden zur Verfügung. In der Lackiererei benötigt jeder Tisch 2 Stunden, jeder Stuhl 1 Stunde und jedes Regal 3 Stunden. Die Lackiererei hat eine Kapazität von 80 Stunden. Zusätzlich verbraucht jeder Tisch 4 kg Holz, jeder Stuhl 2 kg und jedes Regal 6 kg. Der Holzvorrat beträgt 200 kg. Die Werkstatt möchte den Gesamtgewinn maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Tische", "x2 = Anzahl Stühle", "x3 = Anzahl Regale"],
+    "zielfunktion": "Z = 12x1 + 8x2 + 15x3 (max)",
+    "nebenbedingungen": [
+      "3x1 + 2x2 + 5x3 ≤ 120 (Schreinerei)",
+      "2x1 + x2 + 3x3 ≤ 80 (Lackiererei)",
+      "4x1 + 2x2 + 6x3 ≤ 200 (Holz)",
+      "x1, x2, x3 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die drei Ressourcen (Schreinerei, Lackiererei, Holz) als separate Nebenbedingungen. Jede Ressource begrenzt die Produktion aller drei Produkte.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Gewinn von 12 Euro", "bedeutung": "12 × x₁"},
+        {"text": "pro Stuhl 8 Euro", "bedeutung": "8 × x₂"},
+        {"text": "pro Regal 15 Euro", "bedeutung": "15 × x₃"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Stunden in der Schreinerei", "bedeutung": "3x₁"},
+          {"text": "jeder Stuhl 2 Stunden", "bedeutung": "+ 2x₂"},
+          {"text": "jedes Regal 5 Stunden", "bedeutung": "+ 5x₃"},
+          {"text": "120 Schreinereistunden", "bedeutung": "≤ 120"}
+        ],
+        [
+          {"text": "jeder Tisch 2 Stunden", "bedeutung": "2x₁"},
+          {"text": "jeder Stuhl 1 Stunde", "bedeutung": "+ x₂"},
+          {"text": "jedes Regal 3 Stunden", "bedeutung": "+ 3x₃"},
+          {"text": "Kapazität von 80 Stunden", "bedeutung": "≤ 80"}
+        ],
+        [
+          {"text": "4 kg Holz", "bedeutung": "4x₁"},
+          {"text": "jeder Stuhl 2 kg", "bedeutung": "+ 2x₂"},
+          {"text": "jedes Regal 6 kg", "bedeutung": "+ 6x₃"},
+          {"text": "Holzvorrat beträgt 200 kg", "bedeutung": "≤ 200"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Elektronikfertigung mit vier Produkten",
+    "beschreibung": "Ein Elektronikhersteller produziert vier Geräte: Smartphones, Tablets, Laptops und Smartwatches. Der Deckungsbeitrag beträgt 10 Euro pro Smartphone, 14 Euro pro Tablet, 20 Euro pro Laptop und 6 Euro pro Smartwatch. In der Montage benötigt jedes Smartphone 2 Stunden, jedes Tablet 3 Stunden, jeder Laptop 5 Stunden und jede Smartwatch 1 Stunde. Die Montagekapazität liegt bei 300 Stunden. Im Testlabor werden pro Smartphone 1 Stunde, pro Tablet 2 Stunden, pro Laptop 4 Stunden und pro Smartwatch 1 Stunde benötigt. Das Testlabor verfügt über 200 Stunden Kapazität. Die Verpackung beansprucht pro Smartphone 1 Einheit, pro Tablet 2 Einheiten, pro Laptop 3 Einheiten und pro Smartwatch 1 Einheit bei insgesamt 180 verfügbaren Verpackungseinheiten. Zudem steht ein Chipkontingent von 250 Chips zur Verfügung, wobei jedes Smartphone 2 Chips, jedes Tablet 3 Chips, jeder Laptop 4 Chips und jede Smartwatch 1 Chip benötigt. Das Unternehmen möchte den Gesamtdeckungsbeitrag maximieren.",
+    "typ": "Produktionsproblem",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Anzahl Smartphones", "x2 = Anzahl Tablets", "x3 = Anzahl Laptops", "x4 = Anzahl Smartwatches"],
+    "zielfunktion": "Z = 10x1 + 14x2 + 20x3 + 6x4 (max)",
+    "nebenbedingungen": [
+      "2x1 + 3x2 + 5x3 + x4 ≤ 300 (Montage)",
+      "x1 + 2x2 + 4x3 + x4 ≤ 200 (Testlabor)",
+      "x1 + 2x2 + 3x3 + x4 ≤ 180 (Verpackung)",
+      "2x1 + 3x2 + 4x3 + x4 ≤ 250 (Chipkontingent)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Vier verschiedene Ressourcen begrenzen die Produktion. Ordne jedem Produkt eine Variable zu und stelle für jede Ressource eine Nebenbedingung auf.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "10 Euro pro Smartphone", "bedeutung": "10 × x₁"},
+        {"text": "14 Euro pro Tablet", "bedeutung": "14 × x₂"},
+        {"text": "20 Euro pro Laptop", "bedeutung": "20 × x₃"},
+        {"text": "6 Euro pro Smartwatch", "bedeutung": "6 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "jedes Smartphone 2 Stunden", "bedeutung": "2x₁"},
+          {"text": "jedes Tablet 3 Stunden", "bedeutung": "+ 3x₂"},
+          {"text": "jeder Laptop 5 Stunden", "bedeutung": "+ 5x₃"},
+          {"text": "jede Smartwatch 1 Stunde", "bedeutung": "+ x₄"},
+          {"text": "Montagekapazität liegt bei 300 Stunden", "bedeutung": "≤ 300"}
+        ],
+        [
+          {"text": "pro Smartphone 1 Stunde", "bedeutung": "x₁"},
+          {"text": "pro Tablet 2 Stunden", "bedeutung": "+ 2x₂"},
+          {"text": "pro Laptop 4 Stunden", "bedeutung": "+ 4x₃"},
+          {"text": "pro Smartwatch 1 Stunde", "bedeutung": "+ x₄"},
+          {"text": "200 Stunden Kapazität", "bedeutung": "≤ 200"}
+        ],
+        [
+          {"text": "pro Smartphone 1 Einheit", "bedeutung": "x₁"},
+          {"text": "pro Tablet 2 Einheiten", "bedeutung": "+ 2x₂"},
+          {"text": "pro Laptop 3 Einheiten", "bedeutung": "+ 3x₃"},
+          {"text": "pro Smartwatch 1 Einheit", "bedeutung": "+ x₄"},
+          {"text": "180 verfügbaren Verpackungseinheiten", "bedeutung": "≤ 180"}
+        ],
+        [
+          {"text": "jedes Smartphone 2 Chips", "bedeutung": "2x₁"},
+          {"text": "jedes Tablet 3 Chips", "bedeutung": "+ 3x₂"},
+          {"text": "jeder Laptop 4 Chips", "bedeutung": "+ 4x₃"},
+          {"text": "jede Smartwatch 1 Chip", "bedeutung": "+ x₄"},
+          {"text": "250 Chips zur Verfügung", "bedeutung": "≤ 250"}
+        ]
+      ]
+    }
+  }
+]

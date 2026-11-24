@@ -1,0 +1,43 @@
+{
+  "id": "prod_glas_2v_15",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Vasen", "x2 = Anzahl Schalen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Glas", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Schleifzeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 8, "max": 30,    "label": "Gewinn/Vase (€)"},
+    "c2":  {"min": 5, "max": 20,    "label": "Gewinn/Schale (€)"},
+    "a11": {"min": 1, "max": 4,     "label": "Glas/Vase (kg)"},
+    "a12": {"min": 1, "max": 3,     "label": "Glas/Schale (kg)"},
+    "b1":  {"min": 30, "max": 150,  "label": "Glasvorrat (kg)"},
+    "a21": {"min": 2, "max": 8,     "label": "Schleifzeit/Vase (min)"},
+    "a22": {"min": 1, "max": 5,     "label": "Schleifzeit/Schale (min)"},
+    "b2":  {"min": 60, "max": 300,  "label": "Schleifkapazitaet (min)"}
+  },
+  "titel": "Glasmanufaktur – Vasen und Schalen",
+  "beschreibung": "Eine Glasmanufaktur fertigt Vasen und Schalen. Jede Vase bringt {c1} Euro Gewinn, jede Schale {c2} Euro. Pro Vase werden {a11} kg Glas verbraucht, pro Schale {a12} kg. Der Glasvorrat betraegt {b1} kg. Das Schleifen einer Vase dauert {a21} Minuten, einer Schale {a22} Minuten. Die Schleifkapazitaet umfasst {b2} Minuten.",
+  "hinweis": "Formuliere die Zielfunktion und die zwei Nebenbedingungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Vase bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Schale {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg Glas verbraucht", "bedeutung": "{a11}x₁"},
+        {"text": "Schale {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Vase dauert {a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "Schale {a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

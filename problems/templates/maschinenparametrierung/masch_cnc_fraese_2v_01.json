@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_cnc_fraese_2v_01",
+  "titel": "CNC-Fraese – Drehzahl und Vorschub",
+  "variablen": [
+    "x1 = Drehzahl (100 U/min)",
+    "x2 = Vorschub (mm/min)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Energieverbrauch",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Werkzeugverschleiss",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 10,
+      "label": "Qualitaetsbeitrag Drehzahl"
+    },
+    "c2": {
+      "min": 4,
+      "max": 12,
+      "label": "Qualitaetsbeitrag Vorschub"
+    },
+    "a11": {
+      "min": 2,
+      "max": 8,
+      "label": "Energiebedarf Drehzahl (kW)"
+    },
+    "a12": {
+      "min": 1,
+      "max": 5,
+      "label": "Energiebedarf Vorschub (kW)"
+    },
+    "b1": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Energieverbrauch (kW)"
+    },
+    "a21": {
+      "min": 3,
+      "max": 9,
+      "label": "Verschleiss Drehzahl"
+    },
+    "a22": {
+      "min": 2,
+      "max": 7,
+      "label": "Verschleiss Vorschub"
+    },
+    "b2": {
+      "min": 60,
+      "max": 300,
+      "label": "Max. Verschleisseinheiten"
+    }
+  },
+  "beschreibung": "Eine CNC-Fraese wird ueber Drehzahl und Vorschub gesteuert. Die Drehzahl traegt {c1} Qualitaetspunkte bei, der Vorschub {c2} Punkte. Der Energiebedarf liegt bei {a11} kW pro Drehzahleinheit und {a12} kW pro Vorschubeinheit. Die maximale Energieaufnahme betraegt {b1} kW. Der Werkzeugverschleiss betraegt {a21} Einheiten pro Drehzahlstufe und {a22} Einheiten pro Vorschubstufe bei maximal {b2} Verschleisseinheiten.",
+  "hinweis": "Maximiere die Oberflaechenqualitaet unter Beachtung von Energie und Verschleiss.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Drehzahl traegt {c1} Qualitaetspunkte bei",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Vorschub {c2} Punkte",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} kW pro Drehzahleinheit",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} kW pro Vorschubeinheit",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} kW",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Drehzahlstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Vorschubstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

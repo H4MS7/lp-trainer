@@ -1,0 +1,41 @@
+{
+  "id": "kapa_cdn_2v_04",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Edge-Knoten", "x2 = Anzahl Origin-Knoten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Bandbreite", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Budget", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,  "label": "Auslieferungsrate Edge (Tsd. Req/s)"},
+    "c2":  {"min": 5, "max": 25,   "label": "Auslieferungsrate Origin (Tsd. Req/s)"},
+    "a11": {"min": 1, "max": 5,    "label": "Bandbreite Edge (Gbit/s)"},
+    "a12": {"min": 2, "max": 10,   "label": "Bandbreite Origin (Gbit/s)"},
+    "b1":  {"min": 40, "max": 200, "label": "Verfügbare Bandbreite (Gbit/s)"},
+    "a21": {"min": 2, "max": 8,    "label": "Kosten Edge (Tsd. €/Monat)"},
+    "a22": {"min": 5, "max": 15,   "label": "Kosten Origin (Tsd. €/Monat)"},
+    "b2":  {"min": 50, "max": 200, "label": "Monatsbudget (Tsd. €)"}
+  },
+  "titel": "CDN-Netzwerk – Knotenverteilung",
+  "beschreibung": "Ein CDN-Betreiber plant die Verteilung von Edge- und Origin-Knoten. Ein Edge-Knoten liefert {c1} Tsd. Anfragen pro Sekunde aus, ein Origin-Knoten liefert {c2} Tsd. Anfragen pro Sekunde aus. Ein Edge-Knoten benötigt {a11} Gbit/s Bandbreite, ein Origin-Knoten benötigt {a12} Gbit/s Bandbreite. Die verfügbare Bandbreite beträgt {b1} Gbit/s. Die monatlichen Kosten betragen {a21} Tsd. € pro Edge-Knoten und {a22} Tsd. € pro Origin-Knoten. Das Monatsbudget beträgt {b2} Tsd. €.",
+  "hinweis": "Maximiere die Gesamtauslieferungsrate unter Beachtung von Bandbreite und Budget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Edge-Knoten liefert {c1} Tsd. Anfragen pro Sekunde aus", "bedeutung": "{c1} × x₁"},
+      {"text": "Origin-Knoten liefert {c2} Tsd. Anfragen pro Sekunde aus", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Gbit/s Bandbreite, ein Origin-Knoten benötigt {a12} Gbit/s Bandbreite", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Gbit/s", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Tsd. € pro Edge-Knoten und {a22} Tsd. € pro Origin-Knoten", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Tsd. €", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "diaet_kita_2v_14",
+  "typ": "Diätproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Portionen Milchreis", "x2 = Portionen Gemüsepfanne"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Kalzium", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": ">=", "label": "Kalorien", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,   "label": "Kosten Milchreis (€/Portion)"},
+    "c2":  {"min": 2, "max": 5,   "label": "Kosten Gemüsepfanne (€/Portion)"},
+    "a11": {"min": 4, "max": 10,  "label": "Kalzium Milchreis (mg/Portion)"},
+    "a12": {"min": 2, "max": 6,   "label": "Kalzium Gemüsepfanne (mg/Portion)"},
+    "b1":  {"min": 30, "max": 80,  "label": "Mindest-Kalzium (mg)"},
+    "a21": {"min": 120, "max": 250, "label": "Kalorien Milchreis (kcal/Portion)"},
+    "a22": {"min": 80, "max": 180,  "label": "Kalorien Gemüsepfanne (kcal/Portion)"},
+    "b2":  {"min": 600, "max": 1200, "label": "Mindest-Kalorien (kcal)"}
+  },
+  "titel": "Kita-Verpflegung – Milchreis und Gemüsepfanne",
+  "beschreibung": "Eine Kindertagesstätte plant das Mittagessen kostengünstig. Eine Portion Milchreis kostet {c1} €, eine Portion Gemüsepfanne kostet {c2} €. Milchreis liefert {a11} mg Kalzium pro Portion, die Gemüsepfanne liefert {a12} mg Kalzium pro Portion. Mindestens {b1} mg Kalzium sind erforderlich. Milchreis enthält {a21} kcal pro Portion, die Gemüsepfanne enthält {a22} kcal pro Portion. Mindestens {b2} kcal müssen bereitgestellt werden.",
+  "hinweis": "Minimiere die Kosten bei Einhaltung der Mindestanforderungen an Kalzium und Kalorien.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Milchreis kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Gemüsepfanne kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Kalzium pro Portion", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} mg Kalzium pro Portion", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} mg Kalzium sind erforderlich", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} kcal pro Portion", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} kcal pro Portion", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} kcal müssen bereitgestellt werden", "bedeutung": "≥ {b2}"}
+      ]
+    ]
+  }
+}

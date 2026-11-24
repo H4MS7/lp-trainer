@@ -1,0 +1,75 @@
+{
+  "id": "energie_grossstadt_5v_02",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = MWh Fernwärme", "x2 = MWh Wärmepumpe", "x3 = MWh Solarthermie", "x4 = MWh Biogas-BHKW", "x5 = MWh Erdgas-Kessel"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestwärmeleistung", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale CO2-Emission", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Maximaler Stromverbrauch", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindestanteil erneuerbar", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 35, "max": 80, "label": "Kosten Fernwärme (€/MWh)"},
+    "c2":  {"min": 28, "max": 70, "label": "Kosten Wärmepumpe (€/MWh)"},
+    "c3":  {"min": 15, "max": 40, "label": "Kosten Solarthermie (€/MWh)"},
+    "c4":  {"min": 40, "max": 90, "label": "Kosten Biogas-BHKW (€/MWh)"},
+    "c5":  {"min": 30, "max": 70, "label": "Kosten Erdgas-Kessel (€/MWh)"},
+    "a11": {"min": 3, "max": 6, "label": "Wärme Fernwärme"},
+    "a12": {"min": 2, "max": 5, "label": "Wärme Wärmepumpe"},
+    "a13": {"min": 1, "max": 3, "label": "Wärme Solarthermie"},
+    "a14": {"min": 3, "max": 6, "label": "Wärme Biogas-BHKW"},
+    "a15": {"min": 3, "max": 7, "label": "Wärme Erdgas-Kessel"},
+    "b1":  {"min": 80, "max": 300, "label": "Mindestwärmeleistung (MW)"},
+    "a21": {"min": 2, "max": 4, "label": "CO2 Fernwärme"},
+    "a22": {"min": 1, "max": 2, "label": "CO2 Wärmepumpe"},
+    "a23": {"min": 1, "max": 1, "label": "CO2 Solarthermie"},
+    "a24": {"min": 1, "max": 3, "label": "CO2 Biogas"},
+    "a25": {"min": 3, "max": 6, "label": "CO2 Erdgas"},
+    "b2":  {"min": 40, "max": 160, "label": "Maximale CO2-Emission (t)"},
+    "a31": {"min": 1, "max": 2, "label": "Strom Fernwärme"},
+    "a32": {"min": 3, "max": 6, "label": "Strom Wärmepumpe"},
+    "a33": {"min": 1, "max": 2, "label": "Strom Solarthermie"},
+    "a34": {"min": 1, "max": 2, "label": "Strom Biogas"},
+    "a35": {"min": 1, "max": 2, "label": "Strom Erdgas"},
+    "b3":  {"min": 30, "max": 120, "label": "Maximaler Stromverbrauch (kW)"},
+    "a41": {"min": 1, "max": 2, "label": "Erneuerbar Fernwärme"},
+    "a42": {"min": 2, "max": 5, "label": "Erneuerbar Wärmepumpe"},
+    "a43": {"min": 3, "max": 6, "label": "Erneuerbar Solarthermie"},
+    "a44": {"min": 3, "max": 6, "label": "Erneuerbar Biogas"},
+    "a45": {"min": 1, "max": 1, "label": "Erneuerbar Erdgas"},
+    "b4":  {"min": 30, "max": 120, "label": "Mindestanteil erneuerbar (MW)"}
+  },
+  "titel": "Großstadt-Wärmemix – Fünf Quellen",
+  "beschreibung": "Eine Großstadt plant den Wärmemix aus fünf Quellen. Fernwärme kostet {c1} € pro MWh, Wärmepumpe kostet {c2} € pro MWh, Solarthermie kostet {c3} € pro MWh, Biogas-BHKW kostet {c4} € pro MWh und Erdgas-Kessel kostet {c5} € pro MWh. Fernwärme liefert {a11} MW, Wärmepumpe {a12} MW, Solarthermie {a13} MW, Biogas {a14} MW und Erdgas {a15} MW pro MWh. Mindestens {b1} MW Wärme müssen bereitgestellt werden. Die CO2-Emission beträgt {a21} t Fernwärme, {a22} t Wärmepumpe, {a23} t Solarthermie, {a24} t Biogas und {a25} t Erdgas pro MWh. Maximal {b2} Tonnen CO2 sind zulässig. Der Stromverbrauch beträgt {a31} kW Fernwärme, {a32} kW Wärmepumpe, {a33} kW Solarthermie, {a34} kW Biogas und {a35} kW Erdgas pro MWh. Maximal {b3} kW Strom stehen zur Verfügung. Der Erneuerbare-Beitrag beträgt {a41} MW Fernwärme, {a42} MW Wärmepumpe, {a43} MW Solarthermie, {a44} MW Biogas und {a45} MW Erdgas pro MWh. Mindestens {b4} MW erneuerbare Wärmeleistung werden benötigt.",
+  "hinweis": "Minimiere die Wärmekosten bei Einhaltung von Mindestwärme, CO2-Grenze, Stromlimit und Erneuerbaren-Quote.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Fernwärme kostet {c1} € pro MWh", "bedeutung": "{c1} × x₁"},
+      {"text": "Wärmepumpe kostet {c2} € pro MWh", "bedeutung": "{c2} × x₂"},
+      {"text": "Solarthermie kostet {c3} € pro MWh", "bedeutung": "{c3} × x₃"},
+      {"text": "Biogas-BHKW kostet {c4} € pro MWh", "bedeutung": "{c4} × x₄"},
+      {"text": "Erdgas-Kessel kostet {c5} € pro MWh", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW, Wärmepumpe {a12} MW, Solarthermie {a13} MW, Biogas {a14} MW und Erdgas {a15} MW pro MWh", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} MW Wärme müssen bereitgestellt werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} t Fernwärme, {a22} t Wärmepumpe, {a23} t Solarthermie, {a24} t Biogas und {a25} t Erdgas pro MWh", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Tonnen CO2 sind zulässig", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} kW Fernwärme, {a32} kW Wärmepumpe, {a33} kW Solarthermie, {a34} kW Biogas und {a35} kW Erdgas pro MWh", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} kW Strom stehen zur Verfügung", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} MW Fernwärme, {a42} MW Wärmepumpe, {a43} MW Solarthermie, {a44} MW Biogas und {a45} MW Erdgas pro MWh", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} MW erneuerbare Wärmeleistung werden benötigt", "bedeutung": "≥ {b4}"}
+      ]
+    ]
+  }
+}

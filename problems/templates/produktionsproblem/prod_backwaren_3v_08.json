@@ -1,0 +1,60 @@
+{
+  "id": "prod_backwaren_3v_08",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Croissants", "x2 = Anzahl Brezeln", "x3 = Anzahl Muffins"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Butter", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Backzeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Ofenplaetze", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 4,     "label": "Gewinn/Croissant (€)"},
+    "c2":  {"min": 1, "max": 3,     "label": "Gewinn/Brezel (€)"},
+    "c3":  {"min": 1, "max": 5,     "label": "Gewinn/Muffin (€)"},
+    "a11": {"min": 2, "max": 6,     "label": "Butter/Croissant (g)"},
+    "a12": {"min": 1, "max": 3,     "label": "Butter/Brezel (g)"},
+    "a13": {"min": 2, "max": 5,     "label": "Butter/Muffin (g)"},
+    "b1":  {"min": 200, "max": 800, "label": "Buttervorrat (g)"},
+    "a21": {"min": 2, "max": 5,     "label": "Backzeit/Croissant (min)"},
+    "a22": {"min": 1, "max": 4,     "label": "Backzeit/Brezel (min)"},
+    "a23": {"min": 2, "max": 6,     "label": "Backzeit/Muffin (min)"},
+    "b2":  {"min": 100, "max": 400, "label": "Backminuten"},
+    "a31": {"min": 1, "max": 2,     "label": "Ofenplatz/Croissant"},
+    "a32": {"min": 1, "max": 2,     "label": "Ofenplatz/Brezel"},
+    "a33": {"min": 1, "max": 2,     "label": "Ofenplatz/Muffin"},
+    "b3":  {"min": 30, "max": 120,  "label": "Ofenplaetze"}
+  },
+  "titel": "Konditorei – Croissants, Brezeln und Muffins",
+  "beschreibung": "Eine Konditorei produziert Croissants, Brezeln und Muffins. Pro Croissant betraegt der Gewinn {c1} Euro, pro Brezel {c2} Euro und pro Muffin {c3} Euro. Ein Croissant benoetigt {a11} g Butter, eine Brezel {a12} g und ein Muffin {a13} g. Der Buttervorrat umfasst {b1} g. Das Backen eines Croissants dauert {a21} Minuten, einer Brezel {a22} Minuten und eines Muffins {a23} Minuten. Die Backkapazitaet betraegt {b2} Minuten. Jedes Croissant belegt {a31} Ofenplaetze, jede Brezel {a32} und jeder Muffin {a33} Ofenplaetze. Es stehen {b3} Ofenplaetze zur Verfuegung.",
+  "hinweis": "Drei Backwaren mit Beschraenkungen bei Butter, Backzeit und Ofenplaetzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Croissant betraegt der Gewinn {c1} Euro", "bedeutung": "{c1} × x₁"},
+      {"text": "Brezel {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Muffin {c3} Euro", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Croissant benoetigt {a11} g Butter", "bedeutung": "{a11}x₁"},
+        {"text": "Brezel {a12} g", "bedeutung": "+ {a12}x₂"},
+        {"text": "Muffin {a13} g", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} g", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Croissants dauert {a21} Minuten", "bedeutung": "{a21}x₁"},
+        {"text": "Brezel {a22} Minuten", "bedeutung": "+ {a22}x₂"},
+        {"text": "Muffins {a23} Minuten", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "Croissant belegt {a31} Ofenplaetze", "bedeutung": "{a31}x₁"},
+        {"text": "Brezel {a32}", "bedeutung": "+ {a32}x₂"},
+        {"text": "Muffin {a33} Ofenplaetze", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Ofenplaetze zur Verfuegung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

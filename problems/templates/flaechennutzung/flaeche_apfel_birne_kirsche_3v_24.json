@@ -1,0 +1,60 @@
+{
+  "id": "flaeche_apfel_birne_kirsche_3v_24",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Hektar Apfelbäume", "x2 = Hektar Birnbäume", "x3 = Hektar Kirschbäume"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Bewässerung", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Pflanzgutbudget", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 4, "max": 12,  "label": "Ertrag Äpfel (Tsd. €/ha)"},
+    "c2":  {"min": 5, "max": 14,  "label": "Ertrag Birnen (Tsd. €/ha)"},
+    "c3":  {"min": 6, "max": 18,  "label": "Ertrag Kirschen (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Flächenbedarf Äpfel (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Flächenbedarf Birnen (ha/ha)"},
+    "a13": {"min": 1, "max": 3,   "label": "Flächenbedarf Kirschen (ha/ha)"},
+    "b1":  {"min": 15, "max": 100, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 2, "max": 6,   "label": "Bewässerung Äpfel (m³/ha)"},
+    "a22": {"min": 3, "max": 7,   "label": "Bewässerung Birnen (m³/ha)"},
+    "a23": {"min": 4, "max": 9,   "label": "Bewässerung Kirschen (m³/ha)"},
+    "b2":  {"min": 40, "max": 250, "label": "Bewässerungskapazität (m³)"},
+    "a31": {"min": 3, "max": 8,   "label": "Pflanzgut Äpfel (Tsd. €/ha)"},
+    "a32": {"min": 4, "max": 10,  "label": "Pflanzgut Birnen (Tsd. €/ha)"},
+    "a33": {"min": 5, "max": 12,  "label": "Pflanzgut Kirschen (Tsd. €/ha)"},
+    "b3":  {"min": 30, "max": 200, "label": "Pflanzgutbudget (Tsd. €)"}
+  },
+  "titel": "Obstplantage – Äpfel, Birnen und Kirschen",
+  "beschreibung": "Ein Obstbauer plant Flächen für Äpfel, Birnen und Kirschen. Äpfel bringen {c1} Tsd. € pro Hektar, Birnen bringen {c2} Tsd. € pro Hektar, Kirschen bringen {c3} Tsd. € pro Hektar. Der Flächenbedarf beträgt {a11} ha pro ha Äpfel, {a12} ha pro ha Birnen und {a13} ha pro ha Kirschen. Die Gesamtfläche beträgt {b1} Hektar. Die Bewässerung erfordert {a21} m³ pro ha Äpfel, {a22} m³ pro ha Birnen und {a23} m³ pro ha Kirschen. Die Bewässerungskapazität beträgt {b2} m³. Die Pflanzgutkosten betragen {a31} Tsd. € pro ha Äpfel, {a32} Tsd. € pro ha Birnen und {a33} Tsd. € pro ha Kirschen. Das Pflanzgutbudget beträgt {b3} Tsd. €.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Bewässerung und Pflanzgut.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Äpfel bringen {c1} Tsd. € pro Hektar", "bedeutung": "{c1} × x₁"},
+      {"text": "Birnen bringen {c2} Tsd. € pro Hektar", "bedeutung": "{c2} × x₂"},
+      {"text": "Kirschen bringen {c3} Tsd. € pro Hektar", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Äpfel", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Birnen", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Kirschen", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Äpfel", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Birnen", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Kirschen", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Tsd. € pro ha Äpfel", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} Tsd. € pro ha Birnen", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} Tsd. € pro ha Kirschen", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} Tsd. €", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

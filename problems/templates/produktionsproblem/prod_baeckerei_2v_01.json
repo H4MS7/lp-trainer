@@ -1,0 +1,43 @@
+{
+  "id": "prod_baeckerei_2v_01",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Brote", "x2 = Anzahl Kuchen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Mehl", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Arbeit", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 8,   "label": "Gewinn/Brot (€)"},
+    "c2":  {"min": 3, "max": 12,  "label": "Gewinn/Kuchen (€)"},
+    "a11": {"min": 1, "max": 5,   "label": "Mehl/Brot (kg)"},
+    "a12": {"min": 2, "max": 8,   "label": "Mehl/Kuchen (kg)"},
+    "b1":  {"min": 60, "max": 200, "label": "Mehlvorrat (kg)"},
+    "a21": {"min": 1, "max": 6,   "label": "Arbeit/Brot (h)"},
+    "a22": {"min": 1, "max": 5,   "label": "Arbeit/Kuchen (h)"},
+    "b2":  {"min": 40, "max": 150, "label": "Arbeitsstunden"}
+  },
+  "titel": "Baeckerei – Brote und Kuchen",
+  "beschreibung": "Eine Baeckerei stellt Brote und Kuchen her. Jedes Brot bringt {c1} Euro Gewinn, jeder Kuchen {c2} Euro. Pro Brot werden {a11} kg Mehl benoetigt, pro Kuchen {a12} kg. Insgesamt stehen {b1} kg Mehl zur Verfuegung. Ein Brot erfordert {a21} Arbeitsstunden, ein Kuchen {a22} Arbeitsstunden bei maximal {b2} verfuegbaren Stunden.",
+  "hinweis": "Identifiziere die Zielfunktion (Gewinn) und die zwei Beschraenkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Brot bringt {c1} Euro Gewinn", "bedeutung": "{c1} × x₁"},
+      {"text": "Kuchen {c2} Euro", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} kg Mehl benoetigt", "bedeutung": "{a11}x₁"},
+        {"text": "pro Kuchen {a12} kg", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} kg Mehl zur Verfuegung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Arbeitsstunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Arbeitsstunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} verfuegbaren Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

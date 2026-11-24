@@ -1,0 +1,68 @@
+{
+  "id": "flaeche_weizen_mais_raps_solar_4v_25",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Hektar Weizen", "x2 = Hektar Mais", "x3 = Hektar Raps", "x4 = Hektar Solaranlage"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Arbeitsstunden", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Ertrag Weizen (Tsd. €/ha)"},
+    "c2":  {"min": 4, "max": 12,  "label": "Ertrag Mais (Tsd. €/ha)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Ertrag Raps (Tsd. €/ha)"},
+    "c4":  {"min": 6, "max": 18,  "label": "Ertrag Solar (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Weizen (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Mais (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Raps (ha/ha)"},
+    "a14": {"min": 1, "max": 3,   "label": "Fläche Solar (ha/ha)"},
+    "b1":  {"min": 80, "max": 400, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 3, "max": 7,   "label": "Wasser Weizen (m³/ha)"},
+    "a22": {"min": 4, "max": 9,   "label": "Wasser Mais (m³/ha)"},
+    "a23": {"min": 2, "max": 5,   "label": "Wasser Raps (m³/ha)"},
+    "a24": {"min": 1, "max": 3,   "label": "Wasser Solar (m³/ha)"},
+    "b2":  {"min": 200, "max": 800, "label": "Wasserbudget (m³)"},
+    "a31": {"min": 2, "max": 5,   "label": "Arbeit Weizen (h/ha)"},
+    "a32": {"min": 3, "max": 6,   "label": "Arbeit Mais (h/ha)"},
+    "a33": {"min": 2, "max": 5,   "label": "Arbeit Raps (h/ha)"},
+    "a34": {"min": 1, "max": 3,   "label": "Arbeit Solar (h/ha)"},
+    "b3":  {"min": 150, "max": 600, "label": "Max. Arbeitsstunden (h)"}
+  },
+  "titel": "Großbetrieb – Weizen, Mais, Raps und Solar",
+  "beschreibung": "Ein landwirtschaftlicher Großbetrieb teilt seine Fläche auf Weizen, Mais, Raps und eine Solaranlage auf. Weizen bringt {c1} Tsd. € pro ha, Mais bringt {c2} Tsd. € pro ha, Raps bringt {c3} Tsd. € pro ha, Solar bringt {c4} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Weizen, {a12} ha pro ha Mais, {a13} ha pro ha Raps und {a14} ha pro ha Solar. Die Gesamtfläche beträgt {b1} Hektar. Der Wasserbedarf liegt bei {a21} m³ pro ha Weizen, {a22} m³ pro ha Mais, {a23} m³ pro ha Raps und {a24} m³ pro ha Solar. Das Wasserbudget beträgt {b2} m³. Der Arbeitseinsatz beträgt {a31} h pro ha Weizen, {a32} h pro ha Mais, {a33} h pro ha Raps und {a34} h pro ha Solar. Maximal {b3} Arbeitsstunden sind verfügbar.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Wasser und Arbeitszeit.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Weizen bringt {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Mais bringt {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Raps bringt {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Solar bringt {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Weizen", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Mais", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Raps", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Solar", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} m³ pro ha Weizen", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} m³ pro ha Mais", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} m³ pro ha Raps", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} m³ pro ha Solar", "bedeutung": "+ {a24}x₄"},
+        {"text": "{b2} m³", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} h pro ha Weizen", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} h pro ha Mais", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} h pro ha Raps", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} h pro ha Solar", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} Arbeitsstunden sind verfügbar", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

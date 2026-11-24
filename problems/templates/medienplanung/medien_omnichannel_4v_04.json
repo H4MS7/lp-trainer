@@ -1,0 +1,59 @@
+{
+  "id": "medien_omnichannel_4v_04",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Anzahl E-Mail-Serien", "x2 = Anzahl Retargeting-Kampagnen", "x3 = Anzahl Chatbot-Kampagnen", "x4 = Anzahl Loyalty-Aktionen"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": "<=", "label": "Technikstunden", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Redaktionszeit", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 12,    "label": "Conversions E-Mail (Tsd.)"},
+    "c2":  {"min": 2, "max": 8,     "label": "Conversions Retargeting (Tsd.)"},
+    "c3":  {"min": 1, "max": 5,     "label": "Conversions Chatbot (Tsd.)"},
+    "c4":  {"min": 2, "max": 10,    "label": "Conversions Loyalty (Tsd.)"},
+    "a11": {"min": 1, "max": 3,     "label": "Kosten E-Mail (Tsd. €)"},
+    "a12": {"min": 2, "max": 6,     "label": "Kosten Retargeting (Tsd. €)"},
+    "a13": {"min": 1, "max": 4,     "label": "Kosten Chatbot (Tsd. €)"},
+    "a14": {"min": 1, "max": 5,     "label": "Kosten Loyalty (Tsd. €)"},
+    "b1":  {"min": 20, "max": 80,   "label": "Budget (Tsd. €)"},
+    "a21": {"min": 2, "max": 5,     "label": "Technik E-Mail (Stunden)"},
+    "a22": {"min": 3, "max": 8,     "label": "Technik Retargeting (Stunden)"},
+    "a23": {"min": 4, "max": 10,    "label": "Technik Chatbot (Stunden)"},
+    "a24": {"min": 2, "max": 5,     "label": "Technik Loyalty (Stunden)"},
+    "b2":  {"min": 20, "max": 60,   "label": "Technikstunden"},
+    "a31": {"min": 3, "max": 6,     "label": "Redaktion E-Mail (Stunden)"},
+    "a32": {"min": 1, "max": 3,     "label": "Redaktion Retargeting (Stunden)"},
+    "a33": {"min": 2, "max": 5,     "label": "Redaktion Chatbot (Stunden)"},
+    "a34": {"min": 2, "max": 5,     "label": "Redaktion Loyalty (Stunden)"},
+    "b3":  {"min": 15, "max": 50,   "label": "Redaktionsstunden"}
+  },
+  "titel": "Omnichannel-Conversion – Vier Touchpoints",
+  "beschreibung": "Ein E-Commerce-Team plant die Conversion-Optimierung über vier Touchpoints. E-Mail-Serien erzielen {c1} Tsd. Conversions, Retargeting-Kampagnen erzielen {c2} Tsd. Conversions, Chatbot-Kampagnen erzielen {c3} Tsd. Conversions und Loyalty-Aktionen erzielen {c4} Tsd. Conversions. Die Kosten betragen {a11} Tsd. € für E-Mail, {a12} Tsd. € für Retargeting, {a13} Tsd. € für Chatbot und {a14} Tsd. € für Loyalty. Das Budget beträgt {b1} Tsd. €. Der Technikaufwand beträgt {a21} Stunden für E-Mail, {a22} Stunden für Retargeting, {a23} Stunden für Chatbot und {a24} Stunden für Loyalty. Es stehen {b2} Technikstunden zur Verfügung. Die Redaktionszeit beträgt {a31} Stunden für E-Mail, {a32} Stunden für Retargeting, {a33} Stunden für Chatbot und {a34} Stunden für Loyalty. Es stehen {b3} Redaktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtconversions unter Beachtung aller Beschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "E-Mail-Serien erzielen {c1} Tsd. Conversions", "bedeutung": "{c1} × x₁"},
+      {"text": "Retargeting-Kampagnen erzielen {c2} Tsd. Conversions", "bedeutung": "{c2} × x₂"},
+      {"text": "Chatbot-Kampagnen erzielen {c3} Tsd. Conversions", "bedeutung": "{c3} × x₃"},
+      {"text": "Loyalty-Aktionen erzielen {c4} Tsd. Conversions", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. € für E-Mail, {a12} Tsd. € für Retargeting, {a13} Tsd. € für Chatbot und {a14} Tsd. € für Loyalty", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden für E-Mail, {a22} Stunden für Retargeting, {a23} Stunden für Chatbot und {a24} Stunden für Loyalty", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄"},
+        {"text": "{b2} Technikstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} Stunden für E-Mail, {a32} Stunden für Retargeting, {a33} Stunden für Chatbot und {a34} Stunden für Loyalty", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄"},
+        {"text": "{b3} Redaktionsstunden zur Verfügung", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

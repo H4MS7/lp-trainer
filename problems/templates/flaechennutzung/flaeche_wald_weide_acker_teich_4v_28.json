@@ -1,0 +1,64 @@
+{
+  "id": "flaeche_wald_weide_acker_teich_4v_28",
+  "typ": "Flächennutzung",
+  "optimierungsziel": "maximieren",
+  "numVars": 4,
+  "variablen": ["x1 = Hektar Wald", "x2 = Hektar Weide", "x3 = Hektar Ackerland", "x4 = Hektar Teich"],
+  "objective": ["c1", "c2", "c3", "c4"],
+  "constraints": [
+    {"type": "<=", "label": "Gesamtfläche", "row": ["a11","a12","a13","a14"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestwaldfläche", "row": ["a21","a22","a23","a24"], "rhs": "b2"},
+    {"type": "<=", "label": "Wasserbudget", "row": ["a31","a32","a33","a34"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 6,   "label": "Ertrag Wald (Tsd. €/ha)"},
+    "c2":  {"min": 3, "max": 9,   "label": "Ertrag Weide (Tsd. €/ha)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Ertrag Acker (Tsd. €/ha)"},
+    "c4":  {"min": 4, "max": 12,  "label": "Ertrag Teich (Tsd. €/ha)"},
+    "a11": {"min": 1, "max": 2,   "label": "Fläche Wald (ha/ha)"},
+    "a12": {"min": 1, "max": 2,   "label": "Fläche Weide (ha/ha)"},
+    "a13": {"min": 1, "max": 2,   "label": "Fläche Acker (ha/ha)"},
+    "a14": {"min": 1, "max": 3,   "label": "Fläche Teich (ha/ha)"},
+    "b1":  {"min": 60, "max": 350, "label": "Gesamtfläche (ha)"},
+    "a21": {"min": 1, "max": 2,   "label": "Waldanteil Wald (ha/ha)"},
+    "a22": {"min": 0, "max": 0,   "label": "Waldanteil Weide"},
+    "a23": {"min": 0, "max": 0,   "label": "Waldanteil Acker"},
+    "a24": {"min": 0, "max": 0,   "label": "Waldanteil Teich"},
+    "b2":  {"min": 10, "max": 60,  "label": "Mindestwaldfläche (ha)"},
+    "a31": {"min": 1, "max": 3,   "label": "Wasser Wald (m³/ha)"},
+    "a32": {"min": 2, "max": 5,   "label": "Wasser Weide (m³/ha)"},
+    "a33": {"min": 3, "max": 8,   "label": "Wasser Acker (m³/ha)"},
+    "a34": {"min": 5, "max": 12,  "label": "Wasser Teich (m³/ha)"},
+    "b3":  {"min": 100, "max": 500, "label": "Wasserbudget (m³)"}
+  },
+  "titel": "Landgut – Wald, Weide, Ackerland und Teich",
+  "beschreibung": "Ein Landgut wird in Wald, Weide, Ackerland und Teich aufgeteilt. Wald bringt {c1} Tsd. € pro ha, Weide bringt {c2} Tsd. € pro ha, Acker bringt {c3} Tsd. € pro ha, Teich bringt {c4} Tsd. € pro ha. Der Flächenbedarf beträgt {a11} ha pro ha Wald, {a12} ha pro ha Weide, {a13} ha pro ha Acker und {a14} ha pro ha Teich. Die Gesamtfläche beträgt {b1} Hektar. Es müssen mindestens {b2} Hektar Wald erhalten bleiben. Der Wasserbedarf liegt bei {a31} m³ pro ha Wald, {a32} m³ pro ha Weide, {a33} m³ pro ha Acker und {a34} m³ pro ha Teich. Das Wasserbudget beträgt {b3} m³.",
+  "hinweis": "Maximiere den Gesamtertrag unter Beachtung von Fläche, Mindestwald und Wasserbudget.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Wald bringt {c1} Tsd. € pro ha", "bedeutung": "{c1} × x₁"},
+      {"text": "Weide bringt {c2} Tsd. € pro ha", "bedeutung": "{c2} × x₂"},
+      {"text": "Acker bringt {c3} Tsd. € pro ha", "bedeutung": "{c3} × x₃"},
+      {"text": "Teich bringt {c4} Tsd. € pro ha", "bedeutung": "{c4} × x₄"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} ha pro ha Wald", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} ha pro ha Weide", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} ha pro ha Acker", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} ha pro ha Teich", "bedeutung": "+ {a14}x₄"},
+        {"text": "{b1} Hektar", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "mindestens {b2} Hektar Wald", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} m³ pro ha Wald", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} m³ pro ha Weide", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} m³ pro ha Acker", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} m³ pro ha Teich", "bedeutung": "+ {a34}x₄"},
+        {"text": "{b3} m³", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "id": "misch_saft_2v_06",
+  "typ": "Mischungsproblem",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Menge Saft A (Liter)", "x2 = Menge Saft B (Liter)"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Vitamin C", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Zuckergehalt", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 1, "max": 6,   "label": "Kosten Saft A (EUR/Liter)"},
+    "c2":  {"min": 2, "max": 8,   "label": "Kosten Saft B (EUR/Liter)"},
+    "a11": {"min": 3, "max": 10,  "label": "Vitamin C in A (mg/Liter)"},
+    "a12": {"min": 2, "max": 8,   "label": "Vitamin C in B (mg/Liter)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Vitamin C (mg)"},
+    "a21": {"min": 2, "max": 7,   "label": "Zucker in A (g/Liter)"},
+    "a22": {"min": 3, "max": 9,   "label": "Zucker in B (g/Liter)"},
+    "b2":  {"min": 50, "max": 180, "label": "Max. Zuckergehalt (g)"}
+  },
+  "titel": "Saftmischung – Vitamin C und Zucker",
+  "beschreibung": "Eine Getränkefirma mischt einen Fruchtsaft aus zwei Säften. Saft A kostet {c1} EUR pro Liter, Saft B kostet {c2} EUR pro Liter. Saft A enthält {a11} mg Vitamin C pro Liter, Saft B enthält {a12} mg Vitamin C pro Liter. Die Mischung muss mindestens {b1} mg Vitamin C enthalten. Saft A enthält {a21} g Zucker pro Liter, Saft B enthält {a22} g Zucker pro Liter. Der Zuckergehalt darf höchstens {b2} g betragen.",
+  "hinweis": "Minimiere die Kosten bei ausreichendem Vitamin-C-Gehalt und begrenztem Zuckeranteil.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Saft A kostet {c1} EUR pro Liter", "bedeutung": "{c1} × x₁"},
+      {"text": "Saft B kostet {c2} EUR pro Liter", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} mg Vitamin C pro Liter, Saft B enthält {a12} mg Vitamin C pro Liter. Die Mischung muss mindestens {b1} mg Vitamin C enthalten", "bedeutung": "{a11}x₁ + {a12}x₂ ≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} g Zucker pro Liter, Saft B enthält {a22} g Zucker pro Liter. Der Zuckergehalt darf höchstens {b2} g betragen", "bedeutung": "{a21}x₁ + {a22}x₂ ≤ {b2}"}
+      ]
+    ]
+  }
+}

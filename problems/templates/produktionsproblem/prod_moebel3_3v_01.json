@@ -1,0 +1,60 @@
+{
+  "id": "prod_moebel3_3v_01",
+  "typ": "Produktionsproblem",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "variablen": ["x1 = Anzahl Tische", "x2 = Anzahl Stuehle", "x3 = Anzahl Regale"],
+  "objective": ["c1", "c2", "c3"],
+  "constraints": [
+    {"type": "<=", "label": "Holz", "row": ["a11","a12","a13"], "rhs": "b1"},
+    {"type": "<=", "label": "Arbeitszeit", "row": ["a21","a22","a23"], "rhs": "b2"},
+    {"type": "<=", "label": "Lagerflaeche", "row": ["a31","a32","a33"], "rhs": "b3"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 40, "max": 120, "label": "Gewinn/Tisch (€)"},
+    "c2":  {"min": 15, "max": 45,  "label": "Gewinn/Stuhl (€)"},
+    "c3":  {"min": 25, "max": 80,  "label": "Gewinn/Regal (€)"},
+    "a11": {"min": 3, "max": 8,    "label": "Holz/Tisch (m²)"},
+    "a12": {"min": 1, "max": 3,    "label": "Holz/Stuhl (m²)"},
+    "a13": {"min": 2, "max": 6,    "label": "Holz/Regal (m²)"},
+    "b1":  {"min": 80, "max": 300, "label": "Holzvorrat (m²)"},
+    "a21": {"min": 3, "max": 8,    "label": "Arbeitszeit/Tisch (h)"},
+    "a22": {"min": 1, "max": 4,    "label": "Arbeitszeit/Stuhl (h)"},
+    "a23": {"min": 2, "max": 5,    "label": "Arbeitszeit/Regal (h)"},
+    "b2":  {"min": 60, "max": 240, "label": "Arbeitsstunden"},
+    "a31": {"min": 2, "max": 5,    "label": "Lagerflaeche/Tisch (m²)"},
+    "a32": {"min": 1, "max": 2,    "label": "Lagerflaeche/Stuhl (m²)"},
+    "a33": {"min": 1, "max": 3,    "label": "Lagerflaeche/Regal (m²)"},
+    "b3":  {"min": 30, "max": 120, "label": "Lagerflaeche (m²)"}
+  },
+  "titel": "Moebelfabrik – Tische, Stuehle und Regale",
+  "beschreibung": "Eine Moebelfabrik produziert Tische, Stuehle und Regale. Pro Tisch werden {c1} Euro Gewinn erzielt, pro Stuhl {c2} Euro, pro Regal {c3} Euro. Ein Tisch verbraucht {a11} m² Holz, ein Stuhl {a12} m², ein Regal {a13} m². Es stehen {b1} m² Holz bereit. Die Fertigung eines Tisches dauert {a21} Stunden, eines Stuhls {a22} Stunden, eines Regals {a23} Stunden. Insgesamt sind {b2} Arbeitsstunden verfuegbar. Ein Tisch belegt {a31} m² Lagerflaeche, ein Stuhl {a32} m², ein Regal {a33} m². Die Lagerkapazitaet betraegt {b3} m².",
+  "hinweis": "Drei Produkte, drei Beschraenkungen: Holz, Arbeitszeit und Lagerflaeche.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Tisch werden {c1} Euro Gewinn erzielt", "bedeutung": "{c1} × x₁"},
+      {"text": "Stuhl {c2} Euro", "bedeutung": "{c2} × x₂"},
+      {"text": "Regal {c3} Euro", "bedeutung": "{c3} × x₃"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "Tisch verbraucht {a11} m² Holz", "bedeutung": "{a11}x₁"},
+        {"text": "Stuhl {a12} m²", "bedeutung": "+ {a12}x₂"},
+        {"text": "Regal {a13} m²", "bedeutung": "+ {a13}x₃"},
+        {"text": "{b1} m² Holz bereit", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "Tisches dauert {a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "Stuhls {a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "Regals {a23} Stunden", "bedeutung": "+ {a23}x₃"},
+        {"text": "{b2} Arbeitsstunden verfuegbar", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "Tisch belegt {a31} m² Lagerflaeche", "bedeutung": "{a31}x₁"},
+        {"text": "Stuhl {a32} m²", "bedeutung": "+ {a32}x₂"},
+        {"text": "Regal {a33} m²", "bedeutung": "+ {a33}x₃"},
+        {"text": "{b3} m²", "bedeutung": "≤ {b3}"}
+      ]
+    ]
+  }
+}

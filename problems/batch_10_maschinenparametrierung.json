@@ -1,0 +1,482 @@
+[
+  {
+    "titel": "Laserschneider – Schnittqualität maximieren",
+    "beschreibung": "Ein Metallverarbeitungsbetrieb möchte die Schnittqualität eines Laserschneiders maximieren. Die zwei Stellgrößen sind die Laserleistung und die Vorschubgeschwindigkeit. Jede Einheit Laserleistung verbessert die Schnittqualität um 2 Punkte, jede Einheit Vorschubgeschwindigkeit verbessert die Schnittqualität um 7 Punkte. Die thermische Belastung des Werkstücks beträgt 3 Grad pro Einheit Laserleistung und 10 Grad pro Einheit Vorschubgeschwindigkeit. Die maximale thermische Belastung liegt bei 991 Grad. Der Gasverbrauch wird mit 10 Litern pro Einheit Laserleistung und 6 Litern pro Einheit Vorschubgeschwindigkeit bewertet. Der verfügbare Gasvorrat beträgt höchstens 293 Liter. Gesucht ist die optimale Parameterkombination für die beste Schnittqualität.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Laserleistung", "x2 = Einheit Vorschubgeschwindigkeit"],
+    "zielfunktion": "Z = 2x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 10x2 ≤ 991 (Thermische Belastung)",
+      "10x1 + 6x2 ≤ 293 (Gasverbrauch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: thermische Belastung in Grad und Gasverbrauch in Litern. Die Qualitätsverbesserung pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schnittqualität um 2 Punkte", "bedeutung": "2 × x₁"},
+        {"text": "Schnittqualität um 7 Punkte", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Grad pro Einheit Laserleistung", "bedeutung": "3x₁"},
+          {"text": "10 Grad pro Einheit Vorschubgeschwindigkeit", "bedeutung": "+ 10x₂"},
+          {"text": "maximale thermische Belastung liegt bei 991 Grad", "bedeutung": "≤ 991"}
+        ],
+        [
+          {"text": "10 Litern pro Einheit Laserleistung", "bedeutung": "10x₁"},
+          {"text": "6 Litern pro Einheit Vorschubgeschwindigkeit", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 293 Liter", "bedeutung": "≤ 293"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Extruder – Ausstoßleistung optimieren",
+    "beschreibung": "Ein Kunststoffwerk möchte die Ausstoßleistung eines Extruders maximieren. Die zwei Stellgrößen sind die Schneckendrehzahl und die Zylindertemperatur. Jede Einheit Schneckendrehzahl steigert den Ausstoß um 5 kg pro Stunde, jede Einheit Zylindertemperatur steigert den Ausstoß um 9 kg pro Stunde. Der Energieverbrauch beträgt 11 kW pro Einheit Schneckendrehzahl und 2 kW pro Einheit Zylindertemperatur. Die maximale Anschlussleistung liegt bei 918 kW. Zusätzlich wird der Materialverschleiß mit 10 Punkten pro Einheit Schneckendrehzahl und 5 Punkten pro Einheit Zylindertemperatur bewertet. Der zulässige Verschleiß darf höchstens 917 Punkte betragen. Gesucht ist die Parameterkombination für maximalen Ausstoß.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Schneckendrehzahl", "x2 = Einheit Zylindertemperatur"],
+    "zielfunktion": "Z = 5x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "11x1 + 2x2 ≤ 918 (Anschlussleistung)",
+      "10x1 + 5x2 ≤ 917 (Verschleiß)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die zwei Beschränkungen: Energieverbrauch und Materialverschleiß. Der Ausstoß pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Ausstoß um 5 kg pro Stunde", "bedeutung": "5 × x₁"},
+        {"text": "Ausstoß um 9 kg pro Stunde", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "11 kW pro Einheit Schneckendrehzahl", "bedeutung": "11x₁"},
+          {"text": "2 kW pro Einheit Zylindertemperatur", "bedeutung": "+ 2x₂"},
+          {"text": "maximale Anschlussleistung liegt bei 918 kW", "bedeutung": "≤ 918"}
+        ],
+        [
+          {"text": "10 Punkten pro Einheit Schneckendrehzahl", "bedeutung": "10x₁"},
+          {"text": "5 Punkten pro Einheit Zylindertemperatur", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 917 Punkte", "bedeutung": "≤ 917"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schweißroboter – Nahtfestigkeit maximieren",
+    "beschreibung": "Ein Automobilzulieferer möchte die Nahtfestigkeit eines Schweißroboters maximieren. Die zwei Stellgrößen sind der Schweißstrom und die Schweißgeschwindigkeit. Jede Einheit Schweißstrom erhöht die Nahtfestigkeit um 12 Newton, jede Einheit Schweißgeschwindigkeit erhöht die Nahtfestigkeit um 14 Newton. Der Wärmeeintrag beträgt 1 Joule pro Einheit Schweißstrom und 2 Joule pro Einheit Schweißgeschwindigkeit. Der zulässige Wärmeeintrag liegt bei maximal 627 Joule. Der Drahtverbrauch wird mit 5 Gramm pro Einheit Schweißstrom und 6 Gramm pro Einheit Schweißgeschwindigkeit angegeben. Der Drahtvorrat beträgt höchstens 260 Gramm. Gesucht ist die optimale Einstellung für maximale Nahtfestigkeit.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Schweißstrom", "x2 = Einheit Schweißgeschwindigkeit"],
+    "zielfunktion": "Z = 12x1 + 14x2 (max)",
+    "nebenbedingungen": [
+      "x1 + 2x2 ≤ 627 (Wärmeeintrag)",
+      "5x1 + 6x2 ≤ 260 (Drahtverbrauch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Wärmeeintrag in Joule und Drahtverbrauch in Gramm. Die Festigkeitssteigerung pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Nahtfestigkeit um 12 Newton", "bedeutung": "12 × x₁"},
+        {"text": "Nahtfestigkeit um 14 Newton", "bedeutung": "14 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "1 Joule pro Einheit Schweißstrom", "bedeutung": "x₁"},
+          {"text": "2 Joule pro Einheit Schweißgeschwindigkeit", "bedeutung": "+ 2x₂"},
+          {"text": "maximal 627 Joule", "bedeutung": "≤ 627"}
+        ],
+        [
+          {"text": "5 Gramm pro Einheit Schweißstrom", "bedeutung": "5x₁"},
+          {"text": "6 Gramm pro Einheit Schweißgeschwindigkeit", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 260 Gramm", "bedeutung": "≤ 260"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spritzgussmaschine – Teilequalität optimieren",
+    "beschreibung": "Ein Kunststoffverarbeiter möchte die Teilequalität einer Spritzgussmaschine maximieren. Die zwei Stellgrößen sind der Einspritzdruck und die Werkzeugtemperatur. Jede Einheit Einspritzdruck verbessert die Qualität um 13 Punkte, jede Einheit Werkzeugtemperatur verbessert die Qualität um 12 Punkte. Die Zykluszeit wird durch beide Parameter beeinflusst: 3 Sekunden pro Einheit Einspritzdruck und 7 Sekunden pro Einheit Werkzeugtemperatur. Die verfügbare Zykluszeit beträgt maximal 196 Sekunden. Der Energieverbrauch liegt bei 6 kW pro Einheit Einspritzdruck und 9 kW pro Einheit Werkzeugtemperatur. Die maximale Energieaufnahme beträgt 516 kW. Gesucht ist die optimale Einstellung für höchste Teilequalität.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Einspritzdruck", "x2 = Einheit Werkzeugtemperatur"],
+    "zielfunktion": "Z = 13x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 7x2 ≤ 196 (Zykluszeit)",
+      "6x1 + 9x2 ≤ 516 (Energieaufnahme)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Beschränkungen: Zykluszeit in Sekunden und Energieverbrauch in kW. Die Qualitätsverbesserung bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Qualität um 13 Punkte", "bedeutung": "13 × x₁"},
+        {"text": "Qualität um 12 Punkte", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Sekunden pro Einheit Einspritzdruck", "bedeutung": "3x₁"},
+          {"text": "7 Sekunden pro Einheit Werkzeugtemperatur", "bedeutung": "+ 7x₂"},
+          {"text": "maximal 196 Sekunden", "bedeutung": "≤ 196"}
+        ],
+        [
+          {"text": "6 kW pro Einheit Einspritzdruck", "bedeutung": "6x₁"},
+          {"text": "9 kW pro Einheit Werkzeugtemperatur", "bedeutung": "+ 9x₂"},
+          {"text": "maximale Energieaufnahme beträgt 516 kW", "bedeutung": "≤ 516"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "CNC-Fräse – Oberflächengüte maximieren",
+    "beschreibung": "Ein Präzisionsbetrieb möchte die Oberflächengüte einer CNC-Fräse maximieren. Die zwei Stellgrößen sind die Spindeldrehzahl und der Vorschub. Jede Einheit Spindeldrehzahl verbessert die Oberflächengüte um 7 Punkte, jede Einheit Vorschub verbessert die Oberflächengüte um 8 Punkte. Der Stromverbrauch beträgt 8 Ampere pro Einheit Spindeldrehzahl und 1 Ampere pro Einheit Vorschub. Die maximale Stromaufnahme liegt bei 60 Ampere. Der Werkzeugverschleiß wird mit 1 Punkt pro Einheit Spindeldrehzahl und 4 Punkten pro Einheit Vorschub bewertet. Der zulässige Werkzeugverschleiß darf höchstens 268 Punkte betragen. Gesucht ist die optimale Parameterkombination.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Spindeldrehzahl", "x2 = Einheit Vorschub"],
+    "zielfunktion": "Z = 7x1 + 8x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + x2 ≤ 60 (Stromaufnahme)",
+      "x1 + 4x2 ≤ 268 (Werkzeugverschleiß)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Stromaufnahme in Ampere und Werkzeugverschleiß in Punkten. Die Oberflächengüte pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Oberflächengüte um 7 Punkte", "bedeutung": "7 × x₁"},
+        {"text": "Oberflächengüte um 8 Punkte", "bedeutung": "8 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Ampere pro Einheit Spindeldrehzahl", "bedeutung": "8x₁"},
+          {"text": "1 Ampere pro Einheit Vorschub", "bedeutung": "+ x₂"},
+          {"text": "maximale Stromaufnahme liegt bei 60 Ampere", "bedeutung": "≤ 60"}
+        ],
+        [
+          {"text": "1 Punkt pro Einheit Spindeldrehzahl", "bedeutung": "x₁"},
+          {"text": "4 Punkten pro Einheit Vorschub", "bedeutung": "+ 4x₂"},
+          {"text": "höchstens 268 Punkte", "bedeutung": "≤ 268"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Walzwerk – Durchsatz maximieren",
+    "beschreibung": "Ein Stahlwerk möchte den Durchsatz eines Walzwerks maximieren. Die zwei Stellgrößen sind die Walzgeschwindigkeit und die Walztemperatur. Jede Einheit Walzgeschwindigkeit steigert den Durchsatz um 10 Tonnen pro Schicht, jede Einheit Walztemperatur steigert den Durchsatz um 12 Tonnen pro Schicht. Die mechanische Belastung beträgt 5 kN pro Einheit Walzgeschwindigkeit und 5 kN pro Einheit Walztemperatur. Die zulässige mechanische Belastung liegt bei maximal 104 kN. Der Kühlmittelverbrauch wird mit 1 Liter pro Einheit Walzgeschwindigkeit und 9 Litern pro Einheit Walztemperatur angegeben. Der Kühlmittelvorrat beträgt höchstens 427 Liter. Gesucht ist die optimale Einstellung für maximalen Durchsatz.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Walzgeschwindigkeit", "x2 = Einheit Walztemperatur"],
+    "zielfunktion": "Z = 10x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "5x1 + 5x2 ≤ 104 (Mechanische Belastung)",
+      "x1 + 9x2 ≤ 427 (Kühlmittelverbrauch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die zwei Beschränkungen: mechanische Belastung in kN und Kühlmittelverbrauch in Litern. Der Durchsatz pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Durchsatz um 10 Tonnen pro Schicht", "bedeutung": "10 × x₁"},
+        {"text": "Durchsatz um 12 Tonnen pro Schicht", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "5 kN pro Einheit Walzgeschwindigkeit", "bedeutung": "5x₁"},
+          {"text": "5 kN pro Einheit Walztemperatur", "bedeutung": "+ 5x₂"},
+          {"text": "maximal 104 kN", "bedeutung": "≤ 104"}
+        ],
+        [
+          {"text": "1 Liter pro Einheit Walzgeschwindigkeit", "bedeutung": "x₁"},
+          {"text": "9 Litern pro Einheit Walztemperatur", "bedeutung": "+ 9x₂"},
+          {"text": "höchstens 427 Liter", "bedeutung": "≤ 427"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brennofen – Produktionseffizienz steigern",
+    "beschreibung": "Eine Keramikmanufaktur möchte die Produktionseffizienz eines Brennofens maximieren. Die zwei Stellgrößen sind die Brenntemperatur und die Brenndauer. Jede Einheit Brenntemperatur steigert die Effizienz um 7 Punkte, jede Einheit Brenndauer steigert die Effizienz um 5 Punkte. Der Gasverbrauch beträgt 4 Kubikmeter pro Einheit Brenntemperatur und 12 Kubikmeter pro Einheit Brenndauer. Der verfügbare Gasvorrat liegt bei maximal 161 Kubikmetern. Die Ofenbelastung wird mit 12 Belastungspunkten pro Einheit Brenntemperatur und 3 Belastungspunkten pro Einheit Brenndauer bewertet. Die maximale Ofenbelastung beträgt 768 Belastungspunkte. Gesucht ist die optimale Parameterkombination für höchste Effizienz.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Brenntemperatur", "x2 = Einheit Brenndauer"],
+    "zielfunktion": "Z = 7x1 + 5x2 (max)",
+    "nebenbedingungen": [
+      "4x1 + 12x2 ≤ 161 (Gasverbrauch)",
+      "12x1 + 3x2 ≤ 768 (Ofenbelastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Gasverbrauch in Kubikmetern und Ofenbelastung in Punkten. Die Effizienzsteigerung bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Effizienz um 7 Punkte", "bedeutung": "7 × x₁"},
+        {"text": "Effizienz um 5 Punkte", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "4 Kubikmeter pro Einheit Brenntemperatur", "bedeutung": "4x₁"},
+          {"text": "12 Kubikmeter pro Einheit Brenndauer", "bedeutung": "+ 12x₂"},
+          {"text": "maximal 161 Kubikmetern", "bedeutung": "≤ 161"}
+        ],
+        [
+          {"text": "12 Belastungspunkten pro Einheit Brenntemperatur", "bedeutung": "12x₁"},
+          {"text": "3 Belastungspunkten pro Einheit Brenndauer", "bedeutung": "+ 3x₂"},
+          {"text": "maximale Ofenbelastung beträgt 768 Belastungspunkte", "bedeutung": "≤ 768"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "3D-Drucker – Bauteilfestigkeit maximieren",
+    "beschreibung": "Ein Prototypenlabor möchte die Bauteilfestigkeit eines 3D-Druckers maximieren. Die zwei Stellgrößen sind die Drucktemperatur und die Schichtdicke. Jede Einheit Drucktemperatur erhöht die Festigkeit um 10 MPa, jede Einheit Schichtdicke erhöht die Festigkeit um 13 MPa. Der Stromverbrauch beträgt 12 Watt pro Einheit Drucktemperatur und 1 Watt pro Einheit Schichtdicke. Die maximale Stromaufnahme liegt bei 789 Watt. Der Filamentverbrauch wird mit 6 Gramm pro Einheit Drucktemperatur und 5 Gramm pro Einheit Schichtdicke angegeben. Der Filamentvorrat beträgt höchstens 477 Gramm. Gesucht ist die optimale Einstellung für maximale Bauteilfestigkeit.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Drucktemperatur", "x2 = Einheit Schichtdicke"],
+    "zielfunktion": "Z = 10x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + x2 ≤ 789 (Stromaufnahme)",
+      "6x1 + 5x2 ≤ 477 (Filamentverbrauch)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Stromaufnahme in Watt und Filamentverbrauch in Gramm. Die Festigkeitssteigerung in MPa bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Festigkeit um 10 MPa", "bedeutung": "10 × x₁"},
+        {"text": "Festigkeit um 13 MPa", "bedeutung": "13 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "12 Watt pro Einheit Drucktemperatur", "bedeutung": "12x₁"},
+          {"text": "1 Watt pro Einheit Schichtdicke", "bedeutung": "+ x₂"},
+          {"text": "maximale Stromaufnahme liegt bei 789 Watt", "bedeutung": "≤ 789"}
+        ],
+        [
+          {"text": "6 Gramm pro Einheit Drucktemperatur", "bedeutung": "6x₁"},
+          {"text": "5 Gramm pro Einheit Schichtdicke", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 477 Gramm", "bedeutung": "≤ 477"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Spritzgussmaschine – Formgenauigkeit optimieren",
+    "beschreibung": "Ein Zulieferbetrieb möchte die Formgenauigkeit einer Spritzgussmaschine maximieren. Die zwei Stellgrößen sind der Nachdruck und die Kühlzeit. Jede Einheit Nachdruck verbessert die Formgenauigkeit um 7 Punkte, jede Einheit Kühlzeit verbessert die Formgenauigkeit um 6 Punkte. Der Hydraulikverbrauch beträgt 9 Liter pro Einheit Nachdruck und 9 Liter pro Einheit Kühlzeit. Das verfügbare Hydraulikvolumen liegt bei maximal 555 Litern. Die Maschinenbelastung wird mit 5 Belastungseinheiten pro Einheit Nachdruck und 8 Belastungseinheiten pro Einheit Kühlzeit bewertet. Die zulässige Maschinenbelastung beträgt höchstens 120 Belastungseinheiten. Gesucht ist die optimale Parameterkombination für höchste Formgenauigkeit.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Nachdruck", "x2 = Einheit Kühlzeit"],
+    "zielfunktion": "Z = 7x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "9x1 + 9x2 ≤ 555 (Hydraulikvolumen)",
+      "5x1 + 8x2 ≤ 120 (Maschinenbelastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Beschränkungen: Hydraulikverbrauch in Litern und Maschinenbelastung in Belastungseinheiten. Die Genauigkeitsverbesserung bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Formgenauigkeit um 7 Punkte", "bedeutung": "7 × x₁"},
+        {"text": "Formgenauigkeit um 6 Punkte", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "9 Liter pro Einheit Nachdruck", "bedeutung": "9x₁"},
+          {"text": "9 Liter pro Einheit Kühlzeit", "bedeutung": "+ 9x₂"},
+          {"text": "maximal 555 Litern", "bedeutung": "≤ 555"}
+        ],
+        [
+          {"text": "5 Belastungseinheiten pro Einheit Nachdruck", "bedeutung": "5x₁"},
+          {"text": "8 Belastungseinheiten pro Einheit Kühlzeit", "bedeutung": "+ 8x₂"},
+          {"text": "höchstens 120 Belastungseinheiten", "bedeutung": "≤ 120"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Extruder – Profilqualität maximieren",
+    "beschreibung": "Ein Kunststoffhersteller möchte die Profilqualität eines Extruders maximieren. Die zwei Stellgrößen sind die Schneckengeschwindigkeit und die Düsentemperatur. Jede Einheit Schneckengeschwindigkeit verbessert die Profilqualität um 12 Punkte, jede Einheit Düsentemperatur verbessert die Profilqualität um 10 Punkte. Der Verschleiß beträgt 3 Verschleißpunkte pro Einheit Schneckengeschwindigkeit und 9 Verschleißpunkte pro Einheit Düsentemperatur. Der maximal zulässige Verschleiß liegt bei 301 Verschleißpunkten. Die Leistungsaufnahme wird mit 4 kW pro Einheit Schneckengeschwindigkeit und 9 kW pro Einheit Düsentemperatur bewertet. Die verfügbare Leistung beträgt höchstens 512 kW. Gesucht ist die optimale Einstellung für beste Profilqualität.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Schneckengeschwindigkeit", "x2 = Einheit Düsentemperatur"],
+    "zielfunktion": "Z = 12x1 + 10x2 (max)",
+    "nebenbedingungen": [
+      "3x1 + 9x2 ≤ 301 (Verschleiß)",
+      "4x1 + 9x2 ≤ 512 (Leistungsaufnahme)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Verschleiß und Leistungsaufnahme. Die Qualitätsverbesserung pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Profilqualität um 12 Punkte", "bedeutung": "12 × x₁"},
+        {"text": "Profilqualität um 10 Punkte", "bedeutung": "10 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "3 Verschleißpunkte pro Einheit Schneckengeschwindigkeit", "bedeutung": "3x₁"},
+          {"text": "9 Verschleißpunkte pro Einheit Düsentemperatur", "bedeutung": "+ 9x₂"},
+          {"text": "maximal zulässige Verschleiß liegt bei 301 Verschleißpunkten", "bedeutung": "≤ 301"}
+        ],
+        [
+          {"text": "4 kW pro Einheit Schneckengeschwindigkeit", "bedeutung": "4x₁"},
+          {"text": "9 kW pro Einheit Düsentemperatur", "bedeutung": "+ 9x₂"},
+          {"text": "höchstens 512 kW", "bedeutung": "≤ 512"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Laserschneider – Schneidleistung optimieren",
+    "beschreibung": "Ein Blechbearbeitungsbetrieb möchte die Schneidleistung eines Laserschneiders maximieren. Die zwei Stellgrößen sind die Fokuslage und die Pulsfrequenz. Jede Einheit Fokuslage steigert die Schneidleistung um 5 Teile pro Stunde, jede Einheit Pulsfrequenz steigert die Schneidleistung um 7 Teile pro Stunde. Der Gasverbrauch beträgt 7 Liter pro Einheit Fokuslage und 6 Liter pro Einheit Pulsfrequenz. Der verfügbare Gasvorrat liegt bei maximal 189 Litern. Die Spiegelbelastung wird mit 9 Belastungseinheiten pro Einheit Fokuslage und 11 Belastungseinheiten pro Einheit Pulsfrequenz bewertet. Die zulässige Spiegelbelastung beträgt höchstens 413 Belastungseinheiten. Gesucht ist die optimale Parameterkombination für maximale Schneidleistung.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Fokuslage", "x2 = Einheit Pulsfrequenz"],
+    "zielfunktion": "Z = 5x1 + 7x2 (max)",
+    "nebenbedingungen": [
+      "7x1 + 6x2 ≤ 189 (Gasverbrauch)",
+      "9x1 + 11x2 ≤ 413 (Spiegelbelastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die zwei Beschränkungen: Gasverbrauch in Litern und Spiegelbelastung in Belastungseinheiten. Die Schneidleistung pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schneidleistung um 5 Teile pro Stunde", "bedeutung": "5 × x₁"},
+        {"text": "Schneidleistung um 7 Teile pro Stunde", "bedeutung": "7 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "7 Liter pro Einheit Fokuslage", "bedeutung": "7x₁"},
+          {"text": "6 Liter pro Einheit Pulsfrequenz", "bedeutung": "+ 6x₂"},
+          {"text": "maximal 189 Litern", "bedeutung": "≤ 189"}
+        ],
+        [
+          {"text": "9 Belastungseinheiten pro Einheit Fokuslage", "bedeutung": "9x₁"},
+          {"text": "11 Belastungseinheiten pro Einheit Pulsfrequenz", "bedeutung": "+ 11x₂"},
+          {"text": "höchstens 413 Belastungseinheiten", "bedeutung": "≤ 413"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schweißroboter – Schweißgeschwindigkeit maximieren",
+    "beschreibung": "Ein Stahlbauunternehmen möchte die Schweißgeschwindigkeit eines Schweißroboters maximieren. Die zwei Stellgrößen sind die Drahtvorschubrate und die Schutzgasmenge. Jede Einheit Drahtvorschubrate erhöht die Schweißgeschwindigkeit um 2 Meter pro Minute, jede Einheit Schutzgasmenge erhöht die Schweißgeschwindigkeit um 13 Meter pro Minute. Der Energieverbrauch beträgt 2 kW pro Einheit Drahtvorschubrate und 7 kW pro Einheit Schutzgasmenge. Die maximale Energieaufnahme liegt bei 333 kW. Der Düsenverschleiß wird mit 2 Verschleißpunkten pro Einheit Drahtvorschubrate und 3 Verschleißpunkten pro Einheit Schutzgasmenge angegeben. Der zulässige Düsenverschleiß beträgt höchstens 57 Verschleißpunkte. Gesucht ist die optimale Parameterkombination für maximale Schweißgeschwindigkeit.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Drahtvorschubrate", "x2 = Einheit Schutzgasmenge"],
+    "zielfunktion": "Z = 2x1 + 13x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 7x2 ≤ 333 (Energieaufnahme)",
+      "2x1 + 3x2 ≤ 57 (Düsenverschleiß)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Energieverbrauch in kW und Düsenverschleiß in Verschleißpunkten. Die Geschwindigkeitssteigerung bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Schweißgeschwindigkeit um 2 Meter pro Minute", "bedeutung": "2 × x₁"},
+        {"text": "Schweißgeschwindigkeit um 13 Meter pro Minute", "bedeutung": "13 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 kW pro Einheit Drahtvorschubrate", "bedeutung": "2x₁"},
+          {"text": "7 kW pro Einheit Schutzgasmenge", "bedeutung": "+ 7x₂"},
+          {"text": "maximale Energieaufnahme liegt bei 333 kW", "bedeutung": "≤ 333"}
+        ],
+        [
+          {"text": "2 Verschleißpunkten pro Einheit Drahtvorschubrate", "bedeutung": "2x₁"},
+          {"text": "3 Verschleißpunkten pro Einheit Schutzgasmenge", "bedeutung": "+ 3x₂"},
+          {"text": "höchstens 57 Verschleißpunkte", "bedeutung": "≤ 57"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Walzwerk – Bandqualität maximieren",
+    "beschreibung": "Ein Walzwerk möchte die Bandqualität maximieren. Die zwei Stellgrößen sind der Walzdruck und die Bandgeschwindigkeit. Jede Einheit Walzdruck verbessert die Bandqualität um 8 Punkte, jede Einheit Bandgeschwindigkeit verbessert die Bandqualität um 9 Punkte. Der Ölverbrauch beträgt 12 Liter pro Einheit Walzdruck und 5 Liter pro Einheit Bandgeschwindigkeit. Der verfügbare Ölvorrat liegt bei maximal 620 Litern. Die Walzenbelastung wird mit 8 Belastungspunkten pro Einheit Walzdruck und 6 Belastungspunkten pro Einheit Bandgeschwindigkeit bewertet. Die zulässige Walzenbelastung beträgt höchstens 774 Belastungspunkte. Gesucht ist die optimale Einstellung für beste Bandqualität.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Walzdruck", "x2 = Einheit Bandgeschwindigkeit"],
+    "zielfunktion": "Z = 8x1 + 9x2 (max)",
+    "nebenbedingungen": [
+      "12x1 + 5x2 ≤ 620 (Ölverbrauch)",
+      "8x1 + 6x2 ≤ 774 (Walzenbelastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachte die zwei Beschränkungen: Ölverbrauch in Litern und Walzenbelastung in Punkten. Die Qualitätsverbesserung bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Bandqualität um 8 Punkte", "bedeutung": "8 × x₁"},
+        {"text": "Bandqualität um 9 Punkte", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "12 Liter pro Einheit Walzdruck", "bedeutung": "12x₁"},
+          {"text": "5 Liter pro Einheit Bandgeschwindigkeit", "bedeutung": "+ 5x₂"},
+          {"text": "maximal 620 Litern", "bedeutung": "≤ 620"}
+        ],
+        [
+          {"text": "8 Belastungspunkten pro Einheit Walzdruck", "bedeutung": "8x₁"},
+          {"text": "6 Belastungspunkten pro Einheit Bandgeschwindigkeit", "bedeutung": "+ 6x₂"},
+          {"text": "höchstens 774 Belastungspunkte", "bedeutung": "≤ 774"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Brennofen – Sinterqualität optimieren",
+    "beschreibung": "Eine Keramikfabrik möchte die Sinterqualität eines Brennofens maximieren. Die zwei Stellgrößen sind die Aufheizrate und die Haltezeit. Jede Einheit Aufheizrate verbessert die Sinterqualität um 10 Punkte, jede Einheit Haltezeit verbessert die Sinterqualität um 6 Punkte. Der Gasverbrauch beträgt 8 Kubikmeter pro Einheit Aufheizrate und 8 Kubikmeter pro Einheit Haltezeit. Das verfügbare Gasvolumen liegt bei maximal 663 Kubikmetern. Die thermische Belastung des Ofens wird mit 6 Belastungspunkten pro Einheit Aufheizrate und 7 Belastungspunkten pro Einheit Haltezeit bewertet. Die zulässige thermische Belastung beträgt höchstens 115 Belastungspunkte. Gesucht ist die optimale Parameterkombination für höchste Sinterqualität.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Aufheizrate", "x2 = Einheit Haltezeit"],
+    "zielfunktion": "Z = 10x1 + 6x2 (max)",
+    "nebenbedingungen": [
+      "8x1 + 8x2 ≤ 663 (Gasvolumen)",
+      "6x1 + 7x2 ≤ 115 (Thermische Belastung)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Identifiziere die zwei Beschränkungen: Gasverbrauch in Kubikmetern und thermische Belastung in Belastungspunkten. Die Sinterqualität pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Sinterqualität um 10 Punkte", "bedeutung": "10 × x₁"},
+        {"text": "Sinterqualität um 6 Punkte", "bedeutung": "6 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "8 Kubikmeter pro Einheit Aufheizrate", "bedeutung": "8x₁"},
+          {"text": "8 Kubikmeter pro Einheit Haltezeit", "bedeutung": "+ 8x₂"},
+          {"text": "maximal 663 Kubikmetern", "bedeutung": "≤ 663"}
+        ],
+        [
+          {"text": "6 Belastungspunkten pro Einheit Aufheizrate", "bedeutung": "6x₁"},
+          {"text": "7 Belastungspunkten pro Einheit Haltezeit", "bedeutung": "+ 7x₂"},
+          {"text": "höchstens 115 Belastungspunkte", "bedeutung": "≤ 115"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "CNC-Fräse – Zerspanungsleistung maximieren",
+    "beschreibung": "Ein Werkzeugbauer möchte die Zerspanungsleistung einer CNC-Fräse maximieren. Die zwei Stellgrößen sind die Schnitttiefe und die Schnittgeschwindigkeit. Jede Einheit Schnitttiefe steigert die Zerspanungsleistung um 13 Kubikzentimeter pro Minute, jede Einheit Schnittgeschwindigkeit steigert die Zerspanungsleistung um 12 Kubikzentimeter pro Minute. Die Schwingungsbelastung beträgt 2 Punkte pro Einheit Schnitttiefe und 10 Punkte pro Einheit Schnittgeschwindigkeit. Die maximal zulässige Schwingungsbelastung liegt bei 104 Punkten. Der Werkzeugverschleiß wird mit 5 Verschleißeinheiten pro Einheit Schnitttiefe und 11 Verschleißeinheiten pro Einheit Schnittgeschwindigkeit angegeben. Der zulässige Werkzeugverschleiß beträgt höchstens 965 Verschleißeinheiten. Gesucht ist die optimale Parameterkombination für maximale Zerspanungsleistung.",
+    "typ": "Maschinenparametrierung",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheit Schnitttiefe", "x2 = Einheit Schnittgeschwindigkeit"],
+    "zielfunktion": "Z = 13x1 + 12x2 (max)",
+    "nebenbedingungen": [
+      "2x1 + 10x2 ≤ 104 (Schwingungsbelastung)",
+      "5x1 + 11x2 ≤ 965 (Werkzeugverschleiß)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achte auf die zwei Beschränkungen: Schwingungsbelastung und Werkzeugverschleiß. Die Zerspanungsleistung pro Einheit bildet die Zielfunktion.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Zerspanungsleistung um 13 Kubikzentimeter pro Minute", "bedeutung": "13 × x₁"},
+        {"text": "Zerspanungsleistung um 12 Kubikzentimeter pro Minute", "bedeutung": "12 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "2 Punkte pro Einheit Schnitttiefe", "bedeutung": "2x₁"},
+          {"text": "10 Punkte pro Einheit Schnittgeschwindigkeit", "bedeutung": "+ 10x₂"},
+          {"text": "maximal zulässige Schwingungsbelastung liegt bei 104 Punkten", "bedeutung": "≤ 104"}
+        ],
+        [
+          {"text": "5 Verschleißeinheiten pro Einheit Schnitttiefe", "bedeutung": "5x₁"},
+          {"text": "11 Verschleißeinheiten pro Einheit Schnittgeschwindigkeit", "bedeutung": "+ 11x₂"},
+          {"text": "höchstens 965 Verschleißeinheiten", "bedeutung": "≤ 965"}
+        ]
+      ]
+    }
+  }
+]

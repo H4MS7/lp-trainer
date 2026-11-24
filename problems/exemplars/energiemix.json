@@ -1,0 +1,68 @@
+[
+  {
+    "titel": "Energiemix Solarpark",
+    "beschreibung": "Ein Energieversorger plant den Ausbau erneuerbarer Energien mit Solaranlagen und Windkraftanlagen. Jede Solaranlage kostet 6€ pro MWh und jede Windkraftanlage kostet 9€ pro MWh. Das Unternehmen muss mindestens 40 MWh Leistung bereitstellen. Jede Solaranlage erzeugt 2 MWh und jede Windkraftanlage erzeugt 5 MWh. Aufgrund der verfügbaren Flächen können höchstens 12 Anlagen insgesamt errichtet werden. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Solaranlagen", "x2 = Anzahl Windkraftanlagen"],
+    "zielfunktion": "Z = 6x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 5x2 ≥ 40 (Mindestleistung)",
+      "x1 + x2 ≤ 12 (Flächenlimit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Achten Sie auf die unterschiedlichen Richtungen der Nebenbedingungen: Die Mindestleistung erfordert ≥, das Flächenlimit erfordert ≤.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Solaranlage kostet 6€ pro MWh", "bedeutung": "6 × x₁"},
+        {"text": "Windkraftanlage kostet 9€ pro MWh", "bedeutung": "9 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Solaranlage erzeugt 2 MWh", "bedeutung": "2x₁"},
+          {"text": "Windkraftanlage erzeugt 5 MWh", "bedeutung": "+ 5x₂"},
+          {"text": "mindestens 40 MWh Leistung", "bedeutung": "≥ 40"}
+        ],
+        [
+          {"text": "höchstens 12 Anlagen insgesamt", "bedeutung": "x₁ + x₂ ≤ 12"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Energiemix Biomasse und Wasserkraft",
+    "beschreibung": "Ein Stadtwerk plant die Energieerzeugung mit Biomasseanlagen und Wasserkraftwerken. Jede Biomasseanlage kostet 7€ pro MWh und jedes Wasserkraftwerk kostet 5€ pro MWh. Das Stadtwerk muss mindestens 50 MWh Strom erzeugen. Jede Biomasseanlage liefert 3 MWh und jedes Wasserkraftwerk liefert 4 MWh. Das Stromnetz hat eine Einspeisekapazität von höchstens 80 MWh. Jede Biomasseanlage speist 6 MWh ein und jedes Wasserkraftwerk speist 5 MWh ein. Das Gesamtbudget für den Betrieb beträgt höchstens 120€. Die Betriebskosten sollen minimiert werden.",
+    "typ": "Energiemix",
+    "optimierungsziel": "minimieren",
+    "variablen": ["x1 = Anzahl Biomasseanlagen", "x2 = Anzahl Wasserkraftwerke"],
+    "zielfunktion": "Z = 7x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≥ 50 (Mindesterzeugung)",
+      "6x1 + 5x2 ≤ 80 (Netzkapazität)",
+      "7x1 + 5x2 ≤ 120 (Budget)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Die Zielfunktion und die Budget-Nebenbedingung haben hier dieselben Koeffizienten. Verwechseln Sie nicht Erzeugung und Einspeisung.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Biomasseanlage kostet 7€ pro MWh", "bedeutung": "7 × x₁"},
+        {"text": "Wasserkraftwerk kostet 5€ pro MWh", "bedeutung": "5 × x₂"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Biomasseanlage liefert 3 MWh", "bedeutung": "3x₁"},
+          {"text": "Wasserkraftwerk liefert 4 MWh", "bedeutung": "+ 4x₂"},
+          {"text": "mindestens 50 MWh Strom", "bedeutung": "≥ 50"}
+        ],
+        [
+          {"text": "Biomasseanlage speist 6 MWh ein", "bedeutung": "6x₁"},
+          {"text": "Wasserkraftwerk speist 5 MWh ein", "bedeutung": "+ 5x₂"},
+          {"text": "höchstens 80 MWh", "bedeutung": "≤ 80"}
+        ],
+        [
+          {"text": "höchstens 120€", "bedeutung": "7x₁ + 5x₂ ≤ 120"}
+        ]
+      ]
+    }
+  }
+]

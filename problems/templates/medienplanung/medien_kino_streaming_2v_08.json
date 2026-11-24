@@ -1,0 +1,41 @@
+{
+  "id": "medien_kino_streaming_2v_08",
+  "typ": "Medienplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Kinospots", "x2 = Anzahl Streaming-Ads"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Budget", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Produktionskapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 40,   "label": "Zuschauer Kino (Tsd.)"},
+    "c2":  {"min": 5, "max": 20,    "label": "Views Streaming (Tsd.)"},
+    "a11": {"min": 5, "max": 15,    "label": "Kosten Kino (Tsd. €)"},
+    "a12": {"min": 2, "max": 8,     "label": "Kosten Streaming (Tsd. €)"},
+    "b1":  {"min": 40, "max": 200,  "label": "Budget (Tsd. €)"},
+    "a21": {"min": 5, "max": 15,    "label": "Produktion Kino (Stunden)"},
+    "a22": {"min": 2, "max": 6,     "label": "Produktion Streaming (Stunden)"},
+    "b2":  {"min": 20, "max": 80,   "label": "Produktionsstunden"}
+  },
+  "titel": "Bewegtbild-Werbung – Kino und Streaming",
+  "beschreibung": "Eine Agentur plant Bewegtbild-Werbung über Kinospots und Streaming-Ads. Ein Kinospot erreicht {c1} Tsd. Zuschauer, eine Streaming-Ad erreicht {c2} Tsd. Views. Ein Kinospot kostet {a11} Tsd. €, eine Streaming-Ad kostet {a12} Tsd. €. Das Budget beträgt {b1} Tsd. €. Die Produktionskapazität beträgt {a21} Stunden pro Kinospot und {a22} Stunden pro Streaming-Ad. Insgesamt stehen {b2} Produktionsstunden zur Verfügung.",
+  "hinweis": "Maximiere die Gesamtzuschauerzahl unter Beachtung von Budget und Produktion.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Kinospot erreicht {c1} Tsd. Zuschauer", "bedeutung": "{c1} × x₁"},
+      {"text": "Streaming-Ad erreicht {c2} Tsd. Views", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Tsd. €, eine Streaming-Ad kostet {a12} Tsd. €", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} Tsd. €", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden pro Kinospot und {a22} Stunden pro Streaming-Ad", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Produktionsstunden zur Verfügung", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

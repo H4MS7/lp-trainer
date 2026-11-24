@@ -1,0 +1,43 @@
+{
+  "id": "qual_auto_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Sichtprüfungen", "x2 = Anzahl Funktionsprüfungen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fehlerquote", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Bandkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten Sichtprüfung (€/Prüfung)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten Funktionsprüfung (€/Prüfung)"},
+    "a11": {"min": 2, "max": 5,   "label": "Fehlererkennung Sichtprüfung (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Fehlererkennung Funktionsprüfung (%)"},
+    "b1":  {"min": 40, "max": 160, "label": "Mindest-Fehlerquote (%)"},
+    "a21": {"min": 1, "max": 3,   "label": "Bandzeit Sichtprüfung (min)"},
+    "a22": {"min": 3, "max": 8,   "label": "Bandzeit Funktionsprüfung (min)"},
+    "b2":  {"min": 30, "max": 120, "label": "Bandkapazität (min)"}
+  },
+  "titel": "Automobilwerk – Endkontrolle",
+  "beschreibung": "Ein Automobilwerk führt Sichtprüfungen und Funktionsprüfungen am Fließband durch. Eine Sichtprüfung kostet {c1} €, eine Funktionsprüfung kostet {c2} €. Die Sichtprüfung erkennt {a11} % der Fehler, die Funktionsprüfung erkennt {a12} % der Fehler. Die Mindest-Fehlerquote beträgt {b1} %. Eine Sichtprüfung benötigt {a21} Minuten Bandzeit, eine Funktionsprüfung benötigt {a22} Minuten Bandzeit. Die Bandkapazität beträgt {b2} Minuten.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Fehlererkennung und begrenzter Bandkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Sichtprüfung kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Funktionsprüfung kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Fehler", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % der Fehler", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten Bandzeit", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten Bandzeit", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "id": "invest_versicher_2v_16",
+  "titel": "Versicherungsportfolio – Lebens- und Sachversicherung",
+  "variablen": [
+    "x1 = Betrag in Lebensversicherung (Tsd. EUR)",
+    "x2 = Betrag in Sachversicherung (Tsd. EUR)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Praemienbudget",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Verwaltungsaufwand",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 3,
+      "max": 8,
+      "label": "Rendite Lebensversicherung (%)"
+    },
+    "c2": {
+      "min": 4,
+      "max": 10,
+      "label": "Rendite Sachversicherung (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Praemie Leben"
+    },
+    "a12": {
+      "min": 1,
+      "max": 4,
+      "label": "Praemie Sach"
+    },
+    "b1": {
+      "min": 60,
+      "max": 250,
+      "label": "Praemienbudget (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 2,
+      "max": 5,
+      "label": "Verwaltung Leben"
+    },
+    "a22": {
+      "min": 3,
+      "max": 7,
+      "label": "Verwaltung Sach"
+    },
+    "b2": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Verwaltungseinheiten"
+    }
+  },
+  "beschreibung": "Ein Versicherungsunternehmen optimiert sein Portfolio. Lebensversicherungen bringen {c1} % Rendite, Sachversicherungen {c2} %. Die Praemien betragen {a11} Einheiten pro Lebensversicherung und {a12} Einheiten pro Sachversicherung. Das Praemienbudget liegt bei {b1} Tausend Euro. Der Verwaltungsaufwand betraegt {a21} Einheiten pro Lebensversicherung und {a22} Einheiten pro Sachversicherung bei maximal {b2} Verwaltungseinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Praemienbudget und Verwaltungsaufwand.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Lebensversicherungen bringen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Sachversicherungen {c2} %",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Lebensversicherung",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Sachversicherung",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Lebensversicherung",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Sachversicherung",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verwaltungseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  },
+  "objective": [
+    "c1",
+    "c2"
+  ]
+}

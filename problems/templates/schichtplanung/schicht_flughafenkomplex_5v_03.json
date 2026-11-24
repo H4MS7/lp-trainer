@@ -1,0 +1,85 @@
+{
+  "id": "schicht_flughafenkomplex_5v_03",
+  "typ": "Schichtplanung",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl Frühschichten Terminal A", "x2 = Anzahl Spätschichten Terminal A", "x3 = Anzahl Nachtschichten Terminal A", "x4 = Anzahl Frühschichten Terminal B", "x5 = Anzahl Nachtschichten Terminal B"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindestbesetzung Sicherheit", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": ">=", "label": "Mindestbesetzung Check-in", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": ">=", "label": "Mindestbesetzung Gepäck", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": ">=", "label": "Mindestbesetzung Boarding", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"},
+    {"type": "<=", "label": "Maximale Gesamtschichten", "row": ["a51","a52","a53","a54","a55"], "rhs": "b5"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 100, "max": 200, "label": "Kosten Früh Terminal A (€)"},
+    "c2":  {"min": 110, "max": 220, "label": "Kosten Spät Terminal A (€)"},
+    "c3":  {"min": 150, "max": 280, "label": "Kosten Nacht Terminal A (€)"},
+    "c4":  {"min": 90, "max": 190, "label": "Kosten Früh Terminal B (€)"},
+    "c5":  {"min": 140, "max": 270, "label": "Kosten Nacht Terminal B (€)"},
+    "a11": {"min": 3, "max": 6, "label": "Sicherheit pro Früh A"},
+    "a12": {"min": 2, "max": 5, "label": "Sicherheit pro Spät A"},
+    "a13": {"min": 2, "max": 4, "label": "Sicherheit pro Nacht A"},
+    "a14": {"min": 2, "max": 5, "label": "Sicherheit pro Früh B"},
+    "a15": {"min": 1, "max": 3, "label": "Sicherheit pro Nacht B"},
+    "b1":  {"min": 15, "max": 40, "label": "Mindestbesetzung Sicherheit"},
+    "a21": {"min": 3, "max": 7, "label": "Check-in pro Früh A"},
+    "a22": {"min": 2, "max": 5, "label": "Check-in pro Spät A"},
+    "a23": {"min": 1, "max": 3, "label": "Check-in pro Nacht A"},
+    "a24": {"min": 2, "max": 5, "label": "Check-in pro Früh B"},
+    "a25": {"min": 1, "max": 3, "label": "Check-in pro Nacht B"},
+    "b2":  {"min": 12, "max": 35, "label": "Mindestbesetzung Check-in"},
+    "a31": {"min": 2, "max": 5, "label": "Gepäck pro Früh A"},
+    "a32": {"min": 2, "max": 4, "label": "Gepäck pro Spät A"},
+    "a33": {"min": 1, "max": 3, "label": "Gepäck pro Nacht A"},
+    "a34": {"min": 2, "max": 4, "label": "Gepäck pro Früh B"},
+    "a35": {"min": 1, "max": 3, "label": "Gepäck pro Nacht B"},
+    "b3":  {"min": 10, "max": 30, "label": "Mindestbesetzung Gepäck"},
+    "a41": {"min": 2, "max": 4, "label": "Boarding pro Früh A"},
+    "a42": {"min": 2, "max": 4, "label": "Boarding pro Spät A"},
+    "a43": {"min": 1, "max": 2, "label": "Boarding pro Nacht A"},
+    "a44": {"min": 1, "max": 3, "label": "Boarding pro Früh B"},
+    "a45": {"min": 1, "max": 2, "label": "Boarding pro Nacht B"},
+    "b4":  {"min": 8, "max": 22, "label": "Mindestbesetzung Boarding"},
+    "a51": {"min": 1, "max": 1, "label": "Schichtfaktor Früh A"},
+    "a52": {"min": 1, "max": 1, "label": "Schichtfaktor Spät A"},
+    "a53": {"min": 1, "max": 1, "label": "Schichtfaktor Nacht A"},
+    "a54": {"min": 1, "max": 1, "label": "Schichtfaktor Früh B"},
+    "a55": {"min": 1, "max": 1, "label": "Schichtfaktor Nacht B"},
+    "b5":  {"min": 25, "max": 55, "label": "Maximale Gesamtschichten"}
+  },
+  "titel": "Flughafenkomplex – Fünf-Schicht-Planung",
+  "beschreibung": "Ein Flughafenkomplex mit zwei Terminals plant die Besetzung mit fünf Schichttypen. Eine Frühschicht Terminal A kostet {c1} €, eine Spätschicht Terminal A kostet {c2} €, eine Nachtschicht Terminal A kostet {c3} €, eine Frühschicht Terminal B kostet {c4} € und eine Nachtschicht Terminal B kostet {c5} €. Für die Sicherheit stellt jede Frühschicht A {a11} Kräfte bereit, jede Spätschicht A {a12}, jede Nachtschicht A {a13}, jede Frühschicht B {a14} und jede Nachtschicht B {a15}. Mindestens {b1} Sicherheitskräfte werden benötigt. Für das Check-in stellt jede Frühschicht A {a21} Mitarbeiter bereit, jede Spätschicht A {a22}, jede Nachtschicht A {a23}, jede Frühschicht B {a24} und jede Nachtschicht B {a25}. Mindestens {b2} Check-in-Mitarbeiter werden benötigt. Für die Gepäckabfertigung stellt jede Frühschicht A {a31} Mitarbeiter bereit, jede Spätschicht A {a32}, jede Nachtschicht A {a33}, jede Frühschicht B {a34} und jede Nachtschicht B {a35}. Mindestens {b3} Gepäckabfertiger werden benötigt. Für das Boarding stellt jede Frühschicht A {a41} Mitarbeiter bereit, jede Spätschicht A {a42}, jede Nachtschicht A {a43}, jede Frühschicht B {a44} und jede Nachtschicht B {a45}. Mindestens {b4} Boarding-Mitarbeiter werden benötigt. Insgesamt dürfen höchstens {b5} Schichten eingeplant werden.",
+  "hinweis": "Minimiere die Gesamtkosten bei Einhaltung aller Mindestbesetzungen und des Schichtlimits.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Frühschicht Terminal A kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "Spätschicht Terminal A kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "Nachtschicht Terminal A kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Frühschicht Terminal B kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "Nachtschicht Terminal B kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} Kräfte bereit, jede Spätschicht A {a12}, jede Nachtschicht A {a13}, jede Frühschicht B {a14} und jede Nachtschicht B {a15}", "bedeutung": "{a11}x₁ + {a12}x₂ + {a13}x₃ + {a14}x₄ + {a15}x₅"},
+        {"text": "{b1} Sicherheitskräfte werden benötigt", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Mitarbeiter bereit, jede Spätschicht A {a22}, jede Nachtschicht A {a23}, jede Frühschicht B {a24} und jede Nachtschicht B {a25}", "bedeutung": "{a21}x₁ + {a22}x₂ + {a23}x₃ + {a24}x₄ + {a25}x₅"},
+        {"text": "{b2} Check-in-Mitarbeiter werden benötigt", "bedeutung": "≥ {b2}"}
+      ],
+      [
+        {"text": "{a31} Mitarbeiter bereit, jede Spätschicht A {a32}, jede Nachtschicht A {a33}, jede Frühschicht B {a34} und jede Nachtschicht B {a35}", "bedeutung": "{a31}x₁ + {a32}x₂ + {a33}x₃ + {a34}x₄ + {a35}x₅"},
+        {"text": "{b3} Gepäckabfertiger werden benötigt", "bedeutung": "≥ {b3}"}
+      ],
+      [
+        {"text": "{a41} Mitarbeiter bereit, jede Spätschicht A {a42}, jede Nachtschicht A {a43}, jede Frühschicht B {a44} und jede Nachtschicht B {a45}", "bedeutung": "{a41}x₁ + {a42}x₂ + {a43}x₃ + {a44}x₄ + {a45}x₅"},
+        {"text": "{b4} Boarding-Mitarbeiter werden benötigt", "bedeutung": "≥ {b4}"}
+      ],
+      [
+        {"text": "höchstens {b5} Schichten eingeplant werden", "bedeutung": "x₁ + x₂ + x₃ + x₄ + x₅ ≤ {b5}"}
+      ]
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+[
+  {
+    "titel": "Forschungsförderung – Vier Projektbereiche",
+    "beschreibung": "Eine Forschungsstiftung verteilt Fördermittel auf vier Projektbereiche: Biotechnologie (A), Informatik (B), Materialwissenschaften (C) und Umwelttechnik (D). Jede geförderte Einheit Biotechnologie erbringt einen Nutzen von 15 Punkten, jede Einheit Informatik einen Nutzen von 23 Punkten, jede Einheit Materialwissenschaften einen Nutzen von 47 Punkten und jede Einheit Umwelttechnik einen Nutzen von 22 Punkten. Die Zuteilung unterliegt vier Beschränkungen. Im Bereich Laborinfrastruktur benötigt eine Einheit Biotechnologie 14 Laboreinheiten, eine Einheit Informatik 8 Laboreinheiten, eine Einheit Materialwissenschaften 6 Laboreinheiten und eine Einheit Umwelttechnik 3 Laboreinheiten. Insgesamt stehen 38 Laboreinheiten zur Verfügung. Beim wissenschaftlichen Personal erfordert eine Einheit Biotechnologie 14 Personalstellen, eine Einheit Informatik 5 Personalstellen, eine Einheit Materialwissenschaften 3 Personalstellen und eine Einheit Umwelttechnik 11 Personalstellen. Es sind 334 Personalstellen verfügbar. Bei der Geräteausstattung werden 7 Geräteeinheiten pro Einheit Biotechnologie, 14 Geräteeinheiten pro Einheit Informatik, 14 Geräteeinheiten pro Einheit Materialwissenschaften und 15 Geräteeinheiten pro Einheit Umwelttechnik benötigt, bei einer Gesamtkapazität von 322 Geräteeinheiten. Beim Verwaltungsaufwand fallen 8 Verwaltungseinheiten pro Einheit Biotechnologie, 8 Verwaltungseinheiten pro Einheit Informatik, 11 Verwaltungseinheiten pro Einheit Materialwissenschaften und 6 Verwaltungseinheiten pro Einheit Umwelttechnik an. Die Verwaltungskapazität beträgt 295 Einheiten. Die Stiftung möchte den Gesamtnutzen maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Biotechnologie (A)", "x2 = Einheiten Informatik (B)", "x3 = Einheiten Materialwissenschaften (C)", "x4 = Einheiten Umwelttechnik (D)"],
+    "zielfunktion": "Z = 15x1 + 23x2 + 47x3 + 22x4 (max)",
+    "nebenbedingungen": [
+      "14x1 + 8x2 + 6x3 + 3x4 ≤ 38 (Laborinfrastruktur)",
+      "14x1 + 5x2 + 3x3 + 11x4 ≤ 334 (Wissenschaftliches Personal)",
+      "7x1 + 14x2 + 14x3 + 15x4 ≤ 322 (Geräteausstattung)",
+      "8x1 + 8x2 + 11x3 + 6x4 ≤ 295 (Verwaltungsaufwand)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Materialwissenschaften hat den höchsten Ertrag pro Einheit (47 Punkte), beansprucht aber bei Geräten und Verwaltung erhebliche Kapazitäten. Die Laborinfrastruktur mit nur 38 Einheiten könnte der Engpass sein.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Biotechnologie erbringt einen Nutzen von 15 Punkten", "bedeutung": "15 × x₁"},
+        {"text": "Informatik einen Nutzen von 23 Punkten", "bedeutung": "23 × x₂"},
+        {"text": "Materialwissenschaften einen Nutzen von 47 Punkten", "bedeutung": "47 × x₃"},
+        {"text": "Umwelttechnik einen Nutzen von 22 Punkten", "bedeutung": "22 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Biotechnologie 14 Laboreinheiten", "bedeutung": "14x₁"},
+          {"text": "Informatik 8 Laboreinheiten", "bedeutung": "+ 8x₂"},
+          {"text": "Materialwissenschaften 6 Laboreinheiten", "bedeutung": "+ 6x₃"},
+          {"text": "Umwelttechnik 3 Laboreinheiten", "bedeutung": "+ 3x₄"},
+          {"text": "38 Laboreinheiten zur Verfügung", "bedeutung": "≤ 38"}
+        ],
+        [
+          {"text": "Biotechnologie 14 Personalstellen", "bedeutung": "14x₁"},
+          {"text": "Informatik 5 Personalstellen", "bedeutung": "+ 5x₂"},
+          {"text": "Materialwissenschaften 3 Personalstellen", "bedeutung": "+ 3x₃"},
+          {"text": "Umwelttechnik 11 Personalstellen", "bedeutung": "+ 11x₄"},
+          {"text": "334 Personalstellen verfügbar", "bedeutung": "≤ 334"}
+        ],
+        [
+          {"text": "7 Geräteeinheiten pro Einheit Biotechnologie", "bedeutung": "7x₁"},
+          {"text": "14 Geräteeinheiten pro Einheit Informatik", "bedeutung": "+ 14x₂"},
+          {"text": "14 Geräteeinheiten pro Einheit Materialwissenschaften", "bedeutung": "+ 14x₃"},
+          {"text": "15 Geräteeinheiten pro Einheit Umwelttechnik", "bedeutung": "+ 15x₄"},
+          {"text": "322 Geräteeinheiten", "bedeutung": "≤ 322"}
+        ],
+        [
+          {"text": "8 Verwaltungseinheiten pro Einheit Biotechnologie", "bedeutung": "8x₁"},
+          {"text": "8 Verwaltungseinheiten pro Einheit Informatik", "bedeutung": "+ 8x₂"},
+          {"text": "11 Verwaltungseinheiten pro Einheit Materialwissenschaften", "bedeutung": "+ 11x₃"},
+          {"text": "6 Verwaltungseinheiten pro Einheit Umwelttechnik", "bedeutung": "+ 6x₄"},
+          {"text": "Verwaltungskapazität beträgt 295 Einheiten", "bedeutung": "≤ 295"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Marketingmix – Vier Kanäle",
+    "beschreibung": "Ein Konsumgüterhersteller optimiert seinen Marketingmix über vier Kanäle: TV-Werbung (A), Online-Marketing (B), Plakatwerbung (C) und Influencer-Kooperationen (D). Jede eingesetzte Einheit TV-Werbung erzielt einen Wirkungswert von 3 Punkten, jede Einheit Online-Marketing einen Wirkungswert von 6 Punkten, jede Einheit Plakatwerbung einen Wirkungswert von 48 Punkten und jede Einheit Influencer-Kooperationen einen Wirkungswert von 14 Punkten. Die Kampagne unterliegt vier Beschränkungen. Beim Produktionsbudget erfordert eine Einheit TV-Werbung 14 Budgeteinheiten, eine Einheit Online-Marketing 5 Budgeteinheiten, eine Einheit Plakatwerbung 3 Budgeteinheiten und eine Einheit Influencer-Kooperationen 15 Budgeteinheiten. Das Gesamtbudget beträgt 113 Einheiten. Beim Kreativpersonal werden 3 Kreativstunden pro Einheit TV-Werbung, 4 Kreativstunden pro Einheit Online-Marketing, 3 Kreativstunden pro Einheit Plakatwerbung und 4 Kreativstunden pro Einheit Influencer-Kooperationen benötigt, bei einer Kapazität von 287 Kreativstunden. Bei der Medienplanung fallen 4 Planungsstunden pro Einheit TV-Werbung, 10 Planungsstunden pro Einheit Online-Marketing, 5 Planungsstunden pro Einheit Plakatwerbung und 11 Planungsstunden pro Einheit Influencer-Kooperationen an. Es stehen 165 Planungsstunden zur Verfügung. Im Bereich Marktforschung benötigt eine Einheit TV-Werbung 1 Analysestunde, eine Einheit Online-Marketing 13 Analysestunden, eine Einheit Plakatwerbung 5 Analysestunden und eine Einheit Influencer-Kooperationen 12 Analysestunden. Die Analysekapazität umfasst 191 Stunden. Der Hersteller möchte den Gesamtwirkungswert maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten TV-Werbung (A)", "x2 = Einheiten Online-Marketing (B)", "x3 = Einheiten Plakatwerbung (C)", "x4 = Einheiten Influencer-Kooperationen (D)"],
+    "zielfunktion": "Z = 3x1 + 6x2 + 48x3 + 14x4 (max)",
+    "nebenbedingungen": [
+      "14x1 + 5x2 + 3x3 + 15x4 ≤ 113 (Produktionsbudget)",
+      "3x1 + 4x2 + 3x3 + 4x4 ≤ 287 (Kreativpersonal)",
+      "4x1 + 10x2 + 5x3 + 11x4 ≤ 165 (Medienplanung)",
+      "x1 + 13x2 + 5x3 + 12x4 ≤ 191 (Marktforschung)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Plakatwerbung liefert mit 48 Punkten den mit Abstand höchsten Wirkungswert, benötigt aber nur wenige Budgeteinheiten. Prüfe, ob das Produktionsbudget oder eine andere Ressource den Engpass darstellt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "TV-Werbung erzielt einen Wirkungswert von 3 Punkten", "bedeutung": "3 × x₁"},
+        {"text": "Online-Marketing einen Wirkungswert von 6 Punkten", "bedeutung": "6 × x₂"},
+        {"text": "Plakatwerbung einen Wirkungswert von 48 Punkten", "bedeutung": "48 × x₃"},
+        {"text": "Influencer-Kooperationen einen Wirkungswert von 14 Punkten", "bedeutung": "14 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "TV-Werbung 14 Budgeteinheiten", "bedeutung": "14x₁"},
+          {"text": "Online-Marketing 5 Budgeteinheiten", "bedeutung": "+ 5x₂"},
+          {"text": "Plakatwerbung 3 Budgeteinheiten", "bedeutung": "+ 3x₃"},
+          {"text": "Influencer-Kooperationen 15 Budgeteinheiten", "bedeutung": "+ 15x₄"},
+          {"text": "Gesamtbudget beträgt 113 Einheiten", "bedeutung": "≤ 113"}
+        ],
+        [
+          {"text": "3 Kreativstunden pro Einheit TV-Werbung", "bedeutung": "3x₁"},
+          {"text": "4 Kreativstunden pro Einheit Online-Marketing", "bedeutung": "+ 4x₂"},
+          {"text": "3 Kreativstunden pro Einheit Plakatwerbung", "bedeutung": "+ 3x₃"},
+          {"text": "4 Kreativstunden pro Einheit Influencer-Kooperationen", "bedeutung": "+ 4x₄"},
+          {"text": "287 Kreativstunden", "bedeutung": "≤ 287"}
+        ],
+        [
+          {"text": "4 Planungsstunden pro Einheit TV-Werbung", "bedeutung": "4x₁"},
+          {"text": "10 Planungsstunden pro Einheit Online-Marketing", "bedeutung": "+ 10x₂"},
+          {"text": "5 Planungsstunden pro Einheit Plakatwerbung", "bedeutung": "+ 5x₃"},
+          {"text": "11 Planungsstunden pro Einheit Influencer-Kooperationen", "bedeutung": "+ 11x₄"},
+          {"text": "165 Planungsstunden zur Verfügung", "bedeutung": "≤ 165"}
+        ],
+        [
+          {"text": "TV-Werbung 1 Analysestunde", "bedeutung": "x₁"},
+          {"text": "Online-Marketing 13 Analysestunden", "bedeutung": "+ 13x₂"},
+          {"text": "Plakatwerbung 5 Analysestunden", "bedeutung": "+ 5x₃"},
+          {"text": "Influencer-Kooperationen 12 Analysestunden", "bedeutung": "+ 12x₄"},
+          {"text": "Analysekapazität umfasst 191 Stunden", "bedeutung": "≤ 191"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Produktionswerk – Vier Fertigungslinien",
+    "beschreibung": "Ein Produktionswerk steuert die Auslastung von vier Fertigungslinien: Elektronik (A), Mechanik (B), Optik (C) und Verpackung (D). Pro Einheit Elektronik wird ein Deckungsbeitrag von 31 Euro erwirtschaftet, pro Einheit Mechanik ein Deckungsbeitrag von 26 Euro, pro Einheit Optik ein Deckungsbeitrag von 23 Euro und pro Einheit Verpackung ein Deckungsbeitrag von 2 Euro. Die Zuteilung unterliegt vier Kapazitätsgrenzen. Beim Materialeinsatz benötigt eine Einheit Elektronik 11 Materialeinheiten, eine Einheit Mechanik 7 Materialeinheiten, eine Einheit Optik 4 Materialeinheiten und eine Einheit Verpackung 7 Materialeinheiten. Insgesamt sind 161 Materialeinheiten verfügbar. Bei der Energieversorgung erfordert eine Einheit Elektronik 6 Energieeinheiten, eine Einheit Mechanik 1 Energieeinheit, eine Einheit Optik 1 Energieeinheit und eine Einheit Verpackung 7 Energieeinheiten. Die Energiekapazität beträgt 355 Einheiten. Im Bereich Facharbeiterstunden werden 6 Stunden pro Einheit Elektronik, 13 Stunden pro Einheit Mechanik, 12 Stunden pro Einheit Optik und 7 Stunden pro Einheit Verpackung eingesetzt, bei einer Gesamtkapazität von 55 Facharbeiterstunden. Beim Qualitätsmanagement fallen 10 Prüfeinheiten pro Einheit Elektronik, 10 Prüfeinheiten pro Einheit Mechanik, 9 Prüfeinheiten pro Einheit Optik und 15 Prüfeinheiten pro Einheit Verpackung an. Es stehen 390 Prüfeinheiten zur Verfügung. Das Werk möchte den Gesamtdeckungsbeitrag maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Elektronik (A)", "x2 = Einheiten Mechanik (B)", "x3 = Einheiten Optik (C)", "x4 = Einheiten Verpackung (D)"],
+    "zielfunktion": "Z = 31x1 + 26x2 + 23x3 + 2x4 (max)",
+    "nebenbedingungen": [
+      "11x1 + 7x2 + 4x3 + 7x4 ≤ 161 (Materialeinsatz)",
+      "6x1 + x2 + x3 + 7x4 ≤ 355 (Energieversorgung)",
+      "6x1 + 13x2 + 12x3 + 7x4 ≤ 55 (Facharbeiterstunden)",
+      "10x1 + 10x2 + 9x3 + 15x4 ≤ 390 (Qualitätsmanagement)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Verpackung bringt mit nur 2 Euro den geringsten Ertrag. Die Facharbeiterstunden sind mit 55 Einheiten sehr knapp bemessen und dürften den Engpass bilden.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Elektronik wird ein Deckungsbeitrag von 31 Euro erwirtschaftet", "bedeutung": "31 × x₁"},
+        {"text": "Mechanik ein Deckungsbeitrag von 26 Euro", "bedeutung": "26 × x₂"},
+        {"text": "Optik ein Deckungsbeitrag von 23 Euro", "bedeutung": "23 × x₃"},
+        {"text": "Verpackung ein Deckungsbeitrag von 2 Euro", "bedeutung": "2 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Elektronik 11 Materialeinheiten", "bedeutung": "11x₁"},
+          {"text": "Mechanik 7 Materialeinheiten", "bedeutung": "+ 7x₂"},
+          {"text": "Optik 4 Materialeinheiten", "bedeutung": "+ 4x₃"},
+          {"text": "Verpackung 7 Materialeinheiten", "bedeutung": "+ 7x₄"},
+          {"text": "161 Materialeinheiten verfügbar", "bedeutung": "≤ 161"}
+        ],
+        [
+          {"text": "Elektronik 6 Energieeinheiten", "bedeutung": "6x₁"},
+          {"text": "Mechanik 1 Energieeinheit", "bedeutung": "+ x₂"},
+          {"text": "Optik 1 Energieeinheit", "bedeutung": "+ x₃"},
+          {"text": "Verpackung 7 Energieeinheiten", "bedeutung": "+ 7x₄"},
+          {"text": "Energiekapazität beträgt 355 Einheiten", "bedeutung": "≤ 355"}
+        ],
+        [
+          {"text": "6 Stunden pro Einheit Elektronik", "bedeutung": "6x₁"},
+          {"text": "13 Stunden pro Einheit Mechanik", "bedeutung": "+ 13x₂"},
+          {"text": "12 Stunden pro Einheit Optik", "bedeutung": "+ 12x₃"},
+          {"text": "7 Stunden pro Einheit Verpackung", "bedeutung": "+ 7x₄"},
+          {"text": "55 Facharbeiterstunden", "bedeutung": "≤ 55"}
+        ],
+        [
+          {"text": "10 Prüfeinheiten pro Einheit Elektronik", "bedeutung": "10x₁"},
+          {"text": "10 Prüfeinheiten pro Einheit Mechanik", "bedeutung": "+ 10x₂"},
+          {"text": "9 Prüfeinheiten pro Einheit Optik", "bedeutung": "+ 9x₃"},
+          {"text": "15 Prüfeinheiten pro Einheit Verpackung", "bedeutung": "+ 15x₄"},
+          {"text": "390 Prüfeinheiten zur Verfügung", "bedeutung": "≤ 390"}
+        ]
+      ]
+    }
+  }
+]

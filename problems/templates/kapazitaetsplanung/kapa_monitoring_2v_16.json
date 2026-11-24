@@ -1,0 +1,41 @@
+{
+  "id": "kapa_monitoring_2v_16",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Metrik-Agenten", "x2 = Anzahl Log-Agenten"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "CPU-Ressourcen", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Bandbreite", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 10, "max": 50,   "label": "Metriken pro Agent (Tsd./min)"},
+    "c2":  {"min": 5, "max": 30,    "label": "Log-Zeilen pro Agent (Tsd./min)"},
+    "a11": {"min": 1, "max": 2,     "label": "CPU Metrik-Agent (Kerne)"},
+    "a12": {"min": 1, "max": 3,     "label": "CPU Log-Agent (Kerne)"},
+    "b1":  {"min": 8, "max": 32,    "label": "Verfügbare CPU-Kerne"},
+    "a21": {"min": 1, "max": 5,     "label": "Bandbreite Metrik (Mbit/s)"},
+    "a22": {"min": 2, "max": 10,    "label": "Bandbreite Log (Mbit/s)"},
+    "b2":  {"min": 20, "max": 100,  "label": "Verfügbare Bandbreite (Mbit/s)"}
+  },
+  "titel": "Monitoring-System – Agentenverteilung",
+  "beschreibung": "Ein DevOps-Team plant die Monitoring-Infrastruktur. Ein Metrik-Agent erfasst {c1} Tsd. Metriken pro Minute, ein Log-Agent erfasst {c2} Tsd. Log-Zeilen pro Minute. Ein Metrik-Agent benötigt {a11} CPU-Kerne, ein Log-Agent benötigt {a12} CPU-Kerne. Es stehen {b1} CPU-Kerne zur Verfügung. Der Bandbreitenbedarf beträgt {a21} Mbit/s pro Metrik-Agent und {a22} Mbit/s pro Log-Agent. Die verfügbare Bandbreite beträgt {b2} Mbit/s.",
+  "hinweis": "Maximiere die Gesamterfassungsrate unter Beachtung der CPU- und Bandbreitenbeschränkungen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Metrik-Agent erfasst {c1} Tsd. Metriken pro Minute", "bedeutung": "{c1} × x₁"},
+      {"text": "Log-Agent erfasst {c2} Tsd. Log-Zeilen pro Minute", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} CPU-Kerne, ein Log-Agent benötigt {a12} CPU-Kerne", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} CPU-Kerne zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Mbit/s pro Metrik-Agent und {a22} Mbit/s pro Log-Agent", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Mbit/s", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

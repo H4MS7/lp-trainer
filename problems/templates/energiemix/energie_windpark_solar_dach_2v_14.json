@@ -1,0 +1,43 @@
+{
+  "id": "energie_windpark_solar_dach_2v_14",
+  "typ": "Energiemix",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = MWh Windpark", "x2 = MWh Dach-Solaranlage"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindesteinspeisung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Maximale Investitionskosten", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 30, "max": 75, "label": "Betriebskosten Windpark (€/MWh)"},
+    "c2":  {"min": 20, "max": 55, "label": "Betriebskosten Solar-Dach (€/MWh)"},
+    "a11": {"min": 3, "max": 7, "label": "Einspeisung Windpark (MW/MWh)"},
+    "a12": {"min": 1, "max": 4, "label": "Einspeisung Solar-Dach (MW/MWh)"},
+    "b1":  {"min": 40, "max": 180, "label": "Mindesteinspeisung (MW)"},
+    "a21": {"min": 4, "max": 10, "label": "Investition Windpark (T€/MWh)"},
+    "a22": {"min": 2, "max": 6, "label": "Investition Solar-Dach (T€/MWh)"},
+    "b2":  {"min": 50, "max": 200, "label": "Maximale Investitionskosten (T€)"}
+  },
+  "titel": "Energiemix – Windpark und Dach-Solaranlage",
+  "beschreibung": "Eine Energiegenossenschaft plant den Strommix aus Windpark und Dach-Solaranlagen. Die Betriebskosten betragen {c1} € pro MWh Windpark und {c2} € pro MWh Dach-Solar. Der Windpark liefert {a11} MW Einspeisung pro MWh, die Dach-Solaranlage liefert {a12} MW Einspeisung pro MWh. Mindestens {b1} MW müssen eingespeist werden. Die Investitionskosten betragen {a21} T€ pro MWh Windpark und {a22} T€ pro MWh Dach-Solar. Das Investitionsbudget ist auf {b2} T€ begrenzt.",
+  "hinweis": "Minimiere die Betriebskosten bei Einhaltung der Mindesteinspeisung und des Investitionsbudgets.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "{c1} € pro MWh Windpark", "bedeutung": "{c1} × x₁"},
+      {"text": "{c2} € pro MWh Dach-Solar", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} MW Einspeisung pro MWh", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} MW Einspeisung pro MWh", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} MW müssen eingespeist werden", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} T€ pro MWh Windpark", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} T€ pro MWh Dach-Solar", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} T€ begrenzt", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

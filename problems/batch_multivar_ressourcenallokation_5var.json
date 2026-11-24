@@ -1,0 +1,79 @@
+[
+  {
+    "titel": "Standortplanung – Fünf Regionen",
+    "beschreibung": "Ein internationaler Konzern plant die Verteilung seiner Investitionen auf fünf regionale Standorte: Region Nord (A), Region Ost (B), Region Süd (C), Region West (D) und Region Zentral (E). Jede zugeteilte Einheit in Region Nord erwirtschaftet einen Ertrag von 48 Punkten, jede Einheit in Region Ost einen Ertrag von 43 Punkten, jede Einheit in Region Süd einen Ertrag von 9 Punkten, jede Einheit in Region West einen Ertrag von 8 Punkten und jede Einheit in Region Zentral einen Ertrag von 29 Punkten. Die Zuteilung wird durch sechs Ressourcen begrenzt. Beim Fachpersonal benötigt eine Einheit Region Nord 13 Personalstellen, eine Einheit Region Ost 11 Personalstellen, eine Einheit Region Süd 5 Personalstellen, eine Einheit Region West 1 Personalstelle und eine Einheit Region Zentral 3 Personalstellen. Insgesamt stehen 493 Personalstellen zur Verfügung. Beim Kapitalbudget erfordert eine Einheit Region Nord 1 Budgeteinheit, eine Einheit Region Ost 14 Budgeteinheiten, eine Einheit Region Süd 4 Budgeteinheiten, eine Einheit Region West 2 Budgeteinheiten und eine Einheit Region Zentral 8 Budgeteinheiten. Das Gesamtbudget beträgt 326 Einheiten. Bei der Infrastruktur werden 4 Infrastruktureinheiten pro Einheit Region Nord, 13 Infrastruktureinheiten pro Einheit Region Ost, 13 Infrastruktureinheiten pro Einheit Region Süd, 13 Infrastruktureinheiten pro Einheit Region West und 4 Infrastruktureinheiten pro Einheit Region Zentral benötigt, bei einer Gesamtkapazität von 167 Infrastruktureinheiten. Im Bereich Logistik fallen 5 Logistikeinheiten pro Einheit Region Nord, 2 Logistikeinheiten pro Einheit Region Ost, 6 Logistikeinheiten pro Einheit Region Süd, 6 Logistikeinheiten pro Einheit Region West und 5 Logistikeinheiten pro Einheit Region Zentral an. Es stehen 460 Logistikeinheiten zur Verfügung. Bei der Managementkapazität benötigt eine Einheit Region Nord 5 Managementeinheiten, eine Einheit Region Ost 15 Managementeinheiten, eine Einheit Region Süd 1 Managementeinheit, eine Einheit Region West 11 Managementeinheiten und eine Einheit Region Zentral 9 Managementeinheiten. Die Managementkapazität umfasst 72 Einheiten. Beim Technologietransfer werden 10 Transfereinheiten pro Einheit Region Nord, 8 Transfereinheiten pro Einheit Region Ost, 13 Transfereinheiten pro Einheit Region Süd, 12 Transfereinheiten pro Einheit Region West und 14 Transfereinheiten pro Einheit Region Zentral eingesetzt, bei einem Gesamtvolumen von 153 Transfereinheiten. Der Konzern möchte den Gesamtertrag maximieren.",
+    "typ": "Ressourcenallokation",
+    "optimierungsziel": "maximieren",
+    "variablen": ["x1 = Einheiten Region Nord (A)", "x2 = Einheiten Region Ost (B)", "x3 = Einheiten Region Süd (C)", "x4 = Einheiten Region West (D)", "x5 = Einheiten Region Zentral (E)"],
+    "zielfunktion": "Z = 48x1 + 43x2 + 9x3 + 8x4 + 29x5 (max)",
+    "nebenbedingungen": [
+      "13x1 + 11x2 + 5x3 + x4 + 3x5 ≤ 493 (Fachpersonal)",
+      "x1 + 14x2 + 4x3 + 2x4 + 8x5 ≤ 326 (Kapitalbudget)",
+      "4x1 + 13x2 + 13x3 + 13x4 + 4x5 ≤ 167 (Infrastruktur)",
+      "5x1 + 2x2 + 6x3 + 6x4 + 5x5 ≤ 460 (Logistik)",
+      "5x1 + 15x2 + x3 + 11x4 + 9x5 ≤ 72 (Managementkapazität)",
+      "10x1 + 8x2 + 13x3 + 12x4 + 14x5 ≤ 153 (Technologietransfer)",
+      "x1, x2, x3, x4, x5 ≥ 0"
+    ],
+    "hinweis": "Region Nord und Region Ost haben die höchsten Erträge (48 bzw. 43 Punkte). Die Managementkapazität ist mit nur 72 Einheiten sehr knapp. Prüfe, welche Kombination aus allen fünf Regionen die sechs Ressourcenbeschränkungen am besten ausnutzt.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "Region Nord erwirtschaftet einen Ertrag von 48 Punkten", "bedeutung": "48 × x₁"},
+        {"text": "Region Ost einen Ertrag von 43 Punkten", "bedeutung": "43 × x₂"},
+        {"text": "Region Süd einen Ertrag von 9 Punkten", "bedeutung": "9 × x₃"},
+        {"text": "Region West einen Ertrag von 8 Punkten", "bedeutung": "8 × x₄"},
+        {"text": "Region Zentral einen Ertrag von 29 Punkten", "bedeutung": "29 × x₅"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "Region Nord 13 Personalstellen", "bedeutung": "13x₁"},
+          {"text": "Region Ost 11 Personalstellen", "bedeutung": "+ 11x₂"},
+          {"text": "Region Süd 5 Personalstellen", "bedeutung": "+ 5x₃"},
+          {"text": "Region West 1 Personalstelle", "bedeutung": "+ x₄"},
+          {"text": "Region Zentral 3 Personalstellen", "bedeutung": "+ 3x₅"},
+          {"text": "493 Personalstellen zur Verfügung", "bedeutung": "≤ 493"}
+        ],
+        [
+          {"text": "Region Nord 1 Budgeteinheit", "bedeutung": "x₁"},
+          {"text": "Region Ost 14 Budgeteinheiten", "bedeutung": "+ 14x₂"},
+          {"text": "Region Süd 4 Budgeteinheiten", "bedeutung": "+ 4x₃"},
+          {"text": "Region West 2 Budgeteinheiten", "bedeutung": "+ 2x₄"},
+          {"text": "Region Zentral 8 Budgeteinheiten", "bedeutung": "+ 8x₅"},
+          {"text": "Gesamtbudget beträgt 326 Einheiten", "bedeutung": "≤ 326"}
+        ],
+        [
+          {"text": "4 Infrastruktureinheiten pro Einheit Region Nord", "bedeutung": "4x₁"},
+          {"text": "13 Infrastruktureinheiten pro Einheit Region Ost", "bedeutung": "+ 13x₂"},
+          {"text": "13 Infrastruktureinheiten pro Einheit Region Süd", "bedeutung": "+ 13x₃"},
+          {"text": "13 Infrastruktureinheiten pro Einheit Region West", "bedeutung": "+ 13x₄"},
+          {"text": "4 Infrastruktureinheiten pro Einheit Region Zentral", "bedeutung": "+ 4x₅"},
+          {"text": "167 Infrastruktureinheiten", "bedeutung": "≤ 167"}
+        ],
+        [
+          {"text": "5 Logistikeinheiten pro Einheit Region Nord", "bedeutung": "5x₁"},
+          {"text": "2 Logistikeinheiten pro Einheit Region Ost", "bedeutung": "+ 2x₂"},
+          {"text": "6 Logistikeinheiten pro Einheit Region Süd", "bedeutung": "+ 6x₃"},
+          {"text": "6 Logistikeinheiten pro Einheit Region West", "bedeutung": "+ 6x₄"},
+          {"text": "5 Logistikeinheiten pro Einheit Region Zentral", "bedeutung": "+ 5x₅"},
+          {"text": "460 Logistikeinheiten zur Verfügung", "bedeutung": "≤ 460"}
+        ],
+        [
+          {"text": "Region Nord 5 Managementeinheiten", "bedeutung": "5x₁"},
+          {"text": "Region Ost 15 Managementeinheiten", "bedeutung": "+ 15x₂"},
+          {"text": "Region Süd 1 Managementeinheit", "bedeutung": "+ x₃"},
+          {"text": "Region West 11 Managementeinheiten", "bedeutung": "+ 11x₄"},
+          {"text": "Region Zentral 9 Managementeinheiten", "bedeutung": "+ 9x₅"},
+          {"text": "Managementkapazität umfasst 72 Einheiten", "bedeutung": "≤ 72"}
+        ],
+        [
+          {"text": "10 Transfereinheiten pro Einheit Region Nord", "bedeutung": "10x₁"},
+          {"text": "8 Transfereinheiten pro Einheit Region Ost", "bedeutung": "+ 8x₂"},
+          {"text": "13 Transfereinheiten pro Einheit Region Süd", "bedeutung": "+ 13x₃"},
+          {"text": "12 Transfereinheiten pro Einheit Region West", "bedeutung": "+ 12x₄"},
+          {"text": "14 Transfereinheiten pro Einheit Region Zentral", "bedeutung": "+ 14x₅"},
+          {"text": "153 Transfereinheiten", "bedeutung": "≤ 153"}
+        ]
+      ]
+    }
+  }
+]

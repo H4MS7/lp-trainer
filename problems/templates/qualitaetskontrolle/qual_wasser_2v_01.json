@@ -1,0 +1,43 @@
+{
+  "id": "qual_wasser_2v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl chemische Analysen", "x2 = Anzahl mikrobiologische Tests"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Schadstoffabdeckung", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Laborkapazität", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 3, "max": 10,  "label": "Kosten chemisch (€/Analyse)"},
+    "c2":  {"min": 5, "max": 15,  "label": "Kosten mikrobiologisch (€/Test)"},
+    "a11": {"min": 3, "max": 8,   "label": "Schadstoffabdeckung chemisch (%)"},
+    "a12": {"min": 4, "max": 10,  "label": "Schadstoffabdeckung mikrobiologisch (%)"},
+    "b1":  {"min": 50, "max": 180, "label": "Mindest-Schadstoffabdeckung (%)"},
+    "a21": {"min": 1, "max": 4,   "label": "Laborzeit chemisch (Stunden)"},
+    "a22": {"min": 2, "max": 6,   "label": "Laborzeit mikrobiologisch (Stunden)"},
+    "b2":  {"min": 20, "max": 80,  "label": "Laborkapazität (Stunden)"}
+  },
+  "titel": "Wasserwerk – Trinkwasserqualität",
+  "beschreibung": "Ein Wasserwerk überwacht die Trinkwasserqualität mit chemischen Analysen und mikrobiologischen Tests. Eine chemische Analyse kostet {c1} €, ein mikrobiologischer Test kostet {c2} €. Die chemische Analyse deckt {a11} % der Schadstoffe ab, der mikrobiologische Test deckt {a12} % der Schadstoffe ab. Die Mindest-Schadstoffabdeckung beträgt {b1} %. Eine chemische Analyse dauert {a21} Stunden, ein mikrobiologischer Test dauert {a22} Stunden. Die Laborkapazität beträgt {b2} Stunden.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Schadstoffabdeckung und begrenzter Laborkapazität.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "chemische Analyse kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "mikrobiologischer Test kostet {c2} €", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % der Schadstoffe", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % der Schadstoffe", "bedeutung": "+ {a12}x₂"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Stunden", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Stunden", "bedeutung": "+ {a22}x₂"},
+        {"text": "{b2} Stunden", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

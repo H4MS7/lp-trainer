@@ -1,0 +1,41 @@
+{
+  "id": "kapa_database_2v_03",
+  "typ": "Kapazitätsplanung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "variablen": ["x1 = Anzahl Read-Replicas", "x2 = Anzahl Write-Instanzen"],
+  "objective": ["c1", "c2"],
+  "constraints": [
+    {"type": "<=", "label": "Speicherplatz", "row": ["a11","a12"], "rhs": "b1"},
+    {"type": "<=", "label": "Netzwerkbandbreite", "row": ["a21","a22"], "rhs": "b2"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 5, "max": 20,  "label": "Lesedurchsatz (Tsd. Queries/s)"},
+    "c2":  {"min": 2, "max": 10,  "label": "Schreibdurchsatz (Tsd. Queries/s)"},
+    "a11": {"min": 50, "max": 200, "label": "Speicher Read-Replica (GB)"},
+    "a12": {"min": 100, "max": 500, "label": "Speicher Write-Instanz (GB)"},
+    "b1":  {"min": 1000, "max": 5000, "label": "Verfügbarer Speicherplatz (GB)"},
+    "a21": {"min": 1, "max": 5,   "label": "Bandbreite Read-Replica (Gbit/s)"},
+    "a22": {"min": 2, "max": 8,   "label": "Bandbreite Write-Instanz (Gbit/s)"},
+    "b2":  {"min": 20, "max": 80, "label": "Verfügbare Bandbreite (Gbit/s)"}
+  },
+  "titel": "Datenbank-Cluster – Instanzverteilung",
+  "beschreibung": "Ein Datenbankcluster wird mit Read-Replicas und Write-Instanzen konfiguriert. Jede Read-Replica erreicht {c1} Tsd. Leseabfragen pro Sekunde, jede Write-Instanz erreicht {c2} Tsd. Schreibabfragen pro Sekunde. Eine Read-Replica belegt {a11} GB Speicherplatz, eine Write-Instanz belegt {a12} GB Speicherplatz. Insgesamt stehen {b1} GB Speicherplatz zur Verfügung. Die Netzwerkbandbreite beträgt {a21} Gbit/s pro Read-Replica und {a22} Gbit/s pro Write-Instanz. Die verfügbare Bandbreite beträgt {b2} Gbit/s.",
+  "hinweis": "Maximiere den Gesamtdurchsatz unter Beachtung von Speicherplatz und Netzwerkbandbreite.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "Read-Replica erreicht {c1} Tsd. Leseabfragen pro Sekunde", "bedeutung": "{c1} × x₁"},
+      {"text": "Write-Instanz erreicht {c2} Tsd. Schreibabfragen pro Sekunde", "bedeutung": "{c2} × x₂"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} GB Speicherplatz, eine Write-Instanz belegt {a12} GB Speicherplatz", "bedeutung": "{a11}x₁ + {a12}x₂"},
+        {"text": "{b1} GB Speicherplatz zur Verfügung", "bedeutung": "≤ {b1}"}
+      ],
+      [
+        {"text": "{a21} Gbit/s pro Read-Replica und {a22} Gbit/s pro Write-Instanz", "bedeutung": "{a21}x₁ + {a22}x₂"},
+        {"text": "{b2} Gbit/s", "bedeutung": "≤ {b2}"}
+      ]
+    ]
+  }
+}

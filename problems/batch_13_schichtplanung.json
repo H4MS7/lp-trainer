@@ -1,0 +1,1052 @@
+[
+  {
+    "titel": "Schichtplanung Krankenhaus",
+    "beschreibung": "Ein Krankenhaus plant die Personalbesetzung auf der Notaufnahme. Es werden Frühschichten und Spätschichten vergeben. Jede Frühschicht kostet 8€ pro Schicht und jede Spätschicht kostet 3€ pro Schicht. Am Vormittag müssen mindestens 57 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 4 Pflegestunden am Vormittag und jede Spätschicht leistet 8 Pflegestunden am Vormittag. Am Nachmittag müssen mindestens 84 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 5 Pflegestunden am Nachmittag und jede Spätschicht leistet 4 Pflegestunden am Nachmittag. Aus organisatorischen Gründen dürfen am Abend höchstens 156 Pflegestunden geleistet werden. Jede Frühschicht beansprucht 3 Pflegestunden am Abend und jede Spätschicht beansprucht 3 Pflegestunden am Abend. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 8x1 + 3x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 8x2 ≥ 57 (Vormittag)",
+      "5x1 + 4x2 ≥ 84 (Nachmittag)",
+      "3x1 + 3x2 ≤ 156 (Limit Abend)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 8€ pro Schicht",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 3€ pro Schicht",
+          "bedeutung": "3 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht leistet 4 Pflegestunden am Vormittag",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Spätschicht leistet 8 Pflegestunden am Vormittag",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 57 Pflegestunden",
+            "bedeutung": "≥ 57"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht leistet 5 Pflegestunden am Nachmittag",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Spätschicht leistet 4 Pflegestunden am Nachmittag",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 84 Pflegestunden",
+            "bedeutung": "≥ 84"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht beansprucht 3 Pflegestunden am Abend",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Spätschicht beansprucht 3 Pflegestunden am Abend",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 156 Pflegestunden",
+            "bedeutung": "≤ 156"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Callcenter",
+    "beschreibung": "Ein Callcenter plant den Einsatz von Tagschichten und Nachtschichten. Jede Tagschicht kostet 13€ und jede Nachtschicht kostet 8€. Am Morgen müssen mindestens 138 Anrufe bearbeitet werden. Jede Tagschicht bearbeitet 3 Anrufe am Morgen und jede Nachtschicht bearbeitet 4 Anrufe am Morgen. Am Nachmittag müssen mindestens 174 Anrufe bearbeitet werden. Jede Tagschicht bearbeitet 1 Anrufe am Nachmittag und jede Nachtschicht bearbeitet 4 Anrufe am Nachmittag. Aus Kapazitätsgründen können am Abend höchstens 153 Anrufe bearbeitet werden. Jede Tagschicht belegt 10 Leitungen am Abend und jede Nachtschicht belegt 1 Leitungen am Abend. In der Nacht müssen mindestens 159 Anrufe bearbeitet werden. Jede Tagschicht bearbeitet 9 Anrufe in der Nacht und jede Nachtschicht bearbeitet 8 Anrufe in der Nacht. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 13x1 + 8x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 4x2 ≥ 138 (Morgen)",
+      "x1 + 4x2 ≥ 174 (Nachmittag)",
+      "10x1 + x2 ≤ 153 (Limit Abend)",
+      "9x1 + 8x2 ≥ 159 (Nacht)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 13€",
+          "bedeutung": "13 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 8€",
+          "bedeutung": "8 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht bearbeitet 3 Anrufe am Morgen",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Nachtschicht bearbeitet 4 Anrufe am Morgen",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 138 Anrufe",
+            "bedeutung": "≥ 138"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht bearbeitet 1 Anrufe am Nachmittag",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Nachtschicht bearbeitet 4 Anrufe am Nachmittag",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 174 Anrufe",
+            "bedeutung": "≥ 174"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht belegt 10 Leitungen am Abend",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Nachtschicht belegt 1 Leitungen am Abend",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 153 Anrufe",
+            "bedeutung": "≤ 153"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht bearbeitet 9 Anrufe in der Nacht",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Nachtschicht bearbeitet 8 Anrufe in der Nacht",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 159 Anrufe",
+            "bedeutung": "≥ 159"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Fabrik",
+    "beschreibung": "Eine Fabrik plant die Schichtbesetzung für die Produktion. Es werden Frühschichten und Spätschichten eingesetzt. Jede Frühschicht kostet 2€ und jede Spätschicht kostet 6€. In Halle A müssen mindestens 191 Arbeitsstunden erbracht werden. Jede Frühschicht leistet 4 Stunden in Halle A und jede Spätschicht leistet 3 Stunden in Halle A. In Halle B müssen mindestens 105 Arbeitsstunden erbracht werden. Jede Frühschicht leistet 7 Stunden in Halle B und jede Spätschicht leistet 3 Stunden in Halle B. Die Schichtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 2x1 + 6x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 3x2 ≥ 191 (Halle A)",
+      "7x1 + 3x2 ≥ 105 (Halle B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 2€",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 6€",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht leistet 4 Stunden in Halle A",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Spätschicht leistet 3 Stunden in Halle A",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 191 Arbeitsstunden",
+            "bedeutung": "≥ 191"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht leistet 7 Stunden in Halle B",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Spätschicht leistet 3 Stunden in Halle B",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 105 Arbeitsstunden",
+            "bedeutung": "≥ 105"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Hotel",
+    "beschreibung": "Ein Hotel plant die Rezeptionsbesetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 2€ und jede Nachtschicht kostet 12€. Am Morgen müssen mindestens 120 Servicestunden abgedeckt werden. Jede Tagschicht leistet 6 Servicestunden am Morgen und jede Nachtschicht leistet 5 Servicestunden am Morgen. Am Mittag müssen mindestens 158 Servicestunden abgedeckt werden. Jede Tagschicht leistet 6 Servicestunden am Mittag und jede Nachtschicht leistet 10 Servicestunden am Mittag. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 2x1 + 12x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 5x2 ≥ 120 (Morgen)",
+      "6x1 + 10x2 ≥ 158 (Mittag)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 2€",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 12€",
+          "bedeutung": "12 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht leistet 6 Servicestunden am Morgen",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 5 Servicestunden am Morgen",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 120 Servicestunden",
+            "bedeutung": "≥ 120"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht leistet 6 Servicestunden am Mittag",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 10 Servicestunden am Mittag",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 158 Servicestunden",
+            "bedeutung": "≥ 158"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Supermarkt",
+    "beschreibung": "Ein Supermarkt plant die Kassenbesetzung mit Frühschichten und Spätschichten. Jede Frühschicht kostet 14€ und jede Spätschicht kostet 5€. Am Vormittag müssen mindestens 19 Kassenstunden besetzt werden. Jede Frühschicht deckt 6 Kassenstunden am Vormittag ab und jede Spätschicht deckt 8 Kassenstunden am Vormittag ab. Am Nachmittag müssen mindestens 82 Kassenstunden besetzt werden. Jede Frühschicht deckt 9 Kassenstunden am Nachmittag ab und jede Spätschicht deckt 5 Kassenstunden am Nachmittag ab. Die Kassenanzahl erlaubt am Abend höchstens 128 Kassenstunden. Jede Frühschicht belegt 4 Kassenstunden am Abend und jede Spätschicht belegt 3 Kassenstunden am Abend. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 14x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 8x2 ≥ 19 (Vormittag)",
+      "9x1 + 5x2 ≥ 82 (Nachmittag)",
+      "4x1 + 3x2 ≤ 128 (Limit Abend)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 14€",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 5€",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht deckt 6 Kassenstunden am Vormittag ab",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Spätschicht deckt 8 Kassenstunden am Vormittag ab",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 19 Kassenstunden",
+            "bedeutung": "≥ 19"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht deckt 9 Kassenstunden am Nachmittag ab",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Spätschicht deckt 5 Kassenstunden am Nachmittag ab",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 82 Kassenstunden",
+            "bedeutung": "≥ 82"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht belegt 4 Kassenstunden am Abend",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Spätschicht belegt 3 Kassenstunden am Abend",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 128 Kassenstunden",
+            "bedeutung": "≤ 128"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Feuerwehr",
+    "beschreibung": "Eine Feuerwache plant die Besetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 7€ und jede Nachtschicht kostet 4€. Tagsüber müssen mindestens 167 Einsatzstunden gewährleistet werden. Jede Tagschicht stellt 6 Einsatzstunden tagsüber bereit und jede Nachtschicht stellt 2 Einsatzstunden tagsüber bereit. Nachts müssen mindestens 161 Einsatzstunden gewährleistet werden. Jede Tagschicht stellt 7 Einsatzstunden nachts bereit und jede Nachtschicht stellt 10 Einsatzstunden nachts bereit. Das Personalbudget erlaubt am Wochenende höchstens 183 Einsatzstunden. Jede Tagschicht bindet 6 Einsatzstunden am Wochenende und jede Nachtschicht bindet 2 Einsatzstunden am Wochenende. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 7x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "6x1 + 2x2 ≥ 167 (Tagsüber)",
+      "7x1 + 10x2 ≥ 161 (Nachts)",
+      "6x1 + 2x2 ≤ 183 (Limit Am Wochenende)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 7€",
+          "bedeutung": "7 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 4€",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht stellt 6 Einsatzstunden tagsüber bereit",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht stellt 2 Einsatzstunden tagsüber bereit",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 167 Einsatzstunden",
+            "bedeutung": "≥ 167"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht stellt 7 Einsatzstunden nachts bereit",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Nachtschicht stellt 10 Einsatzstunden nachts bereit",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 161 Einsatzstunden",
+            "bedeutung": "≥ 161"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht bindet 6 Einsatzstunden am Wochenende",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht bindet 2 Einsatzstunden am Wochenende",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "höchstens 183 Einsatzstunden",
+            "bedeutung": "≤ 183"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Polizei",
+    "beschreibung": "Eine Polizeidienststelle plant die Streifenbesetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 9€ und jede Nachtschicht kostet 15€. Im Stadtgebiet müssen mindestens 120 Streifenstunden abgedeckt werden. Jede Tagschicht leistet 1 Streifenstunden im Stadtgebiet und jede Nachtschicht leistet 1 Streifenstunden im Stadtgebiet. Im Außenbezirk müssen mindestens 147 Streifenstunden abgedeckt werden. Jede Tagschicht leistet 6 Streifenstunden im Außenbezirk und jede Nachtschicht leistet 1 Streifenstunden im Außenbezirk. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 9x1 + 15x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 120 (Stadtgebiet)",
+      "6x1 + x2 ≥ 147 (Außenbezirk)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 9€",
+          "bedeutung": "9 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 15€",
+          "bedeutung": "15 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht leistet 1 Streifenstunden im Stadtgebiet",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 1 Streifenstunden im Stadtgebiet",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 120 Streifenstunden",
+            "bedeutung": "≥ 120"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht leistet 6 Streifenstunden im Außenbezirk",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 1 Streifenstunden im Außenbezirk",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 147 Streifenstunden",
+            "bedeutung": "≥ 147"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Gastronomie",
+    "beschreibung": "Ein Restaurant plant die Personalbesetzung mit Frühschichten und Spätschichten. Jede Frühschicht kostet 15€ und jede Spätschicht kostet 2€. Mittags müssen mindestens 177 Bedienungsstunden geleistet werden. Jede Frühschicht leistet 5 Bedienungsstunden mittags und jede Spätschicht leistet 6 Bedienungsstunden mittags. Abends müssen mindestens 90 Bedienungsstunden geleistet werden. Jede Frühschicht leistet 10 Bedienungsstunden abends und jede Spätschicht leistet 2 Bedienungsstunden abends. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 15x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "5x1 + 6x2 ≥ 177 (Mittags)",
+      "10x1 + 2x2 ≥ 90 (Abends)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 15€",
+          "bedeutung": "15 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 2€",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht leistet 5 Bedienungsstunden mittags",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Spätschicht leistet 6 Bedienungsstunden mittags",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 177 Bedienungsstunden",
+            "bedeutung": "≥ 177"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht leistet 10 Bedienungsstunden abends",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Spätschicht leistet 2 Bedienungsstunden abends",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 90 Bedienungsstunden",
+            "bedeutung": "≥ 90"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Krankenhaus (Variante 2)",
+    "beschreibung": "Ein Krankenhaus plant die Personalbesetzung auf der Notaufnahme. Es werden Frühschichten und Spätschichten vergeben. Jede Frühschicht kostet 10€ pro Schicht und jede Spätschicht kostet 5€ pro Schicht. Am Vormittag müssen mindestens 51 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 10 Pflegestunden am Vormittag und jede Spätschicht leistet 6 Pflegestunden am Vormittag. Am Nachmittag müssen mindestens 15 Pflegestunden abgedeckt werden. Jede Frühschicht leistet 1 Pflegestunden am Nachmittag und jede Spätschicht leistet 2 Pflegestunden am Nachmittag. Aus organisatorischen Gründen dürfen am Abend höchstens 84 Pflegestunden geleistet werden. Jede Frühschicht beansprucht 7 Pflegestunden am Abend und jede Spätschicht beansprucht 5 Pflegestunden am Abend. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 10x1 + 5x2 (min)",
+    "nebenbedingungen": [
+      "10x1 + 6x2 ≥ 51 (Vormittag)",
+      "x1 + 2x2 ≥ 15 (Nachmittag)",
+      "7x1 + 5x2 ≤ 84 (Limit Abend)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 10€ pro Schicht",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 5€ pro Schicht",
+          "bedeutung": "5 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht leistet 10 Pflegestunden am Vormittag",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Spätschicht leistet 6 Pflegestunden am Vormittag",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 51 Pflegestunden",
+            "bedeutung": "≥ 51"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht leistet 1 Pflegestunden am Nachmittag",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Spätschicht leistet 2 Pflegestunden am Nachmittag",
+            "bedeutung": "+ 2x₂"
+          },
+          {
+            "text": "mindestens 15 Pflegestunden",
+            "bedeutung": "≥ 15"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht beansprucht 7 Pflegestunden am Abend",
+            "bedeutung": "7x₁"
+          },
+          {
+            "text": "Spätschicht beansprucht 5 Pflegestunden am Abend",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 84 Pflegestunden",
+            "bedeutung": "≤ 84"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Callcenter (Variante 2)",
+    "beschreibung": "Ein Callcenter plant den Einsatz von Tagschichten und Nachtschichten. Jede Tagschicht kostet 4€ und jede Nachtschicht kostet 10€. Am Morgen müssen mindestens 15 Anrufe bearbeitet werden. Jede Tagschicht bearbeitet 10 Anrufe am Morgen und jede Nachtschicht bearbeitet 10 Anrufe am Morgen. Am Nachmittag müssen mindestens 123 Anrufe bearbeitet werden. Jede Tagschicht bearbeitet 6 Anrufe am Nachmittag und jede Nachtschicht bearbeitet 5 Anrufe am Nachmittag. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 4x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "10x1 + 10x2 ≥ 15 (Morgen)",
+      "6x1 + 5x2 ≥ 123 (Nachmittag)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 4€",
+          "bedeutung": "4 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 10€",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht bearbeitet 10 Anrufe am Morgen",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Nachtschicht bearbeitet 10 Anrufe am Morgen",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 15 Anrufe",
+            "bedeutung": "≥ 15"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht bearbeitet 6 Anrufe am Nachmittag",
+            "bedeutung": "6x₁"
+          },
+          {
+            "text": "Nachtschicht bearbeitet 5 Anrufe am Nachmittag",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 123 Anrufe",
+            "bedeutung": "≥ 123"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Fabrik (Variante 2)",
+    "beschreibung": "Eine Fabrik plant die Schichtbesetzung für die Produktion. Es werden Frühschichten und Spätschichten eingesetzt. Jede Frühschicht kostet 10€ und jede Spätschicht kostet 4€. In Halle A müssen mindestens 48 Arbeitsstunden erbracht werden. Jede Frühschicht leistet 1 Stunden in Halle A und jede Spätschicht leistet 1 Stunden in Halle A. In Halle B müssen mindestens 44 Arbeitsstunden erbracht werden. Jede Frühschicht leistet 4 Stunden in Halle B und jede Spätschicht leistet 9 Stunden in Halle B. Die Schichtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 10x1 + 4x2 (min)",
+    "nebenbedingungen": [
+      "x1 + x2 ≥ 48 (Halle A)",
+      "4x1 + 9x2 ≥ 44 (Halle B)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 10€",
+          "bedeutung": "10 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 4€",
+          "bedeutung": "4 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht leistet 1 Stunden in Halle A",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Spätschicht leistet 1 Stunden in Halle A",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 48 Arbeitsstunden",
+            "bedeutung": "≥ 48"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht leistet 4 Stunden in Halle B",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Spätschicht leistet 9 Stunden in Halle B",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "mindestens 44 Arbeitsstunden",
+            "bedeutung": "≥ 44"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Hotel (Variante 2)",
+    "beschreibung": "Ein Hotel plant die Rezeptionsbesetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 2€ und jede Nachtschicht kostet 2€. Am Morgen müssen mindestens 110 Servicestunden abgedeckt werden. Jede Tagschicht leistet 4 Servicestunden am Morgen und jede Nachtschicht leistet 4 Servicestunden am Morgen. Am Mittag müssen mindestens 19 Servicestunden abgedeckt werden. Jede Tagschicht leistet 1 Servicestunden am Mittag und jede Nachtschicht leistet 10 Servicestunden am Mittag. Wegen Ruhezeitenregelung dürfen am Abend höchstens 40 Servicestunden geleistet werden. Jede Tagschicht beansprucht 1 Servicestunden am Abend und jede Nachtschicht beansprucht 1 Servicestunden am Abend. In der Nacht müssen mindestens 74 Servicestunden abgedeckt werden. Jede Tagschicht leistet 3 Servicestunden in der Nacht und jede Nachtschicht leistet 3 Servicestunden in der Nacht. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 2x1 + 2x2 (min)",
+    "nebenbedingungen": [
+      "4x1 + 4x2 ≥ 110 (Morgen)",
+      "x1 + 10x2 ≥ 19 (Mittag)",
+      "x1 + x2 ≤ 40 (Limit Abend)",
+      "3x1 + 3x2 ≥ 74 (Nacht)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 2€",
+          "bedeutung": "2 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 2€",
+          "bedeutung": "2 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht leistet 4 Servicestunden am Morgen",
+            "bedeutung": "4x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 4 Servicestunden am Morgen",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 110 Servicestunden",
+            "bedeutung": "≥ 110"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht leistet 1 Servicestunden am Mittag",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 10 Servicestunden am Mittag",
+            "bedeutung": "+ 10x₂"
+          },
+          {
+            "text": "mindestens 19 Servicestunden",
+            "bedeutung": "≥ 19"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht beansprucht 1 Servicestunden am Abend",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Nachtschicht beansprucht 1 Servicestunden am Abend",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "höchstens 40 Servicestunden",
+            "bedeutung": "≤ 40"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht leistet 3 Servicestunden in der Nacht",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 3 Servicestunden in der Nacht",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 74 Servicestunden",
+            "bedeutung": "≥ 74"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Supermarkt (Variante 2)",
+    "beschreibung": "Ein Supermarkt plant die Kassenbesetzung mit Frühschichten und Spätschichten. Jede Frühschicht kostet 8€ und jede Spätschicht kostet 9€. Am Vormittag müssen mindestens 196 Kassenstunden besetzt werden. Jede Frühschicht deckt 3 Kassenstunden am Vormittag ab und jede Spätschicht deckt 6 Kassenstunden am Vormittag ab. Am Nachmittag müssen mindestens 32 Kassenstunden besetzt werden. Jede Frühschicht deckt 10 Kassenstunden am Nachmittag ab und jede Spätschicht deckt 1 Kassenstunden am Nachmittag ab. Die Kassenanzahl erlaubt am Abend höchstens 186 Kassenstunden. Jede Frühschicht belegt 10 Kassenstunden am Abend und jede Spätschicht belegt 5 Kassenstunden am Abend. Zur Stoßzeit müssen mindestens 31 Kassenstunden besetzt werden. Jede Frühschicht deckt 10 Kassenstunden zur Stoßzeit ab und jede Spätschicht deckt 8 Kassenstunden zur Stoßzeit ab. Die Personalkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Frühschichten",
+      "x2 = Anzahl Spätschichten"
+    ],
+    "zielfunktion": "Z = 8x1 + 9x2 (min)",
+    "nebenbedingungen": [
+      "3x1 + 6x2 ≥ 196 (Vormittag)",
+      "10x1 + x2 ≥ 32 (Nachmittag)",
+      "10x1 + 5x2 ≤ 186 (Limit Abend)",
+      "10x1 + 8x2 ≥ 31 (Stoßzeit)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Frühschicht kostet 8€",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Spätschicht kostet 9€",
+          "bedeutung": "9 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Frühschicht deckt 3 Kassenstunden am Vormittag ab",
+            "bedeutung": "3x₁"
+          },
+          {
+            "text": "Spätschicht deckt 6 Kassenstunden am Vormittag ab",
+            "bedeutung": "+ 6x₂"
+          },
+          {
+            "text": "mindestens 196 Kassenstunden",
+            "bedeutung": "≥ 196"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht deckt 10 Kassenstunden am Nachmittag ab",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Spätschicht deckt 1 Kassenstunden am Nachmittag ab",
+            "bedeutung": "+ 1x₂"
+          },
+          {
+            "text": "mindestens 32 Kassenstunden",
+            "bedeutung": "≥ 32"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht belegt 10 Kassenstunden am Abend",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Spätschicht belegt 5 Kassenstunden am Abend",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "höchstens 186 Kassenstunden",
+            "bedeutung": "≤ 186"
+          }
+        ],
+        [
+          {
+            "text": "Frühschicht deckt 10 Kassenstunden zur Stoßzeit ab",
+            "bedeutung": "10x₁"
+          },
+          {
+            "text": "Spätschicht deckt 8 Kassenstunden zur Stoßzeit ab",
+            "bedeutung": "+ 8x₂"
+          },
+          {
+            "text": "mindestens 31 Kassenstunden",
+            "bedeutung": "≥ 31"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Feuerwehr (Variante 2)",
+    "beschreibung": "Eine Feuerwache plant die Besetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 8€ und jede Nachtschicht kostet 10€. Tagsüber müssen mindestens 14 Einsatzstunden gewährleistet werden. Jede Tagschicht stellt 2 Einsatzstunden tagsüber bereit und jede Nachtschicht stellt 4 Einsatzstunden tagsüber bereit. Nachts müssen mindestens 39 Einsatzstunden gewährleistet werden. Jede Tagschicht stellt 2 Einsatzstunden nachts bereit und jede Nachtschicht stellt 3 Einsatzstunden nachts bereit. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 8x1 + 10x2 (min)",
+    "nebenbedingungen": [
+      "2x1 + 4x2 ≥ 14 (Tagsüber)",
+      "2x1 + 3x2 ≥ 39 (Nachts)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Beachten Sie die ≥-Richtung: Es müssen mindestens so viele Stunden erbracht werden wie gefordert.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 8€",
+          "bedeutung": "8 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 10€",
+          "bedeutung": "10 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht stellt 2 Einsatzstunden tagsüber bereit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Nachtschicht stellt 4 Einsatzstunden tagsüber bereit",
+            "bedeutung": "+ 4x₂"
+          },
+          {
+            "text": "mindestens 14 Einsatzstunden",
+            "bedeutung": "≥ 14"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht stellt 2 Einsatzstunden nachts bereit",
+            "bedeutung": "2x₁"
+          },
+          {
+            "text": "Nachtschicht stellt 3 Einsatzstunden nachts bereit",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "mindestens 39 Einsatzstunden",
+            "bedeutung": "≥ 39"
+          }
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Schichtplanung Polizei (Variante 2)",
+    "beschreibung": "Eine Polizeidienststelle plant die Streifenbesetzung mit Tagschichten und Nachtschichten. Jede Tagschicht kostet 14€ und jede Nachtschicht kostet 6€. Im Stadtgebiet müssen mindestens 139 Streifenstunden abgedeckt werden. Jede Tagschicht leistet 9 Streifenstunden im Stadtgebiet und jede Nachtschicht leistet 5 Streifenstunden im Stadtgebiet. Im Außenbezirk müssen mindestens 121 Streifenstunden abgedeckt werden. Jede Tagschicht leistet 1 Streifenstunden im Außenbezirk und jede Nachtschicht leistet 9 Streifenstunden im Außenbezirk. Die Dienstplanregelung erlaubt in der Innenstadt höchstens 93 Streifenstunden. Jede Tagschicht erfordert 5 Streifenstunden in der Innenstadt und jede Nachtschicht erfordert 3 Streifenstunden in der Innenstadt. Die Gesamtkosten sollen minimiert werden.",
+    "typ": "Schichtplanung",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Anzahl Tagschichten",
+      "x2 = Anzahl Nachtschichten"
+    ],
+    "zielfunktion": "Z = 14x1 + 6x2 (min)",
+    "nebenbedingungen": [
+      "9x1 + 5x2 ≥ 139 (Stadtgebiet)",
+      "x1 + 9x2 ≥ 121 (Außenbezirk)",
+      "5x1 + 3x2 ≤ 93 (Limit Innenstadt)",
+      "x1, x2 ≥ 0"
+    ],
+    "hinweis": "Hier gibt es sowohl ≥-Nebenbedingungen (Mindestanforderungen) als auch ≤-Nebenbedingungen (Obergrenzen). Achten Sie auf die Richtung der Ungleichungen.",
+    "highlights": {
+      "zielfunktion": [
+        {
+          "text": "Tagschicht kostet 14€",
+          "bedeutung": "14 × x₁"
+        },
+        {
+          "text": "Nachtschicht kostet 6€",
+          "bedeutung": "6 × x₂"
+        }
+      ],
+      "nebenbedingungen": [
+        [
+          {
+            "text": "Tagschicht leistet 9 Streifenstunden im Stadtgebiet",
+            "bedeutung": "9x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 5 Streifenstunden im Stadtgebiet",
+            "bedeutung": "+ 5x₂"
+          },
+          {
+            "text": "mindestens 139 Streifenstunden",
+            "bedeutung": "≥ 139"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht leistet 1 Streifenstunden im Außenbezirk",
+            "bedeutung": "1x₁"
+          },
+          {
+            "text": "Nachtschicht leistet 9 Streifenstunden im Außenbezirk",
+            "bedeutung": "+ 9x₂"
+          },
+          {
+            "text": "mindestens 121 Streifenstunden",
+            "bedeutung": "≥ 121"
+          }
+        ],
+        [
+          {
+            "text": "Tagschicht erfordert 5 Streifenstunden in der Innenstadt",
+            "bedeutung": "5x₁"
+          },
+          {
+            "text": "Nachtschicht erfordert 3 Streifenstunden in der Innenstadt",
+            "bedeutung": "+ 3x₂"
+          },
+          {
+            "text": "höchstens 93 Streifenstunden",
+            "bedeutung": "≤ 93"
+          }
+        ]
+      ]
+    }
+  }
+]

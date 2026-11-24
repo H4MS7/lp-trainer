@@ -1,0 +1,121 @@
+{
+  "typ": "Maschinenparametrierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 2,
+  "objective": [
+    "c1",
+    "c2"
+  ],
+  "id": "masch_walzwerk_2v_07",
+  "titel": "Walzwerk – Walzgeschwindigkeit und Anstellkraft",
+  "variablen": [
+    "x1 = Walzgeschwindigkeit (Stufen)",
+    "x2 = Anstellkraft (Stufen)"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Motorleistung",
+      "row": [
+        "a11",
+        "a12"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Walzenverschleiss",
+      "row": [
+        "a21",
+        "a22"
+      ],
+      "rhs": "b2"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 11,
+      "label": "Durchsatz Geschwindigkeit"
+    },
+    "c2": {
+      "min": 3,
+      "max": 9,
+      "label": "Oberflaechenguete Kraft"
+    },
+    "a11": {
+      "min": 3,
+      "max": 8,
+      "label": "Motor pro Geschwindigkeitsstufe"
+    },
+    "a12": {
+      "min": 2,
+      "max": 7,
+      "label": "Motor pro Kraftstufe"
+    },
+    "b1": {
+      "min": 100,
+      "max": 500,
+      "label": "Max. Motorleistung"
+    },
+    "a21": {
+      "min": 2,
+      "max": 6,
+      "label": "Verschleiss Geschwindigkeit"
+    },
+    "a22": {
+      "min": 4,
+      "max": 10,
+      "label": "Verschleiss Kraft"
+    },
+    "b2": {
+      "min": 80,
+      "max": 400,
+      "label": "Max. Verschleisseinheiten"
+    }
+  },
+  "beschreibung": "Ein Walzwerk wird ueber Walzgeschwindigkeit und Anstellkraft parametriert. Die Geschwindigkeit liefert {c1} Durchsatzpunkte, die Anstellkraft {c2} Punkte Oberflaechenguete. Die Motorleistung betraegt {a11} Einheiten pro Geschwindigkeitsstufe und {a12} Einheiten pro Kraftstufe bei maximal {b1} Motoreinheiten. Der Walzenverschleiss liegt bei {a21} Einheiten pro Geschwindigkeitsstufe und {a22} Einheiten pro Kraftstufe bei maximal {b2} Verschleisseinheiten.",
+  "hinweis": "Maximiere die Gesamtleistung unter Beachtung von Motor und Verschleiss.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Geschwindigkeit liefert {c1} Durchsatzpunkte",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Anstellkraft {c2} Punkte Oberflaechenguete",
+        "bedeutung": "{c2} × x₂"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} Einheiten pro Kraftstufe",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{b1} Motoreinheiten",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Einheiten pro Geschwindigkeitsstufe",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} Einheiten pro Kraftstufe",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{b2} Verschleisseinheiten",
+          "bedeutung": "≤ {b2}"
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,200 @@
+{
+  "typ": "Investitionsoptimierung",
+  "optimierungsziel": "maximieren",
+  "numVars": 3,
+  "id": "invest_mischfonds_3v_07",
+  "titel": "Mischfonds – Dividendentitel, Wachstumswerte und Geldmarkt",
+  "variablen": [
+    "x1 = Betrag in Dividendentitel (Tsd. EUR)",
+    "x2 = Betrag in Wachstumswerte (Tsd. EUR)",
+    "x3 = Betrag in Geldmarkt (Tsd. EUR)"
+  ],
+  "objective": [
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "constraints": [
+    {
+      "type": "<=",
+      "label": "Fondsvolumen",
+      "row": [
+        "a11",
+        "a12",
+        "a13"
+      ],
+      "rhs": "b1"
+    },
+    {
+      "type": "<=",
+      "label": "Schwankungsbreite",
+      "row": [
+        "a21",
+        "a22",
+        "a23"
+      ],
+      "rhs": "b2"
+    },
+    {
+      "type": "<=",
+      "label": "Transaktionskosten",
+      "row": [
+        "a31",
+        "a32",
+        "a33"
+      ],
+      "rhs": "b3"
+    }
+  ],
+  "coefficients": {
+    "c1": {
+      "min": 4,
+      "max": 8,
+      "label": "Rendite Dividendentitel (%)"
+    },
+    "c2": {
+      "min": 7,
+      "max": 14,
+      "label": "Rendite Wachstumswerte (%)"
+    },
+    "c3": {
+      "min": 1,
+      "max": 3,
+      "label": "Rendite Geldmarkt (%)"
+    },
+    "a11": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Dividende"
+    },
+    "a12": {
+      "min": 1,
+      "max": 3,
+      "label": "Kapitalbedarf Wachstum"
+    },
+    "a13": {
+      "min": 1,
+      "max": 2,
+      "label": "Kapitalbedarf Geldmarkt"
+    },
+    "b1": {
+      "min": 80,
+      "max": 350,
+      "label": "Fondsvolumen (Tsd. EUR)"
+    },
+    "a21": {
+      "min": 2,
+      "max": 5,
+      "label": "Schwankung Dividende"
+    },
+    "a22": {
+      "min": 5,
+      "max": 12,
+      "label": "Schwankung Wachstum"
+    },
+    "a23": {
+      "min": 1,
+      "max": 2,
+      "label": "Schwankung Geldmarkt"
+    },
+    "b2": {
+      "min": 60,
+      "max": 250,
+      "label": "Max. Schwankungsbudget"
+    },
+    "a31": {
+      "min": 2,
+      "max": 4,
+      "label": "Transaktionskosten Dividende"
+    },
+    "a32": {
+      "min": 3,
+      "max": 7,
+      "label": "Transaktionskosten Wachstum"
+    },
+    "a33": {
+      "min": 1,
+      "max": 2,
+      "label": "Transaktionskosten Geldmarkt"
+    },
+    "b3": {
+      "min": 50,
+      "max": 180,
+      "label": "Max. Transaktionskosten"
+    }
+  },
+  "beschreibung": "Ein Mischfonds-Manager verteilt Kapital auf drei Segmente. Dividendentitel erzielen {c1} % Rendite, Wachstumswerte {c2} % und Geldmarktanlagen {c3} %. Der Kapitalbedarf betraegt {a11} Einheiten fuer Dividendentitel, {a12} fuer Wachstumswerte und {a13} fuer Geldmarkt bei einem Fondsvolumen von {b1} Tausend Euro. Die Schwankungsbreite liegt bei {a21} Punkten fuer Dividendentitel, {a22} fuer Wachstumswerte und {a23} fuer Geldmarkt bei maximal {b2} Schwankungspunkten. Die Transaktionskosten betragen {a31} Einheiten fuer Dividendentitel, {a32} fuer Wachstumswerte und {a33} fuer Geldmarkt bei maximal {b3} Kosteneinheiten.",
+  "hinweis": "Maximiere die Gesamtrendite unter Beachtung von Volumen, Schwankung und Transaktionskosten.",
+  "highlights": {
+    "zielfunktion": [
+      {
+        "text": "Dividendentitel erzielen {c1} % Rendite",
+        "bedeutung": "{c1} × x₁"
+      },
+      {
+        "text": "Wachstumswerte {c2} %",
+        "bedeutung": "{c2} × x₂"
+      },
+      {
+        "text": "Geldmarktanlagen {c3} %",
+        "bedeutung": "{c3} × x₃"
+      }
+    ],
+    "nebenbedingungen": [
+      [
+        {
+          "text": "{a11} Einheiten fuer Dividendentitel",
+          "bedeutung": "{a11}x₁"
+        },
+        {
+          "text": "{a12} fuer Wachstumswerte",
+          "bedeutung": "+ {a12}x₂"
+        },
+        {
+          "text": "{a13} fuer Geldmarkt",
+          "bedeutung": "+ {a13}x₃"
+        },
+        {
+          "text": "{b1} Tausend Euro",
+          "bedeutung": "≤ {b1}"
+        }
+      ],
+      [
+        {
+          "text": "{a21} Punkten fuer Dividendentitel",
+          "bedeutung": "{a21}x₁"
+        },
+        {
+          "text": "{a22} fuer Wachstumswerte",
+          "bedeutung": "+ {a22}x₂"
+        },
+        {
+          "text": "{a23} fuer Geldmarkt",
+          "bedeutung": "+ {a23}x₃"
+        },
+        {
+          "text": "{b2} Schwankungspunkten",
+          "bedeutung": "≤ {b2}"
+        }
+      ],
+      [
+        {
+          "text": "{a31} Einheiten fuer Dividendentitel",
+          "bedeutung": "{a31}x₁"
+        },
+        {
+          "text": "{a32} fuer Wachstumswerte",
+          "bedeutung": "+ {a32}x₂"
+        },
+        {
+          "text": "{a33} fuer Geldmarkt",
+          "bedeutung": "+ {a33}x₃"
+        },
+        {
+          "text": "{b3} Kosteneinheiten",
+          "bedeutung": "≤ {b3}"
+        }
+      ]
+    ]
+  }
+}

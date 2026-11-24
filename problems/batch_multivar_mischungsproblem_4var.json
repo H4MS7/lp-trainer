@@ -1,0 +1,187 @@
+[
+  {
+    "titel": "Farbmischung mit vier Pigmenten",
+    "beschreibung": "Ein Farbenhersteller mischt vier Pigmente: Titanweiß, Chromgelb, Ultramarinblau und Eisenoxidrot. Die Kosten betragen 48 Euro pro Liter Titanweiß, 1 Euro pro Liter Chromgelb, 21 Euro pro Liter Ultramarinblau und 17 Euro pro Liter Eisenoxidrot. Die Mischung muss bestimmte Qualitätsanforderungen erfüllen. Für die Deckkraft gilt eine Mindestanforderung von 197 Punkten, wobei ein Liter Titanweiß 9 Punkte, ein Liter Chromgelb 12 Punkte, ein Liter Ultramarinblau 3 Punkte und ein Liter Eisenoxidrot 10 Punkte zur Deckkraft beiträgt. Die Viskosität darf höchstens 379 Einheiten betragen: ein Liter Titanweiß liefert 7 Einheiten, ein Liter Chromgelb 3 Einheiten, ein Liter Ultramarinblau erzeugt 11 Einheiten und ein Liter Eisenoxidrot 13 Einheiten Viskosität. Der Lösemittelanteil ist auf maximal 172 Einheiten begrenzt, wobei ein Liter Titanweiß 4 Einheiten, ein Liter Chromgelb 1 Einheit, ein Liter Ultramarinblau 12 Einheiten und ein Liter Eisenoxidrot 10 Einheiten zum Lösemittelanteil beiträgt. Für die Lichtechtheit gilt eine weitere Mindestanforderung von 308 Punkten, wobei ein Liter Titanweiß 1 Punkt, ein Liter Chromgelb 6 Punkte, ein Liter Ultramarinblau 1 Punkt und ein Liter Eisenoxidrot 9 Punkte zur Lichtechtheit beiträgt. Zudem darf die Trocknungszeit höchstens 151 Einheiten betragen, wobei ein Liter Titanweiß 6 Einheiten, ein Liter Chromgelb 2 Einheiten, ein Liter Ultramarinblau 11 Einheiten und ein Liter Eisenoxidrot 4 Einheiten zur Trocknungszeit beiträgt. Der Farbenhersteller möchte die Gesamtkosten der Mischung minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Liter Titanweiß",
+      "x2 = Liter Chromgelb",
+      "x3 = Liter Ultramarinblau",
+      "x4 = Liter Eisenoxidrot"
+    ],
+    "zielfunktion": "Z = 48x1 + x2 + 21x3 + 17x4 (min)",
+    "nebenbedingungen": [
+      "9x1 + 12x2 + 3x3 + 10x4 ≥ 197 (Deckkraft)",
+      "7x1 + 3x2 + 11x3 + 13x4 ≤ 379 (Viskosität)",
+      "4x1 + x2 + 12x3 + 10x4 ≤ 172 (Lösemittelanteil)",
+      "x1 + 6x2 + x3 + 9x4 ≥ 308 (Lichtechtheit)",
+      "6x1 + 2x2 + 11x3 + 4x4 ≤ 151 (Trocknungszeit)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Zwei Qualitätsanforderungen (Deckkraft und Lichtechtheit) ergeben ≥-Nebenbedingungen. Die Obergrenzen für Viskosität, Lösemittelanteil und Trocknungszeit ergeben ≤-Nebenbedingungen. Achte auf die richtige Zuordnung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "48 Euro pro Liter Titanweiß", "bedeutung": "48 × x₁"},
+        {"text": "1 Euro pro Liter Chromgelb", "bedeutung": "1 × x₂"},
+        {"text": "21 Euro pro Liter Ultramarinblau", "bedeutung": "21 × x₃"},
+        {"text": "17 Euro pro Liter Eisenoxidrot", "bedeutung": "17 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "ein Liter Titanweiß 9 Punkte", "bedeutung": "9x₁"},
+          {"text": "ein Liter Chromgelb 12 Punkte", "bedeutung": "+ 12x₂"},
+          {"text": "ein Liter Ultramarinblau 3 Punkte", "bedeutung": "+ 3x₃"},
+          {"text": "ein Liter Eisenoxidrot 10 Punkte zur Deckkraft", "bedeutung": "+ 10x₄"},
+          {"text": "Mindestanforderung von 197 Punkten", "bedeutung": "≥ 197"}
+        ],
+        [
+          {"text": "ein Liter Titanweiß liefert 7 Einheiten", "bedeutung": "7x₁"},
+          {"text": "ein Liter Chromgelb 3 Einheiten", "bedeutung": "+ 3x₂"},
+          {"text": "ein Liter Ultramarinblau erzeugt 11 Einheiten", "bedeutung": "+ 11x₃"},
+          {"text": "ein Liter Eisenoxidrot 13 Einheiten Viskosität", "bedeutung": "+ 13x₄"},
+          {"text": "höchstens 379 Einheiten", "bedeutung": "≤ 379"}
+        ],
+        [
+          {"text": "ein Liter Titanweiß 4 Einheiten", "bedeutung": "4x₁"},
+          {"text": "ein Liter Chromgelb 1 Einheit", "bedeutung": "+ x₂"},
+          {"text": "ein Liter Ultramarinblau 12 Einheiten", "bedeutung": "+ 12x₃"},
+          {"text": "ein Liter Eisenoxidrot 10 Einheiten zum Lösemittelanteil", "bedeutung": "+ 10x₄"},
+          {"text": "maximal 172 Einheiten begrenzt", "bedeutung": "≤ 172"}
+        ],
+        [
+          {"text": "ein Liter Titanweiß 1 Punkt", "bedeutung": "x₁"},
+          {"text": "ein Liter Chromgelb 6 Punkte", "bedeutung": "+ 6x₂"},
+          {"text": "ein Liter Ultramarinblau 1 Punkt", "bedeutung": "+ x₃"},
+          {"text": "ein Liter Eisenoxidrot 9 Punkte zur Lichtechtheit", "bedeutung": "+ 9x₄"},
+          {"text": "Mindestanforderung von 308 Punkten", "bedeutung": "≥ 308"}
+        ],
+        [
+          {"text": "ein Liter Titanweiß 6 Einheiten", "bedeutung": "6x₁"},
+          {"text": "ein Liter Chromgelb 2 Einheiten", "bedeutung": "+ 2x₂"},
+          {"text": "ein Liter Ultramarinblau 11 Einheiten", "bedeutung": "+ 11x₃"},
+          {"text": "ein Liter Eisenoxidrot 4 Einheiten zur Trocknungszeit", "bedeutung": "+ 4x₄"},
+          {"text": "höchstens 151 Einheiten", "bedeutung": "≤ 151"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Legierung aus vier Metallen",
+    "beschreibung": "Eine Metallgießerei stellt eine Speziallegierung aus vier Metallen her: Nickel, Chrom, Molybdän und Vanadium. Die Kosten betragen 17 Euro pro kg Nickel, 25 Euro pro kg Chrom, 43 Euro pro kg Molybdän und 4 Euro pro kg Vanadium. Die Legierung muss bestimmte Qualitätskriterien erfüllen. Für die Härte gilt eine Mindestanforderung von 97 Punkten, wobei ein kg Nickel 8 Punkte, ein kg Chrom 4 Punkte, ein kg Molybdän 6 Punkte und ein kg Vanadium 5 Punkte zur Härte beiträgt. Die Sprödigkeit darf höchstens 136 Einheiten betragen: ein kg Nickel liefert 11 Einheiten, ein kg Chrom bringt 2 Einheiten, ein kg Molybdän 14 Einheiten und ein kg Vanadium 6 Einheiten Sprödigkeit. Der Verformungswiderstand ist auf maximal 356 Einheiten begrenzt, wobei ein kg Nickel 4 Einheiten, ein kg Chrom 2 Einheiten, ein kg Molybdän 7 Einheiten und ein kg Vanadium 12 Einheiten zum Verformungswiderstand beiträgt. Für die Korrosionsbeständigkeit gilt eine weitere Mindestanforderung von 50 Punkten, wobei ein kg Nickel 14 Punkte, ein kg Chrom 11 Punkte, ein kg Molybdän 15 Punkte und ein kg Vanadium 3 Punkte zur Korrosionsbeständigkeit beiträgt. Die Gießerei möchte die Gesamtkosten der Legierung minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = kg Nickel",
+      "x2 = kg Chrom",
+      "x3 = kg Molybdän",
+      "x4 = kg Vanadium"
+    ],
+    "zielfunktion": "Z = 17x1 + 25x2 + 43x3 + 4x4 (min)",
+    "nebenbedingungen": [
+      "8x1 + 4x2 + 6x3 + 5x4 ≥ 97 (Härte)",
+      "11x1 + 2x2 + 14x3 + 6x4 ≤ 136 (Sprödigkeit)",
+      "4x1 + 2x2 + 7x3 + 12x4 ≤ 356 (Verformungswiderstand)",
+      "14x1 + 11x2 + 15x3 + 3x4 ≥ 50 (Korrosionsbeständigkeit)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Zwei Qualitätsanforderungen (Härte und Korrosionsbeständigkeit) ergeben ≥-Nebenbedingungen. Die Obergrenzen für Sprödigkeit und Verformungswiderstand ergeben ≤-Nebenbedingungen. Achte auf die richtige Zuordnung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "17 Euro pro kg Nickel", "bedeutung": "17 × x₁"},
+        {"text": "25 Euro pro kg Chrom", "bedeutung": "25 × x₂"},
+        {"text": "43 Euro pro kg Molybdän", "bedeutung": "43 × x₃"},
+        {"text": "4 Euro pro kg Vanadium", "bedeutung": "4 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "ein kg Nickel 8 Punkte", "bedeutung": "8x₁"},
+          {"text": "ein kg Chrom 4 Punkte", "bedeutung": "+ 4x₂"},
+          {"text": "ein kg Molybdän 6 Punkte", "bedeutung": "+ 6x₃"},
+          {"text": "ein kg Vanadium 5 Punkte zur Härte", "bedeutung": "+ 5x₄"},
+          {"text": "Mindestanforderung von 97 Punkten", "bedeutung": "≥ 97"}
+        ],
+        [
+          {"text": "ein kg Nickel liefert 11 Einheiten", "bedeutung": "11x₁"},
+          {"text": "ein kg Chrom bringt 2 Einheiten", "bedeutung": "+ 2x₂"},
+          {"text": "ein kg Molybdän 14 Einheiten", "bedeutung": "+ 14x₃"},
+          {"text": "ein kg Vanadium 6 Einheiten Sprödigkeit", "bedeutung": "+ 6x₄"},
+          {"text": "höchstens 136 Einheiten", "bedeutung": "≤ 136"}
+        ],
+        [
+          {"text": "ein kg Nickel 4 Einheiten", "bedeutung": "4x₁"},
+          {"text": "ein kg Chrom 2 Einheiten", "bedeutung": "+ 2x₂"},
+          {"text": "ein kg Molybdän 7 Einheiten", "bedeutung": "+ 7x₃"},
+          {"text": "ein kg Vanadium 12 Einheiten zum Verformungswiderstand", "bedeutung": "+ 12x₄"},
+          {"text": "maximal 356 Einheiten begrenzt", "bedeutung": "≤ 356"}
+        ],
+        [
+          {"text": "ein kg Nickel 14 Punkte", "bedeutung": "14x₁"},
+          {"text": "ein kg Chrom 11 Punkte", "bedeutung": "+ 11x₂"},
+          {"text": "ein kg Molybdän 15 Punkte", "bedeutung": "+ 15x₃"},
+          {"text": "ein kg Vanadium 3 Punkte zur Korrosionsbeständigkeit", "bedeutung": "+ 3x₄"},
+          {"text": "Mindestanforderung von 50 Punkten", "bedeutung": "≥ 50"}
+        ]
+      ]
+    }
+  },
+  {
+    "titel": "Düngemittelmischung mit vier Komponenten",
+    "beschreibung": "Ein Landwirtschaftsbetrieb mischt Dünger aus vier Komponenten: Hornspäne, Knochenmehl, Kaliumsulfat und Guano. Die Kosten betragen 44 Euro pro Sack Hornspäne, 19 Euro pro Sack Knochenmehl, 45 Euro pro Sack Kaliumsulfat und 40 Euro pro Sack Guano. Die Mischung muss bestimmte Nährstoffanforderungen erfüllen. Für den Stickstoffgehalt gilt eine Mindestanforderung von 325 Punkten, wobei ein Sack Hornspäne 7 Punkte, ein Sack Knochenmehl 4 Punkte, ein Sack Kaliumsulfat 13 Punkte und ein Sack Guano 4 Punkte zum Stickstoffgehalt beiträgt. Der Chloridgehalt darf höchstens 450 Einheiten betragen: ein Sack Hornspäne liefert 5 Einheiten, ein Sack Knochenmehl enthält 1 Einheit, ein Sack Kaliumsulfat 12 Einheiten und ein Sack Guano 12 Einheiten Chloridgehalt. Der Schwermetallgehalt ist auf maximal 444 Einheiten begrenzt, wobei ein Sack Hornspäne 7 Einheiten, ein Sack Knochenmehl 1 Einheit, ein Sack Kaliumsulfat 10 Einheiten und ein Sack Guano 5 Einheiten zum Schwermetallgehalt beiträgt. Für den Phosphorgehalt gilt eine weitere Mindestanforderung von 443 Punkten, wobei ein Sack Hornspäne 8 Punkte, ein Sack Knochenmehl 5 Punkte, ein Sack Kaliumsulfat 2 Punkte und ein Sack Guano 5 Punkte zum Phosphorgehalt beiträgt. Der Betrieb möchte die Gesamtkosten der Düngemittelmischung minimieren.",
+    "typ": "Mischungsproblem",
+    "optimierungsziel": "minimieren",
+    "variablen": [
+      "x1 = Säcke Hornspäne",
+      "x2 = Säcke Knochenmehl",
+      "x3 = Säcke Kaliumsulfat",
+      "x4 = Säcke Guano"
+    ],
+    "zielfunktion": "Z = 44x1 + 19x2 + 45x3 + 40x4 (min)",
+    "nebenbedingungen": [
+      "7x1 + 4x2 + 13x3 + 4x4 ≥ 325 (Stickstoffgehalt)",
+      "5x1 + x2 + 12x3 + 12x4 ≤ 450 (Chloridgehalt)",
+      "7x1 + x2 + 10x3 + 5x4 ≤ 444 (Schwermetallgehalt)",
+      "8x1 + 5x2 + 2x3 + 5x4 ≥ 443 (Phosphorgehalt)",
+      "x1, x2, x3, x4 ≥ 0"
+    ],
+    "hinweis": "Zwei Nährstoffanforderungen (Stickstoff und Phosphor) ergeben ≥-Nebenbedingungen. Die Obergrenzen für Chlorid- und Schwermetallgehalt ergeben ≤-Nebenbedingungen. Achte auf die richtige Zuordnung der Ungleichungszeichen.",
+    "highlights": {
+      "zielfunktion": [
+        {"text": "44 Euro pro Sack Hornspäne", "bedeutung": "44 × x₁"},
+        {"text": "19 Euro pro Sack Knochenmehl", "bedeutung": "19 × x₂"},
+        {"text": "45 Euro pro Sack Kaliumsulfat", "bedeutung": "45 × x₃"},
+        {"text": "40 Euro pro Sack Guano", "bedeutung": "40 × x₄"}
+      ],
+      "nebenbedingungen": [
+        [
+          {"text": "ein Sack Hornspäne 7 Punkte", "bedeutung": "7x₁"},
+          {"text": "ein Sack Knochenmehl 4 Punkte", "bedeutung": "+ 4x₂"},
+          {"text": "ein Sack Kaliumsulfat 13 Punkte", "bedeutung": "+ 13x₃"},
+          {"text": "ein Sack Guano 4 Punkte zum Stickstoffgehalt", "bedeutung": "+ 4x₄"},
+          {"text": "Mindestanforderung von 325 Punkten", "bedeutung": "≥ 325"}
+        ],
+        [
+          {"text": "ein Sack Hornspäne liefert 5 Einheiten", "bedeutung": "5x₁"},
+          {"text": "ein Sack Knochenmehl enthält 1 Einheit", "bedeutung": "+ x₂"},
+          {"text": "ein Sack Kaliumsulfat 12 Einheiten", "bedeutung": "+ 12x₃"},
+          {"text": "ein Sack Guano 12 Einheiten Chloridgehalt", "bedeutung": "+ 12x₄"},
+          {"text": "höchstens 450 Einheiten", "bedeutung": "≤ 450"}
+        ],
+        [
+          {"text": "ein Sack Hornspäne 7 Einheiten", "bedeutung": "7x₁"},
+          {"text": "ein Sack Knochenmehl 1 Einheit", "bedeutung": "+ x₂"},
+          {"text": "ein Sack Kaliumsulfat 10 Einheiten", "bedeutung": "+ 10x₃"},
+          {"text": "ein Sack Guano 5 Einheiten zum Schwermetallgehalt", "bedeutung": "+ 5x₄"},
+          {"text": "maximal 444 Einheiten begrenzt", "bedeutung": "≤ 444"}
+        ],
+        [
+          {"text": "ein Sack Hornspäne 8 Punkte", "bedeutung": "8x₁"},
+          {"text": "ein Sack Knochenmehl 5 Punkte", "bedeutung": "+ 5x₂"},
+          {"text": "ein Sack Kaliumsulfat 2 Punkte", "bedeutung": "+ 2x₃"},
+          {"text": "ein Sack Guano 5 Punkte zum Phosphorgehalt", "bedeutung": "+ 5x₄"},
+          {"text": "Mindestanforderung von 443 Punkten", "bedeutung": "≥ 443"}
+        ]
+      ]
+    }
+  }
+]

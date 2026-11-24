@@ -1,0 +1,91 @@
+{
+  "id": "qual_halbleiter_5v_01",
+  "typ": "Qualitätskontrolle",
+  "optimierungsziel": "minimieren",
+  "numVars": 5,
+  "variablen": ["x1 = Anzahl optische Inspektionen", "x2 = Anzahl elektrische Tests", "x3 = Anzahl thermische Tests", "x4 = Anzahl Röntgenprüfungen", "x5 = Anzahl akustische Analysen"],
+  "objective": ["c1", "c2", "c3", "c4", "c5"],
+  "constraints": [
+    {"type": ">=", "label": "Mindest-Fehlererfassung", "row": ["a11","a12","a13","a14","a15"], "rhs": "b1"},
+    {"type": "<=", "label": "Reinraumzeit", "row": ["a21","a22","a23","a24","a25"], "rhs": "b2"},
+    {"type": "<=", "label": "Gerätebudget", "row": ["a31","a32","a33","a34","a35"], "rhs": "b3"},
+    {"type": "<=", "label": "Technikerpersonal", "row": ["a41","a42","a43","a44","a45"], "rhs": "b4"}
+  ],
+  "coefficients": {
+    "c1":  {"min": 2, "max": 7,   "label": "Kosten optisch (€)"},
+    "c2":  {"min": 3, "max": 10,  "label": "Kosten elektrisch (€)"},
+    "c3":  {"min": 5, "max": 14,  "label": "Kosten thermisch (€)"},
+    "c4":  {"min": 6, "max": 18,  "label": "Kosten Röntgen (€)"},
+    "c5":  {"min": 4, "max": 12,  "label": "Kosten akustisch (€)"},
+    "a11": {"min": 2, "max": 5,   "label": "Fehlererfassung optisch (%)"},
+    "a12": {"min": 3, "max": 7,   "label": "Fehlererfassung elektrisch (%)"},
+    "a13": {"min": 3, "max": 8,   "label": "Fehlererfassung thermisch (%)"},
+    "a14": {"min": 4, "max": 10,  "label": "Fehlererfassung Röntgen (%)"},
+    "a15": {"min": 2, "max": 6,   "label": "Fehlererfassung akustisch (%)"},
+    "b1":  {"min": 80, "max": 320, "label": "Mindest-Fehlererfassung (%)"},
+    "a21": {"min": 1, "max": 2,   "label": "Reinraumzeit optisch (min)"},
+    "a22": {"min": 2, "max": 4,   "label": "Reinraumzeit elektrisch (min)"},
+    "a23": {"min": 2, "max": 5,   "label": "Reinraumzeit thermisch (min)"},
+    "a24": {"min": 3, "max": 6,   "label": "Reinraumzeit Röntgen (min)"},
+    "a25": {"min": 1, "max": 3,   "label": "Reinraumzeit akustisch (min)"},
+    "b2":  {"min": 40, "max": 150, "label": "Reinraumzeit (min)"},
+    "a31": {"min": 2, "max": 6,   "label": "Gerätekosten optisch (€)"},
+    "a32": {"min": 3, "max": 8,   "label": "Gerätekosten elektrisch (€)"},
+    "a33": {"min": 4, "max": 10,  "label": "Gerätekosten thermisch (€)"},
+    "a34": {"min": 5, "max": 15,  "label": "Gerätekosten Röntgen (€)"},
+    "a35": {"min": 3, "max": 8,   "label": "Gerätekosten akustisch (€)"},
+    "b3":  {"min": 150, "max": 600, "label": "Gerätebudget (€)"},
+    "a41": {"min": 1, "max": 2,   "label": "Techniker optisch (Personen)"},
+    "a42": {"min": 1, "max": 2,   "label": "Techniker elektrisch (Personen)"},
+    "a43": {"min": 1, "max": 2,   "label": "Techniker thermisch (Personen)"},
+    "a44": {"min": 1, "max": 3,   "label": "Techniker Röntgen (Personen)"},
+    "a45": {"min": 1, "max": 2,   "label": "Techniker akustisch (Personen)"},
+    "b4":  {"min": 15, "max": 50,  "label": "Technikerpersonal (Personen)"}
+  },
+  "titel": "Halbleiterfertigung – Fünf Prüfverfahren",
+  "beschreibung": "Ein Halbleiterhersteller setzt fünf Prüfverfahren ein: optische Inspektionen, elektrische Tests, thermische Tests, Röntgenprüfungen und akustische Analysen. Eine optische Inspektion kostet {c1} €, ein elektrischer Test kostet {c2} €, ein thermischer Test kostet {c3} €, eine Röntgenprüfung kostet {c4} € und eine akustische Analyse kostet {c5} €. Die Fehlererfassung beträgt {a11} % optisch, {a12} % elektrisch, {a13} % thermisch, {a14} % Röntgen und {a15} % akustisch. Die Mindest-Fehlererfassung beträgt {b1} %. Die Reinraumzeit beträgt {a21} Minuten optisch, {a22} Minuten elektrisch, {a23} Minuten thermisch, {a24} Minuten Röntgen und {a25} Minuten akustisch. Die Reinraumzeit beträgt {b2} Minuten. Die Gerätekosten betragen {a31} € optisch, {a32} € elektrisch, {a33} € thermisch, {a34} € Röntgen und {a35} € akustisch. Das Gerätebudget beträgt {b3} €. Der Technikerbedarf beträgt {a41} Personen optisch, {a42} Personen elektrisch, {a43} Personen thermisch, {a44} Personen Röntgen und {a45} Personen akustisch. Das Technikerpersonal umfasst {b4} Personen.",
+  "hinweis": "Minimiere die Prüfkosten bei ausreichender Fehlererfassung und Einhaltung aller Kapazitätsgrenzen.",
+  "highlights": {
+    "zielfunktion": [
+      {"text": "optische Inspektion kostet {c1} €", "bedeutung": "{c1} × x₁"},
+      {"text": "elektrischer Test kostet {c2} €", "bedeutung": "{c2} × x₂"},
+      {"text": "thermischer Test kostet {c3} €", "bedeutung": "{c3} × x₃"},
+      {"text": "Röntgenprüfung kostet {c4} €", "bedeutung": "{c4} × x₄"},
+      {"text": "akustische Analyse kostet {c5} €", "bedeutung": "{c5} × x₅"}
+    ],
+    "nebenbedingungen": [
+      [
+        {"text": "{a11} % optisch", "bedeutung": "{a11}x₁"},
+        {"text": "{a12} % elektrisch", "bedeutung": "+ {a12}x₂"},
+        {"text": "{a13} % thermisch", "bedeutung": "+ {a13}x₃"},
+        {"text": "{a14} % Röntgen", "bedeutung": "+ {a14}x₄"},
+        {"text": "{a15} % akustisch", "bedeutung": "+ {a15}x₅"},
+        {"text": "{b1} %", "bedeutung": "≥ {b1}"}
+      ],
+      [
+        {"text": "{a21} Minuten optisch", "bedeutung": "{a21}x₁"},
+        {"text": "{a22} Minuten elektrisch", "bedeutung": "+ {a22}x₂"},
+        {"text": "{a23} Minuten thermisch", "bedeutung": "+ {a23}x₃"},
+        {"text": "{a24} Minuten Röntgen", "bedeutung": "+ {a24}x₄"},
+        {"text": "{a25} Minuten akustisch", "bedeutung": "+ {a25}x₅"},
+        {"text": "{b2} Minuten", "bedeutung": "≤ {b2}"}
+      ],
+      [
+        {"text": "{a31} € optisch", "bedeutung": "{a31}x₁"},
+        {"text": "{a32} € elektrisch", "bedeutung": "+ {a32}x₂"},
+        {"text": "{a33} € thermisch", "bedeutung": "+ {a33}x₃"},
+        {"text": "{a34} € Röntgen", "bedeutung": "+ {a34}x₄"},
+        {"text": "{a35} € akustisch", "bedeutung": "+ {a35}x₅"},
+        {"text": "{b3} €", "bedeutung": "≤ {b3}"}
+      ],
+      [
+        {"text": "{a41} Personen optisch", "bedeutung": "{a41}x₁"},
+        {"text": "{a42} Personen elektrisch", "bedeutung": "+ {a42}x₂"},
+        {"text": "{a43} Personen thermisch", "bedeutung": "+ {a43}x₃"},
+        {"text": "{a44} Personen Röntgen", "bedeutung": "+ {a44}x₄"},
+        {"text": "{a45} Personen akustisch", "bedeutung": "+ {a45}x₅"},
+        {"text": "{b4} Personen", "bedeutung": "≤ {b4}"}
+      ]
+    ]
+  }
+}
