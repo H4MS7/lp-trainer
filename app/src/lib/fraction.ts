@@ -164,7 +164,11 @@ export class Fraction {
     while (testDen % 2n === 0n) testDen /= 2n;
     while (testDen % 5n === 0n) testDen /= 5n;
     if (testDen === 1n) {
-      return this.toDecimal().replace('.', ',');
+      // Finite decimal: show it exactly (never truncated, so the displayed value
+      // can be typed back in or re-parsed without changing it). Very long
+      // decimals (> 6 places) read better as a fraction.
+      const exact = this.toDecimal(64);
+      if ((exact.split('.')[1]?.length ?? 0) <= 6) return exact.replace('.', ',');
     }
     // Show as fraction
     return this.toString();

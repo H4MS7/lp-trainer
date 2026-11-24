@@ -22,7 +22,7 @@ Aus einer Textaufgabe das LP-Modell aufstellen: Entscheidungsvariablen, Zielfunk
 - **Schöne Zahlen** (optional): nur Varianten, deren Simplex-Rechnung mit Brüchen mit kleinem Nenner auskommt, gut für das Weiterrechnen von Hand
 - **Musterlösung mit Schritt-für-Schritt-Erklärung:** Variablen definieren, Zielfunktion aufstellen, Nebenbedingungen identifizieren, vollständiges LP-Modell
 - **Farbige Markierungen** zeigen, welche Stelle im Aufgabentext zu welchem Koeffizienten und welcher Schranke wird
-- **Direkt weiter zum Simplex:** Ist das Modell richtig, rechnest du dieselbe Aufgabe im Tableau weiter, mit Export als HTML-Datei
+- **Direkt weiter zum Simplex:** Ist das Modell richtig, rechnest du dieselbe Aufgabe im Tableau weiter. Die Prüfung ist genauso exakt wie im Simplex-Trainer, dazu gibt es einen Export als HTML-Datei
 
 ### Nutzung
 
@@ -31,7 +31,10 @@ Aus einer Textaufgabe das LP-Modell aufstellen: Entscheidungsvariablen, Zielfunk
 3. Die Nebenbedingungen eintragen, eine pro Feld, z. B. `2x1 + 5x2 ≥ 372`. Weitere Felder gibt es über **+ Nebenbedingung**. Die Nichtnegativitätsbedingung musst du nicht eintragen.
 4. **Lösung überprüfen** gibt eine schnelle Rückmeldung zur Zielfunktion (Koeffizienten, max/min) und dazu, ob genug Nebenbedingungen da sind. Den genauen Abgleich liefert die Musterlösung.
 5. **Lösung anzeigen** klappt die Musterlösung auf, **Lösung übernehmen** trägt sie in die Felder ein.
-6. Ist das Modell korrekt, geht es mit dem Simplex für dieselbe Aufgabe weiter. Bei Minimierungsproblemen wird im Tableau mit `-Z` gerechnet.
+6. Ist das Modell korrekt, geht es mit dem Simplex für dieselbe Aufgabe weiter. Es gelten dieselben Regeln wie im [Simplex-Trainer](#simplex-trainer), dazu kommt:
+   - Bei Minimierungsproblemen wird im Tableau mit `-Z` gerechnet.
+   - ≥-Bedingungen gehen mit umgekehrtem Vorzeichen ins Tableau (negativer Wert). Solange in der Wert-Spalte negative Werte stehen, kommen zuerst duale Schritte: Die Pivotzeile hat den kleinsten (negativsten) Wert, die Pivotspalte den kleinsten Betrag von Z-Wert ÷ Element (nur negative Elemente).
+   - Eine Gleichung wird zu zwei Zeilen, einer ≤- und einer ≥-Bedingung.
 
 ## Simplex-Trainer
 
@@ -53,12 +56,14 @@ Zufällig erzeugte LPs mit dem Simplex-Verfahren lösen, Tableau für Tableau.
 
 1. Einstellungen wählen und **Problem generieren** klicken. Das erste Tableau ist in passender Größe vorbereitet.
 2. Aufbau des Tableaus: oben die Z-Zeile, darunter eine Zeile je Basisvariable (zu Beginn die Schlupfvariablen `y1`, `y2`, …). Die Spalten sind die Nichtbasisvariablen, die letzte Spalte enthält die Werte. Im Starttableau stehen in der Z-Zeile die Zielfunktionskoeffizienten mit umgekehrtem Vorzeichen.
-3. Das Pivotelement über die beiden Auswahlfelder unter dem Tableau festlegen (Zeile = Basisvariable, Spalte = Nichtbasisvariable). Der Trainer erwartet diese Regel:
-   - **Pivotspalte:** die erste Spalte von links mit negativem Wert in der Z-Zeile
-   - **Pivotzeile:** der kleinste Quotient aus Wert und Element der Pivotspalte, nur über positive Elemente
+3. Das Pivotelement über die beiden Auswahlfelder unter dem Tableau festlegen (Zeile = Basisvariable, Spalte = Nichtbasisvariable). Musterlösung und Prüfung folgen dieser Regel:
+   - **Pivotspalte:** die Spalte mit dem kleinsten (negativsten) Wert in der Z-Zeile, bei Gleichstand die linke
+   - **Pivotzeile:** der kleinste Quotient aus Wert und Element der Pivotspalte, nur über positive Elemente, bei Gleichstand die obere
+
+   > **Hinweis:** Manche Lehrbücher wählen die Pivotspalte anders, etwa die erste negative Spalte von links (Bland-Regel). Dann weicht der Rechenweg von der Musterlösung ab. Der optimale Zielfunktionswert bleibt derselbe.
 4. **Neues Tableau** legt das nächste Tableau an und übernimmt die Beschriftungen. Die Pivot-Basisvariable und die Pivot-Nichtbasisvariable tauschst du selbst, die Felder sind editierbar.
 5. Steht in der Z-Zeile kein negativer Wert mehr, ist das Tableau optimal: **Optimal** anhaken.
-6. **Simplex prüfen** vergleicht alle Tableaus mit dem korrekten Lösungsweg. Leere Zellen zählen als 0.
+6. **Simplex prüfen** vergleicht alle Tableaus exakt mit dem korrekten Lösungsweg. Werte als ganze Zahl, Bruch oder Dezimalzahl eingeben (`3`, `-5/3`, `2,5`), leere Zellen zählen als 0.
 
 ## Lokal starten
 

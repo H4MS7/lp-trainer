@@ -83,8 +83,17 @@ export function isOptimal(tableau: TableauSnapshot): boolean {
 }
 
 /**
- * Choose pivot using Bland's rule to prevent cycling.
- * Supports dual simplex when RHS is negative.
+ * Choose the pivot element (the rule the app teaches and checks against).
+ *
+ * Primal step: pivot column = most negative Z-row coefficient (Dantzig's rule),
+ * ties → leftmost column; pivot row = smallest ratio value / column entry over
+ * positive entries, ties → topmost row.
+ * Dual step (some RHS negative, e.g. from ≥ constraints): pivot row = most
+ * negative RHS; pivot column = smallest |Z-coeff / row entry| over negative
+ * entries, ties → leftmost.
+ *
+ * Dantzig's rule can cycle on degenerate problems; solve() gives up after
+ * maxIter steps, so generators simply discard such problems.
  */
 export function choosePivot(tableau: TableauSnapshot): { row: number; col: number } {
   const data = tableau.data;
@@ -122,17 +131,18 @@ export function choosePivot(tableau: TableauSnapshot): { row: number; col: numbe
     return { row: pivotRow, col: pivotCol };
   }
 
-  // Primal simplex with Bland's rule: first negative Z-coefficient
+  // Primal simplex: most negative Z-coefficient, ties → leftmost (strict lt keeps the first)
   let pivotCol = -1;
+  let minZ = Fraction.ZERO;
   for (let j = 0; j < n; j++) {
-    if (data[0][j].isNegative()) {
+    if (data[0][j].lt(minZ)) {
+      minZ = data[0][j];
       pivotCol = j;
-      break; // Bland's rule: take first
     }
   }
   if (pivotCol < 0) return { row: -1, col: -1 }; // Optimal
 
-  // Row: smallest positive ratio b/a (Bland's rule: first tie-breaker)
+  // Row: smallest non-negative ratio b/a over positive a, ties → topmost
   let minRatio: Fraction | null = null;
   let pivotRow = -1;
   for (let i = 1; i < rows; i++) {

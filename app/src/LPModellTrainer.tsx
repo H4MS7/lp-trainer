@@ -11,6 +11,7 @@ import type { ProblemTemplate } from './lib/templateEngine';
 import { Fraction } from './lib/fraction';
 import * as Simplex from './lib/simplex';
 import { generateProblemAsync, formatProblem } from './lib/generator';
+import { buildStartTableauFromText, parseCell, pivotStep, isOptimalEditable, choosePivotEditable, solvePathFrom, compareTableau } from './lib/tableauFlow';
 import type { GeneratorConfig, GeneratedProblem, AppMode, EditableTableau } from './lib/types';
 
 interface SimplexFeedback {
@@ -21,6 +22,16 @@ interface SimplexFeedback {
 
 /** True if nb is a pure non-negativity constraint like "x1, x2 ≥ 0" (any var count) */
 const isNonNegativity = (nb: string) => /^x\d+(,\s*x\d+)*\s*≥\s*0$/.test(nb.trim());
+
+/** Pivotregel, nach der Musterlösung und Prüfung rechnen (siehe lib/simplex.ts choosePivot). */
+const PivotRuleHint = ({ showDual = false }: { showDual?: boolean }) => (
+  <div className="mt-2 pt-2 border-t border-purple-200 text-xs text-purple-700 space-y-1">
+    <p><strong>Pivotregel:</strong> Pivotspalte = Spalte mit dem kleinsten (negativsten) Wert in der Z-Zeile, bei Gleichstand die linke. Pivotzeile = kleinster Quotient Wert ÷ Element der Pivotspalte (nur positive Elemente), bei Gleichstand die obere.</p>
+    {showDual && <p><strong>Negative Werte in der Wert-Spalte</strong> (z. B. aus ≥-Bedingungen): zuerst duale Schritte. Pivotzeile = kleinster (negativster) Wert, Pivotspalte = kleinster Betrag von Z-Wert ÷ Element (nur negative Elemente).</p>}
+    <p>Manche Lehrbücher wählen die Pivotspalte anders, z. B. die erste negative Spalte von links (Bland-Regel). Dann weicht der Rechenweg ab, der optimale Zielfunktionswert bleibt aber derselbe.</p>
+    <p>Werte exakt eingeben: ganze Zahl, Bruch oder Dezimalzahl, z. B. 3, -5/3, 2,5</p>
+  </div>
+);
 
 const LPModellTrainer = () => {
   const [currentProblem, setCurrentProblem] = useState<any>(null);
@@ -428,226 +439,16 @@ ${tableausHTML}${feedbackHTML}
   };
 
   // ===== LOKALER SIMPLEX-SOLVER =====
-  const solvePivotStep = (prevTableau) => {
-    if (!prevTableau || prevTableau.pivotRow < 0 || prevTableau.pivotCol < 0) return null;
-    const pRow = prevTableau.pivotRow;
-    const pCol = prevTableau.pivotCol;
-    const oldData = prevTableau.data.map(r => r.map(c => parseFloat(c) || 0));
-    const rows = oldData.length;
-    const cols = oldData[0].length;
-    const pivotVal = oldData[pRow][pCol];
-    if (pivotVal === 0) return null;
-
-    // Neue Daten berechnen
-    const newData = Array(rows).fill(null).map(() => Array(cols).fill(0));
-    for (let i = 0; i < rows; i++) {
-      for (let j = 0; j < cols; j++) {
-        if (i === pRow && j === pCol) {
-          // Pivot-Element → Kehrwert
-          newData[i][j] = 1 / pivotVal;
-        } else if (i === pRow) {
-          // Pivot-Zeile → ÷ Pivot
-          newData[i][j] = oldData[i][j] / pivotVal;
-        } else if (j === pCol) {
-          // Pivot-Spalte → ÷ (-Pivot)
-          newData[i][j] = oldData[i][j] / (-pivotVal);
-        } else {
-          // Rechteckregel
-          newData[i][j] = oldData[i][j] - (oldData[i][pCol] * oldData[pRow][j]) / pivotVal;
-        }
-      }
-    }
-
-    // Basistausch: Variablennamen tauschen
-    const oldBasis = [...prevTableau.basis];
-    const oldNBVars = [...(prevTableau.nbVars || ['x1', 'x2'])];
-    const newBasis = [...oldBasis];
-    const newNBVars = [...oldNBVars];
-    // Eingehende Variable (aus Spalte) kommt in Basis
-    // Ausgehende Variable (aus Zeile) kommt in NB
-    const eingehend = oldNBVars[pCol];
-    const ausgehend = oldBasis[pRow];
-    newBasis[pRow] = eingehend;
-    newNBVars[pCol] = ausgehend;
-
-    // Runden auf sinnvolle Stellen
-    const round = (v) => {
-      const r = Math.round(v * 10000) / 10000;
-      if (Math.abs(r - Math.round(r)) < 0.0001) return Math.round(r);
-      if (Math.abs(r * 2 - Math.round(r * 2)) < 0.001) return Math.round(r * 10000) / 10000;
-      return Math.round(r * 1000) / 1000;
-    };
-
-    const roundedData = newData.map(r => r.map(v => round(v)));
-
-    return {
-      data: roundedData.map(r => r.map(v => String(v))),
-      basis: newBasis,
-      nbVars: newNBVars,
-      zLabel: prevTableau.zLabel || 'Z'
-    };
-  };
-
   const buildStartTableau = () => {
     if (!currentProblem) return null;
-    // Nutze die Nutzereingabe, Fallback auf Musterlösung
-    const zf = userSolution.zielfunktion || currentProblem?.zielfunktion || '';
-    const allNBs = (userSolution.nebenbedingungen.filter(nb => nb.trim()).length > 0
-      ? userSolution.nebenbedingungen.filter(nb => nb.trim())
-      : currentProblem?.nebenbedingungen || []);
-    const nbs = allNBs.filter(nb => !isNonNegativity(nb));
-
-    const isMin = zf.toLowerCase().includes('min');
     const numVars = detectNumVars(currentProblem);
-
-    // Parse objective coefficients for x1..xn
-    const zfClean = zf.replace(/,/g, '.');
-    const cArr: number[] = [];
-    for (let j = 1; j <= numVars; j++) {
-      const re = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*x${j}`, 'i');
-      const m = zfClean.match(re);
-      cArr.push(m ? parseFloat(m[1]) : 0);
-    }
-    if (cArr.every(v => v === 0)) {
-      // Fallback: versuche Musterlösung
-      const fallbackZF = (currentProblem?.zielfunktion || '').replace(/,/g, '.');
-      const fbArr: number[] = [];
-      for (let j = 1; j <= numVars; j++) {
-        const re = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*x${j}`, 'i');
-        const m = fallbackZF.match(re);
-        fbArr.push(m ? parseFloat(m[1]) : 0);
-      }
-      if (fbArr.every(v => v === 0)) return null;
-      return buildStartTableauFromParsed(fbArr, isMin,
-        (currentProblem?.nebenbedingungen || []).filter(nb => !isNonNegativity(nb)),
-        numVars);
-    }
-    return buildStartTableauFromParsed(cArr, isMin, nbs, numVars);
-  };
-
-  const buildStartTableauFromParsed = (cArr: number[], isMin: boolean, nbs: string[], numVars: number) => {
-    // Parse Nebenbedingungen
-    const constraints: { coeffs: number[]; rhs: number }[] = [];
-    nbs.forEach(nb => {
-      const clean = nb.replace(/\(.*?\)/g, '').replace(/,/g, '.').trim();
-      let type = 'leq';
-      if (clean.includes('≥') || clean.includes('>=')) type = 'geq';
-
-      const parts = clean.split(/[≤≥]=?|<=|>=/)[0].trim();
-      const rhsStr = clean.split(/[≤≥]=?|<=|>=/)[1];
-      let rhs = rhsStr ? (parseFloat(rhsStr.trim()) || 0) : 0;
-
-      const coeffs: number[] = [];
-      for (let j = 1; j <= numVars; j++) {
-        const re = new RegExp(`(-?\\d*(?:\\.\\d+)?)\\s*x${j}`, 'i');
-        const m = parts.match(re);
-        if (m) {
-          const coef = m[1];
-          coeffs.push(coef === '' || coef === '+' ? 1 : coef === '-' ? -1 : parseFloat(coef));
-        } else {
-          coeffs.push(0);
-        }
-      }
-
-      if (type === 'geq') {
-        for (let j = 0; j < coeffs.length; j++) coeffs[j] = -coeffs[j];
-        rhs = -rhs;
-      }
-      constraints.push({ coeffs, rhs });
-    });
-
-    const numC = constraints.length;
-    const rows = numC + 1;
-    const cols = numVars + 1;
-    const data = Array(rows).fill(null).map(() => Array(cols).fill(''));
-    const basis = [isMin ? '-Z' : 'Z'];
-
-    // Z-row
-    for (let j = 0; j < numVars; j++) {
-      data[0][j] = String(isMin ? cArr[j] : -cArr[j]);
-    }
-    data[0][numVars] = '0';
-
-    // Constraint rows
-    constraints.forEach((c, i) => {
-      for (let j = 0; j < numVars; j++) {
-        data[i + 1][j] = String(c.coeffs[j]);
-      }
-      data[i + 1][numVars] = String(c.rhs);
-      basis.push(`y${i + 1}`);
-    });
-
-    return {
-      data, basis,
-      nbVars: Array(numVars).fill(null).map((_, j) => `x${j+1}`),
-      zLabel: isMin ? '-Z' : 'Z',
-      pivotRow: -1, pivotCol: -1, isOptimal: false
-    };
-  };
-
-  const choosePivotLocal = (tableau) => {
-    if (!tableau) return { row: -1, col: -1 };
-    const data = tableau.data.map(r => r.map(c => parseFloat(c) || 0));
-    const rows = data.length;
-    const cols = data[0].length;
-    const valCol = cols - 1;
-
-    // Check für negative b-Werte (Dual-Simplex)
-    let dualNeeded = false;
-    for (let i = 1; i < rows; i++) {
-      if (data[i][valCol] < -0.0001) { dualNeeded = true; break; }
-    }
-
-    if (dualNeeded) {
-      // Dual-Simplex: Wähle Zeile mit negativstem b-Wert
-      let minB = 0, pivotRow = -1;
-      for (let i = 1; i < rows; i++) {
-        if (data[i][valCol] < minB) { minB = data[i][valCol]; pivotRow = i; }
-      }
-      if (pivotRow < 0) return { row: -1, col: -1 };
-      // Spalte: kleinster Quotient |Z-Koeff / Pivot-Spalten-Koeff| für negative Koeffizienten
-      let minRatio = Infinity, pivotCol = -1;
-      for (let j = 0; j < valCol; j++) {
-        if (data[pivotRow][j] < -0.0001) {
-          const ratio = Math.abs(data[0][j] / data[pivotRow][j]);
-          if (ratio < minRatio) { minRatio = ratio; pivotCol = j; }
-        }
-      }
-      return { row: pivotRow, col: pivotCol };
-    }
-
-    // Primaler Simplex: Spalte mit negativstem Z-Wert
-    let minZ = 0, pivotCol = -1;
-    for (let j = 0; j < valCol; j++) {
-      if (data[0][j] < minZ) { minZ = data[0][j]; pivotCol = j; }
-    }
-    if (pivotCol < 0) return { row: -1, col: -1 }; // Optimal
-
-    // Zeile: kleinster positiver Quotient b/a
-    let minRatio = Infinity, pivotRow = -1;
-    for (let i = 1; i < rows; i++) {
-      if (data[i][pivotCol] > 0.0001) {
-        const ratio = data[i][valCol] / data[i][pivotCol];
-        if (ratio >= 0 && ratio < minRatio) { minRatio = ratio; pivotRow = i; }
-      }
-    }
-    return { row: pivotRow, col: pivotCol };
-  };
-
-  const isOptimalLocal = (tableau) => {
-    if (!tableau) return false;
-    const data = tableau.data.map(r => r.map(c => parseFloat(c) || 0));
-    const cols = data[0].length;
-    const valCol = cols - 1;
-    // All Z-row coefficients >= 0
-    for (let j = 0; j < valCol; j++) {
-      if (data[0][j] < -0.0001) return false;
-    }
-    // All b-values >= 0
-    for (let i = 1; i < data.length; i++) {
-      if (data[i][valCol] < -0.0001) return false;
-    }
-    return true;
+    const realNBs = (nbs: string[]) => nbs.filter(nb => nb.trim() && !isNonNegativity(nb));
+    // Nutze die Nutzereingabe, Fallback auf Musterlösung (auch wenn die Eingabe nicht lesbar ist)
+    const userNBs = realNBs(userSolution.nebenbedingungen);
+    const fromUser = userSolution.zielfunktion.trim() && userNBs.length > 0
+      ? buildStartTableauFromText(userSolution.zielfunktion, userNBs, numVars)
+      : null;
+    return fromUser || buildStartTableauFromText(currentProblem.zielfunktion || '', realNBs(currentProblem.nebenbedingungen || []), numVars);
   };
 
   const solveTableau = async (tableauIndex) => {
@@ -668,8 +469,8 @@ ${tableausHTML}${feedbackHTML}
         if (prev.pivotRow < 0 || prev.pivotCol < 0) {
           setSimplexFeedback({ korrekt: false, gesamtfeedback: '❌ Bitte zuerst Pivot im vorherigen Tableau wählen.', tableauFeedback: [] }); setIsLoading(false); return;
         }
-        result = solvePivotStep(prev);
-        if (!result) { setSimplexFeedback({ korrekt: false, gesamtfeedback: '❌ Pivot-Element ist 0 – ungültiger Pivot.', tableauFeedback: [] }); setIsLoading(false); return; }
+        result = pivotStep(prev);
+        if (!result) { setSimplexFeedback({ korrekt: false, gesamtfeedback: '❌ Pivot-Element ist 0 oder das vorherige Tableau enthält ungültige Werte (erlaubt: 3, -5/3, 2,5).', tableauFeedback: [] }); setIsLoading(false); return; }
       }
 
       const tableau = { ...nt[tableauIndex] };
@@ -681,13 +482,13 @@ ${tableausHTML}${feedbackHTML}
       // Optimalität prüfen und Pivot wählen
       const cols = tableau.data[0]?.length || 0;
       const valCol = cols - 1;
-      if (isOptimalLocal(tableau)) {
+      if (isOptimalEditable(tableau)) {
         tableau.isOptimal = true;
         tableau.pivotRow = -1;
         tableau.pivotCol = -1;
       } else {
         tableau.isOptimal = false;
-        const pivot = choosePivotLocal(tableau);
+        const pivot = choosePivotEditable(tableau);
         tableau.pivotRow = pivot.row;
         tableau.pivotCol = pivot.col;
       }
@@ -699,7 +500,8 @@ ${tableausHTML}${feedbackHTML}
       if (tableau.isOptimal) {
         const bvars = tableau.basis.slice(1);
         const vals = tableau.data.slice(1).map(r => r[valCol]);
-        const zVal = tableau.data[0][valCol];
+        const zCell = parseCell(tableau.data[0][valCol]);
+        const zVal = zCell ? (tableau.zLabel === '-Z' ? zCell.neg() : zCell).toDisplayString() : tableau.data[0][valCol];
         const explanation = `✅ Optimale Lösung erreicht! Z = ${zVal}. ${bvars.map((b, i) => `${b} = ${vals[i]}`).join(', ')}. Nichtbasisvariablen ${(tableau.nbVars || []).join(', ')} = 0.`;
         setSimplexFeedback({ korrekt: true, gesamtfeedback: explanation, tableauFeedback: [] });
       } else if (tableau.pivotRow >= 0 && tableau.pivotCol >= 0) {
@@ -719,29 +521,13 @@ ${tableausHTML}${feedbackHTML}
     if (!currentProblem) return;
     setIsLoading(true);
 
-    // Lokal die korrekte Lösung berechnen und vergleichen
+    // Korrekten Lösungsweg exakt (Brüche) mit derselben Pivotregel wie der Trainer berechnen
     try {
-      const correctTableaus = [];
       const startTab = buildStartTableau();
-      if (!startTab) { setSimplexFeedback({ korrekt: false, gesamtfeedback: '❌ LP konnte nicht geparsed werden.', tableauFeedback: [] }); setIsLoading(false); return; }
+      const solved = startTab ? solvePathFrom(startTab) : null;
+      if (!solved) { setSimplexFeedback({ korrekt: false, gesamtfeedback: '❌ LP konnte nicht geparsed werden.', tableauFeedback: [] }); setIsLoading(false); return; }
+      const correctTableaus = solved.path;
 
-      correctTableaus.push(startTab);
-      let current = startTab;
-
-      // Iteriere bis optimal (max 20 Iterationen)
-      for (let iter = 0; iter < 20; iter++) {
-        if (isOptimalLocal(current)) break;
-        const pivot = choosePivotLocal(current);
-        if (pivot.row < 0 || pivot.col < 0) break;
-        current = { ...current, pivotRow: pivot.row, pivotCol: pivot.col };
-        const next = solvePivotStep(current);
-        if (!next) break;
-        const nextTab = { ...next, pivotRow: -1, pivotCol: -1, isOptimal: false };
-        correctTableaus.push(nextTab);
-        current = nextTab;
-      }
-
-      // Vergleiche mit Nutzertableaus
       const tfb = [];
       let allCorrect = true;
 
@@ -753,50 +539,9 @@ ${tableausHTML}${feedbackHTML}
           allCorrect = false;
           tfb.push(fb); return;
         }
-        const correct = correctTableaus[i];
-        const userData = userTab.data.map(r => r.map(c => parseFloat(c) || 0));
-        const correctData = correct.data.map(r => r.map(c => parseFloat(c) || 0));
-        const cols = correctData[0]?.length || 0;
-
-        // Prüfe Dimensionen
-        if (userData.length !== correctData.length) {
-          fb.korrekt = false; fb.fehler.push(`Falsche Anzahl Zeilen: ${userData.length} statt ${correctData.length}`);
-          allCorrect = false; tfb.push(fb); return;
-        }
-
-        // Prüfe Basis-Labels
-        const userBasis = userTab.basis || [];
-        const correctBasis = correct.basis || [];
-        for (let r = 0; r < correctBasis.length; r++) {
-          if (userBasis[r]?.toLowerCase() !== correctBasis[r]?.toLowerCase()) {
-            fb.fehler.push(`Zeile ${r}: Basisvariable "${userBasis[r]}" sollte "${correctBasis[r]}" sein`);
-            fb.korrekt = false; allCorrect = false;
-          }
-        }
-
-        // Prüfe NB-Vars
-        const userNB = userTab.nbVars || ['x1', 'x2'];
-        const correctNB = correct.nbVars || ['x1', 'x2'];
-        for (let c = 0; c < correctNB.length; c++) {
-          if (userNB[c]?.toLowerCase() !== correctNB[c]?.toLowerCase()) {
-            fb.fehler.push(`Spalte ${c + 1}: "${userNB[c]}" sollte "${correctNB[c]}" sein`);
-            fb.korrekt = false; allCorrect = false;
-          }
-        }
-
-        // Prüfe Zellwerte (Toleranz 0.01)
-        for (let r = 0; r < correctData.length; r++) {
-          for (let c = 0; c < correctData[r].length; c++) {
-            const diff = Math.abs(userData[r][c] - correctData[r][c]);
-            if (diff > 0.01) {
-              const bv = correct.basis[r] || `Zeile ${r}`;
-              const colName = c < cols - 1 ? (correct.nbVars?.[c] || `Spalte ${c+1}`) : 'Wert';
-              fb.fehler.push(`${bv}, ${colName}: Ist ${userData[r][c]}, sollte ${correctData[r][c]} sein`);
-              fb.korrekt = false; allCorrect = false;
-            }
-          }
-        }
-
+        fb.fehler = compareTableau(userTab, correctTableaus[i]);
+        fb.korrekt = fb.fehler.length === 0;
+        if (!fb.korrekt) allCorrect = false;
         if (fb.korrekt) fb.hinweise.push('Alle Werte korrekt!');
         tfb.push(fb);
       });
@@ -808,18 +553,21 @@ ${tableausHTML}${feedbackHTML}
       }
 
       const lastCorrect = correctTableaus[correctTableaus.length - 1];
-      const lcCols = lastCorrect.data[0]?.length || 0;
-      const lcValCol = lcCols - 1;
-      const zVal = lastCorrect.data[0][lcValCol];
-      const bvInfo = lastCorrect.basis.slice(1).map((b, i) => `${b} = ${lastCorrect.data[i+1][lcValCol]}`).join(', ');
+      const lcValCol = (lastCorrect.data[0]?.length || 1) - 1;
+      const zRaw = lastCorrect.data[0][lcValCol];
+      const zVal = (lastCorrect.zLabel === '-Z' ? zRaw.neg() : zRaw).toDisplayString();
+      const bvInfo = lastCorrect.basis.slice(1).map((b, i) => `${b} = ${lastCorrect.data[i+1][lcValCol].toDisplayString()}`).join(', ');
+      const loesung = solved.optimal
+        ? `Optimale Lösung: Z = ${zVal}, ${bvInfo}`
+        : 'Für dieses LP gibt es kein endliches Optimum (unbeschränkt oder unzulässig).';
 
       setSimplexFeedback({
         korrekt: allCorrect,
         tableauFeedback: tfb,
         optimaleLoesungKorrekt: allCorrect,
         gesamtfeedback: allCorrect
-          ? `✅ Perfekt! Alle Tableaus sind korrekt. Optimale Lösung: Z = ${zVal}, ${bvInfo}`
-          : `❌ Es gibt Fehler. Korrekte optimale Lösung wäre: Z = ${zVal}, ${bvInfo}`
+          ? `✅ Perfekt! Alle Tableaus sind korrekt. ${loesung}`
+          : `❌ Es gibt Fehler. ${solved.optimal ? 'Korrekte optimale Lösung wäre: Z = ' + zVal + ', ' + bvInfo : loesung}`
       });
       if (allCorrect) setSimplexPhase('done');
     } catch (error) {
@@ -1222,6 +970,7 @@ ${tableausHTML}${feedbackHTML}
             <div className="bg-purple-50 rounded-lg p-3 mb-4 text-sm text-purple-800">
               <p className="font-medium mb-1">Füllen Sie die Tableaus schrittweise aus.</p>
               <p className="text-purple-700">Z-Zeile oben • Basisvariablen y₁, y₂... • Spalten x₁, x₂{genVars > 2 ? `, ..., x${genVars}` : ''} • Letzte Spalte = Werte</p>
+              <PivotRuleHint />
             </div>
 
             {renderTableaus()}
@@ -1313,6 +1062,7 @@ ${tableausHTML}${feedbackHTML}
                 <div className="bg-purple-50 rounded-lg p-3 mb-4 text-sm text-purple-800">
                   <p className="font-medium mb-1">Füllen Sie die Tableaus schrittweise aus.</p>
                   <p className="text-purple-700">Z-Zeile oben • Basisvariablen y₁, y₂... • Spalten x₁, x₂ • Letzte Spalte = Werte • Bei Min: "-Z" verwenden</p>
+                  <PivotRuleHint showDual />
                 </div>
 
                 {renderTableaus()}

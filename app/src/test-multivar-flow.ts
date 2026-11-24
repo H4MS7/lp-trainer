@@ -9,12 +9,17 @@
  * 2. adoptSolution flow
  * 3. buildStartTableau + buildStartTableauFromParsed
  * 4. Full solve loop (checkSimplexSolution flow)
+ * 6. Pivot rule (most negative Z value) and exact cell input/comparison
  * 5. Variable count detection
  *
  * Run with: npx tsx src/test-multivar-flow.ts
  */
 import * as fs from 'fs';
 import * as path from 'path';
+import { buildStartTableauFromText, parseConstraint, parseObjective, pivotStep, isOptimalEditable, choosePivotEditable, parseCell, solvePathFrom, compareTableau } from './lib/tableauFlow';
+import * as Simplex from './lib/simplex';
+import { Fraction } from './lib/fraction';
+import { generateProblem } from './lib/generator';
 
 let passCount = 0;
 let failCount = 0;
@@ -64,175 +69,20 @@ function detectNumVars(problem: any): number {
   return Math.max(2, ...matches.map(m => parseInt(m.replace(/x/i, ''))));
 }
 
-/** Line 728-786: buildStartTableauFromParsed (exact copy from component) */
-function buildStartTableauFromParsed(cArr: number[], isMin: boolean, nbs: string[], numVars: number) {
-  const constraints: { coeffs: number[]; rhs: number }[] = [];
-  nbs.forEach(nb => {
-    const clean = nb.replace(/\(.*?\)/g, '').replace(/,/g, '.').trim();
-    let type = 'leq';
-    if (clean.includes('≥') || clean.includes('>=')) type = 'geq';
-
-    const parts = clean.split(/[≤≥]=?|<=|>=/)[0].trim();
-    const rhsStr = clean.split(/[≤≥]=?|<=|>=/)[1];
-    let rhs = rhsStr ? (parseFloat(rhsStr.trim()) || 0) : 0;
-
-    const coeffs: number[] = [];
-    for (let j = 1; j <= numVars; j++) {
-      const re = new RegExp(`(-?\\d*(?:\\.\\d+)?)\\s*x${j}`, 'i');
-      const m = parts.match(re);
-      if (m) {
-        const coef = m[1];
-        coeffs.push(coef === '' || coef === '+' ? 1 : coef === '-' ? -1 : parseFloat(coef));
-      } else {
-        coeffs.push(0);
-      }
-    }
-
-    if (type === 'geq') {
-      for (let j = 0; j < coeffs.length; j++) coeffs[j] = -coeffs[j];
-      rhs = -rhs;
-    }
-    constraints.push({ coeffs, rhs });
-  });
-
-  const numC = constraints.length;
-  const rows = numC + 1;
-  const cols = numVars + 1;
-  const data = Array(rows).fill(null).map(() => Array(cols).fill(''));
-  const basis = [isMin ? '-Z' : 'Z'];
-
-  for (let j = 0; j < numVars; j++) {
-    data[0][j] = String(isMin ? cArr[j] : -cArr[j]);
-  }
-  data[0][numVars] = '0';
-
-  constraints.forEach((c, i) => {
-    for (let j = 0; j < numVars; j++) {
-      data[i + 1][j] = String(c.coeffs[j]);
-    }
-    data[i + 1][numVars] = String(c.rhs);
-    basis.push(`y${i + 1}`);
-  });
-
-  return {
-    data, basis,
-    nbVars: Array(numVars).fill(null).map((_, j) => `x${j+1}`),
-    zLabel: isMin ? '-Z' : 'Z',
-    pivotRow: -1, pivotCol: -1, isOptimal: false
-  };
-}
-
-/** Line 691-726: buildStartTableau (simplified - uses problem data directly) */
+/** buildStartTableau as the component does it for the Musterlösung (real parser from lib/tableauFlow) */
 function buildStartTableau(problem: any) {
-  const zf = problem.zielfunktion || '';
-  const allNBs = problem.nebenbedingungen || [];
-  const nbs = allNBs.filter(nb => !isNonNegativity(nb));
-
-  const isMin = zf.toLowerCase().includes('min');
-  const numVars = detectNumVars(problem);
-
-  const zfClean = zf.replace(/,/g, '.');
-  const cArr: number[] = [];
-  for (let j = 1; j <= numVars; j++) {
-    const re = new RegExp(`(\\d+(?:\\.\\d+)?)\\s*x${j}`, 'i');
-    const m = zfClean.match(re);
-    cArr.push(m ? parseFloat(m[1]) : 0);
-  }
-  if (cArr.every(v => v === 0)) return null;
-  return buildStartTableauFromParsed(cArr, isMin, nbs, numVars);
+  const nbs = (problem.nebenbedingungen || []).filter(nb => !isNonNegativity(nb));
+  return buildStartTableauFromText(problem.zielfunktion || '', nbs, detectNumVars(problem));
 }
 
-/** choosePivotLocal (exact copy from line 788-835) */
-function choosePivotLocal(tableau: any) {
-  if (!tableau) return { row: -1, col: -1 };
-  const data = tableau.data.map(r => r.map(c => parseFloat(c) || 0));
-  const rows = data.length;
-  const cols = data[0].length;
-  const valCol = cols - 1;
+/** Equality constraints become two tableau rows (≤ and ≥). */
+const isEquality = (nb: string) => !/[≤≥]|<=|>=/.test(nb) && /=/.test(nb.replace(/\([^()]*\)/g, ''));
 
-  // Most negative in Z-row
-  let pivotCol = -1;
-  let minVal = -1e-10;
-  for (let j = 0; j < valCol; j++) {
-    if (data[0][j] < minVal) { minVal = data[0][j]; pivotCol = j; }
-  }
-  if (pivotCol < 0) return { row: -1, col: -1 };
-
-  // Minimum ratio test
-  let pivotRow = -1;
-  let minRatio = Infinity;
-  for (let i = 1; i < rows; i++) {
-    if (data[i][pivotCol] > 1e-10) {
-      const ratio = data[i][valCol] / data[i][pivotCol];
-      if (ratio < minRatio) { minRatio = ratio; pivotRow = i; }
-    }
-  }
-  return { row: pivotRow, col: pivotCol };
-}
-
-/** isOptimalLocal (exact copy from line 837-851) */
-function isOptimalLocal(tableau: any) {
-  const data = tableau.data.map(r => r.map(c => parseFloat(c) || 0));
-  const cols = data[0].length;
-  const valCol = cols - 1;
-  for (let j = 0; j < valCol; j++) {
-    if (data[0][j] < -1e-10) return false;
-  }
-  return true;
-}
-
-/** solvePivotStep (exact copy from line 631-689) */
-function solvePivotStep(prevTableau: any) {
-  const pr = prevTableau.pivotRow;
-  const pc = prevTableau.pivotCol;
-  if (pr < 0 || pc < 0) return null;
-
-  const oldData = prevTableau.data.map(r => r.map(c => parseFloat(c) || 0));
-  const pivotVal = oldData[pr][pc];
-  if (Math.abs(pivotVal) < 1e-15) return null;
-
-  const rows = oldData.length;
-  const cols = oldData[0].length;
-
-  // Tucker exchange (Rechteckregel)
-  const newData = Array(rows).fill(null).map(() => Array(cols).fill(0));
-
-  // Pivot element
-  newData[pr][pc] = 1 / pivotVal;
-  // Pivot row
-  for (let j = 0; j < cols; j++) {
-    if (j !== pc) newData[pr][j] = oldData[pr][j] / pivotVal;
-  }
-  // Pivot column
-  for (let i = 0; i < rows; i++) {
-    if (i !== pr) newData[i][pc] = -oldData[i][pc] / pivotVal;
-  }
-  // Rest
-  for (let i = 0; i < rows; i++) {
-    if (i === pr) continue;
-    for (let j = 0; j < cols; j++) {
-      if (j === pc) continue;
-      newData[i][j] = oldData[i][j] - (oldData[i][pc] * oldData[pr][j]) / pivotVal;
-    }
-  }
-
-  const oldBasis = [...prevTableau.basis];
-  const oldNBVars = [...(prevTableau.nbVars || ['x1', 'x2'])];
-  const entering = oldNBVars[pc];
-  const leaving = oldBasis[pr];
-  const newBasis = [...oldBasis];
-  const newNBVars = [...oldNBVars];
-  newBasis[pr] = entering;
-  newNBVars[pc] = leaving;
-
-  return {
-    data: newData.map(r => r.map(v => String(Math.round(v * 10000) / 10000))),
-    basis: newBasis,
-    nbVars: newNBVars,
-    zLabel: prevTableau.zLabel,
-    pivotRow: -1, pivotCol: -1, isOptimal: false
-  };
-}
+// The simplex steps are the real implementations from lib/tableauFlow (exact fractions),
+// not copies, so this test checks exactly what the UI runs.
+const isOptimalLocal = isOptimalEditable;
+const choosePivotLocal = choosePivotEditable;
+const solvePivotStep = pivotStep;
 
 /** Full solve loop: buildStartTableau → iterate pivots → optimal (mirrors checkSimplexSolution) */
 function fullSolveLoop(problem: any): { success: boolean; steps: number; zValue: string; error?: string } {
@@ -402,7 +252,8 @@ function testBuildStartTableau() {
     }
 
     // Check dimensions
-    const expectedConstraints = (p.nebenbedingungen || []).filter(nb => !isNonNegativity(nb)).length;
+    const expectedConstraints = (p.nebenbedingungen || []).filter(nb => !isNonNegativity(nb))
+      .reduce((n, nb) => n + (isEquality(nb) ? 2 : 1), 0);
     const expectedRows = expectedConstraints + 1; // constraints + Z-row
     const expectedCols = nVars + 1; // vars + RHS
 
@@ -428,8 +279,8 @@ function testBuildStartTableau() {
     }
 
     // Check Z-row has non-zero coefficients
-    const zRow = tab.data[0].map(v => parseFloat(v) || 0);
-    const hasZCoeffs = zRow.slice(0, -1).some(v => v !== 0);
+    const zRow = tab.data[0].map(v => parseCell(v));
+    const hasZCoeffs = zRow.slice(0, -1).some(v => v !== null && !v.isZero());
     assert(hasZCoeffs, `#${i} "${p.titel}" (${nVars}v): Z-row has non-zero coefficients`);
 
     // Check all cells are non-empty strings
@@ -663,6 +514,185 @@ function testFallbackDefaults() {
   }
 }
 
+
+
+// ─── Test Suite: LP text parser + independent optimum ───
+function solveSquare(M: Fraction[][], r: Fraction[]): Fraction[] | null {
+  const n = M.length;
+  const A = M.map((row, i) => [...row, r[i]]);
+  for (let col = 0; col < n; col++) {
+    let piv = -1;
+    for (let i = col; i < n; i++) if (!A[i][col].isZero()) { piv = i; break; }
+    if (piv < 0) return null;
+    [A[col], A[piv]] = [A[piv], A[col]];
+    for (let i = 0; i < n; i++) {
+      if (i === col || A[i][col].isZero()) continue;
+      const f = A[i][col].div(A[col][col]);
+      for (let j = col; j <= n; j++) A[i][j] = A[i][j].sub(f.mul(A[col][j]));
+    }
+  }
+  return A.map((row, i) => row[n].div(row[i]));
+}
+
+/** Optimum by enumerating all vertices of {A x ≤ b, x ≥ 0} — independent of the simplex code. */
+function vertexOptimum(c: Fraction[], rows: { coeffs: Fraction[]; rhs: Fraction }[], isMin: boolean): Fraction | null {
+  const n = c.length;
+  const cons = [...rows, ...c.map((_, j) => ({ coeffs: c.map((_, k) => (k === j ? Fraction.ONE.neg() : Fraction.ZERO)), rhs: Fraction.ZERO }))];
+  let best: Fraction | null = null;
+  const pick: number[] = [];
+  const rec = (start: number) => {
+    if (pick.length === n) {
+      const x = solveSquare(pick.map(i => cons[i].coeffs), pick.map(i => cons[i].rhs));
+      if (!x) return;
+      for (const k of cons) {
+        const lhs = k.coeffs.reduce((acc, a, j) => acc.add(a.mul(x[j])), Fraction.ZERO);
+        if (k.rhs.lt(lhs)) return; // violated
+      }
+      const z = c.reduce((acc, cj, j) => acc.add(cj.mul(x[j])), Fraction.ZERO);
+      if (best === null || (isMin ? z.lt(best) : best.lt(z))) best = z;
+      return;
+    }
+    for (let i = start; i < cons.length; i++) { pick.push(i); rec(i + 1); pick.pop(); }
+  };
+  rec(0);
+  return best;
+}
+
+function testParserAndIndependentOptimum() {
+  section('LP TEXT PARSER + INDEPENDENT OPTIMUM (vertex enumeration)');
+  const F = (n: number, d = 1) => new Fraction(BigInt(n), BigInt(d));
+  const rowsEq = (got, want: [number[], number][]) =>
+    !!got && got.length === want.length && got.every((r, i) => r.coeffs.every((c, j) => c.equals(F(want[i][0][j] * 10, 10))) && r.rhs.equals(F(want[i][1] * 10, 10)));
+
+  assert(rowsEq(parseConstraint('x1 + x2 <= 10', 2), [[[1, 1], 10]]), 'parse <=');
+  assert(rowsEq(parseConstraint('0,7x1 - 0,3x2 ≥ 0 (Mindestanteil A)', 2), [[[-0.7, 0.3], 0]]), 'parse minus term with decimal comma (≥ negated)');
+  assert(rowsEq(parseConstraint('-3x1 + x2 ≤ 0 (Verhältnis B zu A)', 2), [[[-3, 1], 0]]), 'parse leading minus');
+  assert(rowsEq(parseConstraint('x1 + x2 = 1000 (Gesamtmenge)', 2), [[[1, 1], 1000], [[-1, -1], -1000]]), 'parse equality → two rows');
+  assert(rowsEq(parseConstraint('x2 = 3x1 (Verhältnis 1:3)', 2), [[[-3, 1], 0], [[3, -1], 0]]), 'parse variables on the right-hand side');
+  assert(rowsEq(parseConstraint('2x1 ≥ 5 + x2', 2), [[[-2, 1], -5]]), 'parse mixed sides');
+  assert(parseConstraint('2y1 + x2 ≤ 4', 2) === null, 'unknown variable → null');
+  assert(parseConstraint('x3 ≤ 4', 2) === null, 'variable index out of range → null');
+  const obj = parseObjective('Z = x1 + 9x2 (min)', 2);
+  assert(!!obj && obj.isMin && obj.c[0].equals(F(1)) && obj.c[1].equals(F(9)), 'objective with implicit coefficient 1');
+  const obj2 = parseObjective('Z = 0,4x1 + 0,9x2 (max)', 2);
+  assert(!!obj2 && !obj2.isMin && obj2.c[0].equals(F(2, 5)), 'objective with decimal comma');
+
+  let checked = 0;
+  for (let i = 0; i < ALL_PROBLEMS.length; i++) {
+    const p = ALL_PROBLEMS[i];
+    const n = detectNumVars(p);
+    const o = parseObjective(p.zielfunktion, n);
+    const rows = (p.nebenbedingungen || []).filter(nb => !isNonNegativity(nb)).flatMap(nb => parseConstraint(nb, n) || []);
+    const start = buildStartTableau(p);
+    const solved = start ? solvePathFrom(start) : null;
+    const expected = o ? vertexOptimum(o.c, rows, o.isMin) : null;
+    if (!o || !solved || !solved.optimal || !expected) {
+      assert(false, `#${i} "${p.titel}": parse/solve failed (obj ${!!o}, optimal ${solved?.optimal}, vertex ${!!expected})`);
+      continue;
+    }
+    const last = solved.path[solved.path.length - 1];
+    const v = last.data[0][last.data[0].length - 1];
+    // Tableau stores Z for max and -Z for min ("-Z" row)
+    const z = o.isMin ? v.neg() : v;
+    assert(z.equals(expected), `#${i} "${p.titel}": simplex Z = ${z.toDisplayString()}, vertex optimum = ${expected.toDisplayString()}`);
+    checked++;
+  }
+  console.log(`  ${checked} static problems: simplex optimum == vertex enumeration`);
+}
+
+// ─── Test Suite: pivot rule + exact input ───────────────
+function testPivotRuleAndInput() {
+  section('PIVOT RULE (most negative Z) + EXACT INPUT');
+  const F = (n: number, d = 1) => new Fraction(BigInt(n), BigInt(d));
+  const eq = (a: Fraction | null, b: Fraction) => a !== null && a.equals(b);
+
+  // Cell parsing
+  assert(eq(parseCell('3'), F(3)), 'parseCell 3');
+  assert(eq(parseCell('-5/3'), F(-5, 3)), 'parseCell -5/3');
+  assert(eq(parseCell('2,5'), F(5, 2)), 'parseCell 2,5 (German decimal comma)');
+  assert(eq(parseCell('2.5'), F(5, 2)), 'parseCell 2.5');
+  assert(eq(parseCell(' 12,25 '), F(49, 4)), 'parseCell with spaces');
+  assert(eq(parseCell('−1/2'), F(-1, 2)), 'parseCell unicode minus');
+  assert(eq(parseCell(''), F(0)), 'parseCell empty → 0');
+  assert(parseCell('abc') === null, 'parseCell abc → null');
+  assert(parseCell('1/0') === null, 'parseCell 1/0 → null');
+  assert(parseCell('2x1') === null, 'parseCell 2x1 → null');
+
+  const tab = (z: string[], rows: string[][]) => ({
+    data: [z, ...rows], basis: ['Z', ...rows.map((_, i) => `y${i + 1}`)],
+    nbVars: z.slice(0, -1).map((_, j) => `x${j + 1}`), pivotRow: -1, pivotCol: -1, isOptimal: false, zLabel: 'Z',
+  });
+
+  // Primal: most negative Z value wins (Bland would pick column 0 here)
+  let p = choosePivotEditable(tab(['-2', '-27', '0'], [['6', '10', '128'], ['2', '6', '25'], ['5', '6', '199']]));
+  assert(p.col === 1, `pivot column = most negative Z value (got ${p.col})`);
+  assert(p.row === 2, `pivot row = smallest ratio 25/6 (got ${p.row})`);
+  // Ties → leftmost column, topmost row
+  p = choosePivotEditable(tab(['-5', '-5', '0'], [['1', '1', '4'], ['2', '1', '8']]));
+  assert(p.col === 0 && p.row === 1, `ties → leftmost column, topmost row (got ${p.row}/${p.col})`);
+  // Dual step: most negative value
+  p = choosePivotEditable(tab(['3', '2', '0'], [['-1', '-1', '-4'], ['-2', '-1', '-10']]));
+  assert(p.row === 2, `dual: pivot row = most negative value (got ${p.row})`);
+  // Fractions and decimal commas in the user tableau are computed exactly
+  const step = pivotStep({ ...tab(['-1/2', '-3', '0'], [['2,5', '1', '10'], ['1', '3', '9']]), pivotRow: 2, pivotCol: 1 });
+  assert(step !== null && step.data[0][2] === '9', `pivotStep with fractions/commas (Z = ${step?.data[0][2]})`);
+  assert(pivotStep({ ...tab(['-1', '-1', '0'], [['abc', '1', '4']]), pivotRow: 1, pivotCol: 1 }) === null, 'pivotStep rejects invalid cells');
+
+  // Display strings round-trip exactly (no truncation of long decimals)
+  for (const [n, d] of [[3, 160], [1, 32], [-7, 64], [1, 3], [123457, 1000], [1, 1048576], [5, 2], [-400, 3]]) {
+    const f = F(n, d);
+    assert(eq(parseCell(f.toDisplayString()), f), `display round-trip ${n}/${d} → "${f.toDisplayString()}"`);
+  }
+  assert(F(3, 160).toDisplayString() === '0,01875', `0,01875 shown exactly (got ${F(3, 160).toDisplayString()})`);
+
+  // Exact comparison
+  const correct = Simplex.buildInitialTableau([F(1), F(1)], [[F(1, 3), F(5, 2)]], [F(4)], true);
+  const user = tab(['-1', '-1', '0'], [['0,33', '2,5', '4']]);
+  let fehler = compareTableau(user, correct);
+  assert(fehler.length === 1 && fehler[0].includes('sollte 1/3'), `0,33 ≠ 1/3 is reported (${fehler.join('; ')})`);
+  user.data[1][0] = '1/3';
+  fehler = compareTableau(user, correct);
+  assert(fehler.length === 0, `1/3 and 2,5 accepted (${fehler.join('; ')})`);
+  user.data[1][1] = 'x';
+  fehler = compareTableau(user, correct);
+  assert(fehler.length === 1 && fehler[0].includes('keine gültige Zahl'), 'invalid input reported');
+
+  // Generator (simplex trainer) follows the same rule on every primal step
+  const seen = new Set<string>();
+  let checkedSteps = 0;
+  for (let k = 0; k < 60; k++) {
+    const cfg = { nVars: 2 + (k % 4), nConstraints: 2 + (k % 5), minTableaus: 2, maxTableaus: 5, niceNumbers: k % 2 === 0, maxDenom: 6 };
+    const prob = generateProblem(cfg, seen, 3000);
+    if (!prob) continue;
+    seen.add(prob.hash);
+    for (const t of prob.solutionPath) {
+      if (t.pivotCol < 0) continue;
+      const n = t.data[0].length - 1;
+      if (t.data.slice(1).some(r => r[n].isNegative())) continue; // dual step
+      let best = 0;
+      for (let j = 1; j < n; j++) if (t.data[0][j].lt(t.data[0][best])) best = j;
+      assert(t.pivotCol === best, `generator pivot column = most negative Z (got ${t.pivotCol}, expected ${best})`);
+      checkedSteps++;
+    }
+  }
+  assert(checkedSteps > 50, `generator steps checked: ${checkedSteps}`);
+
+  // Modelling flow and trainer engine agree on every static problem
+  let agree = 0;
+  for (const prob of ALL_PROBLEMS) {
+    const start = buildStartTableau(prob);
+    const solved = start ? solvePathFrom(start) : null;
+    assert(!!solved && solved.optimal, `exact path optimal: ${prob.titel}`);
+    if (!solved || !solved.optimal) continue;
+    const loop = fullSolveLoop(prob);
+    const last = solved.path[solved.path.length - 1];
+    const z = last.data[0][last.data[0].length - 1];
+    assert(loop.success && eq(parseCell(loop.zValue), z), `UI loop and exact path agree on Z: ${prob.titel}`);
+    agree++;
+  }
+  console.log(`  ${agree} static problems: UI loop == exact path`);
+}
+
 // ─── Main ───────────────────────────────────────────────
 
 testNonNegativityFilters();
@@ -672,6 +702,8 @@ testFullSolveLoop();
 testAdoptSolutionFlow();
 testHighlightValidation();
 testFallbackDefaults();
+testPivotRuleAndInput();
+testParserAndIndependentOptimum();
 
 console.log(`\n${'═'.repeat(60)}`);
 console.log(`  FINAL RESULTS: ${passCount} passed, ${failCount} failed`);
