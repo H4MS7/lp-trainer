@@ -2,7 +2,7 @@
 
 Web-App zum Üben der linearen Optimierung: Textaufgaben in ein LP-Modell übersetzen und das Simplex-Verfahren Tableau für Tableau von Hand durchrechnen, jeweils mit Musterlösung und direktem Feedback. Die App läuft komplett im Browser, ohne Anmeldung und ohne Installation.
 
-**▶ Live-Demo: <https://h4ms7.github.io/lp-modell-trainer/>**
+**▶ Live-Demo: <https://h4ms7.github.io/lp-trainer/>**
 
 Autor: Felix Flösch ([@H4MS7](https://github.com/H4MS7))
 
@@ -100,7 +100,7 @@ Neue Vorlagen kommen als JSON nach `problems/templates/<typ>/`. Danach `python3 
 
 ## Fehler gefunden? Ideen?
 
-Gerne als [Issue](https://github.com/H4MS7/lp-modell-trainer/issues) melden, zum Beispiel eine Aufgabe mit falscher Lösung oder unklarem Text.
+Gerne als [Issue](https://github.com/H4MS7/lp-trainer/issues) melden, zum Beispiel eine Aufgabe mit falscher Lösung oder unklarem Text.
 
 ## Lizenz
 

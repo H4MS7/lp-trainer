@@ -1180,7 +1180,7 @@ ${tableausHTML}${feedbackHTML}
       )}
 
       <footer className="text-center text-xs text-gray-400 mt-6 pb-2">
-        LP-Modell Trainer · © 2026 <a href="https://github.com/H4MS7" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">Felix Flösch</a> · <a href="https://github.com/H4MS7/lp-modell-trainer" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">Quellcode auf GitHub</a> · Lizenz: <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">GPLv3</a>
+        LP-Modell Trainer · © 2026 <a href="https://github.com/H4MS7" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">Felix Flösch</a> · <a href="https://github.com/H4MS7/lp-trainer" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">Quellcode auf GitHub</a> · Lizenz: <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-600">GPLv3</a>
       </footer>
     </div>
   );

@@ -1,5 +1,5 @@
 {
-  "name": "lp-modell-trainer",
+  "name": "lp-trainer",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -33,9 +33,9 @@
   "author": "Felix Flösch (https://github.com/H4MS7)",
   "license": "GPL-3.0-or-later",
   "description": "Trainer für LP-Modellierung und Simplex-Verfahren",
-  "homepage": "https://h4ms7.github.io/lp-modell-trainer/",
+  "homepage": "https://h4ms7.github.io/lp-trainer/",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/H4MS7/lp-modell-trainer.git"
+    "url": "git+https://github.com/H4MS7/lp-trainer.git"
   }
 }
