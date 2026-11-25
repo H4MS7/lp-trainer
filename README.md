@@ -115,4 +115,4 @@ Gerne als [Issue](https://github.com/H4MS7/lp-trainer/issues) melden, zum Beispi
 
 ## Lizenz
 
-[GPL-3.0-or-later](LICENSE) © 2026 Felix Flösch
+[GPL-3.0-or-later](LICENSE) 
